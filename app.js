@@ -33,6 +33,10 @@ function updateDatasetInUrl(datasetKey) {
 let guildSnapshots = [];
 let activeGuildIndex = 0;
 
+const MAX_TOKEN_SCORE = 1600;
+const TOKEN_SLOTS_PER_PLAYER = 10;
+const POSSIBLE_TILE_SCORE = 520000; // 6*10k + 20*16k + 2*30k + 2*40k
+
 const SKILL_BUFF_MULTIPLIERS = {
   EnvDefenderHealthBuff2: 1.25,
   EnvArmourSupplies: 1.1,
@@ -369,6 +373,95 @@ function buildRows(snapshot) {
     .sort((a, b) => b.totalScore - a.totalScore);
 }
 
+function summarizeGuild(snapshot) {
+  const rows = buildRows(snapshot);
+  const totalPlayers = rows.length;
+  const totalTokenSlots = totalPlayers * TOKEN_SLOTS_PER_PLAYER;
+  const usedTokens = rows.reduce((sum, player) => sum + player.usedTokens, 0);
+  const remainingTokens = Math.max(totalTokenSlots - usedTokens, 0);
+  const tokenScore = rows.reduce((sum, player) => sum + player.totalScore, 0);
+  const tileScore = rows.reduce((sum, player) => sum + player.tileScore, 0);
+  const currentTotal = tokenScore + tileScore;
+  const avgPerUsedToken = usedTokens > 0 ? tokenScore / usedTokens : 0;
+  const cappedAvgPerToken = Math.min(avgPerUsedToken, MAX_TOKEN_SCORE);
+  const projectedTokenGain = Math.round(remainingTokens * cappedAvgPerToken);
+  const projectedTokenScore = tokenScore + projectedTokenGain;
+  const projectedFinal = currentTotal + projectedTokenGain;
+  const totalWins = rows.reduce((sum, player) => sum + player.tokens.reduce((tokenSum, token) => {
+    if (!('hasScore' in token) || token.abandoned) return tokenSum;
+    const isWin = !!token.hasScore && !token.defended && Number(token.score || 0) > 0;
+    return tokenSum + (isWin ? 1 : 0);
+  }, 0), 0);
+  const totalCleanupWins = rows.reduce((sum, player) => sum + player.tokens.reduce((tokenSum, token) => {
+    if (!('hasScore' in token) || token.abandoned) return tokenSum;
+    const isWin = !!token.hasScore && !token.defended && Number(token.score || 0) > 0;
+    return tokenSum + (isWin && token.cleanup ? 1 : 0);
+  }, 0), 0);
+  const totalDefeats = rows.reduce((sum, player) => sum + player.tokens.reduce((tokenSum, token) => {
+    if (!('hasScore' in token) || token.abandoned) return tokenSum;
+    const isWin = !!token.hasScore && !token.defended && Number(token.score || 0) > 0;
+    return tokenSum + (isWin ? 0 : 1);
+  }, 0), 0);
+  const totalAbandoned = rows.reduce((sum, player) => sum + player.tokens.reduce((tokenSum, token) => tokenSum + (token.abandoned ? 1 : 0), 0), 0);
+  const totalUnused = rows.reduce((sum, player) => sum + player.tokens.reduce((tokenSum, token) => tokenSum + (!('hasScore' in token) ? 1 : 0), 0), 0);
+
+  return {
+    name: snapshot.name,
+    rows,
+    totalPlayers,
+    totalTokenSlots,
+    usedTokens,
+    remainingTokens,
+    tokenScore,
+    tileScore,
+    currentTotal,
+    avgPerUsedToken,
+    projectedTokenGain,
+    projectedTokenScore,
+    projectedFinal,
+    totalWins,
+    totalCleanupWins,
+    totalDefeats,
+    totalAbandoned,
+    totalUnused
+  };
+}
+
+function renderGuildTokenProjectionTable() {
+  const tableBody = document.getElementById('guild-token-projection-body');
+
+  if (!tableBody) {
+    return;
+  }
+
+  tableBody.innerHTML = '';
+
+  if (!Array.isArray(guildSnapshots) || guildSnapshots.length === 0) {
+    tableBody.innerHTML = '<tr><td colspan="10" class="py-2 text-slate-300/80">No guild data loaded.</td></tr>';
+    return;
+  }
+
+  const summaries = guildSnapshots.map((snapshot) => summarizeGuild(snapshot));
+
+  summaries
+    .sort((a, b) => b.projectedTokenScore - a.projectedTokenScore)
+    .forEach((guild) => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td class="py-1 pr-3 font-semibold text-emerald-100">${escapeHtml(guild.name)}</td>
+        <td class="py-1 pr-3 text-slate-200">${guild.totalTokenSlots.toLocaleString()}</td>
+        <td class="py-1 pr-3 text-slate-200">${guild.usedTokens.toLocaleString()}</td>
+        <td class="py-1 pr-3 text-slate-200">${guild.remainingTokens.toLocaleString()}</td>
+        <td class="py-1 pr-3 text-slate-200">${guild.totalWins.toLocaleString()} (${guild.totalCleanupWins.toLocaleString()}🧹)</td>
+        <td class="py-1 pr-3 text-slate-200">${guild.totalDefeats.toLocaleString()}</td>
+        <td class="py-1 pr-3 text-slate-200">${guild.totalAbandoned.toLocaleString()}</td>
+        <td class="py-1 pr-3 text-cyan-200">${guild.avgPerUsedToken.toLocaleString(undefined, { maximumFractionDigits: 1 })}</td>
+        <td class="py-1 font-semibold text-emerald-200">${guild.projectedTokenScore.toLocaleString()}</td>
+      `;
+      tableBody.appendChild(row);
+    });
+}
+
 function renderGuildTabs() {
   const tabsContainer = document.getElementById('guild-tabs');
 
@@ -436,7 +529,8 @@ function renderActiveGuild() {
 }
 
 function renderTable(snapshot) {
-  const rows = buildRows(snapshot);
+  const summary = summarizeGuild(snapshot);
+  const rows = summary.rows;
   const leaderboardBody = document.getElementById('leaderboard-body');
 
   if (!leaderboardBody) return;
@@ -522,15 +616,15 @@ function renderTable(snapshot) {
   const totalDefeatsEl = document.getElementById('total-defeats');
   const totalAbandonedEl = document.getElementById('total-abandoned');
   const totalUnusedEl = document.getElementById('total-unused');
-  const totalPlayers = rows.length;
-  const totalTokenSlots = totalPlayers * 10;
-  const usedTokensTotal = rows.reduce((sum, player) => sum + player.usedTokens, 0);
-  const guildTotalScore = rows.reduce((sum, player) => sum + player.totalScore, 0);
-  const possibleScore = totalTokenSlots * 1600;
+  const totalPlayers = summary.totalPlayers;
+  const totalTokenSlots = summary.totalTokenSlots;
+  const usedTokensTotal = summary.usedTokens;
+  const guildTotalScore = summary.tokenScore;
+  const possibleScore = totalTokenSlots * MAX_TOKEN_SCORE;
   const scorePercentage = possibleScore > 0 ? Math.round((guildTotalScore / possibleScore) * 100) : 0;
   const totalTilesCleared = rows.reduce((sum, player) => sum + player.tilesCleared, 0);
-  const totalTileScore = rows.reduce((sum, player) => sum + player.tileScore, 0);
-  const possibleTileScore = 520000; // 6*10k + 20*16k + 2*30k + 2*40k
+  const totalTileScore = summary.tileScore;
+  const possibleTileScore = POSSIBLE_TILE_SCORE;
   const tileScorePercentage = possibleTileScore > 0 ? Math.round((totalTileScore / possibleTileScore) * 100) : 0;
   const totalWins = rows.reduce((sum, player) => sum + player.tokens.reduce((tokenSum, token) => {
     if (!('hasScore' in token) || token.abandoned || !token.hasScore) return tokenSum;
@@ -619,6 +713,7 @@ async function loadGuildData() {
     const data = await response.json();
     guildSnapshots = buildSnapshot(data);
     activeGuildIndex = 0;
+    renderGuildTokenProjectionTable();
     renderActiveGuild();
     renderBuffLegend();
     renderDatasetTabs();
@@ -630,6 +725,7 @@ async function loadGuildData() {
     console.error(error);
     guildSnapshots = [buildFallbackSnapshot()];
     activeGuildIndex = 0;
+    renderGuildTokenProjectionTable();
     renderActiveGuild();
     renderDatasetTabs();
 
