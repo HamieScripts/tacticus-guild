@@ -1380,6 +1380,7 @@ function renderBattleLog(snapshot) {
     let stateLabel = 'Neutral';
     let scoreDisplay = '<span class="score-display"><span class="score-core">0</span></span>';
     let bonusDisplay = '';
+    const cleanupHtml = battle.cleanup ? '<span class="cleanup-icon cleanup-icon--inline" title="Cleanup">🧹</span>' : '';
 
     if (battle.abandoned) {
       stateClass = 'value-cell--neutral';
@@ -1388,12 +1389,12 @@ function renderBattleLog(snapshot) {
     } else if (!battle.hasScore) {
       stateClass = 'value-cell--lose';
       stateLabel = 'Defeat';
-      scoreDisplay = '<span class="score-display"><span class="score-core">0</span></span>';
+      scoreDisplay = `<span class="score-display score-display--inline"><span class="score-core">0</span>${cleanupHtml}</span>`;
     } else if (Number(battle.score || 0) > 0) {
       const { core, bonus } = getCoreScore(Number(battle.score || 0));
       stateClass = battle.defended ? 'value-cell--lose' : 'value-cell--win';
       stateLabel = battle.defended ? 'Defeat' : 'Win';
-      scoreDisplay = `<span class="score-display"><span class="score-core">${core.toLocaleString()}</span></span>`;
+      scoreDisplay = `<span class="score-display score-display--inline"><span class="score-core">${core.toLocaleString()}</span>${cleanupHtml}</span>`;
       bonusDisplay = bonus > 0 ? `<span class="battle-score-bonus">(${bonus.toLocaleString()})</span>` : '';
     }
 
