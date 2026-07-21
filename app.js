@@ -36,6 +36,12 @@ let activeGuildIndex = 0;
 const MAX_TOKEN_SCORE = 1600;
 const TOKEN_SLOTS_PER_PLAYER = 10;
 const POSSIBLE_TILE_SCORE = 520000; // 6*10k + 20*16k + 2*30k + 2*40k
+const AVATAR_BASE_URL = 'https://webstore-assets.loki.snowprintstudios.com/live/images';
+
+// Frame filenames on tacticus.xyz are hashed, so we map known frame IDs.
+const AVATAR_FRAME_URLS = {
+  frameMythic01: 'https://tacticus.xyz/assets/frames/ui_avatar_frame_framemythic01-90960f24.png'
+};
 
 const SKILL_BUFF_MULTIPLIERS = {
   EnvDefenderHealthBuff2: 1.25,
@@ -77,6 +83,75 @@ function escapeHtml(str) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
+}
+
+function formatDateTime(dateValue) {
+  const date = dateValue instanceof Date ? dateValue : new Date(dateValue);
+  if (Number.isNaN(date.getTime())) return null;
+
+  return new Intl.DateTimeFormat(undefined, {
+    year: 'numeric',
+    month: 'short',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit'
+  }).format(date);
+}
+
+function getLatestActivityTimestamp(data) {
+  const logs = data?.eventResults?.[0]?.eventResponseData?.activityLogs;
+  if (!Array.isArray(logs) || logs.length === 0) return null;
+
+  let maxTimestamp = 0;
+
+  logs.forEach((log) => {
+    const createdOn = Number(log?.createdOn || 0);
+    if (Number.isFinite(createdOn) && createdOn > maxTimestamp) {
+      maxTimestamp = createdOn;
+    }
+  });
+
+  return maxTimestamp > 0 ? maxTimestamp : null;
+}
+
+function renderLastUpdated({ responseLastModified, dataTimestamp }) {
+  const el = document.getElementById('last-updated');
+  if (!el) return;
+
+  const fromHeader = responseLastModified ? formatDateTime(responseLastModified) : null;
+  if (fromHeader) {
+    el.textContent = fromHeader;
+    return;
+  }
+
+  const fromData = dataTimestamp ? formatDateTime(dataTimestamp) : null;
+  el.textContent = fromData || 'Unknown';
+}
+
+function getAvatarImageUrl(avatarUnitId) {
+  const normalized = String(avatarUnitId || '').trim().toLowerCase();
+  if (!normalized) return null;
+  return `${AVATAR_BASE_URL}/avatar_${normalized}.png`;
+}
+
+function getFrameImageUrl(avatarFrameId) {
+  if (!avatarFrameId) return null;
+  return AVATAR_FRAME_URLS[avatarFrameId] || null;
+}
+
+function renderPlayerAvatar(player) {
+  const avatarSrc = getAvatarImageUrl(player.avatarUnitId);
+  const frameSrc = getFrameImageUrl(player.avatarFrameId);
+  const avatarAlt = `${player.name || 'Player'} avatar`;
+
+  const avatarImg = avatarSrc
+    ? `<img class="player-avatar" src="${escapeHtml(avatarSrc)}" alt="${escapeHtml(avatarAlt)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">`
+    : '';
+  const frameImg = frameSrc
+    ? `<img class="player-avatar-frame" src="${escapeHtml(frameSrc)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">`
+    : '';
+
+  return `<span class="player-avatar-stack">${avatarImg}${frameImg}</span>`;
 }
 
 function colorFor(name) {
@@ -143,7 +218,10 @@ function buildFallbackSnapshot() {
     eventName: 'Fallback snapshot',
     source: 'Offline placeholder',
     players: [
-      { name: 'No data loaded', tokens: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] }
+      {
+        name: 'No data loaded',
+        tokens: Array.from({ length: TOKEN_SLOTS_PER_PLAYER }, () => ({ score: 0, abandoned: false }))
+      }
     ]
   };
 }
@@ -154,6 +232,10 @@ function buildSnapshot(data) {
   const activityLogs = eventResult?.eventResponseData?.activityLogs || [];
   const guildData = eventResult?.eventResponseData?.guildData || [];
   const playerNames = new Map(playerData.map((player) => [player.userId, player.displayName]));
+  const playerProfiles = new Map(playerData.map((player) => [player.userId, {
+    avatarUnitId: player.avatarUnitId || null,
+    avatarFrameId: player.avatarFrameId || null
+  }]));
 
   const guildBuckets = new Map();
   const userTeamIndex = new Map();
@@ -342,6 +424,8 @@ function buildSnapshot(data) {
         return {
           name: playerNames.get(userId) || userId,
           userId,
+          avatarUnitId: playerProfiles.get(userId)?.avatarUnitId || null,
+          avatarFrameId: playerProfiles.get(userId)?.avatarFrameId || null,
           tokens,
           usedTokens,
           totalScore,
@@ -365,6 +449,8 @@ function buildRows(snapshot) {
   return snapshot.players
     .map((player) => ({
       ...player,
+      avatarUnitId: player.avatarUnitId || null,
+      avatarFrameId: player.avatarFrameId || null,
       usedTokens: player.usedTokens ?? player.tokens.filter((entry) => Object.prototype.hasOwnProperty.call(entry, 'hasScore')).length,
       totalScore: player.totalScore ?? player.tokens.reduce((sum, entry) => sum + (entry.abandoned ? 0 : entry.score), 0),
       averageScore: player.averageScore ?? (player.usedTokens > 0 ? Math.round(player.totalScore / player.usedTokens) : 0),
@@ -375,6 +461,7 @@ function buildRows(snapshot) {
 
 function summarizeGuild(snapshot) {
   const rows = buildRows(snapshot);
+  const isUsedToken = (token) => token && typeof token === 'object' && Object.prototype.hasOwnProperty.call(token, 'hasScore');
   const totalPlayers = rows.length;
   const totalTokenSlots = totalPlayers * TOKEN_SLOTS_PER_PLAYER;
   const usedTokens = rows.reduce((sum, player) => sum + player.usedTokens, 0);
@@ -388,22 +475,22 @@ function summarizeGuild(snapshot) {
   const projectedTokenScore = tokenScore + projectedTokenGain;
   const projectedFinal = currentTotal + projectedTokenGain;
   const totalWins = rows.reduce((sum, player) => sum + player.tokens.reduce((tokenSum, token) => {
-    if (!('hasScore' in token) || token.abandoned) return tokenSum;
+    if (!isUsedToken(token) || token.abandoned) return tokenSum;
     const isWin = !!token.hasScore && !token.defended && Number(token.score || 0) > 0;
     return tokenSum + (isWin ? 1 : 0);
   }, 0), 0);
   const totalCleanupWins = rows.reduce((sum, player) => sum + player.tokens.reduce((tokenSum, token) => {
-    if (!('hasScore' in token) || token.abandoned) return tokenSum;
+    if (!isUsedToken(token) || token.abandoned) return tokenSum;
     const isWin = !!token.hasScore && !token.defended && Number(token.score || 0) > 0;
     return tokenSum + (isWin && token.cleanup ? 1 : 0);
   }, 0), 0);
   const totalDefeats = rows.reduce((sum, player) => sum + player.tokens.reduce((tokenSum, token) => {
-    if (!('hasScore' in token) || token.abandoned) return tokenSum;
+    if (!isUsedToken(token) || token.abandoned) return tokenSum;
     const isWin = !!token.hasScore && !token.defended && Number(token.score || 0) > 0;
     return tokenSum + (isWin ? 0 : 1);
   }, 0), 0);
-  const totalAbandoned = rows.reduce((sum, player) => sum + player.tokens.reduce((tokenSum, token) => tokenSum + (token.abandoned ? 1 : 0), 0), 0);
-  const totalUnused = rows.reduce((sum, player) => sum + player.tokens.reduce((tokenSum, token) => tokenSum + (!('hasScore' in token) ? 1 : 0), 0), 0);
+  const totalAbandoned = rows.reduce((sum, player) => sum + player.tokens.reduce((tokenSum, token) => tokenSum + (token && token.abandoned ? 1 : 0), 0), 0);
+  const totalUnused = rows.reduce((sum, player) => sum + player.tokens.reduce((tokenSum, token) => tokenSum + (isUsedToken(token) ? 0 : 1), 0), 0);
 
   return {
     name: snapshot.name,
@@ -541,9 +628,10 @@ function renderTable(snapshot) {
     const row = document.createElement('tr');
     row.className = 'animate__animated animate__fadeInUp';
     row.style.animationDelay = `${index * 40}ms`;
+    const avatarHtml = renderPlayerAvatar(player);
 
     const cells = [
-      `<td class="sticky left-0 z-10 px-4 py-3 bg-slate-900/95 player-name-column"><div class="flex items-center gap-2"><span class="row-number">${index + 1}</span><div class="min-w-0"><div class="player-name-row"><span class="player-name-text">${escapeHtml(player.name)} (${player.usedTokens}/10)</span><button class="copy-user-id-btn" type="button" data-user-id="${player.userId}" title="Copy user ID">⧉</button></div><div class="player-id-subtext" aria-hidden="true">${escapeHtml(player.userId)}</div></div></div></td>`,
+      `<td class="sticky left-0 z-10 px-4 py-3 bg-slate-900/95 player-name-column"><div class="flex items-center gap-2"><span class="row-number">${index + 1}</span>${avatarHtml}<div class="min-w-0"><div class="player-name-row"><span class="player-name-text">${escapeHtml(player.name)} (${player.usedTokens}/10)</span><button class="copy-user-id-btn" type="button" data-user-id="${player.userId}" title="Copy user ID">⧉</button></div><div class="player-id-subtext" aria-hidden="true">${escapeHtml(player.userId)}</div></div></div></td>`,
       ...player.tokens.map((token) => {
         const tokenScore = Number(token.score || 0);
         const isUnused = !('hasScore' in token);
@@ -690,6 +778,7 @@ function renderBuffLegend() {
 
 async function loadGuildData() {
   const statusMessage = document.getElementById('status-message');
+  const lastUpdatedEl = document.getElementById('last-updated');
   const dataset = DATASETS[activeDatasetKey];
 
   if (!dataset) {
@@ -702,6 +791,9 @@ async function loadGuildData() {
   if (statusMessage) {
     statusMessage.textContent = `Loading ${dataset.label.toLowerCase()} data...`;
   }
+  if (lastUpdatedEl) {
+    lastUpdatedEl.textContent = 'Loading...';
+  }
 
   try {
     const response = await fetch(dataset.url, { cache: 'no-store' });
@@ -711,6 +803,11 @@ async function loadGuildData() {
     }
 
     const data = await response.json();
+    const responseLastModified = response.headers.get('last-modified');
+    const dataTimestamp = getLatestActivityTimestamp(data);
+
+    renderLastUpdated({ responseLastModified, dataTimestamp });
+
     guildSnapshots = buildSnapshot(data);
     activeGuildIndex = 0;
     renderGuildTokenProjectionTable();
@@ -725,6 +822,7 @@ async function loadGuildData() {
     console.error(error);
     guildSnapshots = [buildFallbackSnapshot()];
     activeGuildIndex = 0;
+    renderLastUpdated({ responseLastModified: null, dataTimestamp: null });
     renderGuildTokenProjectionTable();
     renderActiveGuild();
     renderDatasetTabs();
