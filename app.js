@@ -34,6 +34,17 @@ let guildSnapshots = [];
 let activeGuildIndex = 0;
 let unitPortraitMap = {};
 const MISSING_UNIT_AVATAR_URL = './missing-unit.svg';
+const battleLogFilters = {
+  sort: 'newest',
+  result: 'all',
+  attackerUnitIds: [],
+  defenderUnitIds: []
+};
+const battleLogFilterOptions = {
+  attacker: [],
+  defender: []
+};
+let battleLogFiltersInitialized = false;
 
 const MAX_TOKEN_SCORE = 1600;
 const TOKEN_SLOTS_PER_PLAYER = 10;
@@ -681,7 +692,7 @@ function getBattleUnitLabel(unit) {
   return String(raw).replace(/_/g, ' ');
 }
 
-function getBattleUnitAvatarUrl(unit) {
+function getBattleUnitId(unit) {
   if (!unit || typeof unit !== 'object') return null;
 
   const rawId = unit.avatarUnitId
@@ -692,7 +703,19 @@ function getBattleUnitAvatarUrl(unit) {
     || unit.id;
 
   if (!rawId) return null;
-  const exactUnitId = String(rawId).trim();
+  return String(rawId).trim();
+}
+
+function getBattleUnitAvatarUrl(unit) {
+  if (!unit || typeof unit !== 'object') return null;
+
+  const exactUnitId = getBattleUnitId(unit);
+  return getBattleUnitAvatarUrlFromUnitId(exactUnitId);
+}
+
+function getBattleUnitAvatarUrlFromUnitId(unitId) {
+  const exactUnitId = String(unitId || '').trim();
+  if (!exactUnitId) return null;
   const lowerUnitId = exactUnitId.toLowerCase();
   const mappedFile = unitPortraitMap[exactUnitId] || unitPortraitMap[lowerUnitId];
 
@@ -718,18 +741,42 @@ async function loadUnitPortraitMap() {
   }
 }
 
-function renderBattleUnits(units) {
+function renderBattleUnits(units, side = 'attacker') {
   if (!Array.isArray(units) || units.length === 0) {
     return '<span class="battle-unit-chip battle-unit-chip--empty">No units captured</span>';
   }
 
+  const selectedUnitIds = side === 'defender'
+    ? battleLogFilters.defenderUnitIds
+    : battleLogFilters.attackerUnitIds;
+  const selectedSet = new Set(selectedUnitIds || []);
+  const hasActiveSideFilter = selectedSet.size > 0;
+
   return units
     .map((unit) => {
       const unitLabel = getBattleUnitLabel(unit);
+      const unitId = getBattleUnitId(unit);
       const avatarUrl = getBattleUnitAvatarUrl(unit);
       const safeAvatarUrl = avatarUrl || MISSING_UNIT_AVATAR_URL;
+      const isMatched = unitId && selectedSet.has(unitId);
+      const sideMatchClass = isMatched
+        ? (side === 'defender' ? ' battle-unit-chip--match-defense' : ' battle-unit-chip--match-offense')
+        : '';
+      const sideMutedClass = hasActiveSideFilter && !isMatched ? ' battle-unit-chip--muted' : '';
+      const startHp = Number(unit?.startHPBefore);
+      const remainingBeforeHp = Number(unit?.remainingHPBefore);
+      const hasHealthData = side === 'defender' && Number.isFinite(startHp) && startHp > 0;
+      const currentHp = hasHealthData
+        ? (Number.isFinite(remainingBeforeHp) && remainingBeforeHp >= 0 ? Math.min(remainingBeforeHp, startHp) : startHp)
+        : 0;
+      const percent = hasHealthData
+        ? Math.max(0, Math.min(100, Math.round((currentHp / startHp) * 100)))
+        : 0;
+      const healthBarHtml = hasHealthData
+        ? `<span class="battle-unit-mini-health" title="${escapeHtml(unitLabel)} start HP: ${Math.round(currentHp).toLocaleString()} / ${Math.round(startHp).toLocaleString()}"><span class="battle-unit-mini-health-fill" style="width:${percent}%"></span></span>`
+        : '';
 
-      return `<span class="battle-unit-chip" title="${escapeHtml(unitLabel)}"><img class="battle-unit-avatar" src="${escapeHtml(safeAvatarUrl)}" alt="${escapeHtml(unitLabel)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='${MISSING_UNIT_AVATAR_URL}';"></span>`;
+      return `<span class="battle-unit-stack"><span class="battle-unit-chip${sideMatchClass}${sideMutedClass}" title="${escapeHtml(unitLabel)}"><img class="battle-unit-avatar" src="${escapeHtml(safeAvatarUrl)}" alt="${escapeHtml(unitLabel)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='${MISSING_UNIT_AVATAR_URL}';"></span>${healthBarHtml}</span>`;
     })
     .join('');
 }
@@ -748,6 +795,244 @@ function buildBattleSideUnits(units, machineOfWar) {
   return sideUnits;
 }
 
+function getBattleOutcome(battle) {
+  if (battle.abandoned) return 'other';
+  if (!battle.hasScore) return 'loss';
+  if (Number(battle.score || 0) > 0) {
+    return battle.defended ? 'loss' : 'win';
+  }
+  return 'other';
+}
+
+function getBattleRawScore(battle) {
+  if (!battle || battle.abandoned || !battle.hasScore) return 0;
+  return Number(battle.score || 0);
+}
+
+function getBattleFilterKeyForSide(side) {
+  return side === 'attacker' ? 'attackerUnitIds' : 'defenderUnitIds';
+}
+
+function toggleBattleFilterDropdown(side, isVisible) {
+  const dropdown = document.getElementById(`battle-filter-${side}-dropdown`);
+  if (!dropdown) return;
+  dropdown.classList.toggle('hidden', !isVisible);
+}
+
+function getBattleSideUnitIds(battle, side) {
+  const sideUnits = side === 'attacker'
+    ? buildBattleSideUnits(battle.attackerUnits, battle.attackerMachineOfWar)
+    : buildBattleSideUnits(battle.defenderUnits, battle.defenderMachineOfWar);
+
+  return sideUnits
+    .map((unit) => getBattleUnitId(unit))
+    .filter(Boolean);
+}
+
+function updateBattleLogUnitFilterOptions(snapshot) {
+  const attackerInput = document.getElementById('battle-filter-attacker-input');
+  const defenderInput = document.getElementById('battle-filter-defender-input');
+
+  if (!attackerInput || !defenderInput) return;
+
+  const battles = Array.isArray(snapshot?.battles) ? snapshot.battles : [];
+  const attackerIds = new Set();
+  const defenderIds = new Set();
+
+  battles.forEach((battle) => {
+    getBattleSideUnitIds(battle, 'attacker').forEach((id) => attackerIds.add(id));
+    getBattleSideUnitIds(battle, 'defender').forEach((id) => defenderIds.add(id));
+  });
+
+  battleLogFilterOptions.attacker = Array.from(attackerIds).sort((a, b) => a.localeCompare(b));
+  battleLogFilterOptions.defender = Array.from(defenderIds).sort((a, b) => a.localeCompare(b));
+
+  battleLogFilters.attackerUnitIds = battleLogFilters.attackerUnitIds.filter((unitId) => battleLogFilterOptions.attacker.includes(unitId));
+  battleLogFilters.defenderUnitIds = battleLogFilters.defenderUnitIds.filter((unitId) => battleLogFilterOptions.defender.includes(unitId));
+
+  renderBattleLogUnitFilterControl('attacker');
+  renderBattleLogUnitFilterControl('defender');
+}
+
+function renderBattleLogUnitFilterControl(side) {
+  const key = getBattleFilterKeyForSide(side);
+  const input = document.getElementById(`battle-filter-${side}-input`);
+  const selectedContainer = document.getElementById(`battle-filter-${side}-selected`);
+  const optionsContainer = document.getElementById(`battle-filter-${side}-options`);
+
+  if (!input || !selectedContainer || !optionsContainer) return;
+
+  const selectedIds = battleLogFilters[key] || [];
+  const selectedSet = new Set(selectedIds);
+  const filterText = String(input.value || '').trim().toLowerCase();
+  const availableIds = battleLogFilterOptions[side] || [];
+  const filteredIds = availableIds.filter((unitId) => unitId.toLowerCase().includes(filterText));
+
+  selectedContainer.innerHTML = '';
+  selectedIds.forEach((unitId) => {
+    const chip = document.createElement('button');
+    chip.type = 'button';
+    chip.className = 'battle-filter-chip';
+    chip.setAttribute('data-unit-id', unitId);
+    chip.innerHTML = `
+      <img class="battle-filter-chip-avatar" src="${escapeHtml(getBattleUnitAvatarUrlFromUnitId(unitId) || MISSING_UNIT_AVATAR_URL)}" alt="${escapeHtml(unitId)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='${MISSING_UNIT_AVATAR_URL}';">
+      <span class="battle-filter-chip-label">${escapeHtml(unitId)}</span>
+      <span class="battle-filter-chip-remove" aria-hidden="true">x</span>
+    `;
+    chip.addEventListener('click', (event) => {
+      event.stopPropagation();
+      battleLogFilters[key] = battleLogFilters[key].filter((id) => id !== unitId);
+      const snapshot = guildSnapshots[activeGuildIndex];
+      if (snapshot) {
+        renderBattleLog(snapshot);
+        toggleBattleFilterDropdown(side, true);
+      }
+    });
+    selectedContainer.appendChild(chip);
+  });
+
+  optionsContainer.innerHTML = '';
+  if (filteredIds.length === 0) {
+    const empty = document.createElement('div');
+    empty.className = 'battle-filter-option-empty';
+    empty.textContent = 'No matching characters';
+    optionsContainer.appendChild(empty);
+    return;
+  }
+
+  filteredIds.forEach((unitId) => {
+    const option = document.createElement('button');
+    option.type = 'button';
+    option.className = `battle-filter-option ${selectedSet.has(unitId) ? 'battle-filter-option--selected' : ''}`;
+    option.setAttribute('data-unit-id', unitId);
+    option.innerHTML = `
+      <img class="battle-filter-option-avatar" src="${escapeHtml(getBattleUnitAvatarUrlFromUnitId(unitId) || MISSING_UNIT_AVATAR_URL)}" alt="${escapeHtml(unitId)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='${MISSING_UNIT_AVATAR_URL}';">
+      <span class="battle-filter-option-label">${escapeHtml(unitId)}</span>
+      <span class="battle-filter-option-check" aria-hidden="true">${selectedSet.has(unitId) ? '✓' : ''}</span>
+    `;
+    option.addEventListener('click', (event) => {
+      event.stopPropagation();
+      if (selectedSet.has(unitId)) {
+        battleLogFilters[key] = battleLogFilters[key].filter((id) => id !== unitId);
+      } else {
+        battleLogFilters[key] = [...battleLogFilters[key], unitId];
+      }
+
+      const snapshot = guildSnapshots[activeGuildIndex];
+      if (snapshot) {
+        renderBattleLog(snapshot);
+        toggleBattleFilterDropdown(side, true);
+      }
+
+      const sideInput = document.getElementById(`battle-filter-${side}-input`);
+      if (sideInput) {
+        sideInput.focus();
+      }
+    });
+    optionsContainer.appendChild(option);
+  });
+}
+
+function setupBattleLogFilters() {
+  if (battleLogFiltersInitialized) return;
+
+  const sortSelect = document.getElementById('battle-filter-sort');
+  const resultGroup = document.getElementById('battle-filter-result-group');
+  const resultButtons = resultGroup ? Array.from(resultGroup.querySelectorAll('.battle-filter-result-btn')) : [];
+  const attackerInput = document.getElementById('battle-filter-attacker-input');
+  const defenderInput = document.getElementById('battle-filter-defender-input');
+  const attackerControl = document.getElementById('battle-filter-attacker-control');
+  const defenderControl = document.getElementById('battle-filter-defender-control');
+  const clearButton = document.getElementById('battle-filter-clear');
+
+  if (!sortSelect || !resultGroup || resultButtons.length === 0 || !attackerInput || !defenderInput || !attackerControl || !defenderControl || !clearButton) return;
+
+  sortSelect.value = battleLogFilters.sort;
+
+  const syncResultButtons = () => {
+    resultButtons.forEach((button) => {
+      const value = button.getAttribute('data-result') || 'all';
+      const isActive = value === battleLogFilters.result;
+      button.classList.toggle('battle-filter-result-btn--active', isActive);
+      button.setAttribute('aria-checked', isActive ? 'true' : 'false');
+    });
+  };
+
+  syncResultButtons();
+
+  const rerenderBattleLog = () => {
+    const snapshot = guildSnapshots[activeGuildIndex];
+    if (!snapshot) return;
+    renderBattleLog(snapshot);
+  };
+
+  sortSelect.addEventListener('change', () => {
+    battleLogFilters.sort = sortSelect.value || 'newest';
+    rerenderBattleLog();
+  });
+
+  resultButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const nextValue = button.getAttribute('data-result') || 'all';
+      battleLogFilters.result = nextValue;
+      syncResultButtons();
+      rerenderBattleLog();
+    });
+  });
+
+  attackerInput.addEventListener('focus', () => {
+    toggleBattleFilterDropdown('attacker', true);
+    renderBattleLogUnitFilterControl('attacker');
+  });
+
+  attackerInput.addEventListener('input', () => {
+    toggleBattleFilterDropdown('attacker', true);
+    renderBattleLogUnitFilterControl('attacker');
+  });
+
+  defenderInput.addEventListener('focus', () => {
+    toggleBattleFilterDropdown('defender', true);
+    renderBattleLogUnitFilterControl('defender');
+  });
+
+  defenderInput.addEventListener('input', () => {
+    toggleBattleFilterDropdown('defender', true);
+    renderBattleLogUnitFilterControl('defender');
+  });
+
+  document.addEventListener('click', (event) => {
+    const target = event.target;
+    if (!(target instanceof Node)) return;
+
+    if (!attackerControl.contains(target)) {
+      toggleBattleFilterDropdown('attacker', false);
+    }
+
+    if (!defenderControl.contains(target)) {
+      toggleBattleFilterDropdown('defender', false);
+    }
+  });
+
+  clearButton.addEventListener('click', () => {
+    battleLogFilters.sort = 'newest';
+    battleLogFilters.result = 'all';
+    battleLogFilters.attackerUnitIds = [];
+    battleLogFilters.defenderUnitIds = [];
+
+    sortSelect.value = 'newest';
+    battleLogFilters.result = 'all';
+    syncResultButtons();
+    attackerInput.value = '';
+    defenderInput.value = '';
+    toggleBattleFilterDropdown('attacker', false);
+    toggleBattleFilterDropdown('defender', false);
+
+    rerenderBattleLog();
+  });
+
+  battleLogFiltersInitialized = true;
+}
+
 function renderBattleLog(snapshot) {
   const battleList = document.getElementById('battle-log-list');
   const battleCount = document.getElementById('battle-log-count');
@@ -755,8 +1040,52 @@ function renderBattleLog(snapshot) {
   if (!battleList) return;
 
   const battles = Array.isArray(snapshot?.battles) ? snapshot.battles : [];
+  updateBattleLogUnitFilterOptions(snapshot);
+
+  const filteredBattles = battles
+    .filter((battle) => {
+      const outcome = getBattleOutcome(battle);
+
+      if (battleLogFilters.result === 'win' && outcome !== 'win') {
+        return false;
+      }
+
+      if (battleLogFilters.result === 'loss' && outcome !== 'loss') {
+        return false;
+      }
+
+      if (battleLogFilters.attackerUnitIds.length > 0) {
+        const attackerUnitIds = getBattleSideUnitIds(battle, 'attacker');
+        const matchesAllAttackerFilters = battleLogFilters.attackerUnitIds.every((unitId) => attackerUnitIds.includes(unitId));
+        if (!matchesAllAttackerFilters) {
+          return false;
+        }
+      }
+
+      if (battleLogFilters.defenderUnitIds.length > 0) {
+        const defenderUnitIds = getBattleSideUnitIds(battle, 'defender');
+        const matchesAllDefenderFilters = battleLogFilters.defenderUnitIds.every((unitId) => defenderUnitIds.includes(unitId));
+        if (!matchesAllDefenderFilters) {
+          return false;
+        }
+      }
+
+      return true;
+    })
+    .sort((a, b) => {
+      if (battleLogFilters.sort === 'score-desc') {
+        return getBattleRawScore(b) - getBattleRawScore(a);
+      }
+
+      if (battleLogFilters.sort === 'score-asc') {
+        return getBattleRawScore(a) - getBattleRawScore(b);
+      }
+
+      return Number(b.createdOn || 0) - Number(a.createdOn || 0);
+    });
+
   if (battleCount) {
-    battleCount.textContent = battles.length.toLocaleString();
+    battleCount.textContent = filteredBattles.length.toLocaleString();
   }
 
   battleList.innerHTML = '';
@@ -766,7 +1095,12 @@ function renderBattleLog(snapshot) {
     return;
   }
 
-  battles.forEach((battle) => {
+  if (filteredBattles.length === 0) {
+    battleList.innerHTML = '<div class="battle-log-empty">No battles match the selected filters.</div>';
+    return;
+  }
+
+  filteredBattles.forEach((battle) => {
     let stateClass = 'value-cell--neutral';
     let stateLabel = 'Neutral';
     let scoreDisplay = '<span class="score-display"><span class="score-core">0</span></span>';
@@ -787,7 +1121,6 @@ function renderBattleLog(snapshot) {
 
     const cleanupHtml = battle.cleanup ? '<span class="cleanup-icon" title="Cleanup">🧹</span>' : '';
     const zoneLabel = battle.zoneType ? `<span class="battle-zone">${escapeHtml(battle.zoneType)}</span>` : '';
-
     const item = document.createElement('article');
     item.className = 'battle-log-item';
     const attackerSideUnits = buildBattleSideUnits(battle.attackerUnits, battle.attackerMachineOfWar);
@@ -795,7 +1128,7 @@ function renderBattleLog(snapshot) {
     item.innerHTML = `
       <div class="battle-side battle-side--attacker">
         <div class="battle-player-name">${escapeHtml(battle.attackerName)}</div>
-        <div class="battle-units">${renderBattleUnits(attackerSideUnits)}</div>
+        <div class="battle-units">${renderBattleUnits(attackerSideUnits, 'attacker')}</div>
       </div>
       <div class="battle-score-wrap">
         <span class="value-cell ${stateClass}">${scoreDisplay}</span>
@@ -805,7 +1138,7 @@ function renderBattleLog(snapshot) {
       </div>
       <div class="battle-side battle-side--defender">
         <div class="battle-player-name">${escapeHtml(battle.defenderName)}</div>
-        <div class="battle-units">${renderBattleUnits(defenderSideUnits)}</div>
+        <div class="battle-units">${renderBattleUnits(defenderSideUnits, 'defender')}</div>
       </div>
     `;
 
@@ -987,6 +1320,7 @@ async function loadGuildData() {
   }
 
   renderDatasetTabs();
+  setupBattleLogFilters();
 
   if (statusMessage) {
     statusMessage.textContent = `Loading ${dataset.label.toLowerCase()} data...`;
