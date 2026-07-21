@@ -32,6 +32,8 @@ function updateDatasetInUrl(datasetKey) {
 
 let guildSnapshots = [];
 let activeGuildIndex = 0;
+let unitPortraitMap = {};
+const MISSING_UNIT_AVATAR_URL = './missing-unit.svg';
 
 const MAX_TOKEN_SCORE = 1600;
 const TOKEN_SLOTS_PER_PLAYER = 10;
@@ -222,7 +224,8 @@ function buildFallbackSnapshot() {
         name: 'No data loaded',
         tokens: Array.from({ length: TOKEN_SLOTS_PER_PLAYER }, () => ({ score: 0, abandoned: false }))
       }
-    ]
+    ],
+    battles: []
   };
 }
 
@@ -238,6 +241,7 @@ function buildSnapshot(data) {
   }]));
 
   const guildBuckets = new Map();
+  const guildBattleLogs = new Map();
   const userTeamIndex = new Map();
   const guildTeamIndexes = guildData
     .map((guild) => Number(guild.teamIndex))
@@ -285,7 +289,9 @@ function buildSnapshot(data) {
   };
 
   guildData.forEach((guild) => {
-    guildBuckets.set(Number(guild.teamIndex), new Map());
+    const teamIndex = Number(guild.teamIndex);
+    guildBuckets.set(teamIndex, new Map());
+    guildBattleLogs.set(teamIndex, []);
   });
 
   const getOpposingTeamIndex = (teamIndex) => {
@@ -407,6 +413,33 @@ function buildSnapshot(data) {
     });
 
     bucket.get(userId).push({ score: entryScore, tileScore, skillRating, abandoned, defended, cleanup, hasScore, buffs });
+
+    const defenderUserId = log?.defender?.userId || null;
+    const defenderTeamIndex = getOpposingTeamIndex(teamIndex);
+    const attackerUnits = Array.isArray(log?.attacker?.units) ? log.attacker.units : [];
+    const defenderUnits = Array.isArray(log?.defender?.units) ? log.defender.units : [];
+    const rawScore = hasScore ? Number(log.score || 0) : 0;
+
+    if (guildBattleLogs.has(teamIndex)) {
+      guildBattleLogs.get(teamIndex).push({
+        id: log?.id || `${userId || 'unknown'}-${log?.createdOn || 0}`,
+        createdOn: Number(log?.createdOn || 0),
+        zoneType: log?.zone?.type || null,
+        attackerUserId: userId || null,
+        attackerName: playerNames.get(userId) || userId || 'Unknown attacker',
+        defenderUserId,
+        defenderName: playerNames.get(defenderUserId) || defenderUserId || 'Unknown defender',
+        attackerTeamIndex: teamIndex,
+        defenderTeamIndex: Number.isFinite(defenderTeamIndex) ? defenderTeamIndex : null,
+        hasScore,
+        abandoned,
+        defended,
+        cleanup,
+        score: rawScore,
+        attackerUnits,
+        defenderUnits
+      });
+    }
   }
 
   return guildData.map((guild) => {
@@ -440,7 +473,8 @@ function buildSnapshot(data) {
     return {
       teamIndex: Number(guild.teamIndex),
       name: guild.name,
-      players
+      players,
+      battles: (guildBattleLogs.get(Number(guild.teamIndex)) || []).sort((a, b) => b.createdOn - a.createdOn)
     };
   });
 }
@@ -613,7 +647,139 @@ function renderActiveGuild() {
 
   renderTable(snapshot);
   renderBuffLegend(snapshot);
+  renderBattleLog(snapshot);
   renderGuildTabs();
+}
+
+function getBattleUnitLabel(unit) {
+  if (!unit || typeof unit !== 'object') return 'Unknown unit';
+
+  const raw = unit.displayName
+    || unit.name
+    || unit.unitTypeId
+    || unit.baseCharacterId
+    || unit.unitId
+    || unit.characterId
+    || unit.id;
+
+  if (!raw) return 'Unknown unit';
+  return String(raw).replace(/_/g, ' ');
+}
+
+function getBattleUnitAvatarUrl(unit) {
+  if (!unit || typeof unit !== 'object') return null;
+
+  const rawId = unit.avatarUnitId
+    || unit.unitTypeId
+    || unit.baseCharacterId
+    || unit.unitId
+    || unit.characterId
+    || unit.id;
+
+  if (!rawId) return null;
+  const exactUnitId = String(rawId).trim();
+  const lowerUnitId = exactUnitId.toLowerCase();
+  const mappedFile = unitPortraitMap[exactUnitId] || unitPortraitMap[lowerUnitId];
+
+  if (mappedFile) {
+    return `./img/${mappedFile}`;
+  }
+
+  return MISSING_UNIT_AVATAR_URL;
+}
+
+async function loadUnitPortraitMap() {
+  try {
+    const response = await fetch('./img/unit-portrait-map.json', { cache: 'no-store' });
+    if (!response.ok) {
+      unitPortraitMap = {};
+      return;
+    }
+
+    const json = await response.json();
+    unitPortraitMap = json && typeof json === 'object' ? json : {};
+  } catch (error) {
+    unitPortraitMap = {};
+  }
+}
+
+function renderBattleUnits(units) {
+  if (!Array.isArray(units) || units.length === 0) {
+    return '<span class="battle-unit-chip battle-unit-chip--empty">No units captured</span>';
+  }
+
+  return units
+    .map((unit) => {
+      const unitLabel = getBattleUnitLabel(unit);
+      const avatarUrl = getBattleUnitAvatarUrl(unit);
+      const safeAvatarUrl = avatarUrl || MISSING_UNIT_AVATAR_URL;
+
+      return `<span class="battle-unit-chip" title="${escapeHtml(unitLabel)}"><img class="battle-unit-avatar" src="${escapeHtml(safeAvatarUrl)}" alt="${escapeHtml(unitLabel)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='${MISSING_UNIT_AVATAR_URL}';"></span>`;
+    })
+    .join('');
+}
+
+function renderBattleLog(snapshot) {
+  const battleList = document.getElementById('battle-log-list');
+  const battleCount = document.getElementById('battle-log-count');
+
+  if (!battleList) return;
+
+  const battles = Array.isArray(snapshot?.battles) ? snapshot.battles : [];
+  if (battleCount) {
+    battleCount.textContent = `${battles.length.toLocaleString()} battles`;
+  }
+
+  battleList.innerHTML = '';
+
+  if (battles.length === 0) {
+    battleList.innerHTML = '<div class="battle-log-empty">No battles found for this guild yet.</div>';
+    return;
+  }
+
+  battles.forEach((battle) => {
+    let stateClass = 'value-cell--neutral';
+    let stateLabel = 'Neutral';
+    let scoreDisplay = '<span class="score-display"><span class="score-core">0</span></span>';
+
+    if (battle.abandoned) {
+      stateClass = 'value-cell--neutral';
+      stateLabel = 'Abandoned';
+      scoreDisplay = '🛑';
+    } else if (!battle.hasScore) {
+      stateClass = 'value-cell--lose';
+      stateLabel = 'Defeat';
+      scoreDisplay = '<span class="score-display"><span class="score-core">0</span></span>';
+    } else if (Number(battle.score || 0) > 0) {
+      stateClass = battle.defended ? 'value-cell--lose' : 'value-cell--win';
+      stateLabel = battle.defended ? 'Defeat' : 'Win';
+      scoreDisplay = formatValue(Number(battle.score || 0));
+    }
+
+    const cleanupHtml = battle.cleanup ? '<span class="cleanup-icon" title="Cleanup">🧹</span>' : '';
+    const zoneLabel = battle.zoneType ? `<span class="battle-zone">${escapeHtml(battle.zoneType)}</span>` : '';
+
+    const item = document.createElement('article');
+    item.className = 'battle-log-item';
+    item.innerHTML = `
+      <div class="battle-side battle-side--attacker">
+        <div class="battle-player-name">${escapeHtml(battle.attackerName)}</div>
+        <div class="battle-units">${renderBattleUnits(battle.attackerUnits)}</div>
+      </div>
+      <div class="battle-score-wrap">
+        <span class="value-cell ${stateClass}">${scoreDisplay}</span>
+        <span class="battle-state-label">${escapeHtml(stateLabel)}</span>
+        ${cleanupHtml}
+        ${zoneLabel}
+      </div>
+      <div class="battle-side battle-side--defender">
+        <div class="battle-player-name">${escapeHtml(battle.defenderName)}</div>
+        <div class="battle-units">${renderBattleUnits(battle.defenderUnits)}</div>
+      </div>
+    `;
+
+    battleList.appendChild(item);
+  });
 }
 
 function renderTable(snapshot) {
@@ -799,6 +965,7 @@ async function loadGuildData() {
   }
 
   try {
+    await loadUnitPortraitMap();
     const response = await fetch(dataset.url, { cache: 'no-store' });
 
     if (!response.ok) {

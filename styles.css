@@ -278,3 +278,126 @@ body {
   font-size: 0.95rem;
   line-height: 1;
 }
+
+.battle-log-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.battle-log-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 0.8rem;
+  align-items: start;
+  padding: 0.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 0.8rem;
+  background: rgba(15, 23, 42, 0.5);
+}
+
+.battle-side {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.battle-side--defender {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.battle-player-name {
+  color: #e2e8f0;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.battle-units {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.battle-side--defender .battle-units {
+  justify-content: flex-end;
+}
+
+.battle-unit-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 9999px;
+  background: rgba(15, 23, 42, 0.85);
+  color: #cbd5e1;
+  font-size: 0.75rem;
+  line-height: 1;
+  width: 2.6rem;
+  height: 2.6rem;
+  padding: 0;
+  overflow: hidden;
+}
+
+.battle-unit-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.battle-unit-chip--fallback {
+  width: auto;
+  max-width: 11rem;
+  height: auto;
+  border-radius: 999px;
+  padding: 0.28rem 0.5rem;
+}
+
+.battle-unit-chip--empty {
+  color: #64748b;
+}
+
+.battle-score-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  min-width: 7.5rem;
+}
+
+.battle-state-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #cbd5e1;
+}
+
+.battle-log-empty {
+  border: 1px dashed rgba(148, 163, 184, 0.35);
+  border-radius: 0.8rem;
+  padding: 0.8rem;
+  color: #94a3b8;
+}
+
+@media (max-width: 900px) {
+  .battle-log-item {
+    grid-template-columns: 1fr;
+  }
+
+  .battle-side--defender {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .battle-side--defender .battle-units {
+    justify-content: flex-start;
+  }
+
+  .battle-score-wrap {
+    align-items: flex-start;
+  }
+}

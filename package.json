@@ -1,0 +1,9 @@
+{
+  "name": "tacticus-guild",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "map:portraits": "node ./auto-map-portraits.js",
+    "copy:portraits": "powershell -NoProfile -ExecutionPolicy Bypass -File ./copy-portraits.ps1"
+  }
+}
