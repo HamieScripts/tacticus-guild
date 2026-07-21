@@ -93,8 +93,6 @@
         </div>
       </section>
 
-      <div id="buff-legend" class="text-sm"></div>
-
       <div class="rounded-xl border border-slate-800 bg-slate-900/70 shadow-2xl shadow-black/25">
         <!-- Tab bar -->
         <div class="flex border-b border-slate-700">
@@ -107,6 +105,7 @@
         <!-- Token table panel -->
         <div id="tab-panel-leaderboard">
           <div class="leaderboard-scroll min-w-[1100px] overflow-auto">
+            <div id="buff-legend" class="text-sm"></div>
             <table class="min-w-full border-collapse text-left text-sm">
               <thead class="bg-slate-800/90 text-slate-200">
                 <tr>
@@ -133,8 +132,8 @@
 
         <!-- Battle log panel -->
         <div id="tab-panel-battlelog" class="hidden p-4">
-          <div class="battle-filter-bar">
-            <div class="battle-filter-field">
+          <div class="battle-filter-row">
+            <div class="battle-filter-field battle-filter-field--grow">
               <label for="battle-filter-sort">Sort</label>
               <select id="battle-filter-sort">
                 <option value="newest">Newest</option>
@@ -142,7 +141,13 @@
                 <option value="score-asc">Score: low to high</option>
               </select>
             </div>
-            <div class="battle-filter-field">
+            <div class="battle-filter-field battle-filter-field--grow">
+              <label for="battle-filter-zone">Tile type</label>
+              <select id="battle-filter-zone">
+                <option value="">All tile types</option>
+              </select>
+            </div>
+            <div class="battle-filter-field battle-filter-field--result">
               <label>Result</label>
               <div id="battle-filter-result-group" class="battle-filter-result-group" role="radiogroup" aria-label="Result filter">
                 <button type="button" class="battle-filter-result-btn battle-filter-result-btn--active" data-result="all" role="radio" aria-checked="true">All</button>
@@ -150,30 +155,65 @@
                 <button type="button" class="battle-filter-result-btn" data-result="loss" role="radio" aria-checked="false">Lose</button>
               </div>
             </div>
-            <div id="battle-filter-attacker-control" class="battle-filter-field battle-filter-field--multi">
-              <label for="battle-filter-attacker-input">Offense characters (all selected required)</label>
-              <div class="battle-filter-combobox">
-                <input id="battle-filter-attacker-input" type="text" autocomplete="off" placeholder="Search offense characters..." />
-                <div id="battle-filter-attacker-selected" class="battle-filter-selected"></div>
-                <div id="battle-filter-attacker-dropdown" class="battle-filter-dropdown hidden">
-                  <div id="battle-filter-attacker-options" class="battle-filter-options"></div>
+          </div>
+
+          <div class="battle-filter-card-grid">
+            <div class="battle-filter-card battle-filter-card--offense">
+              <div class="battle-filter-card-title">Offense filters</div>
+              <div class="battle-filter-bar">
+                <div class="battle-filter-field" id="battle-filter-attacker-player-control">
+                  <label for="battle-filter-attacker-player-input">Player</label>
+                  <div class="battle-filter-combobox">
+                    <input id="battle-filter-attacker-player-input" type="text" autocomplete="off" placeholder="Search offense players..." />
+                    <div id="battle-filter-attacker-player-selected" class="battle-filter-selected"></div>
+                    <div id="battle-filter-attacker-player-dropdown" class="battle-filter-dropdown hidden">
+                      <div id="battle-filter-attacker-player-options" class="battle-filter-options"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="battle-filter-attacker-control" class="battle-filter-field battle-filter-field--multi">
+                  <label for="battle-filter-attacker-input">Characters (all selected required)</label>
+                  <div class="battle-filter-combobox">
+                    <input id="battle-filter-attacker-input" type="text" autocomplete="off" placeholder="Search offense characters..." />
+                    <div id="battle-filter-attacker-selected" class="battle-filter-selected"></div>
+                    <div id="battle-filter-attacker-dropdown" class="battle-filter-dropdown hidden">
+                      <div id="battle-filter-attacker-options" class="battle-filter-options"></div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div id="battle-filter-defender-control" class="battle-filter-field battle-filter-field--multi">
-              <label for="battle-filter-defender-input">Defense characters (all selected required)</label>
-              <div class="battle-filter-combobox">
-                <input id="battle-filter-defender-input" type="text" autocomplete="off" placeholder="Search defense characters..." />
-                <div id="battle-filter-defender-selected" class="battle-filter-selected"></div>
-                <div id="battle-filter-defender-dropdown" class="battle-filter-dropdown hidden">
-                  <div id="battle-filter-defender-options" class="battle-filter-options"></div>
+
+            <div class="battle-filter-card battle-filter-card--defense">
+              <div class="battle-filter-card-title">Defense filters</div>
+              <div class="battle-filter-bar">
+                <div class="battle-filter-field" id="battle-filter-defender-player-control">
+                  <label for="battle-filter-defender-player-input">Player</label>
+                  <div class="battle-filter-combobox">
+                    <input id="battle-filter-defender-player-input" type="text" autocomplete="off" placeholder="Search defense players..." />
+                    <div id="battle-filter-defender-player-selected" class="battle-filter-selected"></div>
+                    <div id="battle-filter-defender-player-dropdown" class="battle-filter-dropdown hidden">
+                      <div id="battle-filter-defender-player-options" class="battle-filter-options"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="battle-filter-defender-control" class="battle-filter-field battle-filter-field--multi">
+                  <label for="battle-filter-defender-input">Characters (all selected required)</label>
+                  <div class="battle-filter-combobox">
+                    <input id="battle-filter-defender-input" type="text" autocomplete="off" placeholder="Search defense characters..." />
+                    <div id="battle-filter-defender-selected" class="battle-filter-selected"></div>
+                    <div id="battle-filter-defender-dropdown" class="battle-filter-dropdown hidden">
+                      <div id="battle-filter-defender-options" class="battle-filter-options"></div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+          </div>
             <div class="battle-filter-actions">
               <button id="battle-filter-clear" type="button">Clear filters</button>
             </div>
-          </div>
+
           <div id="battle-log-list" class="battle-log-list"></div>
         </div>
       </div>

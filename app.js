@@ -2,7 +2,7 @@ const DATASETS = {
   current: {
     label: 'Active war',
     sourceLabel: 'Current snapshot',
-    url: './data/current/23e724b8-8f75-4b66-9c93-c15966a8cb32.json'
+    url: './data/current/live-war.json'
   },
   history: {
     label: 'Complete wars',
@@ -37,6 +37,9 @@ const MISSING_UNIT_AVATAR_URL = './missing-unit.svg';
 const battleLogFilters = {
   sort: 'newest',
   result: 'all',
+  zoneType: '',
+  attackerPlayer: '',
+  defenderPlayer: '',
   attackerUnitIds: [],
   defenderUnitIds: []
 };
@@ -44,6 +47,11 @@ const battleLogFilterOptions = {
   attacker: [],
   defender: []
 };
+const battleLogPlayerFilterOptions = {
+  attacker: [],
+  defender: []
+};
+let battleLogTileTypeOptions = [];
 let battleLogFiltersInitialized = false;
 
 const MAX_TOKEN_SCORE = 1600;
@@ -174,6 +182,12 @@ function colorFor(name) {
     hash = (hash * 31 + s.charCodeAt(i)) % 360;
   }
   return `hsl(${hash},72%,56%)`;
+}
+
+function getHealthBarColor(percent) {
+  const clamped = Math.max(0, Math.min(100, Number(percent) || 0));
+  const hue = Math.round((clamped / 100) * 120);
+  return `hsl(${hue}, 80%, 46%)`;
 }
 
 function renderBuffs(buffs) {
@@ -432,6 +446,8 @@ function buildSnapshot(data) {
     const attackerMachineOfWar = log?.attacker?.machineOfWar || null;
     const defenderMachineOfWar = log?.defender?.machineOfWar || null;
     const rawScore = hasScore ? Number(log.score || 0) : 0;
+    const attackerAvatarUnitId = playerProfiles.get(userId)?.avatarUnitId || null;
+    const defenderAvatarUnitId = playerProfiles.get(defenderUserId)?.avatarUnitId || null;
 
     if (guildBattleLogs.has(teamIndex)) {
       guildBattleLogs.get(teamIndex).push({
@@ -440,8 +456,10 @@ function buildSnapshot(data) {
         zoneType: log?.zone?.type || null,
         attackerUserId: userId || null,
         attackerName: playerNames.get(userId) || userId || 'Unknown attacker',
+        attackerAvatarUnitId,
         defenderUserId,
         defenderName: playerNames.get(defenderUserId) || defenderUserId || 'Unknown defender',
+        defenderAvatarUnitId,
         attackerTeamIndex: teamIndex,
         defenderTeamIndex: Number.isFinite(defenderTeamIndex) ? defenderTeamIndex : null,
         hasScore,
@@ -772,8 +790,9 @@ function renderBattleUnits(units, side = 'attacker') {
       const percent = hasHealthData
         ? Math.max(0, Math.min(100, Math.round((currentHp / startHp) * 100)))
         : 0;
+      const healthColor = hasHealthData ? getHealthBarColor(percent) : '';
       const healthBarHtml = hasHealthData
-        ? `<span class="battle-unit-mini-health" title="${escapeHtml(unitLabel)} start HP: ${Math.round(currentHp).toLocaleString()} / ${Math.round(startHp).toLocaleString()}"><span class="battle-unit-mini-health-fill" style="width:${percent}%"></span></span>`
+        ? `<span class="battle-unit-mini-health" title="${escapeHtml(unitLabel)} start HP: ${Math.round(currentHp).toLocaleString()} / ${Math.round(startHp).toLocaleString()}"><span class="battle-unit-mini-health-fill" style="width:${percent}%; background:${healthColor}"></span></span>`
         : '';
 
       return `<span class="battle-unit-stack"><span class="battle-unit-chip${sideMatchClass}${sideMutedClass}" title="${escapeHtml(unitLabel)}"><img class="battle-unit-avatar" src="${escapeHtml(safeAvatarUrl)}" alt="${escapeHtml(unitLabel)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='${MISSING_UNIT_AVATAR_URL}';"></span>${healthBarHtml}</span>`;
@@ -813,6 +832,35 @@ function getBattleFilterKeyForSide(side) {
   return side === 'attacker' ? 'attackerUnitIds' : 'defenderUnitIds';
 }
 
+function getBattlePlayerFilterKeyForSide(side) {
+  return side === 'attacker' ? 'attackerPlayer' : 'defenderPlayer';
+}
+
+function getBattlePlayerFilterValue(battle, side) {
+  const isAttacker = side === 'attacker';
+  const userId = String(isAttacker ? (battle?.attackerUserId || '') : (battle?.defenderUserId || '')).trim();
+  const playerName = String(isAttacker ? (battle?.attackerName || '') : (battle?.defenderName || '')).trim();
+
+  if (userId) return `id:${userId}`;
+  if (playerName) return `name:${playerName}`;
+  return '';
+}
+
+function getBattlePlayerFilterLabel(battle, side) {
+  const isAttacker = side === 'attacker';
+  const userId = String(isAttacker ? (battle?.attackerUserId || '') : (battle?.defenderUserId || '')).trim();
+  const playerName = String(isAttacker ? (battle?.attackerName || '') : (battle?.defenderName || '')).trim();
+
+  return playerName || userId || 'Unknown player';
+}
+
+function getBattlePlayerAvatarUrl(battle, side) {
+  const avatarUnitId = side === 'attacker'
+    ? battle?.attackerAvatarUnitId
+    : battle?.defenderAvatarUnitId;
+  return getAvatarImageUrl(avatarUnitId) || MISSING_UNIT_AVATAR_URL;
+}
+
 function toggleBattleFilterDropdown(side, isVisible) {
   const dropdown = document.getElementById(`battle-filter-${side}-dropdown`);
   if (!dropdown) return;
@@ -827,6 +875,163 @@ function getBattleSideUnitIds(battle, side) {
   return sideUnits
     .map((unit) => getBattleUnitId(unit))
     .filter(Boolean);
+}
+
+function updateBattleLogTileTypeFilterOptions(snapshot) {
+  const zoneSelect = document.getElementById('battle-filter-zone');
+  if (!zoneSelect) return;
+
+  const battles = Array.isArray(snapshot?.battles) ? snapshot.battles : [];
+  const tileTypes = new Set();
+
+  battles.forEach((battle) => {
+    const zoneType = String(battle?.zoneType || '').trim();
+    if (zoneType) tileTypes.add(zoneType);
+  });
+
+  battleLogTileTypeOptions = Array.from(tileTypes).sort((a, b) => a.localeCompare(b));
+
+  if (battleLogFilters.zoneType && !battleLogTileTypeOptions.includes(battleLogFilters.zoneType)) {
+    battleLogFilters.zoneType = '';
+  }
+
+  zoneSelect.innerHTML = '';
+  const defaultOption = document.createElement('option');
+  defaultOption.value = '';
+  defaultOption.textContent = 'All tile types';
+  zoneSelect.appendChild(defaultOption);
+
+  battleLogTileTypeOptions.forEach((tileType) => {
+    const option = document.createElement('option');
+    option.value = tileType;
+    option.textContent = tileType;
+    zoneSelect.appendChild(option);
+  });
+
+  zoneSelect.value = battleLogFilters.zoneType || '';
+}
+
+function renderBattleLogPlayerFilterControl(side) {
+  const input = document.getElementById(`battle-filter-${side}-player-input`);
+  const selectedContainer = document.getElementById(`battle-filter-${side}-player-selected`);
+  const optionsContainer = document.getElementById(`battle-filter-${side}-player-options`);
+  if (!input || !selectedContainer || !optionsContainer) return;
+
+  const key = getBattlePlayerFilterKeyForSide(side);
+  const options = battleLogPlayerFilterOptions[side] || [];
+  const selectedValue = battleLogFilters[key] || '';
+  const selectedOption = options.find((option) => option.value === selectedValue) || null;
+  const selectedSet = new Set(selectedValue ? [selectedValue] : []);
+  const filterText = String(input.value || '').trim().toLowerCase();
+  const filteredOptions = options.filter((optionData) => {
+    return optionData.searchText.includes(filterText);
+  });
+
+  selectedContainer.innerHTML = '';
+  if (selectedOption) {
+    const chip = document.createElement('button');
+    chip.type = 'button';
+    chip.className = 'battle-filter-chip';
+    chip.setAttribute('data-player-value', selectedOption.value);
+    chip.innerHTML = `
+      <img class="battle-filter-chip-avatar" src="${escapeHtml(selectedOption.avatarUrl || MISSING_UNIT_AVATAR_URL)}" alt="${escapeHtml(selectedOption.label)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='${MISSING_UNIT_AVATAR_URL}';">
+      <span class="battle-filter-chip-label">${escapeHtml(selectedOption.label)}</span>
+      <span class="battle-filter-chip-remove" aria-hidden="true">x</span>
+    `;
+    chip.addEventListener('click', (event) => {
+      event.stopPropagation();
+      battleLogFilters[key] = '';
+      const snapshot = guildSnapshots[activeGuildIndex];
+      if (snapshot) {
+        renderBattleLog(snapshot);
+        toggleBattleFilterDropdown(`${side}-player`, true);
+      }
+    });
+    selectedContainer.appendChild(chip);
+  }
+
+  optionsContainer.innerHTML = '';
+  if (filteredOptions.length === 0) {
+    const empty = document.createElement('div');
+    empty.className = 'battle-filter-option-empty';
+    empty.textContent = 'No matching players';
+    optionsContainer.appendChild(empty);
+    return;
+  }
+
+  filteredOptions.forEach((optionData) => {
+    const option = document.createElement('button');
+    option.type = 'button';
+    option.className = `battle-filter-option ${selectedSet.has(optionData.value) ? 'battle-filter-option--selected' : ''}`;
+    option.setAttribute('data-player-value', optionData.value);
+    option.innerHTML = `
+      <img class="battle-filter-option-avatar" src="${escapeHtml(optionData.avatarUrl || MISSING_UNIT_AVATAR_URL)}" alt="${escapeHtml(optionData.label)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='${MISSING_UNIT_AVATAR_URL}';">
+      <span class="battle-filter-option-label">${escapeHtml(optionData.label)}</span>
+      <span class="battle-filter-option-check" aria-hidden="true">${selectedSet.has(optionData.value) ? '✓' : ''}</span>
+    `;
+    option.addEventListener('click', (event) => {
+      event.stopPropagation();
+      battleLogFilters[key] = selectedSet.has(optionData.value) ? '' : optionData.value;
+      const snapshot = guildSnapshots[activeGuildIndex];
+      if (snapshot) {
+        renderBattleLog(snapshot);
+        toggleBattleFilterDropdown(`${side}-player`, true);
+      }
+
+      const sideInput = document.getElementById(`battle-filter-${side}-player-input`);
+      if (sideInput) {
+        sideInput.focus();
+      }
+    });
+    optionsContainer.appendChild(option);
+  });
+
+  input.placeholder = selectedOption
+    ? selectedOption.label
+    : (side === 'attacker' ? 'Search offense players...' : 'Search defense players...');
+}
+
+function updateBattleLogPlayerFilterOptions(snapshot) {
+  const attackerInput = document.getElementById('battle-filter-attacker-player-input');
+  const defenderInput = document.getElementById('battle-filter-defender-player-input');
+  if (!attackerInput || !defenderInput) return;
+
+  const battles = Array.isArray(snapshot?.battles) ? snapshot.battles : [];
+  const optionBuckets = {
+    attacker: new Map(),
+    defender: new Map()
+  };
+
+  battles.forEach((battle) => {
+    ['attacker', 'defender'].forEach((side) => {
+      const value = getBattlePlayerFilterValue(battle, side);
+      if (!value) return;
+      if (optionBuckets[side].has(value)) return;
+      optionBuckets[side].set(value, {
+        value,
+        label: getBattlePlayerFilterLabel(battle, side),
+        avatarUrl: getBattlePlayerAvatarUrl(battle, side),
+        searchText: `${getBattlePlayerFilterLabel(battle, side)} ${value}`.toLowerCase()
+      });
+    });
+  });
+
+  battleLogPlayerFilterOptions.attacker = Array.from(optionBuckets.attacker.values()).sort((a, b) => a.label.localeCompare(b.label));
+  battleLogPlayerFilterOptions.defender = Array.from(optionBuckets.defender.values()).sort((a, b) => a.label.localeCompare(b.label));
+
+  const attackerValues = new Set(battleLogPlayerFilterOptions.attacker.map((option) => option.value));
+  const defenderValues = new Set(battleLogPlayerFilterOptions.defender.map((option) => option.value));
+
+  if (battleLogFilters.attackerPlayer && !attackerValues.has(battleLogFilters.attackerPlayer)) {
+    battleLogFilters.attackerPlayer = '';
+  }
+
+  if (battleLogFilters.defenderPlayer && !defenderValues.has(battleLogFilters.defenderPlayer)) {
+    battleLogFilters.defenderPlayer = '';
+  }
+
+  renderBattleLogPlayerFilterControl('attacker');
+  renderBattleLogPlayerFilterControl('defender');
 }
 
 function updateBattleLogUnitFilterOptions(snapshot) {
@@ -937,17 +1142,23 @@ function setupBattleLogFilters() {
   if (battleLogFiltersInitialized) return;
 
   const sortSelect = document.getElementById('battle-filter-sort');
+  const zoneSelect = document.getElementById('battle-filter-zone');
   const resultGroup = document.getElementById('battle-filter-result-group');
   const resultButtons = resultGroup ? Array.from(resultGroup.querySelectorAll('.battle-filter-result-btn')) : [];
+  const attackerPlayerInput = document.getElementById('battle-filter-attacker-player-input');
+  const defenderPlayerInput = document.getElementById('battle-filter-defender-player-input');
+  const attackerPlayerControl = document.getElementById('battle-filter-attacker-player-control');
+  const defenderPlayerControl = document.getElementById('battle-filter-defender-player-control');
   const attackerInput = document.getElementById('battle-filter-attacker-input');
   const defenderInput = document.getElementById('battle-filter-defender-input');
   const attackerControl = document.getElementById('battle-filter-attacker-control');
   const defenderControl = document.getElementById('battle-filter-defender-control');
   const clearButton = document.getElementById('battle-filter-clear');
 
-  if (!sortSelect || !resultGroup || resultButtons.length === 0 || !attackerInput || !defenderInput || !attackerControl || !defenderControl || !clearButton) return;
+  if (!sortSelect || !zoneSelect || !resultGroup || resultButtons.length === 0 || !attackerPlayerInput || !defenderPlayerInput || !attackerPlayerControl || !defenderPlayerControl || !attackerInput || !defenderInput || !attackerControl || !defenderControl || !clearButton) return;
 
   sortSelect.value = battleLogFilters.sort;
+  zoneSelect.value = battleLogFilters.zoneType || '';
 
   const syncResultButtons = () => {
     resultButtons.forEach((button) => {
@@ -971,6 +1182,11 @@ function setupBattleLogFilters() {
     rerenderBattleLog();
   });
 
+  zoneSelect.addEventListener('change', () => {
+    battleLogFilters.zoneType = zoneSelect.value || '';
+    rerenderBattleLog();
+  });
+
   resultButtons.forEach((button) => {
     button.addEventListener('click', () => {
       const nextValue = button.getAttribute('data-result') || 'all';
@@ -978,6 +1194,26 @@ function setupBattleLogFilters() {
       syncResultButtons();
       rerenderBattleLog();
     });
+  });
+
+  attackerPlayerInput.addEventListener('focus', () => {
+    toggleBattleFilterDropdown('attacker-player', true);
+    renderBattleLogPlayerFilterControl('attacker');
+  });
+
+  attackerPlayerInput.addEventListener('input', () => {
+    toggleBattleFilterDropdown('attacker-player', true);
+    renderBattleLogPlayerFilterControl('attacker');
+  });
+
+  defenderPlayerInput.addEventListener('focus', () => {
+    toggleBattleFilterDropdown('defender-player', true);
+    renderBattleLogPlayerFilterControl('defender');
+  });
+
+  defenderPlayerInput.addEventListener('input', () => {
+    toggleBattleFilterDropdown('defender-player', true);
+    renderBattleLogPlayerFilterControl('defender');
   });
 
   attackerInput.addEventListener('focus', () => {
@@ -1011,19 +1247,35 @@ function setupBattleLogFilters() {
     if (!defenderControl.contains(target)) {
       toggleBattleFilterDropdown('defender', false);
     }
+
+    if (!attackerPlayerControl.contains(target)) {
+      toggleBattleFilterDropdown('attacker-player', false);
+    }
+
+    if (!defenderPlayerControl.contains(target)) {
+      toggleBattleFilterDropdown('defender-player', false);
+    }
   });
 
   clearButton.addEventListener('click', () => {
     battleLogFilters.sort = 'newest';
     battleLogFilters.result = 'all';
+    battleLogFilters.zoneType = '';
+    battleLogFilters.attackerPlayer = '';
+    battleLogFilters.defenderPlayer = '';
     battleLogFilters.attackerUnitIds = [];
     battleLogFilters.defenderUnitIds = [];
 
     sortSelect.value = 'newest';
+    zoneSelect.value = '';
     battleLogFilters.result = 'all';
+    attackerPlayerInput.value = '';
+    defenderPlayerInput.value = '';
     syncResultButtons();
     attackerInput.value = '';
     defenderInput.value = '';
+    toggleBattleFilterDropdown('attacker-player', false);
+    toggleBattleFilterDropdown('defender-player', false);
     toggleBattleFilterDropdown('attacker', false);
     toggleBattleFilterDropdown('defender', false);
 
@@ -1040,6 +1292,8 @@ function renderBattleLog(snapshot) {
   if (!battleList) return;
 
   const battles = Array.isArray(snapshot?.battles) ? snapshot.battles : [];
+  updateBattleLogTileTypeFilterOptions(snapshot);
+  updateBattleLogPlayerFilterOptions(snapshot);
   updateBattleLogUnitFilterOptions(snapshot);
 
   const filteredBattles = battles
@@ -1052,6 +1306,27 @@ function renderBattleLog(snapshot) {
 
       if (battleLogFilters.result === 'loss' && outcome !== 'loss') {
         return false;
+      }
+
+      if (battleLogFilters.zoneType) {
+        const zoneType = String(battle.zoneType || '');
+        if (zoneType !== battleLogFilters.zoneType) {
+          return false;
+        }
+      }
+
+      if (battleLogFilters.attackerPlayer) {
+        const attackerPlayerValue = getBattlePlayerFilterValue(battle, 'attacker');
+        if (attackerPlayerValue !== battleLogFilters.attackerPlayer) {
+          return false;
+        }
+      }
+
+      if (battleLogFilters.defenderPlayer) {
+        const defenderPlayerValue = getBattlePlayerFilterValue(battle, 'defender');
+        if (defenderPlayerValue !== battleLogFilters.defenderPlayer) {
+          return false;
+        }
       }
 
       if (battleLogFilters.attackerUnitIds.length > 0) {
@@ -1104,6 +1379,7 @@ function renderBattleLog(snapshot) {
     let stateClass = 'value-cell--neutral';
     let stateLabel = 'Neutral';
     let scoreDisplay = '<span class="score-display"><span class="score-core">0</span></span>';
+    let bonusDisplay = '';
 
     if (battle.abandoned) {
       stateClass = 'value-cell--neutral';
@@ -1114,9 +1390,11 @@ function renderBattleLog(snapshot) {
       stateLabel = 'Defeat';
       scoreDisplay = '<span class="score-display"><span class="score-core">0</span></span>';
     } else if (Number(battle.score || 0) > 0) {
+      const { core, bonus } = getCoreScore(Number(battle.score || 0));
       stateClass = battle.defended ? 'value-cell--lose' : 'value-cell--win';
       stateLabel = battle.defended ? 'Defeat' : 'Win';
-      scoreDisplay = formatValue(Number(battle.score || 0));
+      scoreDisplay = `<span class="score-display"><span class="score-core">${core.toLocaleString()}</span></span>`;
+      bonusDisplay = bonus > 0 ? `<span class="battle-score-bonus">(${bonus.toLocaleString()})</span>` : '';
     }
 
     const cleanupHtml = battle.cleanup ? '<span class="cleanup-icon" title="Cleanup">🧹</span>' : '';
@@ -1132,6 +1410,7 @@ function renderBattleLog(snapshot) {
       </div>
       <div class="battle-score-wrap">
         <span class="value-cell ${stateClass}">${scoreDisplay}</span>
+        ${bonusDisplay}
         <span class="battle-state-label">${escapeHtml(stateLabel)}</span>
         ${cleanupHtml}
         ${zoneLabel}

@@ -204,11 +204,24 @@ body {
 }
 
 .buff-legend {
+  box-sizing: border-box;
+  width: 100%;
   display: flex;
   gap: 0.6rem;
   row-gap: 0.5rem;
   align-items: center;
   flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+}
+
+#buff-legend {
+  box-sizing: border-box;
+  margin: 0 0 1rem;
+}
+
+#tab-panel-leaderboard {
+  padding: 1rem;
 }
 
 .buff-legend-sections {
@@ -294,11 +307,60 @@ body {
   border-bottom-color: #67e8f9;
 }
 
-.battle-filter-bar {
+.battle-filter-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.85rem;
+  margin-bottom: 0.85rem;
+}
+
+.battle-filter-field--grow {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.battle-filter-field--result {
+  flex: 0 0 auto;
+}
+
+.battle-filter-field--result .battle-filter-result-group {
+  width: fit-content;
+}
+
+.battle-filter-card {
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 0.9rem;
+  background: rgba(15, 23, 42, 0.42);
+  padding: 0.85rem;
+}
+
+.battle-filter-card-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.85rem;
   margin-bottom: 1rem;
+}
+
+.battle-filter-card-title {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 0.65rem;
+}
+
+.battle-filter-card--offense .battle-filter-card-title {
+  color: #7dd3fc;
+}
+
+.battle-filter-card--defense .battle-filter-card-title {
+  color: #f9a8d4;
+}
+
+.battle-filter-bar {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
 }
 
 .battle-filter-field {
@@ -386,42 +448,54 @@ body {
   justify-content: flex-start;
 }
 
+#battle-filter-attacker-player-selected {
+  justify-content: flex-start;
+}
+
 #battle-filter-defender-selected {
   justify-content: flex-end;
 }
 
-#battle-filter-defender-control label {
-  text-align: right;
-}
-
-#battle-filter-defender-control .battle-filter-combobox input {
-  text-align: right;
+#battle-filter-defender-player-selected {
+  justify-content: flex-end;
 }
 
 .battle-filter-chip {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.55rem;
   border: 1px solid rgba(103, 232, 249, 0.35);
   border-radius: 999px;
   background: rgba(8, 47, 73, 0.55);
   color: #cffafe;
-  padding: 0.16rem 0.45rem 0.16rem 0.2rem;
+  padding: 0.22rem 0.6rem 0.22rem 0.25rem;
 }
 
 .battle-filter-chip-avatar {
-  width: 1rem;
-  height: 1rem;
+  width: 2.1rem;
+  height: 2.1rem;
   border-radius: 999px;
   object-fit: cover;
 }
 
+#battle-filter-attacker-player-control .battle-filter-chip-avatar,
+#battle-filter-defender-player-control .battle-filter-chip-avatar,
+#battle-filter-attacker-player-control .battle-filter-option-avatar,
+#battle-filter-defender-player-control .battle-filter-option-avatar {
+  display: block;
+  object-position: center top;
+  clip-path: inset(2.6px 3px 3px 3px round 999px);
+  transform: scale(1.12);
+  transform-origin: center;
+}
+
 .battle-filter-chip-label {
-  font-size: 0.73rem;
+  font-size: 0.98rem;
+  font-weight: 600;
 }
 
 .battle-filter-chip-remove {
-  font-size: 0.72rem;
+  font-size: 0.84rem;
   color: #67e8f9;
 }
 
@@ -429,7 +503,15 @@ body {
   color: #7dd3fc;
 }
 
+#battle-filter-attacker-player-control label {
+  color: #7dd3fc;
+}
+
 #battle-filter-defender-control label {
+  color: #f9a8d4;
+}
+
+#battle-filter-defender-player-control label {
   color: #f9a8d4;
 }
 
@@ -443,7 +525,23 @@ body {
   color: #7dd3fc;
 }
 
+#battle-filter-attacker-player-control .battle-filter-chip {
+  border-color: rgba(56, 189, 248, 0.45);
+  background: rgba(7, 89, 133, 0.5);
+  color: #e0f2fe;
+}
+
+#battle-filter-attacker-player-control .battle-filter-chip-remove {
+  color: #7dd3fc;
+}
+
 #battle-filter-defender-control .battle-filter-chip {
+  border-color: rgba(244, 114, 182, 0.45);
+  background: rgba(131, 24, 67, 0.45);
+  color: #fce7f3;
+}
+
+#battle-filter-defender-player-control .battle-filter-chip {
   border-color: rgba(244, 114, 182, 0.45);
   background: rgba(131, 24, 67, 0.45);
   color: #fce7f3;
@@ -453,11 +551,23 @@ body {
   color: #f9a8d4;
 }
 
+#battle-filter-defender-player-control .battle-filter-chip-remove {
+  color: #f9a8d4;
+}
+
 #battle-filter-attacker-control .battle-filter-option--selected {
   background: rgba(14, 116, 144, 0.45);
 }
 
 #battle-filter-defender-control .battle-filter-option--selected {
+  background: rgba(157, 23, 77, 0.45);
+}
+
+#battle-filter-attacker-player-control .battle-filter-option--selected {
+  background: rgba(14, 116, 144, 0.45);
+}
+
+#battle-filter-defender-player-control .battle-filter-option--selected {
   background: rgba(157, 23, 77, 0.45);
 }
 
@@ -484,12 +594,12 @@ body {
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.65rem;
   border: 0;
-  border-radius: 0.5rem;
+  border-radius: 0.65rem;
   background: transparent;
   color: #e2e8f0;
-  padding: 0.35rem 0.4rem;
+  padding: 0.5rem 0.55rem;
   text-align: left;
 }
 
@@ -502,19 +612,21 @@ body {
 }
 
 .battle-filter-option-avatar {
-  width: 1.15rem;
-  height: 1.15rem;
+  width: 2.1rem;
+  height: 2.1rem;
   border-radius: 999px;
   object-fit: cover;
 }
 
 .battle-filter-option-label {
-  font-size: 0.82rem;
+  font-size: 0.98rem;
+  font-weight: 600;
 }
 
 .battle-filter-option-check {
   color: #67e8f9;
   font-weight: 700;
+  font-size: 0.95rem;
 }
 
 .battle-filter-option-empty {
@@ -524,9 +636,10 @@ body {
 }
 
 .battle-filter-actions {
-  grid-column: span 2;
   display: flex;
   justify-content: flex-end;
+  margin-top: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .battle-filter-actions button {
@@ -609,7 +722,7 @@ body {
 .battle-unit-mini-health-fill {
   display: block;
   height: 100%;
-  background: linear-gradient(90deg, #f59e0b, #22c55e);
+  transition: width 180ms ease, background-color 180ms ease;
 }
 
 .battle-unit-chip {
@@ -679,6 +792,13 @@ body {
   color: #cbd5e1;
 }
 
+.battle-score-bonus {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #86efac;
+  line-height: 1;
+}
+
 .battle-log-empty {
   border: 1px dashed rgba(148, 163, 184, 0.35);
   border-radius: 0.8rem;
@@ -691,12 +811,22 @@ body {
     grid-template-columns: 1fr;
   }
 
+  .battle-filter-row,
+  .battle-filter-card-grid,
   .battle-filter-bar {
     grid-template-columns: 1fr;
   }
 
-  .battle-filter-field--multi,
-  .battle-filter-actions {
+  .battle-filter-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .battle-filter-field--result .battle-filter-result-group {
+    width: 100%;
+  }
+
+  .battle-filter-field--multi {
     grid-column: span 1;
   }
 
@@ -709,9 +839,22 @@ body {
     justify-content: flex-start;
   }
 
+  #battle-filter-defender-player-selected {
+    justify-content: flex-start;
+  }
+
   #battle-filter-defender-control label,
   #battle-filter-defender-control .battle-filter-combobox input {
     text-align: left;
+  }
+
+  #battle-filter-defender-player-control label,
+  #battle-filter-defender-player-control .battle-filter-combobox input {
+    text-align: left;
+  }
+
+  .battle-filter-actions {
+    justify-content: flex-start;
   }
 
   .battle-side--defender {
