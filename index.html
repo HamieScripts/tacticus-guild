@@ -6,14 +6,13 @@
     <title>Tacticus Guild War Tracker</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="min-h-screen bg-slate-950 text-slate-100">
     <div class="mx-auto flex max-w-none flex-col gap-6 px-4 py-8 sm:px-6 lg:px-8">
       <header class="animate__animated animate__fadeInDown rounded-3xl border border-cyan-400/20 bg-slate-900/80 p-6 shadow-2xl shadow-cyan-500/10">
         <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <p class="text-sm font-semibold uppercase tracking-[0.35em] text-cyan-300">Tacticus guild wars</p>
+            <p class="text-sm font-semibold uppercase tracking-widest text-cyan-300">Tacticus guild wars</p>
             <h1 class="mt-2 text-3xl font-black sm:text-4xl">Guild score tracker</h1>
             <p class="mt-3 max-w-2xl text-sm text-slate-300 sm:text-base">
               A clean static overview of guild performance, built by loading the exported JSON at runtime and analyzing the battle data.
@@ -96,30 +95,30 @@
       <div class="rounded-xl border border-slate-800 bg-slate-900/70 shadow-2xl shadow-black/25">
         <!-- Tab bar -->
         <div class="flex border-b border-slate-700">
-          <button id="tab-btn-leaderboard" type="button" onclick="switchMainTab('leaderboard')" class="main-tab-btn main-tab-btn--active px-5 py-3 text-sm font-semibold">Token table</button>
-          <button id="tab-btn-battlelog" type="button" onclick="switchMainTab('battlelog')" class="main-tab-btn px-5 py-3 text-sm font-semibold">
+          <button id="tab-btn-leaderboard" type="button" onclick="switchMainTab('leaderboard')" class="border-b-2 border-cyan-400 px-5 py-3 text-sm font-semibold text-cyan-300 transition-colors hover:text-slate-100">Token table</button>
+          <button id="tab-btn-battlelog" type="button" onclick="switchMainTab('battlelog')" class="border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100">
             Battle log <span id="battle-log-count" class="ml-1 rounded-full bg-slate-700 px-2 py-0.5 text-xs text-slate-300">0</span>
           </button>
         </div>
 
         <!-- Token table panel -->
-        <div id="tab-panel-leaderboard">
-          <div class="leaderboard-scroll overflow-auto">
+        <div id="tab-panel-leaderboard" class="p-4">
+          <div class="max-h-screen w-full overflow-auto">
             <div id="buff-legend" class="text-sm"></div>
-            <table class="leaderboard-table min-w-full border-collapse text-left text-sm">
+            <table class="min-w-max w-full border-collapse text-left text-sm">
               <thead class="bg-slate-800/90 text-slate-200">
                 <tr>
-                  <th class="sticky left-0 z-10 bg-slate-800/95 px-4 py-3 font-semibold player-name-column">Player</th>
-                  <th class="px-4 py-3 font-semibold">1</th>
-                  <th class="px-4 py-3 font-semibold">2</th>
-                  <th class="px-4 py-3 font-semibold">3</th>
-                  <th class="px-4 py-3 font-semibold">4</th>
-                  <th class="px-4 py-3 font-semibold">5</th>
-                  <th class="px-4 py-3 font-semibold">6</th>
-                  <th class="px-4 py-3 font-semibold">7</th>
-                  <th class="px-4 py-3 font-semibold">8</th>
-                  <th class="px-4 py-3 font-semibold">9</th>
-                  <th class="px-4 py-3 font-semibold">10</th>
+                  <th class="sticky left-0 top-0 z-20 whitespace-nowrap bg-slate-800/95 px-4 py-3 font-semibold">Player</th>
+                  <th class="px-4 py-3 text-center font-semibold">1</th>
+                  <th class="px-4 py-3 text-center font-semibold">2</th>
+                  <th class="px-4 py-3 text-center font-semibold">3</th>
+                  <th class="px-4 py-3 text-center font-semibold">4</th>
+                  <th class="px-4 py-3 text-center font-semibold">5</th>
+                  <th class="px-4 py-3 text-center font-semibold">6</th>
+                  <th class="px-4 py-3 text-center font-semibold">7</th>
+                  <th class="px-4 py-3 text-center font-semibold">8</th>
+                  <th class="px-4 py-3 text-center font-semibold">9</th>
+                  <th class="px-4 py-3 text-center font-semibold">10</th>
                   <th class="px-4 py-3 font-semibold">Score</th>
                   <th class="px-4 py-3 font-semibold">Avg / token</th>
                   <th class="px-4 py-3 font-semibold">Rating</th>
@@ -132,89 +131,89 @@
 
         <!-- Battle log panel -->
         <div id="tab-panel-battlelog" class="hidden p-4">
-          <div class="battle-filter-row">
-            <div class="battle-filter-field battle-filter-field--grow">
-              <label for="battle-filter-sort">Sort</label>
-              <select id="battle-filter-sort">
+          <div class="mb-3 flex flex-col gap-3 md:flex-row md:items-end">
+            <div class="flex min-w-0 flex-1 flex-col gap-1.5">
+              <label for="battle-filter-sort" class="text-xs font-semibold uppercase tracking-wide text-slate-400">Sort</label>
+              <select id="battle-filter-sort" class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200">
                 <option value="newest">Newest</option>
                 <option value="score-desc">Score: high to low</option>
                 <option value="score-asc">Score: low to high</option>
               </select>
             </div>
-            <div class="battle-filter-field battle-filter-field--grow">
-              <label for="battle-filter-zone">Tile type</label>
-              <select id="battle-filter-zone">
+            <div class="flex min-w-0 flex-1 flex-col gap-1.5">
+              <label for="battle-filter-zone" class="text-xs font-semibold uppercase tracking-wide text-slate-400">Tile type</label>
+              <select id="battle-filter-zone" class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200">
                 <option value="">All tile types</option>
               </select>
             </div>
-            <div class="battle-filter-field battle-filter-field--result">
-              <label>Result</label>
-              <div id="battle-filter-result-group" class="battle-filter-result-group" role="radiogroup" aria-label="Result filter">
-                <button type="button" class="battle-filter-result-btn battle-filter-result-btn--active" data-result="all" role="radio" aria-checked="true">All</button>
-                <button type="button" class="battle-filter-result-btn" data-result="win" role="radio" aria-checked="false">Win</button>
-                <button type="button" class="battle-filter-result-btn" data-result="loss" role="radio" aria-checked="false">Lose</button>
+            <div class="flex flex-col gap-1.5">
+              <label class="text-xs font-semibold uppercase tracking-wide text-slate-400">Result</label>
+              <div id="battle-filter-result-group" class="inline-flex overflow-hidden rounded-md border border-slate-500/50 bg-slate-900/80" role="radiogroup" aria-label="Result filter">
+                <button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-slate-700/80" data-result="all" role="radio" aria-checked="true">All</button>
+                <button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-slate-700/80" data-result="win" role="radio" aria-checked="false">Win</button>
+                <button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-slate-700/80" data-result="loss" role="radio" aria-checked="false">Lose</button>
               </div>
             </div>
           </div>
 
-          <div class="battle-filter-card-grid">
-            <div class="battle-filter-card battle-filter-card--offense">
-              <div class="battle-filter-card-title">Offense filters</div>
-              <div class="battle-filter-bar">
-                <div class="battle-filter-field" id="battle-filter-attacker-player-control">
-                  <label for="battle-filter-attacker-player-input">Player</label>
-                  <div class="battle-filter-combobox">
-                    <input id="battle-filter-attacker-player-input" type="text" autocomplete="off" placeholder="Search offense players..." />
-                    <div id="battle-filter-attacker-player-selected" class="battle-filter-selected"></div>
-                    <div id="battle-filter-attacker-player-dropdown" class="battle-filter-dropdown hidden">
-                      <div id="battle-filter-attacker-player-options" class="battle-filter-options"></div>
+          <div class="mb-4 grid grid-cols-1 gap-3 lg:grid-cols-2">
+            <div class="rounded-xl border border-slate-500/30 bg-slate-900/45 p-3">
+              <div class="mb-2 text-xs font-bold uppercase tracking-wide text-sky-300">Offense filters</div>
+              <div class="grid grid-cols-1 gap-3">
+                <div class="flex flex-col gap-1.5" id="battle-filter-attacker-player-control">
+                  <label for="battle-filter-attacker-player-input" class="text-xs font-semibold uppercase tracking-wide text-sky-300">Player</label>
+                  <div class="relative">
+                    <input id="battle-filter-attacker-player-input" type="text" autocomplete="off" placeholder="Search offense players..." class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200" />
+                    <div id="battle-filter-attacker-player-selected" class="mt-2 flex flex-wrap justify-start gap-1.5"></div>
+                    <div id="battle-filter-attacker-player-dropdown" class="absolute left-0 right-0 top-full mt-1.5 z-30 hidden rounded-md border border-slate-500/50 bg-slate-950/95 shadow-2xl shadow-slate-950/60">
+                      <div id="battle-filter-attacker-player-options" class="max-h-60 overflow-auto p-1"></div>
                     </div>
                   </div>
                 </div>
-                <div id="battle-filter-attacker-control" class="battle-filter-field battle-filter-field--multi">
-                  <label for="battle-filter-attacker-input">Characters (all selected required)</label>
-                  <div class="battle-filter-combobox">
-                    <input id="battle-filter-attacker-input" type="text" autocomplete="off" placeholder="Search offense characters..." />
-                    <div id="battle-filter-attacker-selected" class="battle-filter-selected"></div>
-                    <div id="battle-filter-attacker-dropdown" class="battle-filter-dropdown hidden">
-                      <div id="battle-filter-attacker-options" class="battle-filter-options"></div>
+                <div id="battle-filter-attacker-control" class="flex flex-col gap-1.5">
+                  <label for="battle-filter-attacker-input" class="text-xs font-semibold uppercase tracking-wide text-sky-300">Characters (all selected required)</label>
+                  <div class="relative">
+                    <input id="battle-filter-attacker-input" type="text" autocomplete="off" placeholder="Search offense characters..." class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200" />
+                    <div id="battle-filter-attacker-selected" class="mt-2 flex flex-wrap justify-start gap-1.5"></div>
+                    <div id="battle-filter-attacker-dropdown" class="absolute left-0 right-0 top-full mt-1.5 z-30 hidden rounded-md border border-slate-500/50 bg-slate-950/95 shadow-2xl shadow-slate-950/60">
+                      <div id="battle-filter-attacker-options" class="max-h-60 overflow-auto p-1"></div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="battle-filter-card battle-filter-card--defense">
-              <div class="battle-filter-card-title">Defense filters</div>
-              <div class="battle-filter-bar">
-                <div class="battle-filter-field" id="battle-filter-defender-player-control">
-                  <label for="battle-filter-defender-player-input">Player</label>
-                  <div class="battle-filter-combobox">
-                    <input id="battle-filter-defender-player-input" type="text" autocomplete="off" placeholder="Search defense players..." />
-                    <div id="battle-filter-defender-player-selected" class="battle-filter-selected"></div>
-                    <div id="battle-filter-defender-player-dropdown" class="battle-filter-dropdown hidden">
-                      <div id="battle-filter-defender-player-options" class="battle-filter-options"></div>
+            <div class="rounded-xl border border-slate-500/30 bg-slate-900/45 p-3">
+              <div class="mb-2 text-xs font-bold uppercase tracking-wide text-pink-300">Defense filters</div>
+              <div class="grid grid-cols-1 gap-3">
+                <div class="flex flex-col gap-1.5" id="battle-filter-defender-player-control">
+                  <label for="battle-filter-defender-player-input" class="text-xs font-semibold uppercase tracking-wide text-pink-300">Player</label>
+                  <div class="relative">
+                    <input id="battle-filter-defender-player-input" type="text" autocomplete="off" placeholder="Search defense players..." class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200" />
+                    <div id="battle-filter-defender-player-selected" class="mt-2 flex flex-wrap justify-end gap-1.5 max-md:justify-start"></div>
+                    <div id="battle-filter-defender-player-dropdown" class="absolute left-0 right-0 top-full mt-1.5 z-30 hidden rounded-md border border-slate-500/50 bg-slate-950/95 shadow-2xl shadow-slate-950/60">
+                      <div id="battle-filter-defender-player-options" class="max-h-60 overflow-auto p-1"></div>
                     </div>
                   </div>
                 </div>
-                <div id="battle-filter-defender-control" class="battle-filter-field battle-filter-field--multi">
-                  <label for="battle-filter-defender-input">Characters (all selected required)</label>
-                  <div class="battle-filter-combobox">
-                    <input id="battle-filter-defender-input" type="text" autocomplete="off" placeholder="Search defense characters..." />
-                    <div id="battle-filter-defender-selected" class="battle-filter-selected"></div>
-                    <div id="battle-filter-defender-dropdown" class="battle-filter-dropdown hidden">
-                      <div id="battle-filter-defender-options" class="battle-filter-options"></div>
+                <div id="battle-filter-defender-control" class="flex flex-col gap-1.5">
+                  <label for="battle-filter-defender-input" class="text-xs font-semibold uppercase tracking-wide text-pink-300">Characters (all selected required)</label>
+                  <div class="relative">
+                    <input id="battle-filter-defender-input" type="text" autocomplete="off" placeholder="Search defense characters..." class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200" />
+                    <div id="battle-filter-defender-selected" class="mt-2 flex flex-wrap justify-end gap-1.5 max-md:justify-start"></div>
+                    <div id="battle-filter-defender-dropdown" class="absolute left-0 right-0 top-full mt-1.5 z-30 hidden rounded-md border border-slate-500/50 bg-slate-950/95 shadow-2xl shadow-slate-950/60">
+                      <div id="battle-filter-defender-options" class="max-h-60 overflow-auto p-1"></div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-            <div class="battle-filter-actions">
-              <button id="battle-filter-clear" type="button">Clear filters</button>
+            <div class="mb-4 flex justify-end max-md:justify-start">
+              <button id="battle-filter-clear" type="button" class="rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm font-semibold text-slate-300 transition hover:border-cyan-400/60 hover:text-slate-100">Clear filters</button>
             </div>
 
-          <div id="battle-log-list" class="battle-log-list"></div>
+          <div id="battle-log-list" class="flex flex-col gap-3"></div>
         </div>
       </div>
     </div>
@@ -222,6 +221,8 @@
     <script src="src/app.js"></script>
 <script>
   function switchMainTab(tab) {
+    const activeBtnClasses = ['text-cyan-300', 'border-cyan-400'];
+    const inactiveBtnClasses = ['text-slate-400', 'border-transparent'];
     const panels = ['leaderboard', 'battlelog'];
     panels.forEach(function(id) {
       const panel = document.getElementById('tab-panel-' + id);
@@ -229,35 +230,11 @@
       const isActive = id === tab;
       if (panel) panel.classList.toggle('hidden', !isActive);
       if (btn) {
-        btn.classList.toggle('main-tab-btn--active', isActive);
+        activeBtnClasses.forEach((cls) => btn.classList.toggle(cls, isActive));
+        inactiveBtnClasses.forEach((cls) => btn.classList.toggle(cls, !isActive));
       }
     });
   }
-</script>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    requestAnimationFrame(() => {
-      const legend = document.getElementById('buff-legend');
-      if (!legend) return;
-
-      legend.innerHTML = `
-        <div class="buff-legend">
-          <div class="buff-legend-group">
-            <div class="legend-title">Token state</div>
-            <div class="buff-legend-item"><span class="legend-icon">🟩</span><span class="label">Win</span></div>
-            <div class="buff-legend-item"><span class="legend-icon">🟥</span><span class="label">Lose</span></div>
-            <div class="buff-legend-item"><span class="legend-icon">⬜</span><span class="label">Abandoned / unused</span></div>
-            <div class="buff-legend-item"><span class="legend-icon">🧹</span><span class="label">Cleanup</span></div>
-          </div>
-          <div class="buff-legend-group">
-            <div class="legend-title">Buff groups</div>
-            <div class="buff-legend-item"><span class="legend-icon">⚪</span><span class="label">Buff group present</span></div>
-            <div class="buff-legend-item"><span class="legend-icon">🔵</span><span class="label">Buff group active</span></div>
-          </div>
-        </div>
-      `;
-    });
-  });
 </script>
   </body>
 </html>

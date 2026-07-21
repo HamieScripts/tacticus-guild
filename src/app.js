@@ -91,10 +91,10 @@ function formatValue(value) {
   const { core, bonus } = getCoreScore(value);
 
   if (bonus > 0) {
-    return `<span class="score-display"><span class="score-core">${core.toLocaleString()}</span><span class="score-bonus">(${bonus.toLocaleString()})</span></span>`;
+    return `<span class="inline-flex flex-col items-start gap-0.5"><span class="font-semibold text-slate-200">${core.toLocaleString()}</span><span class="text-xs font-medium text-slate-500">(${bonus.toLocaleString()})</span></span>`;
   }
 
-  return `<span class="score-display"><span class="score-core">${core.toLocaleString()}</span></span>`;
+  return `<span class="inline-flex flex-col items-start gap-0.5"><span class="font-semibold text-slate-200">${core.toLocaleString()}</span></span>`;
 }
 
 function escapeHtml(str) {
@@ -166,13 +166,13 @@ function renderPlayerAvatar(player) {
   const avatarAlt = `${player.name || 'Player'} avatar`;
 
   const avatarImg = avatarSrc
-    ? `<img class="player-avatar" src="${escapeHtml(avatarSrc)}" alt="${escapeHtml(avatarAlt)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">`
+    ? `<img class="absolute inset-1 z-10 h-9 w-9 rounded-full bg-slate-900/95 object-cover" src="${escapeHtml(avatarSrc)}" alt="${escapeHtml(avatarAlt)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">`
     : '';
   const frameImg = frameSrc
-    ? `<img class="player-avatar-frame" src="${escapeHtml(frameSrc)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">`
+    ? `<img class="pointer-events-none absolute inset-0 z-0 h-11 w-11 object-contain" src="${escapeHtml(frameSrc)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">`
     : '';
 
-  return `<span class="player-avatar-stack">${avatarImg}${frameImg}</span>`;
+  return `<span class="relative h-11 w-11 shrink-0">${avatarImg}${frameImg}</span>`;
 }
 
 function colorFor(name) {
@@ -196,10 +196,10 @@ function renderBuffs(buffs) {
     const name = (b && (b.abilityId || b.name || b.id)) || String(b || '');
     const safe = escapeHtml(name);
     const color = colorFor(name);
-    return `<span class="buff-circle" title="${safe}" style="background:${color}"></span>`;
+    return `<span class="inline-block h-3 w-3 rounded-full border border-white/10" title="${safe}" style="background:${color}"></span>`;
   });
 
-  return `<div class="buffs-row">${items.join('')}</div>`;
+  return `<div class="mt-1 flex justify-center gap-1.5">${items.join('')}</div>`;
 }
 
 function getBattleFlags(log) {
@@ -761,7 +761,7 @@ async function loadUnitPortraitMap() {
 
 function renderBattleUnits(units, side = 'attacker') {
   if (!Array.isArray(units) || units.length === 0) {
-    return '<span class="battle-unit-chip battle-unit-chip--empty">No units captured</span>';
+    return '<span class="inline-flex rounded-full border border-slate-500/40 bg-slate-900/70 px-2 py-1 text-xs text-slate-400">No units captured</span>';
   }
 
   const selectedUnitIds = side === 'defender'
@@ -778,9 +778,9 @@ function renderBattleUnits(units, side = 'attacker') {
       const safeAvatarUrl = avatarUrl || MISSING_UNIT_AVATAR_URL;
       const isMatched = unitId && selectedSet.has(unitId);
       const sideMatchClass = isMatched
-        ? (side === 'defender' ? ' battle-unit-chip--match-defense' : ' battle-unit-chip--match-offense')
+        ? (side === 'defender' ? ' border-pink-400 outline outline-2 outline-pink-400/60 outline-offset-2' : ' border-sky-400 outline outline-2 outline-sky-400/60 outline-offset-2')
         : '';
-      const sideMutedClass = hasActiveSideFilter && !isMatched ? ' battle-unit-chip--muted' : '';
+      const sideMutedClass = hasActiveSideFilter && !isMatched ? ' opacity-50 grayscale saturate-75' : '';
       const startHp = Number(unit?.startHPBefore);
       const remainingBeforeHp = Number(unit?.remainingHPBefore);
       const hasHealthData = side === 'defender' && Number.isFinite(startHp) && startHp > 0;
@@ -792,10 +792,10 @@ function renderBattleUnits(units, side = 'attacker') {
         : 0;
       const healthColor = hasHealthData ? getHealthBarColor(percent) : '';
       const healthBarHtml = hasHealthData
-        ? `<span class="battle-unit-mini-health" title="${escapeHtml(unitLabel)} start HP: ${Math.round(currentHp).toLocaleString()} / ${Math.round(startHp).toLocaleString()}"><span class="battle-unit-mini-health-fill" style="width:${percent}%; background:${healthColor}"></span></span>`
+        ? `<span class="h-1.5 w-9 overflow-hidden rounded-full border border-slate-400/35 bg-slate-600/60" title="${escapeHtml(unitLabel)} start HP: ${Math.round(currentHp).toLocaleString()} / ${Math.round(startHp).toLocaleString()}"><span class="block h-full" style="width:${percent}%; background:${healthColor}"></span></span>`
         : '';
 
-      return `<span class="battle-unit-stack"><span class="battle-unit-chip${sideMatchClass}${sideMutedClass}" title="${escapeHtml(unitLabel)}"><img class="battle-unit-avatar" src="${escapeHtml(safeAvatarUrl)}" alt="${escapeHtml(unitLabel)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='${MISSING_UNIT_AVATAR_URL}';"></span>${healthBarHtml}</span>`;
+      return `<span class="inline-flex flex-col items-center gap-0.5"><span class="inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-slate-400/25 bg-slate-900/85 text-xs text-slate-300${sideMatchClass}${sideMutedClass}" title="${escapeHtml(unitLabel)}"><img class="h-full w-full object-cover" src="${escapeHtml(safeAvatarUrl)}" alt="${escapeHtml(unitLabel)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='${MISSING_UNIT_AVATAR_URL}';"></span>${healthBarHtml}</span>`;
     })
     .join('');
 }
@@ -929,14 +929,19 @@ function renderBattleLogPlayerFilterControl(side) {
 
   selectedContainer.innerHTML = '';
   if (selectedOption) {
+    const isDefense = side === 'defender';
+    const chipToneClasses = isDefense
+      ? 'border-pink-400/45 bg-pink-900/40 text-pink-100'
+      : 'border-sky-400/45 bg-sky-900/40 text-sky-100';
+    const removeToneClass = isDefense ? 'text-pink-300' : 'text-sky-300';
     const chip = document.createElement('button');
     chip.type = 'button';
-    chip.className = 'battle-filter-chip';
+    chip.className = `inline-flex items-center gap-2 rounded-full border px-2 py-1 ${chipToneClasses}`;
     chip.setAttribute('data-player-value', selectedOption.value);
     chip.innerHTML = `
-      <img class="battle-filter-chip-avatar" src="${escapeHtml(selectedOption.avatarUrl || MISSING_UNIT_AVATAR_URL)}" alt="${escapeHtml(selectedOption.label)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='${MISSING_UNIT_AVATAR_URL}';">
-      <span class="battle-filter-chip-label">${escapeHtml(selectedOption.label)}</span>
-      <span class="battle-filter-chip-remove" aria-hidden="true">x</span>
+      <img class="h-8 w-8 rounded-full object-cover" src="${escapeHtml(selectedOption.avatarUrl || MISSING_UNIT_AVATAR_URL)}" alt="${escapeHtml(selectedOption.label)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='${MISSING_UNIT_AVATAR_URL}';">
+      <span class="text-base font-semibold">${escapeHtml(selectedOption.label)}</span>
+      <span class="text-sm ${removeToneClass}" aria-hidden="true">x</span>
     `;
     chip.addEventListener('click', (event) => {
       event.stopPropagation();
@@ -953,21 +958,23 @@ function renderBattleLogPlayerFilterControl(side) {
   optionsContainer.innerHTML = '';
   if (filteredOptions.length === 0) {
     const empty = document.createElement('div');
-    empty.className = 'battle-filter-option-empty';
+    empty.className = 'px-2 py-2 text-xs text-slate-400';
     empty.textContent = 'No matching players';
     optionsContainer.appendChild(empty);
     return;
   }
 
   filteredOptions.forEach((optionData) => {
+    const isDefense = side === 'defender';
+    const selectedToneClass = isDefense ? 'bg-pink-900/45' : 'bg-sky-900/45';
     const option = document.createElement('button');
     option.type = 'button';
-    option.className = `battle-filter-option ${selectedSet.has(optionData.value) ? 'battle-filter-option--selected' : ''}`;
+    option.className = `flex w-full items-center gap-2 rounded-md px-2 py-2 text-left text-slate-200 hover:bg-slate-700/80 ${selectedSet.has(optionData.value) ? selectedToneClass : ''}`;
     option.setAttribute('data-player-value', optionData.value);
     option.innerHTML = `
-      <img class="battle-filter-option-avatar" src="${escapeHtml(optionData.avatarUrl || MISSING_UNIT_AVATAR_URL)}" alt="${escapeHtml(optionData.label)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='${MISSING_UNIT_AVATAR_URL}';">
-      <span class="battle-filter-option-label">${escapeHtml(optionData.label)}</span>
-      <span class="battle-filter-option-check" aria-hidden="true">${selectedSet.has(optionData.value) ? '✓' : ''}</span>
+      <img class="h-8 w-8 rounded-full object-cover" src="${escapeHtml(optionData.avatarUrl || MISSING_UNIT_AVATAR_URL)}" alt="${escapeHtml(optionData.label)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='${MISSING_UNIT_AVATAR_URL}';">
+      <span class="text-base font-semibold">${escapeHtml(optionData.label)}</span>
+      <span class="ml-auto text-base font-bold text-cyan-300" aria-hidden="true">${selectedSet.has(optionData.value) ? '✓' : ''}</span>
     `;
     option.addEventListener('click', (event) => {
       event.stopPropagation();
@@ -1075,14 +1082,19 @@ function renderBattleLogUnitFilterControl(side) {
 
   selectedContainer.innerHTML = '';
   selectedIds.forEach((unitId) => {
+    const isDefense = side === 'defender';
+    const chipToneClasses = isDefense
+      ? 'border-pink-400/45 bg-pink-900/40 text-pink-100'
+      : 'border-sky-400/45 bg-sky-900/40 text-sky-100';
+    const removeToneClass = isDefense ? 'text-pink-300' : 'text-sky-300';
     const chip = document.createElement('button');
     chip.type = 'button';
-    chip.className = 'battle-filter-chip';
+    chip.className = `inline-flex items-center gap-2 rounded-full border px-2 py-1 ${chipToneClasses}`;
     chip.setAttribute('data-unit-id', unitId);
     chip.innerHTML = `
-      <img class="battle-filter-chip-avatar" src="${escapeHtml(getBattleUnitAvatarUrlFromUnitId(unitId) || MISSING_UNIT_AVATAR_URL)}" alt="${escapeHtml(unitId)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='${MISSING_UNIT_AVATAR_URL}';">
-      <span class="battle-filter-chip-label">${escapeHtml(unitId)}</span>
-      <span class="battle-filter-chip-remove" aria-hidden="true">x</span>
+      <img class="h-8 w-8 rounded-full object-cover" src="${escapeHtml(getBattleUnitAvatarUrlFromUnitId(unitId) || MISSING_UNIT_AVATAR_URL)}" alt="${escapeHtml(unitId)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='${MISSING_UNIT_AVATAR_URL}';">
+      <span class="text-base font-semibold">${escapeHtml(unitId)}</span>
+      <span class="text-sm ${removeToneClass}" aria-hidden="true">x</span>
     `;
     chip.addEventListener('click', (event) => {
       event.stopPropagation();
@@ -1099,21 +1111,23 @@ function renderBattleLogUnitFilterControl(side) {
   optionsContainer.innerHTML = '';
   if (filteredIds.length === 0) {
     const empty = document.createElement('div');
-    empty.className = 'battle-filter-option-empty';
+    empty.className = 'px-2 py-2 text-xs text-slate-400';
     empty.textContent = 'No matching characters';
     optionsContainer.appendChild(empty);
     return;
   }
 
   filteredIds.forEach((unitId) => {
+    const isDefense = side === 'defender';
+    const selectedToneClass = isDefense ? 'bg-pink-900/45' : 'bg-sky-900/45';
     const option = document.createElement('button');
     option.type = 'button';
-    option.className = `battle-filter-option ${selectedSet.has(unitId) ? 'battle-filter-option--selected' : ''}`;
+    option.className = `flex w-full items-center gap-2 rounded-md px-2 py-2 text-left text-slate-200 hover:bg-slate-700/80 ${selectedSet.has(unitId) ? selectedToneClass : ''}`;
     option.setAttribute('data-unit-id', unitId);
     option.innerHTML = `
-      <img class="battle-filter-option-avatar" src="${escapeHtml(getBattleUnitAvatarUrlFromUnitId(unitId) || MISSING_UNIT_AVATAR_URL)}" alt="${escapeHtml(unitId)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='${MISSING_UNIT_AVATAR_URL}';">
-      <span class="battle-filter-option-label">${escapeHtml(unitId)}</span>
-      <span class="battle-filter-option-check" aria-hidden="true">${selectedSet.has(unitId) ? '✓' : ''}</span>
+      <img class="h-8 w-8 rounded-full object-cover" src="${escapeHtml(getBattleUnitAvatarUrlFromUnitId(unitId) || MISSING_UNIT_AVATAR_URL)}" alt="${escapeHtml(unitId)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='${MISSING_UNIT_AVATAR_URL}';">
+      <span class="text-base font-semibold">${escapeHtml(unitId)}</span>
+      <span class="ml-auto text-base font-bold text-cyan-300" aria-hidden="true">${selectedSet.has(unitId) ? '✓' : ''}</span>
     `;
     option.addEventListener('click', (event) => {
       event.stopPropagation();
@@ -1144,7 +1158,7 @@ function setupBattleLogFilters() {
   const sortSelect = document.getElementById('battle-filter-sort');
   const zoneSelect = document.getElementById('battle-filter-zone');
   const resultGroup = document.getElementById('battle-filter-result-group');
-  const resultButtons = resultGroup ? Array.from(resultGroup.querySelectorAll('.battle-filter-result-btn')) : [];
+  const resultButtons = resultGroup ? Array.from(resultGroup.querySelectorAll('button[data-result]')) : [];
   const attackerPlayerInput = document.getElementById('battle-filter-attacker-player-input');
   const defenderPlayerInput = document.getElementById('battle-filter-defender-player-input');
   const attackerPlayerControl = document.getElementById('battle-filter-attacker-player-control');
@@ -1164,7 +1178,10 @@ function setupBattleLogFilters() {
     resultButtons.forEach((button) => {
       const value = button.getAttribute('data-result') || 'all';
       const isActive = value === battleLogFilters.result;
-      button.classList.toggle('battle-filter-result-btn--active', isActive);
+      button.classList.toggle('bg-emerald-900/70', isActive);
+      button.classList.toggle('text-emerald-100', isActive);
+      button.classList.toggle('bg-transparent', !isActive);
+      button.classList.toggle('text-slate-300', !isActive);
       button.setAttribute('aria-checked', isActive ? 'true' : 'false');
     });
   };
@@ -1366,57 +1383,59 @@ function renderBattleLog(snapshot) {
   battleList.innerHTML = '';
 
   if (battles.length === 0) {
-    battleList.innerHTML = '<div class="battle-log-empty">No battles found for this guild yet.</div>';
+    battleList.innerHTML = '<div class="rounded-lg border border-dashed border-slate-500/40 p-3 text-slate-400">No battles found for this guild yet.</div>';
     return;
   }
 
   if (filteredBattles.length === 0) {
-    battleList.innerHTML = '<div class="battle-log-empty">No battles match the selected filters.</div>';
+    battleList.innerHTML = '<div class="rounded-lg border border-dashed border-slate-500/40 p-3 text-slate-400">No battles match the selected filters.</div>';
     return;
   }
 
   filteredBattles.forEach((battle) => {
-    let stateClass = 'value-cell--neutral';
+    let stateClass = 'rounded-md bg-slate-400/20 px-2 py-1 text-slate-300';
     let stateLabel = 'Neutral';
-    let scoreDisplay = '<span class="score-display"><span class="score-core">0</span></span>';
+    let scoreDisplay = '<span class="inline-flex flex-row items-center gap-1"><span class="font-semibold text-slate-200">0</span></span>';
     let bonusDisplay = '';
-    const cleanupHtml = battle.cleanup ? '<span class="cleanup-icon cleanup-icon--inline" title="Cleanup">🧹</span>' : '';
+    const cleanupHtml = battle.cleanup ? '<span class="text-emerald-400" title="Cleanup">🧹</span>' : '';
 
     if (battle.abandoned) {
-      stateClass = 'value-cell--neutral';
+      stateClass = 'rounded-md bg-slate-400/20 px-2 py-1 text-slate-300';
       stateLabel = 'Abandoned';
       scoreDisplay = '🛑';
     } else if (!battle.hasScore) {
-      stateClass = 'value-cell--lose';
+      stateClass = 'rounded-md bg-rose-400/20 px-2 py-1 text-rose-200';
       stateLabel = 'Defeat';
-      scoreDisplay = `<span class="score-display score-display--inline"><span class="score-core">0</span>${cleanupHtml}</span>`;
+      scoreDisplay = `<span class="inline-flex flex-row items-center gap-1"><span class="font-semibold text-slate-200">0</span>${cleanupHtml}</span>`;
     } else if (Number(battle.score || 0) > 0) {
       const { core, bonus } = getCoreScore(Number(battle.score || 0));
-      stateClass = battle.defended ? 'value-cell--lose' : 'value-cell--win';
+      stateClass = battle.defended
+        ? 'rounded-md bg-rose-400/20 px-2 py-1 text-rose-200'
+        : 'rounded-md bg-emerald-400/20 px-2 py-1 text-lime-100';
       stateLabel = battle.defended ? 'Defeat' : 'Win';
-      scoreDisplay = `<span class="score-display score-display--inline"><span class="score-core">${core.toLocaleString()}</span>${cleanupHtml}</span>`;
-      bonusDisplay = bonus > 0 ? `<span class="battle-score-bonus">(${bonus.toLocaleString()})</span>` : '';
+      scoreDisplay = `<span class="inline-flex flex-row items-center gap-1"><span class="font-semibold text-slate-200">${core.toLocaleString()}</span>${cleanupHtml}</span>`;
+      bonusDisplay = bonus > 0 ? `<span class="text-xs font-semibold text-emerald-300">(${bonus.toLocaleString()})</span>` : '';
     }
 
-    const zoneLabel = battle.zoneType ? `<span class="battle-zone">${escapeHtml(battle.zoneType)}</span>` : '';
+    const zoneLabel = battle.zoneType ? `<span class="rounded-full border border-slate-500/50 bg-slate-900/70 px-2 py-0.5 text-xs text-slate-300">${escapeHtml(battle.zoneType)}</span>` : '';
     const item = document.createElement('article');
-    item.className = 'battle-log-item';
+    item.className = 'grid grid-cols-1 gap-3 rounded-xl border border-slate-500/30 bg-slate-900/50 p-3 md:grid-cols-3';
     const attackerSideUnits = buildBattleSideUnits(battle.attackerUnits, battle.attackerMachineOfWar);
     const defenderSideUnits = buildBattleSideUnits(battle.defenderUnits, battle.defenderMachineOfWar);
     item.innerHTML = `
-      <div class="battle-side battle-side--attacker">
-        <div class="battle-player-name">${escapeHtml(battle.attackerName)}</div>
-        <div class="battle-units">${renderBattleUnits(attackerSideUnits, 'attacker')}</div>
+      <div class="flex min-w-0 flex-col gap-2">
+        <div class="truncate font-bold text-slate-200">${escapeHtml(battle.attackerName)}</div>
+        <div class="flex flex-wrap gap-1.5">${renderBattleUnits(attackerSideUnits, 'attacker')}</div>
       </div>
-      <div class="battle-score-wrap">
-        <span class="value-cell ${stateClass}">${scoreDisplay}</span>
+      <div class="flex min-w-28 flex-col items-start justify-center gap-1 md:items-center">
+        <span class="inline-flex items-center ${stateClass}">${scoreDisplay}</span>
         ${bonusDisplay}
-        <span class="battle-state-label">${escapeHtml(stateLabel)}</span>
+        <span class="text-xs uppercase tracking-wide text-slate-300">${escapeHtml(stateLabel)}</span>
         ${zoneLabel}
       </div>
-      <div class="battle-side battle-side--defender">
-        <div class="battle-player-name">${escapeHtml(battle.defenderName)}</div>
-        <div class="battle-units">${renderBattleUnits(defenderSideUnits, 'defender')}</div>
+      <div class="flex min-w-0 flex-col gap-2 text-left md:items-end md:text-right">
+        <div class="truncate font-bold text-slate-200">${escapeHtml(battle.defenderName)}</div>
+        <div class="flex flex-wrap gap-1.5 md:justify-end">${renderBattleUnits(defenderSideUnits, 'defender')}</div>
       </div>
     `;
 
@@ -1435,47 +1454,48 @@ function renderTable(snapshot) {
 
   rows.forEach((player, index) => {
     const row = document.createElement('tr');
-    row.className = 'animate__animated animate__fadeInUp';
-    row.style.animationDelay = `${index * 40}ms`;
+    row.className = 'transition duration-150 hover:-translate-y-px hover:bg-cyan-400/10';
     const avatarHtml = renderPlayerAvatar(player);
 
     const cells = [
-      `<td class="sticky left-0 z-10 px-4 py-3 bg-slate-900/95 player-name-column"><div class="flex items-center gap-2"><span class="row-number">${index + 1}</span>${avatarHtml}<div class="min-w-0"><div class="player-name-row"><span class="player-name-text">${escapeHtml(player.name)} (${player.usedTokens}/10)</span></div><div class="player-id-subtext" aria-hidden="true">${escapeHtml(player.userId)}</div></div></div></td>`,
+      `<td class="sticky left-0 z-10 whitespace-nowrap bg-slate-900/95 px-4 py-3 font-semibold text-slate-50"><div class="flex items-center gap-2"><span class="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cyan-400/20 text-xs font-bold text-cyan-100">${index + 1}</span>${avatarHtml}<div class="min-w-0"><div class="flex min-w-0 items-center gap-2"><span class="truncate whitespace-nowrap">${escapeHtml(player.name)} (${player.usedTokens}/10)</span></div></div></div></td>`,
       ...player.tokens.map((token) => {
         const tokenScore = Number(token.score || 0);
         const isUnused = !('hasScore' in token);
         const abandoned = !!token.abandoned;
         const cleanup = !!token.cleanup;
-        const cleanupHtml = cleanup ? '<span class="cleanup-icon cleanup-icon--inline" title="Cleanup">🧹</span>' : '';
+        const cleanupHtml = cleanup ? '<span class="text-emerald-400" title="Cleanup">🧹</span>' : '';
 
         let display = '';
-        let stateClass = 'value-cell--neutral';
+        let stateClass = 'rounded-md bg-slate-400/20 px-2 py-1 text-slate-300';
 
         if (isUnused) {
           // No battle at all - grey with dash
           display = '—';
-          stateClass = 'value-cell--neutral';
+          stateClass = 'rounded-md bg-slate-400/20 px-2 py-1 text-slate-300';
         } else if (abandoned) {
           // Abandoned battle - show stop sign
           display = '🛑';
-          stateClass = 'value-cell--neutral';
+          stateClass = 'rounded-md bg-slate-400/20 px-2 py-1 text-slate-300';
         } else if (!token.hasScore) {
           // Battle exists, not abandoned, no score - show 0 in red
-          display = `<span class="score-display score-display--inline"><span class="score-core">0</span>${cleanup ? '<span class="cleanup-icon cleanup-icon--inline" title="Cleanup">🧹</span>' : ''}</span>`;
-          stateClass = 'value-cell--lose';
+          display = `<span class="inline-flex flex-row items-center gap-1"><span class="font-semibold text-slate-200">0</span>${cleanup ? '<span class="text-emerald-400" title="Cleanup">🧹</span>' : ''}</span>`;
+          stateClass = 'rounded-md bg-rose-400/20 px-2 py-1 text-rose-200';
         } else if (tokenScore > 0) {
           // Battle with score - win if not defended, loss if defended
           display = cleanup
-            ? `<span class="score-display score-display--inline"><span class="score-core">${tokenScore.toLocaleString()}</span><span class="cleanup-icon cleanup-icon--inline" title="Cleanup">🧹</span></span>`
+            ? `<span class="inline-flex flex-row items-center gap-1"><span class="font-semibold text-slate-200">${tokenScore.toLocaleString()}</span><span class="text-emerald-400" title="Cleanup">🧹</span></span>`
             : formatValue(tokenScore);
-          stateClass = token.defended ? 'value-cell--lose' : 'value-cell--win';
+          stateClass = token.defended
+            ? 'rounded-md bg-rose-400/20 px-2 py-1 text-rose-200'
+            : 'rounded-md bg-emerald-400/20 px-2 py-1 text-lime-100';
         } else {
           // Battle with 0 score - neutral
-          display = `<span class="score-display score-display--inline"><span class="score-core">0</span>${cleanup ? '<span class="cleanup-icon cleanup-icon--inline" title="Cleanup">🧹</span>' : ''}</span>`;
-          stateClass = 'value-cell--neutral';
+          display = `<span class="inline-flex flex-row items-center gap-1"><span class="font-semibold text-slate-200">0</span>${cleanup ? '<span class="text-emerald-400" title="Cleanup">🧹</span>' : ''}</span>`;
+          stateClass = 'rounded-md bg-slate-400/20 px-2 py-1 text-slate-300';
         }
 
-        const classes = `value-cell ${stateClass}`;
+        const classes = `inline-flex items-center justify-center ${stateClass}`;
         const buffsHtml = renderBuffs(token.buffs);
         return `<td class="px-4 py-3"><div class="flex w-full flex-col items-center gap-1"><span class="${classes}">${display}</span>${buffsHtml}</div></td>`;
       }),
@@ -1535,10 +1555,10 @@ function renderBuffLegend(snapshot) {
   if (!legendContainer) return;
 
   const tokenItems = [
-    '<div class="buff-legend-item"><span class="legend-icon">🟩</span><span class="label">Win</span></div>',
-    '<div class="buff-legend-item"><span class="legend-icon">🟥</span><span class="label">Defeat</span></div>',
-    '<div class="buff-legend-item"><span class="legend-icon">⬜</span><span class="label">Abandoned / unused</span></div>',
-    '<div class="buff-legend-item"><span class="legend-icon">🧹</span><span class="label">Cleanup</span></div>'
+    '<div class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-400/20 bg-slate-900/60 px-2 py-1 text-sm"><span class="w-4 text-center">🟩</span><span class="font-semibold text-blue-100">Win</span></div>',
+    '<div class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-400/20 bg-slate-900/60 px-2 py-1 text-sm"><span class="w-4 text-center">🟥</span><span class="font-semibold text-blue-100">Defeat</span></div>',
+    '<div class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-400/20 bg-slate-900/60 px-2 py-1 text-sm"><span class="w-4 text-center">⬜</span><span class="font-semibold text-blue-100">Abandoned / unused</span></div>',
+    '<div class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-400/20 bg-slate-900/60 px-2 py-1 text-sm"><span class="w-4 text-center">🧹</span><span class="font-semibold text-blue-100">Cleanup</span></div>'
   ];
 
   const seen = new Map();
@@ -1554,18 +1574,18 @@ function renderBuffLegend(snapshot) {
   });
 
   const buffItems = Array.from(seen.entries()).map(([name, color]) => {
-    return `<div class="buff-legend-item"><span class="buff-circle" style="background:${color}"></span><span class="label">${escapeHtml(name)}</span></div>`;
+    return `<div class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-400/20 bg-slate-900/60 px-2 py-1 text-sm"><span class="inline-block h-3 w-3 rounded-full border border-white/10" style="background:${color}"></span><span class="font-semibold text-blue-100">${escapeHtml(name)}</span></div>`;
   });
 
   legendContainer.innerHTML = `
-    <div class="buff-legend-sections">
-      <div class="buff-legend-group">
-        <div class="legend-title">Token</div>
-        <div class="buff-legend">${tokenItems.join('')}</div>
+    <div class="flex flex-wrap items-center gap-3">
+      <div class="flex flex-wrap items-center gap-3 rounded-xl border border-slate-400/20 bg-slate-900/35 px-3 py-2">
+        <div class="inline-flex min-w-20 items-center text-xs font-bold uppercase tracking-widest text-cyan-300">Token</div>
+        <div class="flex w-full flex-wrap items-center gap-2">${tokenItems.join('')}</div>
       </div>
-      <div class="buff-legend-group">
-        <div class="legend-title">Buff groups</div>
-        <div class="buff-legend">${buffItems.join('') || '<div class="buff-legend-item"><span class="legend-icon">—</span><span class="label">No buff groups</span></div>'}</div>
+      <div class="flex flex-wrap items-center gap-3 rounded-xl border border-slate-400/20 bg-slate-900/35 px-3 py-2">
+        <div class="inline-flex min-w-20 items-center text-xs font-bold uppercase tracking-widest text-cyan-300">Buff groups</div>
+        <div class="flex w-full flex-wrap items-center gap-2">${buffItems.join('') || '<div class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-400/20 bg-slate-900/60 px-2 py-1 text-sm"><span class="w-4 text-center">—</span><span class="font-semibold text-blue-100">No buff groups</span></div>'}</div>
       </div>
     </div>
   `;
