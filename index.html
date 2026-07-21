@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tacticus Guild War Tracker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="min-h-screen bg-slate-950 text-slate-100">
+    <div class="mx-auto max-w-none px-4 py-8 sm:px-6 lg:px-8">
+      <header class="animate__animated animate__fadeInDown rounded-3xl border border-cyan-400/20 bg-slate-900/80 p-6 shadow-2xl shadow-cyan-500/10">
+        <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.35em] text-cyan-300">Tacticus guild wars</p>
+            <h1 class="mt-2 text-3xl font-black sm:text-4xl">Guild score tracker</h1>
+            <p class="mt-3 max-w-2xl text-sm text-slate-300 sm:text-base">
+              A clean static overview of guild performance, built by loading the exported JSON at runtime and analyzing the battle data.
+            </p>
+            <p id="status-message" class="mt-3 text-sm text-slate-400">Loading guild data...</p>
+          </div>
+          <div class="rounded-2xl border border-emerald-400/20 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-200">
+            <div class="font-semibold">Source</div>
+            <div id="source-label" class="mt-1 text-emerald-100/90">Current snapshot</div>
+            <div class="mt-3">
+              <label for="dataset-select" class="block text-xs font-semibold uppercase tracking-wide text-emerald-200/80">Dataset</label>
+              <select id="dataset-select" class="mt-1 w-full rounded-lg border border-emerald-300/30 bg-slate-900/70 px-3 py-2 text-sm text-emerald-100 outline-none transition focus:border-emerald-300 focus:ring-2 focus:ring-emerald-400/30"></select>
+            </div>
+          </div>
+          <div id="buff-legend" class="mt-4 rounded-2xl border border-slate-800 bg-slate-900/60 p-3 text-sm"></div>
+        </div>
+      </header>
+
+      <section class="mt-6 grid gap-4 md:grid-cols-4">
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-4 shadow-lg shadow-black/20">
+          <p class="text-sm text-slate-400">Players</p>
+          <p id="player-count" class="mt-2 text-3xl font-bold text-white">0</p>
+        </div>
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-4 shadow-lg shadow-black/20">
+          <p class="text-sm text-slate-400 uppercase tracking-wide">Token</p>
+          <div class="mt-4 space-y-3">
+            <div>
+              <p class="text-xs text-slate-500 uppercase tracking-wide mb-1">Used</p>
+              <p id="tokens-used" class="text-lg font-bold text-cyan-300">0/0 (0%)</p>
+            </div>
+            <div>
+              <p class="text-xs text-slate-500 uppercase tracking-wide mb-1">Score</p>
+              <p id="token-score-display" class="text-lg font-bold text-amber-300">0/0 (0%)</p>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-4 shadow-lg shadow-black/20">
+          <p class="text-sm text-slate-400 uppercase tracking-wide">Tiles</p>
+          <div class="mt-4 space-y-3">
+            <div>
+              <p class="text-xs text-slate-500 uppercase tracking-wide mb-1">Cleared</p>
+              <p id="tiles-cleared" class="text-lg font-bold text-purple-300">0/30 (0%)</p>
+            </div>
+            <div>
+              <p class="text-xs text-slate-500 uppercase tracking-wide mb-1">Score</p>
+              <p id="tiles-score" class="text-lg font-bold text-purple-300">0/520k (0%)</p>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-4 shadow-lg shadow-black/20">
+          <p class="text-sm text-slate-400">Totals</p>
+          <div class="mt-2 space-y-1 text-sm text-slate-100">
+            <div>Wins: <span id="total-wins">0</span></div>
+            <div>Defeats: <span id="total-defeats">0</span></div>
+            <div>Abandoned: <span id="total-abandoned">0</span></div>
+            <div>Unused: <span id="total-unused">0</span></div>
+          </div>
+        </div>
+      </section>
+
+      <div id="guild-tabs" class="mt-6 flex flex-wrap gap-3"></div>
+
+      <main class="mt-6 overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/70 shadow-2xl shadow-black/25">
+        <div class="overflow-x-auto min-w-[1100px]">
+          <table class="min-w-full border-collapse text-left text-sm">
+            <thead class="bg-slate-800/90 text-slate-200">
+              <tr>
+                <th class="sticky left-0 z-10 bg-slate-800/95 px-4 py-3 font-semibold player-name-column">Player name</th>
+                <th class="px-4 py-3 font-semibold">1</th>
+                <th class="px-4 py-3 font-semibold">2</th>
+                <th class="px-4 py-3 font-semibold">3</th>
+                <th class="px-4 py-3 font-semibold">4</th>
+                <th class="px-4 py-3 font-semibold">5</th>
+                <th class="px-4 py-3 font-semibold">6</th>
+                <th class="px-4 py-3 font-semibold">7</th>
+                <th class="px-4 py-3 font-semibold">8</th>
+                <th class="px-4 py-3 font-semibold">9</th>
+                <th class="px-4 py-3 font-semibold">10</th>
+                <th class="px-4 py-3 font-semibold">Total score</th>
+                <th class="px-4 py-3 font-semibold">Avg / token</th>
+                <th class="px-4 py-3 font-semibold">Skill rating</th>
+              </tr>
+            </thead>
+            <tbody id="leaderboard-body"></tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    requestAnimationFrame(() => {
+      const legend = document.getElementById('buff-legend');
+      if (!legend) return;
+
+      legend.innerHTML = `
+        <div class="buff-legend">
+          <div class="buff-legend-group">
+            <div class="legend-title">Token state</div>
+            <div class="buff-legend-item"><span class="legend-icon">🟩</span><span class="label">Win</span></div>
+            <div class="buff-legend-item"><span class="legend-icon">🟥</span><span class="label">Lose</span></div>
+            <div class="buff-legend-item"><span class="legend-icon">⬜</span><span class="label">Abandoned / unused</span></div>
+            <div class="buff-legend-item"><span class="legend-icon">🧹</span><span class="label">Cleanup</span></div>
+          </div>
+          <div class="buff-legend-group">
+            <div class="legend-title">Buff groups</div>
+            <div class="buff-legend-item"><span class="legend-icon">⚪</span><span class="label">Buff group present</span></div>
+            <div class="buff-legend-item"><span class="legend-icon">🔵</span><span class="label">Buff group active</span></div>
+          </div>
+        </div>
+      `;
+    });
+  });
+</script>
+  </body>
+</html>
