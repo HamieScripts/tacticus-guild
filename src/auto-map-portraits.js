@@ -1,9 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const DATA_PATH = process.argv[2] || 'data/current/23e724b8-8f75-4b66-9c93-c15966a8cb32.json';
+const DATA_PATH = process.argv[2] || 'data/current/live-war.json';
 const SOURCE_DIR = process.argv[3] || 'img';
-const MAP_PATH = process.argv[4] || 'portrait-rename-map.json';
+const MAP_PATH = process.argv[4] || 'data/static/portrait-rename-map.json';
 const MIN_SCORE = Number(process.argv[5] || 8);
 
 function splitCamel(value) {

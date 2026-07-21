@@ -33,7 +33,7 @@ function updateDatasetInUrl(datasetKey) {
 let guildSnapshots = [];
 let activeGuildIndex = 0;
 let unitPortraitMap = {};
-const MISSING_UNIT_AVATAR_URL = './missing-unit.svg';
+const MISSING_UNIT_AVATAR_URL = './img/missing-unit.svg';
 const battleLogFilters = {
   sort: 'newest',
   result: 'all',
@@ -746,7 +746,7 @@ function getBattleUnitAvatarUrlFromUnitId(unitId) {
 
 async function loadUnitPortraitMap() {
   try {
-    const response = await fetch('./img/unit-portrait-map.json', { cache: 'no-store' });
+    const response = await fetch('./data/static/unit-portrait-map.json', { cache: 'no-store' });
     if (!response.ok) {
       unitPortraitMap = {};
       return;

@@ -1,4 +1,4 @@
-const data = require('./data/65648500-b63c-4a80-8862-c36e9e7d800f.json');
+const data = require('../data/history/65648500-b63c-4a80-8862-c36e9e7d800f.json');
 const logs = data.eventResults[0].eventResponseData.activityLogs.filter(l => l.type === 'battleFinished' && l.score);
 
 const tileCounts = {};

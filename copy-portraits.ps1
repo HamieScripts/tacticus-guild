@@ -1,8 +1,8 @@
 param(
   [string]$SourcePath = "..\tacticusplanner\src\assets\images\portraits\resized",
   [string]$DestinationPath = ".\img",
-  [string]$RenameMapPath = ".\portrait-rename-map.json",
-  [string]$ManifestPath = ".\img\unit-portrait-map.json"
+  [string]$RenameMapPath = ".\data\static\portrait-rename-map.json",
+  [string]$ManifestPath = ".\data\static\unit-portrait-map.json"
 )
 
 $ErrorActionPreference = "Stop"
