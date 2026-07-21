@@ -95,42 +95,64 @@
 
       <div id="buff-legend" class="text-sm"></div>
 
-      <main class="overflow-hidden rounded-xl border border-slate-800 bg-slate-900/70 shadow-2xl shadow-black/25">
-        <div class="leaderboard-scroll min-w-[1100px] overflow-auto">
-          <table class="min-w-full border-collapse text-left text-sm">
-            <thead class="bg-slate-800/90 text-slate-200">
-              <tr>
-                <th class="sticky left-0 z-10 bg-slate-800/95 px-4 py-3 font-semibold player-name-column">Player name</th>
-                <th class="px-4 py-3 font-semibold">1</th>
-                <th class="px-4 py-3 font-semibold">2</th>
-                <th class="px-4 py-3 font-semibold">3</th>
-                <th class="px-4 py-3 font-semibold">4</th>
-                <th class="px-4 py-3 font-semibold">5</th>
-                <th class="px-4 py-3 font-semibold">6</th>
-                <th class="px-4 py-3 font-semibold">7</th>
-                <th class="px-4 py-3 font-semibold">8</th>
-                <th class="px-4 py-3 font-semibold">9</th>
-                <th class="px-4 py-3 font-semibold">10</th>
-                <th class="px-4 py-3 font-semibold">Total score</th>
-                <th class="px-4 py-3 font-semibold">Avg / token</th>
-                <th class="px-4 py-3 font-semibold">Skill rating</th>
-              </tr>
-            </thead>
-            <tbody id="leaderboard-body"></tbody>
-          </table>
+      <div class="rounded-xl border border-slate-800 bg-slate-900/70 shadow-2xl shadow-black/25">
+        <!-- Tab bar -->
+        <div class="flex border-b border-slate-700">
+          <button id="tab-btn-leaderboard" type="button" onclick="switchMainTab('leaderboard')" class="main-tab-btn main-tab-btn--active px-5 py-3 text-sm font-semibold">Token table</button>
+          <button id="tab-btn-battlelog" type="button" onclick="switchMainTab('battlelog')" class="main-tab-btn px-5 py-3 text-sm font-semibold">
+            Battle log <span id="battle-log-count" class="ml-1 rounded-full bg-slate-700 px-2 py-0.5 text-xs text-slate-300">0</span>
+          </button>
         </div>
-      </main>
 
-      <section class="rounded-xl border border-slate-800 bg-slate-900/70 p-4 shadow-2xl shadow-black/25">
-        <div class="flex flex-wrap items-center justify-between gap-2">
-          <h2 class="text-lg font-semibold text-slate-100">Battle log</h2>
-          <p id="battle-log-count" class="text-sm text-slate-400">0 battles</p>
+        <!-- Token table panel -->
+        <div id="tab-panel-leaderboard">
+          <div class="leaderboard-scroll min-w-[1100px] overflow-auto">
+            <table class="min-w-full border-collapse text-left text-sm">
+              <thead class="bg-slate-800/90 text-slate-200">
+                <tr>
+                  <th class="sticky left-0 z-10 bg-slate-800/95 px-4 py-3 font-semibold player-name-column">Player name</th>
+                  <th class="px-4 py-3 font-semibold">1</th>
+                  <th class="px-4 py-3 font-semibold">2</th>
+                  <th class="px-4 py-3 font-semibold">3</th>
+                  <th class="px-4 py-3 font-semibold">4</th>
+                  <th class="px-4 py-3 font-semibold">5</th>
+                  <th class="px-4 py-3 font-semibold">6</th>
+                  <th class="px-4 py-3 font-semibold">7</th>
+                  <th class="px-4 py-3 font-semibold">8</th>
+                  <th class="px-4 py-3 font-semibold">9</th>
+                  <th class="px-4 py-3 font-semibold">10</th>
+                  <th class="px-4 py-3 font-semibold">Total score</th>
+                  <th class="px-4 py-3 font-semibold">Avg / token</th>
+                  <th class="px-4 py-3 font-semibold">Skill rating</th>
+                </tr>
+              </thead>
+              <tbody id="leaderboard-body"></tbody>
+            </table>
+          </div>
         </div>
-        <div id="battle-log-list" class="mt-4 battle-log-list"></div>
-      </section>
+
+        <!-- Battle log panel -->
+        <div id="tab-panel-battlelog" class="hidden p-4">
+          <div id="battle-log-list" class="battle-log-list"></div>
+        </div>
+      </div>
     </div>
 
     <script src="app.js"></script>
+<script>
+  function switchMainTab(tab) {
+    const panels = ['leaderboard', 'battlelog'];
+    panels.forEach(function(id) {
+      const panel = document.getElementById('tab-panel-' + id);
+      const btn = document.getElementById('tab-btn-' + id);
+      const isActive = id === tab;
+      if (panel) panel.classList.toggle('hidden', !isActive);
+      if (btn) {
+        btn.classList.toggle('main-tab-btn--active', isActive);
+      }
+    });
+  }
+</script>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(() => {

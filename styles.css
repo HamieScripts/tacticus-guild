@@ -279,6 +279,21 @@ body {
   line-height: 1;
 }
 
+.main-tab-btn {
+  color: #94a3b8;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.main-tab-btn:hover {
+  color: #e2e8f0;
+}
+
+.main-tab-btn--active {
+  color: #67e8f9;
+  border-bottom-color: #67e8f9;
+}
+
 .battle-log-list {
   display: flex;
   flex-direction: column;

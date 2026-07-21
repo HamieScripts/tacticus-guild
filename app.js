@@ -756,7 +756,7 @@ function renderBattleLog(snapshot) {
 
   const battles = Array.isArray(snapshot?.battles) ? snapshot.battles : [];
   if (battleCount) {
-    battleCount.textContent = `${battles.length.toLocaleString()} battles`;
+    battleCount.textContent = battles.length.toLocaleString();
   }
 
   battleList.innerHTML = '';
