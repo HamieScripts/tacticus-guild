@@ -31,7 +31,16 @@ body {
 }
 
 .leaderboard-scroll {
+  width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: auto;
   max-height: calc(var(--leaderboard-header-height) + (var(--leaderboard-visible-rows) * var(--leaderboard-row-height)));
+}
+
+.leaderboard-table {
+  width: 100%;
+  min-width: 1100px;
 }
 
 .leaderboard-scroll thead th {
@@ -43,6 +52,28 @@ body {
 
 .leaderboard-scroll thead th.player-name-column {
   z-index: 40;
+  width: 1%;
+  white-space: nowrap;
+}
+
+.leaderboard-table thead th:nth-child(n + 2):nth-child(-n + 11),
+.leaderboard-table tbody td:nth-child(n + 2):nth-child(-n + 11) {
+  text-align: center;
+}
+
+.leaderboard-table tbody td:nth-child(n + 2):nth-child(-n + 11) .score-display {
+  align-items: center;
+}
+
+.leaderboard-table tbody td:nth-child(n + 2):nth-child(-n + 11) .buffs-row {
+  justify-content: center;
+}
+
+.leaderboard-table tbody td:nth-child(n + 2):nth-child(-n + 11) .value-cell {
+  display: inline-flex;
+  align-self: center;
+  justify-content: center;
+  width: fit-content;
 }
 
 #leaderboard-body td:first-child {
@@ -52,6 +83,8 @@ body {
   background: rgba(15, 23, 42, 0.95);
   font-weight: 600;
   color: #f8fafc;
+  width: 1%;
+  white-space: nowrap;
 }
 
 .row-number {
@@ -82,6 +115,12 @@ body {
   flex-direction: column;
   align-items: flex-start;
   gap: 0.1rem;
+}
+
+.score-display--inline {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.35rem;
 }
 
 .score-core {
@@ -144,27 +183,6 @@ body {
 
 .player-id-subtext {
   display: none;
-}
-
-.copy-user-id-btn {
-  opacity: 0;
-  pointer-events: none;
-  border: 1px solid rgba(34, 211, 238, 0.25);
-  background: rgba(15, 23, 42, 0.75);
-  color: #bae6fd;
-  border-radius: 999px;
-  width: 1.5rem;
-  height: 1.5rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 160ms ease, background-color 160ms ease;
-}
-
-.player-name-row:hover .copy-user-id-btn,
-.copy-user-id-btn:hover {
-  opacity: 1;
-  pointer-events: auto;
 }
 
 .buffs-row {
@@ -284,6 +302,15 @@ body {
   color: #34d399;
   font-size: 0.95rem;
   line-height: 1;
+}
+
+.cleanup-icon--inline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
 }
 
 .defeated-icon {

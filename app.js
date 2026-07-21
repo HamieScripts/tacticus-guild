@@ -1397,7 +1397,6 @@ function renderBattleLog(snapshot) {
       bonusDisplay = bonus > 0 ? `<span class="battle-score-bonus">(${bonus.toLocaleString()})</span>` : '';
     }
 
-    const cleanupHtml = battle.cleanup ? '<span class="cleanup-icon" title="Cleanup">🧹</span>' : '';
     const zoneLabel = battle.zoneType ? `<span class="battle-zone">${escapeHtml(battle.zoneType)}</span>` : '';
     const item = document.createElement('article');
     item.className = 'battle-log-item';
@@ -1412,7 +1411,6 @@ function renderBattleLog(snapshot) {
         <span class="value-cell ${stateClass}">${scoreDisplay}</span>
         ${bonusDisplay}
         <span class="battle-state-label">${escapeHtml(stateLabel)}</span>
-        ${cleanupHtml}
         ${zoneLabel}
       </div>
       <div class="battle-side battle-side--defender">
@@ -1441,13 +1439,13 @@ function renderTable(snapshot) {
     const avatarHtml = renderPlayerAvatar(player);
 
     const cells = [
-      `<td class="sticky left-0 z-10 px-4 py-3 bg-slate-900/95 player-name-column"><div class="flex items-center gap-2"><span class="row-number">${index + 1}</span>${avatarHtml}<div class="min-w-0"><div class="player-name-row"><span class="player-name-text">${escapeHtml(player.name)} (${player.usedTokens}/10)</span><button class="copy-user-id-btn" type="button" data-user-id="${player.userId}" title="Copy user ID">⧉</button></div><div class="player-id-subtext" aria-hidden="true">${escapeHtml(player.userId)}</div></div></div></td>`,
+      `<td class="sticky left-0 z-10 px-4 py-3 bg-slate-900/95 player-name-column"><div class="flex items-center gap-2"><span class="row-number">${index + 1}</span>${avatarHtml}<div class="min-w-0"><div class="player-name-row"><span class="player-name-text">${escapeHtml(player.name)} (${player.usedTokens}/10)</span></div><div class="player-id-subtext" aria-hidden="true">${escapeHtml(player.userId)}</div></div></div></td>`,
       ...player.tokens.map((token) => {
         const tokenScore = Number(token.score || 0);
         const isUnused = !('hasScore' in token);
         const abandoned = !!token.abandoned;
         const cleanup = !!token.cleanup;
-        const cleanupHtml = cleanup ? `<span class="cleanup-icon" title="Cleanup">🧹</span>` : '';
+        const cleanupHtml = cleanup ? '<span class="cleanup-icon cleanup-icon--inline" title="Cleanup">🧹</span>' : '';
 
         let display = '';
         let stateClass = 'value-cell--neutral';
@@ -1462,21 +1460,23 @@ function renderTable(snapshot) {
           stateClass = 'value-cell--neutral';
         } else if (!token.hasScore) {
           // Battle exists, not abandoned, no score - show 0 in red
-          display = `<span class="score-display"><span class="score-core">0</span></span>`;
+          display = `<span class="score-display score-display--inline"><span class="score-core">0</span>${cleanup ? '<span class="cleanup-icon cleanup-icon--inline" title="Cleanup">🧹</span>' : ''}</span>`;
           stateClass = 'value-cell--lose';
         } else if (tokenScore > 0) {
           // Battle with score - win if not defended, loss if defended
-          display = formatValue(tokenScore);
+          display = cleanup
+            ? `<span class="score-display score-display--inline"><span class="score-core">${tokenScore.toLocaleString()}</span><span class="cleanup-icon cleanup-icon--inline" title="Cleanup">🧹</span></span>`
+            : formatValue(tokenScore);
           stateClass = token.defended ? 'value-cell--lose' : 'value-cell--win';
         } else {
           // Battle with 0 score - neutral
-          display = `<span class="score-display"><span class="score-core">0</span></span>`;
+          display = `<span class="score-display score-display--inline"><span class="score-core">0</span>${cleanup ? '<span class="cleanup-icon cleanup-icon--inline" title="Cleanup">🧹</span>' : ''}</span>`;
           stateClass = 'value-cell--neutral';
         }
 
         const classes = `value-cell ${stateClass}`;
         const buffsHtml = renderBuffs(token.buffs);
-        return `<td class="px-4 py-3"><div class="flex items-center gap-2"><span class="${classes}">${display}</span>${cleanupHtml}</div>${buffsHtml}</td>`;
+        return `<td class="px-4 py-3"><div class="flex w-full flex-col items-center gap-1"><span class="${classes}">${display}</span>${buffsHtml}</div></td>`;
       }),
       `<td class="px-4 py-3"><span class="font-semibold text-amber-300">${player.totalScore.toLocaleString()}</span></td>`,
       `<td class="px-4 py-3"><span class="text-cyan-300">${player.averageScore.toLocaleString()}</span></td>`,
@@ -1485,24 +1485,6 @@ function renderTable(snapshot) {
 
     row.innerHTML = cells.join('');
     leaderboardBody.appendChild(row);
-  });
-
-  leaderboardBody.querySelectorAll('.copy-user-id-btn').forEach((button) => {
-    button.addEventListener('click', async (event) => {
-      const userId = event.currentTarget.getAttribute('data-user-id');
-
-      if (!userId) return;
-
-      try {
-        await navigator.clipboard.writeText(userId);
-        event.currentTarget.textContent = '✓';
-        window.setTimeout(() => {
-          event.currentTarget.textContent = '⧉';
-        }, 1200);
-      } catch (error) {
-        console.error('Unable to copy user ID', error);
-      }
-    });
   });
 
   const playerCount = document.getElementById('player-count');
