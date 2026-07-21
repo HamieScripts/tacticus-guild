@@ -4,6 +4,6 @@
   "private": true,
   "scripts": {
     "map:portraits": "node ./src/auto-map-portraits.js",
-    "copy:portraits": "powershell -NoProfile -ExecutionPolicy Bypass -File ./copy-portraits.ps1"
+    "copy:portraits": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/copy-portraits.ps1"
   }
 }
