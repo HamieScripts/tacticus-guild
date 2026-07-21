@@ -418,6 +418,8 @@ function buildSnapshot(data) {
     const defenderTeamIndex = getOpposingTeamIndex(teamIndex);
     const attackerUnits = Array.isArray(log?.attacker?.units) ? log.attacker.units : [];
     const defenderUnits = Array.isArray(log?.defender?.units) ? log.defender.units : [];
+    const attackerMachineOfWar = log?.attacker?.machineOfWar || null;
+    const defenderMachineOfWar = log?.defender?.machineOfWar || null;
     const rawScore = hasScore ? Number(log.score || 0) : 0;
 
     if (guildBattleLogs.has(teamIndex)) {
@@ -437,7 +439,9 @@ function buildSnapshot(data) {
         cleanup,
         score: rawScore,
         attackerUnits,
-        defenderUnits
+        defenderUnits,
+        attackerMachineOfWar,
+        defenderMachineOfWar
       });
     }
   }
@@ -527,6 +531,7 @@ function summarizeGuild(snapshot) {
   const totalUnused = rows.reduce((sum, player) => sum + player.tokens.reduce((tokenSum, token) => tokenSum + (isUsedToken(token) ? 0 : 1), 0), 0);
 
   return {
+    teamIndex: snapshot.teamIndex,
     name: snapshot.name,
     rows,
     totalPlayers,
@@ -563,9 +568,19 @@ function renderGuildTokenProjectionTable() {
   }
 
   const summaries = guildSnapshots.map((snapshot) => summarizeGuild(snapshot));
+  const activeTeamIndex = guildSnapshots[activeGuildIndex]?.teamIndex;
 
   summaries
-    .sort((a, b) => b.projectedTokenScore - a.projectedTokenScore)
+    .sort((a, b) => {
+      const aIsActive = Number(a.teamIndex) === Number(activeTeamIndex);
+      const bIsActive = Number(b.teamIndex) === Number(activeTeamIndex);
+
+      if (aIsActive !== bIsActive) {
+        return aIsActive ? -1 : 1;
+      }
+
+      return b.projectedTokenScore - a.projectedTokenScore;
+    })
     .forEach((guild) => {
       const row = document.createElement('tr');
       row.innerHTML = `
@@ -719,6 +734,20 @@ function renderBattleUnits(units) {
     .join('');
 }
 
+function buildBattleSideUnits(units, machineOfWar) {
+  const sideUnits = Array.isArray(units) ? [...units] : [];
+
+  if (machineOfWar && typeof machineOfWar === 'object') {
+    const machineLabel = getBattleUnitLabel(machineOfWar);
+    sideUnits.push({
+      ...machineOfWar,
+      displayName: `Machine of War: ${machineLabel}`
+    });
+  }
+
+  return sideUnits;
+}
+
 function renderBattleLog(snapshot) {
   const battleList = document.getElementById('battle-log-list');
   const battleCount = document.getElementById('battle-log-count');
@@ -761,10 +790,12 @@ function renderBattleLog(snapshot) {
 
     const item = document.createElement('article');
     item.className = 'battle-log-item';
+    const attackerSideUnits = buildBattleSideUnits(battle.attackerUnits, battle.attackerMachineOfWar);
+    const defenderSideUnits = buildBattleSideUnits(battle.defenderUnits, battle.defenderMachineOfWar);
     item.innerHTML = `
       <div class="battle-side battle-side--attacker">
         <div class="battle-player-name">${escapeHtml(battle.attackerName)}</div>
-        <div class="battle-units">${renderBattleUnits(battle.attackerUnits)}</div>
+        <div class="battle-units">${renderBattleUnits(attackerSideUnits)}</div>
       </div>
       <div class="battle-score-wrap">
         <span class="value-cell ${stateClass}">${scoreDisplay}</span>
@@ -774,7 +805,7 @@ function renderBattleLog(snapshot) {
       </div>
       <div class="battle-side battle-side--defender">
         <div class="battle-player-name">${escapeHtml(battle.defenderName)}</div>
-        <div class="battle-units">${renderBattleUnits(battle.defenderUnits)}</div>
+        <div class="battle-units">${renderBattleUnits(defenderSideUnits)}</div>
       </div>
     `;
 

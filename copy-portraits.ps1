@@ -55,7 +55,7 @@ foreach ($pattern in $extensions) {
       $mappedUnitId = [string]$renameMap[$baseName]
     }
 
-    if ([string]::IsNullOrWhiteSpace($mappedUnitId)) {
+    if ([string]::IsNullOrWhiteSpace($mappedUnitId) -or $mappedUnitId -eq 'unknown') {
       $unmapped += $file.Name
     } else {
       # Map value should be the exact unitId from battle data, e.g. ultraTitus.
