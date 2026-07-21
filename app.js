@@ -612,6 +612,7 @@ function renderActiveGuild() {
   if (!snapshot) return;
 
   renderTable(snapshot);
+  renderBuffLegend(snapshot);
   renderGuildTabs();
 }
 
@@ -737,7 +738,7 @@ function renderTable(snapshot) {
   if (totalUnusedEl) totalUnusedEl.textContent = totalUnused.toString();
 }
 
-function renderBuffLegend() {
+function renderBuffLegend(snapshot) {
   const legendContainer = document.getElementById('buff-legend');
   if (!legendContainer) return;
 
@@ -749,13 +750,13 @@ function renderBuffLegend() {
   ];
 
   const seen = new Map();
-  guildSnapshots.forEach((g) => {
-    (g.players || []).forEach((p) => {
-      (p.tokens || []).forEach((t) => {
-        (t.buffs || []).forEach((b) => {
-          const name = (b && (b.abilityId || b.name || b.id)) || String(b || '');
-          if (name && !seen.has(name)) seen.set(name, colorFor(name));
-        });
+  const guild = snapshot || guildSnapshots[activeGuildIndex];
+
+  (guild?.players || []).forEach((p) => {
+    (p.tokens || []).forEach((t) => {
+      (t.buffs || []).forEach((b) => {
+        const name = (b && (b.abilityId || b.name || b.id)) || String(b || '');
+        if (name && !seen.has(name)) seen.set(name, colorFor(name));
       });
     });
   });
@@ -765,13 +766,15 @@ function renderBuffLegend() {
   });
 
   legendContainer.innerHTML = `
-    <div class="buff-legend-group">
-      <div class="legend-title">Token</div>
-      <div class="buff-legend">${tokenItems.join('')}</div>
-    </div>
-    <div class="buff-legend-group">
-      <div class="legend-title">Buff groups</div>
-      <div class="buff-legend">${buffItems.join('') || '<div class="buff-legend-item"><span class="legend-icon">—</span><span class="label">No buff groups</span></div>'}</div>
+    <div class="buff-legend-sections">
+      <div class="buff-legend-group">
+        <div class="legend-title">Token</div>
+        <div class="buff-legend">${tokenItems.join('')}</div>
+      </div>
+      <div class="buff-legend-group">
+        <div class="legend-title">Buff groups</div>
+        <div class="buff-legend">${buffItems.join('') || '<div class="buff-legend-item"><span class="legend-icon">—</span><span class="label">No buff groups</span></div>'}</div>
+      </div>
     </div>
   `;
 }
@@ -812,7 +815,6 @@ async function loadGuildData() {
     activeGuildIndex = 0;
     renderGuildTokenProjectionTable();
     renderActiveGuild();
-    renderBuffLegend();
     renderDatasetTabs();
 
     if (statusMessage) {
