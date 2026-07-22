@@ -53,6 +53,8 @@ const battleLogPlayerFilterOptions = {
 };
 let battleLogTileTypeOptions = [];
 let battleLogFiltersInitialized = false;
+let leaderboardLayout = 'table';
+let leaderboardLayoutInitialized = false;
 
 const MAX_TOKEN_SCORE = 1600;
 const TOKEN_SLOTS_PER_PLAYER = 10;
@@ -693,6 +695,61 @@ function renderActiveGuild() {
   renderBuffLegend(snapshot);
   renderBattleLog(snapshot);
   renderGuildTabs();
+}
+
+function syncLeaderboardLayoutButtons() {
+  const tableBtn = document.getElementById('leaderboard-layout-table');
+  const cardsBtn = document.getElementById('leaderboard-layout-cards');
+  if (!tableBtn || !cardsBtn) return;
+
+  const makeActive = (button) => {
+    button.classList.add('border-cyan-400', 'bg-cyan-500/15', 'text-cyan-200');
+    button.classList.remove('border-slate-500/50', 'bg-slate-900/80', 'text-slate-300');
+  };
+  const makeInactive = (button) => {
+    button.classList.remove('border-cyan-400', 'bg-cyan-500/15', 'text-cyan-200');
+    button.classList.add('border-slate-500/50', 'bg-slate-900/80', 'text-slate-300');
+  };
+
+  if (leaderboardLayout === 'cards') {
+    makeActive(cardsBtn);
+    makeInactive(tableBtn);
+  } else {
+    makeActive(tableBtn);
+    makeInactive(cardsBtn);
+  }
+}
+
+function applyLeaderboardLayout() {
+  const tableWrap = document.getElementById('leaderboard-table-wrap');
+  const cardsWrap = document.getElementById('leaderboard-cards');
+  if (!tableWrap || !cardsWrap) return;
+
+  const useCards = leaderboardLayout === 'cards';
+  tableWrap.classList.toggle('hidden', useCards);
+  cardsWrap.classList.toggle('hidden', !useCards);
+  syncLeaderboardLayoutButtons();
+}
+
+function setupLeaderboardLayoutToggle() {
+  if (leaderboardLayoutInitialized) return;
+
+  const tableBtn = document.getElementById('leaderboard-layout-table');
+  const cardsBtn = document.getElementById('leaderboard-layout-cards');
+  if (!tableBtn || !cardsBtn) return;
+
+  tableBtn.addEventListener('click', () => {
+    leaderboardLayout = 'table';
+    applyLeaderboardLayout();
+  });
+
+  cardsBtn.addEventListener('click', () => {
+    leaderboardLayout = 'cards';
+    applyLeaderboardLayout();
+  });
+
+  leaderboardLayoutInitialized = true;
+  applyLeaderboardLayout();
 }
 
 function getBattleUnitLabel(unit) {
@@ -1447,10 +1504,50 @@ function renderTable(snapshot) {
   const summary = summarizeGuild(snapshot);
   const rows = summary.rows;
   const leaderboardBody = document.getElementById('leaderboard-body');
+  const leaderboardCards = document.getElementById('leaderboard-cards');
 
   if (!leaderboardBody) return;
 
   leaderboardBody.innerHTML = '';
+  if (leaderboardCards) leaderboardCards.innerHTML = '';
+
+  const getTokenVisual = (token) => {
+    const tokenScore = Number(token.score || 0);
+    const isUnused = !('hasScore' in token);
+    const abandoned = !!token.abandoned;
+    const cleanup = !!token.cleanup;
+    const cleanupHtml = cleanup ? '<span class="text-emerald-400" title="Cleanup">🧹</span>' : '';
+
+    let display = '';
+    let stateClass = 'rounded-md bg-slate-400/20 px-2 py-1 text-slate-300';
+
+    if (isUnused) {
+      display = '—';
+      stateClass = 'rounded-md bg-slate-400/20 px-2 py-1 text-slate-300';
+    } else if (abandoned) {
+      display = '🛑';
+      stateClass = 'rounded-md bg-slate-400/20 px-2 py-1 text-slate-300';
+    } else if (!token.hasScore) {
+      display = `<span class="inline-flex flex-row items-center gap-1"><span class="font-semibold text-slate-200">0</span>${cleanupHtml}</span>`;
+      stateClass = 'rounded-md bg-rose-400/20 px-2 py-1 text-rose-200';
+    } else if (tokenScore > 0) {
+      display = cleanup
+        ? `<span class="inline-flex flex-row items-center gap-1"><span class="font-semibold text-slate-200">${tokenScore.toLocaleString()}</span><span class="text-emerald-400" title="Cleanup">🧹</span></span>`
+        : formatValue(tokenScore);
+      stateClass = token.defended
+        ? 'rounded-md bg-rose-400/20 px-2 py-1 text-rose-200'
+        : 'rounded-md bg-emerald-400/20 px-2 py-1 text-lime-100';
+    } else {
+      display = `<span class="inline-flex flex-row items-center gap-1"><span class="font-semibold text-slate-200">0</span>${cleanupHtml}</span>`;
+      stateClass = 'rounded-md bg-slate-400/20 px-2 py-1 text-slate-300';
+    }
+
+    return {
+      display,
+      stateClass,
+      buffsHtml: renderBuffs(token.buffs)
+    };
+  };
 
   rows.forEach((player, index) => {
     const row = document.createElement('tr');
@@ -1460,44 +1557,8 @@ function renderTable(snapshot) {
     const cells = [
       `<td class="sticky left-0 z-10 whitespace-nowrap bg-slate-900/95 px-4 py-3 font-semibold text-slate-50"><div class="flex items-center gap-2"><span class="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cyan-400/20 text-xs font-bold text-cyan-100">${index + 1}</span>${avatarHtml}<div class="min-w-0"><div class="flex min-w-0 items-center gap-2"><span class="truncate whitespace-nowrap">${escapeHtml(player.name)} (${player.usedTokens}/10)</span></div></div></div></td>`,
       ...player.tokens.map((token) => {
-        const tokenScore = Number(token.score || 0);
-        const isUnused = !('hasScore' in token);
-        const abandoned = !!token.abandoned;
-        const cleanup = !!token.cleanup;
-        const cleanupHtml = cleanup ? '<span class="text-emerald-400" title="Cleanup">🧹</span>' : '';
-
-        let display = '';
-        let stateClass = 'rounded-md bg-slate-400/20 px-2 py-1 text-slate-300';
-
-        if (isUnused) {
-          // No battle at all - grey with dash
-          display = '—';
-          stateClass = 'rounded-md bg-slate-400/20 px-2 py-1 text-slate-300';
-        } else if (abandoned) {
-          // Abandoned battle - show stop sign
-          display = '🛑';
-          stateClass = 'rounded-md bg-slate-400/20 px-2 py-1 text-slate-300';
-        } else if (!token.hasScore) {
-          // Battle exists, not abandoned, no score - show 0 in red
-          display = `<span class="inline-flex flex-row items-center gap-1"><span class="font-semibold text-slate-200">0</span>${cleanup ? '<span class="text-emerald-400" title="Cleanup">🧹</span>' : ''}</span>`;
-          stateClass = 'rounded-md bg-rose-400/20 px-2 py-1 text-rose-200';
-        } else if (tokenScore > 0) {
-          // Battle with score - win if not defended, loss if defended
-          display = cleanup
-            ? `<span class="inline-flex flex-row items-center gap-1"><span class="font-semibold text-slate-200">${tokenScore.toLocaleString()}</span><span class="text-emerald-400" title="Cleanup">🧹</span></span>`
-            : formatValue(tokenScore);
-          stateClass = token.defended
-            ? 'rounded-md bg-rose-400/20 px-2 py-1 text-rose-200'
-            : 'rounded-md bg-emerald-400/20 px-2 py-1 text-lime-100';
-        } else {
-          // Battle with 0 score - neutral
-          display = `<span class="inline-flex flex-row items-center gap-1"><span class="font-semibold text-slate-200">0</span>${cleanup ? '<span class="text-emerald-400" title="Cleanup">🧹</span>' : ''}</span>`;
-          stateClass = 'rounded-md bg-slate-400/20 px-2 py-1 text-slate-300';
-        }
-
-        const classes = `inline-flex items-center justify-center ${stateClass}`;
-        const buffsHtml = renderBuffs(token.buffs);
-        return `<td class="px-4 py-3"><div class="flex w-full flex-col items-center gap-1"><span class="${classes}">${display}</span>${buffsHtml}</div></td>`;
+        const tokenVisual = getTokenVisual(token);
+        return `<td class="px-4 py-3"><div class="flex w-full flex-col items-center gap-1"><span class="inline-flex items-center justify-center ${tokenVisual.stateClass}">${tokenVisual.display}</span>${tokenVisual.buffsHtml}</div></td>`;
       }),
       `<td class="px-4 py-3"><span class="font-semibold text-amber-300">${player.totalScore.toLocaleString()}</span></td>`,
       `<td class="px-4 py-3"><span class="text-cyan-300">${player.averageScore.toLocaleString()}</span></td>`,
@@ -1506,6 +1567,48 @@ function renderTable(snapshot) {
 
     row.innerHTML = cells.join('');
     leaderboardBody.appendChild(row);
+
+    if (leaderboardCards) {
+      const tokenCards = player.tokens.map((token, tokenIndex) => {
+        const tokenVisual = getTokenVisual(token);
+        return `
+          <div class="rounded-lg border border-slate-500/30 bg-slate-900/50 p-2 text-center">
+            <div class="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-400">Token ${tokenIndex + 1}</div>
+            <div class="inline-flex items-center justify-center ${tokenVisual.stateClass}">${tokenVisual.display}</div>
+            ${tokenVisual.buffsHtml}
+          </div>
+        `;
+      }).join('');
+
+      const card = document.createElement('article');
+      card.className = 'rounded-xl border border-slate-500/30 bg-slate-900/60 p-4';
+      card.innerHTML = `
+        <div class="mb-3 flex items-center gap-2">
+          <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-cyan-400/20 text-xs font-bold text-cyan-100">${index + 1}</span>
+          ${avatarHtml}
+          <div class="min-w-0">
+            <div class="truncate font-semibold text-slate-100">${escapeHtml(player.name)}</div>
+            <div class="text-xs text-slate-400">${player.usedTokens}/10 used</div>
+          </div>
+        </div>
+        <div class="mb-3 grid grid-cols-3 gap-2 text-xs">
+          <div class="rounded-md border border-amber-400/25 bg-amber-500/10 p-2">
+            <div class="text-slate-400">Score</div>
+            <div class="font-semibold text-amber-300">${player.totalScore.toLocaleString()}</div>
+          </div>
+          <div class="rounded-md border border-cyan-400/25 bg-cyan-500/10 p-2">
+            <div class="text-slate-400">Avg</div>
+            <div class="font-semibold text-cyan-300">${player.averageScore.toLocaleString()}</div>
+          </div>
+          <div class="rounded-md border border-violet-400/25 bg-violet-500/10 p-2">
+            <div class="text-slate-400">Rating</div>
+            <div class="font-semibold text-violet-300">${player.totalSkillRating.toLocaleString(undefined, { maximumFractionDigits: 0 })}</div>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-2 sm:grid-cols-5">${tokenCards}</div>
+      `;
+      leaderboardCards.appendChild(card);
+    }
   });
 
   const playerCount = document.getElementById('player-count');
@@ -1548,6 +1651,8 @@ function renderTable(snapshot) {
   if (totalDefeatsEl) totalDefeatsEl.textContent = totalDefeats.toString();
   if (totalAbandonedEl) totalAbandonedEl.textContent = totalAbandoned.toString();
   if (totalUnusedEl) totalUnusedEl.textContent = totalUnused.toString();
+
+  applyLeaderboardLayout();
 }
 
 function renderBuffLegend(snapshot) {
@@ -1602,6 +1707,7 @@ async function loadGuildData() {
   }
 
   renderDatasetTabs();
+  setupLeaderboardLayoutToggle();
   setupBattleLogFilters();
 
   if (statusMessage) {
