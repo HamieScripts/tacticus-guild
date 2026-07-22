@@ -1683,7 +1683,7 @@ function renderTable(snapshot) {
 
   rows.forEach((player, index) => {
     const row = document.createElement('tr');
-    row.className = 'transition duration-150 hover:-translate-y-px hover:bg-cyan-400/10';
+    row.className = 'transition-colors duration-150 hover:bg-cyan-400/10';
     const avatarHtml = renderPlayerAvatar(player);
 
     const cells = [
