@@ -55,6 +55,26 @@ let battleLogTileTypeOptions = [];
 let battleLogFiltersInitialized = false;
 let leaderboardLayout = 'table';
 let leaderboardLayoutInitialized = false;
+let legendVisibilityInitialized = false;
+const legendVisibility = {
+  token: {
+    win: true,
+    defeat: true,
+    abandoned: true,
+    cleanup: true
+  },
+  scoreTier: {
+    bronze: true,
+    silver: true,
+    gold: true
+  },
+  buff: {}
+};
+let legendBlockKeys = {
+  token: ['win', 'defeat', 'abandoned', 'cleanup'],
+  scoreTier: ['bronze', 'silver', 'gold'],
+  buff: []
+};
 
 const MAX_TOKEN_SCORE = 1600;
 const TOKEN_SLOTS_PER_PLAYER = 10;
@@ -74,6 +94,88 @@ const SKILL_BUFF_MULTIPLIERS = {
   EnvAngelsOfDeath: 1.1,
   EnvFortified: 1.025
 };
+
+function makeLegendBuffKey(name) {
+  return String(name || '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+function isLegendEnabled(block, key) {
+  return Boolean(legendVisibility?.[block]?.[key] ?? true);
+}
+
+function setLegendEnabled(block, key, enabled) {
+  if (!legendVisibility[block]) legendVisibility[block] = {};
+  legendVisibility[block][key] = Boolean(enabled);
+}
+
+function rerenderLeaderboardFromLegendToggle() {
+  const snapshot = guildSnapshots[activeGuildIndex];
+  if (!snapshot) return;
+  renderTable(snapshot);
+  renderBuffLegend(snapshot);
+}
+
+function getTokenLegendOutcomeKey(token) {
+  const isUsed = token && typeof token === 'object' && Object.prototype.hasOwnProperty.call(token, 'hasScore');
+  if (!isUsed || token.abandoned) return 'abandoned';
+  if (!token.hasScore || token.defended) return 'defeat';
+  return 'win';
+}
+
+function getTokenScoreTierKey(token) {
+  const isUsed = token && typeof token === 'object' && Object.prototype.hasOwnProperty.call(token, 'hasScore');
+  if (!isUsed || token.abandoned || !token.hasScore) return null;
+
+  const tokenScore = Number(token.score || 0);
+  const { core: coreTokenScore } = getCoreScore(tokenScore);
+
+  if (coreTokenScore >= 1600) return 'gold';
+  if (coreTokenScore >= 1400) return 'silver';
+  if (coreTokenScore >= 1200) return 'bronze';
+  return null;
+}
+
+function setupLegendVisibilityToggle() {
+  if (legendVisibilityInitialized) return;
+
+  const legendContainer = document.getElementById('buff-legend');
+  if (!legendContainer) return;
+
+  legendContainer.addEventListener('click', (event) => {
+    const itemBtn = event.target.closest('[data-legend-item="true"]');
+    if (itemBtn) {
+      const block = itemBtn.getAttribute('data-legend-block');
+      const key = itemBtn.getAttribute('data-legend-key');
+      if (!block || !key) return;
+
+      setLegendEnabled(block, key, !isLegendEnabled(block, key));
+      rerenderLeaderboardFromLegendToggle();
+      return;
+    }
+
+    const titleBtn = event.target.closest('[data-legend-title="true"]');
+    if (!titleBtn) return;
+
+    const block = titleBtn.getAttribute('data-legend-block');
+    if (!block) return;
+
+    const keys = Array.isArray(legendBlockKeys[block]) ? legendBlockKeys[block].filter(Boolean) : [];
+    if (keys.length === 0) return;
+
+    const enabledCount = keys.reduce((count, key) => count + (isLegendEnabled(block, key) ? 1 : 0), 0);
+    const allEnabled = enabledCount === keys.length;
+    const hasMixedState = enabledCount > 0 && enabledCount < keys.length;
+    const nextEnabled = hasMixedState ? true : !allEnabled;
+
+    keys.forEach((key) => setLegendEnabled(block, key, nextEnabled));
+    rerenderLeaderboardFromLegendToggle();
+  });
+
+  legendVisibilityInitialized = true;
+}
 
 function getCoreScore(value) {
   const numericValue = Number(value) || 0;
@@ -196,10 +298,14 @@ function renderBuffs(buffs) {
   if (!Array.isArray(buffs) || buffs.length === 0) return '';
   const items = buffs.map((b) => {
     const name = (b && (b.abilityId || b.name || b.id)) || String(b || '');
+    const key = makeLegendBuffKey(name);
+    if (key && !isLegendEnabled('buff', key)) return '';
     const safe = escapeHtml(name);
     const color = colorFor(name);
     return `<span class="inline-block h-3 w-3 rounded-full border border-white/10" title="${safe}" style="background:${color}"></span>`;
-  });
+  }).filter(Boolean);
+
+  if (items.length === 0) return '';
 
   return `<div class="mt-1 flex justify-center gap-1.5">${items.join('')}</div>`;
 }
@@ -1516,31 +1622,57 @@ function renderTable(snapshot) {
     const isUnused = !('hasScore' in token);
     const abandoned = !!token.abandoned;
     const cleanup = !!token.cleanup;
-    const cleanupHtml = cleanup ? '<span class="text-emerald-400" title="Cleanup">🧹</span>' : '';
+    const showCleanupIcon = cleanup && isLegendEnabled('token', 'cleanup');
+    const cleanupHtml = showCleanupIcon ? '<span class="text-emerald-400" title="Cleanup">🧹</span>' : '';
+    const outcomeKey = getTokenLegendOutcomeKey(token);
+    const showOutcomeStyle = isLegendEnabled('token', outcomeKey);
 
     let display = '';
-    let stateClass = 'rounded-md bg-slate-400/20 px-2 py-1 text-slate-300';
+    let stateClass = showOutcomeStyle
+      ? 'rounded-md bg-slate-400/20 px-2 py-1 text-slate-300'
+      : 'rounded-md px-2 py-1 text-slate-200';
 
     if (isUnused) {
       display = '—';
-      stateClass = 'rounded-md bg-slate-400/20 px-2 py-1 text-slate-300';
+      stateClass = showOutcomeStyle
+        ? 'rounded-md bg-slate-400/20 px-2 py-1 text-slate-300'
+        : 'rounded-md px-2 py-1 text-slate-200';
     } else if (abandoned) {
       display = '🛑';
-      stateClass = 'rounded-md bg-slate-400/20 px-2 py-1 text-slate-300';
+      stateClass = showOutcomeStyle
+        ? 'rounded-md bg-slate-400/20 px-2 py-1 text-slate-300'
+        : 'rounded-md px-2 py-1 text-slate-200';
     } else if (!token.hasScore) {
       display = `<span class="inline-flex flex-row items-center gap-1"><span class="font-semibold text-slate-200">0</span>${cleanupHtml}</span>`;
-      stateClass = 'rounded-md bg-rose-400/20 px-2 py-1 text-rose-200';
+      stateClass = showOutcomeStyle
+        ? 'rounded-md bg-rose-400/20 px-2 py-1 text-rose-200'
+        : 'rounded-md px-2 py-1 text-slate-200';
     } else if (tokenScore > 0) {
-      display = cleanup
+      display = showCleanupIcon
         ? `<span class="inline-flex flex-row items-center gap-1"><span class="font-semibold text-slate-200">${tokenScore.toLocaleString()}</span><span class="text-emerald-400" title="Cleanup">🧹</span></span>`
         : formatValue(tokenScore);
-      stateClass = token.defended
-        ? 'rounded-md bg-rose-400/20 px-2 py-1 text-rose-200'
-        : 'rounded-md bg-emerald-400/20 px-2 py-1 text-lime-100';
+      if (showOutcomeStyle) {
+        stateClass = token.defended
+          ? 'rounded-md bg-rose-400/20 px-2 py-1 text-rose-200'
+          : 'rounded-md bg-emerald-400/20 px-2 py-1 text-lime-100';
+      } else {
+        stateClass = 'rounded-md px-2 py-1 text-slate-200';
+      }
     } else {
       display = `<span class="inline-flex flex-row items-center gap-1"><span class="font-semibold text-slate-200">0</span>${cleanupHtml}</span>`;
-      stateClass = 'rounded-md bg-slate-400/20 px-2 py-1 text-slate-300';
+      stateClass = showOutcomeStyle
+        ? 'rounded-md bg-slate-400/20 px-2 py-1 text-slate-300'
+        : 'rounded-md px-2 py-1 text-slate-200';
     }
+
+    const tierKey = getTokenScoreTierKey(token);
+    if (tierKey === 'gold' && isLegendEnabled('scoreTier', 'gold')) {
+        stateClass += ' outline outline-2 outline-offset-2 outline-amber-400';
+      } else if (tierKey === 'silver' && isLegendEnabled('scoreTier', 'silver')) {
+        stateClass += ' outline outline-2 outline-offset-2 outline-zinc-300';
+      } else if (tierKey === 'bronze' && isLegendEnabled('scoreTier', 'bronze')) {
+        stateClass += ' outline outline-2 outline-offset-2 outline-amber-700';
+      }
 
     return {
       display,
@@ -1558,7 +1690,8 @@ function renderTable(snapshot) {
       `<td class="sticky left-0 z-10 whitespace-nowrap bg-slate-900/95 px-4 py-3 font-semibold text-slate-50"><div class="flex items-center gap-2"><span class="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cyan-400/20 text-xs font-bold text-cyan-100">${index + 1}</span>${avatarHtml}<div class="min-w-0"><div class="flex min-w-0 items-center gap-2"><span class="truncate whitespace-nowrap">${escapeHtml(player.name)} (${player.usedTokens}/10)</span></div></div></div></td>`,
       ...player.tokens.map((token) => {
         const tokenVisual = getTokenVisual(token);
-        return `<td class="px-4 py-3"><div class="flex w-full flex-col items-center gap-1"><span class="inline-flex items-center justify-center ${tokenVisual.stateClass}">${tokenVisual.display}</span>${tokenVisual.buffsHtml}</div></td>`;
+        const tokenContent = `<span class="inline-flex items-center justify-center ${tokenVisual.stateClass}">${tokenVisual.display}</span>${tokenVisual.buffsHtml}`;
+        return `<td class="px-4 py-3"><div class="flex min-h-8 w-full flex-col items-center justify-center gap-1">${tokenContent}</div></td>`;
       }),
       `<td class="px-4 py-3"><span class="font-semibold text-amber-300">${player.totalScore.toLocaleString()}</span></td>`,
       `<td class="px-4 py-3"><span class="text-cyan-300">${player.averageScore.toLocaleString()}</span></td>`,
@@ -1571,11 +1704,11 @@ function renderTable(snapshot) {
     if (leaderboardCards) {
       const tokenCards = player.tokens.map((token, tokenIndex) => {
         const tokenVisual = getTokenVisual(token);
+        const tokenContent = `<div class="inline-flex items-center justify-center ${tokenVisual.stateClass}">${tokenVisual.display}</div><div class="mt-1.5">${tokenVisual.buffsHtml}</div>`;
         return `
           <div class="rounded-lg border border-slate-500/30 bg-slate-900/50 p-2 text-center">
             <div class="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-400">Token ${tokenIndex + 1}</div>
-            <div class="inline-flex items-center justify-center ${tokenVisual.stateClass}">${tokenVisual.display}</div>
-            ${tokenVisual.buffsHtml}
+            ${tokenContent}
           </div>
         `;
       }).join('');
@@ -1659,12 +1792,11 @@ function renderBuffLegend(snapshot) {
   const legendContainer = document.getElementById('buff-legend');
   if (!legendContainer) return;
 
-  const tokenItems = [
-    '<div class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-400/20 bg-slate-900/60 px-2 py-1 text-sm"><span class="w-4 text-center">🟩</span><span class="font-semibold text-blue-100">Win</span></div>',
-    '<div class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-400/20 bg-slate-900/60 px-2 py-1 text-sm"><span class="w-4 text-center">🟥</span><span class="font-semibold text-blue-100">Defeat</span></div>',
-    '<div class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-400/20 bg-slate-900/60 px-2 py-1 text-sm"><span class="w-4 text-center">⬜</span><span class="font-semibold text-blue-100">Abandoned / unused</span></div>',
-    '<div class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-400/20 bg-slate-900/60 px-2 py-1 text-sm"><span class="w-4 text-center">🧹</span><span class="font-semibold text-blue-100">Cleanup</span></div>'
-  ];
+  legendBlockKeys = {
+    token: ['win', 'defeat', 'abandoned', 'cleanup'],
+    scoreTier: ['bronze', 'silver', 'gold'],
+    buff: []
+  };
 
   const seen = new Map();
   const guild = snapshot || guildSnapshots[activeGuildIndex];
@@ -1678,19 +1810,68 @@ function renderBuffLegend(snapshot) {
     });
   });
 
-  const buffItems = Array.from(seen.entries()).map(([name, color]) => {
-    return `<div class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-400/20 bg-slate-900/60 px-2 py-1 text-sm"><span class="inline-block h-3 w-3 rounded-full border border-white/10" style="background:${color}"></span><span class="font-semibold text-blue-100">${escapeHtml(name)}</span></div>`;
+  const buffLegendEntries = Array.from(seen.entries()).map(([name, color]) => ({
+    name,
+    color,
+    key: makeLegendBuffKey(name)
+  }));
+
+  legendBlockKeys.buff = buffLegendEntries.map((entry) => entry.key).filter(Boolean);
+  legendBlockKeys.buff.forEach((key) => {
+    if (!Object.prototype.hasOwnProperty.call(legendVisibility.buff, key)) {
+      legendVisibility.buff[key] = true;
+    }
   });
+
+  const pillClasses = (enabled) => `inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-400/20 bg-slate-900/60 px-2 py-1 text-sm transition ${enabled ? 'text-blue-100 hover:border-cyan-300/50 hover:bg-slate-900/80' : 'text-slate-400 opacity-45 grayscale saturate-50 hover:opacity-70'}`;
+  const titleClasses = (block) => {
+    const keys = legendBlockKeys[block] || [];
+    const enabledCount = keys.reduce((count, key) => count + (isLegendEnabled(block, key) ? 1 : 0), 0);
+    const hasMixed = enabledCount > 0 && enabledCount < keys.length;
+    const isOn = keys.length > 0 && enabledCount === keys.length;
+    if (hasMixed) return 'inline-flex min-w-20 items-center text-xs font-bold uppercase tracking-widest text-amber-300';
+    if (isOn) return 'inline-flex min-w-20 items-center text-xs font-bold uppercase tracking-widest text-cyan-300';
+    return 'inline-flex min-w-20 items-center text-xs font-bold uppercase tracking-widest text-slate-400';
+  };
+
+  const makeItem = ({ block, key, iconHtml, label }) => {
+    const enabled = isLegendEnabled(block, key);
+    return `<button type="button" data-legend-item="true" data-legend-block="${block}" data-legend-key="${key}" class="${pillClasses(enabled)}"><span class="inline-flex h-5 w-5 items-center justify-center">${iconHtml}</span><span class="font-semibold">${escapeHtml(label)}</span></button>`;
+  };
+
+  const tokenItems = [
+    makeItem({ block: 'token', key: 'win', iconHtml: '🟩', label: 'Win' }),
+    makeItem({ block: 'token', key: 'defeat', iconHtml: '🟥', label: 'Defeat' }),
+    makeItem({ block: 'token', key: 'abandoned', iconHtml: '⬜', label: 'Abandoned / unused' }),
+    makeItem({ block: 'token', key: 'cleanup', iconHtml: '🧹', label: 'Cleanup' })
+  ];
+
+  const scoreTierItems = [
+    makeItem({ block: 'scoreTier', key: 'bronze', iconHtml: '<span class="inline-flex h-3 w-3 rounded-sm border border-slate-700 bg-slate-900 outline outline-2 outline-offset-1 outline-amber-700"></span>', label: '1200+ Bronze' }),
+    makeItem({ block: 'scoreTier', key: 'silver', iconHtml: '<span class="inline-flex h-3 w-3 rounded-sm border border-slate-700 bg-slate-900 outline outline-2 outline-offset-1 outline-zinc-300"></span>', label: '1400+ Silver' }),
+    makeItem({ block: 'scoreTier', key: 'gold', iconHtml: '<span class="inline-flex h-3 w-3 rounded-sm border border-slate-700 bg-slate-900 outline outline-2 outline-offset-1 outline-amber-400"></span>', label: '1600 Gold' })
+  ];
+
+  const buffItems = buffLegendEntries.map(({ name, color, key }) => makeItem({
+    block: 'buff',
+    key,
+    iconHtml: `<span class="inline-block h-3 w-3 rounded-full border border-white/10" style="background:${color}"></span>`,
+    label: name
+  }));
 
   legendContainer.innerHTML = `
     <div class="flex flex-wrap items-center gap-3">
-      <div class="flex flex-wrap items-center gap-3 rounded-xl border border-slate-400/20 bg-slate-900/35 px-3 py-2">
-        <div class="inline-flex min-w-20 items-center text-xs font-bold uppercase tracking-widest text-cyan-300">Token</div>
-        <div class="flex w-full flex-wrap items-center gap-2">${tokenItems.join('')}</div>
+      <div class="flex grow-0 shrink-0 flex-wrap items-center gap-3 rounded-xl border border-slate-400/20 bg-slate-900/35 px-3 py-2">
+        <button type="button" data-legend-title="true" data-legend-block="token" class="${titleClasses('token')}">Token</button>
+        <div class="flex flex-wrap items-center gap-2">${tokenItems.join('')}</div>
       </div>
-      <div class="flex flex-wrap items-center gap-3 rounded-xl border border-slate-400/20 bg-slate-900/35 px-3 py-2">
-        <div class="inline-flex min-w-20 items-center text-xs font-bold uppercase tracking-widest text-cyan-300">Buff groups</div>
-        <div class="flex w-full flex-wrap items-center gap-2">${buffItems.join('') || '<div class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-400/20 bg-slate-900/60 px-2 py-1 text-sm"><span class="w-4 text-center">—</span><span class="font-semibold text-blue-100">No buff groups</span></div>'}</div>
+      <div class="flex grow-0 shrink-0 flex-wrap items-center gap-3 rounded-xl border border-slate-400/20 bg-slate-900/35 px-3 py-2">
+        <button type="button" data-legend-title="true" data-legend-block="buff" class="${titleClasses('buff')}">Buff groups</button>
+        <div class="flex flex-wrap items-center gap-2">${buffItems.join('') || '<div class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-400/20 bg-slate-900/60 px-2 py-1 text-sm"><span class="w-4 text-center">—</span><span class="font-semibold text-blue-100">No buff groups</span></div>'}</div>
+      </div>
+      <div class="flex grow-0 shrink-0 flex-wrap items-center gap-3 rounded-xl border border-slate-400/20 bg-slate-900/35 px-3 py-2">
+        <button type="button" data-legend-title="true" data-legend-block="scoreTier" class="${titleClasses('scoreTier')}">Score tiers</button>
+        <div class="flex flex-wrap items-center gap-2">${scoreTierItems.join('')}</div>
       </div>
     </div>
   `;
@@ -1708,6 +1889,7 @@ async function loadGuildData() {
 
   renderDatasetTabs();
   setupLeaderboardLayoutToggle();
+  setupLegendVisibilityToggle();
   setupBattleLogFilters();
 
   if (statusMessage) {
