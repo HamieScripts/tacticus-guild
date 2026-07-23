@@ -1,0 +1,22 @@
+{
+  "datasets": [
+    {
+      "key": "current",
+      "label": "Active war",
+      "sourceLabel": "Current snapshot",
+      "url": "./data/current/live-war.json"
+    },
+    {
+      "key": "history-2026-07-23",
+      "label": "History 2026-07-23",
+      "sourceLabel": "History snapshot 2026-07-23",
+      "url": "./data/history/a4847aea-746a-4ee9-90c0-750ec9145f8c.json"
+    },
+    {
+      "key": "history-2026-07-20",
+      "label": "History 2026-07-20",
+      "sourceLabel": "History snapshot 2026-07-20",
+      "url": "./data/history/65648500-b63c-4a80-8862-c36e9e7d800f.json"
+    }
+  ]
+}

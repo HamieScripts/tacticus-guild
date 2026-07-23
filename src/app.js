@@ -1,17 +1,28 @@
-const DATASETS = {
+const DEFAULT_DATASETS = {
   current: {
     label: 'Active war',
     sourceLabel: 'Current snapshot',
     url: './data/current/live-war.json'
   },
   history: {
-    label: 'Complete wars',
+    label: 'History snapshot',
     sourceLabel: 'History snapshot',
     url: './data/history/65648500-b63c-4a80-8862-c36e9e7d800f.json'
   }
 };
 
+let DATASETS = { ...DEFAULT_DATASETS };
+let datasetsLoaded = false;
+
 let activeDatasetKey = 'current';
+
+function getDefaultDatasetKey() {
+  if (Object.prototype.hasOwnProperty.call(DATASETS, 'current')) {
+    return 'current';
+  }
+
+  return Object.keys(DATASETS)[0] || 'current';
+}
 
 function getDatasetKeyFromUrl() {
   const params = new URLSearchParams(window.location.search);
@@ -19,7 +30,47 @@ function getDatasetKeyFromUrl() {
   if (dataset && Object.prototype.hasOwnProperty.call(DATASETS, dataset)) {
     return dataset;
   }
-  return 'current';
+  return getDefaultDatasetKey();
+}
+
+function normalizeDatasets(manifestDatasets) {
+  if (!Array.isArray(manifestDatasets) || manifestDatasets.length === 0) {
+    return null;
+  }
+
+  const normalized = {};
+
+  manifestDatasets.forEach((dataset) => {
+    const key = typeof dataset?.key === 'string' ? dataset.key.trim() : '';
+    const label = typeof dataset?.label === 'string' ? dataset.label.trim() : '';
+    const sourceLabel = typeof dataset?.sourceLabel === 'string' ? dataset.sourceLabel.trim() : '';
+    const url = typeof dataset?.url === 'string' ? dataset.url.trim() : '';
+
+    if (!key || !label || !sourceLabel || !url) return;
+
+    normalized[key] = { label, sourceLabel, url };
+  });
+
+  return Object.keys(normalized).length > 0 ? normalized : null;
+}
+
+async function loadDatasetManifest() {
+  if (datasetsLoaded) return;
+
+  try {
+    const response = await fetch('./data/dataset-manifest.json', { cache: 'no-store' });
+    if (response.ok) {
+      const manifest = await response.json();
+      const normalized = normalizeDatasets(manifest?.datasets);
+      if (normalized) {
+        DATASETS = normalized;
+      }
+    }
+  } catch (error) {
+    DATASETS = { ...DEFAULT_DATASETS };
+  }
+
+  datasetsLoaded = true;
 }
 
 function updateDatasetInUrl(datasetKey) {
@@ -762,16 +813,16 @@ function renderDatasetTabs() {
 
   if (!datasetSelect) return;
 
+  datasetSelect.innerHTML = '';
+
+  Object.entries(DATASETS).forEach(([datasetKey, dataset]) => {
+    const option = document.createElement('option');
+    option.value = datasetKey;
+    option.textContent = dataset.label;
+    datasetSelect.appendChild(option);
+  });
+
   if (!datasetSelect.dataset.initialized) {
-    datasetSelect.innerHTML = '';
-
-    Object.entries(DATASETS).forEach(([datasetKey, dataset]) => {
-      const option = document.createElement('option');
-      option.value = datasetKey;
-      option.textContent = dataset.label;
-      datasetSelect.appendChild(option);
-    });
-
     datasetSelect.addEventListener('change', (event) => {
       const selectedKey = event.target.value;
       if (!Object.prototype.hasOwnProperty.call(DATASETS, selectedKey)) return;
@@ -1878,6 +1929,13 @@ function renderBuffLegend(snapshot) {
 }
 
 async function loadGuildData() {
+  await loadDatasetManifest();
+
+  activeDatasetKey = Object.prototype.hasOwnProperty.call(DATASETS, activeDatasetKey)
+    ? activeDatasetKey
+    : getDatasetKeyFromUrl();
+  updateDatasetInUrl(activeDatasetKey);
+
   const statusMessage = document.getElementById('status-message');
   const lastUpdatedEl = document.getElementById('last-updated');
   const dataset = DATASETS[activeDatasetKey];
@@ -1937,6 +1995,4 @@ async function loadGuildData() {
   }
 }
 
-activeDatasetKey = getDatasetKeyFromUrl();
-updateDatasetInUrl(activeDatasetKey);
 loadGuildData();
