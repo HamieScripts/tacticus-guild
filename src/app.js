@@ -127,9 +127,16 @@ let legendBlockKeys = {
   buff: []
 };
 
-const MAX_TOKEN_SCORE = 1600;
+const MAX_TOKEN_SCORE = (typeof globalThis !== 'undefined' && Number.isFinite(Number(globalThis.MAX_TOKEN_SCORE)))
+  ? Number(globalThis.MAX_TOKEN_SCORE)
+  : 1600;
 const TOKEN_SLOTS_PER_PLAYER = 10;
-const POSSIBLE_TILE_SCORE = 520000; // 6*10k + 20*16k + 2*30k + 2*40k
+const POSSIBLE_TILE_SCORE = (typeof globalThis !== 'undefined' && Number.isFinite(Number(globalThis.POSSIBLE_TILE_SCORE)))
+  ? Number(globalThis.POSSIBLE_TILE_SCORE)
+  : 520000;
+const SCORE_TIER_GOLD = MAX_TOKEN_SCORE;     // 1600
+const SCORE_TIER_SILVER = 1400;
+const SCORE_TIER_BRONZE = 1200;
 const AVATAR_BASE_URL = 'https://webstore-assets.loki.snowprintstudios.com/live/images';
 
 // Frame filenames on tacticus.xyz are hashed, so we map known frame IDs.
@@ -183,9 +190,9 @@ function getTokenScoreTierKey(token) {
   const tokenScore = Number(token.score || 0);
   const { core: coreTokenScore } = getCoreScore(tokenScore);
 
-  if (coreTokenScore >= 1600) return 'gold';
-  if (coreTokenScore >= 1400) return 'silver';
-  if (coreTokenScore >= 1200) return 'bronze';
+  if (coreTokenScore >= SCORE_TIER_GOLD) return 'gold';
+  if (coreTokenScore >= SCORE_TIER_SILVER) return 'silver';
+  if (coreTokenScore >= SCORE_TIER_BRONZE) return 'bronze';
   return null;
 }
 
@@ -274,8 +281,33 @@ function formatDateTime(dateValue) {
   }).format(date);
 }
 
+function getPrimaryEventResponseData(data) {
+  const eventResults = Array.isArray(data?.eventResults) ? data.eventResults : [];
+  if (eventResults.length === 0) return null;
+
+  let selected = null;
+  let selectedScore = -1;
+
+  eventResults.forEach((eventResult) => {
+    const eventResponseData = eventResult?.eventResponseData;
+    if (!eventResponseData || typeof eventResponseData !== 'object') return;
+
+    const activityLogsLength = Array.isArray(eventResponseData.activityLogs) ? eventResponseData.activityLogs.length : 0;
+    const playerDataLength = Array.isArray(eventResponseData.playerData) ? eventResponseData.playerData.length : 0;
+    const guildDataLength = Array.isArray(eventResponseData.guildData) ? eventResponseData.guildData.length : 0;
+    const score = activityLogsLength * 1000000 + playerDataLength * 1000 + guildDataLength;
+
+    if (score > selectedScore) {
+      selected = eventResponseData;
+      selectedScore = score;
+    }
+  });
+
+  return selected || eventResults[0]?.eventResponseData || null;
+}
+
 function getLatestActivityTimestamp(data) {
-  const logs = data?.eventResults?.[0]?.eventResponseData?.activityLogs;
+  const logs = getPrimaryEventResponseData(data)?.activityLogs;
   if (!Array.isArray(logs) || logs.length === 0) return null;
 
   let maxTimestamp = 0;
@@ -414,10 +446,10 @@ function buildFallbackSnapshot() {
 }
 
 function buildSnapshot(data) {
-  const eventResult = data?.eventResults?.[0];
-  const playerData = eventResult?.eventResponseData?.playerData || [];
-  const activityLogs = eventResult?.eventResponseData?.activityLogs || [];
-  const guildData = eventResult?.eventResponseData?.guildData || [];
+  const eventResponseData = getPrimaryEventResponseData(data);
+  const playerData = eventResponseData?.playerData || [];
+  const activityLogs = eventResponseData?.activityLogs || [];
+  const guildData = eventResponseData?.guildData || [];
   const playerNames = new Map(playerData.map((player) => [player.userId, player.displayName]));
   const playerProfiles = new Map(playerData.map((player) => [player.userId, {
     avatarUnitId: player.avatarUnitId || null,
@@ -1898,9 +1930,9 @@ function renderBuffLegend(snapshot) {
   ];
 
   const scoreTierItems = [
-    makeItem({ block: 'scoreTier', key: 'bronze', iconHtml: '<span class="inline-flex h-3 w-3 rounded-sm border border-slate-700 bg-slate-900 outline outline-2 outline-offset-1 outline-amber-700"></span>', label: '1200+ Bronze' }),
-    makeItem({ block: 'scoreTier', key: 'silver', iconHtml: '<span class="inline-flex h-3 w-3 rounded-sm border border-slate-700 bg-slate-900 outline outline-2 outline-offset-1 outline-zinc-300"></span>', label: '1400+ Silver' }),
-    makeItem({ block: 'scoreTier', key: 'gold', iconHtml: '<span class="inline-flex h-3 w-3 rounded-sm border border-slate-700 bg-slate-900 outline outline-2 outline-offset-1 outline-amber-400"></span>', label: '1600 Gold' })
+    makeItem({ block: 'scoreTier', key: 'bronze', iconHtml: '<span class="inline-flex h-3 w-3 rounded-sm border border-slate-700 bg-slate-900 outline outline-2 outline-offset-1 outline-amber-700"></span>', label: `${SCORE_TIER_BRONZE}+ Bronze` }),
+    makeItem({ block: 'scoreTier', key: 'silver', iconHtml: '<span class="inline-flex h-3 w-3 rounded-sm border border-slate-700 bg-slate-900 outline outline-2 outline-offset-1 outline-zinc-300"></span>', label: `${SCORE_TIER_SILVER}+ Silver` }),
+    makeItem({ block: 'scoreTier', key: 'gold', iconHtml: '<span class="inline-flex h-3 w-3 rounded-sm border border-slate-700 bg-slate-900 outline outline-2 outline-offset-1 outline-amber-400"></span>', label: `${SCORE_TIER_GOLD} Gold` })
   ];
 
   const buffItems = buffLegendEntries.map(({ name, color, key }) => makeItem({
