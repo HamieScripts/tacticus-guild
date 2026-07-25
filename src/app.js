@@ -720,7 +720,7 @@ function buildRows(snapshot) {
 function summarizeGuild(snapshot) {
   const rows = buildRows(snapshot);
   const isUsedToken = (token) => token && typeof token === 'object' && Object.prototype.hasOwnProperty.call(token, 'hasScore');
-  const totalPlayers = rows.length;
+  const totalPlayers = rows.length > 30 ? 30 : rows.length;
   const totalTokenSlots = totalPlayers * TOKEN_SLOTS_PER_PLAYER;
   const usedTokens = rows.reduce((sum, player) => sum + player.usedTokens, 0);
   const remainingTokens = Math.max(totalTokenSlots - usedTokens, 0);
