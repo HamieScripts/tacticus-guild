@@ -99,6 +99,9 @@
           <button id="tab-btn-battlelog" type="button" onclick="switchMainTab('battlelog')" class="border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100">
             Battle log <span id="battle-log-count" class="ml-1 rounded-full bg-slate-700 px-2 py-0.5 text-xs text-slate-300">0</span>
           </button>
+          <button id="tab-btn-portraitmap" type="button" onclick="switchMainTab('portraitmap')" class="border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100">
+            Portrait mapper
+          </button>
         </div>
 
         <!-- Token table panel -->
@@ -221,6 +224,58 @@
 
           <div id="battle-log-list" class="flex flex-col gap-3"></div>
         </div>
+
+        <!-- Portrait mapping panel -->
+        <div id="tab-panel-portraitmap" class="hidden p-4">
+          <div class="mb-4 rounded-xl border border-amber-400/30 bg-amber-500/10 p-3 text-sm text-amber-100">
+            Temporary tool. Drag source image key from left, drop on unit ID card on right. Export JSON updates and paste manually.
+          </div>
+
+          <div class="mb-4 flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
+            <div class="w-full lg:max-w-sm">
+              <label for="mapping-search" class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">Find unit ID</label>
+              <input id="mapping-search" type="text" placeholder="Search ID..." class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200" />
+            </div>
+            <div class="flex flex-wrap items-center gap-2">
+              <span id="mapping-change-count" class="rounded-md border border-cyan-400/35 bg-cyan-500/10 px-3 py-2 text-xs font-semibold text-cyan-200">0 changed</span>
+              <button id="mapping-reset" type="button" class="rounded-md border border-slate-500/60 bg-slate-900/80 px-3 py-2 text-sm font-semibold text-slate-200 hover:border-slate-300/70">Reset staged</button>
+              <button id="mapping-export" type="button" class="rounded-md border border-emerald-400/55 bg-emerald-500/20 px-3 py-2 text-sm font-semibold text-emerald-100 hover:border-emerald-300">Export updates</button>
+            </div>
+          </div>
+
+          <div class="grid gap-4 xl:grid-cols-12">
+            <section class="xl:col-span-4 rounded-xl border border-slate-700/80 bg-slate-900/60 p-3">
+              <div class="mb-2 flex items-center justify-between">
+                <h3 class="text-sm font-bold uppercase tracking-wide text-slate-200">Unmapped source images</h3>
+                <span id="mapping-unassigned-count" class="text-xs text-slate-400">0</span>
+              </div>
+              <div id="mapping-unassigned-drop" class="mb-3 rounded-lg border border-dashed border-slate-500/50 bg-slate-900/70 p-2 text-xs text-slate-400">
+                Drop assigned card here to unassign
+              </div>
+              <div id="mapping-unassigned-list" class="grid max-h-[70vh] grid-cols-2 gap-2 overflow-auto sm:grid-cols-3"></div>
+            </section>
+
+            <section class="xl:col-span-8 rounded-xl border border-slate-700/80 bg-slate-900/60 p-3">
+              <div class="mb-2 flex items-center justify-between">
+                <h3 class="text-sm font-bold uppercase tracking-wide text-slate-200">IDs grouped by prefix</h3>
+                <span id="mapping-id-count" class="text-xs text-slate-400">0</span>
+              </div>
+              <div id="mapping-warning" class="mb-3 hidden rounded-lg border border-amber-400/45 bg-amber-500/10 p-2 text-xs text-amber-200"></div>
+              <div id="mapping-groups" class="max-h-[75vh] space-y-4 overflow-auto"></div>
+            </section>
+          </div>
+
+          <div class="mt-4 grid gap-3 xl:grid-cols-2">
+            <div class="rounded-xl border border-slate-700/80 bg-slate-900/60 p-3">
+              <label for="mapping-export-portrait" class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">portrait-rename-map updates</label>
+              <textarea id="mapping-export-portrait" readonly class="h-52 w-full rounded-md border border-slate-600 bg-slate-950/80 p-2 text-xs text-slate-200"></textarea>
+            </div>
+            <div class="rounded-xl border border-slate-700/80 bg-slate-900/60 p-3">
+              <label for="mapping-export-missing" class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">unitid-missing-portrait-map updates (Option A)</label>
+              <textarea id="mapping-export-missing" readonly class="h-52 w-full rounded-md border border-slate-600 bg-slate-950/80 p-2 text-xs text-slate-200"></textarea>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -231,7 +286,7 @@
   function switchMainTab(tab) {
     const activeBtnClasses = ['text-cyan-300', 'border-cyan-400'];
     const inactiveBtnClasses = ['text-slate-400', 'border-transparent'];
-    const panels = ['leaderboard', 'battlelog'];
+    const panels = ['leaderboard', 'battlelog', 'portraitmap'];
     panels.forEach(function(id) {
       const panel = document.getElementById('tab-panel-' + id);
       const btn = document.getElementById('tab-btn-' + id);

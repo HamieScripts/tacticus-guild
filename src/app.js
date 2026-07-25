@@ -84,6 +84,18 @@ function updateDatasetInUrl(datasetKey) {
 let guildSnapshots = [];
 let activeGuildIndex = 0;
 let unitPortraitMap = {};
+let missingPortraitMap = {};
+let portraitRenameMap = {};
+let portraitMapStaged = {};
+let portraitSourceImageManifest = [];
+let portraitSourceImageManifestSet = new Set();
+let portraitRenameAssignmentsByUnitId = new Map();
+let portraitRenameAssignmentsByUnitIdLower = new Map();
+let portraitStagedAssignmentsByUnitId = new Map();
+let selectedUnassignedImage = '';
+let dragState = null;
+let activeMapDropTarget = null;
+let portraitMapperInitialized = false;
 const MISSING_UNIT_AVATAR_URL = './img/missing-unit.svg';
 const battleLogFilters = {
   sort: 'newest',
@@ -985,6 +997,7 @@ function getBattleUnitAvatarUrl(unit) {
 function getBattleUnitAvatarUrlFromUnitId(unitId) {
   const exactUnitId = String(unitId || '').trim();
   if (!exactUnitId) return null;
+
   const lowerUnitId = exactUnitId.toLowerCase();
   const mappedFile = unitPortraitMap[exactUnitId] || unitPortraitMap[lowerUnitId];
 
@@ -992,7 +1005,598 @@ function getBattleUnitAvatarUrlFromUnitId(unitId) {
     return `./img/${mappedFile}`;
   }
 
+  const mappedSourceImage = portraitRenameAssignmentsByUnitId.get(exactUnitId)
+    || portraitRenameAssignmentsByUnitIdLower.get(lowerUnitId)
+    || '';
+
+  if (mappedSourceImage && portraitSourceImageManifestSet.has(mappedSourceImage)) {
+    return `./img-temp/${mappedSourceImage}`;
+  }
+
+  // Fallback for newly mapped unit IDs before unit-portrait-map regeneration.
+  if (mappedSourceImage) {
+    return `./img/${exactUnitId}.png`;
+  }
+
   return MISSING_UNIT_AVATAR_URL;
+}
+
+function getUnitIdPrefix(unitId) {
+  const id = String(unitId || '').trim();
+  if (!id) return 'unknown';
+  const match = id.match(/^[a-z]+/);
+  return match && match[0] ? match[0] : 'unknown';
+}
+
+function sanitizeFilename(name) {
+  return String(name || '').trim();
+}
+
+function isUnknownPortraitTarget(value) {
+  const normalized = sanitizeFilename(value).toLowerCase();
+  return !normalized || normalized === 'unknown' || normalized === 'null';
+}
+
+function getMappedUnitIdsFromRenameMap(mapObj) {
+  const ids = new Set();
+  Object.values(mapObj || {}).forEach((value) => {
+    const unitId = sanitizeFilename(value);
+    if (!isUnknownPortraitTarget(unitId)) {
+      ids.add(unitId);
+    }
+  });
+  return ids;
+}
+
+function getAllKnownUnitIds() {
+  const fromPortraitMap = Object.keys(unitPortraitMap || {});
+  const fromMissingMap = Object.keys(missingPortraitMap || {});
+  const fromRenameMap = Array.from(getMappedUnitIdsFromRenameMap(portraitMapStaged));
+  return Array.from(new Set([...fromPortraitMap, ...fromMissingMap, ...fromRenameMap])).sort((a, b) => a.localeCompare(b));
+}
+
+function isPortraitImageFileName(value) {
+  return /\.(png|jpg|jpeg|webp|gif|svg)$/i.test(String(value || '').trim());
+}
+
+function getAllKnownSourceImageNames() {
+  const merged = new Set([
+    ...(portraitSourceImageManifest || []),
+    ...Object.keys(portraitRenameMap || {}),
+    ...Object.keys(portraitMapStaged || {})
+  ].map((name) => sanitizeFilename(name)).filter((name) => name && isPortraitImageFileName(name)));
+
+  return Array.from(merged).sort((a, b) => a.localeCompare(b));
+}
+
+function ensureManifestImagesInStagedMap() {
+  getAllKnownSourceImageNames().forEach((imageName) => {
+    if (!Object.prototype.hasOwnProperty.call(portraitMapStaged, imageName)) {
+      portraitMapStaged[imageName] = 'unknown';
+    }
+  });
+}
+
+function getUnassignedImages() {
+  return getAllKnownSourceImageNames()
+    .filter((name) => isUnknownPortraitTarget(portraitMapStaged[name]))
+    .sort((a, b) => a.localeCompare(b));
+}
+
+function buildAssignmentsByUnitId(mapObj) {
+  const byUnitId = new Map();
+  Object.entries(mapObj || {}).forEach(([imageName, mappedUnitId]) => {
+    const normalizedImage = sanitizeFilename(imageName);
+    const normalizedUnitId = sanitizeFilename(mappedUnitId);
+    if (!normalizedImage || isUnknownPortraitTarget(normalizedUnitId)) return;
+    byUnitId.set(normalizedUnitId, normalizedImage);
+  });
+  return byUnitId;
+}
+
+function rebuildPortraitAssignmentIndexes() {
+  portraitRenameAssignmentsByUnitId = buildAssignmentsByUnitId(portraitRenameMap);
+  portraitStagedAssignmentsByUnitId = buildAssignmentsByUnitId(portraitMapStaged);
+}
+
+function setActiveMapDropTarget(target) {
+  if (activeMapDropTarget === target) return;
+
+  if (activeMapDropTarget) {
+    activeMapDropTarget.classList.remove('ring-2', 'ring-cyan-300/70');
+  }
+
+  activeMapDropTarget = target || null;
+
+  if (activeMapDropTarget) {
+    activeMapDropTarget.classList.add('ring-2', 'ring-cyan-300/70');
+  }
+}
+
+function getAssignedSourceImageForUnitIdFromMap(unitId, mapObj) {
+  const normalizedUnitId = sanitizeFilename(unitId);
+  if (!normalizedUnitId) return '';
+
+  if (mapObj === portraitMapStaged) {
+    return portraitStagedAssignmentsByUnitId.get(normalizedUnitId) || '';
+  }
+
+  if (mapObj === portraitRenameMap) {
+    return portraitRenameAssignmentsByUnitId.get(normalizedUnitId) || '';
+  }
+
+  const entries = Object.entries(mapObj || {});
+  for (let i = 0; i < entries.length; i += 1) {
+    const [imageName, mappedUnitId] = entries[i];
+    if (sanitizeFilename(mappedUnitId) === normalizedUnitId) {
+      return sanitizeFilename(imageName);
+    }
+  }
+
+  return '';
+}
+
+function getAssignedSourceImageForUnitId(unitId) {
+  return getAssignedSourceImageForUnitIdFromMap(unitId, portraitMapStaged);
+}
+
+function assignImageToUnitId(unitId, imageName) {
+  const normalizedUnitId = sanitizeFilename(unitId);
+  const normalizedImage = sanitizeFilename(imageName);
+  if (!normalizedUnitId || !normalizedImage) return;
+
+  const previousImageForUnit = portraitStagedAssignmentsByUnitId.get(normalizedUnitId);
+  if (previousImageForUnit && previousImageForUnit !== normalizedImage) {
+    portraitMapStaged[previousImageForUnit] = 'unknown';
+  }
+
+  const previousUnitForImage = sanitizeFilename(portraitMapStaged[normalizedImage]);
+  if (previousUnitForImage && !isUnknownPortraitTarget(previousUnitForImage) && previousUnitForImage !== normalizedUnitId) {
+    portraitStagedAssignmentsByUnitId.delete(previousUnitForImage);
+  }
+
+  portraitMapStaged[normalizedImage] = normalizedUnitId;
+  portraitStagedAssignmentsByUnitId.set(normalizedUnitId, normalizedImage);
+}
+
+function clearUnitIdAssignment(unitId) {
+  const normalizedUnitId = sanitizeFilename(unitId);
+  if (!normalizedUnitId) return;
+
+  const assignedSource = portraitStagedAssignmentsByUnitId.get(normalizedUnitId);
+  if (!assignedSource) return;
+  portraitMapStaged[assignedSource] = 'unknown';
+  portraitStagedAssignmentsByUnitId.delete(normalizedUnitId);
+}
+
+function getMappingChangeCount() {
+  const allSourceImages = Array.from(new Set([
+    ...Object.keys(portraitRenameMap || {}),
+    ...Object.keys(portraitMapStaged || {})
+  ])).sort((a, b) => a.localeCompare(b));
+
+  return allSourceImages.reduce((count, sourceImage) => {
+    const base = sanitizeFilename(portraitRenameMap[sourceImage] || 'unknown');
+    const staged = sanitizeFilename(portraitMapStaged[sourceImage] || 'unknown');
+    return count + (base !== staged ? 1 : 0);
+  }, 0);
+}
+
+function getGroupedUnitIds(searchText = '') {
+  const needle = String(searchText || '').trim().toLowerCase();
+  const grouped = new Map();
+
+  getAllKnownUnitIds().forEach((unitId) => {
+    if (needle && !unitId.toLowerCase().includes(needle)) return;
+    const prefix = getUnitIdPrefix(unitId);
+    if (!grouped.has(prefix)) grouped.set(prefix, []);
+    grouped.get(prefix).push(unitId);
+  });
+
+  return Array.from(grouped.entries())
+    .sort((a, b) => a[0].localeCompare(b[0]))
+    .map(([prefix, ids]) => ({
+      prefix,
+      ids: ids.sort((a, b) => a.localeCompare(b))
+    }));
+}
+
+function setMappingWarning() {
+  const warningEl = document.getElementById('mapping-warning');
+  if (!warningEl) return;
+
+  const overlaps = Object.keys(missingPortraitMap || {}).filter((unitId) => {
+    return Boolean(unitPortraitMap[unitId]);
+  });
+
+  if (overlaps.length === 0) {
+    warningEl.classList.add('hidden');
+    warningEl.textContent = '';
+    return;
+  }
+
+  warningEl.classList.remove('hidden');
+  warningEl.textContent = `Found ${overlaps.length} IDs in both maps. Assigned portrait map value used as baseline.`;
+}
+
+function renderMappingUnassignedList() {
+  const listEl = document.getElementById('mapping-unassigned-list');
+  const countEl = document.getElementById('mapping-unassigned-count');
+  if (!listEl || !countEl) return;
+
+  const imagePool = getUnassignedImages();
+  countEl.textContent = `${imagePool.length} images`;
+
+  if (imagePool.length === 0) {
+    listEl.innerHTML = '<div class="col-span-full rounded-lg border border-dashed border-emerald-400/35 bg-emerald-500/10 p-3 text-xs text-emerald-200">All source images already mapped in portrait-rename-map.</div>';
+    return;
+  }
+
+  listEl.innerHTML = `${imagePool.map((fileName) => {
+    const isSelected = selectedUnassignedImage === fileName;
+    const primarySrc = `./img-temp/${fileName}`;
+    const fallbackSrc = `./img/${fileName}`;
+    return `
+      <button
+        type="button"
+        class="group rounded-lg border p-2 text-left transition ${isSelected ? 'border-cyan-300 bg-cyan-500/15' : 'border-slate-600/70 bg-slate-900/70 hover:border-cyan-400/60'}"
+        data-map-unassigned="${escapeHtml(fileName)}"
+        draggable="true"
+        title="${escapeHtml(fileName)}"
+      >
+        <img class="h-20 w-20 rounded object-cover" src="${escapeHtml(primarySrc)}" alt="${escapeHtml(fileName)}" loading="lazy" onerror="if(!this.dataset.fallbackTried){this.dataset.fallbackTried='1'; this.src='${escapeHtml(fallbackSrc)}'; return;} this.onerror=null; this.src='${MISSING_UNIT_AVATAR_URL}';" />
+        <div class="mt-1 truncate text-[11px] text-slate-300">${escapeHtml(fileName)}</div>
+      </button>
+    `;
+  }).join('')}`;
+
+}
+
+function renderMappingGroups() {
+  const groupsEl = document.getElementById('mapping-groups');
+  const idCountEl = document.getElementById('mapping-id-count');
+  const searchEl = document.getElementById('mapping-search');
+  if (!groupsEl || !idCountEl) return;
+
+  const groups = getGroupedUnitIds(searchEl ? searchEl.value : '');
+  const totalIds = groups.reduce((sum, group) => sum + group.ids.length, 0);
+  idCountEl.textContent = `${totalIds} ids`;
+
+  if (groups.length === 0) {
+    groupsEl.innerHTML = '<div class="rounded-lg border border-dashed border-slate-500/50 p-3 text-xs text-slate-400">No IDs match search.</div>';
+    return;
+  }
+
+  groupsEl.innerHTML = groups.map((group) => {
+    const cards = group.ids.map((unitId) => {
+      const assignedSourceImage = getAssignedSourceImageForUnitId(unitId);
+      const baseAssignedSourceImage = getAssignedSourceImageForUnitIdFromMap(unitId, portraitRenameMap);
+      const currentPortraitFile = sanitizeFilename(unitPortraitMap[unitId]);
+      // Show staged assignment first so drag/drop updates are immediately visible.
+      const previewFile = assignedSourceImage || currentPortraitFile;
+      const previewPrimarySrc = previewFile ? `./img-temp/${previewFile}` : MISSING_UNIT_AVATAR_URL;
+      const previewFallbackSrc = previewFile ? `./img/${previewFile}` : '';
+      const previewOnError = previewFile
+        ? `if(!this.dataset.fallbackTried){this.dataset.fallbackTried='1'; this.src='${escapeHtml(previewFallbackSrc)}'; return;} this.onerror=null; this.src='${MISSING_UNIT_AVATAR_URL}';`
+        : `this.onerror=null; this.src='${MISSING_UNIT_AVATAR_URL}';`;
+      const isAssigned = Boolean(assignedSourceImage);
+      const isChanged = baseAssignedSourceImage !== assignedSourceImage;
+
+      return `
+        <article
+          class="rounded-lg border p-2 ${isAssigned ? 'border-emerald-400/30 bg-emerald-500/5' : 'border-dashed border-slate-500/70 bg-slate-900/65'} ${isChanged ? 'ring-1 ring-cyan-400/60' : ''}"
+          data-map-target="${escapeHtml(unitId)}"
+          draggable="${isAssigned ? 'true' : 'false'}"
+        >
+          <div class="mb-2 flex items-center justify-between gap-2">
+            <div class="truncate text-xs font-semibold text-slate-200">${escapeHtml(unitId)}</div>
+            ${isAssigned ? '<button type="button" class="rounded border border-slate-500/60 px-1.5 py-0.5 text-[10px] text-slate-300 hover:border-rose-400/60 hover:text-rose-200" data-map-clear="' + escapeHtml(unitId) + '">clear</button>' : ''}
+          </div>
+          <div class="rounded-md ${isAssigned ? 'border border-slate-600/70' : 'border border-dashed border-slate-500/80'} p-1">
+            <img
+              class="h-20 w-20 rounded object-cover ${isAssigned ? '' : 'opacity-60'}"
+              src="${escapeHtml(previewPrimarySrc)}"
+              alt="${escapeHtml(unitId)}"
+              loading="lazy"
+              onerror="${previewOnError}"
+            />
+          </div>
+          <div class="mt-1 truncate text-[11px] ${isAssigned ? 'text-emerald-200' : 'text-slate-400'}">${isAssigned ? escapeHtml(assignedSourceImage) : 'Drop source image here'}</div>
+          <div class="mt-0.5 truncate text-[10px] text-slate-500">${currentPortraitFile ? 'current img: ' + escapeHtml(currentPortraitFile) : 'no current img portrait'}</div>
+          <div class="mt-0.5 truncate text-[10px] text-slate-500">${baseAssignedSourceImage ? 'baseline source: ' + escapeHtml(baseAssignedSourceImage) : 'baseline source: none'}</div>
+          <div class="mt-0.5 truncate text-[10px] ${isChanged ? 'text-cyan-300' : 'text-slate-600'}">
+            ${isChanged ? 'staged changed' : 'staged same as baseline'}
+          </div>
+        </article>
+      `;
+    }).join('');
+
+    return `
+      <section class="rounded-xl border border-slate-700/70 bg-slate-900/45 p-3">
+        <div class="mb-2 text-xs font-bold uppercase tracking-wide text-cyan-300">${escapeHtml(group.prefix)} (${group.ids.length})</div>
+        <div class="grid grid-cols-2 gap-2 lg:grid-cols-3 2xl:grid-cols-4">${cards}</div>
+      </section>
+    `;
+  }).join('');
+
+}
+
+function buildPortraitMapExportDiff() {
+  const updates = {};
+  const allSourceImages = Array.from(new Set([
+    ...Object.keys(portraitRenameMap || {}),
+    ...Object.keys(portraitMapStaged || {})
+  ])).sort((a, b) => a.localeCompare(b));
+
+  allSourceImages.forEach((sourceImage) => {
+    const base = sanitizeFilename(portraitRenameMap[sourceImage] || 'unknown');
+    const staged = sanitizeFilename(portraitMapStaged[sourceImage] || 'unknown');
+    if (base !== staged) {
+      updates[sourceImage] = staged || 'unknown';
+    }
+  });
+
+  return updates;
+}
+
+function buildMissingMapExportOptionA() {
+  const result = { ...(missingPortraitMap || {}) };
+  const mappedUnitIds = new Set([
+    ...Object.keys(unitPortraitMap || {}),
+    ...Array.from(getMappedUnitIdsFromRenameMap(portraitMapStaged))
+  ]);
+
+  Object.keys(result).forEach((unitId) => {
+    if (mappedUnitIds.has(unitId)) {
+      delete result[unitId];
+    }
+  });
+  return result;
+}
+
+function renderPortraitMapperExports() {
+  const portraitOut = document.getElementById('mapping-export-portrait');
+  const missingOut = document.getElementById('mapping-export-missing');
+  if (!portraitOut || !missingOut) return;
+
+  portraitOut.value = JSON.stringify(buildPortraitMapExportDiff(), null, 2);
+  missingOut.value = JSON.stringify(buildMissingMapExportOptionA(), null, 2);
+}
+
+function renderPortraitMapper() {
+  const changeCountEl = document.getElementById('mapping-change-count');
+  if (changeCountEl) {
+    changeCountEl.textContent = `${getMappingChangeCount()} changed`;
+  }
+
+  setMappingWarning();
+  renderMappingUnassignedList();
+  renderMappingGroups();
+}
+
+function resetPortraitMapperStaged() {
+  portraitMapStaged = { ...(portraitRenameMap || {}) };
+  ensureManifestImagesInStagedMap();
+  portraitStagedAssignmentsByUnitId = buildAssignmentsByUnitId(portraitMapStaged);
+  selectedUnassignedImage = '';
+  dragState = null;
+  setActiveMapDropTarget(null);
+  renderPortraitMapper();
+  renderPortraitMapperExports();
+}
+
+function setupPortraitMapperEvents() {
+  if (portraitMapperInitialized) return;
+
+  const searchEl = document.getElementById('mapping-search');
+  const resetButton = document.getElementById('mapping-reset');
+  const exportButton = document.getElementById('mapping-export');
+  const unassignDrop = document.getElementById('mapping-unassigned-drop');
+  const groupsEl = document.getElementById('mapping-groups');
+  const unassignedListEl = document.getElementById('mapping-unassigned-list');
+
+  if (!searchEl || !resetButton || !exportButton || !unassignDrop || !groupsEl || !unassignedListEl) return;
+
+  searchEl.addEventListener('input', () => {
+    renderMappingGroups();
+  });
+
+  resetButton.addEventListener('click', () => {
+    resetPortraitMapperStaged();
+  });
+
+  exportButton.addEventListener('click', () => {
+    renderPortraitMapperExports();
+  });
+
+  unassignDrop.addEventListener('dragover', (event) => {
+    event.preventDefault();
+    unassignDrop.classList.add('border-rose-400/80', 'text-rose-200');
+    if (event.dataTransfer) event.dataTransfer.dropEffect = 'move';
+  });
+
+  unassignDrop.addEventListener('dragleave', () => {
+    unassignDrop.classList.remove('border-rose-400/80', 'text-rose-200');
+  });
+
+  unassignDrop.addEventListener('drop', (event) => {
+    event.preventDefault();
+    unassignDrop.classList.remove('border-rose-400/80', 'text-rose-200');
+    const dataUnitId = event.dataTransfer ? event.dataTransfer.getData('text/unit-id') : '';
+    const unitId = sanitizeFilename(dataUnitId || (dragState && dragState.unitId) || '');
+    if (!unitId) return;
+    clearUnitIdAssignment(unitId);
+    dragState = null;
+    setActiveMapDropTarget(null);
+    renderPortraitMapper();
+  });
+
+  unassignedListEl.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-map-unassigned]');
+    if (!button) return;
+    selectedUnassignedImage = button.getAttribute('data-map-unassigned') || '';
+    renderPortraitMapper();
+  });
+
+  unassignedListEl.addEventListener('dragstart', (event) => {
+    const button = event.target.closest('[data-map-unassigned]');
+    if (!button) return;
+    const imageName = button.getAttribute('data-map-unassigned') || '';
+    dragState = { kind: 'image', imageName };
+    if (event.dataTransfer) {
+      event.dataTransfer.effectAllowed = 'move';
+      event.dataTransfer.setData('text/plain', imageName);
+    }
+  });
+
+  groupsEl.addEventListener('click', (event) => {
+    const clearButton = event.target.closest('[data-map-clear]');
+    if (clearButton) {
+      event.stopPropagation();
+      const unitId = clearButton.getAttribute('data-map-clear') || '';
+      if (!unitId) return;
+      clearUnitIdAssignment(unitId);
+      renderPortraitMapper();
+      return;
+    }
+
+    const targetCard = event.target.closest('[data-map-target]');
+    if (!targetCard || !selectedUnassignedImage) return;
+
+    const unitId = targetCard.getAttribute('data-map-target') || '';
+    if (!unitId) return;
+
+    assignImageToUnitId(unitId, selectedUnassignedImage);
+    selectedUnassignedImage = '';
+    renderPortraitMapper();
+  });
+
+  groupsEl.addEventListener('dragstart', (event) => {
+    const targetCard = event.target.closest('[data-map-target]');
+    if (!targetCard) return;
+
+    const unitId = targetCard.getAttribute('data-map-target') || '';
+    const assigned = getAssignedSourceImageForUnitId(unitId);
+    if (!assigned) return;
+
+    dragState = { kind: 'assigned-card', unitId };
+    if (event.dataTransfer) {
+      event.dataTransfer.effectAllowed = 'move';
+      event.dataTransfer.setData('text/unit-id', unitId);
+    }
+  });
+
+  groupsEl.addEventListener('dragover', (event) => {
+    const targetCard = event.target.closest('[data-map-target]');
+    if (!targetCard) {
+      setActiveMapDropTarget(null);
+      return;
+    }
+
+    event.preventDefault();
+    setActiveMapDropTarget(targetCard);
+    if (event.dataTransfer) event.dataTransfer.dropEffect = 'move';
+  });
+
+  groupsEl.addEventListener('drop', (event) => {
+    const targetCard = event.target.closest('[data-map-target]');
+    if (!targetCard) return;
+
+    event.preventDefault();
+    setActiveMapDropTarget(null);
+
+    const unitId = targetCard.getAttribute('data-map-target') || '';
+    const dataImage = event.dataTransfer ? event.dataTransfer.getData('text/plain') : '';
+    const imageName = sanitizeFilename(dataImage || (dragState && dragState.imageName) || '');
+    if (!imageName || !unitId) return;
+
+    assignImageToUnitId(unitId, imageName);
+    selectedUnassignedImage = '';
+    dragState = null;
+    renderPortraitMapper();
+  });
+
+  groupsEl.addEventListener('dragleave', (event) => {
+    const related = event.relatedTarget;
+    if (related && groupsEl.contains(related)) return;
+    setActiveMapDropTarget(null);
+  });
+
+  groupsEl.addEventListener('dragend', () => {
+    setActiveMapDropTarget(null);
+  });
+
+  portraitMapperInitialized = true;
+}
+
+async function loadMissingPortraitMap() {
+  try {
+    const response = await fetch('./data/static/unitid-missing-portrait-map.json', { cache: 'no-store' });
+    if (!response.ok) {
+      missingPortraitMap = {};
+      return;
+    }
+    const json = await response.json();
+    missingPortraitMap = json && typeof json === 'object' ? json : {};
+  } catch (error) {
+    missingPortraitMap = {};
+  }
+}
+
+async function loadPortraitRenameMap() {
+  try {
+    const response = await fetch('./data/static/portrait-rename-map.json', { cache: 'no-store' });
+    if (!response.ok) {
+      portraitRenameMap = {};
+      portraitRenameAssignmentsByUnitId = new Map();
+      portraitRenameAssignmentsByUnitIdLower = new Map();
+      return;
+    }
+    const json = await response.json();
+    portraitRenameMap = json && typeof json === 'object' ? json : {};
+    portraitRenameAssignmentsByUnitId = buildAssignmentsByUnitId(portraitRenameMap);
+    portraitRenameAssignmentsByUnitIdLower = new Map();
+    portraitRenameAssignmentsByUnitId.forEach((sourceImage, mappedUnitId) => {
+      portraitRenameAssignmentsByUnitIdLower.set(String(mappedUnitId || '').toLowerCase(), sourceImage);
+    });
+  } catch (error) {
+    portraitRenameMap = {};
+    portraitRenameAssignmentsByUnitId = new Map();
+    portraitRenameAssignmentsByUnitIdLower = new Map();
+  }
+}
+
+async function loadPortraitImageManifest() {
+  try {
+    const response = await fetch('./data/static/image-manifest.json', { cache: 'no-store' });
+    if (!response.ok) {
+      portraitSourceImageManifest = [];
+      portraitSourceImageManifestSet = new Set();
+      return;
+    }
+
+    const json = await response.json();
+    if (!Array.isArray(json)) {
+      portraitSourceImageManifest = [];
+      return;
+    }
+
+    portraitSourceImageManifest = json
+      .map((name) => sanitizeFilename(name))
+      .filter((name) => name && isPortraitImageFileName(name));
+    portraitSourceImageManifestSet = new Set(portraitSourceImageManifest);
+  } catch (error) {
+    portraitSourceImageManifest = [];
+    portraitSourceImageManifestSet = new Set();
+  }
+}
+
+async function initializePortraitMapper() {
+  await loadMissingPortraitMap();
+  await loadPortraitRenameMap();
+  await loadPortraitImageManifest();
+  setupPortraitMapperEvents();
+  resetPortraitMapperStaged();
 }
 
 async function loadUnitPortraitMap() {
@@ -1996,6 +2600,7 @@ async function loadGuildData() {
 
   try {
     await loadUnitPortraitMap();
+    await initializePortraitMapper();
     const response = await fetch(dataset.url, { cache: 'no-store' });
 
     if (!response.ok) {
@@ -2019,6 +2624,7 @@ async function loadGuildData() {
     }
   } catch (error) {
     console.error(error);
+    await initializePortraitMapper();
     guildSnapshots = [buildFallbackSnapshot()];
     activeGuildIndex = 0;
     renderLastUpdated({ responseLastModified: null, dataTimestamp: null });
