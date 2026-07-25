@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const DATA_PATH = process.argv[2] || 'data/current/live-war.json';
+const DATA_PATH = process.argv[2] || 'data/history/86d0edfc-4739-44e3-a867-8f04685b7ed4.json';
 const SOURCE_DIR = process.argv[3] || 'img';
 const MAP_PATH = process.argv[4] || 'data/static/portrait-rename-map.json';
 const MIN_SCORE = Number(process.argv[5] || 8);
