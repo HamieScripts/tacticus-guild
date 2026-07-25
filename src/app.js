@@ -446,11 +446,13 @@ function buildFallbackSnapshot() {
 }
 
 function buildSnapshot(data) {
+  console.log({ data });
   const eventResponseData = getPrimaryEventResponseData(data);
   const playerData = eventResponseData?.playerData || [];
   const activityLogs = eventResponseData?.activityLogs || [];
   const guildData = eventResponseData?.guildData || [];
   const playerNames = new Map(playerData.map((player) => [player.userId, player.displayName]));
+  console.log({ playerNames });
   const playerProfiles = new Map(playerData.map((player) => [player.userId, {
     avatarUnitId: player.avatarUnitId || null,
     avatarFrameId: player.avatarFrameId || null
@@ -521,14 +523,15 @@ function buildSnapshot(data) {
 
     if (!Number.isFinite(teamIndex) || !userId) return;
     if (!guildBuckets.has(teamIndex)) return;
+    if (log?.type !== 'battleFinished') {
+      return;
+    }
     assignTeamIfValid(userId, teamIndex);
 
-    if (log?.type === 'battleFinished') {
-      const defenderUserId = log?.defender?.userId;
-      const opposingTeamIndex = getOpposingTeamIndex(teamIndex);
-      if (defenderUserId && Number.isFinite(opposingTeamIndex)) {
-        assignTeamIfValid(defenderUserId, opposingTeamIndex);
-      }
+    const defenderUserId = log?.defender?.userId;
+    const opposingTeamIndex = getOpposingTeamIndex(teamIndex);
+    if (defenderUserId && Number.isFinite(opposingTeamIndex)) {
+      assignTeamIfValid(defenderUserId, opposingTeamIndex);
     }
   });
 
@@ -719,6 +722,7 @@ function buildRows(snapshot) {
 
 function summarizeGuild(snapshot) {
   const rows = buildRows(snapshot);
+  console.log(rows);
   const isUsedToken = (token) => token && typeof token === 'object' && Object.prototype.hasOwnProperty.call(token, 'hasScore');
   const totalPlayers = rows.length > 30 ? 30 : rows.length;
   const totalTokenSlots = totalPlayers * TOKEN_SLOTS_PER_PLAYER;
@@ -877,6 +881,7 @@ function renderDatasetTabs() {
 
 function renderActiveGuild() {
   const snapshot = guildSnapshots[activeGuildIndex];
+  console.log({guildSnapshots, activeGuildIndex, snapshot});
 
   if (!snapshot) return;
 

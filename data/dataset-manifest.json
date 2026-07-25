@@ -1,10 +1,10 @@
 {
   "datasets": [
     {
-      "key": "current",
-      "label": "Active war",
-      "sourceLabel": "Current snapshot",
-      "url": "./data/current/live-war.json"
+      "key": "history-2026-07-24",
+      "label": "History 2026-07-24",
+      "sourceLabel": "History snapshot 2026-07-24",
+      "url": "./data/history/86d0edfc-4739-44e3-a867-8f04685b7ed4.json"
     },
     {
       "key": "history-2026-07-23",
