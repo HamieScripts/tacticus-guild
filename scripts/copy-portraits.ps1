@@ -1,8 +1,7 @@
 param(
   [string]$SourcePath = "..\tacticusplanner\src\assets\images\portraits\resized",
   [string]$DestinationPath = ".\img",
-  [string]$RenameMapPath = ".\data\static\portrait-rename-map.json",
-  [string]$ManifestPath = ".\data\static\unit-portrait-map.json",
+  [string]$PortraitMapPath = ".\data\static\portrait-map.json",
   [string]$ImageManifestPath = ".\data\static\image-manifest.json"
 )
 
@@ -25,25 +24,16 @@ Get-ChildItem -Path $DestinationPath -File -ErrorAction SilentlyContinue |
   Where-Object { $destinationImageExtensions -contains $_.Extension.ToLowerInvariant() } |
   ForEach-Object { Remove-Item -Path $_.FullName -Force }
 
-$renameMap = @{}
-if (Test-Path -Path $RenameMapPath) {
-  $rawMap = Get-Content -Path $RenameMapPath -Raw
+$portraitMap = @{}
+if (Test-Path -Path $PortraitMapPath) {
+  $rawMap = Get-Content -Path $PortraitMapPath -Raw
   if ($rawMap) {
     $parsedMap = $rawMap | ConvertFrom-Json
     if ($parsedMap) {
       $parsedMap.PSObject.Properties | ForEach-Object {
-        $renameMap[$_.Name] = [string]$_.Value
+        $portraitMap[[string]$_.Name] = [string]$_.Value
       }
     }
-  }
-}
-
-# Secondary lookup by stem (filename without extension), so key extension can differ from source extension.
-$renameMapByStem = @{}
-foreach ($key in $renameMap.Keys) {
-  $stem = [System.IO.Path]::GetFileNameWithoutExtension([string]$key).ToLowerInvariant()
-  if (-not $renameMapByStem.ContainsKey($stem)) {
-    $renameMapByStem[$stem] = [string]$key
   }
 }
 
@@ -57,61 +47,59 @@ $extensionPriority = @{
   '.svg' = 5
 }
 $copiedCount = 0
-$mappedCount = 0
-$unmapped = @()
-$unitPortraitMap = @{}
+$resolvedCount = 0
+$missingSources = @()
+$sourceFilesByName = @{}
+$sourceFilesByStem = @{}
 
 foreach ($pattern in $extensions) {
   $files = Get-ChildItem -Path $resolvedSource.Path -Filter $pattern -File -ErrorAction SilentlyContinue
   foreach ($file in $files) {
-    $baseName = [System.IO.Path]::GetFileNameWithoutExtension($file.Name)
-    $mappedUnitId = $null
-
-    if ($renameMap.ContainsKey($file.Name)) {
-      $mappedUnitId = [string]$renameMap[$file.Name]
-    } elseif ($renameMap.ContainsKey($baseName)) {
-      $mappedUnitId = [string]$renameMap[$baseName]
-    } else {
-      $normalizedStem = $baseName.ToLowerInvariant()
-      if ($renameMapByStem.ContainsKey($normalizedStem)) {
-        $mappedUnitId = [string]$renameMap[$renameMapByStem[$normalizedStem]]
-      }
+    $sourceFilesByName[[string]$file.Name] = $file
+    $stem = [System.IO.Path]::GetFileNameWithoutExtension([string]$file.Name).ToLowerInvariant()
+    if (-not $sourceFilesByStem.ContainsKey($stem)) {
+      $sourceFilesByStem[$stem] = $file
+      continue
     }
 
-    if ([string]::IsNullOrWhiteSpace($mappedUnitId) -or $mappedUnitId -eq 'unknown') {
-      $unmapped += $file.Name
-    } else {
-      # Map value should be the exact unitId from battle data, e.g. ultraTitus.
-      $extension = $file.Extension.ToLowerInvariant()
-      $destinationFileName = "$mappedUnitId$extension"
-      $existingDestination = [string]$unitPortraitMap[$mappedUnitId]
-
-      if (-not [string]::IsNullOrWhiteSpace($existingDestination)) {
-        $existingExt = [System.IO.Path]::GetExtension($existingDestination).ToLowerInvariant()
-        $existingPriority = if ($extensionPriority.ContainsKey($existingExt)) { [int]$extensionPriority[$existingExt] } else { 999 }
-        $currentPriority = if ($extensionPriority.ContainsKey($extension)) { [int]$extensionPriority[$extension] } else { 999 }
-
-        if ($existingPriority -le $currentPriority) {
-          continue
-        }
-      }
-
-      $unitPortraitMap[$mappedUnitId] = $destinationFileName
-      $unitPortraitMap[$mappedUnitId.ToLowerInvariant()] = $destinationFileName
-      $mappedCount++
-
-      Copy-Item -Path $file.FullName -Destination (Join-Path $DestinationPath $destinationFileName) -Force
-      $copiedCount++
+    $existingFile = $sourceFilesByStem[$stem]
+    $existingExt = [System.IO.Path]::GetExtension([string]$existingFile.Name).ToLowerInvariant()
+    $newExt = [System.IO.Path]::GetExtension([string]$file.Name).ToLowerInvariant()
+    $existingPriority = if ($extensionPriority.ContainsKey($existingExt)) { [int]$extensionPriority[$existingExt] } else { 999 }
+    $newPriority = if ($extensionPriority.ContainsKey($newExt)) { [int]$extensionPriority[$newExt] } else { 999 }
+    if ($newPriority -lt $existingPriority) {
+      $sourceFilesByStem[$stem] = $file
     }
   }
 }
 
-if (-not (Test-Path -Path (Split-Path -Parent $ManifestPath))) {
-  New-Item -ItemType Directory -Path (Split-Path -Parent $ManifestPath) | Out-Null
-}
+foreach ($unitId in $portraitMap.Keys) {
+  $mappedImage = [string]$portraitMap[$unitId]
+  if ([string]::IsNullOrWhiteSpace($mappedImage) -or $mappedImage -eq 'unknown') {
+    continue
+  }
 
-$manifestJson = $unitPortraitMap | ConvertTo-Json -Depth 3
-Set-Content -Path $ManifestPath -Value $manifestJson
+  $sourceFile = $null
+  if ($sourceFilesByName.ContainsKey($mappedImage)) {
+    $sourceFile = $sourceFilesByName[$mappedImage]
+  } else {
+    $stem = [System.IO.Path]::GetFileNameWithoutExtension($mappedImage).ToLowerInvariant()
+    if ($sourceFilesByStem.ContainsKey($stem)) {
+      $sourceFile = $sourceFilesByStem[$stem]
+    }
+  }
+
+  if (-not $sourceFile) {
+    $missingSources += "$unitId -> $mappedImage"
+    continue
+  }
+
+  $extension = [System.IO.Path]::GetExtension([string]$sourceFile.Name)
+  $destinationFileName = "$unitId$extension"
+  Copy-Item -Path $sourceFile.FullName -Destination (Join-Path $DestinationPath $destinationFileName) -Force
+  $resolvedCount++
+  $copiedCount++
+}
 
 $sourceImageManifest = @()
 foreach ($pattern in $extensions) {
@@ -131,11 +119,10 @@ if (-not (Test-Path -Path (Split-Path -Parent $ImageManifestPath))) {
 Set-Content -Path $ImageManifestPath -Value ($sourceImageManifest | ConvertTo-Json)
 
 Write-Host "Copied mapped portraits: $copiedCount"
-Write-Host "Mapped and renamed: $mappedCount"
-Write-Host "Manifest written to: $ManifestPath"
+Write-Host "Mapped from portrait-map: $resolvedCount"
 Write-Host "Image manifest written to: $ImageManifestPath"
 
-if ($unmapped.Count -gt 0) {
-  Write-Host "Unmapped files ($($unmapped.Count)) - add entries to ${RenameMapPath}:" -ForegroundColor Yellow
-  $unmapped | Sort-Object | ForEach-Object { Write-Host "  $_" }
+if ($missingSources.Count -gt 0) {
+  Write-Host "Portrait map entries with missing source files ($($missingSources.Count)):" -ForegroundColor Yellow
+  $missingSources | Sort-Object | ForEach-Object { Write-Host "  $_" }
 }

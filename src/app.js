@@ -83,15 +83,11 @@ function updateDatasetInUrl(datasetKey) {
 
 let guildSnapshots = [];
 let activeGuildIndex = 0;
-let unitPortraitMap = {};
+let portraitMap = {};
 let missingPortraitMap = {};
-let portraitRenameMap = {};
 let portraitMapStaged = {};
 let portraitSourceImageManifest = [];
 let portraitSourceImageManifestSet = new Set();
-let portraitRenameAssignmentsByUnitId = new Map();
-let portraitRenameAssignmentsByUnitIdLower = new Map();
-let portraitStagedAssignmentsByUnitId = new Map();
 let selectedUnassignedImage = '';
 let dragState = null;
 let activeMapDropTarget = null;
@@ -998,27 +994,17 @@ function getBattleUnitAvatarUrlFromUnitId(unitId) {
   const exactUnitId = String(unitId || '').trim();
   if (!exactUnitId) return null;
 
-  const lowerUnitId = exactUnitId.toLowerCase();
-  const mappedFile = unitPortraitMap[exactUnitId] || unitPortraitMap[lowerUnitId];
-
-  if (mappedFile) {
-    return `./img/${mappedFile}`;
+  const mappedImage = getPortraitImageForUnitIdFromMap(exactUnitId, portraitMap);
+  if (isUnknownPortraitTarget(mappedImage)) {
+    return MISSING_UNIT_AVATAR_URL;
   }
 
-  const mappedSourceImage = portraitRenameAssignmentsByUnitId.get(exactUnitId)
-    || portraitRenameAssignmentsByUnitIdLower.get(lowerUnitId)
-    || '';
-
-  if (mappedSourceImage && portraitSourceImageManifestSet.has(mappedSourceImage)) {
-    return `./img-temp/${mappedSourceImage}`;
+  const normalizedImage = sanitizeFilename(mappedImage);
+  if (portraitSourceImageManifestSet.has(normalizedImage)) {
+    return `./img-temp/${normalizedImage}`;
   }
 
-  // Fallback for newly mapped unit IDs before unit-portrait-map regeneration.
-  if (mappedSourceImage) {
-    return `./img/${exactUnitId}.png`;
-  }
-
-  return MISSING_UNIT_AVATAR_URL;
+  return `./img/${normalizedImage}`;
 }
 
 function getUnitIdPrefix(unitId) {
@@ -1037,22 +1023,88 @@ function isUnknownPortraitTarget(value) {
   return !normalized || normalized === 'unknown' || normalized === 'null';
 }
 
-function getMappedUnitIdsFromRenameMap(mapObj) {
-  const ids = new Set();
-  Object.values(mapObj || {}).forEach((value) => {
-    const unitId = sanitizeFilename(value);
-    if (!isUnknownPortraitTarget(unitId)) {
-      ids.add(unitId);
+function getPortraitImageForUnitIdFromMap(unitId, mapObj) {
+  const normalizedUnitId = sanitizeFilename(unitId);
+  if (!normalizedUnitId || !mapObj || typeof mapObj !== 'object') return '';
+
+  if (Object.prototype.hasOwnProperty.call(mapObj, normalizedUnitId)) {
+    return sanitizeFilename(mapObj[normalizedUnitId]);
+  }
+
+  const normalizedLower = normalizedUnitId.toLowerCase();
+  const matchKey = Object.keys(mapObj).find((key) => key.toLowerCase() === normalizedLower);
+  return matchKey ? sanitizeFilename(mapObj[matchKey]) : '';
+}
+
+function setPortraitImageForUnitIdOnMap(unitId, imageName, mapObj) {
+  const normalizedUnitId = sanitizeFilename(unitId);
+  const normalizedImage = sanitizeFilename(imageName);
+  if (!normalizedUnitId || !mapObj || typeof mapObj !== 'object') return;
+
+  if (Object.prototype.hasOwnProperty.call(mapObj, normalizedUnitId)) {
+    mapObj[normalizedUnitId] = normalizedImage;
+    return;
+  }
+
+  const normalizedLower = normalizedUnitId.toLowerCase();
+  const matchKey = Object.keys(mapObj).find((key) => key.toLowerCase() === normalizedLower);
+  if (matchKey) {
+    mapObj[matchKey] = normalizedImage;
+    return;
+  }
+
+  mapObj[normalizedUnitId] = normalizedImage;
+}
+
+function getAssignedUnitIdForImageFromMap(imageName, mapObj) {
+  const normalizedImage = sanitizeFilename(imageName);
+  if (!normalizedImage || !mapObj || typeof mapObj !== 'object') return '';
+
+  const entries = Object.entries(mapObj);
+  for (let i = 0; i < entries.length; i += 1) {
+    const [unitId, mappedImage] = entries[i];
+    if (sanitizeFilename(mappedImage) === normalizedImage) {
+      return sanitizeFilename(unitId);
     }
+  }
+
+  return '';
+}
+
+function getUnitIdsFromLoadedSnapshots() {
+  const ids = new Set();
+
+  (guildSnapshots || []).forEach((snapshot) => {
+    const battles = Array.isArray(snapshot?.battles) ? snapshot.battles : [];
+
+    battles.forEach((battle) => {
+      ['attacker', 'defender'].forEach((side) => {
+        const sideUnits = side === 'attacker'
+          ? buildBattleSideUnits(battle?.attackerUnits, battle?.attackerMachineOfWar)
+          : buildBattleSideUnits(battle?.defenderUnits, battle?.defenderMachineOfWar);
+
+        sideUnits.forEach((unit) => {
+          const unitId = getBattleUnitId(unit);
+          if (unitId) ids.add(unitId);
+        });
+      });
+    });
   });
+
   return ids;
 }
 
 function getAllKnownUnitIds() {
-  const fromPortraitMap = Object.keys(unitPortraitMap || {});
+  const fromPortraitMap = Object.keys(portraitMap || {});
   const fromMissingMap = Object.keys(missingPortraitMap || {});
-  const fromRenameMap = Array.from(getMappedUnitIdsFromRenameMap(portraitMapStaged));
-  return Array.from(new Set([...fromPortraitMap, ...fromMissingMap, ...fromRenameMap])).sort((a, b) => a.localeCompare(b));
+  const fromStagedMap = Object.keys(portraitMapStaged || {});
+  const fromLoadedSnapshots = Array.from(getUnitIdsFromLoadedSnapshots());
+  return Array.from(new Set([
+    ...fromPortraitMap,
+    ...fromMissingMap,
+    ...fromStagedMap,
+    ...fromLoadedSnapshots
+  ])).sort((a, b) => a.localeCompare(b));
 }
 
 function isPortraitImageFileName(value) {
@@ -1062,41 +1114,27 @@ function isPortraitImageFileName(value) {
 function getAllKnownSourceImageNames() {
   const merged = new Set([
     ...(portraitSourceImageManifest || []),
-    ...Object.keys(portraitRenameMap || {}),
-    ...Object.keys(portraitMapStaged || {})
-  ].map((name) => sanitizeFilename(name)).filter((name) => name && isPortraitImageFileName(name)));
+    ...Object.values(portraitMap || {}),
+    ...Object.values(portraitMapStaged || {})
+  ].map((name) => sanitizeFilename(name)).filter((name) => name && isPortraitImageFileName(name) && name.startsWith('ui_image_portrait')));
 
   return Array.from(merged).sort((a, b) => a.localeCompare(b));
 }
 
 function ensureManifestImagesInStagedMap() {
-  getAllKnownSourceImageNames().forEach((imageName) => {
-    if (!Object.prototype.hasOwnProperty.call(portraitMapStaged, imageName)) {
-      portraitMapStaged[imageName] = 'unknown';
-    }
-  });
+  // Source images are tracked in manifest; staged map stores characterId -> image.
 }
 
 function getUnassignedImages() {
+  const assignedImages = new Set(
+    Object.values(portraitMapStaged || {})
+      .map((value) => sanitizeFilename(value))
+      .filter((value) => value && !isUnknownPortraitTarget(value))
+  );
+
   return getAllKnownSourceImageNames()
-    .filter((name) => isUnknownPortraitTarget(portraitMapStaged[name]))
+    .filter((name) => !assignedImages.has(name))
     .sort((a, b) => a.localeCompare(b));
-}
-
-function buildAssignmentsByUnitId(mapObj) {
-  const byUnitId = new Map();
-  Object.entries(mapObj || {}).forEach(([imageName, mappedUnitId]) => {
-    const normalizedImage = sanitizeFilename(imageName);
-    const normalizedUnitId = sanitizeFilename(mappedUnitId);
-    if (!normalizedImage || isUnknownPortraitTarget(normalizedUnitId)) return;
-    byUnitId.set(normalizedUnitId, normalizedImage);
-  });
-  return byUnitId;
-}
-
-function rebuildPortraitAssignmentIndexes() {
-  portraitRenameAssignmentsByUnitId = buildAssignmentsByUnitId(portraitRenameMap);
-  portraitStagedAssignmentsByUnitId = buildAssignmentsByUnitId(portraitMapStaged);
 }
 
 function setActiveMapDropTarget(target) {
@@ -1114,26 +1152,8 @@ function setActiveMapDropTarget(target) {
 }
 
 function getAssignedSourceImageForUnitIdFromMap(unitId, mapObj) {
-  const normalizedUnitId = sanitizeFilename(unitId);
-  if (!normalizedUnitId) return '';
-
-  if (mapObj === portraitMapStaged) {
-    return portraitStagedAssignmentsByUnitId.get(normalizedUnitId) || '';
-  }
-
-  if (mapObj === portraitRenameMap) {
-    return portraitRenameAssignmentsByUnitId.get(normalizedUnitId) || '';
-  }
-
-  const entries = Object.entries(mapObj || {});
-  for (let i = 0; i < entries.length; i += 1) {
-    const [imageName, mappedUnitId] = entries[i];
-    if (sanitizeFilename(mappedUnitId) === normalizedUnitId) {
-      return sanitizeFilename(imageName);
-    }
-  }
-
-  return '';
+  const mappedImage = getPortraitImageForUnitIdFromMap(unitId, mapObj);
+  return isUnknownPortraitTarget(mappedImage) ? '' : mappedImage;
 }
 
 function getAssignedSourceImageForUnitId(unitId) {
@@ -1145,39 +1165,34 @@ function assignImageToUnitId(unitId, imageName) {
   const normalizedImage = sanitizeFilename(imageName);
   if (!normalizedUnitId || !normalizedImage) return;
 
-  const previousImageForUnit = portraitStagedAssignmentsByUnitId.get(normalizedUnitId);
-  if (previousImageForUnit && previousImageForUnit !== normalizedImage) {
-    portraitMapStaged[previousImageForUnit] = 'unknown';
+  const currentlyAssignedUnitId = getAssignedUnitIdForImageFromMap(normalizedImage, portraitMapStaged);
+  if (currentlyAssignedUnitId && currentlyAssignedUnitId !== normalizedUnitId) {
+    setPortraitImageForUnitIdOnMap(currentlyAssignedUnitId, 'unknown', portraitMapStaged);
   }
 
-  const previousUnitForImage = sanitizeFilename(portraitMapStaged[normalizedImage]);
-  if (previousUnitForImage && !isUnknownPortraitTarget(previousUnitForImage) && previousUnitForImage !== normalizedUnitId) {
-    portraitStagedAssignmentsByUnitId.delete(previousUnitForImage);
-  }
-
-  portraitMapStaged[normalizedImage] = normalizedUnitId;
-  portraitStagedAssignmentsByUnitId.set(normalizedUnitId, normalizedImage);
+  setPortraitImageForUnitIdOnMap(normalizedUnitId, normalizedImage, portraitMapStaged);
 }
 
 function clearUnitIdAssignment(unitId) {
   const normalizedUnitId = sanitizeFilename(unitId);
   if (!normalizedUnitId) return;
 
-  const assignedSource = portraitStagedAssignmentsByUnitId.get(normalizedUnitId);
-  if (!assignedSource) return;
-  portraitMapStaged[assignedSource] = 'unknown';
-  portraitStagedAssignmentsByUnitId.delete(normalizedUnitId);
+  if (!Object.keys(portraitMapStaged || {}).some((key) => key.toLowerCase() === normalizedUnitId.toLowerCase())) {
+    return;
+  }
+
+  setPortraitImageForUnitIdOnMap(normalizedUnitId, 'unknown', portraitMapStaged);
 }
 
 function getMappingChangeCount() {
-  const allSourceImages = Array.from(new Set([
-    ...Object.keys(portraitRenameMap || {}),
+  const allUnitIds = Array.from(new Set([
+    ...Object.keys(portraitMap || {}),
     ...Object.keys(portraitMapStaged || {})
   ])).sort((a, b) => a.localeCompare(b));
 
-  return allSourceImages.reduce((count, sourceImage) => {
-    const base = sanitizeFilename(portraitRenameMap[sourceImage] || 'unknown');
-    const staged = sanitizeFilename(portraitMapStaged[sourceImage] || 'unknown');
+  return allUnitIds.reduce((count, unitId) => {
+    const base = sanitizeFilename(getPortraitImageForUnitIdFromMap(unitId, portraitMap) || 'unknown');
+    const staged = sanitizeFilename(getPortraitImageForUnitIdFromMap(unitId, portraitMapStaged) || 'unknown');
     return count + (base !== staged ? 1 : 0);
   }, 0);
 }
@@ -1206,7 +1221,8 @@ function setMappingWarning() {
   if (!warningEl) return;
 
   const overlaps = Object.keys(missingPortraitMap || {}).filter((unitId) => {
-    return Boolean(unitPortraitMap[unitId]);
+    const mappedImage = getPortraitImageForUnitIdFromMap(unitId, portraitMap);
+    return Boolean(mappedImage && !isUnknownPortraitTarget(mappedImage));
   });
 
   if (overlaps.length === 0) {
@@ -1228,7 +1244,7 @@ function renderMappingUnassignedList() {
   countEl.textContent = `${imagePool.length} images`;
 
   if (imagePool.length === 0) {
-    listEl.innerHTML = '<div class="col-span-full rounded-lg border border-dashed border-emerald-400/35 bg-emerald-500/10 p-3 text-xs text-emerald-200">All source images already mapped in portrait-rename-map.</div>';
+    listEl.innerHTML = '<div class="col-span-full rounded-lg border border-dashed border-emerald-400/35 bg-emerald-500/10 p-3 text-xs text-emerald-200">All source images already assigned in portrait-map.</div>';
     return;
   }
 
@@ -1270,8 +1286,8 @@ function renderMappingGroups() {
   groupsEl.innerHTML = groups.map((group) => {
     const cards = group.ids.map((unitId) => {
       const assignedSourceImage = getAssignedSourceImageForUnitId(unitId);
-      const baseAssignedSourceImage = getAssignedSourceImageForUnitIdFromMap(unitId, portraitRenameMap);
-      const currentPortraitFile = sanitizeFilename(unitPortraitMap[unitId]);
+      const baseAssignedSourceImage = getAssignedSourceImageForUnitIdFromMap(unitId, portraitMap);
+      const currentPortraitFile = baseAssignedSourceImage;
       // Show staged assignment first so drag/drop updates are immediately visible.
       const previewFile = assignedSourceImage || currentPortraitFile;
       const previewPrimarySrc = previewFile ? `./img-temp/${previewFile}` : MISSING_UNIT_AVATAR_URL;
@@ -1323,16 +1339,16 @@ function renderMappingGroups() {
 
 function buildPortraitMapExportDiff() {
   const updates = {};
-  const allSourceImages = Array.from(new Set([
-    ...Object.keys(portraitRenameMap || {}),
+  const allUnitIds = Array.from(new Set([
+    ...Object.keys(portraitMap || {}),
     ...Object.keys(portraitMapStaged || {})
   ])).sort((a, b) => a.localeCompare(b));
 
-  allSourceImages.forEach((sourceImage) => {
-    const base = sanitizeFilename(portraitRenameMap[sourceImage] || 'unknown');
-    const staged = sanitizeFilename(portraitMapStaged[sourceImage] || 'unknown');
+  allUnitIds.forEach((unitId) => {
+    const base = sanitizeFilename(getPortraitImageForUnitIdFromMap(unitId, portraitMap) || 'unknown');
+    const staged = sanitizeFilename(getPortraitImageForUnitIdFromMap(unitId, portraitMapStaged) || 'unknown');
     if (base !== staged) {
-      updates[sourceImage] = staged || 'unknown';
+      updates[unitId] = staged || 'unknown';
     }
   });
 
@@ -1341,13 +1357,16 @@ function buildPortraitMapExportDiff() {
 
 function buildMissingMapExportOptionA() {
   const result = { ...(missingPortraitMap || {}) };
-  const mappedUnitIds = new Set([
-    ...Object.keys(unitPortraitMap || {}),
-    ...Array.from(getMappedUnitIdsFromRenameMap(portraitMapStaged))
-  ]);
+  const mappedUnitIds = new Set(
+    Object.keys(portraitMapStaged || {})
+      .filter((unitId) => !isUnknownPortraitTarget(getPortraitImageForUnitIdFromMap(unitId, portraitMapStaged)))
+      .map((unitId) => sanitizeFilename(unitId).toLowerCase())
+      .filter(Boolean)
+  );
 
   Object.keys(result).forEach((unitId) => {
-    if (mappedUnitIds.has(unitId)) {
+    const normalizedUnitId = sanitizeFilename(unitId).toLowerCase();
+    if (normalizedUnitId && mappedUnitIds.has(normalizedUnitId)) {
       delete result[unitId];
     }
   });
@@ -1375,9 +1394,8 @@ function renderPortraitMapper() {
 }
 
 function resetPortraitMapperStaged() {
-  portraitMapStaged = { ...(portraitRenameMap || {}) };
+  portraitMapStaged = { ...(portraitMap || {}) };
   ensureManifestImagesInStagedMap();
-  portraitStagedAssignmentsByUnitId = buildAssignmentsByUnitId(portraitMapStaged);
   selectedUnassignedImage = '';
   dragState = null;
   setActiveMapDropTarget(null);
@@ -1543,26 +1561,17 @@ async function loadMissingPortraitMap() {
   }
 }
 
-async function loadPortraitRenameMap() {
+async function loadPortraitMap() {
   try {
-    const response = await fetch('./data/static/portrait-rename-map.json', { cache: 'no-store' });
+    const response = await fetch('./data/static/portrait-map.json', { cache: 'no-store' });
     if (!response.ok) {
-      portraitRenameMap = {};
-      portraitRenameAssignmentsByUnitId = new Map();
-      portraitRenameAssignmentsByUnitIdLower = new Map();
+      portraitMap = {};
       return;
     }
     const json = await response.json();
-    portraitRenameMap = json && typeof json === 'object' ? json : {};
-    portraitRenameAssignmentsByUnitId = buildAssignmentsByUnitId(portraitRenameMap);
-    portraitRenameAssignmentsByUnitIdLower = new Map();
-    portraitRenameAssignmentsByUnitId.forEach((sourceImage, mappedUnitId) => {
-      portraitRenameAssignmentsByUnitIdLower.set(String(mappedUnitId || '').toLowerCase(), sourceImage);
-    });
+    portraitMap = json && typeof json === 'object' ? json : {};
   } catch (error) {
-    portraitRenameMap = {};
-    portraitRenameAssignmentsByUnitId = new Map();
-    portraitRenameAssignmentsByUnitIdLower = new Map();
+    portraitMap = {};
   }
 }
 
@@ -1583,7 +1592,7 @@ async function loadPortraitImageManifest() {
 
     portraitSourceImageManifest = json
       .map((name) => sanitizeFilename(name))
-      .filter((name) => name && isPortraitImageFileName(name));
+      .filter((name) => name && isPortraitImageFileName(name) && name.startsWith('ui_image_portrait'));
     portraitSourceImageManifestSet = new Set(portraitSourceImageManifest);
   } catch (error) {
     portraitSourceImageManifest = [];
@@ -1592,26 +1601,11 @@ async function loadPortraitImageManifest() {
 }
 
 async function initializePortraitMapper() {
+  await loadPortraitMap();
   await loadMissingPortraitMap();
-  await loadPortraitRenameMap();
   await loadPortraitImageManifest();
   setupPortraitMapperEvents();
   resetPortraitMapperStaged();
-}
-
-async function loadUnitPortraitMap() {
-  try {
-    const response = await fetch('./data/static/unit-portrait-map.json', { cache: 'no-store' });
-    if (!response.ok) {
-      unitPortraitMap = {};
-      return;
-    }
-
-    const json = await response.json();
-    unitPortraitMap = json && typeof json === 'object' ? json : {};
-  } catch (error) {
-    unitPortraitMap = {};
-  }
 }
 
 function renderBattleUnits(units, side = 'attacker') {
@@ -2599,7 +2593,6 @@ async function loadGuildData() {
   }
 
   try {
-    await loadUnitPortraitMap();
     await initializePortraitMapper();
     const response = await fetch(dataset.url, { cache: 'no-store' });
 
