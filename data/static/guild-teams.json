@@ -1,0 +1,54 @@
+[
+  {
+    "name": "GSC",
+    "type": "hybrid",
+    "core": [
+      "genesBiophagus",
+      "genesKelermorph",
+      "genesPrimus"
+    ],
+    "flex": [
+      "genesMagus",
+      "genesPatriarch",
+      "tyranWingedPrime",
+      "tyranParasite"
+    ],
+    "mow": [
+      "tyranBiovore"
+    ]
+  },
+  {
+    "name": "Death Ball",
+    "type": "hybrid",
+    "core": [
+      "deathBlightlord",
+      "deathRotbone",
+      "tauMarksman"
+    ],
+    "flex": [
+      "deathTyphus",
+      "deathBlightbringer",
+      "blackAbaddon",
+      "blackObliterator",
+      "blackTerminator"
+    ],
+    "mow": [
+      "deathCrawler"
+    ]
+  },
+  {
+    "name": "CRIMJ",
+    "type": "hybrid",
+    "core": [
+      "adeptCelestine",
+      "spaceBlackmane",
+      "genesPrimus",
+      "bloodMephiston",
+      "genesKelermorph"
+    ],
+    "flex": [],
+    "mow": [
+      "tyranBiovore"
+    ]
+  }
+]
