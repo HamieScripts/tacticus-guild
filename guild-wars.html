@@ -4,16 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Praetorians of Terra - Guild Wars</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="min-h-screen bg-slate-950 text-slate-100">
     <div class="mx-auto flex max-w-none flex-col gap-6 px-4 py-8 sm:px-6 lg:px-8">
-      <header class="animate__animated animate__fadeInDown rounded-3xl border border-cyan-400/20 bg-slate-900/80 p-6 shadow-2xl shadow-cyan-500/10">
+      <header class="rounded-3xl border border-cyan-400/20 bg-slate-900/80 p-6 shadow-2xl shadow-cyan-500/10">
         <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <h1 class="text-2xl font-black sm:text-3xl">Praetorians of Terra</h1>
           <nav aria-label="Primary">
             <ul class="flex flex-wrap items-center gap-2">
+              <li>
+                <a href="index.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Home</a>
+              </li>
               <li>
                 <a href="guild-wars.html" aria-current="page" class="inline-flex rounded-lg border border-cyan-400/70 bg-cyan-500/15 px-4 py-2 text-sm font-semibold text-cyan-200">Guild Wars</a>
               </li>
@@ -29,84 +31,54 @@
       </header>
 
       <header class="rounded-3xl border border-cyan-400/20 bg-slate-900/80 p-6 shadow-2xl shadow-cyan-500/10">
-        <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div class="w-full">
           <div>
-            <p class="text-sm font-semibold uppercase tracking-widest text-cyan-300">Tacticus guild wars</p>
-            <h2 class="mt-2 text-3xl font-black sm:text-4xl">Guild score tracker</h2>
-            <p class="mt-3 max-w-2xl text-sm text-slate-300 sm:text-base">
-              A clean static overview of guild performance, built by loading the exported JSON at runtime and analyzing the battle data.
+            <h2 class="text-xl font-bold text-cyan-100 sm:text-2xl">Guild Wars Overview</h2>
+            <p class="mt-2 text-sm text-slate-300 sm:text-base">
+              Compare guild progress at a glance with token usage, battle performance, and score projections for your guild.
             </p>
-            <p id="status-message" class="mt-3 text-sm text-slate-400">Loading guild data...</p>
-          </div>
-          <div class="rounded-2xl border border-emerald-400/20 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-200">
-            <div class="font-semibold">Source</div>
-            <div id="source-label" class="mt-1 text-emerald-100/90">Current snapshot</div>
-            <div class="mt-2 text-xs text-emerald-100/80">
-              Last updated: <span id="last-updated">Loading...</span>
-            </div>
-            <div class="mt-3">
-              <label for="dataset-select" class="block text-xs font-semibold uppercase tracking-wide text-emerald-200/80">Dataset</label>
-              <select id="dataset-select" class="mt-1 w-full rounded-lg border border-emerald-300/30 bg-slate-900/70 px-3 py-2 text-sm text-emerald-100 outline-none transition focus:border-emerald-300 focus:ring-2 focus:ring-emerald-400/30"></select>
-            </div>
           </div>
         </div>
       </header>
 
       <section>
+        <div class="flex flex-col gap-3 lg:flex-row lg:items-end">
+          <div class="w-full lg:w-80">
+            <label for="dataset-select" class="block text-xs font-semibold uppercase tracking-wide text-slate-400">Dataset</label>
+            <select id="dataset-select" class="mt-1 w-full rounded-lg border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200 outline-none transition focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/30"></select>
+          </div>
+          <div id="guild-tabs" class="flex flex-wrap gap-3 lg:self-end"></div>
+        </div>
+      </section>
+
+      <section>
         <div class="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4 shadow-lg shadow-emerald-900/20">
           <p class="text-sm text-emerald-200 uppercase tracking-wide">Guild token projection</p>
-          <div class="mt-3 overflow-x-auto">
+          <div class="mt-2 overflow-x-auto">
             <table class="w-full text-left text-xs sm:text-sm">
               <thead class="text-slate-300/90">
                 <tr>
-                  <th class="pb-2 pr-3 font-semibold">Guild</th>
-                  <th class="pb-2 pr-3 font-semibold">Total tokens</th>
+                  <th rowspan="2" class="pb-1 pr-3 font-semibold">Guild</th>
+                  <th colspan="4" class="border-l border-slate-700/70 pb-1 pl-3 pr-3 text-center font-semibold uppercase tracking-wide text-slate-400">Tokens</th>
+                  <th colspan="3" class="border-l border-slate-700/70 pb-1 pl-3 pr-3 text-center font-semibold uppercase tracking-wide text-slate-400">Performance</th>
+                  <th colspan="2" class="border-l border-slate-700/70 pb-1 pl-3 pr-3 text-center font-semibold uppercase tracking-wide text-slate-400">Player score</th>
+                  <th colspan="1" class="border-l border-slate-700/70 pb-1 pl-3 text-center font-semibold uppercase tracking-wide text-slate-400">Tile score</th>
+                </tr>
+                <tr>
+                  <th class="border-l border-slate-700/70 pb-2 pl-3 pr-3 font-semibold">Total tokens</th>
                   <th class="pb-2 pr-3 font-semibold">Spent</th>
                   <th class="pb-2 pr-3 font-semibold">Remaining</th>
-                  <th class="pb-2 pr-3 font-semibold">Wins</th>
+                  <th class="pb-2 pr-3 font-semibold">Avg/token</th>
+                  <th class="border-l border-slate-700/70 pb-2 pl-3 pr-3 font-semibold">Wins</th>
                   <th class="pb-2 pr-3 font-semibold">Defeats</th>
                   <th class="pb-2 pr-3 font-semibold">Abandoned</th>
-                  <th class="pb-2 pr-3 font-semibold">Avg/token</th>
-                  <th class="pb-2 font-semibold">Projected total</th>
+                  <th class="border-l border-slate-700/70 pb-2 pl-3 pr-3 font-semibold">Player total</th>
+                  <th class="pb-2 pr-3 font-semibold">Projected total</th>
+                  <th class="border-l border-slate-700/70 pb-2 pl-3 font-semibold">Tile total</th>
                 </tr>
               </thead>
               <tbody id="guild-token-projection-body" class="text-slate-100"></tbody>
             </table>
-          </div>
-        </div>
-      </section>
-
-      <div id="guild-tabs" class="flex flex-wrap gap-3"></div>
-
-      <section class="grid gap-4 md:grid-cols-3">
-        <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-4 shadow-lg shadow-black/20">
-          <p class="text-sm text-slate-400">Players</p>
-          <p id="player-count" class="mt-2 text-3xl font-bold text-white">0</p>
-        </div>
-        <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-4 shadow-lg shadow-black/20">
-          <p class="text-sm text-slate-400 uppercase tracking-wide">Token</p>
-          <div class="mt-4 space-y-3">
-            <div>
-              <p class="text-xs text-slate-500 uppercase tracking-wide mb-1">Used</p>
-              <p id="tokens-used" class="text-lg font-bold text-cyan-300">0/0 (0%)</p>
-            </div>
-            <div>
-              <p class="text-xs text-slate-500 uppercase tracking-wide mb-1">Score</p>
-              <p id="token-score-display" class="text-lg font-bold text-amber-300">0/0 (0%)</p>
-            </div>
-          </div>
-        </div>
-        <div class="rounded-2xl border border-slate-800 bg-slate-900/70 p-4 shadow-lg shadow-black/20">
-          <p class="text-sm text-slate-400 uppercase tracking-wide">Tiles</p>
-          <div class="mt-4 space-y-3">
-            <div>
-              <p class="text-xs text-slate-500 uppercase tracking-wide mb-1">Cleared</p>
-              <p id="tiles-cleared" class="text-lg font-bold text-purple-300">0/30 (0%)</p>
-            </div>
-            <div>
-              <p class="text-xs text-slate-500 uppercase tracking-wide mb-1">Score</p>
-              <p id="tiles-score" class="text-lg font-bold text-purple-300">0/520k (0%)</p>
-            </div>
           </div>
         </div>
       </section>
@@ -117,7 +89,7 @@
           <button id="tab-btn-battlelog" type="button" onclick="switchMainTab('battlelog')" class="border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100">
             Battle log <span id="battle-log-count" class="ml-1 rounded-full bg-slate-700 px-2 py-0.5 text-xs text-slate-300">0</span>
           </button>
-          <button id="tab-btn-portraitmap" type="button" onclick="switchMainTab('portraitmap')" class="border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100">
+          <button id="tab-btn-portraitmap" type="button" onclick="switchMainTab('portraitmap')" class="hidden border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100" aria-hidden="true" tabindex="-1">
             Portrait mapper
           </button>
         </div>

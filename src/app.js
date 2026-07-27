@@ -812,7 +812,7 @@ function renderGuildTokenProjectionTable() {
   tableBody.innerHTML = '';
 
   if (!Array.isArray(guildSnapshots) || guildSnapshots.length === 0) {
-    tableBody.innerHTML = '<tr><td colspan="10" class="py-2 text-slate-300/80">No guild data loaded.</td></tr>';
+    tableBody.innerHTML = '<tr><td colspan="11" class="py-2 text-slate-300/80">No guild data loaded.</td></tr>';
     return;
   }
 
@@ -821,6 +821,12 @@ function renderGuildTokenProjectionTable() {
 
   summaries
     .sort((a, b) => {
+      const aIsPraetorians = String(a.name || '').toLowerCase().includes('praetorians');
+      const bIsPraetorians = String(b.name || '').toLowerCase().includes('praetorians');
+      if (aIsPraetorians !== bIsPraetorians) {
+        return aIsPraetorians ? -1 : 1;
+      }
+
       const aIsActive = Number(a.teamIndex) === Number(activeTeamIndex);
       const bIsActive = Number(b.teamIndex) === Number(activeTeamIndex);
 
@@ -832,16 +838,19 @@ function renderGuildTokenProjectionTable() {
     })
     .forEach((guild) => {
       const row = document.createElement('tr');
+      const tileScorePct = POSSIBLE_TILE_SCORE > 0 ? Math.round((guild.tileScore / POSSIBLE_TILE_SCORE) * 100) : 0;
       row.innerHTML = `
-        <td class="py-1 pr-3 font-semibold text-emerald-100">${escapeHtml(guild.name)}</td>
-        <td class="py-1 pr-3 text-slate-200">${guild.totalTokenSlots.toLocaleString()}</td>
+        <td class="py-1 pr-3 font-semibold text-emerald-100">${escapeHtml(guild.name)} (${guild.totalPlayers.toLocaleString()})</td>
+        <td class="border-l border-slate-700/60 py-1 pl-3 pr-3 text-slate-200">${guild.totalTokenSlots.toLocaleString()}</td>
         <td class="py-1 pr-3 text-slate-200">${guild.usedTokens.toLocaleString()}</td>
         <td class="py-1 pr-3 text-slate-200">${guild.remainingTokens.toLocaleString()}</td>
-        <td class="py-1 pr-3 text-slate-200">${guild.totalWins.toLocaleString()} (${guild.totalCleanupWins.toLocaleString()}🧹)</td>
+        <td class="py-1 pr-3 text-cyan-200">${guild.avgPerUsedToken.toLocaleString(undefined, { maximumFractionDigits: 1 })}</td>
+        <td class="border-l border-slate-700/60 py-1 pl-3 pr-3 text-slate-200">${guild.totalWins.toLocaleString()} (${guild.totalCleanupWins.toLocaleString()}🧹)</td>
         <td class="py-1 pr-3 text-slate-200">${guild.totalDefeats.toLocaleString()}</td>
         <td class="py-1 pr-3 text-slate-200">${guild.totalAbandoned.toLocaleString()}</td>
-        <td class="py-1 pr-3 text-cyan-200">${guild.avgPerUsedToken.toLocaleString(undefined, { maximumFractionDigits: 1 })}</td>
-        <td class="py-1 font-semibold text-emerald-200">${guild.projectedTokenScore.toLocaleString()}</td>
+        <td class="border-l border-slate-700/60 py-1 pl-3 pr-3 text-slate-200">${guild.tokenScore.toLocaleString()}</td>
+        <td class="py-1 pr-3 font-semibold text-emerald-200">${guild.projectedTokenScore.toLocaleString()}</td>
+        <td class="border-l border-slate-700/60 py-1 pl-3 text-slate-200">${guild.tileScore.toLocaleString()} (${tileScorePct}%)</td>
       `;
       tableBody.appendChild(row);
     });
@@ -854,7 +863,20 @@ function renderGuildTabs() {
 
   tabsContainer.innerHTML = '';
 
-  guildSnapshots.forEach((guild, index) => {
+  const orderedGuilds = guildSnapshots
+    .map((guild, index) => ({ guild, index }))
+    .sort((a, b) => {
+      const aName = String(a.guild?.name || '');
+      const bName = String(b.guild?.name || '');
+      const aIsPraetorians = aName.includes('Praetorians');
+      const bIsPraetorians = bName.includes('Praetorians');
+      if (aIsPraetorians !== bIsPraetorians) {
+        return aIsPraetorians ? -1 : 1;
+      }
+      return a.index - b.index;
+    });
+
+  orderedGuilds.forEach(({ guild, index }) => {
     const button = document.createElement('button');
     button.type = 'button';
     button.className = `rounded-full border px-4 py-2 text-sm font-semibold transition ${index === activeGuildIndex ? 'border-cyan-400 bg-cyan-500/15 text-cyan-200 shadow-lg shadow-cyan-500/10' : 'border-slate-700 bg-slate-800/70 text-slate-300 hover:border-slate-500 hover:text-white'}`;
@@ -866,6 +888,15 @@ function renderGuildTabs() {
 
     tabsContainer.appendChild(button);
   });
+}
+
+function getDefaultActiveGuildIndex(snapshots) {
+  if (!Array.isArray(snapshots) || snapshots.length === 0) {
+    return 0;
+  }
+
+  const praetoriansIndex = snapshots.findIndex((guild) => String(guild?.name || '').toLowerCase().includes('praetorians of terra'));
+  return praetoriansIndex >= 0 ? praetoriansIndex : 0;
 }
 
 function renderDatasetTabs() {
@@ -3269,7 +3300,7 @@ async function loadGuildData() {
     renderLastUpdated({ responseLastModified, dataTimestamp });
 
     guildSnapshots = buildSnapshot(data);
-    activeGuildIndex = 0;
+    activeGuildIndex = getDefaultActiveGuildIndex(guildSnapshots);
     renderGuildTokenProjectionTable();
     renderActiveGuild();
     renderDatasetTabs();
@@ -3281,7 +3312,7 @@ async function loadGuildData() {
     console.error(error);
     await initializePortraitMapper();
     guildSnapshots = [buildFallbackSnapshot()];
-    activeGuildIndex = 0;
+    activeGuildIndex = getDefaultActiveGuildIndex(guildSnapshots);
     renderLastUpdated({ responseLastModified: null, dataTimestamp: null });
     renderGuildTokenProjectionTable();
     renderActiveGuild();

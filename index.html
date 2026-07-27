@@ -4,16 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Praetorians of Terra</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="min-h-screen bg-slate-950 text-slate-100">
-    <div class="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-8 sm:px-6 lg:px-8">
-      <header class="animate__animated animate__fadeInDown rounded-3xl border border-cyan-400/20 bg-slate-900/80 p-6 shadow-2xl shadow-cyan-500/10">
+    <div class="mx-auto flex max-w-none flex-col gap-6 px-4 py-8 sm:px-6 lg:px-8">
+      <header class="rounded-3xl border border-cyan-400/20 bg-slate-900/80 p-6 shadow-2xl shadow-cyan-500/10">
         <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <h1 class="text-2xl font-black sm:text-3xl">Praetorians of Terra</h1>
           <nav aria-label="Primary">
             <ul class="flex flex-wrap items-center gap-2">
+              <li>
+                <a href="index.html" aria-current="page" class="inline-flex rounded-lg border border-cyan-400/70 bg-cyan-500/15 px-4 py-2 text-sm font-semibold text-cyan-200">Home</a>
+              </li>
               <li>
                 <a href="guild-wars.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Guild Wars</a>
               </li>
@@ -28,13 +30,16 @@
         </div>
       </header>
 
-      <main class="rounded-3xl border border-slate-800 bg-slate-900/60 p-8 shadow-xl shadow-black/20">
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">Landing Page</p>
-        <h2 class="mt-3 text-3xl font-black sm:text-4xl">Guild Operations Dashboard</h2>
-        <p class="mt-4 max-w-3xl text-slate-300">
-          Welcome to Praetorians of Terra tools. Use the navigation above to open Guild Wars analytics or the new Guild Teams page.
-        </p>
-      </main>
+      <header class="rounded-3xl border border-cyan-400/20 bg-slate-900/80 p-6 shadow-2xl shadow-cyan-500/10">
+        <div class="w-full">
+          <div>
+            <h2 class="text-xl font-bold text-cyan-100 sm:text-2xl">Guild Operations Overview</h2>
+            <p class="mt-2 text-sm text-slate-300 sm:text-base">
+              Use this workspace to track guild war performance, review battle history, and plan team compositions in one consistent interface.
+            </p>
+          </div>
+        </div>
+      </header>
     </div>
   </body>
 </html>

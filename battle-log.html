@@ -4,12 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Praetorians of Terra - Battle Log</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body data-page="battle-log" class="min-h-screen bg-slate-950 text-slate-100">
     <div class="mx-auto flex max-w-none flex-col gap-6 px-4 py-8 sm:px-6 lg:px-8">
-      <header class="animate__animated animate__fadeInDown rounded-3xl border border-cyan-400/20 bg-slate-900/80 p-6 shadow-2xl shadow-cyan-500/10">
+      <header class="rounded-3xl border border-cyan-400/20 bg-slate-900/80 p-6 shadow-2xl shadow-cyan-500/10">
         <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <h1 class="text-2xl font-black sm:text-3xl">Praetorians of Terra</h1>
           <nav aria-label="Primary">
@@ -32,24 +31,12 @@
       </header>
 
       <header class="rounded-3xl border border-cyan-400/20 bg-slate-900/80 p-6 shadow-2xl shadow-cyan-500/10">
-        <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div class="w-full">
           <div>
-            <p class="text-sm font-semibold uppercase tracking-widest text-cyan-300">Tacticus guild wars</p>
-            <h2 class="mt-2 text-3xl font-black sm:text-4xl">Battle log</h2>
-            <p class="mt-3 max-w-2xl text-sm text-slate-300 sm:text-base">
-              A combined battle log for every exported war, compiled into one timeline for [TW] Praetorians of Terra.
+            <h2 class="text-xl font-bold text-cyan-100 sm:text-2xl">Battle Log Overview</h2>
+            <p class="mt-2 text-sm text-slate-300 sm:text-base">
+              Review your guild's battle history across all tracked wars, with filters for results, teams, players, and unit lineups.
             </p>
-            <p id="status-message" class="mt-3 text-sm text-slate-400">Loading battle log data...</p>
-          </div>
-          <div class="rounded-2xl border border-emerald-400/20 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-200">
-            <div class="font-semibold">Scope</div>
-            <div class="mt-1 text-emerald-100/90">All wars</div>
-            <div class="mt-2 text-xs text-emerald-100/80">
-              Last updated: <span id="last-updated">Loading...</span>
-            </div>
-            <div class="mt-3 rounded-lg border border-emerald-300/25 bg-emerald-950/20 px-3 py-2 text-center text-lg font-black text-emerald-100">
-              <span id="battle-log-count">0</span>
-            </div>
           </div>
         </div>
       </header>
