@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Praetorians of Terra - Battle Log</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body data-page="battle-log" class="min-h-screen bg-slate-950 text-slate-100">
+    <div class="mx-auto flex max-w-none flex-col gap-6 px-4 py-8 sm:px-6 lg:px-8">
+      <header class="animate__animated animate__fadeInDown rounded-3xl border border-cyan-400/20 bg-slate-900/80 p-6 shadow-2xl shadow-cyan-500/10">
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <h1 class="text-2xl font-black sm:text-3xl">Praetorians of Terra</h1>
+          <nav aria-label="Primary">
+            <ul class="flex flex-wrap items-center gap-2">
+              <li>
+                <a href="index.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Home</a>
+              </li>
+              <li>
+                <a href="guild-wars.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Guild Wars</a>
+              </li>
+              <li>
+                <a href="guild-teams.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Guild Teams</a>
+              </li>
+              <li>
+                <a href="battle-log.html" aria-current="page" class="inline-flex rounded-lg border border-cyan-400/70 bg-cyan-500/15 px-4 py-2 text-sm font-semibold text-cyan-200">Battle Log</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <header class="rounded-3xl border border-cyan-400/20 bg-slate-900/80 p-6 shadow-2xl shadow-cyan-500/10">
+        <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-widest text-cyan-300">Tacticus guild wars</p>
+            <h2 class="mt-2 text-3xl font-black sm:text-4xl">Battle log</h2>
+            <p class="mt-3 max-w-2xl text-sm text-slate-300 sm:text-base">
+              A combined battle log for every exported war, compiled into one timeline for [TW] Praetorians of Terra.
+            </p>
+            <p id="status-message" class="mt-3 text-sm text-slate-400">Loading battle log data...</p>
+          </div>
+          <div class="rounded-2xl border border-emerald-400/20 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-200">
+            <div class="font-semibold">Scope</div>
+            <div class="mt-1 text-emerald-100/90">All wars</div>
+            <div class="mt-2 text-xs text-emerald-100/80">
+              Last updated: <span id="last-updated">Loading...</span>
+            </div>
+            <div class="mt-3 rounded-lg border border-emerald-300/25 bg-emerald-950/20 px-3 py-2 text-center text-lg font-black text-emerald-100">
+              <span id="battle-log-count">0</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="rounded-xl border border-slate-800 bg-slate-900/70 shadow-2xl shadow-black/25">
+        <div class="flex border-b border-slate-700">
+          <button id="tab-btn-battle-history" type="button" class="border-b-2 border-cyan-400 px-5 py-3 text-sm font-semibold text-cyan-300 transition-colors hover:text-slate-100">Battle history</button>
+          <button id="tab-btn-guild-performance" type="button" class="border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100">Guild performance</button>
+          <button id="tab-btn-player-attack" type="button" class="border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100">Attack performance</button>
+          <button id="tab-btn-player-defense" type="button" class="border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100">Def performance</button>
+        </div>
+
+        <div id="tab-panel-battle-history" class="p-4">
+          <div class="mb-3 flex flex-col gap-3 md:flex-row md:items-end">
+            <div class="flex min-w-0 flex-1 flex-col gap-1.5">
+              <label for="battle-filter-sort" class="text-xs font-semibold uppercase tracking-wide text-slate-400">Sort</label>
+              <select id="battle-filter-sort" class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200">
+                <option value="newest">Newest</option>
+                <option value="score-desc">Score: high to low</option>
+                <option value="score-asc">Score: low to high</option>
+              </select>
+            </div>
+            <div class="flex min-w-0 flex-1 flex-col gap-1.5">
+              <label for="battle-filter-zone" class="text-xs font-semibold uppercase tracking-wide text-slate-400">Tile type</label>
+              <select id="battle-filter-zone" class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200">
+                <option value="">All tile types</option>
+              </select>
+            </div>
+            <div class="flex flex-col gap-1.5">
+              <label class="text-xs font-semibold uppercase tracking-wide text-slate-400">Result</label>
+              <div id="battle-filter-result-group" class="inline-flex overflow-hidden rounded-md border border-slate-500/50 bg-slate-900/80" role="radiogroup" aria-label="Result filter">
+                <button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-slate-700/80" data-result="all" role="radio" aria-checked="true">All</button>
+                <button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-slate-700/80" data-result="win" role="radio" aria-checked="false">Win</button>
+                <button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-slate-700/80" data-result="loss" role="radio" aria-checked="false">Lose</button>
+              </div>
+            </div>
+            <div class="flex flex-col gap-1.5">
+              <label class="text-xs font-semibold uppercase tracking-wide text-slate-400">Cleanup</label>
+              <div id="battle-filter-cleanup-group" class="inline-flex overflow-hidden rounded-md border border-slate-500/50 bg-slate-900/80" role="radiogroup" aria-label="Cleanup filter">
+                <button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-slate-700/80" data-cleanup="all" role="radio" aria-checked="true">All</button>
+                <button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-slate-700/80" data-cleanup="yes" role="radio" aria-checked="false">Cleanup</button>
+                <button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-slate-700/80" data-cleanup="no" role="radio" aria-checked="false">No cleanup</button>
+              </div>
+            </div>
+            <div class="flex flex-col gap-1.5">
+              <label class="text-xs font-semibold uppercase tracking-wide text-slate-400">Mode</label>
+              <div id="battle-filter-mode-group" class="inline-flex overflow-hidden rounded-md border border-slate-500/50 bg-slate-900/80" role="radiogroup" aria-label="Battle mode filter">
+                <button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-slate-700/80" data-mode="attacks" role="radio" aria-checked="true">Attacks</button>
+                <button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-slate-700/80" data-mode="defenses" role="radio" aria-checked="false">Defenses</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-4 grid grid-cols-1 gap-3 lg:grid-cols-2">
+            <div class="rounded-xl border border-slate-500/30 bg-slate-900/45 p-3">
+              <div class="mb-2 text-xs font-bold uppercase tracking-wide text-sky-300">Offense filters</div>
+              <div class="grid grid-cols-1 gap-3">
+                <div class="flex flex-col gap-1.5" id="battle-filter-attacker-player-control">
+                  <label for="battle-filter-attacker-player-input" class="text-xs font-semibold uppercase tracking-wide text-sky-300">Player</label>
+                  <div class="relative">
+                    <input id="battle-filter-attacker-player-input" type="text" autocomplete="off" placeholder="Search offense players..." class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200" />
+                    <div id="battle-filter-attacker-player-selected" class="mt-2 flex flex-wrap justify-start gap-1.5"></div>
+                    <div id="battle-filter-attacker-player-dropdown" class="absolute left-0 right-0 top-full mt-1.5 z-30 hidden rounded-md border border-slate-500/50 bg-slate-950/95 shadow-2xl shadow-slate-950/60">
+                      <div id="battle-filter-attacker-player-options" class="max-h-60 overflow-auto p-1"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="battle-filter-attacker-control" class="flex flex-col gap-1.5">
+                  <label for="battle-filter-attacker-input" class="text-xs font-semibold uppercase tracking-wide text-sky-300">Characters (all selected required)</label>
+                  <div class="relative">
+                    <input id="battle-filter-attacker-input" type="text" autocomplete="off" placeholder="Search offense characters..." class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200" />
+                    <div id="battle-filter-attacker-selected" class="mt-2 flex flex-wrap justify-start gap-1.5"></div>
+                    <div id="battle-filter-attacker-dropdown" class="absolute left-0 right-0 top-full mt-1.5 z-30 hidden rounded-md border border-slate-500/50 bg-slate-950/95 shadow-2xl shadow-slate-950/60">
+                      <div id="battle-filter-attacker-options" class="max-h-60 overflow-auto p-1"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="rounded-xl border border-slate-500/30 bg-slate-900/45 p-3">
+              <div class="mb-2 text-xs font-bold uppercase tracking-wide text-pink-300">Defense filters</div>
+              <div class="grid grid-cols-1 gap-3">
+                <div class="flex flex-col gap-1.5" id="battle-filter-defender-player-control">
+                  <label for="battle-filter-defender-player-input" class="text-xs font-semibold uppercase tracking-wide text-pink-300">Player</label>
+                  <div class="relative">
+                    <input id="battle-filter-defender-player-input" type="text" autocomplete="off" placeholder="Search defense players..." class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200" />
+                    <div id="battle-filter-defender-player-selected" class="mt-2 flex flex-wrap justify-end gap-1.5 max-md:justify-start"></div>
+                    <div id="battle-filter-defender-player-dropdown" class="absolute left-0 right-0 top-full mt-1.5 z-30 hidden rounded-md border border-slate-500/50 bg-slate-950/95 shadow-2xl shadow-slate-950/60">
+                      <div id="battle-filter-defender-player-options" class="max-h-60 overflow-auto p-1"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="battle-filter-defender-control" class="flex flex-col gap-1.5">
+                  <label for="battle-filter-defender-input" class="text-xs font-semibold uppercase tracking-wide text-pink-300">Characters (all selected required)</label>
+                  <div class="relative">
+                    <input id="battle-filter-defender-input" type="text" autocomplete="off" placeholder="Search defense characters..." class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200" />
+                    <div id="battle-filter-defender-selected" class="mt-2 flex flex-wrap justify-end gap-1.5 max-md:justify-start"></div>
+                    <div id="battle-filter-defender-dropdown" class="absolute left-0 right-0 top-full mt-1.5 z-30 hidden rounded-md border border-slate-500/50 bg-slate-950/95 shadow-2xl shadow-slate-950/60">
+                      <div id="battle-filter-defender-options" class="max-h-60 overflow-auto p-1"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="battle-log-stats" class="mb-3 flex flex-wrap items-center gap-2">
+            <div id="battle-log-stat-win-avg" class="inline-flex items-center rounded-md bg-emerald-400/20 px-2 py-1 text-sm font-semibold text-lime-100">Win avg: 0</div>
+            <div id="battle-log-stat-loss-avg" class="inline-flex items-center rounded-md bg-rose-400/20 px-2 py-1 text-sm font-semibold text-rose-200">Lose avg: 0</div>
+            <div id="battle-log-stat-win-cleanup" class="inline-flex items-center rounded-md bg-cyan-400/20 px-2 py-1 text-sm font-semibold text-cyan-100">Win cleanup: 0</div>
+            <div id="battle-log-stat-loss-cleanup" class="inline-flex items-center rounded-md bg-amber-400/20 px-2 py-1 text-sm font-semibold text-amber-100">Lose cleanup: 0</div>
+          </div>
+
+          <div class="mb-4 flex items-center justify-between gap-3 max-md:flex-col max-md:items-start">
+            <p id="battle-filter-summary" class="text-sm text-slate-400">Showing 0 logs</p>
+            <button id="battle-filter-clear" type="button" class="rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm font-semibold text-slate-300 transition hover:border-cyan-400/60 hover:text-slate-100">Clear filters</button>
+          </div>
+
+          <div id="battle-log-list" class="flex flex-col gap-3"></div>
+        </div>
+
+        <div id="tab-panel-guild-performance" class="hidden p-4">
+          <div class="mb-3 flex flex-wrap items-center gap-2">
+            <span class="inline-flex items-center rounded-md bg-cyan-400/20 px-2 py-1 text-sm font-semibold text-cyan-100">Average score per war</span>
+            <span class="inline-flex items-center rounded-md bg-emerald-400/20 px-2 py-1 text-sm font-semibold text-lime-100">Average score per win</span>
+            <span class="inline-flex items-center rounded-md bg-rose-400/20 px-2 py-1 text-sm font-semibold text-rose-200">Average score per lose</span>
+          </div>
+          <p id="guild-performance-summary" class="mb-3 text-sm text-slate-400">0 wars analyzed</p>
+          <div id="guild-performance-empty" class="mb-3 hidden rounded-lg border border-dashed border-slate-500/40 p-3 text-slate-400"></div>
+          <div class="overflow-x-auto">
+            <svg id="guild-performance-chart" class="h-80 w-full min-w-[720px]" viewBox="0 0 960 360" preserveAspectRatio="xMidYMid meet"></svg>
+          </div>
+        </div>
+
+        <div id="tab-panel-player-attack" class="hidden p-4">
+          <div class="mb-3 rounded-lg border border-sky-400/35 bg-sky-500/10 px-3 py-2 text-sm text-sky-100">
+            Attack score meaning: this is the attacker score from each battle. Higher is generally better on offense.
+          </div>
+          <p id="player-attack-summary" class="mb-3 text-sm text-slate-400">0 players</p>
+          <div id="player-attack-empty" class="mb-3 hidden rounded-lg border border-dashed border-slate-500/40 p-3 text-slate-400"></div>
+          <div class="overflow-x-auto">
+            <table class="w-full min-w-[980px] text-left text-sm text-slate-200">
+              <thead class="text-xs uppercase tracking-wide text-slate-400">
+                <tr>
+                  <th class="px-3 py-2">Player</th>
+                  <th class="px-3 py-2">Average score</th>
+                  <th class="px-3 py-2">Total score</th>
+                  <th class="px-3 py-2">Battles</th>
+                  <th class="px-3 py-2">Wins</th>
+                  <th class="px-3 py-2">Loses</th>
+                </tr>
+              </thead>
+              <tbody id="player-attack-body" class="divide-y divide-slate-700/60"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="tab-panel-player-defense" class="hidden p-4">
+          <div class="mb-3 rounded-lg border border-amber-400/35 bg-amber-500/10 px-3 py-2 text-sm text-amber-100">
+            Defense score meaning: values are still the attacker score. Lower conceded score is better for defense.
+          </div>
+          <p id="player-defense-summary" class="mb-3 text-sm text-slate-400">0 players</p>
+          <div id="player-defense-empty" class="mb-3 hidden rounded-lg border border-dashed border-slate-500/40 p-3 text-slate-400"></div>
+          <div class="overflow-x-auto">
+            <table class="w-full min-w-[980px] text-left text-sm text-slate-200">
+              <thead class="text-xs uppercase tracking-wide text-slate-400">
+                <tr>
+                  <th class="px-3 py-2">Player</th>
+                  <th class="px-3 py-2">Average score</th>
+                  <th class="px-3 py-2">Total score</th>
+                  <th class="px-3 py-2">Battles</th>
+                  <th class="px-3 py-2">Wins</th>
+                  <th class="px-3 py-2">Loses</th>
+                </tr>
+              </thead>
+              <tbody id="player-defense-body" class="divide-y divide-slate-700/60"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="src/consts/tile-scores.js"></script>
+    <script src="src/consts/score-splitter.js"></script>
+    <script src="src/app.js"></script>
+  </body>
+</html>

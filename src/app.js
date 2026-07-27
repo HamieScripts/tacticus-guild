@@ -3,11 +3,6 @@ const DEFAULT_DATASETS = {
     label: 'Active war',
     sourceLabel: 'Current snapshot',
     url: './data/current/live-war.json'
-  },
-  history: {
-    label: 'History snapshot',
-    sourceLabel: 'History snapshot',
-    url: './data/history/65648500-b63c-4a80-8862-c36e9e7d800f.json'
   }
 };
 
@@ -63,11 +58,29 @@ async function loadDatasetManifest() {
       const manifest = await response.json();
       const normalized = normalizeDatasets(manifest?.datasets);
       if (normalized) {
-        DATASETS = normalized;
+        DATASETS = { ...DEFAULT_DATASETS, ...normalized };
       }
     }
   } catch (error) {
     DATASETS = { ...DEFAULT_DATASETS };
+  }
+
+  if (Object.prototype.hasOwnProperty.call(DATASETS, 'current')) {
+    try {
+      const currentResponse = await fetch(DATASETS.current.url, { cache: 'no-store' });
+      if (currentResponse.ok) {
+        const currentData = await currentResponse.json();
+        const currentEventData = getPrimaryEventResponseData(currentData);
+        const currentActivityLogs = Array.isArray(currentEventData?.activityLogs) ? currentEventData.activityLogs : [];
+        const hasBattleLogs = currentActivityLogs.some((log) => log?.type === 'battleFinished');
+
+        if (!hasBattleLogs) {
+          delete DATASETS.current;
+        }
+      }
+    } catch (error) {
+      // Keep current dataset visible if we cannot inspect it.
+    }
   }
 
   datasetsLoaded = true;
@@ -92,10 +105,13 @@ let selectedUnassignedImage = '';
 let dragState = null;
 let activeMapDropTarget = null;
 let portraitMapperInitialized = false;
+let battleLogGuildNameMap = new Map();
 const MISSING_UNIT_AVATAR_URL = './img/missing-unit.svg';
 const battleLogFilters = {
   sort: 'newest',
   result: 'all',
+  cleanup: 'all',
+  mode: 'attacks',
   zoneType: '',
   attackerPlayer: '',
   defenderPlayer: '',
@@ -112,6 +128,7 @@ const battleLogPlayerFilterOptions = {
 };
 let battleLogTileTypeOptions = [];
 let battleLogFiltersInitialized = false;
+let battleLogPageTabsInitialized = false;
 let leaderboardLayout = 'table';
 let leaderboardLayoutInitialized = false;
 let legendVisibilityInitialized = false;
@@ -1760,6 +1777,512 @@ function updateBattleLogTileTypeFilterOptions(snapshot) {
   zoneSelect.value = battleLogFilters.zoneType || '';
 }
 
+function getGuildNameByTeamIndex(teamIndex) {
+  const normalizedTeamIndex = Number(teamIndex);
+  if (!Number.isFinite(normalizedTeamIndex)) return 'Unknown guild';
+
+  if (battleLogGuildNameMap.has(normalizedTeamIndex)) {
+    return String(battleLogGuildNameMap.get(normalizedTeamIndex));
+  }
+
+  const snapshot = (guildSnapshots || []).find((guild) => Number(guild?.teamIndex) === normalizedTeamIndex);
+  if (snapshot?.name) return String(snapshot.name);
+  return `Team ${normalizedTeamIndex}`;
+}
+
+function getLoadedDatasetDescriptors() {
+  const seenUrls = new Set();
+  return Object.entries(DATASETS)
+    .map(([key, dataset]) => ({ key, ...dataset }))
+    .filter((dataset) => {
+      const normalizedUrl = String(dataset?.url || '').trim();
+      if (!normalizedUrl) return false;
+      if (seenUrls.has(normalizedUrl)) return false;
+      seenUrls.add(normalizedUrl);
+      return true;
+    });
+}
+
+function getPrimaryGuildTeamIndexFromData(data) {
+  const guildData = Array.isArray(getPrimaryEventResponseData(data)?.guildData) ? getPrimaryEventResponseData(data).guildData : [];
+  const guildMatch = guildData.find((guild) => String(guild?.name || '').includes('Praetorians of Terra'));
+  const fallbackGuild = guildMatch || guildData.find((guild) => Number.isFinite(Number(guild?.teamIndex)));
+  const teamIndex = Number(fallbackGuild?.teamIndex);
+  return Number.isFinite(teamIndex) ? teamIndex : null;
+}
+
+function getPrimaryGuildNameFromData(data) {
+  const guildData = Array.isArray(getPrimaryEventResponseData(data)?.guildData) ? getPrimaryEventResponseData(data).guildData : [];
+  const guildMatch = guildData.find((guild) => String(guild?.name || '').includes('Praetorians of Terra'));
+  if (guildMatch?.name) {
+    return String(guildMatch.name);
+  }
+
+  const fallbackGuild = guildData.find((guild) => Number.isFinite(Number(guild?.teamIndex)));
+  return String(fallbackGuild?.name || 'Praetorians of Terra');
+}
+
+function pickGuildSnapshotForAllWars(snapshots, teamIndex, guildName) {
+  const numericTeamIndex = Number(teamIndex);
+
+  if (Number.isFinite(numericTeamIndex)) {
+    const teamIndexMatch = snapshots.find((guild) => Number(guild?.teamIndex) === numericTeamIndex);
+    if (teamIndexMatch) return teamIndexMatch;
+  }
+
+  const guildNameMatch = snapshots.find((guild) => String(guild?.name || '').includes(String(guildName || 'Praetorians of Terra')));
+  if (guildNameMatch) return guildNameMatch;
+
+  return snapshots[0] || null;
+}
+
+function normalizeBattleForAllWars(battle, canonicalTeamIndex) {
+  return {
+    ...battle,
+    attackerTeamIndex: canonicalTeamIndex
+  };
+}
+
+function getBattleRoleLabel(role) {
+  return role === 'defense' ? 'Defense' : 'Attack';
+}
+
+function getAverageCoreScoreForBattles(battles) {
+  const source = Array.isArray(battles) ? battles : [];
+  if (source.length === 0) return 0;
+
+  const totalCoreScore = source.reduce((sum, battle) => {
+    return sum + getCoreScore(getBattleRawScore(battle)).core;
+  }, 0);
+
+  return totalCoreScore / source.length;
+}
+
+function buildWarPerformancePoint(dataset, dataTimestamp, battles) {
+  const source = Array.isArray(battles) ? battles : [];
+  const wins = source.filter((battle) => getBattleOutcome(battle) === 'win');
+  const losses = source.filter((battle) => getBattleOutcome(battle) === 'loss');
+
+  return {
+    key: String(dataset?.key || ''),
+    label: String(dataset?.label || 'Unknown war'),
+    timestamp: Number(dataTimestamp || 0),
+    averagePerWar: getAverageCoreScoreForBattles(source),
+    averagePerWin: wins.length > 0 ? getAverageCoreScoreForBattles(wins) : 0,
+    averagePerLoss: losses.length > 0 ? getAverageCoreScoreForBattles(losses) : 0,
+    battleCount: source.length
+  };
+}
+
+function setupBattleLogPageTabs() {
+  if (battleLogPageTabsInitialized) return;
+
+  const battleHistoryBtn = document.getElementById('tab-btn-battle-history');
+  const guildPerformanceBtn = document.getElementById('tab-btn-guild-performance');
+  const playerAttackBtn = document.getElementById('tab-btn-player-attack');
+  const playerDefenseBtn = document.getElementById('tab-btn-player-defense');
+  const battleHistoryPanel = document.getElementById('tab-panel-battle-history');
+  const guildPerformancePanel = document.getElementById('tab-panel-guild-performance');
+  const playerAttackPanel = document.getElementById('tab-panel-player-attack');
+  const playerDefensePanel = document.getElementById('tab-panel-player-defense');
+
+  if (!battleHistoryBtn || !guildPerformanceBtn || !playerAttackBtn || !playerDefenseBtn || !battleHistoryPanel || !guildPerformancePanel || !playerAttackPanel || !playerDefensePanel) return;
+
+  const applyTabState = (tab) => {
+    const tabs = [
+      { name: 'battle-history', button: battleHistoryBtn, panel: battleHistoryPanel },
+      { name: 'guild-performance', button: guildPerformanceBtn, panel: guildPerformancePanel },
+      { name: 'player-attack', button: playerAttackBtn, panel: playerAttackPanel },
+      { name: 'player-defense', button: playerDefenseBtn, panel: playerDefensePanel }
+    ];
+
+    tabs.forEach((tabItem) => {
+      const isActive = tabItem.name === tab;
+      tabItem.panel.classList.toggle('hidden', !isActive);
+      tabItem.button.classList.toggle('border-cyan-400', isActive);
+      tabItem.button.classList.toggle('text-cyan-300', isActive);
+      tabItem.button.classList.toggle('border-transparent', !isActive);
+      tabItem.button.classList.toggle('text-slate-400', !isActive);
+    });
+  };
+
+  battleHistoryBtn.addEventListener('click', () => applyTabState('battle-history'));
+  guildPerformanceBtn.addEventListener('click', () => applyTabState('guild-performance'));
+  playerAttackBtn.addEventListener('click', () => applyTabState('player-attack'));
+  playerDefenseBtn.addEventListener('click', () => applyTabState('player-defense'));
+
+  applyTabState('battle-history');
+  battleLogPageTabsInitialized = true;
+}
+
+function getBattleOutcomeForGuildRole(battle, role) {
+  const baseOutcome = getBattleOutcome(battle);
+  if (role === 'defense') {
+    if (baseOutcome === 'win') return 'loss';
+    if (baseOutcome === 'loss') return 'win';
+  }
+  return baseOutcome;
+}
+
+function renderPlayerTotalsTable(battles, role = 'attack') {
+  const isDefenseRole = role === 'defense';
+  const tableBody = document.getElementById(isDefenseRole ? 'player-defense-body' : 'player-attack-body');
+  const summary = document.getElementById(isDefenseRole ? 'player-defense-summary' : 'player-attack-summary');
+  const emptyState = document.getElementById(isDefenseRole ? 'player-defense-empty' : 'player-attack-empty');
+  if (!tableBody) return;
+
+  const source = (Array.isArray(battles) ? battles : []).filter((battle) => {
+    const battleRole = String(battle?.battleRole || 'attack');
+    return isDefenseRole ? battleRole === 'defense' : battleRole === 'attack';
+  });
+  const aggregateMap = new Map();
+
+  source.forEach((battle) => {
+    const userId = String(isDefenseRole ? (battle?.defenderUserId || '') : (battle?.attackerUserId || '')).trim();
+    const name = String(isDefenseRole ? (battle?.defenderName || '') : (battle?.attackerName || '')).trim() || 'Unknown player';
+    const key = userId || `name:${name.toLowerCase()}`;
+    const coreScore = getCoreScore(getBattleRawScore(battle)).core;
+
+    if (!aggregateMap.has(key)) {
+      aggregateMap.set(key, {
+        name,
+        totalScore: 0,
+        battles: 0,
+        wins: 0,
+        losses: 0,
+        cleanupWins: 0
+      });
+    }
+
+    const entry = aggregateMap.get(key);
+    entry.totalScore += coreScore;
+    entry.battles += 1;
+
+    const outcome = getBattleOutcomeForGuildRole(battle, role);
+    if (outcome === 'win') {
+      entry.wins += 1;
+      if (battle?.cleanup) {
+        entry.cleanupWins += 1;
+      }
+    } else if (outcome === 'loss') {
+      entry.losses += 1;
+    }
+  });
+
+  const rows = Array.from(aggregateMap.values())
+    .map((entry) => ({
+      ...entry,
+      averageScore: entry.battles > 0 ? entry.totalScore / entry.battles : 0
+    }))
+    .sort((a, b) => {
+      if (isDefenseRole && a.averageScore !== b.averageScore) return a.averageScore - b.averageScore;
+      if (!isDefenseRole && b.averageScore !== a.averageScore) return b.averageScore - a.averageScore;
+      if (b.totalScore !== a.totalScore) return b.totalScore - a.totalScore;
+      if (b.battles !== a.battles) return b.battles - a.battles;
+      return a.name.localeCompare(b.name);
+    });
+
+  if (summary) {
+    summary.textContent = `${rows.length.toLocaleString()} players`;
+  }
+
+  tableBody.innerHTML = '';
+
+  if (rows.length === 0) {
+    if (emptyState) {
+      emptyState.textContent = isDefenseRole
+        ? 'No defense performance data available yet.'
+        : 'No attack performance data available yet.';
+      emptyState.classList.remove('hidden');
+    }
+    return;
+  }
+
+  if (emptyState) {
+    emptyState.classList.add('hidden');
+  }
+
+  rows.forEach((row) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td class="px-3 py-2 font-semibold text-slate-100">${escapeHtml(row.name)}</td>
+      <td class="px-3 py-2 text-emerald-200">${row.averageScore.toLocaleString(undefined, { maximumFractionDigits: 1 })}</td>
+      <td class="px-3 py-2 text-cyan-200">${row.totalScore.toLocaleString()}</td>
+      <td class="px-3 py-2 text-slate-300">${row.battles.toLocaleString()}</td>
+      <td class="px-3 py-2 text-emerald-200">${row.wins.toLocaleString()} (${row.cleanupWins.toLocaleString()}🧹)</td>
+      <td class="px-3 py-2 text-rose-200">${row.losses.toLocaleString()}</td>
+    `;
+    tableBody.appendChild(tr);
+  });
+}
+
+function renderGuildPerformanceChart(points) {
+  const chart = document.getElementById('guild-performance-chart');
+  const summary = document.getElementById('guild-performance-summary');
+  const emptyState = document.getElementById('guild-performance-empty');
+  if (!chart) return;
+
+  const source = Array.isArray(points) ? [...points] : [];
+  const sortedPoints = source
+    .filter((point) => point && typeof point === 'object')
+    .sort((a, b) => {
+      const ta = Number(a.timestamp || 0);
+      const tb = Number(b.timestamp || 0);
+      if (ta !== tb) return ta - tb;
+      return String(a.label || '').localeCompare(String(b.label || ''));
+    });
+
+  if (summary) {
+    summary.textContent = `${sortedPoints.length.toLocaleString()} wars analyzed`;
+  }
+
+  if (sortedPoints.length === 0) {
+    chart.innerHTML = '';
+    if (emptyState) {
+      emptyState.textContent = 'No war performance data available yet.';
+      emptyState.classList.remove('hidden');
+    }
+    return;
+  }
+
+  if (emptyState) {
+    emptyState.classList.add('hidden');
+  }
+
+  const viewWidth = 960;
+  const viewHeight = 360;
+  const margin = { top: 20, right: 26, bottom: 70, left: 60 };
+  const innerWidth = viewWidth - margin.left - margin.right;
+  const innerHeight = viewHeight - margin.top - margin.bottom;
+
+  const allValues = sortedPoints.flatMap((point) => [point.averagePerWar, point.averagePerWin, point.averagePerLoss]);
+  const maxValue = Math.max(100, ...allValues.map((value) => Number(value || 0)));
+  const yMax = Math.max(MAX_TOKEN_SCORE, Math.ceil(maxValue / 100) * 100);
+  const yTicks = 5;
+
+  const xAt = (index) => {
+    if (sortedPoints.length === 1) return margin.left + innerWidth / 2;
+    return margin.left + (index * innerWidth) / (sortedPoints.length - 1);
+  };
+
+  const yAt = (value) => {
+    const normalized = Math.max(0, Math.min(yMax, Number(value || 0)));
+    return margin.top + innerHeight - (normalized / yMax) * innerHeight;
+  };
+
+  const buildPath = (valueKey) => {
+    return sortedPoints
+      .map((point, index) => `${index === 0 ? 'M' : 'L'} ${xAt(index).toFixed(1)} ${yAt(point[valueKey]).toFixed(1)}`)
+      .join(' ');
+  };
+
+  const makePoints = (valueKey, color) => {
+    return sortedPoints
+      .map((point, index) => {
+        const x = xAt(index).toFixed(1);
+        const y = yAt(point[valueKey]).toFixed(1);
+        const title = `${point.label}: ${Number(point[valueKey] || 0).toLocaleString(undefined, { maximumFractionDigits: 1 })}`;
+        return `<circle cx="${x}" cy="${y}" r="3.5" fill="${color}"><title>${escapeHtml(title)}</title></circle>`;
+      })
+      .join('');
+  };
+
+  const xLabels = sortedPoints
+    .map((point, index) => {
+      const raw = String(point.label || '');
+      const compact = raw.replace(/^History\s+/i, '').replace(/^Active\s+/i, 'Active ');
+      const x = xAt(index).toFixed(1);
+      const y = (viewHeight - 22).toFixed(1);
+      return `<text x="${x}" y="${y}" transform="rotate(-28 ${x} ${y})" text-anchor="end" fill="#94a3b8" font-size="11">${escapeHtml(compact)}</text>`;
+    })
+    .join('');
+
+  const gridLines = Array.from({ length: yTicks + 1 }, (_, idx) => {
+    const value = (yMax / yTicks) * idx;
+    const y = yAt(value).toFixed(1);
+    return `
+      <line x1="${margin.left}" y1="${y}" x2="${viewWidth - margin.right}" y2="${y}" stroke="rgba(148,163,184,0.2)" stroke-width="1" />
+      <text x="${margin.left - 8}" y="${Number(y) + 4}" text-anchor="end" fill="#94a3b8" font-size="11">${Math.round(value)}</text>
+    `;
+  }).join('');
+
+  chart.setAttribute('viewBox', `0 0 ${viewWidth} ${viewHeight}`);
+  chart.innerHTML = `
+    <g>
+      ${gridLines}
+      <line x1="${margin.left}" y1="${margin.top + innerHeight}" x2="${viewWidth - margin.right}" y2="${margin.top + innerHeight}" stroke="rgba(148,163,184,0.35)" stroke-width="1.2" />
+      <path d="${buildPath('averagePerWar')}" fill="none" stroke="#22d3ee" stroke-width="2.5" />
+      <path d="${buildPath('averagePerWin')}" fill="none" stroke="#4ade80" stroke-width="2.5" />
+      <path d="${buildPath('averagePerLoss')}" fill="none" stroke="#fb7185" stroke-width="2.5" />
+      ${makePoints('averagePerWar', '#22d3ee')}
+      ${makePoints('averagePerWin', '#4ade80')}
+      ${makePoints('averagePerLoss', '#fb7185')}
+      ${xLabels}
+    </g>
+  `;
+}
+
+function mergeBattleLogsFromSnapshots(snapshots) {
+  const mergedBattles = snapshots
+    .flatMap((snapshot) => Array.isArray(snapshot?.battles) ? snapshot.battles : []);
+
+  const dedupedBattleMap = new Map();
+
+  mergedBattles.forEach((battle) => {
+    const stableKey = String(battle?.id || '').trim()
+      ? `${String(battle.id).trim()}::${String(battle?.battleRole || 'attack')}`
+      : [
+          String(battle?.battleRole || 'attack'),
+          String(battle?.createdOn || 0),
+          String(battle?.attackerUserId || battle?.attackerName || ''),
+          String(battle?.defenderUserId || battle?.defenderName || ''),
+          String(battle?.zoneType || ''),
+          String(Number(battle?.score || 0))
+        ].join('::');
+
+    if (!dedupedBattleMap.has(stableKey)) {
+      dedupedBattleMap.set(stableKey, battle);
+    }
+  });
+
+  return Array.from(dedupedBattleMap.values())
+    .sort((a, b) => Number(b.createdOn || 0) - Number(a.createdOn || 0));
+}
+
+async function loadAllWarsBattleLogData() {
+  await loadDatasetManifest();
+  battleLogGuildNameMap = new Map();
+
+  const statusMessage = document.getElementById('status-message');
+  const lastUpdatedEl = document.getElementById('last-updated');
+
+  if (statusMessage) {
+    statusMessage.textContent = 'Loading all wars battle log...';
+  }
+  if (lastUpdatedEl) {
+    lastUpdatedEl.textContent = 'Loading...';
+  }
+
+  try {
+    await initializePortraitMapper();
+
+    const datasets = getLoadedDatasetDescriptors();
+    const results = await Promise.all(datasets.map(async (dataset) => {
+      const response = await fetch(dataset.url, { cache: 'no-store' });
+      if (!response.ok) {
+        throw new Error(`Unable to fetch ${dataset.key} (${response.status})`);
+      }
+
+      const data = await response.json();
+      return {
+        dataset,
+        responseLastModified: response.headers.get('last-modified'),
+        data,
+        dataTimestamp: getLatestActivityTimestamp(data)
+      };
+    }));
+
+    const allGuildSnapshots = [];
+    const warPerformancePoints = [];
+    let latestTimestamp = 0;
+    let latestResponseModified = '';
+    let latestResponseModifiedTime = 0;
+
+    results.forEach(({ dataset, data, responseLastModified, dataTimestamp }) => {
+      const targetTeamIndex = getPrimaryGuildTeamIndexFromData(data);
+      const targetGuildName = getPrimaryGuildNameFromData(data);
+      const snapshots = buildSnapshot(data);
+
+      const targetSnapshot = pickGuildSnapshotForAllWars(snapshots, targetTeamIndex, targetGuildName);
+      if (targetSnapshot) {
+        const opponentSnapshot = snapshots.find((snapshot) => Number(snapshot?.teamIndex) !== Number(targetSnapshot.teamIndex)) || null;
+        const attackerGuildName = String(targetSnapshot.name || targetGuildName || 'Praetorians of Terra');
+        const defenderGuildName = String(opponentSnapshot?.name || 'Unknown guild');
+        const defenseBattles = Array.isArray(opponentSnapshot?.battles)
+          ? opponentSnapshot.battles
+              .filter((battle) => Number(battle?.defenderTeamIndex) === Number(targetSnapshot.teamIndex))
+              .map((battle) => ({
+                ...battle,
+                battleRole: 'defense',
+                attackerGuildName: defenderGuildName,
+                defenderGuildName: attackerGuildName
+              }))
+          : [];
+        const attackBattles = Array.isArray(targetSnapshot.battles)
+          ? targetSnapshot.battles.map((battle) => ({
+              ...battle,
+              battleRole: 'attack',
+              attackerGuildName,
+              defenderGuildName
+            }))
+          : [];
+
+        if (Number.isFinite(Number(targetSnapshot.teamIndex)) && targetSnapshot.name) {
+          battleLogGuildNameMap.set(Number(targetSnapshot.teamIndex), String(targetSnapshot.name));
+        }
+        if (Number.isFinite(Number(opponentSnapshot?.teamIndex)) && opponentSnapshot?.name) {
+          battleLogGuildNameMap.set(Number(opponentSnapshot.teamIndex), String(opponentSnapshot.name));
+        }
+
+        const combinedWarBattles = [...attackBattles, ...defenseBattles];
+        allGuildSnapshots.push({
+          ...targetSnapshot,
+          teamIndex: Number.isFinite(Number(targetSnapshot.teamIndex)) ? Number(targetSnapshot.teamIndex) : null,
+          battleLogScope: 'combined',
+          battles: combinedWarBattles
+        });
+
+        warPerformancePoints.push(buildWarPerformancePoint(dataset, dataTimestamp, combinedWarBattles));
+      }
+
+      const numericTimestamp = Number(dataTimestamp || 0);
+      if (Number.isFinite(numericTimestamp) && numericTimestamp > latestTimestamp) {
+        latestTimestamp = numericTimestamp;
+      }
+
+      const responseModifiedTime = responseLastModified ? Date.parse(responseLastModified) : NaN;
+      if (Number.isFinite(responseModifiedTime) && responseModifiedTime > latestResponseModifiedTime) {
+        latestResponseModifiedTime = responseModifiedTime;
+        latestResponseModified = responseLastModified;
+      }
+    });
+
+    const combinedSnapshot = {
+      teamIndex: null,
+      battleLogScope: 'combined',
+      name: String(allGuildSnapshots[0]?.name || 'Praetorians of Terra'),
+      battles: mergeBattleLogsFromSnapshots(allGuildSnapshots)
+    };
+
+    guildSnapshots = [combinedSnapshot];
+    activeGuildIndex = 0;
+    renderLastUpdated({ responseLastModified: latestResponseModified || null, dataTimestamp: latestTimestamp || null });
+    setupBattleLogFilters();
+    renderBattleLog(combinedSnapshot);
+    renderGuildPerformanceChart(warPerformancePoints);
+    renderPlayerTotalsTable(combinedSnapshot.battles, 'attack');
+    renderPlayerTotalsTable(combinedSnapshot.battles, 'defense');
+
+    if (statusMessage) {
+      statusMessage.textContent = `Loaded ${combinedSnapshot.battles.length.toLocaleString()} battles across ${results.length.toLocaleString()} wars for Praetorians of Terra.`;
+    }
+  } catch (error) {
+    console.error(error);
+    guildSnapshots = [{ teamIndex: null, battleLogScope: 'combined', name: 'Praetorians of Terra', battles: [] }];
+    activeGuildIndex = 0;
+    renderLastUpdated({ responseLastModified: null, dataTimestamp: null });
+    setupBattleLogFilters();
+    renderBattleLog(guildSnapshots[0]);
+    renderGuildPerformanceChart([]);
+    renderPlayerTotalsTable([], 'attack');
+    renderPlayerTotalsTable([], 'defense');
+
+    if (statusMessage) {
+      statusMessage.textContent = 'The all wars battle log could not be loaded. Open the app from a local web server to enable fetch().';
+    }
+  }
+}
+
 function renderBattleLogPlayerFilterControl(side) {
   const input = document.getElementById(`battle-filter-${side}-player-input`);
   const selectedContainer = document.getElementById(`battle-filter-${side}-player-selected`);
@@ -2008,6 +2531,10 @@ function setupBattleLogFilters() {
   const zoneSelect = document.getElementById('battle-filter-zone');
   const resultGroup = document.getElementById('battle-filter-result-group');
   const resultButtons = resultGroup ? Array.from(resultGroup.querySelectorAll('button[data-result]')) : [];
+  const modeGroup = document.getElementById('battle-filter-mode-group');
+  const modeButtons = modeGroup ? Array.from(modeGroup.querySelectorAll('button[data-mode]')) : [];
+  const cleanupGroup = document.getElementById('battle-filter-cleanup-group');
+  const cleanupButtons = cleanupGroup ? Array.from(cleanupGroup.querySelectorAll('button[data-cleanup]')) : [];
   const attackerPlayerInput = document.getElementById('battle-filter-attacker-player-input');
   const defenderPlayerInput = document.getElementById('battle-filter-defender-player-input');
   const attackerPlayerControl = document.getElementById('battle-filter-attacker-player-control');
@@ -2018,7 +2545,7 @@ function setupBattleLogFilters() {
   const defenderControl = document.getElementById('battle-filter-defender-control');
   const clearButton = document.getElementById('battle-filter-clear');
 
-  if (!sortSelect || !zoneSelect || !resultGroup || resultButtons.length === 0 || !attackerPlayerInput || !defenderPlayerInput || !attackerPlayerControl || !defenderPlayerControl || !attackerInput || !defenderInput || !attackerControl || !defenderControl || !clearButton) return;
+  if (!sortSelect || !zoneSelect || !resultGroup || resultButtons.length === 0 || !cleanupGroup || cleanupButtons.length === 0 || !attackerPlayerInput || !defenderPlayerInput || !attackerPlayerControl || !defenderPlayerControl || !attackerInput || !defenderInput || !attackerControl || !defenderControl || !clearButton) return;
 
   sortSelect.value = battleLogFilters.sort;
   zoneSelect.value = battleLogFilters.zoneType || '';
@@ -2035,7 +2562,35 @@ function setupBattleLogFilters() {
     });
   };
 
+  const syncCleanupButtons = () => {
+    cleanupButtons.forEach((button) => {
+      const value = button.getAttribute('data-cleanup') || 'all';
+      const isActive = value === battleLogFilters.cleanup;
+      button.classList.toggle('bg-emerald-900/70', isActive);
+      button.classList.toggle('text-emerald-100', isActive);
+      button.classList.toggle('bg-transparent', !isActive);
+      button.classList.toggle('text-slate-300', !isActive);
+      button.setAttribute('aria-checked', isActive ? 'true' : 'false');
+    });
+  };
+
+  const syncModeButtons = () => {
+    modeButtons.forEach((button) => {
+      const value = button.getAttribute('data-mode') || 'attacks';
+      const isActive = value === battleLogFilters.mode;
+      button.classList.toggle('bg-cyan-900/70', isActive);
+      button.classList.toggle('text-cyan-100', isActive);
+      button.classList.toggle('bg-transparent', !isActive);
+      button.classList.toggle('text-slate-300', !isActive);
+      button.setAttribute('aria-checked', isActive ? 'true' : 'false');
+    });
+  };
+
   syncResultButtons();
+  if (modeButtons.length > 0) {
+    syncModeButtons();
+  }
+  syncCleanupButtons();
 
   const rerenderBattleLog = () => {
     const snapshot = guildSnapshots[activeGuildIndex];
@@ -2058,6 +2613,26 @@ function setupBattleLogFilters() {
       const nextValue = button.getAttribute('data-result') || 'all';
       battleLogFilters.result = nextValue;
       syncResultButtons();
+      rerenderBattleLog();
+    });
+  });
+
+  if (modeButtons.length > 0) {
+    modeButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const nextValue = button.getAttribute('data-mode') || 'attacks';
+        battleLogFilters.mode = nextValue;
+        syncModeButtons();
+        rerenderBattleLog();
+      });
+    });
+  }
+
+  cleanupButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const nextValue = button.getAttribute('data-cleanup') || 'all';
+      battleLogFilters.cleanup = nextValue;
+      syncCleanupButtons();
       rerenderBattleLog();
     });
   });
@@ -2126,6 +2701,8 @@ function setupBattleLogFilters() {
   clearButton.addEventListener('click', () => {
     battleLogFilters.sort = 'newest';
     battleLogFilters.result = 'all';
+    battleLogFilters.cleanup = 'all';
+    battleLogFilters.mode = 'attacks';
     battleLogFilters.zoneType = '';
     battleLogFilters.attackerPlayer = '';
     battleLogFilters.defenderPlayer = '';
@@ -2135,9 +2712,14 @@ function setupBattleLogFilters() {
     sortSelect.value = 'newest';
     zoneSelect.value = '';
     battleLogFilters.result = 'all';
+    battleLogFilters.cleanup = 'all';
     attackerPlayerInput.value = '';
     defenderPlayerInput.value = '';
     syncResultButtons();
+    if (modeButtons.length > 0) {
+      syncModeButtons();
+    }
+    syncCleanupButtons();
     attackerInput.value = '';
     defenderInput.value = '';
     toggleBattleFilterDropdown('attacker-player', false);
@@ -2154,6 +2736,11 @@ function setupBattleLogFilters() {
 function renderBattleLog(snapshot) {
   const battleList = document.getElementById('battle-log-list');
   const battleCount = document.getElementById('battle-log-count');
+  const battleFilterSummary = document.getElementById('battle-filter-summary');
+  const battleWinAvg = document.getElementById('battle-log-stat-win-avg');
+  const battleLossAvg = document.getElementById('battle-log-stat-loss-avg');
+  const battleWinCleanup = document.getElementById('battle-log-stat-win-cleanup');
+  const battleLossCleanup = document.getElementById('battle-log-stat-loss-cleanup');
 
   if (!battleList) return;
 
@@ -2161,6 +2748,9 @@ function renderBattleLog(snapshot) {
   updateBattleLogTileTypeFilterOptions(snapshot);
   updateBattleLogPlayerFilterOptions(snapshot);
   updateBattleLogUnitFilterOptions(snapshot);
+
+  const activeGuildTeamIndex = Number(snapshot?.teamIndex);
+  const shouldApplyGuildFilter = snapshot?.battleLogScope !== 'combined' && Number.isFinite(activeGuildTeamIndex);
 
   const filteredBattles = battles
     .filter((battle) => {
@@ -2174,9 +2764,36 @@ function renderBattleLog(snapshot) {
         return false;
       }
 
+      if (battleLogFilters.cleanup === 'yes' && !battle.cleanup) {
+        return false;
+      }
+
+      if (battleLogFilters.cleanup === 'no' && !!battle.cleanup) {
+        return false;
+      }
+
+      if (snapshot?.battleLogScope === 'combined') {
+        const battleRole = String(battle?.battleRole || 'attack');
+        if (battleLogFilters.mode === 'attacks' && battleRole !== 'attack') {
+          return false;
+        }
+
+        if (battleLogFilters.mode === 'defenses' && battleRole !== 'defense') {
+          return false;
+        }
+      }
+
       if (battleLogFilters.zoneType) {
         const zoneType = String(battle.zoneType || '');
         if (zoneType !== battleLogFilters.zoneType) {
+          return false;
+        }
+      }
+
+      if (shouldApplyGuildFilter) {
+        const attackerTeamIndex = Number(battle?.attackerTeamIndex);
+        const matchesGuild = attackerTeamIndex === activeGuildTeamIndex;
+        if (!matchesGuild) {
           return false;
         }
       }
@@ -2229,6 +2846,43 @@ function renderBattleLog(snapshot) {
     battleCount.textContent = filteredBattles.length.toLocaleString();
   }
 
+  if (battleFilterSummary) {
+    const visibleCount = filteredBattles.length;
+    const totalCount = battles.length;
+    if (visibleCount === totalCount) {
+      battleFilterSummary.textContent = `Showing ${visibleCount.toLocaleString()} logs`;
+    } else {
+      battleFilterSummary.textContent = `Showing ${visibleCount.toLocaleString()} of ${totalCount.toLocaleString()} logs`;
+    }
+  }
+
+  const winBattles = filteredBattles.filter((battle) => getBattleOutcome(battle) === 'win');
+  const lossBattles = filteredBattles.filter((battle) => getBattleOutcome(battle) === 'loss');
+  const winAverageScore = winBattles.length > 0
+    ? winBattles.reduce((sum, battle) => sum + getCoreScore(getBattleRawScore(battle)).core, 0) / winBattles.length
+    : 0;
+  const lossAverageScore = lossBattles.length > 0
+    ? lossBattles.reduce((sum, battle) => sum + getCoreScore(getBattleRawScore(battle)).core, 0) / lossBattles.length
+    : 0;
+  const winCleanupCount = winBattles.filter((battle) => Boolean(battle.cleanup)).length;
+  const lossCleanupCount = lossBattles.filter((battle) => Boolean(battle.cleanup)).length;
+
+  if (battleWinAvg) {
+    battleWinAvg.textContent = `Win avg: ${winAverageScore.toLocaleString(undefined, { maximumFractionDigits: 1 })}`;
+  }
+
+  if (battleLossAvg) {
+    battleLossAvg.textContent = `Lose avg: ${lossAverageScore.toLocaleString(undefined, { maximumFractionDigits: 1 })}`;
+  }
+
+  if (battleWinCleanup) {
+    battleWinCleanup.textContent = `Win cleanup: ${winCleanupCount.toLocaleString()}`;
+  }
+
+  if (battleLossCleanup) {
+    battleLossCleanup.textContent = `Lose cleanup: ${lossCleanupCount.toLocaleString()}`;
+  }
+
   battleList.innerHTML = '';
 
   if (battles.length === 0) {
@@ -2267,6 +2921,11 @@ function renderBattleLog(snapshot) {
     }
 
     const zoneLabel = battle.zoneType ? `<span class="rounded-full border border-slate-500/50 bg-slate-900/70 px-2 py-0.5 text-xs text-slate-300">${escapeHtml(battle.zoneType)}</span>` : '';
+    const attackerGuildName = String(battle?.attackerGuildName || getGuildNameByTeamIndex(battle?.attackerTeamIndex));
+    const defenderGuildName = String(battle?.defenderGuildName || getGuildNameByTeamIndex(battle?.defenderTeamIndex));
+    const roleLabel = snapshot?.battleLogScope === 'combined'
+      ? `<span class="rounded-full border border-cyan-400/40 bg-cyan-500/10 px-2 py-0.5 text-xs font-semibold uppercase tracking-wide text-cyan-200">${escapeHtml(getBattleRoleLabel(battle.battleRole))}</span>`
+      : '';
     const item = document.createElement('article');
     item.className = 'grid grid-cols-1 gap-3 rounded-xl border border-slate-500/30 bg-slate-900/50 p-3 md:grid-cols-3';
     const attackerSideUnits = buildBattleSideUnits(battle.attackerUnits, battle.attackerMachineOfWar);
@@ -2274,16 +2933,19 @@ function renderBattleLog(snapshot) {
     item.innerHTML = `
       <div class="flex min-w-0 flex-col gap-2">
         <div class="truncate font-bold text-slate-200">${escapeHtml(battle.attackerName)}</div>
+        <div class="truncate text-xs font-semibold uppercase tracking-wide text-cyan-300/80">${escapeHtml(attackerGuildName)}</div>
         <div class="flex flex-wrap gap-1.5">${renderBattleUnits(attackerSideUnits, 'attacker')}</div>
       </div>
       <div class="flex min-w-28 flex-col items-start justify-center gap-1 md:items-center">
         <span class="inline-flex items-center ${stateClass}">${scoreDisplay}</span>
         ${bonusDisplay}
         <span class="text-xs uppercase tracking-wide text-slate-300">${escapeHtml(stateLabel)}</span>
+        ${roleLabel}
         ${zoneLabel}
       </div>
       <div class="flex min-w-0 flex-col gap-2 text-left md:items-end md:text-right">
         <div class="truncate font-bold text-slate-200">${escapeHtml(battle.defenderName)}</div>
+        <div class="truncate text-xs font-semibold uppercase tracking-wide text-pink-300/80">${escapeHtml(defenderGuildName)}</div>
         <div class="flex flex-wrap gap-1.5 md:justify-end">${renderBattleUnits(defenderSideUnits, 'defender')}</div>
       </div>
     `;
@@ -2631,4 +3293,10 @@ async function loadGuildData() {
   }
 }
 
-loadGuildData();
+const currentPage = String(document.body?.dataset?.page || '').trim();
+if (currentPage === 'battle-log') {
+  setupBattleLogPageTabs();
+  loadAllWarsBattleLogData();
+} else {
+  loadGuildData();
+}
