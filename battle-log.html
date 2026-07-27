@@ -6,8 +6,8 @@
     <title>Praetorians of Terra - Battle Log</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body data-page="battle-log" class="min-h-screen bg-slate-950 text-slate-100">
-    <div class="mx-auto flex max-w-none flex-col gap-6 px-4 py-8 sm:px-6 lg:px-8">
+  <body data-page="battle-log" class="h-screen overflow-hidden bg-slate-950 text-slate-100">
+    <div class="mx-auto flex h-full max-w-none flex-col px-4 py-4 sm:px-6 lg:px-8">
       <header class="rounded-3xl border border-cyan-400/20 bg-slate-900/80 p-6 shadow-2xl shadow-cyan-500/10">
         <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <h1 class="text-2xl font-black sm:text-3xl">Praetorians of Terra</h1>
@@ -30,16 +30,13 @@
         </div>
       </header>
 
-      <header class="rounded-3xl border border-cyan-400/20 bg-slate-900/80 p-6 shadow-2xl shadow-cyan-500/10">
-        <div class="w-full">
-          <div>
-            <h2 class="text-xl font-bold text-cyan-100 sm:text-2xl">Battle Log Overview</h2>
-            <p class="mt-2 text-sm text-slate-300 sm:text-base">
-              Review your guild's battle history across all tracked wars, with filters for results, teams, players, and unit lineups.
-            </p>
-          </div>
-        </div>
-      </header>
+      <div class="mt-6 flex-1 min-h-0 overflow-y-auto">
+        <div class="flex flex-col gap-6 pb-6">
+
+      <page-overview
+        title="Battle Log Overview"
+        description="Review your guild's battle history across all tracked wars, with filters for results, teams, players, and unit lineups.">
+      </page-overview>
 
       <div class="rounded-xl border border-slate-800 bg-slate-900/70 shadow-2xl shadow-black/25">
         <div class="flex border-b border-slate-700">
@@ -218,8 +215,11 @@
           </div>
         </div>
       </div>
+        </div>
+      </div>
     </div>
 
+    <script type="module" src="src/components/page-overview.js"></script>
     <script src="src/consts/tile-scores.js"></script>
     <script src="src/consts/score-splitter.js"></script>
     <script src="src/app.js"></script>

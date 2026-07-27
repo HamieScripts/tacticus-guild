@@ -2193,7 +2193,6 @@ async function loadAllWarsBattleLogData() {
   if (lastUpdatedEl) {
     lastUpdatedEl.textContent = 'Loading...';
   }
-
   try {
     await initializePortraitMapper();
 
@@ -3239,18 +3238,18 @@ function renderBuffLegend(snapshot) {
   }));
 
   legendContainer.innerHTML = `
-    <div class="flex flex-wrap items-center gap-3">
+    <div class="flex flex-wrap items-start justify-start gap-2">
       <div class="flex grow-0 shrink-0 flex-wrap items-center gap-3 rounded-xl border border-slate-400/20 bg-slate-900/35 px-3 py-2">
         <button type="button" data-legend-title="true" data-legend-block="token" class="${titleClasses('token')}">Token</button>
         <div class="flex flex-wrap items-center gap-2">${tokenItems.join('')}</div>
       </div>
       <div class="flex grow-0 shrink-0 flex-wrap items-center gap-3 rounded-xl border border-slate-400/20 bg-slate-900/35 px-3 py-2">
-        <button type="button" data-legend-title="true" data-legend-block="buff" class="${titleClasses('buff')}">Buff groups</button>
-        <div class="flex flex-wrap items-center gap-2">${buffItems.join('') || '<div class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-400/20 bg-slate-900/60 px-2 py-1 text-sm"><span class="w-4 text-center">—</span><span class="font-semibold text-blue-100">No buff groups</span></div>'}</div>
+        <button type="button" data-legend-title="true" data-legend-block="scoreTier" class="${titleClasses('scoreTier')}">Score</button>
+        <div class="flex flex-wrap items-center gap-2">${scoreTierItems.join('')}</div>
       </div>
       <div class="flex grow-0 shrink-0 flex-wrap items-center gap-3 rounded-xl border border-slate-400/20 bg-slate-900/35 px-3 py-2">
-        <button type="button" data-legend-title="true" data-legend-block="scoreTier" class="${titleClasses('scoreTier')}">Score tiers</button>
-        <div class="flex flex-wrap items-center gap-2">${scoreTierItems.join('')}</div>
+        <button type="button" data-legend-title="true" data-legend-block="buff" class="${titleClasses('buff')}">Buggs</button>
+        <div class="flex flex-wrap items-center gap-2">${buffItems.join('') || '<div class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-400/20 bg-slate-900/60 px-2 py-1 text-sm"><span class="w-4 text-center">—</span><span class="font-semibold text-blue-100">No buggs</span></div>'}</div>
       </div>
     </div>
   `;
@@ -3284,7 +3283,6 @@ async function loadGuildData() {
   if (lastUpdatedEl) {
     lastUpdatedEl.textContent = 'Loading...';
   }
-
   try {
     await initializePortraitMapper();
     const response = await fetch(dataset.url, { cache: 'no-store' });

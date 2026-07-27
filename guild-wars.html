@@ -6,8 +6,8 @@
     <title>Praetorians of Terra - Guild Wars</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body class="min-h-screen bg-slate-950 text-slate-100">
-    <div class="mx-auto flex max-w-none flex-col gap-6 px-4 py-8 sm:px-6 lg:px-8">
+  <body class="h-screen overflow-hidden bg-slate-950 text-slate-100">
+    <div class="mx-auto flex h-full max-w-none flex-col px-4 py-4 sm:px-6 lg:px-8">
       <header class="rounded-3xl border border-cyan-400/20 bg-slate-900/80 p-6 shadow-2xl shadow-cyan-500/10">
         <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <h1 class="text-2xl font-black sm:text-3xl">Praetorians of Terra</h1>
@@ -30,16 +30,13 @@
         </div>
       </header>
 
-      <header class="rounded-3xl border border-cyan-400/20 bg-slate-900/80 p-6 shadow-2xl shadow-cyan-500/10">
-        <div class="w-full">
-          <div>
-            <h2 class="text-xl font-bold text-cyan-100 sm:text-2xl">Guild Wars Overview</h2>
-            <p class="mt-2 text-sm text-slate-300 sm:text-base">
-              Compare guild progress at a glance with token usage, battle performance, and score projections for your guild.
-            </p>
-          </div>
-        </div>
-      </header>
+      <div class="mt-6 flex-1 min-h-0 overflow-y-auto">
+        <div class="flex flex-col gap-6 pb-6">
+
+      <page-overview
+        title="Guild Wars Overview"
+        description="Compare guild progress at a glance with token usage, battle performance, and score projections for your guild.">
+      </page-overview>
 
       <section>
         <div class="flex flex-col gap-3 lg:flex-row lg:items-end">
@@ -100,9 +97,9 @@
             <button id="leaderboard-layout-table" type="button" class="rounded-md border border-cyan-400 bg-cyan-500/15 px-3 py-1.5 text-xs font-semibold text-cyan-200">Table</button>
             <button id="leaderboard-layout-cards" type="button" class="rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-1.5 text-xs font-semibold text-slate-300">Cards</button>
           </div>
-          <div id="buff-legend" class="mb-4 text-sm"></div>
-          <div id="leaderboard-table-wrap" class="max-h-screen w-full overflow-auto">
-            <table class="min-w-max w-full border-collapse text-left text-sm">
+          <div id="buff-legend" class="mb-2 text-sm"></div>
+          <div id="leaderboard-table-wrap" class="w-full overflow-hidden rounded-xl border border-slate-800/80">
+            <table class="w-full table-fixed border-collapse text-left text-xs sm:text-sm">
               <thead class="bg-slate-800/90 text-slate-200">
                 <tr>
                   <th class="sticky left-0 top-0 z-20 whitespace-nowrap bg-slate-800/95 px-4 py-3 font-semibold">Player</th>
@@ -280,8 +277,11 @@
           </div>
         </div>
       </div>
+        </div>
+      </div>
     </div>
 
+    <script type="module" src="src/components/page-overview.js"></script>
     <script src="src/consts/tile-scores.js"></script>
     <script src="src/consts/score-splitter.js"></script>
     <script src="src/app.js"></script>
