@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Praetorians of Terra - Player Stats</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="h-screen overflow-hidden bg-slate-950 text-slate-100">
+    <div class="mx-auto flex h-full max-w-none flex-col px-4 py-4 sm:px-6 lg:px-8">
+      <header class="rounded-3xl border border-cyan-400/20 bg-slate-900/80 p-6 shadow-2xl shadow-cyan-500/10">
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <h1 class="text-2xl font-black sm:text-3xl">Praetorians of Terra</h1>
+          <nav aria-label="Primary">
+            <ul class="flex flex-wrap items-center gap-2">
+              <li>
+                <a href="index.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Home</a>
+              </li>
+              <li>
+                <a href="guild-wars.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Guild Wars</a>
+              </li>
+              <li>
+                <a href="guild-teams.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Guild Teams</a>
+              </li>
+              <li>
+                <a href="battle-log.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Battle Log</a>
+              </li>
+              <li>
+                <a href="player-page.html" aria-current="page" class="inline-flex rounded-lg border border-cyan-400/70 bg-cyan-500/15 px-4 py-2 text-sm font-semibold text-cyan-200">Player Stats</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <div class="mt-6 flex-1 min-h-0 overflow-y-auto">
+        <div class="flex flex-col gap-6 pb-6">
+          <page-overview
+            title="Player Performance Overview"
+            description="Select a guild member to compare average attack and defense score per war, with all individual battle scores plotted as scatter points.">
+          </page-overview>
+
+          <section class="rounded-2xl border border-slate-800 bg-slate-900/70 p-4 shadow-2xl shadow-black/25">
+            <div class="grid gap-4 md:grid-cols-[minmax(16rem,22rem)_1fr] md:items-end">
+              <div>
+                <label for="player-select" class="block text-xs font-semibold uppercase tracking-wide text-slate-400">Player</label>
+                <select id="player-select" class="mt-1 w-full rounded-lg border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200 outline-none transition focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/30"></select>
+              </div>
+              <p id="player-chart-summary" class="text-sm text-slate-400">Loading player history...</p>
+            </div>
+
+            <div class="mt-4 rounded-xl border border-slate-800/90 bg-slate-950/45 p-3">
+              <div class="overflow-x-auto">
+                <svg id="player-chart" class="h-[420px] w-full min-w-[860px]" viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid meet"></svg>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="src/components/page-overview.js"></script>
+    <script src="src/consts/tile-scores.js"></script>
+    <script src="src/consts/score-splitter.js"></script>
+    <script src="src/player-page.js"></script>
+  </body>
+</html>
