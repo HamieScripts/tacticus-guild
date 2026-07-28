@@ -4,6 +4,8 @@ const PLAYER_PAGE_STATE = {
   selectedPlayerId: ''
 };
 
+const ALL_PLAYERS_OPTION_ID = '__all_players__';
+
 function getCoreBattleScore(scoreValue, zoneType) {
   if (typeof globalThis.getCoreScore === 'function') {
     const split = globalThis.getCoreScore(scoreValue, zoneType);
@@ -192,6 +194,52 @@ function setSummaryText(text) {
   summary.textContent = text;
 }
 
+function getChartYDomain(values) {
+  const numericValues = (Array.isArray(values) ? values : [])
+    .map((value) => Number(value))
+    .filter((value) => Number.isFinite(value));
+
+  if (numericValues.length === 0) {
+    return { yMin: 0, yMax: 1600 };
+  }
+
+  const minValue = Math.min(...numericValues);
+  const maxValue = Math.max(...numericValues);
+  const defaultFloor = 600;
+
+  const yMin = minValue >= defaultFloor
+    ? defaultFloor
+    : Math.max(0, Math.floor(Math.max(minValue - 100, 0) / 100) * 100);
+
+  const paddedMax = Math.max(maxValue + 80, yMin + 200);
+  const yMax = Math.min(1600, Math.ceil(paddedMax / 100) * 100);
+
+  if (yMax <= yMin) {
+    return { yMin, yMax: Math.min(1600, yMin + 200) };
+  }
+
+  return { yMin, yMax };
+}
+
+function getChartTicks(yMin, yMax) {
+  const min = Number.isFinite(yMin) ? yMin : 0;
+  const max = Number.isFinite(yMax) ? yMax : 1600;
+  const range = Math.max(max - min, 1);
+  const stepCandidates = [50, 100, 200, 250, 400];
+  const idealStep = range / 6;
+  const step = stepCandidates.find((candidate) => candidate >= idealStep) || 400;
+
+  const ticks = [min];
+  let tick = Math.ceil(min / step) * step;
+  while (tick < max) {
+    if (tick > min) ticks.push(tick);
+    tick += step;
+  }
+  if (ticks[ticks.length - 1] !== max) ticks.push(max);
+
+  return ticks;
+}
+
 function renderPlayerSelect() {
   const select = document.getElementById('player-select');
   if (!select) return;
@@ -223,6 +271,11 @@ function renderPlayerSelect() {
     return;
   }
 
+  const allPlayersOption = document.createElement('option');
+  allPlayersOption.value = ALL_PLAYERS_OPTION_ID;
+  allPlayersOption.textContent = 'All players';
+  select.appendChild(allPlayersOption);
+
   players.forEach((player) => {
     const option = document.createElement('option');
     option.value = player.id;
@@ -230,8 +283,11 @@ function renderPlayerSelect() {
     select.appendChild(option);
   });
 
-  if (!PLAYER_PAGE_STATE.selectedPlayerId || !players.some((player) => player.id === PLAYER_PAGE_STATE.selectedPlayerId)) {
-    PLAYER_PAGE_STATE.selectedPlayerId = players[0].id;
+  const isValidSelection = PLAYER_PAGE_STATE.selectedPlayerId === ALL_PLAYERS_OPTION_ID
+    || players.some((player) => player.id === PLAYER_PAGE_STATE.selectedPlayerId);
+
+  if (!PLAYER_PAGE_STATE.selectedPlayerId || !isValidSelection) {
+    PLAYER_PAGE_STATE.selectedPlayerId = ALL_PLAYERS_OPTION_ID;
   }
 
   select.value = PLAYER_PAGE_STATE.selectedPlayerId;
@@ -249,6 +305,138 @@ function renderChart() {
   }
 
   const wars = PLAYER_PAGE_STATE.wars;
+  const isAllPlayersSelected = selectedPlayerId === ALL_PLAYERS_OPTION_ID;
+  const width = 1200;
+  const height = 620;
+  const padding = { top: 28, right: 24, bottom: 84, left: 56 };
+  const plotWidth = width - padding.left - padding.right;
+  const plotHeight = height - padding.top - padding.bottom;
+
+  const xForIndex = (index) => {
+    if (wars.length <= 1) return padding.left + plotWidth / 2;
+    return padding.left + (index / (wars.length - 1)) * plotWidth;
+  };
+
+  const escapeText = (value) => String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;');
+
+  if (isAllPlayersSelected) {
+    const playerIdSet = new Set();
+    wars.forEach((war) => {
+      war.perPlayer.forEach((_, playerId) => {
+        playerIdSet.add(playerId);
+      });
+    });
+
+    const players = Array.from(playerIdSet)
+      .map((id) => ({ id, name: PLAYER_PAGE_STATE.playerNameMap.get(id) || id }))
+      .sort((a, b) => a.name.localeCompare(b.name));
+
+    const playerSeries = players.map((player) => {
+      const rows = wars.map((war, index) => {
+        const stats = war.perPlayer.get(player.id) || { attackScores: [], defenseScores: [] };
+        const attackScores = Array.isArray(stats.attackScores) ? stats.attackScores : [];
+        const defenseScores = Array.isArray(stats.defenseScores) ? stats.defenseScores : [];
+        const combinedScores = attackScores.concat(defenseScores);
+
+        return {
+          index,
+          avg: average(combinedScores),
+          attackCount: attackScores.length,
+          defenseCount: defenseScores.length
+        };
+      });
+
+      return {
+        ...player,
+        rows,
+        totalAttacks: rows.reduce((sum, row) => sum + row.attackCount, 0),
+        totalDefenses: rows.reduce((sum, row) => sum + row.defenseCount, 0)
+      };
+    }).filter((series) => series.rows.some((row) => row.avg !== null));
+
+    const avgValues = [];
+    playerSeries.forEach((series) => {
+      series.rows.forEach((row) => {
+        if (row.avg !== null) avgValues.push(row.avg);
+      });
+    });
+
+    const { yMin, yMax } = getChartYDomain(avgValues);
+
+    const yForScore = (score) => {
+      const clamped = Math.max(yMin, Math.min(yMax, Number(score || 0)));
+      const normalized = (clamped - yMin) / Math.max(yMax - yMin, 1);
+      return padding.top + (1 - normalized) * plotHeight;
+    };
+
+    const yTicks = getChartTicks(yMin, yMax);
+
+    const grid = yTicks.map((tick) => {
+      const y = yForScore(tick);
+      return `
+        <line x1="${padding.left}" y1="${y}" x2="${width - padding.right}" y2="${y}" stroke="rgba(100,116,139,0.35)" stroke-width="1" />
+        <text x="${padding.left - 8}" y="${y + 4}" text-anchor="end" font-size="11" fill="rgba(148,163,184,0.9)">${Math.round(tick)}</text>
+      `;
+    }).join('');
+
+    const xLabels = wars.map((war, index) => {
+      const x = xForIndex(index);
+      const shortLabel = String(war.label || war.key || `War ${index + 1}`);
+      return `<text x="${x}" y="${height - 18}" text-anchor="middle" font-size="11" fill="rgba(148,163,184,0.95)">${escapeText(shortLabel)}</text>`;
+    }).join('');
+
+    const colorForPlayer = (playerId) => {
+      const id = String(playerId || 'player');
+      let hash = 0;
+      for (let i = 0; i < id.length; i += 1) {
+        hash = ((hash << 5) - hash) + id.charCodeAt(i);
+        hash |= 0;
+      }
+      const hue = Math.abs(hash) % 360;
+      return `hsl(${hue}, 75%, 62%)`;
+    };
+
+    const seriesPaths = playerSeries.map((series) => {
+      const points = series.rows
+        .filter((row) => row.avg !== null)
+        .map((row) => ({ x: xForIndex(row.index), y: yForScore(row.avg) }));
+
+      if (points.length === 0) return '';
+
+      const color = colorForPlayer(series.id);
+      const pathData = points.map((point) => `${point.x},${point.y}`).join(' L ');
+      const markers = points
+        .map((point) => `<circle cx="${point.x}" cy="${point.y}" r="2.7" fill="${color}" />`)
+        .join('');
+      const lastPoint = points[points.length - 1];
+      const labelX = Math.min(lastPoint.x + 6, width - padding.right - 40);
+      const labelY = Math.max(lastPoint.y - 5, padding.top + 10);
+
+      return `
+        <path d="M ${pathData}" fill="none" stroke="${color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        ${markers}
+        <text x="${labelX}" y="${labelY}" font-size="10" fill="${color}">${escapeText(series.name)}</text>
+      `;
+    }).join('');
+
+    svg.innerHTML = `
+      <rect x="0" y="0" width="${width}" height="${height}" fill="rgba(2,6,23,0.25)"></rect>
+      ${grid}
+      <line x1="${padding.left}" y1="${padding.top + plotHeight}" x2="${width - padding.right}" y2="${padding.top + plotHeight}" stroke="rgba(148,163,184,0.7)" stroke-width="1.2" />
+      <line x1="${padding.left}" y1="${padding.top}" x2="${padding.left}" y2="${padding.top + plotHeight}" stroke="rgba(148,163,184,0.7)" stroke-width="1.2" />
+
+      ${seriesPaths}
+      ${xLabels}
+
+      <text x="${padding.left}" y="14" fill="rgba(186,230,253,0.95)" font-size="12">Each line = one player (attack + defense average per war)</text>
+    `;
+
+    const totalAttacks = playerSeries.reduce((sum, series) => sum + series.totalAttacks, 0);
+    const totalDefenses = playerSeries.reduce((sum, series) => sum + series.totalDefenses, 0);
+    setSummaryText(`All players: ${playerSeries.length} lines, ${totalAttacks} attacks and ${totalDefenses} defenses across ${wars.length} wars.`);
+    return;
+  }
+
   const chartRows = wars.map((war, index) => {
     const stats = war.perPlayer.get(selectedPlayerId) || { attackScores: [], defenseScores: [] };
     return {
@@ -267,21 +455,12 @@ function renderChart() {
     if (row.defenseAvg !== null) avgValues.push(row.defenseAvg);
   });
 
-  const yMax = Math.max(1600, ...avgValues, 1);
-  const width = 1200;
-  const height = 420;
-  const padding = { top: 24, right: 24, bottom: 70, left: 56 };
-  const plotWidth = width - padding.left - padding.right;
-  const plotHeight = height - padding.top - padding.bottom;
-
-  const xForIndex = (index) => {
-    if (chartRows.length <= 1) return padding.left + plotWidth / 2;
-    return padding.left + (index / (chartRows.length - 1)) * plotWidth;
-  };
+  const { yMin, yMax } = getChartYDomain(avgValues);
 
   const yForScore = (score) => {
-    const clamped = Math.max(0, Math.min(yMax, Number(score || 0)));
-    return padding.top + (1 - clamped / yMax) * plotHeight;
+    const clamped = Math.max(yMin, Math.min(yMax, Number(score || 0)));
+    const normalized = (clamped - yMin) / Math.max(yMax - yMin, 1);
+    return padding.top + (1 - normalized) * plotHeight;
   };
 
   const makePath = (rows, key) => {
@@ -295,8 +474,7 @@ function renderChart() {
   const attackPath = makePath(chartRows, 'attackAvg');
   const defensePath = makePath(chartRows, 'defenseAvg');
 
-  const yTicks = [0, 400, 800, 1200, 1600].filter((tick) => tick <= yMax);
-  if (!yTicks.includes(yMax)) yTicks.push(yMax);
+  const yTicks = getChartTicks(yMin, yMax);
 
   const grid = yTicks.map((tick) => {
     const y = yForScore(tick);
@@ -309,7 +487,7 @@ function renderChart() {
   const xLabels = chartRows.map((row) => {
     const x = xForIndex(row.index);
     const shortLabel = String(row.war.label || row.war.key || `War ${row.index + 1}`);
-    return `<text x="${x}" y="${height - 18}" text-anchor="middle" font-size="11" fill="rgba(148,163,184,0.95)">${shortLabel.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</text>`;
+    return `<text x="${x}" y="${height - 18}" text-anchor="middle" font-size="11" fill="rgba(148,163,184,0.95)">${escapeText(shortLabel)}</text>`;
   }).join('');
 
   const attackMarkers = chartRows
@@ -344,9 +522,9 @@ function renderChart() {
     </g>
   `;
 
-  const playerName = PLAYER_PAGE_STATE.playerNameMap.get(selectedPlayerId) || selectedPlayerId;
   const totalAttacks = chartRows.reduce((sum, row) => sum + row.attackScores.length, 0);
   const totalDefenses = chartRows.reduce((sum, row) => sum + row.defenseScores.length, 0);
+  const playerName = PLAYER_PAGE_STATE.playerNameMap.get(selectedPlayerId) || selectedPlayerId;
   setSummaryText(`${playerName}: ${totalAttacks} attacks and ${totalDefenses} defenses across ${chartRows.length} wars.`);
 }
 
