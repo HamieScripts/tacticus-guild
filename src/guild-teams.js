@@ -6,6 +6,8 @@ const teamsState = {
   teams: [],
   portraitMap: {},
   portraitManifestSet: new Set(),
+  battleLogs: [],
+  battleLogsLoaded: false,
   activeFilter: 'all',
   activeTab: 'library',
   poolSearch: '',
@@ -87,6 +89,207 @@ async function loadTeamsData() {
   }
 }
 
+function pickPrimaryEventResponseData(data) {
+  const eventResults = Array.isArray(data?.eventResults) ? data.eventResults : [];
+  if (eventResults.length === 0) return null;
+
+  let selected = null;
+  let selectedScore = -1;
+
+  eventResults.forEach((eventResult) => {
+    const eventResponseData = eventResult?.eventResponseData;
+    if (!eventResponseData || typeof eventResponseData !== 'object') return;
+
+    const activityLogsLength = Array.isArray(eventResponseData.activityLogs) ? eventResponseData.activityLogs.length : 0;
+    const playerDataLength = Array.isArray(eventResponseData.playerData) ? eventResponseData.playerData.length : 0;
+    const guildDataLength = Array.isArray(eventResponseData.guildData) ? eventResponseData.guildData.length : 0;
+    const score = activityLogsLength * 1000000 + playerDataLength * 1000 + guildDataLength;
+
+    if (score > selectedScore) {
+      selected = eventResponseData;
+      selectedScore = score;
+    }
+  });
+
+  return selected || eventResults[0]?.eventResponseData || null;
+}
+
+function getBattleUnitId(unit) {
+  if (typeof unit === 'string') {
+    return String(unit || '').trim();
+  }
+
+  if (!unit || typeof unit !== 'object') return '';
+  const rawId = unit.avatarUnitId
+    || unit.unitTypeId
+    || unit.baseCharacterId
+    || unit.unitId
+    || unit.characterId
+    || unit.id;
+  return String(rawId || '').trim();
+}
+
+function normalizeUnitId(value) {
+  return String(value || '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, '');
+}
+
+function normalizeUnitIdList(units) {
+  return (Array.isArray(units) ? units : [])
+    .map((unit) => normalizeUnitId(getBattleUnitId(unit)))
+    .filter(Boolean)
+    .sort((a, b) => a.localeCompare(b));
+}
+
+function buildLineupUnitIdsWithMachineOfWar(battleSide) {
+  const units = Array.isArray(battleSide?.units) ? battleSide.units : [];
+  const machineOfWarUnitId = getBattleUnitId(battleSide?.machineOfWar || null);
+  const baseUnitIds = units.map((unit) => getBattleUnitId(unit)).filter(Boolean);
+
+  if (machineOfWarUnitId) {
+    baseUnitIds.push(machineOfWarUnitId);
+  }
+
+  return baseUnitIds;
+}
+
+function isExactCoreMatch(normalizedCore, normalizedUnits) {
+  if (!Array.isArray(normalizedCore) || !Array.isArray(normalizedUnits)) return false;
+  if (normalizedCore.length === 0) return false;
+  return normalizedCore.every((unitId) => normalizedUnits.includes(unitId));
+}
+
+function formatBattleDate(createdOn) {
+  const date = new Date(Number(createdOn || 0));
+  if (Number.isNaN(date.getTime())) return 'Unknown time';
+  return new Intl.DateTimeFormat(undefined, {
+    year: 'numeric',
+    month: 'short',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit'
+  }).format(date);
+}
+
+function getCoreScoreValue(score) {
+  if (typeof globalThis.getCoreScore === 'function') {
+    return Number(globalThis.getCoreScore(score)?.core || 0);
+  }
+
+  const numericScore = Number(score || 0);
+  if (numericScore <= 1600) return numericScore;
+  return Math.min(numericScore, 1600);
+}
+
+async function loadBattleLogsData() {
+  const fallbackDatasets = [{
+    key: 'current',
+    label: 'Active war',
+    url: './data/current/live-war.json'
+  }];
+
+  let datasets = fallbackDatasets;
+
+  try {
+    const manifestResponse = await fetch('./data/dataset-manifest.json', { cache: 'no-store' });
+    if (manifestResponse.ok) {
+      const manifest = await manifestResponse.json();
+      const rawDatasets = Array.isArray(manifest)
+        ? manifest
+        : (Array.isArray(manifest?.datasets) ? manifest.datasets : []);
+      const normalizedDatasets = rawDatasets
+        .map((entry) => ({
+          key: String(entry?.key || '').trim(),
+          label: String(entry?.label || 'Unknown war').trim(),
+          url: String(entry?.url || '').trim()
+        }))
+        .filter((entry) => entry.key && entry.url);
+
+      if (normalizedDatasets.length > 0) {
+        datasets = normalizedDatasets;
+      }
+    }
+  } catch (error) {
+    datasets = fallbackDatasets;
+  }
+
+  const logs = [];
+
+  const datasetResults = await Promise.all(datasets.map(async (dataset) => {
+    try {
+      const response = await fetch(dataset.url, { cache: 'no-store' });
+      if (!response.ok) return null;
+
+      const data = await response.json();
+      const eventResponseData = pickPrimaryEventResponseData(data);
+      if (!eventResponseData) return null;
+
+      return { dataset, eventResponseData };
+    } catch (error) {
+      return null;
+    }
+  }));
+
+  datasetResults.filter(Boolean).forEach(({ dataset, eventResponseData }) => {
+    const guildData = Array.isArray(eventResponseData?.guildData) ? eventResponseData.guildData : [];
+    const playerData = Array.isArray(eventResponseData?.playerData) ? eventResponseData.playerData : [];
+    const activityLogs = Array.isArray(eventResponseData?.activityLogs) ? eventResponseData.activityLogs : [];
+
+    const teamIndexToGuildName = new Map();
+    guildData.forEach((guild) => {
+      const teamIndex = Number(guild?.teamIndex);
+      if (!Number.isFinite(teamIndex)) return;
+      teamIndexToGuildName.set(teamIndex, String(guild?.name || `Team ${teamIndex}`));
+    });
+
+    const playerNames = new Map();
+    playerData.forEach((player) => {
+      const userId = String(player?.userId || '').trim();
+      if (!userId) return;
+      playerNames.set(userId, String(player?.displayName || userId));
+    });
+
+    const allTeamIndexes = Array.from(teamIndexToGuildName.keys());
+
+    activityLogs.forEach((log) => {
+      if (String(log?.type || '') !== 'battleFinished') return;
+
+      const attackerTeamIndex = Number(log?.teamIndex);
+      if (!Number.isFinite(attackerTeamIndex)) return;
+
+      const defenderTeamIndex = allTeamIndexes.find((index) => index !== attackerTeamIndex) ?? null;
+
+      const attackerUserId = String(log?.attacker?.userId || log?.userId || '').trim();
+      const defenderUserId = String(log?.defender?.userId || '').trim();
+
+      logs.push({
+        id: String(log?.id || `${dataset.key}-${Number(log?.createdOn || 0)}-${attackerUserId || 'unknown'}`),
+        datasetLabel: dataset.label,
+        createdOn: Number(log?.createdOn || 0),
+        zoneType: String(log?.zone?.type || ''),
+        hasScore: Object.prototype.hasOwnProperty.call(log || {}, 'score'),
+        abandoned: !!log?.abandoned,
+        cleanup: !!log?.cleanup,
+        score: getCoreScoreValue(log?.score),
+        attackerGuildName: String(teamIndexToGuildName.get(attackerTeamIndex) || `Team ${attackerTeamIndex}`),
+        defenderGuildName: Number.isFinite(defenderTeamIndex)
+          ? String(teamIndexToGuildName.get(defenderTeamIndex) || `Team ${defenderTeamIndex}`)
+          : 'Unknown guild',
+        attackerName: String(playerNames.get(attackerUserId) || attackerUserId || 'Unknown attacker'),
+        defenderName: String(playerNames.get(defenderUserId) || defenderUserId || 'Unknown defender'),
+        attackerUnitIds: buildLineupUnitIdsWithMachineOfWar(log?.attacker),
+        defenderUnitIds: buildLineupUnitIdsWithMachineOfWar(log?.defender),
+        attackerUnitsNormalized: normalizeUnitIdList(log?.attacker?.units),
+        defenderUnitsNormalized: normalizeUnitIdList(log?.defender?.units)
+      });
+    });
+  });
+
+  teamsState.battleLogs = logs.sort((a, b) => Number(b.createdOn || 0) - Number(a.createdOn || 0));
+  teamsState.battleLogsLoaded = true;
+}
+
 function getPortraitUrlForUnitId(unitId) {
   const imageName = String((teamsState.portraitMap || {})[unitId] || '').trim();
   if (!imageName) return MISSING_UNIT_AVATAR_URL;
@@ -130,6 +333,189 @@ function renderTypePill(type) {
   return `<span class="rounded-full border px-4 py-2 text-base font-semibold uppercase tracking-wide ${tone}">${escapeHtml(safeType)}</span>`;
 }
 
+function renderMatchResultBadge(log, perspective) {
+  const score = Number(log?.score || 0);
+  const cleanupHtml = log?.cleanup ? '<span class="text-emerald-400" title="Cleanup">🧹</span>' : '';
+
+  if (log?.abandoned) {
+    return '<span class="inline-flex items-center rounded-md bg-slate-400/20 px-2 py-1 text-xs font-semibold text-slate-300">🛑 Abandoned</span>';
+  }
+
+  const attackWon = Boolean(log?.hasScore) && score > 0;
+  const isAttackPerspective = perspective === 'attack';
+  const isWin = isAttackPerspective ? attackWon : !attackWon;
+
+  const stateClass = isWin
+    ? 'rounded-md bg-emerald-400/20 px-2 py-1 text-xs font-semibold text-lime-100'
+    : 'rounded-md bg-rose-400/20 px-2 py-1 text-xs font-semibold text-rose-200';
+  const label = isWin ? 'Win' : 'Defeat';
+  const scoreLabel = Number.isFinite(score) ? score.toLocaleString() : '0';
+
+  return `<span class="inline-flex items-center gap-1 ${stateClass}"><span>${escapeHtml(label)}</span><span class="text-slate-200">${scoreLabel}</span>${cleanupHtml}</span>`;
+}
+
+function renderMatchUnitAvatarList(unitIds, team) {
+  const ids = Array.isArray(unitIds) ? unitIds : [];
+  if (ids.length === 0) {
+    return '<p class="text-xs text-slate-500">No lineup data</p>';
+  }
+
+  const hasTeamCategories = !!team && (
+    Array.isArray(team?.core) || Array.isArray(team?.flex) || Array.isArray(team?.mow)
+  );
+  const normalizedCore = hasTeamCategories ? new Set(normalizeUnitIdList(team?.core)) : new Set();
+  const normalizedFlex = hasTeamCategories ? new Set(normalizeUnitIdList(team?.flex)) : new Set();
+  const normalizedMow = hasTeamCategories ? new Set(normalizeUnitIdList(team?.mow)) : new Set();
+
+  return `<div class="flex flex-wrap gap-1.5">${ids.map((unitId) => {
+    const avatarUrl = getPortraitUrlForUnitId(unitId);
+    const normalizedUnitId = normalizeUnitId(unitId);
+    const inCore = normalizedCore.has(normalizedUnitId);
+    const inFlex = normalizedFlex.has(normalizedUnitId);
+    const inMow = normalizedMow.has(normalizedUnitId);
+    const isKnownTeamUnit = inCore || inFlex || inMow;
+    const frameClass = hasTeamCategories
+      ? (inCore
+        ? 'border-cyan-300/80'
+        : (inFlex || inMow)
+          ? 'border-emerald-300/70'
+          : 'border-slate-700/80 opacity-35 grayscale')
+      : 'border-slate-600/70';
+    const slotLabel = hasTeamCategories
+      ? (inCore ? 'Core' : (inMow ? 'Machine of War' : (inFlex ? 'Flex' : 'No team slot match')))
+      : 'Observed lineup';
+
+    return `<span class="inline-flex h-8 w-8 overflow-hidden rounded-md border bg-slate-900/80 ${frameClass}" title="${escapeHtml(unitId)} | ${escapeHtml(slotLabel)}"><img src="${escapeHtml(avatarUrl)}" alt="${escapeHtml(unitId)}" class="h-full w-full object-cover ${isKnownTeamUnit ? '' : 'opacity-80'}" loading="lazy" onerror="this.onerror=null; this.src='${MISSING_UNIT_AVATAR_URL}'" /></span>`;
+  }).join('')}</div>`;
+}
+
+function getPerspectiveOutcome(log, perspective) {
+  const score = Number(log?.score || 0);
+  const attackWon = Boolean(log?.hasScore) && score > 0;
+  const isAttackPerspective = perspective === 'attack';
+  const isWin = isAttackPerspective ? attackWon : !attackWon;
+
+  return {
+    isWin,
+    isCleanup: !!log?.cleanup,
+    score
+  };
+}
+
+function buildTeamCompAggregate(matches, perspective) {
+  const map = new Map();
+
+  matches.forEach((log) => {
+    const lineupIds = perspective === 'attack' ? log.attackerUnitIds : log.defenderUnitIds;
+    const normalizedKey = (Array.isArray(lineupIds) ? lineupIds : [])
+      .map((unitId) => normalizeUnitId(unitId))
+      .filter(Boolean)
+      .sort((a, b) => a.localeCompare(b))
+      .join('|');
+
+    if (!normalizedKey) return;
+
+    if (!map.has(normalizedKey)) {
+      map.set(normalizedKey, {
+        key: normalizedKey,
+        lineupIds: Array.isArray(lineupIds) ? lineupIds.slice() : [],
+        uses: 0,
+        totalScore: 0,
+        wins: 0,
+        winCleanup: 0,
+        losses: 0,
+        lossCleanup: 0,
+        lastSeen: 0
+      });
+    }
+
+    const aggregate = map.get(normalizedKey);
+    const outcome = getPerspectiveOutcome(log, perspective);
+
+    aggregate.uses += 1;
+    aggregate.totalScore += outcome.score;
+    aggregate.lastSeen = Math.max(Number(aggregate.lastSeen || 0), Number(log?.createdOn || 0));
+
+    if (outcome.isWin) {
+      if (outcome.isCleanup) {
+        aggregate.winCleanup += 1;
+      } else {
+        aggregate.wins += 1;
+      }
+    } else if (outcome.isCleanup) {
+      aggregate.lossCleanup += 1;
+    } else {
+      aggregate.losses += 1;
+    }
+  });
+
+  return Array.from(map.values())
+    .map((entry) => ({
+      ...entry,
+      avgScore: entry.uses > 0 ? entry.totalScore / entry.uses : 0
+    }))
+    .sort((a, b) => {
+      if (b.uses !== a.uses) return b.uses - a.uses;
+      if (b.avgScore !== a.avgScore) return b.avgScore - a.avgScore;
+      return b.lastSeen - a.lastSeen;
+    });
+}
+
+function renderTeamCompSummaryList(matches, perspective, team) {
+  const summary = buildTeamCompAggregate(matches, perspective);
+  if (summary.length === 0) {
+    return '<p class="mt-2 text-xs text-slate-400">No exact comp matches found.</p>';
+  }
+
+  return `<ul class="mt-2 max-h-72 space-y-2 overflow-auto">${summary.map((entry) => `<li class="rounded-lg border border-slate-700/80 bg-slate-950/70 p-2.5">
+    <div class="flex flex-wrap items-center justify-between gap-2">
+      <span class="text-xs font-semibold text-cyan-200">Used ${entry.uses.toLocaleString()}x</span>
+      <span class="text-xs text-slate-300">Avg score ${Math.round(entry.avgScore).toLocaleString()}</span>
+    </div>
+    <div class="mt-2 grid grid-cols-2 gap-1 text-[11px] text-slate-300 sm:grid-cols-4">
+      <span class="rounded-md border border-emerald-400/35 bg-emerald-500/10 px-2 py-1">W: ${entry.wins.toLocaleString()}</span>
+      <span class="rounded-md border border-lime-400/35 bg-lime-500/10 px-2 py-1">W 🖌: ${entry.winCleanup.toLocaleString()}</span>
+      <span class="rounded-md border border-rose-400/35 bg-rose-500/10 px-2 py-1">L: ${entry.losses.toLocaleString()}</span>
+      <span class="rounded-md border border-orange-400/35 bg-orange-500/10 px-2 py-1">L 🖌: ${entry.lossCleanup.toLocaleString()}</span>
+    </div>
+    <div class="mt-2">${renderMatchUnitAvatarList(entry.lineupIds, team)}</div>
+  </li>`).join('')}</ul>`;
+}
+
+function renderTeamCoreMatchAccordion(team) {
+  if (!teamsState.battleLogsLoaded) {
+    return `<div class="mt-4 rounded-xl border border-slate-700/70 bg-slate-950/60 p-3 text-sm text-slate-400">Loading matching battle logs...</div>`;
+  }
+
+  const normalizedCore = normalizeUnitIdList(team?.core);
+  if (normalizedCore.length === 0) {
+    return `<div class="mt-4 rounded-xl border border-slate-700/70 bg-slate-950/60 p-3 text-sm text-slate-400">No core units defined for this team.</div>`;
+  }
+
+  const attackMatches = teamsState.battleLogs.filter((log) => isExactCoreMatch(normalizedCore, log.attackerUnitsNormalized));
+  const defenseMatches = teamsState.battleLogs.filter((log) => isExactCoreMatch(normalizedCore, log.defenderUnitsNormalized));
+
+  return `<details class="mt-4 rounded-2xl border border-cyan-500/25 bg-cyan-500/10 p-3">
+    <summary class="cursor-pointer list-none select-none">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <span class="text-sm font-semibold text-cyan-100">Core match comp data</span>
+        <span class="text-xs text-cyan-200">Attack ${attackMatches.length.toLocaleString()} | Defense ${defenseMatches.length.toLocaleString()}</span>
+      </div>
+      <p class="mt-1 text-xs text-slate-300">One entry per exact comp. Core units must be present; flex and Machine of War are ignored for match detection.</p>
+    </summary>
+    <div class="mt-3 grid gap-3 lg:grid-cols-2">
+      <section class="rounded-xl border border-sky-400/30 bg-slate-950/55 p-3">
+        <h5 class="text-xs font-semibold uppercase tracking-wide text-sky-300">Attack</h5>
+        ${renderTeamCompSummaryList(attackMatches, 'attack', team)}
+      </section>
+      <section class="rounded-xl border border-amber-400/30 bg-slate-950/55 p-3">
+        <h5 class="text-xs font-semibold uppercase tracking-wide text-amber-300">Defense</h5>
+        ${renderTeamCompSummaryList(defenseMatches, 'defense', team)}
+      </section>
+    </div>
+  </details>`;
+}
+
 function renderTeamCard(team) {
   return `<article class="rounded-3xl border border-slate-700/80 bg-gradient-to-b from-slate-900/92 to-slate-950/88 p-6 shadow-2xl shadow-black/25">
     <div class="flex flex-wrap items-center justify-between gap-3">
@@ -144,6 +530,8 @@ function renderTeamCard(team) {
       ${renderReadonlyGroup('Flex', team.flex, 'md:flex-1 md:min-w-0')}
       ${renderReadonlyGroup('Machine of War', team.mow, 'md:flex-none md:w-64')}
     </div>
+
+    ${renderTeamCoreMatchAccordion(team)}
   </article>`;
 }
 
@@ -537,7 +925,7 @@ function setupBuilderEvents() {
 }
 
 async function initGuildTeamsPage() {
-  await Promise.all([loadPortraitMap(), loadPortraitManifest(), loadTeamsData()]);
+  await Promise.all([loadPortraitMap(), loadPortraitManifest(), loadTeamsData(), loadBattleLogsData()]);
   teamsState.teams = teamsState.teams.map((team) => ensureTeamShape(team));
   teamsState.nextTeamNumber = teamsState.teams.length + 1;
 
