@@ -182,6 +182,19 @@ function getCoreScoreValue(score) {
   return Math.min(numericScore, 1600);
 }
 
+function getBattleFlags(log) {
+  const defenderUnits = Array.isArray(log?.defender?.units) ? log.defender.units : [];
+  const defended = defenderUnits.some((unit) => Object.prototype.hasOwnProperty.call(unit, 'remainingHPAfter'));
+  const cleanup = defenderUnits.some((unit) => {
+    if (!Object.prototype.hasOwnProperty.call(unit, 'remainingHPBefore')) return true;
+    const remaining = Number(unit.remainingHPBefore ?? 0);
+    const start = Number(unit.startHPBefore ?? 0);
+    return remaining < start;
+  });
+
+  return { defended, cleanup };
+}
+
 async function loadBattleLogsData() {
   const fallbackDatasets = [{
     key: 'current',
@@ -262,15 +275,26 @@ async function loadBattleLogsData() {
 
       const attackerUserId = String(log?.attacker?.userId || log?.userId || '').trim();
       const defenderUserId = String(log?.defender?.userId || '').trim();
+      const hasScore = Object.prototype.hasOwnProperty.call(log || {}, 'score');
+      const abandoned = !!log?.abandoned;
+      let defended = false;
+      let cleanup = false;
+
+      if (!abandoned) {
+        const flags = getBattleFlags(log);
+        defended = flags.defended;
+        cleanup = flags.cleanup;
+      }
 
       logs.push({
         id: String(log?.id || `${dataset.key}-${Number(log?.createdOn || 0)}-${attackerUserId || 'unknown'}`),
         datasetLabel: dataset.label,
         createdOn: Number(log?.createdOn || 0),
         zoneType: String(log?.zone?.type || ''),
-        hasScore: Object.prototype.hasOwnProperty.call(log || {}, 'score'),
-        abandoned: !!log?.abandoned,
-        cleanup: !!log?.cleanup,
+        hasScore,
+        abandoned,
+        defended,
+        cleanup,
         score: getCoreScoreValue(log?.score),
         attackerGuildName: String(teamIndexToGuildName.get(attackerTeamIndex) || `Team ${attackerTeamIndex}`),
         defenderGuildName: Number.isFinite(defenderTeamIndex)
@@ -341,7 +365,7 @@ function renderMatchResultBadge(log, perspective) {
     return '<span class="inline-flex items-center rounded-md bg-slate-400/20 px-2 py-1 text-xs font-semibold text-slate-300">🛑 Abandoned</span>';
   }
 
-  const attackWon = Boolean(log?.hasScore) && score > 0;
+  const attackWon = Boolean(log?.hasScore) && !log?.defended && score > 0;
   const isAttackPerspective = perspective === 'attack';
   const isWin = isAttackPerspective ? attackWon : !attackWon;
 
@@ -390,13 +414,17 @@ function renderMatchUnitAvatarList(unitIds, team) {
 }
 
 function getPerspectiveOutcome(log, perspective) {
+  void perspective;
+
+  if (log?.abandoned) {
+    return null;
+  }
+
   const score = Number(log?.score || 0);
-  const attackWon = Boolean(log?.hasScore) && score > 0;
-  const isAttackPerspective = perspective === 'attack';
-  const isWin = isAttackPerspective ? attackWon : !attackWon;
+  const attackWon = Boolean(log?.hasScore) && !log?.defended && score > 0;
 
   return {
-    isWin,
+    isWin: attackWon,
     isCleanup: !!log?.cleanup,
     score
   };
@@ -431,6 +459,7 @@ function buildTeamCompAggregate(matches, perspective) {
 
     const aggregate = map.get(normalizedKey);
     const outcome = getPerspectiveOutcome(log, perspective);
+    if (!outcome) return;
 
     aggregate.uses += 1;
     aggregate.totalScore += outcome.score;
@@ -467,16 +496,38 @@ function renderTeamCompSummaryList(matches, perspective, team) {
     return '<p class="mt-2 text-xs text-slate-400">No exact comp matches found.</p>';
   }
 
+  const isDefensePerspective = perspective === 'defense';
+  const winMarker = isDefensePerspective ? '❌' : '✅';
+  const winCleanupMarker = isDefensePerspective ? '❌' : '✅';
+  const lossMarker = isDefensePerspective ? '✅' : '❌';
+  const lossCleanupMarker = isDefensePerspective ? '✅' : '❌';
+  const winClass = isDefensePerspective
+    ? 'border-rose-400/35 bg-rose-500/10'
+    : 'border-emerald-400/35 bg-emerald-500/10';
+  const winCleanupClass = isDefensePerspective
+    ? 'border-orange-400/35 bg-orange-500/10'
+    : 'border-lime-400/35 bg-lime-500/10';
+  const lossClass = isDefensePerspective
+    ? 'border-emerald-400/35 bg-emerald-500/10'
+    : 'border-rose-400/35 bg-rose-500/10';
+  const lossCleanupClass = isDefensePerspective
+    ? 'border-lime-400/35 bg-lime-500/10'
+    : 'border-orange-400/35 bg-orange-500/10';
+  const formatPct = (value, total) => {
+    if (!Number.isFinite(total) || total <= 0) return '0%';
+    return `${Math.round((Number(value || 0) / total) * 100)}%`;
+  };
+
   return `<ul class="mt-2 max-h-72 space-y-2 overflow-auto">${summary.map((entry) => `<li class="rounded-lg border border-slate-700/80 bg-slate-950/70 p-2.5">
     <div class="flex flex-wrap items-center justify-between gap-2">
       <span class="text-xs font-semibold text-cyan-200">Used ${entry.uses.toLocaleString()}x</span>
       <span class="text-xs text-slate-300">Avg score ${Math.round(entry.avgScore).toLocaleString()}</span>
     </div>
     <div class="mt-2 grid grid-cols-2 gap-1 text-[11px] text-slate-300 sm:grid-cols-4">
-      <span class="rounded-md border border-emerald-400/35 bg-emerald-500/10 px-2 py-1">W: ${entry.wins.toLocaleString()}</span>
-      <span class="rounded-md border border-lime-400/35 bg-lime-500/10 px-2 py-1">W 🖌: ${entry.winCleanup.toLocaleString()}</span>
-      <span class="rounded-md border border-rose-400/35 bg-rose-500/10 px-2 py-1">L: ${entry.losses.toLocaleString()}</span>
-      <span class="rounded-md border border-orange-400/35 bg-orange-500/10 px-2 py-1">L 🖌: ${entry.lossCleanup.toLocaleString()}</span>
+      <span class="inline-flex items-center justify-between gap-2 rounded-md border px-2 py-1 ${winClass}"><span>${winMarker} W: ${entry.wins.toLocaleString()}</span><span class="text-slate-200">${formatPct(entry.wins, entry.uses)}</span></span>
+      <span class="inline-flex items-center justify-between gap-2 rounded-md border px-2 py-1 ${winCleanupClass}"><span>${winCleanupMarker} W 🖌: ${entry.winCleanup.toLocaleString()}</span><span class="text-slate-200">${formatPct(entry.winCleanup, entry.uses)}</span></span>
+      <span class="inline-flex items-center justify-between gap-2 rounded-md border px-2 py-1 ${lossClass}"><span>${lossMarker} L: ${entry.losses.toLocaleString()}</span><span class="text-slate-200">${formatPct(entry.losses, entry.uses)}</span></span>
+      <span class="inline-flex items-center justify-between gap-2 rounded-md border px-2 py-1 ${lossCleanupClass}"><span>${lossCleanupMarker} L 🖌: ${entry.lossCleanup.toLocaleString()}</span><span class="text-slate-200">${formatPct(entry.lossCleanup, entry.uses)}</span></span>
     </div>
     <div class="mt-2">${renderMatchUnitAvatarList(entry.lineupIds, team)}</div>
   </li>`).join('')}</ul>`;
