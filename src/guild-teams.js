@@ -4,15 +4,21 @@ const TEAMS_DATA_URL = './data/static/guild-teams.json';
 
 const teamsState = {
   teams: [],
+  experimentTeam: null,
   portraitMap: {},
   portraitManifestSet: new Set(),
   battleLogs: [],
   battleLogsLoaded: false,
+  compSortMode: 'uses',
+  compMinUses: '',
   activeFilter: 'all',
   activeTab: 'library',
-  poolSearch: '',
+  libraryPoolSearch: '',
+  experimentPoolSearch: '',
   dragPayload: null,
-  nextTeamNumber: 1
+  nextTeamNumber: 1,
+  battleLogsVersion: 0,
+  coreMatchCache: new Map()
 };
 
 function escapeHtml(value) {
@@ -312,6 +318,8 @@ async function loadBattleLogsData() {
 
   teamsState.battleLogs = logs.sort((a, b) => Number(b.createdOn || 0) - Number(a.createdOn || 0));
   teamsState.battleLogsLoaded = true;
+  teamsState.battleLogsVersion += 1;
+  teamsState.coreMatchCache.clear();
 }
 
 function getPortraitUrlForUnitId(unitId) {
@@ -482,17 +490,45 @@ function buildTeamCompAggregate(matches, perspective) {
     .map((entry) => ({
       ...entry,
       avgScore: entry.uses > 0 ? entry.totalScore / entry.uses : 0
-    }))
-    .sort((a, b) => {
-      if (b.uses !== a.uses) return b.uses - a.uses;
-      if (b.avgScore !== a.avgScore) return b.avgScore - a.avgScore;
-      return b.lastSeen - a.lastSeen;
-    });
+    }));
 }
 
-function renderTeamCompSummaryList(matches, perspective, team) {
-  const summary = buildTeamCompAggregate(matches, perspective);
-  if (summary.length === 0) {
+function sortTeamCompSummary(summary, mode) {
+  const normalizedMode = ['uses', 'avg-desc', 'avg-asc'].includes(mode) ? mode : 'uses';
+  const entries = Array.isArray(summary) ? summary.slice() : [];
+
+  return entries.sort((a, b) => {
+    if (normalizedMode === 'avg-asc') {
+      if (a.avgScore !== b.avgScore) return a.avgScore - b.avgScore;
+      if (b.uses !== a.uses) return b.uses - a.uses;
+      return b.lastSeen - a.lastSeen;
+    }
+
+    if (normalizedMode === 'avg-desc') {
+      if (b.avgScore !== a.avgScore) return b.avgScore - a.avgScore;
+      if (b.uses !== a.uses) return b.uses - a.uses;
+      return b.lastSeen - a.lastSeen;
+    }
+
+    if (b.uses !== a.uses) return b.uses - a.uses;
+    if (b.avgScore !== a.avgScore) return b.avgScore - a.avgScore;
+    return b.lastSeen - a.lastSeen;
+  });
+}
+
+function renderTeamCompSummaryList(summary, perspective, team) {
+  const sortedSummary = sortTeamCompSummary(Array.isArray(summary) ? summary : [], teamsState.compSortMode);
+  const minUsesValue = Number.parseInt(String(teamsState.compMinUses || ''), 10);
+  const minUses = Number.isFinite(minUsesValue) && minUsesValue > 0 ? minUsesValue : 0;
+  const filteredSummary = minUses > 0
+    ? sortedSummary.filter((entry) => Number(entry?.uses || 0) >= minUses)
+    : sortedSummary;
+
+  if (filteredSummary.length === 0 && minUses > 0) {
+    return `<p class="mt-2 text-xs text-slate-400">No exact comp matches found with at least ${minUses.toLocaleString()} uses.</p>`;
+  }
+
+  if (filteredSummary.length === 0) {
     return '<p class="mt-2 text-xs text-slate-400">No exact comp matches found.</p>';
   }
 
@@ -517,12 +553,28 @@ function renderTeamCompSummaryList(matches, perspective, team) {
     if (!Number.isFinite(total) || total <= 0) return '0%';
     return `${Math.round((Number(value || 0) / total) * 100)}%`;
   };
+  const formatTokenEfficiency = (entry) => {
+    const uses = Number(entry?.uses || 0);
+    if (!Number.isFinite(uses) || uses <= 0) return '0.00';
 
-  return `<ul class="mt-2 max-h-72 space-y-2 overflow-auto">${summary.map((entry) => `<li class="rounded-lg border border-slate-700/80 bg-slate-950/70 p-2.5">
+    const wins = Number(entry?.wins || 0);
+    const winCleanup = Number(entry?.winCleanup || 0);
+    const losses = Number(entry?.losses || 0);
+    const lossCleanup = Number(entry?.lossCleanup || 0);
+
+    const successfulOutcomes = perspective === 'defense'
+      ? (losses + lossCleanup)
+      : (wins + winCleanup);
+
+    return (successfulOutcomes / uses).toFixed(2);
+  };
+
+  return `<ul class="mt-2 max-h-72 space-y-2 overflow-auto">${filteredSummary.map((entry) => `<li class="rounded-lg border border-slate-700/80 bg-slate-950/70 p-2.5">
     <div class="flex flex-wrap items-center justify-between gap-2">
       <span class="text-xs font-semibold text-cyan-200">Used ${entry.uses.toLocaleString()}x</span>
       <span class="text-xs text-slate-300">Avg score ${Math.round(entry.avgScore).toLocaleString()}</span>
     </div>
+    <div class="mt-1 text-[11px] font-semibold text-cyan-100">Token efficiency: ${formatTokenEfficiency(entry)}</div>
     <div class="mt-2 grid grid-cols-2 gap-1 text-[11px] text-slate-300 sm:grid-cols-4">
       <span class="inline-flex items-center justify-between gap-2 rounded-md border px-2 py-1 ${winClass}"><span>${winMarker} W: ${entry.wins.toLocaleString()}</span><span class="text-slate-200">${formatPct(entry.wins, entry.uses)}</span></span>
       <span class="inline-flex items-center justify-between gap-2 rounded-md border px-2 py-1 ${winCleanupClass}"><span>${winCleanupMarker} W 🖌: ${entry.winCleanup.toLocaleString()}</span><span class="text-slate-200">${formatPct(entry.winCleanup, entry.uses)}</span></span>
@@ -533,35 +585,84 @@ function renderTeamCompSummaryList(matches, perspective, team) {
   </li>`).join('')}</ul>`;
 }
 
-function renderTeamCoreMatchAccordion(team) {
+function getCoreMatchData(normalizedCore) {
+  const hasCoreSelection = Array.isArray(normalizedCore) && normalizedCore.length > 0;
+  const coreKey = hasCoreSelection ? normalizedCore.join('|') : '__all__';
+  const cacheKey = `${teamsState.battleLogsVersion}|${coreKey}`;
+
+  const cached = teamsState.coreMatchCache.get(cacheKey);
+  if (cached) return cached;
+
+  const attackMatches = hasCoreSelection
+    ? teamsState.battleLogs.filter((log) => isExactCoreMatch(normalizedCore, log.attackerUnitsNormalized))
+    : teamsState.battleLogs.slice();
+  const defenseMatches = hasCoreSelection
+    ? teamsState.battleLogs.filter((log) => isExactCoreMatch(normalizedCore, log.defenderUnitsNormalized))
+    : teamsState.battleLogs.slice();
+
+  const computed = {
+    attackMatches,
+    defenseMatches,
+    attackSummary: buildTeamCompAggregate(attackMatches, 'attack'),
+    defenseSummary: buildTeamCompAggregate(defenseMatches, 'defense')
+  };
+
+  teamsState.coreMatchCache.set(cacheKey, computed);
+  return computed;
+}
+
+function renderTeamCoreMatchAccordion(team, options = {}) {
   if (!teamsState.battleLogsLoaded) {
     return `<div class="mt-4 rounded-xl border border-slate-700/70 bg-slate-950/60 p-3 text-sm text-slate-400">Loading matching battle logs...</div>`;
   }
 
+  const showAllWhenNoCore = Boolean(options?.showAllWhenNoCore);
   const normalizedCore = normalizeUnitIdList(team?.core);
-  if (normalizedCore.length === 0) {
+  const hasCoreSelection = normalizedCore.length > 0;
+  if (!hasCoreSelection && !showAllWhenNoCore) {
     return `<div class="mt-4 rounded-xl border border-slate-700/70 bg-slate-950/60 p-3 text-sm text-slate-400">No core units defined for this team.</div>`;
   }
 
-  const attackMatches = teamsState.battleLogs.filter((log) => isExactCoreMatch(normalizedCore, log.attackerUnitsNormalized));
-  const defenseMatches = teamsState.battleLogs.filter((log) => isExactCoreMatch(normalizedCore, log.defenderUnitsNormalized));
+  const coreMatchData = getCoreMatchData(normalizedCore);
+  const attackMatches = coreMatchData.attackMatches;
+  const defenseMatches = coreMatchData.defenseMatches;
+  const helperText = hasCoreSelection
+    ? 'One entry per exact comp. Core units must be present; flex and Machine of War are ignored for match detection.'
+    : 'No core selected. Showing comp list from all loaded battle data.';
+  const renderSortButton = (mode, label) => {
+    const isActive = teamsState.compSortMode === mode;
+    const styleClass = isActive
+      ? 'border-cyan-400 bg-cyan-500/15 text-cyan-200'
+      : 'border-slate-500/50 bg-slate-900/80 text-slate-300';
+    return `<button type="button" data-comp-sort="${escapeHtml(mode)}" class="rounded-md border px-2.5 py-1 text-xs font-semibold transition hover:border-cyan-400/60 hover:text-slate-100 ${styleClass}">${escapeHtml(label)}</button>`;
+  };
+  const minUsesInputValue = String(teamsState.compMinUses || '').trim();
 
-  return `<details class="mt-4 rounded-2xl border border-cyan-500/25 bg-cyan-500/10 p-3">
+  return `<details open class="mt-4 rounded-2xl border border-cyan-500/25 bg-cyan-500/10 p-3">
     <summary class="cursor-pointer list-none select-none">
       <div class="flex flex-wrap items-center justify-between gap-2">
         <span class="text-sm font-semibold text-cyan-100">Core match comp data</span>
         <span class="text-xs text-cyan-200">Attack ${attackMatches.length.toLocaleString()} | Defense ${defenseMatches.length.toLocaleString()}</span>
       </div>
-      <p class="mt-1 text-xs text-slate-300">One entry per exact comp. Core units must be present; flex and Machine of War are ignored for match detection.</p>
+      <p class="mt-1 text-xs text-slate-300">${escapeHtml(helperText)}</p>
+      <div class="mt-2 inline-flex flex-wrap items-center gap-1.5" role="group" aria-label="Comp sort order">
+        ${renderSortButton('uses', 'Times used')}
+        ${renderSortButton('avg-desc', 'Avg score ↓')}
+        ${renderSortButton('avg-asc', 'Avg score ↑')}
+        <label class="ml-2 inline-flex items-center gap-2 text-xs text-slate-300">
+          <span>Min uses</span>
+          <input type="number" min="0" step="1" inputmode="numeric" data-comp-min-uses="true" value="${escapeHtml(minUsesInputValue)}" class="w-20 rounded-md border border-slate-500/50 bg-slate-900/80 px-2 py-1 text-xs text-slate-100 outline-none focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/20" />
+        </label>
+      </div>
     </summary>
     <div class="mt-3 grid gap-3 lg:grid-cols-2">
       <section class="rounded-xl border border-sky-400/30 bg-slate-950/55 p-3">
         <h5 class="text-xs font-semibold uppercase tracking-wide text-sky-300">Attack</h5>
-        ${renderTeamCompSummaryList(attackMatches, 'attack', team)}
+        ${renderTeamCompSummaryList(coreMatchData.attackSummary, 'attack', team)}
       </section>
       <section class="rounded-xl border border-amber-400/30 bg-slate-950/55 p-3">
         <h5 class="text-xs font-semibold uppercase tracking-wide text-amber-300">Defense</h5>
-        ${renderTeamCompSummaryList(defenseMatches, 'defense', team)}
+        ${renderTeamCompSummaryList(coreMatchData.defenseSummary, 'defense', team)}
       </section>
     </div>
   </details>`;
@@ -639,9 +740,9 @@ function syncFilterButtonStates() {
   });
 }
 
-function renderBuilderPoolUnit(unitId) {
+function renderBuilderPoolUnit(unitId, owner = 'library') {
   const avatarUrl = getPortraitUrlForUnitId(unitId);
-  return `<button type="button" draggable="true" data-source="pool" data-unit-id="${escapeHtml(unitId)}" class="group inline-flex flex-col items-center rounded-lg border border-slate-700/80 bg-slate-950/80 p-1.5 transition hover:border-cyan-400/60" title="${escapeHtml(unitId)}">
+  return `<button type="button" draggable="true" data-source="pool" data-owner="${escapeHtml(owner)}" data-unit-id="${escapeHtml(unitId)}" class="group inline-flex flex-col items-center rounded-lg border border-slate-700/80 bg-slate-950/80 p-1.5 transition hover:border-cyan-400/60" title="${escapeHtml(unitId)}">
     <span class="inline-flex h-14 w-14 overflow-hidden rounded-md border border-slate-500/50 bg-slate-800/90">
       <img src="${escapeHtml(avatarUrl)}" alt="${escapeHtml(unitId)}" class="h-full w-full object-cover" loading="lazy" onerror="this.onerror=null; this.src='${MISSING_UNIT_AVATAR_URL}'" />
     </span>
@@ -649,26 +750,26 @@ function renderBuilderPoolUnit(unitId) {
   </button>`;
 }
 
-function renderBuilderTeamUnit(teamIndex, column, unitId) {
+function renderBuilderTeamUnit(teamIndex, column, unitId, owner = 'library') {
   const avatarUrl = getPortraitUrlForUnitId(unitId);
-  return `<div draggable="true" data-source="team" data-team-index="${teamIndex}" data-column="${escapeHtml(column)}" data-unit-id="${escapeHtml(unitId)}" class="relative inline-flex items-center justify-center rounded-lg border border-slate-700/80 bg-slate-950/85 p-1" title="${escapeHtml(unitId)}">
+  return `<div draggable="true" data-source="team" data-owner="${escapeHtml(owner)}" data-team-index="${teamIndex}" data-column="${escapeHtml(column)}" data-unit-id="${escapeHtml(unitId)}" class="relative inline-flex items-center justify-center rounded-lg border border-slate-700/80 bg-slate-950/85 p-1" title="${escapeHtml(unitId)}">
     <span class="inline-flex h-16 w-16 overflow-hidden rounded-md border border-slate-500/50 bg-slate-800/90">
       <img src="${escapeHtml(avatarUrl)}" alt="${escapeHtml(unitId)}" class="h-full w-full object-cover" loading="lazy" onerror="this.onerror=null; this.src='${MISSING_UNIT_AVATAR_URL}'" />
     </span>
-    <button type="button" data-remove-unit="true" data-team-index="${teamIndex}" data-column="${escapeHtml(column)}" data-unit-id="${escapeHtml(unitId)}" class="absolute -right-1 -top-1 rounded-full border border-rose-400/70 bg-rose-500/90 px-1.5 py-0 text-xs font-black text-white">x</button>
+    <button type="button" data-remove-unit="true" data-owner="${escapeHtml(owner)}" data-team-index="${teamIndex}" data-column="${escapeHtml(column)}" data-unit-id="${escapeHtml(unitId)}" class="absolute -right-1 -top-1 rounded-full border border-rose-400/70 bg-rose-500/90 px-1.5 py-0 text-xs font-black text-white">x</button>
   </div>`;
 }
 
-function renderBuilderDropColumn(team, teamIndex, column, title) {
+function renderBuilderDropColumn(team, teamIndex, column, title, owner = 'library') {
   const values = Array.isArray(team[column]) ? team[column] : [];
   return `<section class="rounded-xl border border-slate-700/80 bg-slate-900/65 p-3">
     <div class="mb-2 flex items-center justify-between gap-2">
       <h5 class="text-xs font-black uppercase tracking-[0.14em] text-slate-300">${escapeHtml(title)}</h5>
       <span class="text-xs text-slate-500">${values.length}</span>
     </div>
-    <div data-dropzone="true" data-team-index="${teamIndex}" data-column="${escapeHtml(column)}" class="min-h-24 rounded-lg border border-dashed border-slate-600/70 bg-slate-950/55 p-2">
+    <div data-dropzone="true" data-owner="${escapeHtml(owner)}" data-team-index="${teamIndex}" data-column="${escapeHtml(column)}" class="min-h-24 rounded-lg border border-dashed border-slate-600/70 bg-slate-950/55 p-2">
       ${values.length > 0
-        ? `<div class="flex flex-wrap gap-2">${values.map((unitId) => renderBuilderTeamUnit(teamIndex, column, unitId)).join('')}</div>`
+        ? `<div class="flex flex-wrap gap-2">${values.map((unitId) => renderBuilderTeamUnit(teamIndex, column, unitId, owner)).join('')}</div>`
         : '<p class="text-xs text-slate-500">Drop avatars here</p>'}
     </div>
   </section>`;
@@ -683,10 +784,33 @@ function renderBuilderTeamCard(team, teamIndex) {
       <button type="button" data-remove-team="true" data-team-index="${teamIndex}" class="rounded-md border border-rose-400/45 bg-rose-500/15 px-2.5 py-1 text-xs font-semibold text-rose-200 hover:border-rose-300">Remove Team</button>
     </div>
     <div class="grid gap-3 xl:grid-cols-3">
-      ${renderBuilderDropColumn(team, teamIndex, 'core', 'Core')}
-      ${renderBuilderDropColumn(team, teamIndex, 'flex', 'Flex')}
-      ${renderBuilderDropColumn(team, teamIndex, 'mow', 'Machine of War')}
+      ${renderBuilderDropColumn(team, teamIndex, 'core', 'Core', 'library')}
+      ${renderBuilderDropColumn(team, teamIndex, 'flex', 'Flex', 'library')}
+      ${renderBuilderDropColumn(team, teamIndex, 'mow', 'Machine of War', 'library')}
     </div>
+  </article>`;
+}
+
+function renderExperimentTeamCard(team) {
+  const safeTeam = ensureTeamShape(team);
+  return `<article class="rounded-2xl border border-slate-700/80 bg-slate-950/60 p-3">
+    <div class="mb-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex flex-1 flex-col gap-2 sm:flex-row sm:items-center">
+        <input type="text" id="experiment-team-name-input" value="${escapeHtml(safeTeam.name)}" class="w-full max-w-md rounded-md border border-slate-500/60 bg-slate-900/85 px-2.5 py-1.5 text-base font-black text-slate-100" />
+        <select id="experiment-team-type-select" class="rounded-md border border-slate-500/60 bg-slate-900/85 px-2.5 py-1.5 text-sm font-semibold text-slate-100">
+          <option value="att" ${safeTeam.type === 'att' ? 'selected' : ''}>Attack</option>
+          <option value="def" ${safeTeam.type === 'def' ? 'selected' : ''}>Defense</option>
+          <option value="hybrid" ${safeTeam.type === 'hybrid' ? 'selected' : ''}>Hybrid</option>
+        </select>
+      </div>
+      ${renderTypePill(safeTeam.type)}
+    </div>
+    <div class="grid gap-3 xl:grid-cols-3">
+      ${renderBuilderDropColumn(safeTeam, 0, 'core', 'Core', 'experiment')}
+      ${renderBuilderDropColumn(safeTeam, 0, 'flex', 'Flex', 'experiment')}
+      ${renderBuilderDropColumn(safeTeam, 0, 'mow', 'Machine of War', 'experiment')}
+    </div>
+    ${renderTeamCoreMatchAccordion(safeTeam, { showAllWhenNoCore: true })}
   </article>`;
 }
 
@@ -695,14 +819,29 @@ function renderBuilderPool() {
   const poolCount = document.getElementById('builder-pool-count');
   if (!poolList) return;
 
-  const query = String(teamsState.poolSearch || '').trim().toLowerCase();
+  const query = String(teamsState.libraryPoolSearch || '').trim().toLowerCase();
   const allIds = getAllUnitIds();
   const filteredIds = query
     ? allIds.filter((unitId) => unitId.toLowerCase().includes(query))
     : allIds;
 
   if (poolCount) poolCount.textContent = String(filteredIds.length);
-  poolList.innerHTML = filteredIds.map((unitId) => renderBuilderPoolUnit(unitId)).join('');
+  poolList.innerHTML = filteredIds.map((unitId) => renderBuilderPoolUnit(unitId, 'library')).join('');
+}
+
+function renderExperimentPool() {
+  const poolList = document.getElementById('experiment-pool-list');
+  const poolCount = document.getElementById('experiment-pool-count');
+  if (!poolList) return;
+
+  const query = String(teamsState.experimentPoolSearch || '').trim().toLowerCase();
+  const allIds = getAllUnitIds();
+  const filteredIds = query
+    ? allIds.filter((unitId) => unitId.toLowerCase().includes(query))
+    : allIds;
+
+  if (poolCount) poolCount.textContent = String(filteredIds.length);
+  poolList.innerHTML = filteredIds.map((unitId) => renderBuilderPoolUnit(unitId, 'experiment')).join('');
 }
 
 function renderBuilderTeams() {
@@ -714,6 +853,13 @@ function renderBuilderTeams() {
     .join('');
 }
 
+function renderExperimentTeam() {
+  const container = document.getElementById('experiment-team-stage');
+  if (!container) return;
+
+  container.innerHTML = renderExperimentTeamCard(ensureTeamShape(teamsState.experimentTeam));
+}
+
 function updateBuilderJsonOutput() {
   const output = document.getElementById('builder-json-output');
   if (!output) return;
@@ -723,6 +869,13 @@ function updateBuilderJsonOutput() {
 function rerenderAllTeamViews() {
   renderTeams();
   renderBuilderTeams();
+  renderExperimentTeam();
+  updateBuilderJsonOutput();
+}
+
+function rerenderBuilderViewsOnly() {
+  renderBuilderTeams();
+  renderExperimentTeam();
   updateBuilderJsonOutput();
 }
 
@@ -736,6 +889,16 @@ function createEmptyTeam() {
   teamsState.nextTeamNumber += 1;
   return {
     name: `New Team ${teamNumber}`,
+    type: 'hybrid',
+    core: [],
+    flex: [],
+    mow: []
+  };
+}
+
+function createExperimentTeam() {
+  return {
+    name: 'Sandbox Team',
     type: 'hybrid',
     core: [],
     flex: [],
@@ -784,70 +947,161 @@ function setupFilterEvents() {
   });
 }
 
+function setupCompSortEvents() {
+  document.addEventListener('click', (event) => {
+    const button = event.target.closest('button[data-comp-sort]');
+    if (!button) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    const nextMode = String(button.getAttribute('data-comp-sort') || '').trim().toLowerCase();
+    if (!['uses', 'avg-desc', 'avg-asc'].includes(nextMode)) return;
+    if (teamsState.compSortMode === nextMode) return;
+
+    teamsState.compSortMode = nextMode;
+    rerenderAllTeamViews();
+  });
+
+  document.addEventListener('input', (event) => {
+    const input = event.target.closest('input[data-comp-min-uses="true"]');
+    if (!input) return;
+
+    const rawValue = String(input.value || '').trim();
+    if (!rawValue) {
+      teamsState.compMinUses = '';
+      rerenderAllTeamViews();
+      return;
+    }
+
+    const numericValue = Number.parseInt(rawValue, 10);
+    if (!Number.isFinite(numericValue) || numericValue < 0) return;
+
+    teamsState.compMinUses = String(numericValue);
+    rerenderAllTeamViews();
+  });
+}
+
 function syncTabButtonStates() {
   const libraryBtn = document.getElementById('tab-btn-library');
-  const builderBtn = document.getElementById('tab-btn-builder');
+  const teamBuilderBtn = document.getElementById('tab-btn-team-builder');
+  const libraryBuilderBtn = document.getElementById('tab-btn-library-builder');
   const libraryPanel = document.getElementById('tab-panel-library');
-  const builderPanel = document.getElementById('tab-panel-builder');
-  if (!libraryBtn || !builderBtn || !libraryPanel || !builderPanel) return;
+  const teamBuilderPanel = document.getElementById('tab-panel-team-builder');
+  const libraryBuilderPanel = document.getElementById('tab-panel-library-builder');
+  if (!libraryBtn || !teamBuilderBtn || !libraryBuilderBtn || !libraryPanel || !teamBuilderPanel || !libraryBuilderPanel) return;
 
-  const libraryActive = teamsState.activeTab === 'library';
-  libraryPanel.classList.toggle('hidden', !libraryActive);
-  builderPanel.classList.toggle('hidden', libraryActive);
+  const isLibrary = teamsState.activeTab === 'library';
+  const isTeamBuilder = teamsState.activeTab === 'team-builder';
+  const isLibraryBuilder = teamsState.activeTab === 'library-builder';
 
-  libraryBtn.classList.toggle('border-cyan-400', libraryActive);
-  libraryBtn.classList.toggle('bg-cyan-500/15', libraryActive);
-  libraryBtn.classList.toggle('text-cyan-200', libraryActive);
-  libraryBtn.classList.toggle('border-slate-500/50', !libraryActive);
-  libraryBtn.classList.toggle('bg-slate-900/80', !libraryActive);
-  libraryBtn.classList.toggle('text-slate-300', !libraryActive);
+  libraryPanel.classList.toggle('hidden', !isLibrary);
+  teamBuilderPanel.classList.toggle('hidden', !isTeamBuilder);
+  libraryBuilderPanel.classList.toggle('hidden', !isLibraryBuilder);
 
-  builderBtn.classList.toggle('border-cyan-400', !libraryActive);
-  builderBtn.classList.toggle('bg-cyan-500/15', !libraryActive);
-  builderBtn.classList.toggle('text-cyan-200', !libraryActive);
-  builderBtn.classList.toggle('border-slate-500/50', libraryActive);
-  builderBtn.classList.toggle('bg-slate-900/80', libraryActive);
-  builderBtn.classList.toggle('text-slate-300', libraryActive);
+  const applyTabStyles = (button, isActive) => {
+    button.classList.toggle('text-cyan-300', isActive);
+    button.classList.toggle('border-cyan-400', isActive);
+    button.classList.toggle('text-slate-400', !isActive);
+    button.classList.toggle('border-transparent', !isActive);
+  };
+
+  applyTabStyles(libraryBtn, isLibrary);
+  applyTabStyles(teamBuilderBtn, isTeamBuilder);
+  applyTabStyles(libraryBuilderBtn, isLibraryBuilder);
 }
 
 function setupTabEvents() {
   const libraryBtn = document.getElementById('tab-btn-library');
-  const builderBtn = document.getElementById('tab-btn-builder');
-  if (!libraryBtn || !builderBtn) return;
+  const teamBuilderBtn = document.getElementById('tab-btn-team-builder');
+  const libraryBuilderBtn = document.getElementById('tab-btn-library-builder');
+  if (!libraryBtn || !teamBuilderBtn || !libraryBuilderBtn) return;
 
   libraryBtn.addEventListener('click', () => {
     teamsState.activeTab = 'library';
     syncTabButtonStates();
   });
 
-  builderBtn.addEventListener('click', () => {
-    teamsState.activeTab = 'builder';
+  teamBuilderBtn.addEventListener('click', () => {
+    teamsState.activeTab = 'team-builder';
+    syncTabButtonStates();
+  });
+
+  libraryBuilderBtn.addEventListener('click', () => {
+    teamsState.activeTab = 'library-builder';
     syncTabButtonStates();
   });
 }
 
 function setupBuilderEvents() {
-  const poolSearch = document.getElementById('builder-pool-search');
-  const poolList = document.getElementById('builder-pool-list');
-  const teamsList = document.getElementById('builder-teams-list');
+  const libraryPoolSearch = document.getElementById('builder-pool-search');
+  const experimentPoolSearch = document.getElementById('experiment-pool-search');
+  const libraryPoolList = document.getElementById('builder-pool-list');
+  const experimentPoolList = document.getElementById('experiment-pool-list');
+  const libraryTeamsList = document.getElementById('builder-teams-list');
+  const experimentTeamStage = document.getElementById('experiment-team-stage');
   const copyBtn = document.getElementById('builder-copy-json');
   const addTeamBtn = document.getElementById('builder-add-team');
 
-  if (poolSearch) {
-    poolSearch.addEventListener('input', (event) => {
-      teamsState.poolSearch = String(event.target.value || '');
+  if (libraryPoolSearch) {
+    libraryPoolSearch.addEventListener('input', (event) => {
+      teamsState.libraryPoolSearch = String(event.target.value || '');
       renderBuilderPool();
     });
   }
 
+  if (experimentPoolSearch) {
+    experimentPoolSearch.addEventListener('input', (event) => {
+      teamsState.experimentPoolSearch = String(event.target.value || '');
+      renderExperimentPool();
+    });
+  }
+
+  const getTeamForOwner = (owner, teamIndex) => {
+    if (owner === 'experiment') {
+      return teamsState.experimentTeam;
+    }
+
+    if (!Number.isInteger(teamIndex) || teamIndex < 0 || teamIndex >= teamsState.teams.length) {
+      return null;
+    }
+
+    return teamsState.teams[teamIndex];
+  };
+
+  let activeDropzone = null;
+
+  const clearActiveDropzone = () => {
+    if (!activeDropzone) return;
+    activeDropzone.classList.remove('border-cyan-400/70', 'bg-cyan-500/10');
+    activeDropzone = null;
+  };
+
+  const setActiveDropzone = (zone) => {
+    if (activeDropzone === zone) return;
+    clearActiveDropzone();
+    if (!zone) return;
+    zone.classList.add('border-cyan-400/70', 'bg-cyan-500/10');
+    activeDropzone = zone;
+  };
+
+  const refreshAfterBuilderMutation = () => {
+    rerenderBuilderViewsOnly();
+    if (teamsState.activeTab === 'library') {
+      renderTeams();
+    }
+  };
+
   const setDragPayloadFromElement = (element) => {
     if (!element) return null;
     const source = String(element.getAttribute('data-source') || '');
+    const owner = String(element.getAttribute('data-owner') || 'library');
     const unitId = String(element.getAttribute('data-unit-id') || '');
     if (!source || !unitId) return null;
 
     const payload = {
       source,
+      owner,
       unitId,
       teamIndex: Number(element.getAttribute('data-team-index')),
       column: String(element.getAttribute('data-column') || '')
@@ -861,24 +1115,30 @@ function setupBuilderEvents() {
     const payload = setDragPayloadFromElement(element);
     if (!payload) return;
     event.dataTransfer.effectAllowed = 'move';
+    event.dataTransfer.setData('application/json', JSON.stringify(payload));
     event.dataTransfer.setData('text/plain', JSON.stringify(payload));
   };
 
-  if (poolList) {
-    poolList.addEventListener('dragstart', handleDragStart);
-  }
-  if (teamsList) {
-    teamsList.addEventListener('dragstart', handleDragStart);
-  }
+  const handleDragEnd = () => {
+    clearActiveDropzone();
+    teamsState.dragPayload = null;
+  };
 
-  if (teamsList) {
-    teamsList.addEventListener('click', (event) => {
+  [libraryPoolList, experimentPoolList, libraryTeamsList, experimentTeamStage]
+    .filter(Boolean)
+    .forEach((element) => {
+      element.addEventListener('dragstart', handleDragStart);
+      element.addEventListener('dragend', handleDragEnd);
+    });
+
+  if (libraryTeamsList) {
+    libraryTeamsList.addEventListener('click', (event) => {
       const removeTeamBtn = event.target.closest('[data-remove-team="true"]');
       if (removeTeamBtn) {
         const teamIndex = Number(removeTeamBtn.getAttribute('data-team-index'));
         if (Number.isInteger(teamIndex) && teamIndex >= 0 && teamIndex < teamsState.teams.length) {
           teamsState.teams.splice(teamIndex, 1);
-          rerenderAllTeamViews();
+          refreshAfterBuilderMutation();
         }
         return;
       }
@@ -889,14 +1149,15 @@ function setupBuilderEvents() {
       const teamIndex = Number(removeBtn.getAttribute('data-team-index'));
       const column = String(removeBtn.getAttribute('data-column') || '');
       const unitId = String(removeBtn.getAttribute('data-unit-id') || '');
-      const team = teamsState.teams[teamIndex];
+      const owner = String(removeBtn.getAttribute('data-owner') || 'library');
+      const team = getTeamForOwner(owner, teamIndex);
       if (!team || !TEAM_COLUMNS.includes(column)) return;
 
       team[column] = (team[column] || []).filter((id) => id !== unitId);
-      rerenderAllTeamViews();
+      refreshAfterBuilderMutation();
     });
 
-    teamsList.addEventListener('input', (event) => {
+    libraryTeamsList.addEventListener('input', (event) => {
       const input = event.target.closest('[data-team-name-input="true"]');
       if (!input) return;
 
@@ -906,52 +1167,98 @@ function setupBuilderEvents() {
       teamsState.teams[teamIndex].name = String(input.value || '').trim() || `Team ${teamIndex + 1}`;
       updateLibraryAndJsonOnly();
     });
+  }
 
-    teamsList.addEventListener('dragover', (event) => {
-      const zone = event.target.closest('[data-dropzone="true"]');
-      if (!zone) return;
+  if (experimentTeamStage) {
+    experimentTeamStage.addEventListener('click', (event) => {
+      const removeBtn = event.target.closest('[data-remove-unit="true"]');
+      if (!removeBtn) return;
+
+      const column = String(removeBtn.getAttribute('data-column') || '');
+      const unitId = String(removeBtn.getAttribute('data-unit-id') || '');
+      const owner = String(removeBtn.getAttribute('data-owner') || 'experiment');
+      const team = getTeamForOwner(owner, 0);
+      if (!team || !TEAM_COLUMNS.includes(column)) return;
+
+      team[column] = (team[column] || []).filter((id) => id !== unitId);
+      refreshAfterBuilderMutation();
+    });
+
+    experimentTeamStage.addEventListener('input', (event) => {
+      const nameInput = event.target.closest('#experiment-team-name-input');
+      if (nameInput && teamsState.experimentTeam) {
+        teamsState.experimentTeam.name = String(nameInput.value || '').trim() || 'Sandbox Team';
+        renderExperimentTeam();
+      }
+    });
+
+    experimentTeamStage.addEventListener('change', (event) => {
+      const typeSelect = event.target.closest('#experiment-team-type-select');
+      if (!typeSelect || !teamsState.experimentTeam) return;
+
+      const nextType = String(typeSelect.value || '').trim().toLowerCase();
+      if (!['att', 'def', 'hybrid'].includes(nextType)) return;
+
+      teamsState.experimentTeam.type = nextType;
+      renderExperimentTeam();
+    });
+  }
+
+  [libraryTeamsList, experimentTeamStage]
+    .filter(Boolean)
+    .forEach((container) => {
+      container.addEventListener('dragover', (event) => {
       event.preventDefault();
+      const zone = event.target.closest('[data-dropzone="true"]');
+      if (!zone) {
+        setActiveDropzone(null);
+        return;
+      }
       event.dataTransfer.dropEffect = 'move';
-      zone.classList.add('border-cyan-400/70', 'bg-cyan-500/10');
-    });
+      setActiveDropzone(zone);
+      });
 
-    teamsList.addEventListener('dragleave', (event) => {
-      const zone = event.target.closest('[data-dropzone="true"]');
-      if (!zone) return;
-      zone.classList.remove('border-cyan-400/70', 'bg-cyan-500/10');
-    });
+      container.addEventListener('dragleave', (event) => {
+      const toElement = event.relatedTarget;
+      if (toElement && container.contains(toElement)) return;
+      setActiveDropzone(null);
+      });
 
-    teamsList.addEventListener('drop', (event) => {
+      container.addEventListener('drop', (event) => {
       const zone = event.target.closest('[data-dropzone="true"]');
       if (!zone) return;
 
       event.preventDefault();
-      zone.classList.remove('border-cyan-400/70', 'bg-cyan-500/10');
+      event.stopPropagation();
+      setActiveDropzone(null);
 
-      const payload = parseDragPayload(event.dataTransfer.getData('text/plain'));
+      const rawPayload = event.dataTransfer.getData('application/json') || event.dataTransfer.getData('text/plain');
+      const payload = parseDragPayload(rawPayload);
       if (!payload || !payload.unitId) return;
 
       const targetTeamIndex = Number(zone.getAttribute('data-team-index'));
       const targetColumn = String(zone.getAttribute('data-column') || '');
-      const targetTeam = teamsState.teams[targetTeamIndex];
+      const targetOwner = String(zone.getAttribute('data-owner') || 'library');
+      const targetTeam = getTeamForOwner(targetOwner, targetTeamIndex);
       if (!targetTeam || !TEAM_COLUMNS.includes(targetColumn)) return;
 
       if (payload.source === 'team' && Number.isInteger(payload.teamIndex) && TEAM_COLUMNS.includes(payload.column)) {
-        const sourceTeam = teamsState.teams[payload.teamIndex];
+        const sourceOwner = String(payload.owner || 'library');
+        const sourceTeam = getTeamForOwner(sourceOwner, payload.teamIndex);
         if (sourceTeam) {
           sourceTeam[payload.column] = (sourceTeam[payload.column] || []).filter((id) => id !== payload.unitId);
         }
       }
 
       addUnitToColumn(targetTeam, targetColumn, payload.unitId);
-      rerenderAllTeamViews();
+      refreshAfterBuilderMutation();
+      });
     });
-  }
 
   if (addTeamBtn) {
     addTeamBtn.addEventListener('click', () => {
-      teamsState.teams.push(createEmptyTeam());
-      rerenderAllTeamViews();
+      teamsState.teams.unshift(createEmptyTeam());
+      refreshAfterBuilderMutation();
     });
   }
 
@@ -978,15 +1285,18 @@ function setupBuilderEvents() {
 async function initGuildTeamsPage() {
   await Promise.all([loadPortraitMap(), loadPortraitManifest(), loadTeamsData(), loadBattleLogsData()]);
   teamsState.teams = teamsState.teams.map((team) => ensureTeamShape(team));
+  teamsState.experimentTeam = ensureTeamShape(createExperimentTeam());
   teamsState.nextTeamNumber = teamsState.teams.length + 1;
 
   setupTabEvents();
   setupFilterEvents();
+  setupCompSortEvents();
   setupBuilderEvents();
 
   syncTabButtonStates();
   syncFilterButtonStates();
   renderBuilderPool();
+  renderExperimentPool();
   rerenderAllTeamViews();
 }
 

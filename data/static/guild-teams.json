@@ -1,5 +1,46 @@
 [
   {
+    "name": "Terminators",
+    "type": "hybrid",
+    "core": [],
+    "flex": [
+      "blackTerminator",
+      "spaceRockfist",
+      "spaceStormcaller",
+      "darkaTerminator",
+      "worldTerminator"
+    ],
+    "mow": [
+      "ultraDreadnought"
+    ]
+  },
+  {
+    "name": "New Team 7",
+    "type": "hybrid",
+    "core": [
+      "ultraTitus",
+      "adeptHospitaller",
+      "custoBladeChampion"
+    ],
+    "flex": [],
+    "mow": []
+  },
+  {
+    "name": "Orks",
+    "type": "hybrid",
+    "core": [
+      "orksWarboss",
+      "orksRuntherd",
+      "orksBigMek",
+      "orksNob",
+      "orksKillaKan"
+    ],
+    "flex": [],
+    "mow": [
+      "orksRukkatrukk"
+    ]
+  },
+  {
     "name": "GSC",
     "type": "hybrid",
     "core": [
@@ -39,7 +80,7 @@
   },
   {
     "name": "CRIMJ",
-    "type": "hybrid",
+    "type": "def",
     "core": [
       "adeptCelestine",
       "tauCrisis",
@@ -51,5 +92,20 @@
     "mow": [
       "blackForgefiend"
     ]
+  },
+  {
+    "name": "Blood Angels",
+    "type": "hybrid",
+    "core": [
+      "bloodSanguinary",
+      "bloodDante",
+      "bloodDeathCompany",
+      "bloodIntercessor"
+    ],
+    "flex": [
+      "bloodMephiston",
+      "bloodTerminator"
+    ],
+    "mow": []
   }
 ]
