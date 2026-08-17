@@ -49,6 +49,22 @@ function normalizeDatasets(manifestDatasets) {
   return Object.keys(normalized).length > 0 ? normalized : null;
 }
 
+function shouldDisplayCurrentDataset(data) {
+  if (data === null || data === undefined) {
+    return false;
+  }
+
+  if (typeof data !== 'object') {
+    return false;
+  }
+
+  if (Array.isArray(data)) {
+    return data.length > 0;
+  }
+
+  return Object.keys(data).length > 0;
+}
+
 async function loadDatasetManifest() {
   if (datasetsLoaded) return;
 
@@ -70,11 +86,8 @@ async function loadDatasetManifest() {
       const currentResponse = await fetch(DATASETS.current.url, { cache: 'no-store' });
       if (currentResponse.ok) {
         const currentData = await currentResponse.json();
-        const currentEventData = getPrimaryEventResponseData(currentData);
-        const currentActivityLogs = Array.isArray(currentEventData?.activityLogs) ? currentEventData.activityLogs : [];
-        const hasBattleLogs = currentActivityLogs.some((log) => log?.type === 'battleFinished');
 
-        if (!hasBattleLogs) {
+        if (!shouldDisplayCurrentDataset(currentData)) {
           delete DATASETS.current;
         }
       }
@@ -131,13 +144,15 @@ let battleLogFiltersInitialized = false;
 let battleLogPageTabsInitialized = false;
 let leaderboardLayout = 'table';
 let leaderboardLayoutInitialized = false;
+let leaderboardSort = { key: 'score', direction: 'desc' };
 let legendVisibilityInitialized = false;
 const legendVisibility = {
   token: {
     win: true,
     defeat: true,
     abandoned: true,
-    cleanup: true
+    cleanup: true,
+    'easy-game': true
   },
   scoreTier: {
     bronze: true,
@@ -147,7 +162,7 @@ const legendVisibility = {
   buff: {}
 };
 let legendBlockKeys = {
-  token: ['win', 'defeat', 'abandoned', 'cleanup'],
+  token: ['win', 'defeat', 'abandoned', 'cleanup', 'easy-game'],
   scoreTier: ['bronze', 'silver', 'gold'],
   buff: []
 };
@@ -186,7 +201,11 @@ function makeLegendBuffKey(name) {
 }
 
 function isLegendEnabled(block, key) {
-  return Boolean(legendVisibility?.[block]?.[key] ?? true);
+  const blockState = legendVisibility?.[block];
+  if (block === 'buff') {
+    return Boolean(blockState?.[key] ?? false);
+  }
+  return Boolean(blockState?.[key] ?? true);
 }
 
 function setLegendEnabled(block, key, enabled) {
@@ -260,16 +279,34 @@ function setupLegendVisibilityToggle() {
   legendVisibilityInitialized = true;
 }
 
-function getCoreScore(value) {
+function getCoreScore(value, zoneType = null) {
   const numericValue = Number(value) || 0;
 
-  if (numericValue > 1600) {
-    const bonus = Math.floor(numericValue / 1000) * 1000;
-    const core = numericValue - bonus;
-    return { core, bonus };
+  if (numericValue <= MAX_TOKEN_SCORE) {
+    return { core: numericValue, bonus: 0 };
   }
 
-  return { core: numericValue, bonus: 0 };
+  const zoneBonusMap = (typeof globalThis !== 'undefined' && globalThis.TILE_SCORES && typeof globalThis.TILE_SCORES === 'object')
+    ? globalThis.TILE_SCORES
+    : {};
+  const mappedBonus = Number(zoneBonusMap[String(zoneType || '')] || 0);
+  const bonusCandidates = Array.from(new Set([
+    mappedBonus,
+    40000,
+    30000,
+    16000,
+    10000
+  ].filter((bonus) => Number.isFinite(bonus) && bonus > 0)));
+
+  for (const bonus of bonusCandidates) {
+    const core = numericValue - bonus;
+    if (core >= 0 && core <= MAX_TOKEN_SCORE) {
+      return { core, bonus };
+    }
+  }
+
+  const fallbackCore = Math.min(numericValue, MAX_TOKEN_SCORE);
+  return { core: fallbackCore, bonus: Math.max(numericValue - fallbackCore, 0) };
 }
 
 function formatValue(value) {
@@ -447,6 +484,10 @@ function calculateSkillRating(token) {
 
   if (token.cleanup) {
     rating *= 0.75;
+  }
+
+  if (token.easyGame) {
+    rating *= 0.1;
   }
 
   // Win doubles rating, lose keeps rating as-is.
@@ -653,10 +694,11 @@ function buildSnapshot(data) {
       defended,
       cleanup,
       hasScore,
-      buffs
+      buffs,
+      easyGame: isEasyGameBattle(log)
     });
 
-    bucket.get(userId).push({ score: entryScore, tileScore, skillRating, abandoned, defended, cleanup, hasScore, buffs });
+    bucket.get(userId).push({ score: entryScore, tileScore, skillRating, abandoned, defended, cleanup, hasScore, buffs, easyGame: isEasyGameBattle(log) });
 
     const defenderUserId = log?.defender?.userId || null;
     const defenderTeamIndex = getOpposingTeamIndex(teamIndex);
@@ -685,6 +727,7 @@ function buildSnapshot(data) {
         abandoned,
         defended,
         cleanup,
+        easyGame: isEasyGameBattle(log),
         score: rawScore,
         attackerUnits,
         defenderUnits,
@@ -737,6 +780,12 @@ function buildRows(snapshot) {
       ...player,
       avatarUnitId: player.avatarUnitId || null,
       avatarFrameId: player.avatarFrameId || null,
+      tokens: Array.isArray(player.tokens)
+        ? player.tokens.map((token) => ({
+            ...token,
+            easyGame: !!token?.easyGame
+          }))
+        : [],
       usedTokens: player.usedTokens ?? player.tokens.filter((entry) => Object.prototype.hasOwnProperty.call(entry, 'hasScore')).length,
       totalScore: player.totalScore ?? player.tokens.reduce((sum, entry) => sum + (entry.abandoned ? 0 : entry.score), 0),
       averageScore: player.averageScore ?? (player.usedTokens > 0 ? Math.round(player.totalScore / player.usedTokens) : 0),
@@ -1029,6 +1078,40 @@ function getBattleUnitId(unit) {
 
   if (!rawId) return null;
   return String(rawId).trim();
+}
+
+function isEasyGameBattle(battle) {
+  if (!battle || typeof battle !== 'object') return false;
+
+  const attackerUnits = Array.isArray(battle?.attackerUnits)
+    ? battle.attackerUnits
+    : (Array.isArray(battle?.attacker?.units) ? battle.attacker.units : []);
+  const defenderUnits = Array.isArray(battle?.defenderUnits)
+    ? battle.defenderUnits
+    : (Array.isArray(battle?.defender?.units) ? battle.defender.units : []);
+
+  const attackerMachineOfWar = battle?.attackerMachineOfWar || battle?.attacker?.machineOfWar || null;
+  const defenderMachineOfWar = battle?.defenderMachineOfWar || battle?.defender?.machineOfWar || null;
+
+  const sideCandidates = [
+    buildBattleSideUnits(attackerUnits, attackerMachineOfWar),
+    buildBattleSideUnits(defenderUnits, defenderMachineOfWar)
+  ];
+
+  return sideCandidates.some((units) => Array.isArray(units) && units.some((unit) => getBattleUnitId(unit) === 'templNpc1Initiate'));
+}
+
+function getEasyGameBadgeHtml({ easyGame = false, tileScore = 0, includeBuildingIcon = false } = {}) {
+  if (!easyGame) return '';
+
+  const buildingIcon = Number(tileScore || 0) > 0 || includeBuildingIcon
+    ? '<span class="inline-flex h-3.5 w-3.5 items-center justify-center text-[10px] leading-none" title="Tile score win" aria-label="Tile score win">🏢</span>'
+    : '';
+
+  return `<span class="inline-flex items-center gap-1" title="Easy game" aria-label="Easy game">` +
+    '<span class="inline-flex h-2.5 w-2.5 shrink-0 rounded-full border border-red-500 bg-black"></span>' +
+    `${buildingIcon}` +
+    '</span>';
 }
 
 function getBattleUnitAvatarUrl(unit) {
@@ -2951,6 +3034,9 @@ function renderBattleLog(snapshot) {
     }
 
     const zoneLabel = battle.zoneType ? `<span class="rounded-full border border-slate-500/50 bg-slate-900/70 px-2 py-0.5 text-xs text-slate-300">${escapeHtml(battle.zoneType)}</span>` : '';
+    const easyGameBadge = isEasyGameBattle(battle)
+      ? '<span class="inline-flex h-3.5 w-3.5 rounded-full border border-red-500 bg-black" title="Easy game: unregistered slot" aria-label="Easy game"></span>'
+      : '';
     const attackerGuildName = String(battle?.attackerGuildName || getGuildNameByTeamIndex(battle?.attackerTeamIndex));
     const defenderGuildName = String(battle?.defenderGuildName || getGuildNameByTeamIndex(battle?.defenderTeamIndex));
     const roleLabel = snapshot?.battleLogScope === 'combined'
@@ -2969,7 +3055,10 @@ function renderBattleLog(snapshot) {
       <div class="flex min-w-28 flex-col items-start justify-center gap-1 md:items-center">
         <span class="inline-flex items-center ${stateClass}">${scoreDisplay}</span>
         ${bonusDisplay}
-        <span class="text-xs uppercase tracking-wide text-slate-300">${escapeHtml(stateLabel)}</span>
+        <div class="flex items-center gap-2">
+          <span class="text-xs uppercase tracking-wide text-slate-300">${escapeHtml(stateLabel)}</span>
+          ${easyGameBadge}
+        </div>
         ${roleLabel}
         ${zoneLabel}
       </div>
@@ -2984,9 +3073,79 @@ function renderBattleLog(snapshot) {
   });
 }
 
+function getLeaderboardSortValue(player, key) {
+  if (key === 'score') return Number(player.totalScore ?? 0);
+  if (key === 'average') return Number(player.averageScore ?? 0);
+  if (key === 'rating') return Number(player.totalSkillRating ?? 0);
+  return 0;
+}
+
+function sortLeaderboardRows(rows) {
+  const { key, direction } = leaderboardSort;
+  const dir = direction === 'asc' ? 1 : -1;
+
+  return [...rows].sort((a, b) => {
+    const left = getLeaderboardSortValue(a, key);
+    const right = getLeaderboardSortValue(b, key);
+
+    if (left === right) {
+      return String(a.name || '').localeCompare(String(b.name || '')) * dir;
+    }
+
+    return (left - right) * dir;
+  });
+}
+
+function updateLeaderboardSortButtons() {
+  const activeButtons = document.querySelectorAll('[data-leaderboard-sort]');
+  activeButtons.forEach((button) => {
+    const key = button.getAttribute('data-leaderboard-sort');
+    const labelMap = {
+      score: 'Score',
+      average: 'Avg / token',
+      rating: 'Rating'
+    };
+    const isActive = leaderboardSort.key === key;
+    const arrow = isActive ? (leaderboardSort.direction === 'asc' ? ' ↑' : ' ↓') : '';
+    button.setAttribute('aria-sort', isActive ? (leaderboardSort.direction === 'asc' ? 'ascending' : 'descending') : 'none');
+    button.innerHTML = `${labelMap[key] || key}${arrow}`;
+  });
+}
+
+function setupLeaderboardSortButtons() {
+  const sortButtons = document.querySelectorAll('[data-leaderboard-sort]');
+  if (!sortButtons.length) return;
+
+  sortButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const key = button.getAttribute('data-leaderboard-sort');
+      if (!key) return;
+      setLeaderboardSort(key);
+    });
+  });
+
+  updateLeaderboardSortButtons();
+}
+
+function setLeaderboardSort(key) {
+  if (leaderboardSort.key === key) {
+    leaderboardSort.direction = leaderboardSort.direction === 'asc' ? 'desc' : 'asc';
+  } else {
+    leaderboardSort.key = key;
+    leaderboardSort.direction = 'desc';
+  }
+
+  updateLeaderboardSortButtons();
+  const currentSnapshot = guildSnapshots[activeGuildIndex];
+  if (currentSnapshot) {
+    renderTable(currentSnapshot);
+  }
+}
+
 function renderTable(snapshot) {
+  updateLeaderboardSortButtons();
   const summary = summarizeGuild(snapshot);
-  const rows = summary.rows;
+  const rows = sortLeaderboardRows(summary.rows);
   const leaderboardBody = document.getElementById('leaderboard-body');
   const leaderboardCards = document.getElementById('leaderboard-cards');
 
@@ -3000,8 +3159,15 @@ function renderTable(snapshot) {
     const isUnused = !('hasScore' in token);
     const abandoned = !!token.abandoned;
     const cleanup = !!token.cleanup;
+    const easyGame = !!token.easyGame;
+    const tileScoreWon = Number(token.tileScore || 0) > 0;
     const showCleanupIcon = cleanup && isLegendEnabled('token', 'cleanup');
+    const showEasyGameBadge = easyGame && isLegendEnabled('token', 'easy-game');
     const cleanupHtml = showCleanupIcon ? '<span class="text-emerald-400" title="Cleanup">🧹</span>' : '';
+    const easyGameBadge = showEasyGameBadge
+      ? getEasyGameBadgeHtml({ easyGame, tileScore: Number(token.tileScore || 0), includeBuildingIcon: tileScoreWon })
+      : '';
+    const cleanupAndEasyGameHtml = `${cleanupHtml}${easyGameBadge}`;
     const outcomeKey = getTokenLegendOutcomeKey(token);
     const showOutcomeStyle = isLegendEnabled('token', outcomeKey);
 
@@ -3021,14 +3187,14 @@ function renderTable(snapshot) {
         ? 'rounded-md bg-slate-400/20 px-2 py-1 text-slate-300'
         : 'rounded-md px-2 py-1 text-slate-200';
     } else if (!token.hasScore) {
-      display = `<span class="inline-flex flex-row items-center gap-1"><span class="font-semibold text-slate-200">0</span>${cleanupHtml}</span>`;
+      display = `<span class="inline-flex flex-row items-center gap-1"><span class="font-semibold text-slate-200">0</span>${cleanupAndEasyGameHtml}</span>`;
       stateClass = showOutcomeStyle
         ? 'rounded-md bg-rose-400/20 px-2 py-1 text-rose-200'
         : 'rounded-md px-2 py-1 text-slate-200';
     } else if (tokenScore > 0) {
       display = showCleanupIcon
-        ? `<span class="inline-flex flex-row items-center gap-1"><span class="font-semibold text-slate-200">${tokenScore.toLocaleString()}</span><span class="text-emerald-400" title="Cleanup">🧹</span></span>`
-        : formatValue(tokenScore);
+        ? `<span class="inline-flex flex-row items-center gap-1"><span class="font-semibold text-slate-200">${tokenScore.toLocaleString()}</span>${cleanupAndEasyGameHtml}</span>`
+        : `<span class="inline-flex flex-row items-center gap-1">${formatValue(tokenScore)}${easyGameBadge}</span>`;
       if (showOutcomeStyle) {
         stateClass = token.defended
           ? 'rounded-md bg-rose-400/20 px-2 py-1 text-rose-200'
@@ -3037,7 +3203,7 @@ function renderTable(snapshot) {
         stateClass = 'rounded-md px-2 py-1 text-slate-200';
       }
     } else {
-      display = `<span class="inline-flex flex-row items-center gap-1"><span class="font-semibold text-slate-200">0</span>${cleanupHtml}</span>`;
+      display = `<span class="inline-flex flex-row items-center gap-1"><span class="font-semibold text-slate-200">0</span>${cleanupAndEasyGameHtml}</span>`;
       stateClass = showOutcomeStyle
         ? 'rounded-md bg-slate-400/20 px-2 py-1 text-slate-300'
         : 'rounded-md px-2 py-1 text-slate-200';
@@ -3065,7 +3231,7 @@ function renderTable(snapshot) {
     const avatarHtml = renderPlayerAvatar(player);
 
     const cells = [
-      `<td class="sticky left-0 z-10 whitespace-nowrap bg-slate-900/95 px-4 py-3 font-semibold text-slate-50"><div class="flex items-center gap-2"><span class="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cyan-400/20 text-xs font-bold text-cyan-100">${index + 1}</span>${avatarHtml}<div class="min-w-0"><div class="flex min-w-0 items-center gap-2"><span class="truncate whitespace-nowrap">${escapeHtml(player.name)} (${player.usedTokens}/10)</span></div></div></div></td>`,
+      `<td class="sticky left-0 z-10 min-w-[15rem] whitespace-nowrap bg-slate-900/95 px-4 py-3 font-semibold text-slate-50" style="width: max-content;"><div class="flex items-center gap-2"><span class="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cyan-400/20 text-xs font-bold text-cyan-100">${index + 1}</span>${avatarHtml}<div class="min-w-0"><div class="flex min-w-0 items-center gap-2"><span class="truncate whitespace-nowrap">${escapeHtml(player.name)} (${player.usedTokens}/10)</span></div></div></div></td>`,
       ...player.tokens.map((token) => {
         const tokenVisual = getTokenVisual(token);
         const tokenContent = `<span class="inline-flex items-center justify-center ${tokenVisual.stateClass}">${tokenVisual.display}</span>${tokenVisual.buffsHtml}`;
@@ -3171,7 +3337,7 @@ function renderBuffLegend(snapshot) {
   if (!legendContainer) return;
 
   legendBlockKeys = {
-    token: ['win', 'defeat', 'abandoned', 'cleanup'],
+    token: ['win', 'defeat', 'abandoned', 'cleanup', 'easy-game'],
     scoreTier: ['bronze', 'silver', 'gold'],
     buff: []
   };
@@ -3197,7 +3363,7 @@ function renderBuffLegend(snapshot) {
   legendBlockKeys.buff = buffLegendEntries.map((entry) => entry.key).filter(Boolean);
   legendBlockKeys.buff.forEach((key) => {
     if (!Object.prototype.hasOwnProperty.call(legendVisibility.buff, key)) {
-      legendVisibility.buff[key] = true;
+      legendVisibility.buff[key] = false;
     }
   });
 
@@ -3221,7 +3387,8 @@ function renderBuffLegend(snapshot) {
     makeItem({ block: 'token', key: 'win', iconHtml: '🟩', label: 'Win' }),
     makeItem({ block: 'token', key: 'defeat', iconHtml: '🟥', label: 'Defeat' }),
     makeItem({ block: 'token', key: 'abandoned', iconHtml: '⬜', label: 'Abandoned / unused' }),
-    makeItem({ block: 'token', key: 'cleanup', iconHtml: '🧹', label: 'Cleanup' })
+    makeItem({ block: 'token', key: 'cleanup', iconHtml: '🧹', label: 'Cleanup' }),
+    makeItem({ block: 'token', key: 'easy-game', iconHtml: '<span class="inline-flex h-2.5 w-2.5 rounded-full border border-red-500 bg-black"></span>', label: 'Easy game' })
   ];
 
   const scoreTierItems = [
@@ -3248,7 +3415,7 @@ function renderBuffLegend(snapshot) {
         <div class="flex flex-wrap items-center gap-2">${scoreTierItems.join('')}</div>
       </div>
       <div class="flex grow-0 shrink-0 flex-wrap items-center gap-3 rounded-xl border border-slate-400/20 bg-slate-900/35 px-3 py-2">
-        <button type="button" data-legend-title="true" data-legend-block="buff" class="${titleClasses('buff')}">Buggs</button>
+        <button type="button" data-legend-title="true" data-legend-block="buff" class="${titleClasses('buff')}">Buffs</button>
         <div class="flex flex-wrap items-center gap-2">${buffItems.join('') || '<div class="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-400/20 bg-slate-900/60 px-2 py-1 text-sm"><span class="w-4 text-center">—</span><span class="font-semibold text-blue-100">No buggs</span></div>'}</div>
       </div>
     </div>
@@ -3274,6 +3441,7 @@ async function loadGuildData() {
 
   renderDatasetTabs();
   setupLeaderboardLayoutToggle();
+  setupLeaderboardSortButtons();
   setupLegendVisibilityToggle();
   setupBattleLogFilters();
 
@@ -3322,10 +3490,16 @@ async function loadGuildData() {
   }
 }
 
-const currentPage = String(document.body?.dataset?.page || '').trim();
-if (currentPage === 'battle-log') {
-  setupBattleLogPageTabs();
-  loadAllWarsBattleLogData();
-} else {
-  loadGuildData();
+if (typeof document !== 'undefined') {
+  const currentPage = String(document.body?.dataset?.page || '').trim();
+  if (currentPage === 'battle-log') {
+    setupBattleLogPageTabs();
+    loadAllWarsBattleLogData();
+  } else {
+    loadGuildData();
+  }
+}
+
+if (typeof module !== 'undefined') {
+  module.exports = { shouldDisplayCurrentDataset, isEasyGameBattle, buildSnapshot, getCoreScore, isLegendEnabled, getEasyGameBadgeHtml };
 }

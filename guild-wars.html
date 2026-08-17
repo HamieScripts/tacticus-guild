@@ -102,10 +102,10 @@
           </div>
           <div id="buff-legend" class="mb-2 text-sm"></div>
           <div id="leaderboard-table-wrap" class="w-full overflow-hidden rounded-xl border border-slate-800/80">
-            <table class="w-full table-fixed border-collapse text-left text-xs sm:text-sm">
+            <table class="w-full border-collapse text-left text-xs sm:text-sm" style="table-layout: auto;">
               <thead class="bg-slate-800/90 text-slate-200">
                 <tr>
-                  <th class="sticky left-0 top-0 z-20 whitespace-nowrap bg-slate-800/95 px-4 py-3 font-semibold">Player</th>
+                  <th class="sticky left-0 top-0 z-20 min-w-[15rem] whitespace-nowrap bg-slate-800/95 px-4 py-3 font-semibold" style="width: max-content;">Player</th>
                   <th class="px-4 py-3 text-center font-semibold">1</th>
                   <th class="px-4 py-3 text-center font-semibold">2</th>
                   <th class="px-4 py-3 text-center font-semibold">3</th>
@@ -116,9 +116,15 @@
                   <th class="px-4 py-3 text-center font-semibold">8</th>
                   <th class="px-4 py-3 text-center font-semibold">9</th>
                   <th class="px-4 py-3 text-center font-semibold">10</th>
-                  <th class="px-4 py-3 font-semibold">Score</th>
-                  <th class="px-4 py-3 font-semibold">Avg / token</th>
-                  <th class="px-4 py-3 font-semibold">Rating</th>
+                  <th class="px-4 py-3 font-semibold">
+                    <button type="button" data-leaderboard-sort="score" class="inline-flex items-center gap-1 text-left font-semibold text-slate-200 hover:text-cyan-200">Score</button>
+                  </th>
+                  <th class="px-4 py-3 font-semibold">
+                    <button type="button" data-leaderboard-sort="average" class="inline-flex items-center gap-1 text-left font-semibold text-slate-200 hover:text-cyan-200">Avg / token</button>
+                  </th>
+                  <th class="px-4 py-3 font-semibold">
+                    <button type="button" data-leaderboard-sort="rating" class="inline-flex items-center gap-1 text-left font-semibold text-slate-200 hover:text-cyan-200">Rating</button>
+                  </th>
                 </tr>
               </thead>
               <tbody id="leaderboard-body"></tbody>

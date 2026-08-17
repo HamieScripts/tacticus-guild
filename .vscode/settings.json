@@ -1,5 +1,29 @@
 {
     "chat.tools.terminal.autoApprove": {
-        "git rev-parse": true
+        "git rev-parse": true,
+        "/^cd c:/Users/jamie/Documents/GitHub/tacticus-guild ; node --test tests/live-war-dataset\\.test\\.js$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^cd c:/Users/jamie/Documents/GitHub/tacticus-guild ; node tmp-check\\.js$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^cd \"c:/Users/jamie/Documents/GitHub/tacticus-guild\"; node --test tests/live-war-dataset\\.test\\.js$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^cd \"c:/Users/jamie/Documents/GitHub/tacticus-guild\"; node --check \\./src/app\\.js$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^cd \"c:/Users/jamie/Documents/GitHub/tacticus-guild\"; node -e \"const fs=require\\('fs'\\); const s=fs\\.readFileSync\\('\\./src/app\\.js','utf8'\\); try \\{ new Function\\(s\\); console\\.log\\('ok'\\); \\} catch \\(e\\) \\{ console\\.log\\(e\\.stack\\); \\}\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^python - <<'PY'\nfrom pathlib import Path\np = Path\\('c:/Users/jamie/Documents/GitHub/tacticus-guild/src/app\\.js'\\)\ntext = p\\.read_text\\(encoding='utf-8'\\)\nlines = text\\.splitlines\\(\\)\nfor i in range\\(3030, 3078\\):\n    if i <= len\\(lines\\):\n        line = lines\\[i-1\\]\n        print\\(f'\\{i\\}: \\{line!r\\}'\\)\nPY$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
     }
 }
