@@ -335,8 +335,8 @@ function getAllUnitIds() {
 
 function renderReadonlyUnit(unitId) {
   const avatarUrl = getPortraitUrlForUnitId(unitId);
-  return `<li class="inline-flex items-center justify-center rounded-xl border border-slate-700/80 bg-slate-950/80 p-2">
-    <span class="inline-flex h-20 w-20 items-center justify-center overflow-hidden rounded-md border border-slate-500/50 bg-slate-800/90" title="${escapeHtml(unitId)}">
+  return `<li class="inline-flex items-center justify-center">
+    <span class="inline-flex h-14 w-14 items-center justify-center overflow-hidden rounded-md border border-slate-700/70 bg-slate-900/70" title="${escapeHtml(unitId)}">
       <img src="${escapeHtml(avatarUrl)}" alt="${escapeHtml(unitId)}" class="h-full w-full object-cover" loading="lazy" onerror="this.onerror=null; this.src='${MISSING_UNIT_AVATAR_URL}'" />
     </span>
   </li>`;
@@ -344,14 +344,14 @@ function renderReadonlyUnit(unitId) {
 
 function renderReadonlyGroup(title, ids, layoutClass = '') {
   const values = Array.isArray(ids) ? ids : [];
-  return `<section class="px-5 py-4 ${layoutClass}">
+  return `<section class="px-3 py-2.5 ${layoutClass}">
     <div class="mb-2 flex items-center justify-between gap-2">
-      <h4 class="text-base font-black uppercase tracking-[0.16em] text-slate-200">${escapeHtml(title)}</h4>
-      <span class="text-base text-slate-500">${values.length}</span>
+      <h4 class="text-xs font-bold uppercase tracking-[0.12em] text-slate-300">${escapeHtml(title)}</h4>
+      <span class="text-xs text-slate-500">${values.length}</span>
     </div>
     ${values.length > 0
-      ? `<ul class="flex flex-wrap gap-3">${values.map((unitId) => renderReadonlyUnit(unitId)).join('')}</ul>`
-      : '<p class="text-base text-slate-500">No units listed.</p>'}
+      ? `<ul class="flex flex-wrap gap-2">${values.map((unitId) => renderReadonlyUnit(unitId)).join('')}</ul>`
+      : '<p class="text-xs text-slate-500">No units listed.</p>'}
   </section>`;
 }
 
@@ -362,7 +362,7 @@ function renderTypePill(type) {
     : safeType === 'def'
       ? 'border-sky-400/50 bg-sky-500/15 text-sky-200'
       : 'border-violet-400/50 bg-violet-500/15 text-violet-200';
-  return `<span class="rounded-full border px-4 py-2 text-base font-semibold uppercase tracking-wide ${tone}">${escapeHtml(safeType)}</span>`;
+  return `<span class="rounded-full border px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.08em] ${tone}">${escapeHtml(safeType)}</span>`;
 }
 
 function renderMatchResultBadge(log, perspective) {
@@ -569,19 +569,19 @@ function renderTeamCompSummaryList(summary, perspective, team) {
     return (successfulOutcomes / uses).toFixed(2);
   };
 
-  return `<ul class="mt-2 max-h-72 space-y-2 overflow-auto">${filteredSummary.map((entry) => `<li class="rounded-lg border border-slate-700/80 bg-slate-950/70 p-2.5">
+  return `<ul class="mt-2 max-h-64 space-y-1.5 overflow-auto">${filteredSummary.map((entry) => `<li class="rounded-md border border-slate-800/80 p-2">
     <div class="flex flex-wrap items-center justify-between gap-2">
-      <span class="text-xs font-semibold text-cyan-200">Used ${entry.uses.toLocaleString()}x</span>
-      <span class="text-xs text-slate-300">Avg score ${Math.round(entry.avgScore).toLocaleString()}</span>
+      <span class="text-[11px] font-semibold text-cyan-200">Used ${entry.uses.toLocaleString()}x</span>
+      <span class="text-[11px] text-slate-300">Avg ${Math.round(entry.avgScore).toLocaleString()}</span>
     </div>
-    <div class="mt-1 text-[11px] font-semibold text-cyan-100">Token efficiency: ${formatTokenEfficiency(entry)}</div>
-    <div class="mt-2 grid grid-cols-2 gap-1 text-[11px] text-slate-300 sm:grid-cols-4">
-      <span class="inline-flex items-center justify-between gap-2 rounded-md border px-2 py-1 ${winClass}"><span>${winMarker} W: ${entry.wins.toLocaleString()}</span><span class="text-slate-200">${formatPct(entry.wins, entry.uses)}</span></span>
-      <span class="inline-flex items-center justify-between gap-2 rounded-md border px-2 py-1 ${winCleanupClass}"><span>${winCleanupMarker} W 🖌: ${entry.winCleanup.toLocaleString()}</span><span class="text-slate-200">${formatPct(entry.winCleanup, entry.uses)}</span></span>
-      <span class="inline-flex items-center justify-between gap-2 rounded-md border px-2 py-1 ${lossClass}"><span>${lossMarker} L: ${entry.losses.toLocaleString()}</span><span class="text-slate-200">${formatPct(entry.losses, entry.uses)}</span></span>
-      <span class="inline-flex items-center justify-between gap-2 rounded-md border px-2 py-1 ${lossCleanupClass}"><span>${lossCleanupMarker} L 🖌: ${entry.lossCleanup.toLocaleString()}</span><span class="text-slate-200">${formatPct(entry.lossCleanup, entry.uses)}</span></span>
+    <div class="mt-1 text-[10px] font-semibold text-cyan-100">Token efficiency: ${formatTokenEfficiency(entry)}</div>
+    <div class="mt-1.5 grid grid-cols-2 gap-1 text-[10px] text-slate-300 sm:grid-cols-4">
+      <span class="inline-flex items-center justify-between gap-1.5 rounded-md border px-1.5 py-1 ${winClass}"><span>${winMarker} W: ${entry.wins.toLocaleString()}</span><span class="text-slate-200">${formatPct(entry.wins, entry.uses)}</span></span>
+      <span class="inline-flex items-center justify-between gap-1.5 rounded-md border px-1.5 py-1 ${winCleanupClass}"><span>${winCleanupMarker} W 🖌: ${entry.winCleanup.toLocaleString()}</span><span class="text-slate-200">${formatPct(entry.winCleanup, entry.uses)}</span></span>
+      <span class="inline-flex items-center justify-between gap-1.5 rounded-md border px-1.5 py-1 ${lossClass}"><span>${lossMarker} L: ${entry.losses.toLocaleString()}</span><span class="text-slate-200">${formatPct(entry.losses, entry.uses)}</span></span>
+      <span class="inline-flex items-center justify-between gap-1.5 rounded-md border px-1.5 py-1 ${lossCleanupClass}"><span>${lossCleanupMarker} L 🖌: ${entry.lossCleanup.toLocaleString()}</span><span class="text-slate-200">${formatPct(entry.lossCleanup, entry.uses)}</span></span>
     </div>
-    <div class="mt-2">${renderMatchUnitAvatarList(entry.lineupIds, team)}</div>
+    <div class="mt-1.5">${renderMatchUnitAvatarList(entry.lineupIds, team)}</div>
   </li>`).join('')}</ul>`;
 }
 
@@ -613,14 +613,14 @@ function getCoreMatchData(normalizedCore) {
 
 function renderTeamCoreMatchAccordion(team, options = {}) {
   if (!teamsState.battleLogsLoaded) {
-    return `<div class="mt-4 rounded-xl border border-slate-700/70 bg-slate-950/60 p-3 text-sm text-slate-400">Loading matching battle logs...</div>`;
+    return `<div class="mt-4 border-t border-slate-700/70 pt-3 text-sm text-slate-400">Loading matching battle logs...</div>`;
   }
 
   const showAllWhenNoCore = Boolean(options?.showAllWhenNoCore);
   const normalizedCore = normalizeUnitIdList(team?.core);
   const hasCoreSelection = normalizedCore.length > 0;
   if (!hasCoreSelection && !showAllWhenNoCore) {
-    return `<div class="mt-4 rounded-xl border border-slate-700/70 bg-slate-950/60 p-3 text-sm text-slate-400">No core units defined for this team.</div>`;
+    return `<div class="mt-4 border-t border-slate-700/70 pt-3 text-sm text-slate-400">No core units defined for this team.</div>`;
   }
 
   const coreMatchData = getCoreMatchData(normalizedCore);
@@ -638,29 +638,29 @@ function renderTeamCoreMatchAccordion(team, options = {}) {
   };
   const minUsesInputValue = String(teamsState.compMinUses || '').trim();
 
-  return `<details open class="mt-4 rounded-2xl border border-cyan-500/25 bg-cyan-500/10 p-3">
+  return `<details class="mt-3 border-t border-cyan-500/35 pt-2.5">
     <summary class="cursor-pointer list-none select-none">
       <div class="flex flex-wrap items-center justify-between gap-2">
-        <span class="text-sm font-semibold text-cyan-100">Core match comp data</span>
+        <span class="text-xs font-semibold uppercase tracking-[0.08em] text-cyan-100">Core match comp data</span>
         <span class="text-xs text-cyan-200">Attack ${attackMatches.length.toLocaleString()} | Defense ${defenseMatches.length.toLocaleString()}</span>
       </div>
-      <p class="mt-1 text-xs text-slate-300">${escapeHtml(helperText)}</p>
+      <p class="mt-1 text-[11px] text-slate-400">${escapeHtml(helperText)}</p>
       <div class="mt-2 inline-flex flex-wrap items-center gap-1.5" role="group" aria-label="Comp sort order">
         ${renderSortButton('uses', 'Times used')}
         ${renderSortButton('avg-desc', 'Avg score ↓')}
         ${renderSortButton('avg-asc', 'Avg score ↑')}
-        <label class="ml-2 inline-flex items-center gap-2 text-xs text-slate-300">
+        <label class="ml-1 inline-flex items-center gap-1.5 text-xs text-slate-300">
           <span>Min uses</span>
           <input type="number" min="0" step="1" inputmode="numeric" data-comp-min-uses="true" value="${escapeHtml(minUsesInputValue)}" class="w-20 rounded-md border border-slate-500/50 bg-slate-900/80 px-2 py-1 text-xs text-slate-100 outline-none focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/20" />
         </label>
       </div>
     </summary>
-    <div class="mt-3 grid gap-3 lg:grid-cols-2">
-      <section class="rounded-xl border border-sky-400/30 bg-slate-950/55 p-3">
+    <div class="mt-2.5 grid gap-2 lg:grid-cols-2">
+      <section class="p-1">
         <h5 class="text-xs font-semibold uppercase tracking-wide text-sky-300">Attack</h5>
         ${renderTeamCompSummaryList(coreMatchData.attackSummary, 'attack', team)}
       </section>
-      <section class="rounded-xl border border-amber-400/30 bg-slate-950/55 p-3">
+      <section class="p-1">
         <h5 class="text-xs font-semibold uppercase tracking-wide text-amber-300">Defense</h5>
         ${renderTeamCompSummaryList(coreMatchData.defenseSummary, 'defense', team)}
       </section>
@@ -669,18 +669,18 @@ function renderTeamCoreMatchAccordion(team, options = {}) {
 }
 
 function renderTeamCard(team) {
-  return `<article class="rounded-3xl border border-slate-700/80 bg-gradient-to-b from-slate-900/92 to-slate-950/88 p-6 shadow-2xl shadow-black/25">
+  return `<article class="py-4">
     <div class="flex flex-wrap items-center justify-between gap-3">
       <div>
-        <h3 class="text-3xl font-black text-slate-100">${escapeHtml(team.name || 'Unnamed build')}</h3>
+        <h3 class="text-xl font-black text-slate-100">${escapeHtml(team.name || 'Unnamed build')}</h3>
       </div>
       ${renderTypePill(team.type)}
     </div>
 
-    <div class="mt-4 divide-y divide-slate-700/70 md:flex md:divide-x md:divide-y-0">
+    <div class="mt-2.5 divide-y divide-slate-800/80 md:flex md:divide-x md:divide-y-0">
       ${renderReadonlyGroup('Core', team.core, 'md:flex-1 md:min-w-0')}
       ${renderReadonlyGroup('Flex', team.flex, 'md:flex-1 md:min-w-0')}
-      ${renderReadonlyGroup('Machine of War', team.mow, 'md:flex-none md:w-64')}
+      ${renderReadonlyGroup('Machine of War', team.mow, 'md:flex-none md:w-52')}
     </div>
 
     ${renderTeamCoreMatchAccordion(team)}

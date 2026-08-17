@@ -1,1 +1,260 @@
-{}
+{
+    "eventResults": [
+        {
+            "eventId": "5ad77dc0-5887-428b-89de-f92f099a6a91",
+            "eventResultType": "SUCCESS",
+            "eventResponseData": {
+                "activityLogs": [
+                    {
+                        "type": "playerClaimedZone",
+                        "id": "d4098105-8290-4fd2-a946-e14484461db9",
+                        "userId": "9d50010a-82f9-4db9-aa55-e292388ea749",
+                        "teamIndex": 1,
+                        "zone": {
+                            "id": "d266aabf-a266-44bc-a462-5e2ecdb58040",
+                            "type": "MedicaeStation2",
+                            "visualId": "fieldHospital"
+                        },
+                        "createdOn": 1786915969098
+                    },
+                    {
+                        "type": "playerClaimedZone",
+                        "id": "703451b7-ee77-48c6-82fa-d7307e2ffccf",
+                        "userId": "293f4b63-28b1-4b5e-88ee-59936eed8ddb",
+                        "teamIndex": 1,
+                        "zone": {
+                            "id": "53ae6af6-aae1-45d8-b0c3-9ba170fa8d94",
+                            "type": "HQ",
+                            "visualId": "hq"
+                        },
+                        "createdOn": 1786916117548
+                    },
+                    {
+                        "type": "playerClaimedZone",
+                        "id": "8381dfde-2976-45e9-828a-29b52ae75b0e",
+                        "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+                        "teamIndex": 1,
+                        "zone": {
+                            "id": "a46c35c0-ae7a-4fd7-97b0-c6dee0399b9c",
+                            "type": "Trenches3",
+                            "visualId": "trenches"
+                        },
+                        "createdOn": 1786917778290
+                    },
+                    {
+                        "type": "playerClaimedZone",
+                        "id": "4a582116-ea5c-4e78-98b3-be5883c280bb",
+                        "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+                        "teamIndex": 1,
+                        "zone": {
+                            "id": "49f28176-284f-4325-8c67-84702849a104",
+                            "type": "Bunker2",
+                            "visualId": "bunker"
+                        },
+                        "createdOn": 1786918222197
+                    }
+                ],
+                "playerData": [
+                    {
+                        "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+                        "displayName": "Hamie",
+                        "avatarUnitId": "ultra_titus_01",
+                        "avatarFrameId": "frameAugust2026"
+                    },
+                    {
+                        "userId": "08a7e111-0193-4d88-bc27-c5124e90039e",
+                        "displayName": "RageEmitter",
+                        "avatarUnitId": "death_rotbone_01",
+                        "avatarFrameId": "frameLoyalty_tier_commissar"
+                    },
+                    {
+                        "userId": "2ca306f7-1848-4fc9-9acb-a310f217db1f",
+                        "displayName": "LogMan",
+                        "avatarUnitId": "tyran_neurothrope_01",
+                        "avatarFrameId": "frameAugust2026"
+                    },
+                    {
+                        "userId": "e911f833-b134-491f-b815-e4d33e1dbe4e",
+                        "displayName": "Altor",
+                        "avatarUnitId": "space_arjac_01",
+                        "avatarFrameId": "frameMay2026"
+                    },
+                    {
+                        "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+                        "displayName": "Blightlord",
+                        "avatarUnitId": "thous_sekhetar_01",
+                        "avatarFrameId": "frameMay2026"
+                    },
+                    {
+                        "userId": "7b7372f4-0c76-472e-bbbd-dfdf98b477d7",
+                        "displayName": "Elira",
+                        "avatarUnitId": "darka_azrael_01",
+                        "avatarFrameId": "frameMay2026"
+                    },
+                    {
+                        "userId": "c9b88058-b28d-49da-9e8d-a2c68770ac97",
+                        "displayName": "KrooterMcGavin",
+                        "avatarUnitId": "tauta_farsight_01",
+                        "avatarFrameId": "frameMythic01"
+                    },
+                    {
+                        "userId": "553c48cc-fcd5-4d34-94cd-691ecad888cc",
+                        "displayName": "Hewie",
+                        "avatarUnitId": "thous_ahriman_01",
+                        "avatarFrameId": "frameApril2026"
+                    },
+                    {
+                        "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
+                        "displayName": "BrotherBruno",
+                        "avatarUnitId": "space_wolfpriest_01",
+                        "avatarFrameId": "frameMay2026"
+                    },
+                    {
+                        "userId": "d9c3ef49-eadf-499d-ab81-d655dbcc086f",
+                        "displayName": "Chuum",
+                        "avatarUnitId": "orkss_nob_01",
+                        "avatarFrameId": "frameHolidays2025"
+                    },
+                    {
+                        "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+                        "displayName": "Sigismund",
+                        "avatarUnitId": "templ_champion_01",
+                        "avatarFrameId": "frameMay2026"
+                    },
+                    {
+                        "userId": "d63f3e75-83d4-4679-8d01-4e025716ea45",
+                        "displayName": "RedWake",
+                        "avatarUnitId": "admec_dominus_01",
+                        "avatarFrameId": "frameHalloween2025"
+                    },
+                    {
+                        "userId": "077980e3-7cb5-44ab-977e-846af676ccce",
+                        "displayName": "Nekrosor",
+                        "avatarUnitId": "necro_chronomancer_01",
+                        "avatarFrameId": "frameCrusade"
+                    },
+                    {
+                        "userId": "667d435c-4668-4676-a002-e533709f1cc6",
+                        "displayName": "Wazoid",
+                        "avatarUnitId": "space_wolfpriest_01",
+                        "avatarFrameId": "frameMay2026"
+                    },
+                    {
+                        "userId": "293f4b63-28b1-4b5e-88ee-59936eed8ddb",
+                        "displayName": "AHFakyra",
+                        "avatarUnitId": "thous_sekhetar_01",
+                        "avatarFrameId": "frameMythic01"
+                    },
+                    {
+                        "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+                        "displayName": "mycatisben",
+                        "avatarUnitId": "black_haarken_01",
+                        "avatarFrameId": "frame1yAnniversary"
+                    },
+                    {
+                        "userId": "0c261907-c335-47b6-9e22-a81f03e4064d",
+                        "displayName": "FlacidusMaximus",
+                        "avatarUnitId": "ultra_calgar_01",
+                        "avatarFrameId": "frameMythic01"
+                    },
+                    {
+                        "userId": "a736e5fd-6a0b-4137-9ec0-526345cd6e96",
+                        "displayName": "Taurbiter",
+                        "avatarUnitId": "darka_sternguard_01",
+                        "avatarFrameId": "frameAugust2026"
+                    },
+                    {
+                        "userId": "cf7b7ebf-dd25-4371-ba75-b2cb51102dde",
+                        "displayName": "SomeRandomStick",
+                        "avatarUnitId": "aelda_ranger_01",
+                        "avatarFrameId": "frameAugust2026"
+                    },
+                    {
+                        "userId": "9a9b9a9d-cbd4-4821-842c-e2c24920ae27",
+                        "displayName": "Hipponanana",
+                        "avatarUnitId": "necro_overlord_01",
+                        "avatarFrameId": "frameMythic01"
+                    },
+                    {
+                        "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+                        "displayName": "RCShadow",
+                        "avatarUnitId": "death_blightbringer_01",
+                        "avatarFrameId": "frameLoyalty_tier_commissar"
+                    },
+                    {
+                        "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+                        "displayName": "Thainakus",
+                        "avatarUnitId": "tauta_farsight_01",
+                        "avatarFrameId": "frameAugust2026"
+                    },
+                    {
+                        "userId": "b29d75a2-5540-4ded-9383-998307fa1a4a",
+                        "displayName": "Dragerz",
+                        "avatarUnitId": "emper_exultant_01_premium",
+                        "avatarFrameId": "frameDefault"
+                    },
+                    {
+                        "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+                        "displayName": "SirJib",
+                        "avatarUnitId": "aelda_maugan_01",
+                        "avatarFrameId": "frameHalloween2025"
+                    },
+                    {
+                        "userId": "5cbf0e57-6ada-44e4-9234-230be204f488",
+                        "displayName": "Hollywood666",
+                        "avatarUnitId": "black_abaddon_01",
+                        "avatarFrameId": "frameLoyalty_tier_castellan"
+                    },
+                    {
+                        "userId": "9d50010a-82f9-4db9-aa55-e292388ea749",
+                        "displayName": "ragnarok",
+                        "avatarUnitId": "blood_deathcompany_01_premium",
+                        "avatarFrameId": "frameMythic01"
+                    },
+                    {
+                        "userId": "9e4b7170-a4a4-4b28-ac57-6cd3cb8efed0",
+                        "displayName": "Jmyrez",
+                        "avatarUnitId": "blood_mephiston_01",
+                        "avatarFrameId": "frameMythic01"
+                    },
+                    {
+                        "userId": "37b3c95f-b094-43c8-95d9-695dd750e3fc",
+                        "displayName": "sabertooth12484",
+                        "avatarUnitId": "ultra_tigurius_01",
+                        "avatarFrameId": "frameAugust2026"
+                    },
+                    {
+                        "userId": "c62ee67f-0a9e-4e29-8861-320e57788e6c",
+                        "displayName": "Roxx",
+                        "avatarUnitId": "ultra_titus_01",
+                        "avatarFrameId": "frameMythic01"
+                    },
+                    {
+                        "userId": "86dc308e-8ca0-4470-ae78-ced2ef219eea",
+                        "displayName": "Dragonfang",
+                        "avatarUnitId": "custo_trajann_01",
+                        "avatarFrameId": "frameDarkAngels"
+                    }
+                ],
+                "guildData": [
+                    {
+                        "teamIndex": 1,
+                        "guildId": "16551a8e-b3b6-4093-a046-fc1e2c7cdfd5",
+                        "name": "[TW] Praetorians of Terra",
+                        "guildIcon": "emblem_4",
+                        "guildStatus": "ACTIVE"
+                    }
+                ]
+            }
+        }
+    ],
+    "state": {
+        "globalGameConfigState": {
+            "globalGameConfig": "6c041c9a70764be1a31827b1700187f0"
+        },
+        "newsfeed": {
+            "PREVIEW": "3be85bf0e3f8286ee7397160103ae58a",
+            "SNAPSHOT": "16561d863568ff22bb49a8931c258bf5"
+        }
+    }
+}
