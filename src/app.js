@@ -3600,7 +3600,6 @@ async function loadGuildData() {
   }
   try {
     await initializePortraitMapper();
-    await new Promise((resolve) => setTimeout(resolve, 5000));
     const response = await fetch(dataset.url, { cache: 'no-store' });
 
     if (!response.ok) {
