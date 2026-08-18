@@ -166,6 +166,7 @@ let battleLogPageTabsInitialized = false;
 let leaderboardLayout = 'table';
 let leaderboardLayoutInitialized = false;
 let leaderboardSort = { key: 'score', direction: 'desc' };
+let leaderboardSearch = '';
 let legendVisibilityInitialized = false;
 const legendVisibility = {
   token: {
@@ -268,49 +269,15 @@ function setupLegendVisibilityToggle() {
   const legendContainer = document.getElementById('buff-legend');
   if (!legendContainer) return;
 
-  legendContainer.addEventListener('click', (event) => {
-    const itemBtn = event.target.closest('[data-legend-item="true"]');
-    if (itemBtn) {
-      const block = itemBtn.getAttribute('data-legend-block');
-      const key = itemBtn.getAttribute('data-legend-key');
-      if (!block || !key) return;
-
-      setLegendEnabled(block, key, !isLegendEnabled(block, key));
-      rerenderLeaderboardFromLegendToggle();
-      return;
-    }
-
-    const titleBtn = event.target.closest('[data-legend-title="true"]');
-    if (!titleBtn) return;
-
-    const block = titleBtn.getAttribute('data-legend-block');
-    if (!block) return;
-
-    const keys = Array.isArray(legendBlockKeys[block]) ? legendBlockKeys[block].filter(Boolean) : [];
-    if (keys.length === 0) return;
-
-    const enabledCount = keys.reduce((count, key) => count + (isLegendEnabled(block, key) ? 1 : 0), 0);
-    const allEnabled = enabledCount === keys.length;
-    const hasMixedState = enabledCount > 0 && enabledCount < keys.length;
-    const nextEnabled = hasMixedState ? true : !allEnabled;
-
-    keys.forEach((key) => setLegendEnabled(block, key, nextEnabled));
-    rerenderLeaderboardFromLegendToggle();
+  legendContainer.setAttribute('aria-readonly', 'true');
+  legendContainer.style.pointerEvents = 'none';
+  legendContainer.querySelectorAll('*').forEach((element) => {
+    element.setAttribute('aria-disabled', 'true');
+    element.style.pointerEvents = 'none';
+    element.tabIndex = -1;
+    element.setAttribute('tabindex', '-1');
   });
-
-  const toggleButton = document.getElementById('buff-legend-mobile-toggle');
-  if (toggleButton) {
-    toggleButton.onclick = () => {
-      const panel = document.getElementById('buff-legend-mobile-panel');
-      if (!panel) return;
-
-      const shouldOpen = panel.classList.contains('hidden') || panel.hidden;
-      panel.classList.toggle('hidden', !shouldOpen);
-      panel.hidden = !shouldOpen;
-      panel.style.display = shouldOpen ? 'block' : 'none';
-      toggleButton.setAttribute('aria-expanded', String(shouldOpen));
-    };
-  }
+  return;
 }
 
 function getCoreScore(value, zoneType = null) {
@@ -3128,16 +3095,16 @@ function renderBattleLog(snapshot) {
       ? `<span class="rounded-full border border-cyan-400/40 bg-cyan-500/10 px-2 py-0.5 text-xs font-semibold uppercase tracking-wide text-cyan-200">${escapeHtml(getBattleRoleLabel(battle.battleRole))}</span>`
       : '';
     const item = document.createElement('article');
-    item.className = 'grid grid-cols-1 gap-3 rounded-xl border border-slate-500/30 bg-slate-900/50 p-3 md:grid-cols-3';
+    item.className = 'grid grid-cols-1 justify-items-center gap-3 rounded-xl border border-slate-500/30 bg-slate-900/50 p-3 text-center md:grid-cols-3 md:justify-items-stretch md:text-left';
     const attackerSideUnits = buildBattleSideUnits(battle.attackerUnits, battle.attackerMachineOfWar);
     const defenderSideUnits = buildBattleSideUnits(battle.defenderUnits, battle.defenderMachineOfWar);
     item.innerHTML = `
-      <div class="flex min-w-0 flex-col gap-2">
+      <div class="flex min-w-0 flex-col items-center gap-2 text-center md:items-start md:text-left">
         <div class="truncate font-bold text-slate-200">${escapeHtml(battle.attackerName)}</div>
         <div class="truncate text-xs font-semibold uppercase tracking-wide text-cyan-300/80">${escapeHtml(attackerGuildName)}</div>
-        <div class="flex flex-wrap gap-1.5">${renderBattleUnits(attackerSideUnits, 'attacker')}</div>
+        <div class="flex flex-wrap justify-center gap-1.5 md:justify-start">${renderBattleUnits(attackerSideUnits, 'attacker')}</div>
       </div>
-      <div class="flex min-w-28 flex-col items-start justify-center gap-1 md:items-center">
+      <div class="flex min-w-28 flex-col items-center justify-center gap-1 text-center md:items-center">
         <span class="inline-flex items-center ${stateClass}">${scoreDisplay}</span>
         ${bonusDisplay}
         <div class="flex items-center gap-2">
@@ -3147,10 +3114,10 @@ function renderBattleLog(snapshot) {
         ${roleLabel}
         ${zoneLabel}
       </div>
-      <div class="flex min-w-0 flex-col gap-2 text-left md:items-end md:text-right">
+      <div class="flex min-w-0 flex-col items-center gap-2 text-center md:items-end md:text-right">
         <div class="truncate font-bold text-slate-200">${escapeHtml(battle.defenderName)}</div>
         <div class="truncate text-xs font-semibold uppercase tracking-wide text-pink-300/80">${escapeHtml(defenderGuildName)}</div>
-        <div class="flex flex-wrap gap-1.5 md:justify-end">${renderBattleUnits(defenderSideUnits, 'defender')}</div>
+        <div class="flex flex-wrap justify-center gap-1.5 md:justify-end">${renderBattleUnits(defenderSideUnits, 'defender')}</div>
       </div>
     `;
 
@@ -3163,6 +3130,15 @@ function getLeaderboardSortValue(player, key) {
   if (key === 'average') return Number(player.averageScore ?? 0);
   if (key === 'rating') return Number(player.totalSkillRating ?? 0);
   return 0;
+}
+
+function filterLeaderboardRowsByName(rows, query) {
+  if (!Array.isArray(rows)) return [];
+
+  const searchTerm = String(query ?? '').trim().toLowerCase();
+  if (!searchTerm) return rows;
+
+  return rows.filter((player) => String(player?.name || '').toLowerCase().includes(searchTerm));
 }
 
 function sortLeaderboardRows(rows) {
@@ -3231,6 +3207,11 @@ function renderTable(snapshot) {
   updateLeaderboardSortButtons();
   const leaderboardBody = document.getElementById('leaderboard-body');
   const leaderboardCards = document.getElementById('leaderboard-cards');
+  const leaderboardSearchInput = document.getElementById('leaderboard-player-search');
+
+  if (leaderboardSearchInput && leaderboardSearchInput.value !== leaderboardSearch) {
+    leaderboardSearchInput.value = leaderboardSearch;
+  }
 
   if (!leaderboardBody) return;
 
@@ -3293,7 +3274,28 @@ function renderTable(snapshot) {
   }
 
   const summary = summarizeGuild(snapshot);
-  const rows = sortLeaderboardRows(summary.rows);
+  const rows = sortLeaderboardRows(filterLeaderboardRowsByName(summary.rows, leaderboardSearch));
+
+  if (!rows.length) {
+    const emptyMessage = leaderboardSearch ? `No players match “${escapeHtml(leaderboardSearch)}”.` : 'No players available.';
+    leaderboardBody.innerHTML = `
+      <tr>
+        <td colspan="14" class="px-4 py-10 text-center text-sm text-slate-400">
+          ${emptyMessage}
+        </td>
+      </tr>
+    `;
+
+    if (leaderboardCards) {
+      leaderboardCards.innerHTML = `
+        <div class="rounded-xl border border-slate-700/60 bg-slate-900/50 p-6 text-center text-sm text-slate-400">
+          ${emptyMessage}
+        </div>
+      `;
+    }
+
+    return;
+  }
 
   const getTokenVisual = (token) => {
     const tokenScore = Number(token.score || 0);
@@ -3492,9 +3494,9 @@ function renderBuffLegend(snapshot) {
   if (legendFilterLoading && !snapshot) {
     legendContainer.innerHTML = `
       <div class="flex flex-wrap items-start justify-start gap-3">
-        <button id="buff-legend-mobile-toggle" type="button" aria-expanded="false" aria-disabled="true" class="buff-legend-mobile-toggle inline-flex min-h-[2.25rem] items-center justify-center rounded-md border border-cyan-400 bg-cyan-500/15 px-3 py-2 text-sm font-semibold leading-4 text-cyan-200 opacity-80 md:hidden" disabled>
+        <div class="flex min-h-[2.25rem] items-center justify-center rounded-md border border-slate-400/20 bg-slate-900/35 px-3 py-2">
           <span class="block h-4 w-16 animate-pulse rounded-full bg-slate-700/70"></span>
-        </button>
+        </div>
       </div>
     `;
     setupLegendVisibilityToggle();
@@ -3502,8 +3504,8 @@ function renderBuffLegend(snapshot) {
   }
 
   legendBlockKeys = {
-    token: ['win', 'defeat', 'abandoned', 'cleanup', 'easy-game'],
-    scoreTier: ['bronze', 'silver', 'gold'],
+    token: ['abandoned', 'cleanup', 'easy-game'],
+    scoreTier: [],
     buff: []
   };
 
@@ -3533,64 +3535,25 @@ function renderBuffLegend(snapshot) {
   });
 
   const pillClasses = (enabled) => `inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-slate-400/20 bg-slate-900/60 px-2 py-1 text-sm transition ${enabled ? 'text-blue-100 hover:border-cyan-300/50 hover:bg-slate-900/80' : 'text-slate-400 opacity-45 grayscale saturate-50 hover:opacity-70'}`;
-  const titleClasses = (block) => {
-    const keys = legendBlockKeys[block] || [];
-    const enabledCount = keys.reduce((count, key) => count + (isLegendEnabled(block, key) ? 1 : 0), 0);
-    const hasMixed = enabledCount > 0 && enabledCount < keys.length;
-    const isOn = keys.length > 0 && enabledCount === keys.length;
-    if (hasMixed) return 'inline-flex min-w-20 items-center text-xs font-bold uppercase tracking-widest text-amber-300';
-    if (isOn) return 'inline-flex min-w-20 items-center text-xs font-bold uppercase tracking-widest text-cyan-300';
-    return 'inline-flex min-w-20 items-center text-xs font-bold uppercase tracking-widest text-slate-400';
-  };
 
   const makeItem = ({ block, key, iconHtml, label }) => {
     const enabled = isLegendEnabled(block, key);
-    return `<button type="button" data-legend-item="true" data-legend-block="${block}" data-legend-key="${key}" class="${pillClasses(enabled)}"><span class="inline-flex h-5 w-5 items-center justify-center">${iconHtml}</span><span class="font-semibold">${escapeHtml(label)}</span></button>`;
+    return `<span data-legend-item="false" data-legend-block="${block}" data-legend-key="${key}" class="${pillClasses(enabled)} cursor-default select-none pointer-events-none" aria-disabled="true"><span class="inline-flex h-5 w-5 items-center justify-center">${iconHtml}</span><span class="font-semibold">${escapeHtml(label)}</span></span>`;
   };
 
   const tokenItems = [
-    makeItem({ block: 'token', key: 'win', iconHtml: '🟩', label: 'Win' }),
-    makeItem({ block: 'token', key: 'defeat', iconHtml: '🟥', label: 'Defeat' }),
-    makeItem({ block: 'token', key: 'abandoned', iconHtml: '⬜', label: 'Unused' }),
+    makeItem({ block: 'token', key: 'abandoned', iconHtml: '⬜', label: 'Abandoned' }),
     makeItem({ block: 'token', key: 'cleanup', iconHtml: '🧹', label: 'Cleanup' }),
-    makeItem({ block: 'token', key: 'easy-game', iconHtml: '<span class="inline-flex h-2.5 w-2.5 rounded-full border border-red-500 bg-black"></span>', label: 'Easy game' })
+    makeItem({ block: 'token', key: 'easy-game', iconHtml: '<span class="inline-flex h-2.5 w-2.5 rounded-full border border-red-500 bg-black"></span>', label: 'NPC' })
   ];
 
-  const scoreTierItems = [
-    makeItem({ block: 'scoreTier', key: 'bronze', iconHtml: '<span class="inline-flex h-3 w-3 rounded-sm border border-slate-700 bg-slate-900 outline outline-2 outline-offset-1 outline-amber-700"></span>', label: 'Bronze' }),
-    makeItem({ block: 'scoreTier', key: 'silver', iconHtml: '<span class="inline-flex h-3 w-3 rounded-sm border border-slate-700 bg-slate-900 outline outline-2 outline-offset-1 outline-zinc-300"></span>', label: 'Silver' }),
-    makeItem({ block: 'scoreTier', key: 'gold', iconHtml: '<span class="inline-flex h-3 w-3 rounded-sm border border-slate-700 bg-slate-900 outline outline-2 outline-offset-1 outline-amber-400"></span>', label: 'Gold' })
-  ];
-
-  const buffItems = buffLegendEntries.map(({ name, color, key }) => makeItem({
-    block: 'buff',
-    key,
-    iconHtml: `<span class="inline-block h-3 w-3 rounded-full border border-white/10" style="background:${color}"></span>`,
-    label: name
-  }));
-
-  const filterPanelMarkup = `
-    <div class="flex flex-wrap items-start justify-start gap-2">
-      <div class="flex grow-0 shrink-0 flex-wrap items-center gap-3 rounded-xl border border-slate-400/20 bg-slate-900/35 px-3 py-2">
-        <button type="button" data-legend-title="true" data-legend-block="token" class="${titleClasses('token')}">Token</button>
-        <div class="flex flex-wrap items-center gap-2">${tokenItems.join('')}</div>
-      </div>
-      <div class="flex grow-0 shrink-0 flex-wrap items-center gap-3 rounded-xl border border-slate-400/20 bg-slate-900/35 px-3 py-2">
-        <button type="button" data-legend-title="true" data-legend-block="scoreTier" class="${titleClasses('scoreTier')}">Score</button>
-        <div class="flex flex-wrap items-center gap-2">${scoreTierItems.join('')}</div>
-      </div>
-    </div>
-  `;
+  const legendMarkup = [
+    ...tokenItems
+  ].join('');
 
   legendContainer.innerHTML = `
-    <div class="flex flex-wrap items-start justify-start gap-3">
-      <div class="buff-legend-desktop hidden md:block">${filterPanelMarkup}</div>
-      <button id="buff-legend-mobile-toggle" type="button" aria-expanded="false" class="buff-legend-mobile-toggle inline-flex min-h-[2.25rem] items-center justify-center rounded-md border border-cyan-400 bg-cyan-500/15 px-3 py-2 text-sm font-semibold leading-4 text-cyan-200 md:hidden">
-        Filters
-      </button>
-      <div id="buff-legend-mobile-panel" class="buff-legend-mobile-panel hidden w-full rounded-xl border border-slate-400/20 bg-slate-900/35 p-3 md:hidden">
-        ${filterPanelMarkup}
-      </div>
+    <div class="flex flex-wrap items-center justify-start gap-2" aria-readonly="true">
+      ${legendMarkup}
     </div>
   `;
 
@@ -3619,6 +3582,7 @@ async function loadGuildData() {
   renderDatasetTabs();
   setupLeaderboardLayoutToggle();
   setupLeaderboardSortButtons();
+  setupLeaderboardSearch();
   setupLegendVisibilityToggle();
   setupBattleLogFilters();
 
@@ -3690,6 +3654,20 @@ if (typeof document !== 'undefined') {
   }
 }
 
+function setupLeaderboardSearch() {
+  const searchInput = document.getElementById('leaderboard-player-search');
+  if (!searchInput) return;
+
+  searchInput.value = leaderboardSearch;
+  searchInput.addEventListener('input', (event) => {
+    leaderboardSearch = String(event.target.value || '').trim();
+    const currentSnapshot = guildSnapshots[activeGuildIndex];
+    if (currentSnapshot) {
+      renderTable(currentSnapshot);
+    }
+  });
+}
+
 if (typeof module !== 'undefined') {
-  module.exports = { shouldDisplayCurrentDataset, isEasyGameBattle, buildSnapshot, getCoreScore, isLegendEnabled, getEasyGameBadgeHtml };
+  module.exports = { shouldDisplayCurrentDataset, isEasyGameBattle, buildSnapshot, getCoreScore, isLegendEnabled, getEasyGameBadgeHtml, filterLeaderboardRowsByName };
 }

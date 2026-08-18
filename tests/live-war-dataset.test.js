@@ -1,7 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 
-const { shouldDisplayCurrentDataset, isEasyGameBattle, buildSnapshot, getCoreScore, getEasyGameBadgeHtml } = require('../src/app.js');
+const { shouldDisplayCurrentDataset, isEasyGameBattle, buildSnapshot, getCoreScore, getEasyGameBadgeHtml, filterLeaderboardRowsByName } = require('../src/app.js');
 
 test('shows a populated live-war payload', () => {
   const payload = {
@@ -145,4 +145,17 @@ test('adds a building icon when an easy game also won a tile score', () => {
 
   assert.match(html, /🏢/);
   assert.match(html, /Easy game/);
+});
+
+test('filters leaderboard rows by player name using a case-insensitive match', () => {
+  const rows = [
+    { name: 'Alice', totalScore: 100 },
+    { name: 'Bob', totalScore: 200 },
+    { name: 'Charlie', totalScore: 300 }
+  ];
+
+  assert.deepEqual(filterLeaderboardRowsByName(rows, 'ali'), [{ name: 'Alice', totalScore: 100 }]);
+  assert.deepEqual(filterLeaderboardRowsByName(rows, 'BOB'), [{ name: 'Bob', totalScore: 200 }]);
+  assert.deepEqual(filterLeaderboardRowsByName(rows, 'z'), []);
+  assert.deepEqual(filterLeaderboardRowsByName(rows, ''), rows);
 });

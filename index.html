@@ -29,13 +29,13 @@
             <li>
               <a href="guild-wars.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Guild Wars</a>
             </li>
-            <li>
+            <li data-prod-hidden>
               <a href="guild-teams.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Guild Teams</a>
             </li>
             <li>
               <a href="battle-log.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Battle Log</a>
             </li>
-            <li>
+            <li data-prod-hidden>
               <a href="player-page.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Player Stats</a>
             </li>
           </ul>
@@ -53,11 +53,70 @@
           </div>
         </header>
       </section>
+
+      <section aria-label="Application pages" class="w-full">
+        <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <a href="guild-wars.html" class="group rounded-2xl border border-cyan-400/25 bg-slate-900/80 p-4 shadow-lg shadow-cyan-500/10 transition hover:border-cyan-300/60 hover:bg-slate-900">
+            <div class="mb-3 flex items-center justify-between">
+              <span class="rounded-full border border-cyan-400/35 bg-cyan-500/10 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-cyan-200">Guild</span>
+              <span class="text-lg">⚔️</span>
+            </div>
+            <h3 class="text-lg font-bold text-white">Guild Wars</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-300">Compare player performance, track token use, and review guild projections.</p>
+          </a>
+
+          <a href="guild-teams.html" data-prod-hidden class="group rounded-2xl border border-violet-400/25 bg-slate-900/80 p-4 shadow-lg shadow-violet-500/10 transition hover:border-violet-300/60 hover:bg-slate-900">
+            <div class="mb-3 flex items-center justify-between">
+              <span class="rounded-full border border-violet-400/35 bg-violet-500/10 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-violet-200">Teams</span>
+              <span class="text-lg">🛡️</span>
+            </div>
+            <h3 class="text-lg font-bold text-white">Guild Teams</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-300">Review team compositions and see which squads are being used most effectively.</p>
+          </a>
+
+          <a href="battle-log.html" class="group rounded-2xl border border-emerald-400/25 bg-slate-900/80 p-4 shadow-lg shadow-emerald-500/10 transition hover:border-emerald-300/60 hover:bg-slate-900">
+            <div class="mb-3 flex items-center justify-between">
+              <span class="rounded-full border border-emerald-400/35 bg-emerald-500/10 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-200">Log</span>
+              <span class="text-lg">📜</span>
+            </div>
+            <h3 class="text-lg font-bold text-white">Battle Log</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-300">Inspect completed matches, score outcomes, cleanup events, and tile details.</p>
+          </a>
+
+          <a href="player-page.html" data-prod-hidden class="group rounded-2xl border border-amber-400/25 bg-slate-900/80 p-4 shadow-lg shadow-amber-500/10 transition hover:border-amber-300/60 hover:bg-slate-900">
+            <div class="mb-3 flex items-center justify-between">
+              <span class="rounded-full border border-amber-400/35 bg-amber-500/10 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-amber-200">Stats</span>
+              <span class="text-lg">📊</span>
+            </div>
+            <h3 class="text-lg font-bold text-white">Player Stats</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-300">Drill into a player’s token history, output, and record over time.</p>
+          </a>
+        </div>
+      </section>
         </div>
       </div>
     </div>
     <script>
+      const isLocalDevelopmentHost = () => {
+        const hostname = (window.location.hostname || '').toLowerCase();
+        return !hostname || hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '::1';
+      };
+
+      const enforceProductionVisibility = () => {
+        const shouldHide = !isLocalDevelopmentHost();
+        document.querySelectorAll('[data-prod-hidden]').forEach((element) => {
+          element.hidden = shouldHide;
+          if (shouldHide) {
+            element.setAttribute('aria-hidden', 'true');
+          } else {
+            element.removeAttribute('aria-hidden');
+          }
+        });
+      };
+
       document.addEventListener('DOMContentLoaded', () => {
+        enforceProductionVisibility();
+
         const overlay = document.getElementById('mobile-nav-overlay') || (() => {
           const el = document.createElement('div');
           el.id = 'mobile-nav-overlay';

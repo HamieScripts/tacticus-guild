@@ -117,68 +117,12 @@ body > .site-shell {
     width: 100%;
   }
 
-  .buff-legend-mobile-toggle {
-    display: inline-flex !important;
-  }
-
   #mobile-nav-overlay {
     display: none;
   }
 
   #mobile-nav-overlay.is-visible {
     display: block;
-  }
-
-  .buff-legend-mobile-panel {
-    display: block;
-    overflow: hidden;
-  }
-
-  .buff-legend-mobile-panel.hidden {
-    display: none;
-  }
-
-  .buff-legend-mobile-panel > div {
-    width: 100%;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-  }
-
-  .buff-legend-mobile-panel > div > div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    min-width: 0;
-    gap: 0.45rem;
-  }
-
-  .buff-legend-mobile-panel > div > div > [data-legend-title="true"] {
-    width: fit-content;
-    max-width: 100%;
-    flex-shrink: 0;
-  }
-
-  .buff-legend-mobile-panel > div > div > div:last-of-type {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    width: 100%;
-    min-width: 0;
-  }
-
-  .buff-legend-mobile-panel [data-legend-item="true"] {
-    flex: 1 1 calc(50% - 0.4rem);
-    min-width: 0;
-    max-width: none;
-    white-space: normal !important;
-    justify-content: flex-start;
-    line-height: 1.2;
-  }
-
-  .buff-legend-mobile-panel [data-legend-item="true"] span:last-child {
-    white-space: normal;
   }
 
   html {

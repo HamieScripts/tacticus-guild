@@ -29,7 +29,7 @@
             <li>
               <a href="guild-wars.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Guild Wars</a>
             </li>
-            <li>
+            <li data-prod-hidden>
               <a href="guild-teams.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Guild Teams</a>
             </li>
             <li>
@@ -76,7 +76,30 @@
     <script src="src/consts/score-splitter.js"></script>
     <script src="src/player-page.js"></script>
     <script>
+      const isLocalDevelopmentHost = () => {
+        const hostname = (window.location.hostname || '').toLowerCase();
+        return !hostname || hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '::1';
+      };
+
+      const enforceProductionVisibility = () => {
+        const shouldHide = !isLocalDevelopmentHost();
+        document.querySelectorAll('[data-prod-hidden]').forEach((element) => {
+          element.hidden = shouldHide;
+          if (shouldHide) {
+            element.setAttribute('aria-hidden', 'true');
+          } else {
+            element.removeAttribute('aria-hidden');
+          }
+        });
+
+        if (shouldHide && /player-page\.html$/i.test(window.location.pathname)) {
+          window.location.replace('index.html');
+        }
+      };
+
       document.addEventListener('DOMContentLoaded', () => {
+        enforceProductionVisibility();
+
         const menuButtons = document.querySelectorAll('.site-header-menu-button');
         menuButtons.forEach((button) => {
           const nav = document.getElementById(button.getAttribute('aria-controls'));
