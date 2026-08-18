@@ -144,14 +144,27 @@
     <script src="src/guild-teams.js"></script>
     <script>
       const isLocalDevelopmentHost = () => {
-        const hostname = (window.location.hostname || '').toLowerCase();
-        return !hostname || hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '::1';
+        const host = (window.location.hostname || '').toLowerCase();
+        const protocol = (window.location.protocol || '').toLowerCase();
+
+        if (protocol === 'file:') {
+          return true;
+        }
+
+        return !host
+          || host === 'localhost'
+          || host === '127.0.0.1'
+          || host === '::1'
+          || host === '[::1]'
+          || host === '0.0.0.0'
+          || host.endsWith('.local');
       };
 
       const enforceProductionVisibility = () => {
         const shouldHide = !isLocalDevelopmentHost();
         document.querySelectorAll('[data-prod-hidden]').forEach((element) => {
           element.hidden = shouldHide;
+          element.style.display = shouldHide ? 'none' : '';
           if (shouldHide) {
             element.setAttribute('aria-hidden', 'true');
           } else {
