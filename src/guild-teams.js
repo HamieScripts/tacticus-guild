@@ -211,7 +211,8 @@ async function loadBattleLogsData() {
   let datasets = fallbackDatasets;
 
   try {
-    const manifestResponse = await fetch('./data/dataset-manifest.json', { cache: 'no-store' });
+    const manifestUrl = await getDatasetManifestUrl();
+    const manifestResponse = await fetch(manifestUrl, { cache: 'no-store' });
     if (manifestResponse.ok) {
       const manifest = await manifestResponse.json();
       const rawDatasets = Array.isArray(manifest)

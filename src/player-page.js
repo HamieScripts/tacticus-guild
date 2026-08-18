@@ -63,9 +63,30 @@ function getLatestActivityTimestamp(eventResponseData) {
   return maxTimestamp > 0 ? maxTimestamp : null;
 }
 
+async function getDatasetManifestUrl() {
+  let hashValue = '';
+
+  try {
+    const hashResponse = await fetch('./data/dataset-manifest.hash', { cache: 'no-store' });
+    if (hashResponse.ok) {
+      hashValue = (await hashResponse.text()).trim();
+    }
+  } catch (error) {
+    hashValue = '';
+  }
+
+  const url = new URL('./data/dataset-manifest.json', window.location.href);
+  if (hashValue) {
+    url.searchParams.set('v', hashValue);
+  }
+
+  return url.toString();
+}
+
 async function loadDatasetManifest() {
   try {
-    const response = await fetch('./data/dataset-manifest.json', { cache: 'no-store' });
+    const manifestUrl = await getDatasetManifestUrl();
+    const response = await fetch(manifestUrl, { cache: 'no-store' });
     if (!response.ok) {
       return [
         {

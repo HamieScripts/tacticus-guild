@@ -30,7 +30,13 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Generate dataset manifest
-        run: npm run generate:datasets
+        env:
+          GITHUB_SHA: ${{ github.sha }}
+        run: |
+          npm run generate:datasets
+          echo "Published manifest cache hash: $(cat data/dataset-manifest.hash)"
+          echo "War list:"
+          node -e "const manifest=require('./data/dataset-manifest.json'); console.log(manifest.datasets.map((d) => d.label).join('\n'));"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

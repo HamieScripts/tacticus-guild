@@ -65,11 +65,32 @@ function shouldDisplayCurrentDataset(data) {
   return Object.keys(data).length > 0;
 }
 
+async function getDatasetManifestUrl() {
+  let hashValue = '';
+
+  try {
+    const hashResponse = await fetch('./data/dataset-manifest.hash', { cache: 'no-store' });
+    if (hashResponse.ok) {
+      hashValue = (await hashResponse.text()).trim();
+    }
+  } catch (error) {
+    hashValue = '';
+  }
+
+  const url = new URL('./data/dataset-manifest.json', window.location.href);
+  if (hashValue) {
+    url.searchParams.set('v', hashValue);
+  }
+
+  return url.toString();
+}
+
 async function loadDatasetManifest() {
   if (datasetsLoaded) return;
 
   try {
-    const response = await fetch('./data/dataset-manifest.json', { cache: 'no-store' });
+    const manifestUrl = await getDatasetManifestUrl();
+    const response = await fetch(manifestUrl, { cache: 'no-store' });
     if (response.ok) {
       const manifest = await response.json();
       const normalized = normalizeDatasets(manifest?.datasets);
