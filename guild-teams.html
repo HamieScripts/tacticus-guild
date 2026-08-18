@@ -5,46 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Praetorians of Terra - Guild Teams</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="src/mobile-responsive.css" />
   </head>
-  <body class="h-screen overflow-hidden bg-slate-950 text-slate-100">
-    <div class="mx-auto flex h-full max-w-none flex-col px-4 py-4 sm:px-6 lg:px-8">
-      <header class="rounded-3xl border border-cyan-400/20 bg-slate-900/80 p-6 shadow-2xl shadow-cyan-500/10">
-        <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+  <body class="min-h-screen overflow-x-hidden bg-slate-950 text-slate-100">
+    <div class="site-shell mx-auto flex min-h-screen max-w-none flex-col px-4 py-4 sm:px-6 lg:px-8">
+      <header class="site-header rounded-3xl border border-cyan-400/20 bg-slate-900/80 p-6 shadow-2xl shadow-cyan-500/10">
+        <div class="site-header-bar flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <h1 class="text-2xl font-black sm:text-3xl">Praetorians of Terra</h1>
-          <nav aria-label="Primary">
-            <ul class="flex flex-wrap items-center gap-2">
-              <li>
-                <a href="index.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Home</a>
-              </li>
-              <li>
-                <a href="guild-wars.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Guild Wars</a>
-              </li>
-              <li>
-                <a href="guild-teams.html" aria-current="page" class="inline-flex rounded-lg border border-cyan-400/70 bg-cyan-500/15 px-4 py-2 text-sm font-semibold text-cyan-200">Guild Teams</a>
-              </li>
-              <li>
-                <a href="battle-log.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Battle Log</a>
-              </li>
-              <li>
-                <a href="player-page.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Player Stats</a>
-              </li>
-            </ul>
-          </nav>
+          <button type="button" class="site-header-menu-button inline-flex items-center justify-center rounded-lg border border-slate-600/80 bg-slate-900/80 p-2 text-slate-100 md:hidden" aria-label="Toggle navigation" aria-controls="primary-nav" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="flex h-5 w-5 flex-col items-center justify-center gap-1.5">
+              <span class="block h-0.5 w-5 rounded-full bg-current"></span>
+              <span class="block h-0.5 w-5 rounded-full bg-current"></span>
+              <span class="block h-0.5 w-5 rounded-full bg-current"></span>
+            </span>
+          </button>
         </div>
+        <nav id="primary-nav" aria-label="Primary" class="site-header-nav mt-3 md:mt-0">
+          <ul class="flex flex-wrap items-center gap-2 md:flex-row">
+            <li>
+              <a href="index.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Home</a>
+            </li>
+            <li>
+              <a href="guild-wars.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Guild Wars</a>
+            </li>
+            <li>
+              <a href="guild-teams.html" aria-current="page" class="inline-flex rounded-lg border border-cyan-400/70 bg-cyan-500/15 px-4 py-2 text-sm font-semibold text-cyan-200">Guild Teams</a>
+            </li>
+            <li>
+              <a href="battle-log.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Battle Log</a>
+            </li>
+            <li>
+              <a href="player-page.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Player Stats</a>
+            </li>
+          </ul>
+        </nav>
       </header>
 
-      <div class="mt-6 flex-1 min-h-0 overflow-y-auto">
+      <div class="site-scroll mt-6 flex-1 min-h-0 overflow-y-auto">
         <div class="flex flex-col gap-6 pb-6">
 
-      <page-overview
-        title="Guild Teams Overview"
-        description="Explore recommended team compositions and use the builder to organize attack and defense lineups for your guild.">
-      </page-overview>
+      <section aria-labelledby="overview-heading" class="w-full">
+        <header class="py-1">
+          <div class="w-full">
+            <h2 id="overview-heading" class="text-xl font-bold leading-tight text-cyan-100 sm:text-2xl">Guild Teams Overview</h2>
+            <p class="mt-1 text-sm leading-relaxed text-slate-300 sm:text-base">Explore recommended team compositions and use the builder to organize attack and defense lineups for your guild.</p>
+          </div>
+        </header>
+      </section>
 
       <main class="grid gap-4 xl:grid-cols-12">
         <section class="xl:col-span-12">
           <div class="rounded-xl border border-slate-800 bg-slate-900/70 shadow-2xl shadow-black/25">
-            <div class="flex border-b border-slate-700">
+            <div class="tab-strip flex flex-wrap border-b border-slate-700">
               <button id="tab-btn-library" type="button" class="border-b-2 border-cyan-400 px-5 py-3 text-sm font-semibold text-cyan-300 transition-colors hover:text-slate-100">Library</button>
               <button id="tab-btn-team-builder" type="button" class="border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100">Team Builder</button>
               <button id="tab-btn-library-builder" type="button" class="border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100">Library Builder</button>
@@ -128,7 +141,19 @@
       </div>
     </div>
 
-    <script type="module" src="src/components/page-overview.js"></script>
     <script src="src/guild-teams.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const menuButtons = document.querySelectorAll('.site-header-menu-button');
+        menuButtons.forEach((button) => {
+          const nav = document.getElementById(button.getAttribute('aria-controls'));
+          if (!nav) return;
+          button.addEventListener('click', () => {
+            const isOpen = nav.classList.toggle('is-open');
+            button.setAttribute('aria-expanded', String(isOpen));
+          });
+        });
+      });
+    </script>
   </body>
 </html>

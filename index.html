@@ -5,44 +5,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Praetorians of Terra</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="src/mobile-responsive.css" />
   </head>
-  <body class="h-screen overflow-hidden bg-slate-950 text-slate-100">
-    <div class="mx-auto flex h-full max-w-none flex-col px-4 py-4 sm:px-6 lg:px-8">
-      <header class="rounded-3xl border border-cyan-400/20 bg-slate-900/80 p-6 shadow-2xl shadow-cyan-500/10">
-        <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+  <body class="min-h-screen overflow-x-hidden bg-slate-950 text-slate-100">
+    <div class="site-shell mx-auto flex min-h-screen max-w-none flex-col px-4 py-4 sm:px-6 lg:px-8">
+      <header class="site-header rounded-3xl border border-cyan-400/20 bg-slate-900/80 p-6 shadow-2xl shadow-cyan-500/10">
+        <div class="site-header-bar flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <h1 class="text-2xl font-black sm:text-3xl">Praetorians of Terra</h1>
-          <nav aria-label="Primary">
-            <ul class="flex flex-wrap items-center gap-2">
-              <li>
-                <a href="index.html" aria-current="page" class="inline-flex rounded-lg border border-cyan-400/70 bg-cyan-500/15 px-4 py-2 text-sm font-semibold text-cyan-200">Home</a>
-              </li>
-              <li>
-                <a href="guild-wars.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Guild Wars</a>
-              </li>
-              <li>
-                <a href="guild-teams.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Guild Teams</a>
-              </li>
-              <li>
-                <a href="battle-log.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Battle Log</a>
-              </li>
-              <li>
-                <a href="player-page.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Player Stats</a>
-              </li>
-            </ul>
-          </nav>
+          <button type="button" class="site-header-menu-button inline-flex items-center justify-center rounded-lg border border-slate-600/80 bg-slate-900/80 p-2 text-slate-100 md:hidden" aria-label="Toggle navigation" aria-controls="primary-nav" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="flex h-5 w-5 flex-col items-center justify-center gap-1.5">
+              <span class="block h-0.5 w-5 rounded-full bg-current"></span>
+              <span class="block h-0.5 w-5 rounded-full bg-current"></span>
+              <span class="block h-0.5 w-5 rounded-full bg-current"></span>
+            </span>
+          </button>
         </div>
+        <nav id="primary-nav" aria-label="Primary" class="site-header-nav mt-3 md:mt-0">
+          <ul class="flex flex-wrap items-center gap-2 md:flex-row">
+            <li>
+              <a href="index.html" aria-current="page" class="inline-flex rounded-lg border border-cyan-400/70 bg-cyan-500/15 px-4 py-2 text-sm font-semibold text-cyan-200">Home</a>
+            </li>
+            <li>
+              <a href="guild-wars.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Guild Wars</a>
+            </li>
+            <li>
+              <a href="guild-teams.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Guild Teams</a>
+            </li>
+            <li>
+              <a href="battle-log.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Battle Log</a>
+            </li>
+            <li>
+              <a href="player-page.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Player Stats</a>
+            </li>
+          </ul>
+        </nav>
       </header>
 
-      <div class="mt-6 flex-1 min-h-0 overflow-y-auto">
+      <div class="site-scroll mt-6 flex-1 min-h-0 overflow-y-auto">
         <div class="flex flex-col gap-6 pb-6">
 
-      <page-overview
-        title="Guild Operations Overview"
-        description="Use this workspace to track guild war performance, review battle history, and plan team compositions in one consistent interface.">
-      </page-overview>
+      <section aria-labelledby="overview-heading" class="w-full">
+        <header class="py-1">
+          <div class="w-full">
+            <h2 id="overview-heading" class="text-xl font-bold leading-tight text-cyan-100 sm:text-2xl">Guild Operations Overview</h2>
+            <p class="mt-1 text-sm leading-relaxed text-slate-300 sm:text-base">Use this workspace to track guild war performance, review battle history, and plan team compositions in one consistent interface.</p>
+          </div>
+        </header>
+      </section>
         </div>
       </div>
     </div>
-    <script type="module" src="src/components/page-overview.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const overlay = document.getElementById('mobile-nav-overlay') || (() => {
+          const el = document.createElement('div');
+          el.id = 'mobile-nav-overlay';
+          el.className = 'fixed inset-0 z-50 hidden bg-slate-950/60 md:hidden';
+          document.body.appendChild(el);
+          return el;
+        })();
+
+        const closeMenu = () => {
+          document.querySelectorAll('.site-header-menu-button').forEach((button) => {
+            button.setAttribute('aria-expanded', 'false');
+          });
+          document.querySelectorAll('.site-header-nav').forEach((nav) => {
+            nav.classList.remove('is-open');
+          });
+          overlay.classList.add('hidden');
+          overlay.classList.remove('is-visible');
+        };
+
+        const openMenu = () => {
+          document.querySelectorAll('.site-header-nav').forEach((nav) => {
+            nav.classList.add('is-open');
+          });
+          overlay.classList.remove('hidden');
+          overlay.classList.add('is-visible');
+          document.querySelectorAll('.site-header-menu-button').forEach((button) => {
+            button.setAttribute('aria-expanded', 'true');
+          });
+        };
+
+        const menuButtons = document.querySelectorAll('.site-header-menu-button');
+        menuButtons.forEach((button) => {
+          const nav = document.getElementById(button.getAttribute('aria-controls'));
+          if (!nav) return;
+          button.addEventListener('click', (event) => {
+            event.stopPropagation();
+            const isOpen = nav.classList.contains('is-open');
+            if (isOpen) {
+              closeMenu();
+            } else {
+              openMenu();
+            }
+          });
+        });
+
+        overlay.addEventListener('click', closeMenu);
+        document.addEventListener('click', (event) => {
+          const clickedInsideMenu = event.target.closest('.site-header-nav');
+          const clickedButton = event.target.closest('.site-header-menu-button');
+          if (!clickedInsideMenu && !clickedButton && document.querySelector('.site-header-nav.is-open')) {
+            closeMenu();
+          }
+        });
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') closeMenu();
+        });
+      });
+    </script>
   </body>
 </html>

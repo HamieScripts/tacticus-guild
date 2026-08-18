@@ -1,0 +1,335 @@
+:root {
+  color-scheme: dark;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body > .site-shell {
+  min-height: 100vh;
+  height: 100vh;
+}
+
+.site-scroll {
+  flex: 1 1 auto;
+  height: 100%;
+  max-height: 100%;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+.table-scroll,
+.overflow-x-auto,
+.chart-panel {
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 640px) {
+  .site-header {
+    position: relative;
+    width: 100%;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding-top: 0 !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+
+  .site-header-bar {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 0.75rem !important;
+    min-height: 2.5rem !important;
+  }
+
+  .site-header-bar > * {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .site-header h1 {
+    display: flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    height: 100% !important;
+  }
+
+  .site-header-menu-button {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+    margin-left: auto !important;
+    height: 2.5rem !important;
+    width: 2.5rem !important;
+  }
+
+  .site-header-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 60;
+    width: min(82vw, 320px);
+    margin-top: 0;
+    padding: 1rem 1rem 1rem;
+    background: rgba(15, 23, 42, 0.98);
+    border-left: 1px solid rgba(148, 163, 184, 0.2);
+    box-shadow: -12px 0 30px rgba(2, 6, 23, 0.6);
+    transform: translateX(105%);
+    transition: transform 0.2s ease-in-out;
+    pointer-events: none;
+  }
+
+  .site-header-nav.is-open {
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+
+  .site-header-nav ul {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .site-header-nav li,
+  .site-header-nav a {
+    width: 100%;
+  }
+
+  .site-header-nav a {
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .buff-legend-mobile-toggle {
+    display: inline-flex !important;
+  }
+
+  #mobile-nav-overlay {
+    display: none;
+  }
+
+  #mobile-nav-overlay.is-visible {
+    display: block;
+  }
+
+  .buff-legend-mobile-panel {
+    display: block;
+    overflow: hidden;
+  }
+
+  .buff-legend-mobile-panel.hidden {
+    display: none;
+  }
+
+  .buff-legend-mobile-panel > div {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .buff-legend-mobile-panel > div > div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+    gap: 0.45rem;
+  }
+
+  .buff-legend-mobile-panel > div > div > [data-legend-title="true"] {
+    width: fit-content;
+    max-width: 100%;
+    flex-shrink: 0;
+  }
+
+  .buff-legend-mobile-panel > div > div > div:last-of-type {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .buff-legend-mobile-panel [data-legend-item="true"] {
+    flex: 1 1 calc(50% - 0.4rem);
+    min-width: 0;
+    max-width: none;
+    white-space: normal !important;
+    justify-content: flex-start;
+    line-height: 1.2;
+  }
+
+  .buff-legend-mobile-panel [data-legend-item="true"] span:last-child {
+    white-space: normal;
+  }
+
+  html {
+    font-size: 15px;
+  }
+
+  body {
+    overflow-y: auto;
+  }
+
+  .site-shell {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .site-shell > header,
+  header {
+    padding: 1rem !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+  }
+
+  .site-scroll {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+
+  .site-shell .rounded-3xl,
+  .site-shell .rounded-2xl,
+  .site-shell .rounded-xl,
+  .site-shell .rounded-lg {
+    border-radius: 0 !important;
+  }
+
+  nav ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-content: center;
+  }
+
+  nav li {
+    width: 100%;
+  }
+
+  nav a {
+    width: 100%;
+    justify-content: center;
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+    font-size: 0.72rem !important;
+  }
+
+  .tab-strip {
+    overflow-x: auto;
+    flex-wrap: nowrap !important;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .tab-strip::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab-strip > button {
+    flex: 1 0 auto;
+    white-space: nowrap;
+    min-width: 7.5rem;
+  }
+
+  #battle-filter-result-group,
+  #battle-filter-cleanup-group,
+  #battle-filter-mode-group,
+  #guild-tabs,
+  #team-type-filter {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 0.35rem;
+  }
+
+  #battle-filter-result-group > button,
+  #battle-filter-cleanup-group > button,
+  #battle-filter-mode-group > button,
+  #guild-tabs > button,
+  #team-type-filter > button {
+    flex: 1 1 calc(33.333% - 0.35rem);
+    min-width: 0;
+  }
+
+  select,
+  input,
+  textarea,
+  button {
+    font-size: 1rem;
+  }
+
+  #player-chart,
+  #guild-performance-chart {
+    min-width: 680px;
+  }
+}
+
+@media (min-width: 641px) {
+  .site-header-menu-button {
+    display: none !important;
+  }
+
+  .site-header-nav {
+    position: static !important;
+    display: block !important;
+    width: auto !important;
+    margin-top: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border-left: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+    pointer-events: auto !important;
+  }
+
+  .site-header-nav ul {
+    display: flex !important;
+    flex-direction: row !important;
+    width: auto !important;
+    gap: 0.5rem !important;
+  }
+
+  .site-header-nav li,
+  .site-header-nav a {
+    width: auto !important;
+  }
+
+  #mobile-nav-overlay {
+    display: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  nav ul {
+    gap: 0.5rem;
+  }
+
+  nav a {
+    padding-top: 0.625rem !important;
+    padding-bottom: 0.625rem !important;
+    font-size: 0.7rem !important;
+  }
+
+  .site-shell {
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+  }
+}
