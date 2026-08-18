@@ -5,22 +5,6 @@ const DATA_ROOT = path.join(__dirname, '..', 'data');
 const HISTORY_DIR = path.join(DATA_ROOT, 'history');
 const MANIFEST_PATH = path.join(DATA_ROOT, 'dataset-manifest.json');
 
-function safeReadJson(filePath) {
-  try {
-    const raw = fs.readFileSync(filePath, 'utf8');
-    return JSON.parse(raw);
-  } catch (error) {
-    return null;
-  }
-}
-
-function hasMeaningfulData(data) {
-  if (data === null || data === undefined) return false;
-  if (typeof data !== 'object') return false;
-  if (Array.isArray(data)) return data.length > 0;
-  return Object.keys(data).length > 0;
-}
-
 function formatDateFromTimestamp(value) {
   const date = value instanceof Date ? value : new Date(value);
   if (Number.isNaN(date.getTime())) {
@@ -35,7 +19,6 @@ function main() {
     ? fs.readdirSync(HISTORY_DIR)
         .filter((file) => file.toLowerCase().endsWith('.json'))
         .map((file) => path.join(HISTORY_DIR, file))
-        .filter((filePath) => hasMeaningfulData(safeReadJson(filePath)))
         .sort((a, b) => fs.statSync(b).mtimeMs - fs.statSync(a).mtimeMs)
     : [];
 
