@@ -6,6 +6,8 @@ const HISTORY_DIR = path.join(DATA_ROOT, 'history');
 const MANIFEST_PATH = path.join(DATA_ROOT, 'dataset-manifest.json');
 const HASH_PATH = path.join(DATA_ROOT, 'dataset-manifest.hash');
 
+const OUR_GUILD = '[TW] Praetorians of Terra';
+
 function formatDateFromTimestamp(value) {
   const date = value instanceof Date ? value : new Date(value);
   if (Number.isNaN(date.getTime())) {
@@ -78,8 +80,9 @@ function main() {
     const latestCreatedOn = getLatestCreatedOn(data);
     const date = formatDateFromTimestamp(latestCreatedOn ?? fs.statSync(filePath).mtime);
     const [guildA, guildB] = getPrimaryGuildNames(data);
+    const opponent = guildA === OUR_GUILD ? guildB : guildA;
     const key = `history-${date}-${fileName.slice(0, 8)}`;
-    const label = `${guildA} vs. ${guildB} (${date})`;
+    const label = `${opponent} (${date})`;
     const sourceLabel = `${guildA} vs. ${guildB} (${date})`;
 
     console.log(`[dataset] ${label} -> ${fileName}.json`);
