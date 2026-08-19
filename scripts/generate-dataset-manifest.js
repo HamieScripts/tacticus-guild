@@ -19,6 +19,22 @@ function cleanGuildName(value) {
   return String(value || '').trim().replace(/\s+/g, ' ');
 }
 
+function getLatestCreatedOn(data) {
+  const eventResults = Array.isArray(data?.eventResults) ? data.eventResults : [];
+  let max = 0;
+  for (const result of eventResults) {
+    const logs = Array.isArray(result?.eventResponseData?.activityLogs)
+      ? result.eventResponseData.activityLogs
+      : [];
+    for (const log of logs) {
+      if (typeof log?.createdOn === 'number' && log.createdOn > max) {
+        max = log.createdOn;
+      }
+    }
+  }
+  return max > 0 ? max : null;
+}
+
 function getPrimaryGuildNames(data) {
   const eventResults = Array.isArray(data?.eventResults) ? data.eventResults : [];
   const primaryEvent = eventResults
@@ -48,12 +64,10 @@ function main() {
     ? fs.readdirSync(HISTORY_DIR)
         .filter((file) => file.toLowerCase().endsWith('.json'))
         .map((file) => path.join(HISTORY_DIR, file))
-        .sort((a, b) => fs.statSync(b).mtimeMs - fs.statSync(a).mtimeMs)
     : [];
 
   const datasets = historyFiles.map((filePath) => {
     const fileName = path.basename(filePath, '.json');
-    const date = formatDateFromTimestamp(fs.statSync(filePath).mtime);
     const data = (() => {
       try {
         return JSON.parse(fs.readFileSync(filePath, 'utf8'));
@@ -61,6 +75,8 @@ function main() {
         return null;
       }
     })();
+    const latestCreatedOn = getLatestCreatedOn(data);
+    const date = formatDateFromTimestamp(latestCreatedOn ?? fs.statSync(filePath).mtime);
     const [guildA, guildB] = getPrimaryGuildNames(data);
     const key = `history-${date}-${fileName.slice(0, 8)}`;
     const label = `${guildA} vs. ${guildB} (${date})`;
@@ -72,9 +88,10 @@ function main() {
       key,
       label,
       sourceLabel,
-      url: `./data/history/${fileName}.json`
+      url: `./data/history/${fileName}.json`,
+      _createdOn: latestCreatedOn ?? 0,
     };
-  });
+  }).sort((a, b) => b._createdOn - a._createdOn).map(({ _createdOn: _, ...rest }) => rest);
 
   const hash = (process.env.GITHUB_SHA || process.env.CI_COMMIT_SHA || process.env.npm_package_version || `local-${Date.now()}`)
     .toString()
