@@ -1,0 +1,20 @@
+rules_version = '2';
+
+// TEMPORARY. Used only by `npm run migrate:open` to seed the initial data without a service
+// account. `npm run migrate:lock` restores firestore.rules immediately afterwards.
+// This file must never be the deployed state at rest.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /wars/{document=**} {
+      allow read: if true;
+      allow write: if true;
+    }
+    match /static/{document} {
+      allow read: if true;
+      allow write: if true;
+    }
+    match /admins/{uid} {
+      allow read, write: if false;
+    }
+  }
+}

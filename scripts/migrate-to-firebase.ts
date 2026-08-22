@@ -1,36 +1,50 @@
 /**
  * Seeds Firestore from the POC's data/ folder. Idempotent - re-running overwrites in place.
  *
- * Against the emulator (no credentials needed):
- *   npm run migrate:emulator
+ * Uses the client SDK, so it needs no service account. That means it can only run while writes
+ * are permitted: either against the emulator, or during a deliberate rules window.
  *
- * Against production, with a service account key downloaded from the Firebase console:
- *   $env:GOOGLE_APPLICATION_CREDENTIALS="C:\path\to\key.json"; npm run migrate
+ *   npm run migrate:emulator   # against the local emulator
+ *   npm run migrate            # against production
  */
-import { readdirSync, readFileSync, existsSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { gzipSync } from 'node:zlib';
-import { cert, initializeApp, applicationDefault, type AppOptions } from 'firebase-admin/app';
-import { getFirestore, Timestamp, type Firestore } from 'firebase-admin/firestore';
+import { initializeApp } from 'firebase/app';
+import {
+  Bytes,
+  connectFirestoreEmulator,
+  doc,
+  getFirestore,
+  setDoc,
+  Timestamp,
+  type Firestore,
+} from 'firebase/firestore';
 import type { WarSnapshot } from '../src/app/core/models/war-snapshot.model';
 import { buildWarMetadata, validateSnapshot } from '../src/app/core/snapshot/war-metadata';
+import { environment } from '../src/environments/environment';
 import { MAX_COMPRESSED_BYTES } from '../src/app/services/war-metadata.model';
 
-const PROJECT_ID = process.env['FIREBASE_PROJECT_ID'] ?? 'warhammer-40k-tacticus-app';
 const DATA_ROOT = join(process.cwd(), 'data');
-const usingEmulator = Boolean(process.env['FIRESTORE_EMULATOR_HOST']);
 
-function buildOptions(): AppOptions {
-  if (usingEmulator) return { projectId: PROJECT_ID };
+function connect(): Firestore {
+  const db = getFirestore(initializeApp(environment.firebase));
 
-  const keyPath = process.env['GOOGLE_APPLICATION_CREDENTIALS'];
-  if (keyPath && existsSync(keyPath)) {
-    return { projectId: PROJECT_ID, credential: cert(JSON.parse(readFileSync(keyPath, 'utf8'))) };
+  const emulator = process.env['FIRESTORE_EMULATOR_HOST'];
+  if (emulator) {
+    const [host, port] = emulator.split(':');
+    connectFirestoreEmulator(db, host ?? '127.0.0.1', Number(port ?? 8080));
   }
-  return { projectId: PROJECT_ID, credential: applicationDefault() };
+
+  return db;
 }
 
-async function writeWar(db: Firestore, warId: string, raw: WarSnapshot, isCurrent: boolean) {
+async function writeWar(
+  db: Firestore,
+  warId: string,
+  raw: WarSnapshot,
+  isCurrent: boolean,
+): Promise<boolean> {
   const validation = validateSnapshot(raw);
   if (!validation.ok) {
     console.error(`  skip ${warId}: ${validation.reason}`);
@@ -49,35 +63,29 @@ async function writeWar(db: Firestore, warId: string, raw: WarSnapshot, isCurren
 
   const metadata = buildWarMetadata(raw);
 
-  await db
-    .collection('wars')
-    .doc(warId)
-    .set({
-      id: warId,
-      label: metadata.label,
-      sourceLabel: metadata.sourceLabel,
-      opponentName: metadata.opponentName,
-      warDate: Timestamp.fromMillis(metadata.warDate ?? 0),
-      isCurrent,
-      rawBytes: json.length,
-      compressedBytes: compressed.length,
-      uploadedBy: null,
-      uploadedAt: Timestamp.now(),
-    });
+  await setDoc(doc(db, 'wars', warId), {
+    id: warId,
+    label: metadata.label,
+    sourceLabel: metadata.sourceLabel,
+    opponentName: metadata.opponentName,
+    warDate: Timestamp.fromMillis(metadata.warDate ?? 0),
+    isCurrent,
+    rawBytes: json.length,
+    compressedBytes: compressed.length,
+    uploadedBy: null,
+    uploadedAt: Timestamp.now(),
+  });
 
-  await db
-    .collection('wars')
-    .doc(warId)
-    .collection('payload')
-    .doc('snapshot')
-    .set({ gzip: compressed });
+  await setDoc(doc(db, 'wars', warId, 'payload', 'snapshot'), {
+    gzip: Bytes.fromUint8Array(new Uint8Array(compressed)),
+  });
 
   const pct = Math.round((compressed.length / json.length) * 100);
   console.log(`  ok ${metadata.label} (${json.length} -> ${compressed.length} bytes, ${pct}%)`);
   return true;
 }
 
-async function writeStatic(db: Firestore) {
+async function writeStatic(db: Firestore): Promise<void> {
   const staticDir = join(DATA_ROOT, 'static');
   const read = <T>(name: string): T | null => {
     const path = join(staticDir, name);
@@ -86,31 +94,30 @@ async function writeStatic(db: Firestore) {
 
   const portraitMap = read<Record<string, string>>('portrait-map.json');
   if (portraitMap) {
-    await db.collection('static').doc('portraitMap').set({ map: portraitMap });
+    await setDoc(doc(db, 'static', 'portraitMap'), { map: portraitMap });
     console.log(`  ok portraitMap (${Object.keys(portraitMap).length} units)`);
   }
 
   const imageManifest = read<string[]>('image-manifest.json');
   if (imageManifest) {
-    await db.collection('static').doc('imageManifest').set({ files: imageManifest });
+    await setDoc(doc(db, 'static', 'imageManifest'), { files: imageManifest });
     console.log(`  ok imageManifest (${imageManifest.length} files)`);
   }
 
   const guildTeams = read<unknown[]>('guild-teams.json');
   if (guildTeams) {
-    await db.collection('static').doc('guildTeams').set({ teams: guildTeams });
+    await setDoc(doc(db, 'static', 'guildTeams'), { teams: guildTeams });
     console.log(`  ok guildTeams (${guildTeams.length} teams)`);
   }
 }
 
-async function main() {
-  console.log(
-    `Migrating to ${usingEmulator ? `emulator (${process.env['FIRESTORE_EMULATOR_HOST']})` : 'production'} ` +
-      `project ${PROJECT_ID}\n`,
-  );
+async function main(): Promise<void> {
+  const target = process.env['FIRESTORE_EMULATOR_HOST']
+    ? `emulator (${process.env['FIRESTORE_EMULATOR_HOST']})`
+    : `production project ${environment.firebase.projectId}`;
+  console.log(`Migrating to ${target}\n`);
 
-  initializeApp(buildOptions());
-  const db = getFirestore();
+  const db = connect();
 
   const historyDir = join(DATA_ROOT, 'history');
   const files = existsSync(historyDir)
@@ -139,6 +146,7 @@ async function main() {
   await writeStatic(db);
 
   console.log(`\nDone. ${written} wars written.`);
+  process.exit(0);
 }
 
 main().catch((error: unknown) => {
