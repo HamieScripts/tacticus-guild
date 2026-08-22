@@ -61,11 +61,7 @@
               >
                 {{ i + 1 }}
               </span>
-              <app-player-avatar
-                [name]="player.name"
-                [avatarUnitId]="player.avatarUnitId"
-                [avatarFrameId]="player.avatarFrameId"
-              />
+              <app-player-avatar [name]="player.name" [avatarUnitId]="player.avatarUnitId" />
               <span class="truncate">{{ player.name }} ({{ player.usedTokens }}/10)</span>
             </div>
           </td>

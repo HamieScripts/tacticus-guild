@@ -2,30 +2,24 @@
   <div class="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4 shadow-lg shadow-emerald-900/20">
     <div class="h-4 w-44 animate-pulse rounded bg-emerald-400/25"></div>
     <div class="mt-4 space-y-2">
-      <div class="flex h-5 items-center gap-3">
-        <div class="w-56"></div>
+      <div class="flex h-5 items-center gap-2">
+        <div class="w-[20%]"></div>
         @for (group of headerGroups; track group.key) {
           <div
             class="h-3 animate-pulse rounded bg-slate-700/40"
-            [style.width.rem]="group.width"
+            [style.width]="group.width"
           ></div>
         }
       </div>
-      <div class="flex h-5 items-center gap-3 border-b border-slate-700/60 pb-2">
-        @for (cell of projectionCells; track cell) {
-          <div
-            class="h-3 animate-pulse rounded bg-slate-700/50"
-            [class]="cell === 0 ? 'w-56' : 'w-20'"
-          ></div>
+      <div class="flex h-5 items-center gap-2 border-b border-slate-700/60 pb-2">
+        @for (cell of projectionCells; track cell.key) {
+          <div class="h-3 animate-pulse rounded bg-slate-700/50" [style.width]="cell.width"></div>
         }
       </div>
       @for (row of guildRows; track row) {
-        <div class="flex h-8 items-center gap-3">
-          @for (cell of projectionCells; track cell) {
-            <div
-              class="h-6 animate-pulse rounded bg-slate-700/60"
-              [class]="cell === 0 ? 'w-56' : 'w-20'"
-            ></div>
+        <div class="flex h-8 items-center gap-2">
+          @for (cell of projectionCells; track cell.key) {
+            <div class="h-6 animate-pulse rounded bg-slate-700/60" [style.width]="cell.width"></div>
           }
         </div>
       }
@@ -54,27 +48,48 @@
     }
   </div>
 
-  <div class="w-full overflow-hidden rounded-xl border border-slate-800/80">
-    <div class="flex h-11 items-center gap-4 bg-slate-800/90 px-4">
-      <div class="h-4 w-40 animate-pulse rounded bg-slate-700/60"></div>
-      @for (cell of tokenCells; track cell) {
-        <div class="h-4 w-8 animate-pulse rounded bg-slate-700/60"></div>
-      }
-    </div>
-    @for (row of rows(); track row) {
-      <div class="flex items-center gap-4 border-t border-slate-800/60 px-4 py-3">
-        <div class="flex w-40 shrink-0 items-center gap-2">
-          <div class="h-5 w-5 shrink-0 animate-pulse rounded-full bg-slate-700/70"></div>
-          <div class="h-9 w-9 shrink-0 animate-pulse rounded-full bg-slate-700/70"></div>
-          <div class="h-4 w-20 animate-pulse rounded bg-slate-700/70"></div>
-        </div>
-        @for (cell of tokenCells; track cell) {
-          <div class="h-7 w-10 shrink-0 animate-pulse rounded-md bg-slate-700/60"></div>
+  <div class="w-full overflow-x-auto rounded-xl border border-slate-800/80">
+    <table class="w-full border-collapse text-left text-xs sm:text-sm">
+      <thead class="bg-slate-800/90">
+        <tr>
+          <th class="min-w-[15rem] px-4 py-3">
+            <div class="h-4 w-16 animate-pulse rounded bg-slate-700/60"></div>
+          </th>
+          @for (cell of tokenCells; track cell) {
+            <th class="px-4 py-3">
+              <div class="mx-auto h-4 w-4 animate-pulse rounded bg-slate-700/60"></div>
+            </th>
+          }
+          @for (cell of statCells; track cell) {
+            <th class="px-4 py-3">
+              <div class="h-4 w-10 animate-pulse rounded bg-slate-700/60"></div>
+            </th>
+          }
+        </tr>
+      </thead>
+      <tbody>
+        @for (row of rows(); track row) {
+          <tr class="border-t border-slate-800/60">
+            <td class="min-w-[15rem] px-4 py-3">
+              <div class="flex items-center gap-2">
+                <div class="h-5 w-5 shrink-0 animate-pulse rounded-full bg-slate-700/70"></div>
+                <div class="h-11 w-11 shrink-0 animate-pulse rounded-full bg-slate-700/70"></div>
+                <div class="h-4 w-40 animate-pulse rounded bg-slate-700/70"></div>
+              </div>
+            </td>
+            @for (cell of tokenCells; track cell) {
+              <td class="px-4 py-3">
+                <div class="mx-auto h-7 w-16 animate-pulse rounded-md bg-slate-700/60"></div>
+              </td>
+            }
+            @for (cell of statCells; track cell) {
+              <td class="px-4 py-3">
+                <div class="h-4 w-10 animate-pulse rounded bg-slate-700/60"></div>
+              </td>
+            }
+          </tr>
         }
-        @for (cell of statCells; track cell) {
-          <div class="h-4 w-12 shrink-0 animate-pulse rounded bg-slate-700/60"></div>
-        }
-      </div>
-    }
+      </tbody>
+    </table>
   </div>
 </div>

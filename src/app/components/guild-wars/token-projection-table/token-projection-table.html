@@ -3,7 +3,20 @@
 >
   <p class="text-sm uppercase tracking-wide text-emerald-200">Guild token projection</p>
   <div class="mt-2 overflow-x-auto">
-    <table class="w-full text-left text-xs sm:text-sm">
+    <table class="w-full table-fixed text-left text-xs sm:text-sm">
+      <colgroup>
+        <col class="w-[20%]" />
+        <col class="w-[7%]" />
+        <col class="w-[6%]" />
+        <col class="w-[7%]" />
+        <col class="w-[8%]" />
+        <col class="w-[9%]" />
+        <col class="w-[6%]" />
+        <col class="w-[8%]" />
+        <col class="w-[9%]" />
+        <col class="w-[10%]" />
+        <col class="w-[10%]" />
+      </colgroup>
       <thead class="text-slate-300/90">
         <tr>
           <th rowspan="2" class="pb-1 pr-3 font-semibold">Guild</th>
@@ -28,21 +41,21 @@
       <tbody class="text-slate-100">
         @for (guild of summaries(); track guild.teamIndex) {
           <tr class="h-12">
-            <td class="py-1 pr-3 font-semibold text-emerald-100">
+            <td class="truncate py-1 pr-3 font-semibold text-emerald-100" [title]="guild.name">
               {{ guild.name }} ({{ guild.totalPlayers.toLocaleString() }})
             </td>
             <td class="border-l border-slate-700/60 py-1 pl-3 pr-3 text-slate-200">{{ guild.totalTokenSlots.toLocaleString() }}</td>
             <td class="py-1 pr-3 text-slate-200">{{ guild.usedTokens.toLocaleString() }}</td>
             <td class="py-1 pr-3 text-slate-200">{{ guild.remainingTokens.toLocaleString() }}</td>
             <td class="py-1 pr-3 text-cyan-200">{{ guild.avgPerUsedToken | number: '1.0-1' }}</td>
-            <td class="border-l border-slate-700/60 py-1 pl-3 pr-3 text-slate-200">
+            <td class="whitespace-nowrap border-l border-slate-700/60 py-1 pl-3 pr-3 text-slate-200">
               {{ guild.totalWins.toLocaleString() }} ({{ guild.totalCleanupWins.toLocaleString() }}🧹)
             </td>
             <td class="py-1 pr-3 text-slate-200">{{ guild.totalDefeats.toLocaleString() }}</td>
             <td class="py-1 pr-3 text-slate-200">{{ guild.totalAbandoned.toLocaleString() }}</td>
             <td class="border-l border-slate-700/60 py-1 pl-3 pr-3 text-slate-200">{{ guild.tokenScore.toLocaleString() }}</td>
             <td class="py-1 pr-3 font-semibold text-emerald-200">{{ guild.projectedTokenScore.toLocaleString() }}</td>
-            <td class="border-l border-slate-700/60 py-1 pl-3 text-slate-200">
+            <td class="whitespace-nowrap border-l border-slate-700/60 py-1 pl-3 text-slate-200">
               {{ guild.tileScore.toLocaleString() }} ({{ tilePercent(guild.tileScore) }}%)
             </td>
           </tr>

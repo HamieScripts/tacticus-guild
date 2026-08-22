@@ -11,13 +11,25 @@ export class GuildWarsSkeleton {
   readonly playerRows = input(12);
 
   protected readonly guildRows = [0, 1];
-  protected readonly projectionCells = Array.from({ length: 11 }, (_, i) => i);
-  // Widths track the real table's grouped header: Tokens(4), Performance(3), Player score(2), Tile(1).
+  // Mirrors the projection table's colgroup so the skeleton does not shift on load.
+  protected readonly projectionCells = [
+    '20%',
+    '7%',
+    '6%',
+    '7%',
+    '8%',
+    '9%',
+    '6%',
+    '8%',
+    '9%',
+    '10%',
+    '10%',
+  ].map((width, index) => ({ key: index, width }));
   protected readonly headerGroups = [
-    { key: 'tokens', width: 21.5 },
-    { key: 'performance', width: 15.5 },
-    { key: 'player-score', width: 10 },
-    { key: 'tile-score', width: 5 },
+    { key: 'tokens', width: '28%' },
+    { key: 'performance', width: '23%' },
+    { key: 'player-score', width: '19%' },
+    { key: 'tile-score', width: '10%' },
   ];
   protected readonly tokenCells = Array.from({ length: 10 }, (_, i) => i);
   protected readonly statCells = [0, 1, 2];
