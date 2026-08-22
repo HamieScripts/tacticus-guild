@@ -1,0 +1,37 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAdmin() {
+      return request.auth != null
+        && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    // War data is public to read; only admins publish.
+    match /wars/{warId} {
+      allow read: if true;
+      allow write: if isAdmin();
+
+      match /payload/{document=**} {
+        allow read: if true;
+        allow write: if isAdmin();
+      }
+    }
+
+    match /static/{document} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Membership is managed from the Firebase console, never from the client.
+    match /admins/{uid} {
+      allow read: if request.auth != null && request.auth.uid == uid;
+      allow write: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

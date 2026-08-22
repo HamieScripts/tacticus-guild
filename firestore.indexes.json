@@ -1,0 +1,10 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "wars",
+      "queryScope": "COLLECTION",
+      "fields": [{ "fieldPath": "warDate", "order": "DESCENDING" }]
+    }
+  ],
+  "fieldOverrides": []
+}

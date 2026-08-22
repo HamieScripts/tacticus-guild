@@ -8,6 +8,8 @@ import { createRequire } from 'node:module';
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { buildSnapshot } from '../src/app/core/snapshot/build-snapshot';
+import { gunzipJson, gzipJson } from '../src/app/core/util/gzip';
+import { MAX_COMPRESSED_BYTES } from '../src/app/services/war-metadata.model';
 import type { WarSnapshot } from '../src/app/core/models/war-snapshot.model';
 
 interface LegacyPlayer {
@@ -36,65 +38,86 @@ const files = readdirSync(HISTORY_DIR).filter((file) => file.endsWith('.json'));
 let failures = 0;
 let tileSplitDiffs = 0;
 
-for (const file of files) {
-  const raw = JSON.parse(readFileSync(join(HISTORY_DIR, file), 'utf8')) as WarSnapshot;
-  const ported = buildSnapshot(raw);
-  const original = legacy.buildSnapshot(raw);
+async function main(): Promise<void> {
+  for (const file of files) {
+    const raw = JSON.parse(readFileSync(join(HISTORY_DIR, file), 'utf8')) as WarSnapshot;
+    const ported = buildSnapshot(raw);
+    const original = legacy.buildSnapshot(raw);
 
-  const fail = (message: string): void => {
-    failures += 1;
-    console.error(`  FAIL ${file}: ${message}`);
-  };
+    const fail = (message: string): void => {
+      failures += 1;
+      console.error(`  FAIL ${file}: ${message}`);
+    };
 
-  if (ported.length !== original.length) {
-    fail(`guild count ${ported.length} vs ${original.length}`);
-    continue;
-  }
-
-  ported.forEach((guild, index) => {
-    const originalGuild = original[index];
-    if (!originalGuild) return;
-
-    if (guild.name !== originalGuild.name) {
-      fail(`guild name "${guild.name}" vs "${originalGuild.name}"`);
+    // The gzip round trip must be lossless, and must fit inside a Firestore document.
+    const compressed = await gzipJson(raw);
+    if (compressed.length > MAX_COMPRESSED_BYTES) {
+      fail(`compressed to ${compressed.length} bytes, over the ${MAX_COMPRESSED_BYTES} limit`);
     }
-    if (guild.players.length !== originalGuild.players.length) {
-      fail(`${guild.name} player count ${guild.players.length} vs ${originalGuild.players.length}`);
-    }
-    if (guild.battles.length !== originalGuild.battles.length) {
-      fail(`${guild.name} battle count ${guild.battles.length} vs ${originalGuild.battles.length}`);
+    const restored = await gunzipJson<WarSnapshot>(compressed);
+    if (JSON.stringify(restored) !== JSON.stringify(raw)) {
+      fail('gzip round trip did not reproduce the capture');
     }
 
-    for (const player of guild.players) {
-      const before = originalGuild.players.find((p) => p.userId === player.userId);
-      if (!before) {
-        fail(`${guild.name} player ${player.userId} missing from POC output`);
-        continue;
+    if (ported.length !== original.length) {
+      fail(`guild count ${ported.length} vs ${original.length}`);
+      continue;
+    }
+
+    ported.forEach((guild, index) => {
+      const originalGuild = original[index];
+      if (!originalGuild) return;
+
+      if (guild.name !== originalGuild.name) {
+        fail(`guild name "${guild.name}" vs "${originalGuild.name}"`);
       }
-
-      if (player.usedTokens !== before.usedTokens) {
-        fail(`${player.name} usedTokens ${player.usedTokens} vs ${before.usedTokens}`);
-      }
-
-      const portedCombined = player.totalScore + player.tileScore;
-      const beforeCombined = before.totalScore + before.tileScore;
-      if (portedCombined !== beforeCombined) {
-        fail(`${player.name} combined score ${portedCombined} vs ${beforeCombined}`);
-      } else if (player.tileScore !== before.tileScore) {
-        // Expected where the zone-type fix picks a different bonus than the brute-force fallback.
-        tileSplitDiffs += 1;
-        console.log(
-          `  tile split differs for ${player.name}: ` +
-            `${player.totalScore}+${player.tileScore} vs ${before.totalScore}+${before.tileScore}`,
+      if (guild.players.length !== originalGuild.players.length) {
+        fail(
+          `${guild.name} player count ${guild.players.length} vs ${originalGuild.players.length}`,
         );
       }
-    }
-  });
+      if (guild.battles.length !== originalGuild.battles.length) {
+        fail(
+          `${guild.name} battle count ${guild.battles.length} vs ${originalGuild.battles.length}`,
+        );
+      }
 
-  if (failures === 0) console.log(`  ok ${file}`);
+      for (const player of guild.players) {
+        const before = originalGuild.players.find((p) => p.userId === player.userId);
+        if (!before) {
+          fail(`${guild.name} player ${player.userId} missing from POC output`);
+          continue;
+        }
+
+        if (player.usedTokens !== before.usedTokens) {
+          fail(`${player.name} usedTokens ${player.usedTokens} vs ${before.usedTokens}`);
+        }
+
+        const portedCombined = player.totalScore + player.tileScore;
+        const beforeCombined = before.totalScore + before.tileScore;
+        if (portedCombined !== beforeCombined) {
+          fail(`${player.name} combined score ${portedCombined} vs ${beforeCombined}`);
+        } else if (player.tileScore !== before.tileScore) {
+          // Expected where the zone-type fix picks a different bonus than the brute-force fallback.
+          tileSplitDiffs += 1;
+          console.log(
+            `  tile split differs for ${player.name}: ` +
+              `${player.totalScore}+${player.tileScore} vs ${before.totalScore}+${before.tileScore}`,
+          );
+        }
+      }
+    });
+
+    if (failures === 0) console.log(`  ok ${file}`);
+  }
+
+  console.log(
+    `\n${files.length} captures checked, ${tileSplitDiffs} tile-split differences, ${failures} failures.`,
+  );
+  process.exit(failures > 0 ? 1 : 0);
 }
 
-console.log(
-  `\n${files.length} captures checked, ${tileSplitDiffs} tile-split differences, ${failures} failures.`,
-);
-process.exit(failures > 0 ? 1 : 0);
+main().catch((error: unknown) => {
+  console.error(error);
+  process.exit(1);
+});
