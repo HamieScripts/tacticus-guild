@@ -1,0 +1,14 @@
+<div
+  class="animate-pulse"
+  [class]="variant() === 'card' ? 'grid gap-4 md:grid-cols-2 xl:grid-cols-4' : 'space-y-2'"
+  aria-busy="true"
+  aria-live="polite"
+>
+  <span class="sr-only">Loading</span>
+  @for (row of placeholders(); track row) {
+    <div
+      class="rounded-xl border border-slate-800 bg-slate-900/60"
+      [class]="variant() === 'card' ? 'h-32' : 'h-10'"
+    ></div>
+  }
+</div>

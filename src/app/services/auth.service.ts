@@ -1,15 +1,6 @@
-import { computed, inject, Injectable, signal } from '@angular/core';
-import {
-  browserLocalPersistence,
-  GoogleAuthProvider,
-  onAuthStateChanged,
-  setPersistence,
-  signInWithPopup,
-  signOut,
-  type User,
-} from 'firebase/auth';
-import { doc, getDoc } from 'firebase/firestore';
-import { FirebaseService } from './firebase.service';
+﻿import { computed, Injectable, signal } from '@angular/core';
+import type { User } from 'firebase/auth';
+import { getFirebaseApp } from './firebase-app';
 import { ADMINS_COLLECTION } from './war-metadata.model';
 
 export interface AppUser {
@@ -19,11 +10,13 @@ export interface AppUser {
   readonly photoURL: string | null;
 }
 
+/**
+ * The shell injects this, so firebase/auth and firebase/firestore are imported dynamically to keep
+ * them out of the initial bundle. Most visitors never sign in.
+ */
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private readonly firebase = inject(FirebaseService);
-
-  private readonly userState = signal<AppUser | null>(null);
+    private readonly userState = signal<AppUser | null>(null);
   private readonly adminState = signal(false);
   private readonly resolvedState = signal(false);
   private watching = false;
@@ -41,12 +34,15 @@ export class AuthService {
   });
 
   watch(): void {
-    if (this.watching) return;
+    if (this.watching || typeof window === 'undefined') return;
     this.watching = true;
 
-    onAuthStateChanged(this.firebase.getAuth(), (user) => {
-      void this.applyUser(user);
-    });
+    void (async () => {
+      const { getAuth, onAuthStateChanged } = await import('firebase/auth');
+      onAuthStateChanged(getAuth(getFirebaseApp()), (user) => {
+        void this.applyUser(user);
+      });
+    })();
   }
 
   whenResolved(): Promise<void> {
@@ -55,13 +51,17 @@ export class AuthService {
   }
 
   async signIn(): Promise<void> {
-    const auth = this.firebase.getAuth();
+    const { browserLocalPersistence, getAuth, GoogleAuthProvider, setPersistence, signInWithPopup } =
+      await import('firebase/auth');
+
+    const auth = getAuth(getFirebaseApp());
     await setPersistence(auth, browserLocalPersistence);
     await signInWithPopup(auth, new GoogleAuthProvider());
   }
 
   async signOut(): Promise<void> {
-    await signOut(this.firebase.getAuth());
+    const { getAuth, signOut } = await import('firebase/auth');
+    await signOut(getAuth(getFirebaseApp()));
   }
 
   private async applyUser(user: User | null): Promise<void> {
@@ -84,11 +84,12 @@ export class AuthService {
 
   private async checkAdmin(uid: string): Promise<boolean> {
     try {
-      const db = this.firebase.getFirestore();
-      const snapshot = await getDoc(doc(db, ADMINS_COLLECTION, uid));
+      const { doc, getDoc, getFirestore } = await import('firebase/firestore');
+      const snapshot = await getDoc(doc(getFirestore(getFirebaseApp()), ADMINS_COLLECTION, uid));
       return snapshot.exists();
     } catch {
       return false;
     }
   }
 }
+

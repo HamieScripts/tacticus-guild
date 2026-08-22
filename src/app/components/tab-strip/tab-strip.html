@@ -1,0 +1,22 @@
+<div role="tablist" class="flex flex-wrap gap-2">
+  @for (tab of tabs(); track tab.id; let i = $index) {
+    <button
+      type="button"
+      role="tab"
+      [id]="'tab-' + tab.id"
+      [attr.aria-selected]="tab.id === activeId()"
+      [attr.aria-controls]="'panel-' + tab.id"
+      [tabindex]="tab.id === activeId() ? 0 : -1"
+      class="rounded-lg border px-4 py-2 text-sm font-semibold transition"
+      [class]="
+        tab.id === activeId()
+          ? 'border-cyan-400/70 bg-cyan-500/15 text-cyan-200'
+          : 'border-slate-600/80 bg-slate-900/80 text-slate-200 hover:border-cyan-400/70 hover:text-white'
+      "
+      (click)="tabChange.emit(tab.id)"
+      (keydown)="onKeydown($event, i)"
+    >
+      {{ tab.label }}
+    </button>
+  }
+</div>

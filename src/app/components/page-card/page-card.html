@@ -1,0 +1,19 @@
+<a
+  [routerLink]="route()"
+  class="group block rounded-2xl border bg-slate-900/80 p-4 shadow-lg transition hover:bg-slate-900"
+  [class]="cardClasses()"
+>
+  <div class="mb-3 flex items-center justify-between">
+    <span
+      class="rounded-full border px-2 py-1 text-[10px] font-bold uppercase tracking-[0.2em]"
+      [class]="badgeClasses()"
+    >
+      {{ badge() }}
+    </span>
+    @if (icon()) {
+      <span class="text-lg" aria-hidden="true">{{ icon() }}</span>
+    }
+  </div>
+  <h3 class="text-lg font-bold text-white">{{ title() }}</h3>
+  <p class="mt-2 text-sm leading-relaxed text-slate-300">{{ description() }}</p>
+</a>

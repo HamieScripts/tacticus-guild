@@ -1,0 +1,24 @@
+<section aria-labelledby="overview-heading" class="w-full">
+  <h2 id="overview-heading" class="text-xl font-bold leading-tight text-cyan-100 sm:text-2xl">
+    Guild Operations Overview
+  </h2>
+  <p class="mt-1 text-sm leading-relaxed text-slate-300 sm:text-base">
+    Use this workspace to track guild war performance, review battle history, and plan team
+    compositions in one consistent interface.
+  </p>
+</section>
+
+<section aria-label="Application pages" class="mt-6 w-full">
+  <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+    @for (card of cards; track card.route) {
+      <app-page-card
+        [title]="card.title"
+        [description]="card.description"
+        [route]="card.route"
+        [badge]="card.badge"
+        [icon]="card.icon"
+        [accent]="card.accent"
+      />
+    }
+  </div>
+</section>

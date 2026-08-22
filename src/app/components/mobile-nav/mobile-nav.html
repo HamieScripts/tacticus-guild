@@ -1,0 +1,37 @@
+@if (open()) {
+  <div
+    class="fixed inset-0 z-40 bg-slate-950/70 backdrop-blur-sm md:hidden"
+    (click)="dismissed.emit()"
+    aria-hidden="true"
+  ></div>
+
+  <nav
+    id="mobile-nav"
+    aria-label="Primary"
+    class="fixed inset-y-0 right-0 z-50 flex w-72 max-w-[80vw] flex-col gap-2 border-l border-cyan-400/20 bg-slate-900 p-6 shadow-2xl md:hidden"
+  >
+    <div class="mb-2 flex items-center justify-between">
+      <span class="text-sm font-bold uppercase tracking-[0.2em] text-cyan-200">Menu</span>
+      <button
+        #closeButton
+        type="button"
+        class="rounded-lg border border-slate-600/80 px-3 py-1 text-sm text-slate-200 hover:border-cyan-400/70 hover:text-white"
+        (click)="dismissed.emit()"
+      >
+        Close
+      </button>
+    </div>
+
+    @for (link of links(); track link.route) {
+      <a
+        [routerLink]="link.route"
+        routerLinkActive="border-cyan-400/70 bg-cyan-500/15 text-cyan-200"
+        [routerLinkActiveOptions]="{ exact: link.route === '/' }"
+        class="rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white"
+        (click)="dismissed.emit()"
+      >
+        {{ link.label }}
+      </a>
+    }
+  </nav>
+}
