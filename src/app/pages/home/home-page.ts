@@ -33,6 +33,7 @@ const CARDS: readonly OverviewCard[] = [
 @Component({
   selector: 'app-home-page',
   imports: [PageCard],
+  host: { class: 'flex flex-col gap-6' },
   templateUrl: './home-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

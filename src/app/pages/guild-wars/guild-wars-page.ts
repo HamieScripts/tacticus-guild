@@ -15,9 +15,9 @@ import { LeaderboardCards } from '@components/guild-wars/leaderboard-cards/leade
 import { LeaderboardTable } from '@components/guild-wars/leaderboard-table/leaderboard-table';
 import { TokenLegend } from '@components/guild-wars/token-legend/token-legend';
 import { TokenProjectionTable } from '@components/guild-wars/token-projection-table/token-projection-table';
+import { GuildWarsSkeleton } from '@components/guild-wars/guild-wars-skeleton/guild-wars-skeleton';
 import { EmptyState } from '@components/empty-state/empty-state';
 import { ErrorState } from '@components/error-state/error-state';
-import { SkeletonLoader } from '@components/skeleton-loader/skeleton-loader';
 import { WarDatasetService } from '@services/war-dataset.service';
 import { WarSnapshotService } from '@services/war-snapshot.service';
 
@@ -47,8 +47,9 @@ function readStored<T>(key: string, fallback: T): T {
     TokenProjectionTable,
     EmptyState,
     ErrorState,
-    SkeletonLoader,
+    GuildWarsSkeleton,
   ],
+  host: { class: 'flex flex-col gap-6' },
   templateUrl: './guild-wars-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

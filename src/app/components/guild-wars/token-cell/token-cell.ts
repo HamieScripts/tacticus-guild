@@ -18,6 +18,8 @@ const TIER_CLASSES: Record<string, string> = {
 
 @Component({
   selector: 'app-token-cell',
+  // Block-level host so the score block and buff chips stack and centre reliably.
+  host: { class: 'flex flex-col items-center justify-center gap-1.5' },
   templateUrl: './token-cell.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

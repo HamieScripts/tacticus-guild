@@ -30,8 +30,7 @@
 } @else if (error(); as message) {
   <app-error-state [message]="message" (retry)="retry()" />
 } @else if (loading()) {
-  <app-skeleton-loader [rows]="2" />
-  <app-skeleton-loader [rows]="12" />
+  <app-guild-wars-skeleton />
 } @else {
   <section class="hidden md:block">
     <app-token-projection-table [summaries]="summaries()" />
