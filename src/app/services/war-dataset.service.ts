@@ -1,7 +1,8 @@
-import { computed, inject, Injectable, signal } from '@angular/core';
+﻿import { computed, inject, Injectable, signal } from '@angular/core';
 import { collection, getDocs, orderBy, query, Timestamp } from 'firebase/firestore';
+import type { WarMetadata } from '@core/models/war-metadata.model';
 import { FirebaseService } from './firebase.service';
-import { WARS_COLLECTION, type WarMetadata } from './war-metadata.model';
+import { WARS_COLLECTION } from './firestore-collections';
 
 function toMillis(value: unknown): number | null {
   if (value instanceof Timestamp) return value.toMillis();
@@ -79,3 +80,4 @@ export class WarDatasetService {
     }
   }
 }
+

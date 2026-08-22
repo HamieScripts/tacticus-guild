@@ -1,0 +1,41 @@
+<div class="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
+  @for (player of players(); track player.userId; let i = $index) {
+    <article class="rounded-xl border border-slate-500/30 bg-slate-900/60 p-4">
+      <div class="mb-3 flex items-center gap-2">
+        <span
+          class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-cyan-400/20 text-xs font-bold text-cyan-100"
+        >
+          {{ i + 1 }}
+        </span>
+        <app-player-avatar [name]="player.name" [avatarUnitId]="player.avatarUnitId" />
+        <div class="min-w-0">
+          <div class="truncate font-semibold text-slate-100">{{ player.name }}</div>
+          <div class="text-xs text-slate-400">{{ player.usedTokens }}/10 used</div>
+        </div>
+      </div>
+
+      <div class="mb-3 grid grid-cols-3 gap-2 text-xs">
+        <div class="rounded-md border border-amber-400/25 bg-amber-500/10 p-2">
+          <div class="text-slate-400">Score</div>
+          <div class="font-semibold text-amber-300">{{ player.totalScore.toLocaleString() }}</div>
+        </div>
+        <div class="rounded-md border border-cyan-400/25 bg-cyan-500/10 p-2">
+          <div class="text-slate-400">Avg</div>
+          <div class="font-semibold text-cyan-300">{{ player.averageScore.toLocaleString() }}</div>
+        </div>
+        <div class="rounded-md border border-violet-400/25 bg-violet-500/10 p-2">
+          <div class="text-slate-400">Rating</div>
+          <div class="font-semibold text-violet-300">{{ player.totalSkillRating | number: '1.0-0' }}</div>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap gap-2">
+        @for (token of orderTokens(player.tokens); track $index) {
+          <div class="min-w-[4.5rem] flex-1 basis-[4.5rem] rounded-md bg-slate-900/40 p-1.5 text-center">
+            <app-token-cell [token]="token" />
+          </div>
+        }
+      </div>
+    </article>
+  }
+</div>

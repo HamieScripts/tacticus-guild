@@ -1,0 +1,41 @@
+<span class="inline-flex items-center justify-center" [class]="stateClass()">
+  @if (!played()) {
+    —
+  } @else {
+    <span class="inline-flex flex-row items-center gap-1">
+      <span class="inline-flex flex-col items-start gap-0.5">
+        <span class="font-semibold text-slate-200">{{ split().core.toLocaleString() }}</span>
+        @if (split().bonus > 0) {
+          <span class="text-xs font-medium text-slate-500">({{ split().bonus.toLocaleString() }})</span>
+        }
+      </span>
+
+      @if (outcome() === 'abandoned') {
+        <span title="Abandoned" aria-label="Abandoned">🛑</span>
+      }
+      @if (cleanup()) {
+        <span class="text-emerald-400" title="Cleanup" aria-label="Cleanup">🧹</span>
+      }
+      @if (easyGame()) {
+        <span class="inline-flex items-center gap-1" title="NPC opponent" aria-label="NPC opponent">
+          <span class="inline-flex h-2.5 w-2.5 shrink-0 rounded-full border border-red-500 bg-black"></span>
+          @if (wonTile()) {
+            <span class="text-[10px] leading-none" title="Tile score win">🏢</span>
+          }
+        </span>
+      }
+    </span>
+  }
+</span>
+
+@if (buffs().length > 0) {
+  <span class="mt-1 flex justify-center gap-1.5">
+    @for (buff of buffs(); track buff.name) {
+      <span
+        class="inline-block h-3 w-3 rounded-full border border-white/10"
+        [style.background]="buff.colour"
+        [title]="buff.name"
+      ></span>
+    }
+  </span>
+}

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Seeds Firestore from the POC's data/ folder. Idempotent - re-running overwrites in place.
  *
  * Uses the client SDK, so it needs no service account. That means it can only run while writes
@@ -23,7 +23,7 @@ import {
 import type { WarSnapshot } from '../src/app/core/models/war-snapshot.model';
 import { buildWarMetadata, validateSnapshot } from '../src/app/core/snapshot/war-metadata';
 import { environment } from '../src/environments/environment';
-import { MAX_COMPRESSED_BYTES } from '../src/app/services/war-metadata.model';
+import { MAX_COMPRESSED_BYTES } from '../src/app/services/firestore-collections';
 
 const DATA_ROOT = join(process.cwd(), 'data');
 
@@ -153,3 +153,4 @@ main().catch((error: unknown) => {
   console.error(error);
   process.exit(1);
 });
+

@@ -1,0 +1,53 @@
+<div
+  class="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4 shadow-lg shadow-emerald-900/20"
+>
+  <p class="text-sm uppercase tracking-wide text-emerald-200">Guild token projection</p>
+  <div class="mt-2 overflow-x-auto">
+    <table class="w-full text-left text-xs sm:text-sm">
+      <thead class="text-slate-300/90">
+        <tr>
+          <th rowspan="2" class="pb-1 pr-3 font-semibold">Guild</th>
+          <th colspan="4" class="border-l border-slate-700/70 pb-1 pl-3 pr-3 text-center font-semibold uppercase tracking-wide text-slate-400">Tokens</th>
+          <th colspan="3" class="border-l border-slate-700/70 pb-1 pl-3 pr-3 text-center font-semibold uppercase tracking-wide text-slate-400">Performance</th>
+          <th colspan="2" class="border-l border-slate-700/70 pb-1 pl-3 pr-3 text-center font-semibold uppercase tracking-wide text-slate-400">Player score</th>
+          <th class="border-l border-slate-700/70 pb-1 pl-3 text-center font-semibold uppercase tracking-wide text-slate-400">Tile score</th>
+        </tr>
+        <tr>
+          <th class="border-l border-slate-700/70 pb-2 pl-3 pr-3 font-semibold">Total tokens</th>
+          <th class="pb-2 pr-3 font-semibold">Spent</th>
+          <th class="pb-2 pr-3 font-semibold">Remaining</th>
+          <th class="pb-2 pr-3 font-semibold">Avg/token</th>
+          <th class="border-l border-slate-700/70 pb-2 pl-3 pr-3 font-semibold">Wins</th>
+          <th class="pb-2 pr-3 font-semibold">Defeats</th>
+          <th class="pb-2 pr-3 font-semibold">Abandoned</th>
+          <th class="border-l border-slate-700/70 pb-2 pl-3 pr-3 font-semibold">Player total</th>
+          <th class="pb-2 pr-3 font-semibold">Projected total</th>
+          <th class="border-l border-slate-700/70 pb-2 pl-3 font-semibold">Tile total</th>
+        </tr>
+      </thead>
+      <tbody class="text-slate-100">
+        @for (guild of summaries(); track guild.teamIndex) {
+          <tr class="h-12">
+            <td class="py-1 pr-3 font-semibold text-emerald-100">
+              {{ guild.name }} ({{ guild.totalPlayers.toLocaleString() }})
+            </td>
+            <td class="border-l border-slate-700/60 py-1 pl-3 pr-3 text-slate-200">{{ guild.totalTokenSlots.toLocaleString() }}</td>
+            <td class="py-1 pr-3 text-slate-200">{{ guild.usedTokens.toLocaleString() }}</td>
+            <td class="py-1 pr-3 text-slate-200">{{ guild.remainingTokens.toLocaleString() }}</td>
+            <td class="py-1 pr-3 text-cyan-200">{{ guild.avgPerUsedToken | number: '1.0-1' }}</td>
+            <td class="border-l border-slate-700/60 py-1 pl-3 pr-3 text-slate-200">
+              {{ guild.totalWins.toLocaleString() }} ({{ guild.totalCleanupWins.toLocaleString() }}🧹)
+            </td>
+            <td class="py-1 pr-3 text-slate-200">{{ guild.totalDefeats.toLocaleString() }}</td>
+            <td class="py-1 pr-3 text-slate-200">{{ guild.totalAbandoned.toLocaleString() }}</td>
+            <td class="border-l border-slate-700/60 py-1 pl-3 pr-3 text-slate-200">{{ guild.tokenScore.toLocaleString() }}</td>
+            <td class="py-1 pr-3 font-semibold text-emerald-200">{{ guild.projectedTokenScore.toLocaleString() }}</td>
+            <td class="border-l border-slate-700/60 py-1 pl-3 text-slate-200">
+              {{ guild.tileScore.toLocaleString() }} ({{ tilePercent(guild.tileScore) }}%)
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

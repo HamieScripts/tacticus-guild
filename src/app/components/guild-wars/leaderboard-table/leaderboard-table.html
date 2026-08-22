@@ -1,0 +1,88 @@
+<div class="w-full overflow-x-auto rounded-xl border border-slate-800/80">
+  <table class="w-full border-collapse text-left text-xs sm:text-sm">
+    <thead class="bg-slate-800/90 text-slate-200">
+      <tr>
+        <th
+          scope="col"
+          class="sticky left-0 top-0 z-20 min-w-[15rem] whitespace-nowrap bg-slate-800/95 px-4 py-3 font-semibold"
+        >
+          Player
+        </th>
+        @for (column of columns; track column) {
+          <th scope="col" class="px-4 py-3 text-center font-semibold">{{ column }}</th>
+        }
+        <th scope="col" class="px-4 py-3 font-semibold" [attr.aria-sort]="ariaSort('score')">
+          <button
+            type="button"
+            class="inline-flex items-center gap-1 font-semibold text-slate-200 hover:text-cyan-200"
+            (click)="sortChange.emit('score')"
+          >
+            Score
+            @if (sort().key === 'score') {
+              <span aria-hidden="true">{{ sort().direction === 'asc' ? '▲' : '▼' }}</span>
+            }
+          </button>
+        </th>
+        <th scope="col" class="px-4 py-3 font-semibold" [attr.aria-sort]="ariaSort('average')">
+          <button
+            type="button"
+            class="inline-flex items-center gap-1 font-semibold text-slate-200 hover:text-cyan-200"
+            (click)="sortChange.emit('average')"
+          >
+            Avg / token
+            @if (sort().key === 'average') {
+              <span aria-hidden="true">{{ sort().direction === 'asc' ? '▲' : '▼' }}</span>
+            }
+          </button>
+        </th>
+        <th scope="col" class="px-4 py-3 font-semibold" [attr.aria-sort]="ariaSort('rating')">
+          <button
+            type="button"
+            class="inline-flex items-center gap-1 font-semibold text-slate-200 hover:text-cyan-200"
+            (click)="sortChange.emit('rating')"
+          >
+            Rating
+            @if (sort().key === 'rating') {
+              <span aria-hidden="true">{{ sort().direction === 'asc' ? '▲' : '▼' }}</span>
+            }
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (player of players(); track player.userId; let i = $index) {
+        <tr class="transition-colors duration-150 hover:bg-cyan-400/10">
+          <td
+            class="sticky left-0 z-10 min-w-[15rem] whitespace-nowrap bg-slate-900/95 px-4 py-3 font-semibold text-slate-50"
+          >
+            <div class="flex items-center gap-2">
+              <span
+                class="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cyan-400/20 text-xs font-bold text-cyan-100"
+              >
+                {{ i + 1 }}
+              </span>
+              <app-player-avatar [name]="player.name" [avatarUnitId]="player.avatarUnitId" />
+              <span class="truncate">{{ player.name }} ({{ player.usedTokens }}/10)</span>
+            </div>
+          </td>
+          @for (token of player.tokens; track $index) {
+            <td class="px-4 py-3">
+              <div class="flex min-h-8 w-full flex-col items-center justify-center gap-1">
+                <app-token-cell [token]="token" />
+              </div>
+            </td>
+          }
+          <td class="px-4 py-3">
+            <span class="font-semibold text-amber-300">{{ player.totalScore.toLocaleString() }}</span>
+          </td>
+          <td class="px-4 py-3">
+            <span class="text-cyan-300">{{ player.averageScore.toLocaleString() }}</span>
+          </td>
+          <td class="px-4 py-3">
+            <span class="font-semibold text-violet-300">{{ player.totalSkillRating | number: '1.0-0' }}</span>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

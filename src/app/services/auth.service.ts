@@ -1,7 +1,7 @@
 ﻿import { computed, Injectable, signal } from '@angular/core';
 import type { User } from 'firebase/auth';
 import { getFirebaseApp } from './firebase-app';
-import { ADMINS_COLLECTION } from './war-metadata.model';
+import { ADMINS_COLLECTION } from './firestore-collections';
 
 export interface AppUser {
   readonly uid: string;
@@ -92,4 +92,5 @@ export class AuthService {
     }
   }
 }
+
 

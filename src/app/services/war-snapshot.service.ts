@@ -1,10 +1,10 @@
-import { inject, Injectable, signal } from '@angular/core';
+﻿import { inject, Injectable, signal } from '@angular/core';
 import { Bytes, doc, getDoc } from 'firebase/firestore';
 import type { WarSnapshot } from '@core/models/war-snapshot.model';
 import { buildSnapshot, type GuildSnapshot } from '@core/snapshot/build-snapshot';
 import { gunzipJson } from '@core/util/gzip';
 import { FirebaseService } from './firebase.service';
-import { PAYLOAD_COLLECTION, PAYLOAD_DOC, WARS_COLLECTION } from './war-metadata.model';
+import { PAYLOAD_COLLECTION, PAYLOAD_DOC, WARS_COLLECTION } from './firestore-collections';
 
 @Injectable({ providedIn: 'root' })
 export class WarSnapshotService {
@@ -63,3 +63,4 @@ export class WarSnapshotService {
     }
   }
 }
+

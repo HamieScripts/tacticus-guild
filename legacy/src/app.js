@@ -3668,5 +3668,5 @@ function setupLeaderboardSearch() {
 }
 
 if (typeof module !== 'undefined') {
-  module.exports = { shouldDisplayCurrentDataset, isEasyGameBattle, buildSnapshot, getCoreScore, isLegendEnabled, getEasyGameBadgeHtml, filterLeaderboardRowsByName };
+  module.exports = { shouldDisplayCurrentDataset, isEasyGameBattle, buildSnapshot, summarizeGuild, getCoreScore, isLegendEnabled, getEasyGameBadgeHtml, filterLeaderboardRowsByName };
 }

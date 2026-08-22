@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Correctness gate for the rewrite: runs the ported buildSnapshot and the POC's original
  * side by side over every captured war and reports any divergence.
  *
@@ -8,16 +8,20 @@ import { createRequire } from 'node:module';
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { buildSnapshot } from '../src/app/core/snapshot/build-snapshot';
+import { summarizeGuild } from '../src/app/core/snapshot/guild-summary';
 import { gunzipJson, gzipJson } from '../src/app/core/util/gzip';
-import { MAX_COMPRESSED_BYTES } from '../src/app/services/war-metadata.model';
+import { MAX_COMPRESSED_BYTES } from '../src/app/services/firestore-collections';
 import type { WarSnapshot } from '../src/app/core/models/war-snapshot.model';
 
 interface LegacyPlayer {
   userId: string;
+  name: string;
   totalScore: number;
   tileScore: number;
   usedTokens: number;
   tilesCleared: number;
+  averageScore: number;
+  totalSkillRating: number;
 }
 
 interface LegacyGuild {
@@ -27,9 +31,26 @@ interface LegacyGuild {
   battles: unknown[];
 }
 
+interface LegacySummary {
+  totalPlayers: number;
+  totalTokenSlots: number;
+  usedTokens: number;
+  remainingTokens: number;
+  tokenScore: number;
+  tileScore: number;
+  avgPerUsedToken: number;
+  projectedTokenScore: number;
+  totalWins: number;
+  totalCleanupWins: number;
+  totalDefeats: number;
+  totalAbandoned: number;
+  totalUnused: number;
+}
+
 const require = createRequire(import.meta.url);
 const legacy = require('../legacy/src/app.js') as {
   buildSnapshot: (data: unknown) => LegacyGuild[];
+  summarizeGuild: (guild: LegacyGuild) => LegacySummary;
 };
 
 const HISTORY_DIR = join(process.cwd(), 'data', 'history');
@@ -92,19 +113,57 @@ async function main(): Promise<void> {
         if (player.usedTokens !== before.usedTokens) {
           fail(`${player.name} usedTokens ${player.usedTokens} vs ${before.usedTokens}`);
         }
+        if (player.averageScore !== before.averageScore) {
+          fail(`${player.name} averageScore ${player.averageScore} vs ${before.averageScore}`);
+        }
+        if (Math.abs(player.totalSkillRating - before.totalSkillRating) > 1e-6) {
+          fail(`${player.name} skillRating ${player.totalSkillRating} vs ${before.totalSkillRating}`);
+        }
+        if (player.tilesCleared !== before.tilesCleared) {
+          fail(`${player.name} tilesCleared ${player.tilesCleared} vs ${before.tilesCleared}`);
+        }
 
         const portedCombined = player.totalScore + player.tileScore;
         const beforeCombined = before.totalScore + before.tileScore;
         if (portedCombined !== beforeCombined) {
           fail(`${player.name} combined score ${portedCombined} vs ${beforeCombined}`);
         } else if (player.tileScore !== before.tileScore) {
-          // Expected where the zone-type fix picks a different bonus than the brute-force fallback.
           tileSplitDiffs += 1;
           console.log(
             `  tile split differs for ${player.name}: ` +
               `${player.totalScore}+${player.tileScore} vs ${before.totalScore}+${before.tileScore}`,
           );
         }
+      }
+
+      // Everything the guild token projection table renders.
+      const summary = summarizeGuild(guild);
+      const legacySummary = legacy.summarizeGuild(originalGuild);
+      const summaryFields: (keyof LegacySummary)[] = [
+        'totalPlayers',
+        'totalTokenSlots',
+        'usedTokens',
+        'remainingTokens',
+        'tokenScore',
+        'tileScore',
+        'projectedTokenScore',
+        'totalWins',
+        'totalCleanupWins',
+        'totalDefeats',
+        'totalAbandoned',
+        'totalUnused',
+      ];
+
+      for (const field of summaryFields) {
+        if (summary[field] !== legacySummary[field]) {
+          fail(`${guild.name} summary.${field} ${summary[field]} vs ${legacySummary[field]}`);
+        }
+      }
+
+      if (Math.abs(summary.avgPerUsedToken - legacySummary.avgPerUsedToken) > 1e-6) {
+        fail(
+          `${guild.name} summary.avgPerUsedToken ${summary.avgPerUsedToken} vs ${legacySummary.avgPerUsedToken}`,
+        );
       }
     });
 
@@ -121,3 +180,4 @@ main().catch((error: unknown) => {
   console.error(error);
   process.exit(1);
 });
+

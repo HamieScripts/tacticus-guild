@@ -9,8 +9,7 @@ export const routes: Routes = [
   {
     path: 'guild-wars',
     title: 'Guild Wars',
-    loadComponent: () => import('@pages/placeholder/placeholder-page').then((m) => m.PlaceholderPage),
-    data: { title: 'Guild Wars', phase: 'phase 05' },
+    loadComponent: () => import('@pages/guild-wars/guild-wars-page').then((m) => m.GuildWarsPage),
   },
   {
     path: 'battle-log',

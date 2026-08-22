@@ -1,8 +1,8 @@
-import { inject, Injectable, signal } from '@angular/core';
+﻿import { inject, Injectable, signal } from '@angular/core';
 import { doc, getDoc } from 'firebase/firestore';
 import { normalizeUnitId } from '@core/util/format';
 import { FirebaseService } from './firebase.service';
-import { STATIC_COLLECTION } from './war-metadata.model';
+import { STATIC_COLLECTION } from './firestore-collections';
 
 const PORTRAIT_BASE_PATH = 'img';
 
@@ -61,3 +61,4 @@ export class PortraitService {
     }
   }
 }
+

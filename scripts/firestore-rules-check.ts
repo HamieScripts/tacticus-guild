@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Security rules tests. Run via the emulator:
  *   npm run test:rules
  *
@@ -115,3 +115,4 @@ main().catch((error: unknown) => {
   console.error(error);
   process.exit(1);
 });
+
