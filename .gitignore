@@ -51,3 +51,6 @@ ui-debug.log
 # Service account keys must never be committed.
 *serviceaccount*.json
 *-firebase-adminsdk-*.json
+
+# Scratch logs
+/*.log
