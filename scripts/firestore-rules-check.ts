@@ -17,6 +17,11 @@ import { doc, getDoc, setDoc } from 'firebase/firestore';
 const ADMIN_UID = 'admin-user';
 const PLAIN_UID = 'plain-user';
 
+// emulators:exec sets this; 8080 is deliberately avoided because mitmproxy owns it.
+const [EMULATOR_HOST, EMULATOR_PORT] = (
+  process.env['FIRESTORE_EMULATOR_HOST'] ?? '127.0.0.1:8082'
+).split(':');
+
 let failures = 0;
 
 async function check(name: string, run: () => Promise<unknown>): Promise<void> {
@@ -35,8 +40,8 @@ async function main(): Promise<void> {
     projectId: 'warhammer-40k-tacticus-app',
     firestore: {
       rules: readFileSync('firestore.rules', 'utf8'),
-      host: '127.0.0.1',
-      port: 8080,
+      host: EMULATOR_HOST ?? '127.0.0.1',
+      port: Number(EMULATOR_PORT ?? 8082),
     },
   });
 
