@@ -1,0 +1,44 @@
+@import 'tailwindcss';
+
+/* Accent roles carried over from the POC: emerald=win, rose=loss, cyan=info, amber=warning, violet=buffs. */
+@theme {
+  --color-surface: var(--color-slate-950);
+  --color-surface-raised: var(--color-slate-900);
+  --color-surface-border: var(--color-slate-800);
+  --color-content: var(--color-slate-100);
+  --color-content-muted: var(--color-slate-400);
+  --color-win: var(--color-emerald-400);
+  --color-loss: var(--color-rose-400);
+  --color-info: var(--color-cyan-400);
+  --color-warning: var(--color-amber-400);
+  --color-buff: var(--color-violet-400);
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-surface);
+  color: var(--color-content);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+/* Ported from legacy/src/mobile-responsive.css. */
+@media (max-width: 640px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+.scroll-container {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+/* The POC had no visible focus treatment; make keyboard navigation legible. */
+:focus-visible {
+  outline: 2px solid var(--color-info);
+  outline-offset: 2px;
+}
