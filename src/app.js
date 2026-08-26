@@ -331,6 +331,11 @@ function formatValue(value) {
   return `<span class="inline-flex flex-col items-start gap-0.5"><span class="font-semibold text-slate-200">${core.toLocaleString()}</span></span>`;
 }
 
+function formatCountWithCleanup(count, cleanupCount) {
+  const countText = Number(count || 0).toLocaleString();
+  return cleanupCount > 0 ? `${countText} (${Number(cleanupCount).toLocaleString()}🧹)` : countText;
+}
+
 function escapeHtml(str) {
   return String(str)
     .replace(/&/g, '&amp;')
@@ -835,6 +840,11 @@ function summarizeGuild(snapshot) {
     const isWin = !!token.hasScore && !token.defended && Number(token.score || 0) > 0;
     return tokenSum + (isWin ? 0 : 1);
   }, 0), 0);
+  const totalCleanupDefeats = rows.reduce((sum, player) => sum + player.tokens.reduce((tokenSum, token) => {
+    if (!isUsedToken(token) || token.abandoned) return tokenSum;
+    const isWin = !!token.hasScore && !token.defended && Number(token.score || 0) > 0;
+    return tokenSum + (!isWin && token.cleanup ? 1 : 0);
+  }, 0), 0);
   const totalAbandoned = rows.reduce((sum, player) => sum + player.tokens.reduce((tokenSum, token) => tokenSum + (token && token.abandoned ? 1 : 0), 0), 0);
   const totalUnused = rows.reduce((sum, player) => sum + player.tokens.reduce((tokenSum, token) => tokenSum + (isUsedToken(token) ? 0 : 1), 0), 0);
 
@@ -856,6 +866,7 @@ function summarizeGuild(snapshot) {
     totalWins,
     totalCleanupWins,
     totalDefeats,
+    totalCleanupDefeats,
     totalAbandoned,
     totalUnused
   };
@@ -916,8 +927,8 @@ function renderGuildTokenProjectionTable() {
         <td class="py-1 pr-3 text-slate-200">${guild.usedTokens.toLocaleString()}</td>
         <td class="py-1 pr-3 text-slate-200">${guild.remainingTokens.toLocaleString()}</td>
         <td class="py-1 pr-3 text-cyan-200">${guild.avgPerUsedToken.toLocaleString(undefined, { maximumFractionDigits: 1 })}</td>
-        <td class="border-l border-slate-700/60 py-1 pl-3 pr-3 text-slate-200">${guild.totalWins.toLocaleString()} (${guild.totalCleanupWins.toLocaleString()}🧹)</td>
-        <td class="py-1 pr-3 text-slate-200">${guild.totalDefeats.toLocaleString()}</td>
+        <td class="border-l border-slate-700/60 py-1 pl-3 pr-3 text-slate-200">${formatCountWithCleanup(guild.totalWins, guild.totalCleanupWins)}</td>
+        <td class="py-1 pr-3 text-slate-200">${formatCountWithCleanup(guild.totalDefeats, guild.totalCleanupDefeats)}</td>
         <td class="py-1 pr-3 text-slate-200">${guild.totalAbandoned.toLocaleString()}</td>
         <td class="border-l border-slate-700/60 py-1 pl-3 pr-3 text-slate-200">${guild.tokenScore.toLocaleString()}</td>
         <td class="py-1 pr-3 font-semibold text-emerald-200">${guild.projectedTokenScore.toLocaleString()}</td>
@@ -1171,6 +1182,7 @@ function summarizePlayerSeason(season, userId) {
   let wins = 0;
   let cleanupWins = 0;
   let defeats = 0;
+  let cleanupDefeats = 0;
   let abandoned = 0;
   let totalSkillRating = 0;
   const wars = [];
@@ -1196,6 +1208,7 @@ function summarizePlayerSeason(season, userId) {
             if (token.cleanup) cleanupWins += 1;
           } else {
             defeats += 1;
+            if (token.cleanup) cleanupDefeats += 1;
           }
         }
       }
@@ -1209,7 +1222,7 @@ function summarizePlayerSeason(season, userId) {
   const possibleScore = totalTokens * MAX_TOKEN_SCORE;
   const avgSkillRating = season.datasets.length > 0 ? totalSkillRating / season.datasets.length : 0;
 
-  return { totalTokens, spent, remaining, avgPerToken, wins, cleanupWins, defeats, abandoned, totalScore, possibleScore, totalSkillRating, avgSkillRating, wars };
+  return { totalTokens, spent, remaining, avgPerToken, wins, cleanupWins, defeats, cleanupDefeats, abandoned, totalScore, possibleScore, totalSkillRating, avgSkillRating, wars };
 }
 
 function renderPlayerSummarySeasonSelect() {
@@ -1366,8 +1379,8 @@ function renderPlayerSummaryBody() {
         <td class="px-4 py-3">${stats.spent.toLocaleString()}</td>
         <td class="px-4 py-3">${stats.remaining.toLocaleString()}</td>
         <td class="px-4 py-3 text-cyan-200">${stats.avgPerToken.toLocaleString(undefined, { maximumFractionDigits: 1 })}</td>
-        <td class="px-4 py-3">${stats.wins.toLocaleString()} (${stats.cleanupWins.toLocaleString()}🧹)</td>
-        <td class="px-4 py-3">${stats.defeats.toLocaleString()}</td>
+        <td class="px-4 py-3">${formatCountWithCleanup(stats.wins, stats.cleanupWins)}</td>
+        <td class="px-4 py-3">${formatCountWithCleanup(stats.defeats, stats.cleanupDefeats)}</td>
         <td class="px-4 py-3">${stats.abandoned.toLocaleString()}</td>
         <td class="px-4 py-3 font-semibold text-amber-300">${stats.totalScore.toLocaleString()}</td>
         <td class="px-4 py-3 text-violet-300 font-semibold">${stats.avgSkillRating.toLocaleString(undefined, { maximumFractionDigits: 0 })}</td>
@@ -2613,7 +2626,7 @@ function renderPlayerTotalsTable(battles, role = 'attack') {
       <td class="px-3 py-2 text-emerald-200">${row.averageScore.toLocaleString(undefined, { maximumFractionDigits: 1 })}</td>
       <td class="px-3 py-2 text-cyan-200">${row.totalScore.toLocaleString()}</td>
       <td class="px-3 py-2 text-slate-300">${row.battles.toLocaleString()}</td>
-      <td class="px-3 py-2 text-emerald-200">${row.wins.toLocaleString()} (${row.cleanupWins.toLocaleString()}🧹)</td>
+      <td class="px-3 py-2 text-emerald-200">${formatCountWithCleanup(row.wins, row.cleanupWins)}</td>
       <td class="px-3 py-2 text-rose-200">${row.losses.toLocaleString()}</td>
     `;
     tableBody.appendChild(tr);
