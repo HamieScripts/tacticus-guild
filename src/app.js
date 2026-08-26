@@ -1362,7 +1362,6 @@ function renderPlayerSummaryBody() {
             <span class="truncate">${escapeHtml(player.name)}</span>
           </button>
         </td>
-        <td class="px-4 py-3 text-violet-300 font-semibold">${stats.avgSkillRating.toLocaleString(undefined, { maximumFractionDigits: 0 })}</td>
         <td class="px-4 py-3">${stats.totalTokens.toLocaleString()}</td>
         <td class="px-4 py-3">${stats.spent.toLocaleString()}</td>
         <td class="px-4 py-3">${stats.remaining.toLocaleString()}</td>
@@ -1371,6 +1370,7 @@ function renderPlayerSummaryBody() {
         <td class="px-4 py-3">${stats.defeats.toLocaleString()}</td>
         <td class="px-4 py-3">${stats.abandoned.toLocaleString()}</td>
         <td class="px-4 py-3 font-semibold text-amber-300">${stats.totalScore.toLocaleString()}</td>
+        <td class="px-4 py-3 text-violet-300 font-semibold">${stats.avgSkillRating.toLocaleString(undefined, { maximumFractionDigits: 0 })}</td>
       </tr>
     `;
 
@@ -1384,7 +1384,6 @@ function renderPlayerSummaryBody() {
           <thead class="bg-slate-800/90 text-slate-200">
             <tr>
               ${renderPlayerSummarySortHeader('name', 'Player', { sticky: true })}
-              ${renderPlayerSummarySortHeader('avgSkillRating', 'Avg skill rating')}
               ${renderPlayerSummarySortHeader('totalTokens', 'Total tokens')}
               ${renderPlayerSummarySortHeader('spent', 'Spent')}
               ${renderPlayerSummarySortHeader('remaining', 'Remaining')}
@@ -1393,6 +1392,7 @@ function renderPlayerSummaryBody() {
               ${renderPlayerSummarySortHeader('defeats', 'Defeats')}
               ${renderPlayerSummarySortHeader('abandoned', 'Abandoned')}
               ${renderPlayerSummarySortHeader('totalScore', 'Total score')}
+              ${renderPlayerSummarySortHeader('avgSkillRating', 'Avg skill rating')}
             </tr>
           </thead>
           <tbody class="text-slate-100">${rowsHtml}</tbody>
