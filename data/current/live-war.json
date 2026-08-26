@@ -1,7 +1,7 @@
 {
     "eventResults": [
         {
-            "eventId": "916f921e-d768-4d2d-89c3-26d764f75138",
+            "eventId": "b342b851-6163-4a40-9cab-d7167a4a44f5",
             "eventResultType": "SUCCESS",
             "eventResponseData": {
                 "activityLogs": [
@@ -45767,6 +45767,3210 @@
                             }
                         ],
                         "createdOn": 1787731072882
+                    },
+                    {
+                        "type": "battleFinished",
+                        "id": "4408d697-0837-49bb-9810-882370dbe65d",
+                        "userId": "68bc1563-70dc-4129-bc21-2d5a8a4bfd45",
+                        "teamIndex": 1,
+                        "zone": {
+                            "id": "04c91542-9846-411b-9305-2f0b45495559",
+                            "type": "SupplyDepot",
+                            "visualId": "supplyDump"
+                        },
+                        "score": 400,
+                        "attacker": {
+                            "userId": "68bc1563-70dc-4129-bc21-2d5a8a4bfd45",
+                            "lineupPower": 352786,
+                            "units": [
+                                {
+                                    "unitId": "orksKillaKan",
+                                    "progressionIndex": 15,
+                                    "rank": 11
+                                },
+                                {
+                                    "unitId": "tauFarsight",
+                                    "progressionIndex": 14,
+                                    "rank": 6
+                                },
+                                {
+                                    "unitId": "admecManipulus",
+                                    "progressionIndex": 11,
+                                    "rank": 12
+                                },
+                                {
+                                    "unitId": "admecMarshall",
+                                    "progressionIndex": 13,
+                                    "rank": 14
+                                },
+                                {
+                                    "unitId": "adeptMorvenn",
+                                    "progressionIndex": 12,
+                                    "rank": 14
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "necroReanimator",
+                                "progressionIndex": 8
+                            }
+                        },
+                        "defender": {
+                            "userId": "d9c3ef49-eadf-499d-ab81-d655dbcc086f",
+                            "lineupPower": 7872,
+                            "units": [
+                                {
+                                    "unitId": "tauCrisis",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 706,
+                                    "remainingHPBefore": 706,
+                                    "startHPAfter": 530,
+                                    "remainingHPAfter": 530
+                                },
+                                {
+                                    "unitId": "necroSpyder",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 656,
+                                    "remainingHPBefore": 656,
+                                    "startHPAfter": 656
+                                },
+                                {
+                                    "unitId": "necroDestroyer",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 538,
+                                    "remainingHPBefore": 538,
+                                    "startHPAfter": 538
+                                },
+                                {
+                                    "unitId": "necroOverlord",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 656,
+                                    "remainingHPBefore": 656,
+                                    "startHPAfter": 492,
+                                    "remainingHPAfter": 359
+                                },
+                                {
+                                    "unitId": "admecMarshall",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 621,
+                                    "remainingHPBefore": 621,
+                                    "startHPAfter": 466,
+                                    "remainingHPAfter": 279
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "necroReanimator",
+                                "progressionIndex": 1
+                            }
+                        },
+                        "buffs": [
+                            {
+                                "abilityId": "EnvDefenderHealthBuff2",
+                                "scope": "Global"
+                            }
+                        ],
+                        "createdOn": 1787732759194
+                    },
+                    {
+                        "type": "battleFinished",
+                        "id": "cc2b28ca-5d44-4851-b283-d5f669601d1f",
+                        "userId": "e3aa1a68-71b3-42f8-9957-b2fae79128cd",
+                        "teamIndex": 1,
+                        "zone": {
+                            "id": "04c91542-9846-411b-9305-2f0b45495559",
+                            "type": "SupplyDepot",
+                            "visualId": "supplyDump"
+                        },
+                        "score": 1400,
+                        "attacker": {
+                            "userId": "e3aa1a68-71b3-42f8-9957-b2fae79128cd",
+                            "lineupPower": 321016,
+                            "units": [
+                                {
+                                    "unitId": "deathBlightlord",
+                                    "progressionIndex": 13,
+                                    "rank": 12,
+                                    "remainingHPAfter": 1418
+                                },
+                                {
+                                    "unitId": "deathRotbone",
+                                    "progressionIndex": 13,
+                                    "rank": 15,
+                                    "remainingHPAfter": 1111
+                                },
+                                {
+                                    "unitId": "thousTzaangor",
+                                    "progressionIndex": 11,
+                                    "rank": 12,
+                                    "remainingHPAfter": 708
+                                },
+                                {
+                                    "unitId": "thousInfernalMaster",
+                                    "progressionIndex": 11,
+                                    "rank": 12
+                                },
+                                {
+                                    "unitId": "thousTerminator",
+                                    "progressionIndex": 11,
+                                    "rank": 8,
+                                    "remainingHPAfter": 919
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "tauBroadside",
+                                "progressionIndex": 10
+                            }
+                        },
+                        "defender": {
+                            "userId": "d9c3ef49-eadf-499d-ab81-d655dbcc086f",
+                            "lineupPower": 44686,
+                            "units": [
+                                {
+                                    "unitId": "deathBlightlord",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1813,
+                                    "remainingHPBefore": 1813,
+                                    "startHPAfter": 1813
+                                },
+                                {
+                                    "unitId": "deathPutrifier",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1937,
+                                    "remainingHPBefore": 1937,
+                                    "startHPAfter": 1937
+                                },
+                                {
+                                    "unitId": "deathBlightbringer",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 2013,
+                                    "remainingHPBefore": 2013,
+                                    "startHPAfter": 2013
+                                },
+                                {
+                                    "unitId": "deathRotbone",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1937,
+                                    "remainingHPBefore": 1937,
+                                    "startHPAfter": 1937
+                                },
+                                {
+                                    "unitId": "tauMarksman",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1002,
+                                    "remainingHPBefore": 1002,
+                                    "startHPAfter": 1002
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "deathCrawler",
+                                "progressionIndex": 8
+                            }
+                        },
+                        "buffs": [
+                            {
+                                "abilityId": "EnvDefenderHealthBuff2",
+                                "scope": "Global"
+                            }
+                        ],
+                        "createdOn": 1787733869036
+                    },
+                    {
+                        "type": "battleFinished",
+                        "id": "d9f0a5ce-c941-4314-83a8-abf19f4ce2d3",
+                        "userId": "e3aa1a68-71b3-42f8-9957-b2fae79128cd",
+                        "teamIndex": 1,
+                        "zone": {
+                            "id": "04c91542-9846-411b-9305-2f0b45495559",
+                            "type": "SupplyDepot",
+                            "visualId": "supplyDump"
+                        },
+                        "score": 600,
+                        "attacker": {
+                            "userId": "e3aa1a68-71b3-42f8-9957-b2fae79128cd",
+                            "lineupPower": 41748,
+                            "units": [
+                                {
+                                    "unitId": "worldTerminator",
+                                    "progressionIndex": 11,
+                                    "rank": 7
+                                },
+                                {
+                                    "unitId": "darkaAzrael",
+                                    "progressionIndex": 11,
+                                    "rank": 6
+                                },
+                                {
+                                    "unitId": "eldarAutarch",
+                                    "progressionIndex": 12,
+                                    "rank": 6
+                                },
+                                {
+                                    "unitId": "necroPlasmancer",
+                                    "progressionIndex": 10,
+                                    "rank": 6
+                                },
+                                {
+                                    "unitId": "tyranWingedPrime",
+                                    "progressionIndex": 11,
+                                    "rank": 6
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "deathCrawler",
+                                "progressionIndex": 11
+                            }
+                        },
+                        "defender": {
+                            "userId": "d9c3ef49-eadf-499d-ab81-d655dbcc086f",
+                            "lineupPower": 7895,
+                            "units": [
+                                {
+                                    "unitId": "orksWarboss",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 673,
+                                    "remainingHPBefore": 673,
+                                    "startHPAfter": 505,
+                                    "remainingHPAfter": 505
+                                },
+                                {
+                                    "unitId": "orksKillaKan",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 627,
+                                    "remainingHPBefore": 627,
+                                    "startHPAfter": 471,
+                                    "remainingHPAfter": 377
+                                },
+                                {
+                                    "unitId": "orksBigMek",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 591,
+                                    "remainingHPBefore": 591,
+                                    "startHPAfter": 591
+                                },
+                                {
+                                    "unitId": "orksRuntherd",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 858,
+                                    "remainingHPBefore": 858,
+                                    "startHPAfter": 858
+                                },
+                                {
+                                    "unitId": "templChampion",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 741,
+                                    "remainingHPBefore": 741,
+                                    "startHPAfter": 741
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "orksRukkatrukk",
+                                "progressionIndex": 5
+                            }
+                        },
+                        "buffs": [
+                            {
+                                "abilityId": "EnvDefenderHealthBuff2",
+                                "scope": "Global"
+                            }
+                        ],
+                        "createdOn": 1787734125608
+                    },
+                    {
+                        "type": "battleFinished",
+                        "id": "a36a185e-e990-4835-ace5-986efea4e79b",
+                        "userId": "e3aa1a68-71b3-42f8-9957-b2fae79128cd",
+                        "teamIndex": 1,
+                        "zone": {
+                            "id": "04c91542-9846-411b-9305-2f0b45495559",
+                            "type": "SupplyDepot",
+                            "visualId": "supplyDump"
+                        },
+                        "attemptDebuff": 1,
+                        "score": 450,
+                        "attacker": {
+                            "userId": "e3aa1a68-71b3-42f8-9957-b2fae79128cd",
+                            "lineupPower": 11970,
+                            "units": [
+                                {
+                                    "unitId": "adeptRetributor",
+                                    "progressionIndex": 11,
+                                    "rank": 6,
+                                    "remainingHPAfter": 236
+                                },
+                                {
+                                    "unitId": "adeptHospitaller",
+                                    "progressionIndex": 11,
+                                    "rank": 6,
+                                    "remainingHPAfter": 457
+                                },
+                                {
+                                    "unitId": "astraDreir",
+                                    "progressionIndex": 10,
+                                    "rank": 4,
+                                    "remainingHPAfter": 339
+                                },
+                                {
+                                    "unitId": "eldarRanger",
+                                    "progressionIndex": 11,
+                                    "rank": 4
+                                },
+                                {
+                                    "unitId": "spaceRockfist",
+                                    "progressionIndex": 11,
+                                    "rank": 3,
+                                    "remainingHPAfter": 356
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "astraOrdnanceBattery",
+                                "progressionIndex": 11
+                            }
+                        },
+                        "defender": {
+                            "userId": "d9c3ef49-eadf-499d-ab81-d655dbcc086f",
+                            "lineupPower": 7895,
+                            "units": [
+                                {
+                                    "unitId": "orksWarboss",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 505,
+                                    "remainingHPBefore": 505,
+                                    "startHPAfter": 505
+                                },
+                                {
+                                    "unitId": "orksKillaKan",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 471,
+                                    "remainingHPBefore": 377,
+                                    "startHPAfter": 471
+                                },
+                                {
+                                    "unitId": "orksBigMek",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 591,
+                                    "startHPAfter": 591
+                                },
+                                {
+                                    "unitId": "orksRuntherd",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 858,
+                                    "startHPAfter": 858
+                                },
+                                {
+                                    "unitId": "templChampion",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 741,
+                                    "startHPAfter": 741
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "orksRukkatrukk",
+                                "progressionIndex": 5
+                            }
+                        },
+                        "buffs": [
+                            {
+                                "abilityId": "EnvDefenderHealthBuff2",
+                                "scope": "Global"
+                            }
+                        ],
+                        "createdOn": 1787734244745
+                    },
+                    {
+                        "type": "battleFinished",
+                        "id": "2ca7d01d-95bd-46e2-9577-40ef1c61ebd6",
+                        "userId": "e3aa1a68-71b3-42f8-9957-b2fae79128cd",
+                        "teamIndex": 1,
+                        "zone": {
+                            "id": "04c91542-9846-411b-9305-2f0b45495559",
+                            "type": "SupplyDepot",
+                            "visualId": "supplyDump"
+                        },
+                        "score": 400,
+                        "attacker": {
+                            "userId": "e3aa1a68-71b3-42f8-9957-b2fae79128cd",
+                            "lineupPower": 1088803,
+                            "units": [
+                                {
+                                    "unitId": "templAggressor",
+                                    "progressionIndex": 12,
+                                    "rank": 12
+                                },
+                                {
+                                    "unitId": "bloodSanguinary",
+                                    "progressionIndex": 10,
+                                    "rank": 12
+                                },
+                                {
+                                    "unitId": "admecRuststalker",
+                                    "progressionIndex": 17,
+                                    "rank": 19
+                                },
+                                {
+                                    "unitId": "necroWarden",
+                                    "progressionIndex": 11,
+                                    "rank": 11
+                                },
+                                {
+                                    "unitId": "eldarFarseer",
+                                    "progressionIndex": 13,
+                                    "rank": 12
+                                }
+                            ]
+                        },
+                        "defender": {
+                            "userId": "d9c3ef49-eadf-499d-ab81-d655dbcc086f",
+                            "lineupPower": 52310,
+                            "units": [
+                                {
+                                    "unitId": "custoTrajann",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1511,
+                                    "remainingHPBefore": 1511,
+                                    "startHPAfter": 1134,
+                                    "remainingHPAfter": 1134
+                                },
+                                {
+                                    "unitId": "custoVexilusPraetor",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1661,
+                                    "remainingHPBefore": 1661,
+                                    "startHPAfter": 1246,
+                                    "remainingHPAfter": 1168
+                                },
+                                {
+                                    "unitId": "custoBladeChampion",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1435,
+                                    "remainingHPBefore": 1435,
+                                    "startHPAfter": 1435
+                                },
+                                {
+                                    "unitId": "ultraTitus",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1558,
+                                    "remainingHPBefore": 1558,
+                                    "startHPAfter": 1558
+                                },
+                                {
+                                    "unitId": "adeptHospitaller",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1285,
+                                    "remainingHPBefore": 1285,
+                                    "startHPAfter": 964,
+                                    "remainingHPAfter": 964
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "tyranBiovore",
+                                "progressionIndex": 8
+                            }
+                        },
+                        "buffs": [
+                            {
+                                "abilityId": "EnvDefenderHealthBuff2",
+                                "scope": "Global"
+                            }
+                        ],
+                        "createdOn": 1787734437530
+                    },
+                    {
+                        "type": "battleFinished",
+                        "id": "ec630375-7d71-4a8a-9ca3-ebd1d68e0917",
+                        "userId": "e3aa1a68-71b3-42f8-9957-b2fae79128cd",
+                        "teamIndex": 1,
+                        "zone": {
+                            "id": "04c91542-9846-411b-9305-2f0b45495559",
+                            "type": "SupplyDepot",
+                            "visualId": "supplyDump"
+                        },
+                        "attemptDebuff": 1,
+                        "score": 650,
+                        "attacker": {
+                            "userId": "e3aa1a68-71b3-42f8-9957-b2fae79128cd",
+                            "lineupPower": 254807,
+                            "units": [
+                                {
+                                    "unitId": "ultraApothecary",
+                                    "progressionIndex": 12,
+                                    "rank": 12
+                                },
+                                {
+                                    "unitId": "ultraInceptorSgt",
+                                    "progressionIndex": 13,
+                                    "rank": 12,
+                                    "remainingHPAfter": 457
+                                },
+                                {
+                                    "unitId": "astraBullgryn",
+                                    "progressionIndex": 11,
+                                    "rank": 12
+                                },
+                                {
+                                    "unitId": "templAncient",
+                                    "progressionIndex": 11,
+                                    "rank": 9,
+                                    "remainingHPAfter": 539
+                                },
+                                {
+                                    "unitId": "ultraTigurius",
+                                    "progressionIndex": 12,
+                                    "rank": 12,
+                                    "remainingHPAfter": 389
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "ultraDreadnought",
+                                "progressionIndex": 12
+                            }
+                        },
+                        "defender": {
+                            "userId": "d9c3ef49-eadf-499d-ab81-d655dbcc086f",
+                            "lineupPower": 7872,
+                            "units": [
+                                {
+                                    "unitId": "tauCrisis",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 530,
+                                    "remainingHPBefore": 530,
+                                    "startHPAfter": 530
+                                },
+                                {
+                                    "unitId": "necroSpyder",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 656,
+                                    "startHPAfter": 656
+                                },
+                                {
+                                    "unitId": "necroDestroyer",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 538,
+                                    "startHPAfter": 538
+                                },
+                                {
+                                    "unitId": "necroOverlord",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 492,
+                                    "remainingHPBefore": 359,
+                                    "startHPAfter": 492
+                                },
+                                {
+                                    "unitId": "admecMarshall",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 466,
+                                    "remainingHPBefore": 279,
+                                    "startHPAfter": 466
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "necroReanimator",
+                                "progressionIndex": 1
+                            }
+                        },
+                        "buffs": [
+                            {
+                                "abilityId": "EnvDefenderHealthBuff2",
+                                "scope": "Global"
+                            }
+                        ],
+                        "createdOn": 1787734551470
+                    },
+                    {
+                        "type": "battleFinished",
+                        "id": "db71791e-ddf7-4f49-ae0b-52f7b16acf15",
+                        "userId": "88d2bc96-1b12-4a27-aafc-b911dc8fa815",
+                        "teamIndex": 1,
+                        "zone": {
+                            "id": "04c91542-9846-411b-9305-2f0b45495559",
+                            "type": "SupplyDepot",
+                            "visualId": "supplyDump"
+                        },
+                        "score": 1600,
+                        "attacker": {
+                            "userId": "88d2bc96-1b12-4a27-aafc-b911dc8fa815",
+                            "lineupPower": 100099,
+                            "units": [
+                                {
+                                    "unitId": "eldarRanger",
+                                    "progressionIndex": 11,
+                                    "rank": 12,
+                                    "remainingHPAfter": 378
+                                },
+                                {
+                                    "unitId": "blackObliterator",
+                                    "progressionIndex": 10,
+                                    "rank": 9,
+                                    "remainingHPAfter": 541
+                                },
+                                {
+                                    "unitId": "adeptRetributor",
+                                    "progressionIndex": 12,
+                                    "rank": 9,
+                                    "remainingHPAfter": 108
+                                },
+                                {
+                                    "unitId": "astraDreir",
+                                    "progressionIndex": 11,
+                                    "rank": 6,
+                                    "remainingHPAfter": 512
+                                },
+                                {
+                                    "unitId": "darkaHellblaster",
+                                    "progressionIndex": 11,
+                                    "rank": 9,
+                                    "remainingHPAfter": 378
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "blackForgefiend",
+                                "progressionIndex": 11
+                            }
+                        },
+                        "defender": {
+                            "userId": "d9c3ef49-eadf-499d-ab81-d655dbcc086f",
+                            "lineupPower": 8171,
+                            "units": [
+                                {
+                                    "unitId": "genesBiophagus",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 422,
+                                    "remainingHPBefore": 422,
+                                    "startHPAfter": 422
+                                },
+                                {
+                                    "unitId": "genesKelermorph",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 403,
+                                    "remainingHPBefore": 403,
+                                    "startHPAfter": 403
+                                },
+                                {
+                                    "unitId": "genesPrimus",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 522,
+                                    "remainingHPBefore": 522,
+                                    "startHPAfter": 522
+                                },
+                                {
+                                    "unitId": "genesPatriarch",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 673,
+                                    "remainingHPBefore": 673,
+                                    "startHPAfter": 673
+                                },
+                                {
+                                    "unitId": "genesMagus",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 370,
+                                    "remainingHPBefore": 370,
+                                    "startHPAfter": 370
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "blackForgefiend",
+                                "progressionIndex": 5
+                            }
+                        },
+                        "buffs": [
+                            {
+                                "abilityId": "EnvDefenderHealthBuff2",
+                                "scope": "Global"
+                            }
+                        ],
+                        "createdOn": 1787734997649
+                    },
+                    {
+                        "type": "battleFinished",
+                        "id": "85347971-105e-477f-9dbf-11bd6c6b75aa",
+                        "userId": "88d2bc96-1b12-4a27-aafc-b911dc8fa815",
+                        "teamIndex": 1,
+                        "zone": {
+                            "id": "04c91542-9846-411b-9305-2f0b45495559",
+                            "type": "SupplyDepot",
+                            "visualId": "supplyDump"
+                        },
+                        "attemptDebuff": 1,
+                        "score": 650,
+                        "attacker": {
+                            "userId": "88d2bc96-1b12-4a27-aafc-b911dc8fa815",
+                            "lineupPower": 142434,
+                            "units": [
+                                {
+                                    "unitId": "worldExecutions",
+                                    "progressionIndex": 11,
+                                    "rank": 9,
+                                    "remainingHPAfter": 1148
+                                },
+                                {
+                                    "unitId": "necroPlasmancer",
+                                    "progressionIndex": 10,
+                                    "rank": 10,
+                                    "remainingHPAfter": 907
+                                },
+                                {
+                                    "unitId": "templSwordBrother",
+                                    "progressionIndex": 11,
+                                    "rank": 9,
+                                    "remainingHPAfter": 894
+                                },
+                                {
+                                    "unitId": "tauMarksman",
+                                    "progressionIndex": 12,
+                                    "rank": 12,
+                                    "remainingHPAfter": 785
+                                },
+                                {
+                                    "unitId": "ultraTigurius",
+                                    "progressionIndex": 10,
+                                    "rank": 12,
+                                    "remainingHPAfter": 226
+                                }
+                            ]
+                        },
+                        "defender": {
+                            "userId": "d9c3ef49-eadf-499d-ab81-d655dbcc086f",
+                            "lineupPower": 52310,
+                            "units": [
+                                {
+                                    "unitId": "custoTrajann",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1134,
+                                    "remainingHPBefore": 1134,
+                                    "startHPAfter": 1134
+                                },
+                                {
+                                    "unitId": "custoVexilusPraetor",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1246,
+                                    "remainingHPBefore": 1168,
+                                    "startHPAfter": 1246
+                                },
+                                {
+                                    "unitId": "custoBladeChampion",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1435,
+                                    "startHPAfter": 1435
+                                },
+                                {
+                                    "unitId": "ultraTitus",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1558,
+                                    "startHPAfter": 1558
+                                },
+                                {
+                                    "unitId": "adeptHospitaller",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 964,
+                                    "remainingHPBefore": 964,
+                                    "startHPAfter": 964
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "tyranBiovore",
+                                "progressionIndex": 8
+                            }
+                        },
+                        "buffs": [
+                            {
+                                "abilityId": "EnvDefenderHealthBuff2",
+                                "scope": "Global"
+                            }
+                        ],
+                        "createdOn": 1787735103199
+                    },
+                    {
+                        "type": "markTarget",
+                        "id": "e1be7976-0ebb-4735-9c1f-d964652a0b1c",
+                        "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+                        "teamIndex": 2,
+                        "zone": {
+                            "id": "048cca1c-6c76-468a-856f-4798d441939a",
+                            "type": "LandingPad1",
+                            "visualId": "landingPad"
+                        },
+                        "targetId": "arrowId1",
+                        "createdOn": 1787735282480
+                    },
+                    {
+                        "type": "battleFinished",
+                        "id": "3a57b2d5-505d-41be-b16e-9a6b700cd1d7",
+                        "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
+                        "teamIndex": 2,
+                        "zone": {
+                            "id": "048cca1c-6c76-468a-856f-4798d441939a",
+                            "type": "LandingPad1",
+                            "visualId": "landingPad"
+                        },
+                        "score": 1600,
+                        "attacker": {
+                            "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
+                            "lineupPower": 287294,
+                            "units": [
+                                {
+                                    "unitId": "necroDestroyer",
+                                    "progressionIndex": 13,
+                                    "rank": 14,
+                                    "remainingHPAfter": 1067
+                                },
+                                {
+                                    "unitId": "necroSpyder",
+                                    "progressionIndex": 12,
+                                    "rank": 14,
+                                    "remainingHPAfter": 1187
+                                },
+                                {
+                                    "unitId": "necroChronomancer",
+                                    "progressionIndex": 9,
+                                    "rank": 9,
+                                    "remainingHPAfter": 907
+                                },
+                                {
+                                    "unitId": "necroPlasmancer",
+                                    "progressionIndex": 10,
+                                    "rank": 10,
+                                    "remainingHPAfter": 953
+                                },
+                                {
+                                    "unitId": "necroOverlord",
+                                    "progressionIndex": 11,
+                                    "rank": 10,
+                                    "remainingHPAfter": 1187
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "necroReanimator",
+                                "progressionIndex": 9
+                            }
+                        },
+                        "defender": {
+                            "userId": "8adac742-2b29-4f96-a602-2374d8097485",
+                            "lineupPower": 49136,
+                            "units": [
+                                {
+                                    "unitId": "deathBlightlord",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1451,
+                                    "remainingHPBefore": 1451,
+                                    "startHPAfter": 1451
+                                },
+                                {
+                                    "unitId": "deathBlightbringer",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1611,
+                                    "remainingHPBefore": 1611,
+                                    "startHPAfter": 1611
+                                },
+                                {
+                                    "unitId": "deathTyphus",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1451,
+                                    "remainingHPBefore": 1451,
+                                    "startHPAfter": 1451
+                                },
+                                {
+                                    "unitId": "deathRotbone",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1451,
+                                    "remainingHPBefore": 1451,
+                                    "startHPAfter": 1451
+                                },
+                                {
+                                    "unitId": "tauMarksman",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 887,
+                                    "remainingHPBefore": 887,
+                                    "startHPAfter": 887
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "deathCrawler",
+                                "progressionIndex": 8
+                            }
+                        },
+                        "buffs": [
+                            {
+                                "abilityId": "EnvAngelsOfDeath",
+                                "scope": "Regional"
+                            }
+                        ],
+                        "createdOn": 1787736588776
+                    },
+                    {
+                        "type": "battleFinished",
+                        "id": "a9d06b22-1f9e-4a0e-8fc8-a96cb4bc5e02",
+                        "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+                        "teamIndex": 2,
+                        "zone": {
+                            "id": "048cca1c-6c76-468a-856f-4798d441939a",
+                            "type": "LandingPad1",
+                            "visualId": "landingPad"
+                        },
+                        "score": 1200,
+                        "attacker": {
+                            "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+                            "lineupPower": 118550,
+                            "units": [
+                                {
+                                    "unitId": "blackPossession",
+                                    "progressionIndex": 9,
+                                    "rank": 10
+                                },
+                                {
+                                    "unitId": "thousTzaangor",
+                                    "progressionIndex": 10,
+                                    "rank": 9,
+                                    "remainingHPAfter": 840
+                                },
+                                {
+                                    "unitId": "thousInfernalMaster",
+                                    "progressionIndex": 11,
+                                    "rank": 12,
+                                    "remainingHPAfter": 407
+                                },
+                                {
+                                    "unitId": "thousTerminator",
+                                    "progressionIndex": 11,
+                                    "rank": 9,
+                                    "remainingHPAfter": 411
+                                },
+                                {
+                                    "unitId": "ultraTigurius",
+                                    "progressionIndex": 11,
+                                    "rank": 9
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "astraOrdnanceBattery",
+                                "progressionIndex": 10
+                            }
+                        },
+                        "defender": {
+                            "userId": "8adac742-2b29-4f96-a602-2374d8097485",
+                            "lineupPower": 52057,
+                            "units": [
+                                {
+                                    "unitId": "blackAbaddon",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1209,
+                                    "remainingHPBefore": 1209,
+                                    "startHPAfter": 1209
+                                },
+                                {
+                                    "unitId": "blackObliterator",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1611,
+                                    "remainingHPBefore": 1611,
+                                    "startHPAfter": 1611
+                                },
+                                {
+                                    "unitId": "emperLucius",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1088,
+                                    "remainingHPBefore": 1088,
+                                    "startHPAfter": 1088
+                                },
+                                {
+                                    "unitId": "emperNoiseMarine",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1126,
+                                    "remainingHPBefore": 1126,
+                                    "startHPAfter": 1126
+                                },
+                                {
+                                    "unitId": "worldTerminator",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1148,
+                                    "remainingHPBefore": 1148,
+                                    "startHPAfter": 1148
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "blackForgefiend",
+                                "progressionIndex": 8
+                            }
+                        },
+                        "buffs": [
+                            {
+                                "abilityId": "EnvAngelsOfDeath",
+                                "scope": "Regional"
+                            }
+                        ],
+                        "createdOn": 1787736838475
+                    },
+                    {
+                        "type": "battleFinished",
+                        "id": "9f3ed616-6bce-4231-9a04-67516c62cf51",
+                        "userId": "68bc1563-70dc-4129-bc21-2d5a8a4bfd45",
+                        "teamIndex": 1,
+                        "zone": {
+                            "id": "04c91542-9846-411b-9305-2f0b45495559",
+                            "type": "SupplyDepot",
+                            "visualId": "supplyDump"
+                        },
+                        "score": 1100,
+                        "attacker": {
+                            "userId": "68bc1563-70dc-4129-bc21-2d5a8a4bfd45",
+                            "lineupPower": 143314,
+                            "units": [
+                                {
+                                    "unitId": "darkaHellblaster",
+                                    "progressionIndex": 7,
+                                    "rank": 6
+                                },
+                                {
+                                    "unitId": "bloodTerminator",
+                                    "progressionIndex": 10,
+                                    "rank": 12,
+                                    "remainingHPAfter": 454
+                                },
+                                {
+                                    "unitId": "templAggressor",
+                                    "progressionIndex": 10,
+                                    "rank": 10,
+                                    "remainingHPAfter": 317
+                                },
+                                {
+                                    "unitId": "astraOrdnance",
+                                    "progressionIndex": 8,
+                                    "rank": 9
+                                },
+                                {
+                                    "unitId": "ultraApothecary",
+                                    "progressionIndex": 12,
+                                    "rank": 10
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "blackForgefiend",
+                                "progressionIndex": 12
+                            }
+                        },
+                        "defender": {
+                            "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+                            "lineupPower": 8846,
+                            "units": [
+                                {
+                                    "unitId": "ultraTitus",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 688,
+                                    "remainingHPBefore": 688,
+                                    "startHPAfter": 688
+                                },
+                                {
+                                    "unitId": "eldarMauganRa",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 472,
+                                    "remainingHPBefore": 472,
+                                    "startHPAfter": 472
+                                },
+                                {
+                                    "unitId": "eldarRanger",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 472,
+                                    "remainingHPBefore": 472,
+                                    "startHPAfter": 472
+                                },
+                                {
+                                    "unitId": "tauCrisis",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 706,
+                                    "remainingHPBefore": 706,
+                                    "startHPAfter": 706
+                                },
+                                {
+                                    "unitId": "blackHaarken",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 640,
+                                    "remainingHPBefore": 640,
+                                    "startHPAfter": 640
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "tyranBiovore",
+                                "progressionIndex": 5
+                            }
+                        },
+                        "buffs": [
+                            {
+                                "abilityId": "EnvDefenderHealthBuff2",
+                                "scope": "Global"
+                            }
+                        ],
+                        "createdOn": 1787736959818
+                    },
+                    {
+                        "type": "battleFinished",
+                        "id": "c02dadb6-61de-4098-8edc-2179d6ec2ad1",
+                        "userId": "68bc1563-70dc-4129-bc21-2d5a8a4bfd45",
+                        "teamIndex": 1,
+                        "zone": {
+                            "id": "04c91542-9846-411b-9305-2f0b45495559",
+                            "type": "SupplyDepot",
+                            "visualId": "supplyDump"
+                        },
+                        "score": 800,
+                        "attacker": {
+                            "userId": "68bc1563-70dc-4129-bc21-2d5a8a4bfd45",
+                            "lineupPower": 820950,
+                            "units": [
+                                {
+                                    "unitId": "bloodDante",
+                                    "progressionIndex": 14,
+                                    "rank": 17
+                                },
+                                {
+                                    "unitId": "orksRuntherd",
+                                    "progressionIndex": 16,
+                                    "rank": 14
+                                },
+                                {
+                                    "unitId": "tyranNeurothrope",
+                                    "progressionIndex": 8,
+                                    "rank": 9
+                                },
+                                {
+                                    "unitId": "adeptRetributor",
+                                    "progressionIndex": 10,
+                                    "rank": 7
+                                },
+                                {
+                                    "unitId": "bloodSanguinary",
+                                    "progressionIndex": 12,
+                                    "rank": 12
+                                }
+                            ]
+                        },
+                        "defender": {
+                            "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+                            "lineupPower": 9511,
+                            "units": [
+                                {
+                                    "unitId": "deathBlightlord",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 807,
+                                    "remainingHPBefore": 807,
+                                    "startHPAfter": 807
+                                },
+                                {
+                                    "unitId": "deathPutrifier",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 857,
+                                    "remainingHPBefore": 857,
+                                    "startHPAfter": 857
+                                },
+                                {
+                                    "unitId": "deathBlightbringer",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 891,
+                                    "remainingHPBefore": 891,
+                                    "startHPAfter": 891
+                                },
+                                {
+                                    "unitId": "deathRotbone",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 857,
+                                    "remainingHPBefore": 857,
+                                    "startHPAfter": 643,
+                                    "remainingHPAfter": 252
+                                },
+                                {
+                                    "unitId": "tauMarksman",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 487,
+                                    "remainingHPBefore": 487,
+                                    "startHPAfter": 487
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "deathCrawler",
+                                "progressionIndex": 5
+                            }
+                        },
+                        "buffs": [
+                            {
+                                "abilityId": "EnvDefenderHealthBuff2",
+                                "scope": "Global"
+                            }
+                        ],
+                        "createdOn": 1787737482986
+                    },
+                    {
+                        "type": "battleFinished",
+                        "id": "db4d8d2a-5115-40fe-9299-9cf4a76ae051",
+                        "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+                        "teamIndex": 2,
+                        "zone": {
+                            "id": "048cca1c-6c76-468a-856f-4798d441939a",
+                            "type": "LandingPad1",
+                            "visualId": "landingPad"
+                        },
+                        "score": 17200,
+                        "attacker": {
+                            "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+                            "lineupPower": 951192,
+                            "units": [
+                                {
+                                    "unitId": "admecDominus",
+                                    "progressionIndex": 12,
+                                    "rank": 17
+                                },
+                                {
+                                    "unitId": "necroSpyder",
+                                    "progressionIndex": 10,
+                                    "rank": 11,
+                                    "remainingHPAfter": 1188
+                                },
+                                {
+                                    "unitId": "admecRuststalker",
+                                    "progressionIndex": 13,
+                                    "rank": 12
+                                },
+                                {
+                                    "unitId": "admecMarshall",
+                                    "progressionIndex": 13,
+                                    "rank": 17,
+                                    "remainingHPAfter": 733
+                                },
+                                {
+                                    "unitId": "necroChronomancer",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "remainingHPAfter": 907
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "necroReanimator",
+                                "progressionIndex": 8
+                            }
+                        },
+                        "defender": {
+                            "userId": "ced50f29-11cf-48f4-aacb-6ae4a186e3bd",
+                            "lineupPower": 53519,
+                            "units": [
+                                {
+                                    "unitId": "deathBlightlord",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1451,
+                                    "remainingHPBefore": 1451,
+                                    "startHPAfter": 1451
+                                },
+                                {
+                                    "unitId": "deathRotbone",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1550,
+                                    "remainingHPBefore": 1550,
+                                    "startHPAfter": 1550
+                                },
+                                {
+                                    "unitId": "blackAbaddon",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1209,
+                                    "remainingHPBefore": 1209,
+                                    "startHPAfter": 1209
+                                },
+                                {
+                                    "unitId": "tauMarksman",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 884,
+                                    "remainingHPBefore": 884,
+                                    "startHPAfter": 884
+                                },
+                                {
+                                    "unitId": "deathTyphus",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1451,
+                                    "remainingHPBefore": 1451,
+                                    "startHPAfter": 1451
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "tyranBiovore",
+                                "progressionIndex": 8
+                            }
+                        },
+                        "buffs": [
+                            {
+                                "abilityId": "EnvAngelsOfDeath",
+                                "scope": "Regional"
+                            }
+                        ],
+                        "createdOn": 1787737536610
+                    },
+                    {
+                        "type": "zoneDestroyed",
+                        "id": "8caad2a1-eff1-47b8-bceb-ecfcb23b7aea",
+                        "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+                        "teamIndex": 2,
+                        "zone": {
+                            "id": "048cca1c-6c76-468a-856f-4798d441939a",
+                            "type": "LandingPad1",
+                            "visualId": "landingPad"
+                        },
+                        "totalAttempts": 11,
+                        "createdOn": 1787737536610
+                    },
+                    {
+                        "type": "battleFinished",
+                        "id": "6b8a5a79-e327-43e3-8ada-65d42e0a8240",
+                        "userId": "68bc1563-70dc-4129-bc21-2d5a8a4bfd45",
+                        "teamIndex": 1,
+                        "zone": {
+                            "id": "04c91542-9846-411b-9305-2f0b45495559",
+                            "type": "SupplyDepot",
+                            "visualId": "supplyDump"
+                        },
+                        "attemptDebuff": 1,
+                        "score": 250,
+                        "attacker": {
+                            "userId": "68bc1563-70dc-4129-bc21-2d5a8a4bfd45",
+                            "lineupPower": 133275,
+                            "units": [
+                                {
+                                    "unitId": "emperFlawlessBlade",
+                                    "progressionIndex": 10,
+                                    "rank": 9,
+                                    "remainingHPAfter": 552
+                                },
+                                {
+                                    "unitId": "deathBlightbringer",
+                                    "progressionIndex": 11,
+                                    "rank": 6,
+                                    "remainingHPAfter": 673
+                                },
+                                {
+                                    "unitId": "admecRuststalker",
+                                    "progressionIndex": 12,
+                                    "rank": 13,
+                                    "remainingHPAfter": 337
+                                },
+                                {
+                                    "unitId": "necroChronomancer",
+                                    "progressionIndex": 10,
+                                    "rank": 9,
+                                    "remainingHPAfter": 353
+                                },
+                                {
+                                    "unitId": "ultraEliminatorSgt",
+                                    "progressionIndex": 11,
+                                    "rank": 9,
+                                    "remainingHPAfter": 363
+                                }
+                            ]
+                        },
+                        "defender": {
+                            "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+                            "lineupPower": 9511,
+                            "units": [
+                                {
+                                    "unitId": "deathBlightlord",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 807,
+                                    "startHPAfter": 807
+                                },
+                                {
+                                    "unitId": "deathPutrifier",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 857,
+                                    "startHPAfter": 857
+                                },
+                                {
+                                    "unitId": "deathBlightbringer",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 891,
+                                    "startHPAfter": 891
+                                },
+                                {
+                                    "unitId": "deathRotbone",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 643,
+                                    "remainingHPBefore": 252,
+                                    "startHPAfter": 643
+                                },
+                                {
+                                    "unitId": "tauMarksman",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 487,
+                                    "startHPAfter": 487
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "deathCrawler",
+                                "progressionIndex": 5
+                            }
+                        },
+                        "buffs": [
+                            {
+                                "abilityId": "EnvDefenderHealthBuff2",
+                                "scope": "Global"
+                            }
+                        ],
+                        "createdOn": 1787737629453
+                    },
+                    {
+                        "type": "battleFinished",
+                        "id": "355ab4b3-93cc-4ac1-bc2f-5a00170b7b36",
+                        "userId": "667d435c-4668-4676-a002-e533709f1cc6",
+                        "teamIndex": 2,
+                        "zone": {
+                            "id": "31a7306c-81d5-4547-90f7-b79af7965e67",
+                            "type": "Bunker2",
+                            "visualId": "bunker"
+                        },
+                        "attemptDebuff": 1,
+                        "score": 650,
+                        "attacker": {
+                            "userId": "667d435c-4668-4676-a002-e533709f1cc6",
+                            "lineupPower": 1344370,
+                            "units": [
+                                {
+                                    "unitId": "deathRotbone",
+                                    "progressionIndex": 12,
+                                    "rank": 12,
+                                    "remainingHPAfter": 3356
+                                },
+                                {
+                                    "unitId": "deathBlightlord",
+                                    "progressionIndex": 15,
+                                    "rank": 12,
+                                    "remainingHPAfter": 2880
+                                },
+                                {
+                                    "unitId": "ultraCalgar",
+                                    "progressionIndex": 15,
+                                    "rank": 15,
+                                    "remainingHPAfter": 2462
+                                },
+                                {
+                                    "unitId": "thousInfernalMaster",
+                                    "progressionIndex": 12,
+                                    "rank": 14
+                                },
+                                {
+                                    "unitId": "orksWarboss",
+                                    "progressionIndex": 17,
+                                    "rank": 17
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "deathCrawler",
+                                "progressionIndex": 10
+                            }
+                        },
+                        "defender": {
+                            "userId": "cd291e57-fd33-4668-97b3-b71db0bd9fcc",
+                            "lineupPower": 273704,
+                            "units": [
+                                {
+                                    "unitId": "deathRotbone",
+                                    "progressionIndex": 11,
+                                    "rank": 12,
+                                    "startHPBefore": 2651,
+                                    "remainingHPBefore": 2651,
+                                    "startHPAfter": 2651
+                                },
+                                {
+                                    "unitId": "deathBlightlord",
+                                    "progressionIndex": 11,
+                                    "rank": 12,
+                                    "startHPBefore": 3204,
+                                    "startHPAfter": 3204
+                                },
+                                {
+                                    "unitId": "tauMarksman",
+                                    "progressionIndex": 11,
+                                    "rank": 12,
+                                    "startHPBefore": 2066,
+                                    "startHPAfter": 2066
+                                },
+                                {
+                                    "unitId": "blackObliterator",
+                                    "progressionIndex": 11,
+                                    "rank": 12,
+                                    "startHPBefore": 2754,
+                                    "remainingHPBefore": 2082,
+                                    "startHPAfter": 2754
+                                },
+                                {
+                                    "unitId": "blackAbaddon",
+                                    "progressionIndex": 11,
+                                    "rank": 12,
+                                    "startHPBefore": 2002,
+                                    "remainingHPBefore": 2002,
+                                    "startHPAfter": 2002
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "blackForgefiend",
+                                "progressionIndex": 11
+                            }
+                        },
+                        "buffs": [
+                            {
+                                "abilityId": "EnvFortified",
+                                "scope": "Local"
+                            }
+                        ],
+                        "createdOn": 1787739152977
+                    },
+                    {
+                        "type": "battleFinished",
+                        "id": "35a9f4c7-3a5d-44de-9b88-ee48512da3cb",
+                        "userId": "c9b88058-b28d-49da-9e8d-a2c68770ac97",
+                        "teamIndex": 2,
+                        "zone": {
+                            "id": "31a7306c-81d5-4547-90f7-b79af7965e67",
+                            "type": "Bunker2",
+                            "visualId": "bunker"
+                        },
+                        "score": 1200,
+                        "attacker": {
+                            "userId": "c9b88058-b28d-49da-9e8d-a2c68770ac97",
+                            "lineupPower": 35821,
+                            "units": [
+                                {
+                                    "unitId": "genesKelermorph",
+                                    "progressionIndex": 11,
+                                    "rank": 9,
+                                    "remainingHPAfter": 163
+                                },
+                                {
+                                    "unitId": "genesPrimus",
+                                    "progressionIndex": 7,
+                                    "rank": 9
+                                },
+                                {
+                                    "unitId": "genesBiophagus",
+                                    "progressionIndex": 6,
+                                    "rank": 9
+                                },
+                                {
+                                    "unitId": "genesMagus",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "remainingHPAfter": 177
+                                },
+                                {
+                                    "unitId": "astraYarrick",
+                                    "progressionIndex": 6,
+                                    "rank": 9,
+                                    "remainingHPAfter": 793
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "astraOrdnanceBattery",
+                                "progressionIndex": 5
+                            }
+                        },
+                        "defender": {
+                            "userId": "0fd4a554-c3fb-4018-a298-a1a3600c25fb",
+                            "lineupPower": 47076,
+                            "units": [
+                                {
+                                    "unitId": "genesPrimus",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 846,
+                                    "remainingHPBefore": 846,
+                                    "startHPAfter": 846
+                                },
+                                {
+                                    "unitId": "genesKelermorph",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 728,
+                                    "remainingHPBefore": 728,
+                                    "startHPAfter": 728
+                                },
+                                {
+                                    "unitId": "genesBiophagus",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 766,
+                                    "remainingHPBefore": 766,
+                                    "startHPAfter": 766
+                                },
+                                {
+                                    "unitId": "genesPatriarch",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1209,
+                                    "remainingHPBefore": 1209,
+                                    "startHPAfter": 1209
+                                },
+                                {
+                                    "unitId": "tyranWingedPrime",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1308,
+                                    "remainingHPBefore": 1308,
+                                    "startHPAfter": 1308
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "darkaStormSpeeder",
+                                "progressionIndex": 8
+                            }
+                        },
+                        "buffs": [
+                            {
+                                "abilityId": "EnvFortified",
+                                "scope": "Local"
+                            }
+                        ],
+                        "createdOn": 1787739457656
+                    },
+                    {
+                        "type": "battleFinished",
+                        "id": "af329862-3cac-4efd-97b2-582cdbf234ab",
+                        "userId": "c9b88058-b28d-49da-9e8d-a2c68770ac97",
+                        "teamIndex": 2,
+                        "zone": {
+                            "id": "31a7306c-81d5-4547-90f7-b79af7965e67",
+                            "type": "Bunker2",
+                            "visualId": "bunker"
+                        },
+                        "score": 1200,
+                        "attacker": {
+                            "userId": "c9b88058-b28d-49da-9e8d-a2c68770ac97",
+                            "lineupPower": 548699,
+                            "units": [
+                                {
+                                    "unitId": "worldKharn",
+                                    "progressionIndex": 12,
+                                    "rank": 17
+                                },
+                                {
+                                    "unitId": "deathRotbone",
+                                    "progressionIndex": 12,
+                                    "rank": 10,
+                                    "remainingHPAfter": 229
+                                },
+                                {
+                                    "unitId": "deathBlightlord",
+                                    "progressionIndex": 13,
+                                    "rank": 10,
+                                    "remainingHPAfter": 1371
+                                },
+                                {
+                                    "unitId": "blackTerminator",
+                                    "progressionIndex": 12,
+                                    "rank": 12,
+                                    "remainingHPAfter": 1329
+                                },
+                                {
+                                    "unitId": "blackAbaddon",
+                                    "progressionIndex": 12,
+                                    "rank": 12
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "deathCrawler",
+                                "progressionIndex": 5
+                            }
+                        },
+                        "defender": {
+                            "userId": "0fd4a554-c3fb-4018-a298-a1a3600c25fb",
+                            "lineupPower": 45721,
+                            "units": [
+                                {
+                                    "unitId": "astraDreir",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1209,
+                                    "remainingHPBefore": 1209,
+                                    "startHPAfter": 1209
+                                },
+                                {
+                                    "unitId": "adeptCelestine",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 825,
+                                    "remainingHPBefore": 825,
+                                    "startHPAfter": 825
+                                },
+                                {
+                                    "unitId": "bloodDeathCompany",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1088,
+                                    "remainingHPBefore": 1088,
+                                    "startHPAfter": 1088
+                                },
+                                {
+                                    "unitId": "bloodIntercessor",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1187,
+                                    "remainingHPBefore": 1187,
+                                    "startHPAfter": 1187
+                                },
+                                {
+                                    "unitId": "eldarRanger",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 846,
+                                    "remainingHPBefore": 846,
+                                    "startHPAfter": 846
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "astraOrdnanceBattery",
+                                "progressionIndex": 8
+                            }
+                        },
+                        "buffs": [
+                            {
+                                "abilityId": "EnvFortified",
+                                "scope": "Local"
+                            }
+                        ],
+                        "createdOn": 1787739605282
+                    },
+                    {
+                        "type": "battleFinished",
+                        "id": "c08043a0-7a8b-4ee0-ba93-8f61d6de0c3c",
+                        "userId": "c9b88058-b28d-49da-9e8d-a2c68770ac97",
+                        "teamIndex": 2,
+                        "zone": {
+                            "id": "31a7306c-81d5-4547-90f7-b79af7965e67",
+                            "type": "Bunker2",
+                            "visualId": "bunker"
+                        },
+                        "score": 1200,
+                        "attacker": {
+                            "userId": "c9b88058-b28d-49da-9e8d-a2c68770ac97",
+                            "lineupPower": 727018,
+                            "units": [
+                                {
+                                    "unitId": "admecRuststalker",
+                                    "progressionIndex": 15,
+                                    "rank": 15
+                                },
+                                {
+                                    "unitId": "orksWarboss",
+                                    "progressionIndex": 12,
+                                    "rank": 16
+                                },
+                                {
+                                    "unitId": "necroSpyder",
+                                    "progressionIndex": 12,
+                                    "rank": 15,
+                                    "remainingHPAfter": 686
+                                },
+                                {
+                                    "unitId": "admecMarshall",
+                                    "progressionIndex": 12,
+                                    "rank": 15,
+                                    "remainingHPAfter": 1027
+                                },
+                                {
+                                    "unitId": "admecManipulus",
+                                    "progressionIndex": 12,
+                                    "rank": 12,
+                                    "remainingHPAfter": 1148
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "necroReanimator",
+                                "progressionIndex": 8
+                            }
+                        },
+                        "defender": {
+                            "userId": "cd291e57-fd33-4668-97b3-b71db0bd9fcc",
+                            "lineupPower": 52770,
+                            "units": [
+                                {
+                                    "unitId": "necroSpyder",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1187,
+                                    "remainingHPBefore": 1187,
+                                    "startHPAfter": 1187
+                                },
+                                {
+                                    "unitId": "tauCrisis",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1270,
+                                    "remainingHPBefore": 1270,
+                                    "startHPAfter": 1270
+                                },
+                                {
+                                    "unitId": "orksWarboss",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1209,
+                                    "remainingHPBefore": 1209,
+                                    "startHPAfter": 1209
+                                },
+                                {
+                                    "unitId": "admecMarshall",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1126,
+                                    "remainingHPBefore": 1126,
+                                    "startHPAfter": 1126
+                                },
+                                {
+                                    "unitId": "admecManipulus",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1148,
+                                    "remainingHPBefore": 1148,
+                                    "startHPAfter": 1148
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "ultraDreadnought",
+                                "progressionIndex": 8
+                            }
+                        },
+                        "buffs": [
+                            {
+                                "abilityId": "EnvFortified",
+                                "scope": "Local"
+                            }
+                        ],
+                        "createdOn": 1787739820228
+                    },
+                    {
+                        "type": "battleFinished",
+                        "id": "13abfbee-372a-4a30-890a-b812bc4a09cd",
+                        "userId": "d9c3ef49-eadf-499d-ab81-d655dbcc086f",
+                        "teamIndex": 2,
+                        "zone": {
+                            "id": "31a7306c-81d5-4547-90f7-b79af7965e67",
+                            "type": "Bunker2",
+                            "visualId": "bunker"
+                        },
+                        "score": 1200,
+                        "attacker": {
+                            "userId": "d9c3ef49-eadf-499d-ab81-d655dbcc086f",
+                            "lineupPower": 112336,
+                            "units": [
+                                {
+                                    "unitId": "astraOrdnance",
+                                    "progressionIndex": 10,
+                                    "rank": 12,
+                                    "remainingHPAfter": 890
+                                },
+                                {
+                                    "unitId": "eldarMauganRa",
+                                    "progressionIndex": 12,
+                                    "rank": 12
+                                },
+                                {
+                                    "unitId": "necroDestroyer",
+                                    "progressionIndex": 11,
+                                    "rank": 10
+                                },
+                                {
+                                    "unitId": "eldarRanger",
+                                    "progressionIndex": 11,
+                                    "rank": 10,
+                                    "remainingHPAfter": 846
+                                },
+                                {
+                                    "unitId": "ultraApothecary",
+                                    "progressionIndex": 11,
+                                    "rank": 9,
+                                    "remainingHPAfter": 1308
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "darkaStormSpeeder",
+                                "progressionIndex": 5
+                            }
+                        },
+                        "defender": {
+                            "userId": "cd291e57-fd33-4668-97b3-b71db0bd9fcc",
+                            "lineupPower": 51101,
+                            "units": [
+                                {
+                                    "unitId": "eldarRanger",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 846,
+                                    "remainingHPBefore": 846,
+                                    "startHPAfter": 846
+                                },
+                                {
+                                    "unitId": "custoBladeChampion",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1148,
+                                    "remainingHPBefore": 1148,
+                                    "startHPAfter": 1148
+                                },
+                                {
+                                    "unitId": "worldKharn",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1088,
+                                    "remainingHPBefore": 1088,
+                                    "startHPAfter": 1088
+                                },
+                                {
+                                    "unitId": "spaceBlackmane",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1209,
+                                    "remainingHPBefore": 1209,
+                                    "startHPAfter": 1209
+                                },
+                                {
+                                    "unitId": "blackPossession",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 968,
+                                    "remainingHPBefore": 968,
+                                    "startHPAfter": 968
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "tauBroadside",
+                                "progressionIndex": 8
+                            }
+                        },
+                        "buffs": [
+                            {
+                                "abilityId": "EnvFortified",
+                                "scope": "Local"
+                            }
+                        ],
+                        "createdOn": 1787740001169
+                    },
+                    {
+                        "type": "battleFinished",
+                        "id": "a8263f9f-3959-4d21-b5c1-7743c16c5709",
+                        "userId": "c9b88058-b28d-49da-9e8d-a2c68770ac97",
+                        "teamIndex": 2,
+                        "zone": {
+                            "id": "31a7306c-81d5-4547-90f7-b79af7965e67",
+                            "type": "Bunker2",
+                            "visualId": "bunker"
+                        },
+                        "attacker": {
+                            "userId": "c9b88058-b28d-49da-9e8d-a2c68770ac97",
+                            "lineupPower": 961233,
+                            "units": [
+                                {
+                                    "unitId": "spaceBlackmane",
+                                    "progressionIndex": 12,
+                                    "rank": 13
+                                },
+                                {
+                                    "unitId": "ultraCalgar",
+                                    "progressionIndex": 15,
+                                    "rank": 12
+                                },
+                                {
+                                    "unitId": "ultraTitus",
+                                    "progressionIndex": 10,
+                                    "rank": 12
+                                },
+                                {
+                                    "unitId": "custoBladeChampion",
+                                    "progressionIndex": 16,
+                                    "rank": 18
+                                },
+                                {
+                                    "unitId": "orksRuntherd",
+                                    "progressionIndex": 14,
+                                    "rank": 13
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "blackForgefiend",
+                                "progressionIndex": 11
+                            }
+                        },
+                        "defender": {
+                            "userId": "0fd4a554-c3fb-4018-a298-a1a3600c25fb",
+                            "lineupPower": 45791,
+                            "units": [
+                                {
+                                    "unitId": "tauCrisis",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1270,
+                                    "remainingHPBefore": 1270,
+                                    "startHPAfter": 1270,
+                                    "remainingHPAfter": 1270
+                                },
+                                {
+                                    "unitId": "admecRuststalker",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 968,
+                                    "remainingHPBefore": 968,
+                                    "startHPAfter": 968,
+                                    "remainingHPAfter": 968
+                                },
+                                {
+                                    "unitId": "necroPlasmancer",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1006,
+                                    "remainingHPBefore": 1006,
+                                    "startHPAfter": 1006,
+                                    "remainingHPAfter": 1006
+                                },
+                                {
+                                    "unitId": "tauMarksman",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 785,
+                                    "remainingHPBefore": 785,
+                                    "startHPAfter": 785,
+                                    "remainingHPAfter": 785
+                                },
+                                {
+                                    "unitId": "admecMarshall",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1126,
+                                    "remainingHPBefore": 1126,
+                                    "startHPAfter": 1126,
+                                    "remainingHPAfter": 1126
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "necroReanimator",
+                                "progressionIndex": 8
+                            }
+                        },
+                        "buffs": [
+                            {
+                                "abilityId": "EnvFortified",
+                                "scope": "Local"
+                            }
+                        ],
+                        "abandoned": true,
+                        "createdOn": 1787741996554
+                    },
+                    {
+                        "type": "battleFinished",
+                        "id": "35902610-7abf-466a-95a9-b65b51c29d60",
+                        "userId": "d63f3e75-83d4-4679-8d01-4e025716ea45",
+                        "teamIndex": 2,
+                        "zone": {
+                            "id": "31a7306c-81d5-4547-90f7-b79af7965e67",
+                            "type": "Bunker2",
+                            "visualId": "bunker"
+                        },
+                        "score": 1050,
+                        "attacker": {
+                            "userId": "d63f3e75-83d4-4679-8d01-4e025716ea45",
+                            "lineupPower": 160777,
+                            "units": [
+                                {
+                                    "unitId": "worldExecutions",
+                                    "progressionIndex": 12,
+                                    "rank": 10,
+                                    "remainingHPAfter": 587
+                                },
+                                {
+                                    "unitId": "eldarFarseer",
+                                    "progressionIndex": 14,
+                                    "rank": 11
+                                },
+                                {
+                                    "unitId": "eldarRanger",
+                                    "progressionIndex": 11,
+                                    "rank": 10,
+                                    "remainingHPAfter": 846
+                                },
+                                {
+                                    "unitId": "genesBiophagus",
+                                    "progressionIndex": 11,
+                                    "rank": 10,
+                                    "remainingHPAfter": 675
+                                },
+                                {
+                                    "unitId": "emperNoiseMarine",
+                                    "progressionIndex": 11,
+                                    "rank": 10
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "thousDaemonPrince",
+                                "progressionIndex": 11
+                            }
+                        },
+                        "defender": {
+                            "userId": "0fd4a554-c3fb-4018-a298-a1a3600c25fb",
+                            "lineupPower": 45791,
+                            "units": [
+                                {
+                                    "unitId": "tauCrisis",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1270,
+                                    "remainingHPBefore": 1270,
+                                    "startHPAfter": 1270
+                                },
+                                {
+                                    "unitId": "admecRuststalker",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 968,
+                                    "remainingHPBefore": 968,
+                                    "startHPAfter": 968
+                                },
+                                {
+                                    "unitId": "necroPlasmancer",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1006,
+                                    "remainingHPBefore": 1006,
+                                    "startHPAfter": 1006
+                                },
+                                {
+                                    "unitId": "tauMarksman",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 785,
+                                    "remainingHPBefore": 785,
+                                    "startHPAfter": 785
+                                },
+                                {
+                                    "unitId": "admecMarshall",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1126,
+                                    "remainingHPBefore": 1126,
+                                    "startHPAfter": 1126
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "necroReanimator",
+                                "progressionIndex": 8
+                            }
+                        },
+                        "buffs": [
+                            {
+                                "abilityId": "EnvFortified",
+                                "scope": "Local"
+                            }
+                        ],
+                        "createdOn": 1787742168854
+                    },
+                    {
+                        "type": "battleFinished",
+                        "id": "0c4debd4-e006-4255-848c-9c316bad3546",
+                        "userId": "9d50010a-82f9-4db9-aa55-e292388ea749",
+                        "teamIndex": 2,
+                        "zone": {
+                            "id": "31a7306c-81d5-4547-90f7-b79af7965e67",
+                            "type": "Bunker2",
+                            "visualId": "bunker"
+                        },
+                        "score": 1600,
+                        "attacker": {
+                            "userId": "9d50010a-82f9-4db9-aa55-e292388ea749",
+                            "lineupPower": 290412,
+                            "units": [
+                                {
+                                    "unitId": "necroSpyder",
+                                    "progressionIndex": 12,
+                                    "rank": 13,
+                                    "remainingHPAfter": 1187
+                                },
+                                {
+                                    "unitId": "custoVexilusPraetor",
+                                    "progressionIndex": 12,
+                                    "rank": 12,
+                                    "remainingHPAfter": 1329
+                                },
+                                {
+                                    "unitId": "ultraInceptorSgt",
+                                    "progressionIndex": 12,
+                                    "rank": 13,
+                                    "remainingHPAfter": 1126
+                                },
+                                {
+                                    "unitId": "tauCrisis",
+                                    "progressionIndex": 12,
+                                    "rank": 13,
+                                    "remainingHPAfter": 1270
+                                },
+                                {
+                                    "unitId": "spaceWolfPriest",
+                                    "progressionIndex": 11,
+                                    "rank": 10,
+                                    "remainingHPAfter": 1088
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "orksRukkatrukk",
+                                "progressionIndex": 8
+                            }
+                        },
+                        "defender": {
+                            "userId": "cd291e57-fd33-4668-97b3-b71db0bd9fcc",
+                            "lineupPower": 53066,
+                            "units": [
+                                {
+                                    "unitId": "darkaHellblaster",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 945,
+                                    "remainingHPBefore": 945,
+                                    "startHPAfter": 945
+                                },
+                                {
+                                    "unitId": "darkaCompanion",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1187,
+                                    "remainingHPBefore": 1187,
+                                    "startHPAfter": 1187
+                                },
+                                {
+                                    "unitId": "ultraCalgar",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1148,
+                                    "remainingHPBefore": 1148,
+                                    "startHPAfter": 1148
+                                },
+                                {
+                                    "unitId": "astraDreir",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1209,
+                                    "remainingHPBefore": 1209,
+                                    "startHPAfter": 1209
+                                },
+                                {
+                                    "unitId": "adeptHospitaller",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1028,
+                                    "remainingHPBefore": 1028,
+                                    "startHPAfter": 1028
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "darkaStormSpeeder",
+                                "progressionIndex": 8
+                            }
+                        },
+                        "buffs": [
+                            {
+                                "abilityId": "EnvFortified",
+                                "scope": "Local"
+                            }
+                        ],
+                        "createdOn": 1787742551243
+                    },
+                    {
+                        "type": "battleFinished",
+                        "id": "ff7c066f-a09b-4be2-b387-5000d4dc6d85",
+                        "userId": "1d2a4e85-9afa-4810-bb44-9bfdd845a1bb",
+                        "teamIndex": 1,
+                        "zone": {
+                            "id": "04c91542-9846-411b-9305-2f0b45495559",
+                            "type": "SupplyDepot",
+                            "visualId": "supplyDump"
+                        },
+                        "score": 400,
+                        "attacker": {
+                            "userId": "1d2a4e85-9afa-4810-bb44-9bfdd845a1bb",
+                            "lineupPower": 685533,
+                            "units": [
+                                {
+                                    "unitId": "ultraInceptorSgt",
+                                    "progressionIndex": 13,
+                                    "rank": 13
+                                },
+                                {
+                                    "unitId": "tauCrisis",
+                                    "progressionIndex": 16,
+                                    "rank": 16
+                                },
+                                {
+                                    "unitId": "adeptCelestine",
+                                    "progressionIndex": 12,
+                                    "rank": 13
+                                },
+                                {
+                                    "unitId": "adeptRetributor",
+                                    "progressionIndex": 11,
+                                    "rank": 12
+                                },
+                                {
+                                    "unitId": "ultraApothecary",
+                                    "progressionIndex": 12,
+                                    "rank": 12
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "tauBroadside",
+                                "progressionIndex": 13
+                            }
+                        },
+                        "defender": {
+                            "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+                            "lineupPower": 9336,
+                            "units": [
+                                {
+                                    "unitId": "genesKelermorph",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 403,
+                                    "remainingHPBefore": 403,
+                                    "startHPAfter": 303,
+                                    "remainingHPAfter": 303
+                                },
+                                {
+                                    "unitId": "genesBiophagus",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 420,
+                                    "remainingHPBefore": 420,
+                                    "startHPAfter": 315,
+                                    "remainingHPAfter": 263
+                                },
+                                {
+                                    "unitId": "genesPrimus",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 522,
+                                    "remainingHPBefore": 522,
+                                    "startHPAfter": 522
+                                },
+                                {
+                                    "unitId": "genesMagus",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 370,
+                                    "remainingHPBefore": 370,
+                                    "startHPAfter": 370
+                                },
+                                {
+                                    "unitId": "blackTerminator",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 741,
+                                    "remainingHPBefore": 741,
+                                    "startHPAfter": 556,
+                                    "remainingHPAfter": 485
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "blackForgefiend",
+                                "progressionIndex": 5
+                            }
+                        },
+                        "buffs": [
+                            {
+                                "abilityId": "EnvDefenderHealthBuff2",
+                                "scope": "Global"
+                            }
+                        ],
+                        "createdOn": 1787742747778
+                    },
+                    {
+                        "type": "battleFinished",
+                        "id": "943c6e9c-5243-484f-88b7-bcdaca9eb44a",
+                        "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
+                        "teamIndex": 2,
+                        "zone": {
+                            "id": "7a1e12ed-bb0c-4e6e-b0f4-9cf16efe82bd",
+                            "type": "Trenches3",
+                            "visualId": "trenches"
+                        },
+                        "score": 1600,
+                        "attacker": {
+                            "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
+                            "lineupPower": 667196,
+                            "units": [
+                                {
+                                    "unitId": "tauCrisis",
+                                    "progressionIndex": 16,
+                                    "rank": 15,
+                                    "remainingHPAfter": 1270
+                                },
+                                {
+                                    "unitId": "eldarAutarch",
+                                    "progressionIndex": 16,
+                                    "rank": 14,
+                                    "remainingHPAfter": 968
+                                },
+                                {
+                                    "unitId": "tauMarksman",
+                                    "progressionIndex": 12,
+                                    "rank": 12,
+                                    "remainingHPAfter": 785
+                                },
+                                {
+                                    "unitId": "admecMarshall",
+                                    "progressionIndex": 14,
+                                    "rank": 14,
+                                    "remainingHPAfter": 1126
+                                },
+                                {
+                                    "unitId": "admecManipulus",
+                                    "progressionIndex": 12,
+                                    "rank": 12,
+                                    "remainingHPAfter": 1148
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "tauBroadside",
+                                "progressionIndex": 9
+                            }
+                        },
+                        "defender": {
+                            "userId": "1f2af899-4f24-4d13-a11a-6207b34d83f5",
+                            "lineupPower": 50231,
+                            "units": [
+                                {
+                                    "unitId": "orksWarboss",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1209,
+                                    "remainingHPBefore": 1209,
+                                    "startHPAfter": 1209
+                                },
+                                {
+                                    "unitId": "orksRuntherd",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1553,
+                                    "remainingHPBefore": 1553,
+                                    "startHPAfter": 1553
+                                },
+                                {
+                                    "unitId": "orksBigMek",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 968,
+                                    "remainingHPBefore": 968,
+                                    "startHPAfter": 968
+                                },
+                                {
+                                    "unitId": "orksKillaKan",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1088,
+                                    "remainingHPBefore": 1088,
+                                    "startHPAfter": 1088
+                                },
+                                {
+                                    "unitId": "orksNob",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1209,
+                                    "remainingHPBefore": 1209,
+                                    "startHPAfter": 1209
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "astraOrdnanceBattery",
+                                "progressionIndex": 8
+                            }
+                        },
+                        "createdOn": 1787743571244
+                    },
+                    {
+                        "type": "battleFinished",
+                        "id": "d420ea09-4cbf-4419-8f3e-154cba81636e",
+                        "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
+                        "teamIndex": 2,
+                        "zone": {
+                            "id": "7a1e12ed-bb0c-4e6e-b0f4-9cf16efe82bd",
+                            "type": "Trenches3",
+                            "visualId": "trenches"
+                        },
+                        "score": 1400,
+                        "attacker": {
+                            "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
+                            "lineupPower": 659354,
+                            "units": [
+                                {
+                                    "unitId": "deathTyphus",
+                                    "progressionIndex": 14,
+                                    "rank": 12,
+                                    "remainingHPAfter": 940
+                                },
+                                {
+                                    "unitId": "deathBlightlord",
+                                    "progressionIndex": 16,
+                                    "rank": 15,
+                                    "remainingHPAfter": 1419
+                                },
+                                {
+                                    "unitId": "deathRotbone",
+                                    "progressionIndex": 14,
+                                    "rank": 15,
+                                    "remainingHPAfter": 814
+                                },
+                                {
+                                    "unitId": "blackObliterator",
+                                    "progressionIndex": 12,
+                                    "rank": 12,
+                                    "remainingHPAfter": 1611
+                                },
+                                {
+                                    "unitId": "worldTerminator",
+                                    "progressionIndex": 12,
+                                    "rank": 12
+                                }
+                            ]
+                        },
+                        "defender": {
+                            "userId": "1f2af899-4f24-4d13-a11a-6207b34d83f5",
+                            "lineupPower": 43068,
+                            "units": [
+                                {
+                                    "unitId": "worldKharn",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1088,
+                                    "remainingHPBefore": 1088,
+                                    "startHPAfter": 1088
+                                },
+                                {
+                                    "unitId": "bloodDante",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1088,
+                                    "remainingHPBefore": 1088,
+                                    "startHPAfter": 1088
+                                },
+                                {
+                                    "unitId": "custoBladeChampion",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1148,
+                                    "remainingHPBefore": 1148,
+                                    "startHPAfter": 1148
+                                },
+                                {
+                                    "unitId": "blackHaarken",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1148,
+                                    "remainingHPBefore": 1148,
+                                    "startHPAfter": 1148
+                                },
+                                {
+                                    "unitId": "spaceBlackmane",
+                                    "progressionIndex": 8,
+                                    "rank": 9,
+                                    "startHPBefore": 1209,
+                                    "remainingHPBefore": 1209,
+                                    "startHPAfter": 1209
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "tyranBiovore",
+                                "progressionIndex": 2
+                            }
+                        },
+                        "createdOn": 1787743804651
+                    },
+                    {
+                        "type": "battleFinished",
+                        "id": "ff93ddb8-0d08-4eca-9ea4-4ae01c22fe9b",
+                        "userId": "ced50f29-11cf-48f4-aacb-6ae4a186e3bd",
+                        "teamIndex": 1,
+                        "zone": {
+                            "id": "04c91542-9846-411b-9305-2f0b45495559",
+                            "type": "SupplyDepot",
+                            "visualId": "supplyDump"
+                        },
+                        "attemptDebuff": 1,
+                        "score": 400,
+                        "attacker": {
+                            "userId": "ced50f29-11cf-48f4-aacb-6ae4a186e3bd",
+                            "lineupPower": 159102,
+                            "units": [
+                                {
+                                    "unitId": "eldarAutarch",
+                                    "progressionIndex": 13,
+                                    "rank": 12
+                                },
+                                {
+                                    "unitId": "darkaTerminator",
+                                    "progressionIndex": 10,
+                                    "rank": 8
+                                },
+                                {
+                                    "unitId": "orksKillaKan",
+                                    "progressionIndex": 15,
+                                    "rank": 11
+                                },
+                                {
+                                    "unitId": "necroPlasmancer",
+                                    "progressionIndex": 11,
+                                    "rank": 7
+                                },
+                                {
+                                    "unitId": "deathPutrifier",
+                                    "progressionIndex": 11,
+                                    "rank": 12
+                                }
+                            ]
+                        },
+                        "defender": {
+                            "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+                            "lineupPower": 9336,
+                            "units": [
+                                {
+                                    "unitId": "genesKelermorph",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 303,
+                                    "remainingHPBefore": 303,
+                                    "startHPAfter": 228,
+                                    "remainingHPAfter": 4
+                                },
+                                {
+                                    "unitId": "genesBiophagus",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 315,
+                                    "remainingHPBefore": 263,
+                                    "startHPAfter": 315
+                                },
+                                {
+                                    "unitId": "genesPrimus",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 522,
+                                    "startHPAfter": 522
+                                },
+                                {
+                                    "unitId": "genesMagus",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 370,
+                                    "startHPAfter": 370
+                                },
+                                {
+                                    "unitId": "blackTerminator",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 556,
+                                    "remainingHPBefore": 485,
+                                    "startHPAfter": 556
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "blackForgefiend",
+                                "progressionIndex": 5
+                            }
+                        },
+                        "buffs": [
+                            {
+                                "abilityId": "EnvDefenderHealthBuff2",
+                                "scope": "Global"
+                            }
+                        ],
+                        "createdOn": 1787744022898
+                    },
+                    {
+                        "type": "battleFinished",
+                        "id": "b8ca66a0-d978-4b13-8a25-fd8729f4b5bb",
+                        "userId": "ced50f29-11cf-48f4-aacb-6ae4a186e3bd",
+                        "teamIndex": 1,
+                        "zone": {
+                            "id": "04c91542-9846-411b-9305-2f0b45495559",
+                            "type": "SupplyDepot",
+                            "visualId": "supplyDump"
+                        },
+                        "attemptDebuff": 2,
+                        "score": 30225,
+                        "attacker": {
+                            "userId": "ced50f29-11cf-48f4-aacb-6ae4a186e3bd",
+                            "lineupPower": 16889,
+                            "units": [
+                                {
+                                    "unitId": "tyranTyrantGuard",
+                                    "progressionIndex": 8,
+                                    "rank": 8,
+                                    "remainingHPAfter": 715
+                                },
+                                {
+                                    "unitId": "ultraTigurius",
+                                    "progressionIndex": 11,
+                                    "rank": 7,
+                                    "remainingHPAfter": 276
+                                },
+                                {
+                                    "unitId": "emperNoiseMarine",
+                                    "progressionIndex": 11,
+                                    "rank": 5,
+                                    "remainingHPAfter": 427
+                                }
+                            ]
+                        },
+                        "defender": {
+                            "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+                            "lineupPower": 9336,
+                            "units": [
+                                {
+                                    "unitId": "genesKelermorph",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 228,
+                                    "remainingHPBefore": 4,
+                                    "startHPAfter": 228
+                                },
+                                {
+                                    "unitId": "genesBiophagus",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 315,
+                                    "startHPAfter": 315
+                                },
+                                {
+                                    "unitId": "genesPrimus",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 522,
+                                    "startHPAfter": 522
+                                },
+                                {
+                                    "unitId": "genesMagus",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 370,
+                                    "startHPAfter": 370
+                                },
+                                {
+                                    "unitId": "blackTerminator",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 556,
+                                    "startHPAfter": 556
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "blackForgefiend",
+                                "progressionIndex": 5
+                            }
+                        },
+                        "buffs": [
+                            {
+                                "abilityId": "EnvDefenderHealthBuff2",
+                                "scope": "Global"
+                            }
+                        ],
+                        "createdOn": 1787744081147
+                    },
+                    {
+                        "type": "zoneDestroyed",
+                        "id": "7ac592eb-8c49-4440-b047-edd768ca1dc6",
+                        "userId": "ced50f29-11cf-48f4-aacb-6ae4a186e3bd",
+                        "teamIndex": 1,
+                        "zone": {
+                            "id": "04c91542-9846-411b-9305-2f0b45495559",
+                            "type": "SupplyDepot",
+                            "visualId": "supplyDump"
+                        },
+                        "totalAttempts": 16,
+                        "createdOn": 1787744081147
+                    },
+                    {
+                        "type": "battleFinished",
+                        "id": "250c4a77-2045-497a-b206-4678b3364c2b",
+                        "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
+                        "teamIndex": 2,
+                        "zone": {
+                            "id": "7a1e12ed-bb0c-4e6e-b0f4-9cf16efe82bd",
+                            "type": "Trenches3",
+                            "visualId": "trenches"
+                        },
+                        "score": 1600,
+                        "attacker": {
+                            "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
+                            "lineupPower": 197087,
+                            "units": [
+                                {
+                                    "unitId": "genesPatriarch",
+                                    "progressionIndex": 12,
+                                    "rank": 12,
+                                    "remainingHPAfter": 539
+                                },
+                                {
+                                    "unitId": "genesMagus",
+                                    "progressionIndex": 11,
+                                    "rank": 12,
+                                    "remainingHPAfter": 296
+                                },
+                                {
+                                    "unitId": "genesBiophagus",
+                                    "progressionIndex": 10,
+                                    "rank": 12,
+                                    "remainingHPAfter": 266
+                                },
+                                {
+                                    "unitId": "genesKelermorph",
+                                    "progressionIndex": 11,
+                                    "rank": 12,
+                                    "remainingHPAfter": 235
+                                },
+                                {
+                                    "unitId": "genesPrimus",
+                                    "progressionIndex": 11,
+                                    "rank": 12,
+                                    "remainingHPAfter": 418
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "ultraDreadnought",
+                                "progressionIndex": 10
+                            }
+                        },
+                        "defender": {
+                            "userId": "1f2af899-4f24-4d13-a11a-6207b34d83f5",
+                            "lineupPower": 8192,
+                            "units": [
+                                {
+                                    "unitId": "deathBlightlord",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 646,
+                                    "remainingHPBefore": 646,
+                                    "startHPAfter": 646
+                                },
+                                {
+                                    "unitId": "deathRotbone",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 646,
+                                    "remainingHPBefore": 646,
+                                    "startHPAfter": 646
+                                },
+                                {
+                                    "unitId": "emperFlawlessBlade",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 552,
+                                    "remainingHPBefore": 552,
+                                    "startHPAfter": 552
+                                },
+                                {
+                                    "unitId": "blackPossession",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 431,
+                                    "remainingHPBefore": 431,
+                                    "startHPAfter": 431
+                                },
+                                {
+                                    "unitId": "blackTerminator",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 593,
+                                    "remainingHPBefore": 593,
+                                    "startHPAfter": 593
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "deathCrawler",
+                                "progressionIndex": 5
+                            }
+                        },
+                        "createdOn": 1787744216735
+                    },
+                    {
+                        "type": "battleFinished",
+                        "id": "b8488944-515a-465f-ac3e-97a21f8d236e",
+                        "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
+                        "teamIndex": 2,
+                        "zone": {
+                            "id": "7a1e12ed-bb0c-4e6e-b0f4-9cf16efe82bd",
+                            "type": "Trenches3",
+                            "visualId": "trenches"
+                        },
+                        "score": 1400,
+                        "attacker": {
+                            "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
+                            "lineupPower": 138694,
+                            "units": [
+                                {
+                                    "unitId": "templAggressor",
+                                    "progressionIndex": 10,
+                                    "rank": 11,
+                                    "remainingHPAfter": 297
+                                },
+                                {
+                                    "unitId": "spaceWolfPriest",
+                                    "progressionIndex": 10,
+                                    "rank": 12,
+                                    "remainingHPAfter": 353
+                                },
+                                {
+                                    "unitId": "ultraCalgar",
+                                    "progressionIndex": 14,
+                                    "rank": 11
+                                },
+                                {
+                                    "unitId": "custoKyrus",
+                                    "progressionIndex": 9,
+                                    "rank": 8,
+                                    "remainingHPAfter": 380
+                                },
+                                {
+                                    "unitId": "bloodTerminator",
+                                    "progressionIndex": 9,
+                                    "rank": 11,
+                                    "remainingHPAfter": 431
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "astraOrdnanceBattery",
+                                "progressionIndex": 11
+                            }
+                        },
+                        "defender": {
+                            "userId": "1f2af899-4f24-4d13-a11a-6207b34d83f5",
+                            "lineupPower": 7868,
+                            "units": [
+                                {
+                                    "unitId": "necroOverlord",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 525,
+                                    "remainingHPBefore": 525,
+                                    "startHPAfter": 525
+                                },
+                                {
+                                    "unitId": "necroPlasmancer",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 446,
+                                    "remainingHPBefore": 446,
+                                    "startHPAfter": 446
+                                },
+                                {
+                                    "unitId": "necroSpyder",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 527,
+                                    "remainingHPBefore": 527,
+                                    "startHPAfter": 527
+                                },
+                                {
+                                    "unitId": "necroDestroyer",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 473,
+                                    "remainingHPBefore": 473,
+                                    "startHPAfter": 473
+                                },
+                                {
+                                    "unitId": "necroWarden",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 497,
+                                    "remainingHPBefore": 497,
+                                    "startHPAfter": 497
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "blackForgefiend",
+                                "progressionIndex": 5
+                            }
+                        },
+                        "createdOn": 1787744581630
+                    },
+                    {
+                        "type": "battleFinished",
+                        "id": "c72d807d-31e6-4277-b49b-b080d0063431",
+                        "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+                        "teamIndex": 2,
+                        "zone": {
+                            "id": "31a7306c-81d5-4547-90f7-b79af7965e67",
+                            "type": "Bunker2",
+                            "visualId": "bunker"
+                        },
+                        "attemptDebuff": 1,
+                        "score": 16850,
+                        "attacker": {
+                            "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+                            "lineupPower": 438278,
+                            "units": [
+                                {
+                                    "unitId": "worldKharn",
+                                    "progressionIndex": 13,
+                                    "rank": 15,
+                                    "remainingHPAfter": 2403
+                                },
+                                {
+                                    "unitId": "eldarAutarch",
+                                    "progressionIndex": 15,
+                                    "rank": 12,
+                                    "remainingHPAfter": 2138
+                                },
+                                {
+                                    "unitId": "eldarFarseer",
+                                    "progressionIndex": 14,
+                                    "rank": 12,
+                                    "remainingHPAfter": 2003
+                                },
+                                {
+                                    "unitId": "emperExultant",
+                                    "progressionIndex": 13,
+                                    "rank": 12,
+                                    "remainingHPAfter": 1322
+                                },
+                                {
+                                    "unitId": "bloodMephiston",
+                                    "progressionIndex": 12,
+                                    "rank": 12,
+                                    "remainingHPAfter": 2536
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "tyranBiovore",
+                                "progressionIndex": 10
+                            }
+                        },
+                        "defender": {
+                            "userId": "0fd4a554-c3fb-4018-a298-a1a3600c25fb",
+                            "lineupPower": 253801,
+                            "units": [
+                                {
+                                    "unitId": "spaceBlackmane",
+                                    "progressionIndex": 11,
+                                    "rank": 12,
+                                    "startHPBefore": 2669,
+                                    "startHPAfter": 2669
+                                },
+                                {
+                                    "unitId": "custoBladeChampion",
+                                    "progressionIndex": 11,
+                                    "rank": 12,
+                                    "startHPBefore": 1902,
+                                    "remainingHPBefore": 918,
+                                    "startHPAfter": 1902
+                                },
+                                {
+                                    "unitId": "templChampion",
+                                    "progressionIndex": 11,
+                                    "rank": 12,
+                                    "startHPBefore": 2205,
+                                    "remainingHPBefore": 1564,
+                                    "startHPAfter": 2205
+                                },
+                                {
+                                    "unitId": "bloodTerminator",
+                                    "progressionIndex": 11,
+                                    "rank": 12,
+                                    "startHPBefore": 2103,
+                                    "remainingHPBefore": 2103,
+                                    "startHPAfter": 2103
+                                },
+                                {
+                                    "unitId": "spaceWolfPriest",
+                                    "progressionIndex": 11,
+                                    "rank": 12,
+                                    "startHPBefore": 1803,
+                                    "remainingHPBefore": 398,
+                                    "startHPAfter": 1803
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "tyranBiovore",
+                                "progressionIndex": 11
+                            }
+                        },
+                        "buffs": [
+                            {
+                                "abilityId": "EnvFortified",
+                                "scope": "Local"
+                            }
+                        ],
+                        "createdOn": 1787744702165
+                    },
+                    {
+                        "type": "zoneDestroyed",
+                        "id": "21a2941b-6c6a-4380-a1b7-1896c6652cfd",
+                        "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+                        "teamIndex": 2,
+                        "zone": {
+                            "id": "31a7306c-81d5-4547-90f7-b79af7965e67",
+                            "type": "Bunker2",
+                            "visualId": "bunker"
+                        },
+                        "totalAttempts": 13,
+                        "createdOn": 1787744702165
                     }
                 ],
                 "playerData": [
@@ -45861,28 +49065,28 @@
                         "avatarFrameId": "frameEarlyContributor"
                     },
                     {
-                        "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
-                        "displayName": "mycatisben",
-                        "avatarUnitId": "black_haarken_01",
-                        "avatarFrameId": "frame1yAnniversary"
-                    },
-                    {
                         "userId": "ced50f29-11cf-48f4-aacb-6ae4a186e3bd",
                         "displayName": "Shadowfoxx",
                         "avatarUnitId": "blood_dante_01",
                         "avatarFrameId": "frameMay2026"
                     },
                     {
-                        "userId": "28c83405-4692-4029-906a-d28a1d2a4e51",
-                        "displayName": "Honsou",
-                        "avatarUnitId": "necro_reanimator_01",
-                        "avatarFrameId": "frameHalloween2025"
+                        "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+                        "displayName": "mycatisben",
+                        "avatarUnitId": "black_haarken_01",
+                        "avatarFrameId": "frame1yAnniversary"
                     },
                     {
                         "userId": "08b9afa8-f201-40d1-8f47-1e759ce55d99",
                         "displayName": "bohemund",
                         "avatarUnitId": "templ_helbrecht_01",
                         "avatarFrameId": "framePreRegistration"
+                    },
+                    {
+                        "userId": "28c83405-4692-4029-906a-d28a1d2a4e51",
+                        "displayName": "Honsou",
+                        "avatarUnitId": "necro_reanimator_01",
+                        "avatarFrameId": "frameHalloween2025"
                     },
                     {
                         "userId": "58819be3-80e3-438d-a625-a63adbf5de8a",
@@ -45909,16 +49113,16 @@
                         "avatarFrameId": "frameMythic01"
                     },
                     {
-                        "userId": "d4716cd2-e8f4-45ba-8686-91b98ae0b1bc",
-                        "displayName": "xXCHAOSXx",
-                        "avatarUnitId": "black_terminator_01",
-                        "avatarFrameId": "frameHalloween2025"
-                    },
-                    {
                         "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
                         "displayName": "RCShadow",
                         "avatarUnitId": "death_blightbringer_01",
                         "avatarFrameId": "frameLoyalty_tier_commissar"
+                    },
+                    {
+                        "userId": "d4716cd2-e8f4-45ba-8686-91b98ae0b1bc",
+                        "displayName": "xXCHAOSXx",
+                        "avatarUnitId": "black_terminator_01",
+                        "avatarFrameId": "frameHalloween2025"
                     },
                     {
                         "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
@@ -45933,16 +49137,16 @@
                         "avatarFrameId": "frameDefault"
                     },
                     {
-                        "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
-                        "displayName": "SirJib",
-                        "avatarUnitId": "aelda_maugan_01",
-                        "avatarFrameId": "frameHalloween2025"
-                    },
-                    {
                         "userId": "8adac742-2b29-4f96-a602-2374d8097485",
                         "displayName": "BUDA",
                         "avatarUnitId": "june_2026_01",
                         "avatarFrameId": "frameMay2026"
+                    },
+                    {
+                        "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+                        "displayName": "SirJib",
+                        "avatarUnitId": "aelda_maugan_01",
+                        "avatarFrameId": "frameHalloween2025"
                     },
                     {
                         "userId": "ba4915c6-8cf9-4ff5-92ec-5fcc29b674b6",
@@ -45981,10 +49185,10 @@
                         "avatarFrameId": "frameAugust2026"
                     },
                     {
-                        "userId": "1f2af899-4f24-4d13-a11a-6207b34d83f5",
-                        "displayName": "Ironwarrior",
-                        "avatarUnitId": "world_terminator_01_premium",
-                        "avatarFrameId": "frameMythic01"
+                        "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+                        "displayName": "Blightlord",
+                        "avatarUnitId": "thous_sekhetar_01",
+                        "avatarFrameId": "frameMay2026"
                     },
                     {
                         "userId": "e911f833-b134-491f-b815-e4d33e1dbe4e",
@@ -45993,10 +49197,10 @@
                         "avatarFrameId": "frameMay2026"
                     },
                     {
-                        "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
-                        "displayName": "Blightlord",
-                        "avatarUnitId": "thous_sekhetar_01",
-                        "avatarFrameId": "frameMay2026"
+                        "userId": "1f2af899-4f24-4d13-a11a-6207b34d83f5",
+                        "displayName": "Ironwarrior",
+                        "avatarUnitId": "world_terminator_01_premium",
+                        "avatarFrameId": "frameMythic01"
                     },
                     {
                         "userId": "7b7372f4-0c76-472e-bbbd-dfdf98b477d7",
@@ -46011,10 +49215,10 @@
                         "avatarFrameId": "frameAugust2026"
                     },
                     {
-                        "userId": "553c48cc-fcd5-4d34-94cd-691ecad888cc",
-                        "displayName": "Hewie",
-                        "avatarUnitId": "thous_ahriman_01",
-                        "avatarFrameId": "frameApril2026"
+                        "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
+                        "displayName": "BrotherBruno",
+                        "avatarUnitId": "space_wolfpriest_01",
+                        "avatarFrameId": "frameMay2026"
                     },
                     {
                         "userId": "e5d4faca-7249-4b9c-ab27-d1af438900bb",
@@ -46023,10 +49227,10 @@
                         "avatarFrameId": "frameLoyalty_tier_general"
                     },
                     {
-                        "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
-                        "displayName": "BrotherBruno",
-                        "avatarUnitId": "space_wolfpriest_01",
-                        "avatarFrameId": "frameMay2026"
+                        "userId": "553c48cc-fcd5-4d34-94cd-691ecad888cc",
+                        "displayName": "Hewie",
+                        "avatarUnitId": "thous_ahriman_01",
+                        "avatarFrameId": "frameApril2026"
                     },
                     {
                         "userId": "8d7eb68a-6bd3-4a17-9f09-ab27a150ce09",
@@ -46083,6 +49287,12 @@
                         "avatarFrameId": "frameMay2026"
                     },
                     {
+                        "userId": "cd291e57-fd33-4668-97b3-b71db0bd9fcc",
+                        "displayName": "chae5530",
+                        "avatarUnitId": "custo_bladechampion_01_premium",
+                        "avatarFrameId": "frameMythic01"
+                    },
+                    {
                         "userId": "68bc1563-70dc-4129-bc21-2d5a8a4bfd45",
                         "displayName": "Leaderless",
                         "avatarUnitId": "space_arjac_01",
@@ -46093,12 +49303,6 @@
                         "displayName": "Deacon",
                         "avatarUnitId": "ultra_calgar_01_premium",
                         "avatarFrameId": "frameMay2026"
-                    },
-                    {
-                        "userId": "cd291e57-fd33-4668-97b3-b71db0bd9fcc",
-                        "displayName": "chae5530",
-                        "avatarUnitId": "custo_bladechampion_01_premium",
-                        "avatarFrameId": "frameMythic01"
                     },
                     {
                         "userId": "5cbf0e57-6ada-44e4-9234-230be204f488",
