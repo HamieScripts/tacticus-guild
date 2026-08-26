@@ -45,6 +45,13 @@
       <div class="site-scroll mt-6 flex-1 min-h-0 overflow-y-auto">
         <div class="flex flex-col gap-6 pb-6">
 
+      <div class="top-tab-strip flex flex-wrap gap-2 border-b border-slate-700">
+        <button id="top-tab-btn-war-summary" type="button" onclick="switchTopTab('war-summary')" class="rounded-t-lg border-b-2 border-cyan-400 px-5 py-3 text-sm font-semibold text-cyan-300 transition-colors hover:text-slate-100">War summary</button>
+        <button id="top-tab-btn-player-summary" type="button" onclick="switchTopTab('player-summary')" class="rounded-t-lg border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100">Player summary</button>
+      </div>
+
+      <div id="top-panel-war-summary" class="flex flex-col gap-6">
+
       <section aria-labelledby="overview-heading" class="w-full">
         <header class="py-1">
           <div class="w-full">
@@ -53,6 +60,7 @@
           </div>
         </header>
       </section>
+
 
       <section>
         <div class="flex flex-col gap-3 lg:flex-row lg:items-end">
@@ -305,6 +313,24 @@
           </div>
         </div>
       </div>
+
+      </div>
+
+      <div id="top-panel-player-summary" class="hidden flex-col gap-6">
+        <section aria-labelledby="player-summary-heading" class="w-full">
+          <header class="py-1">
+            <div class="w-full">
+              <h2 id="player-summary-heading" class="text-xl font-bold leading-tight text-cyan-100 sm:text-2xl">Player Summary</h2>
+              <p class="mt-1 text-sm leading-relaxed text-slate-300 sm:text-base">See how each player performed across a full war season.</p>
+            </div>
+          </header>
+        </section>
+
+        <section class="rounded-xl border border-dashed border-slate-700 bg-slate-900/50 p-6 text-center text-sm text-slate-400">
+          Player season breakdown coming soon.
+        </section>
+      </div>
+
         </div>
       </div>
     </div>
@@ -419,6 +445,24 @@
           }
         });
       }
+
+      function switchTopTab(tab) {
+        const activeBtnClasses = ['text-cyan-300', 'border-cyan-400'];
+        const inactiveBtnClasses = ['text-slate-400', 'border-transparent'];
+        const panels = ['war-summary', 'player-summary'];
+        panels.forEach(function(id) {
+          const panel = document.getElementById('top-panel-' + id);
+          const btn = document.getElementById('top-tab-btn-' + id);
+          const isActive = id === tab;
+          if (panel) panel.classList.toggle('hidden', !isActive);
+          if (btn) {
+            activeBtnClasses.forEach((cls) => btn.classList.toggle(cls, isActive));
+            inactiveBtnClasses.forEach((cls) => btn.classList.toggle(cls, !isActive));
+          }
+        });
+      }
     </script>
   </body>
 </html>
+
+

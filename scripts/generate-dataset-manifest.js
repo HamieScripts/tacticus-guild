@@ -21,20 +21,25 @@ function cleanGuildName(value) {
   return String(value || '').trim().replace(/\s+/g, ' ');
 }
 
-function getLatestCreatedOn(data) {
+function getCreatedOnRange(data) {
   const eventResults = Array.isArray(data?.eventResults) ? data.eventResults : [];
+  let min = Infinity;
   let max = 0;
   for (const result of eventResults) {
     const logs = Array.isArray(result?.eventResponseData?.activityLogs)
       ? result.eventResponseData.activityLogs
       : [];
     for (const log of logs) {
-      if (typeof log?.createdOn === 'number' && log.createdOn > max) {
-        max = log.createdOn;
+      if (typeof log?.createdOn === 'number') {
+        if (log.createdOn > max) max = log.createdOn;
+        if (log.createdOn < min) min = log.createdOn;
       }
     }
   }
-  return max > 0 ? max : null;
+  return {
+    start: min === Infinity ? null : min,
+    end: max > 0 ? max : null,
+  };
 }
 
 function getPrimaryGuildNames(data) {
@@ -77,7 +82,7 @@ function main() {
         return null;
       }
     })();
-    const latestCreatedOn = getLatestCreatedOn(data);
+    const { start: startCreatedOn, end: latestCreatedOn } = getCreatedOnRange(data);
     const date = formatDateFromTimestamp(latestCreatedOn ?? fs.statSync(filePath).mtime);
     const [guildA, guildB] = getPrimaryGuildNames(data);
     const opponent = guildA === OUR_GUILD ? guildB : guildA;
@@ -92,6 +97,8 @@ function main() {
       label,
       sourceLabel,
       url: `./data/history/${fileName}.json`,
+      start: startCreatedOn ? new Date(startCreatedOn).toISOString() : null,
+      end: latestCreatedOn ? new Date(latestCreatedOn).toISOString() : null,
       _createdOn: latestCreatedOn ?? 0,
     };
   }).sort((a, b) => b._createdOn - a._createdOn).map(({ _createdOn: _, ...rest }) => rest);

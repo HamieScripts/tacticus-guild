@@ -1,35 +1,69 @@
 {
   "datasets": [
     {
+      "key": "history-2026-08-26-3a4eeebd",
+      "label": "[DW] Talasa Prime (2026-08-26)",
+      "sourceLabel": "[DW] Talasa Prime vs. [TW] Praetorians of Terra (2026-08-26)",
+      "url": "./data/history/3a4eeebd-e3ef-4ad0-bdf0-6ac023c1e22f.json",
+      "start": "2026-08-24T10:58:20.856Z",
+      "end": "2026-08-26T20:26:19.071Z"
+    },
+    {
+      "key": "history-2026-08-24-2f751f22",
+      "label": "Czechoslovak Militarum (2026-08-24)",
+      "sourceLabel": "[TW] Praetorians of Terra vs. Czechoslovak Militarum (2026-08-24)",
+      "url": "./data/history/2f751f22-685a-4556-9949-068f32419fba.json",
+      "start": "2026-08-22T00:40:10.187Z",
+      "end": "2026-08-24T08:27:49.078Z"
+    },
+    {
+      "key": "history-2026-08-21-9217cbe3",
+      "label": "Ultras Polska (2026-08-21)",
+      "sourceLabel": "Ultras Polska vs. [TW] Praetorians of Terra (2026-08-21)",
+      "url": "./data/history/9217cbe3-8f3b-46d1-92ca-b8c47fde091a.json",
+      "start": "2026-08-19T10:06:12.939Z",
+      "end": "2026-08-21T20:39:47.394Z"
+    },
+    {
       "key": "history-2026-08-19-4ac5ee0c",
       "label": "BlackLegion (2026-08-19)",
       "sourceLabel": "BlackLegion vs. [TW] Praetorians of Terra (2026-08-19)",
-      "url": "./data/history/4ac5ee0c-73d3-409f-a373-da6ddad39559.json"
+      "url": "./data/history/4ac5ee0c-73d3-409f-a373-da6ddad39559.json",
+      "start": "2026-08-16T21:32:49.098Z",
+      "end": "2026-08-19T07:24:10.570Z"
     },
     {
       "key": "history-2026-08-16-31ea7799",
       "label": "Swedish Space Marines Grn (2026-08-16)",
       "sourceLabel": "[TW] Praetorians of Terra vs. Swedish Space Marines Grn (2026-08-16)",
-      "url": "./data/history/31ea7799-ff6f-49b0-bc74-b03ffc3d3941.json"
+      "url": "./data/history/31ea7799-ff6f-49b0-bc74-b03ffc3d3941.json",
+      "start": "2026-08-12T09:30:58.528Z",
+      "end": "2026-08-16T20:50:01.510Z"
     },
     {
       "key": "history-2026-07-25-86d0edfc",
       "label": "JkT (2026-07-25)",
       "sourceLabel": "JkT vs. [TW] Praetorians of Terra (2026-07-25)",
-      "url": "./data/history/86d0edfc-4739-44e3-a867-8f04685b7ed4.json"
+      "url": "./data/history/86d0edfc-4739-44e3-a867-8f04685b7ed4.json",
+      "start": "2026-07-22T21:33:41.495Z",
+      "end": "2026-07-25T08:43:21.615Z"
     },
     {
       "key": "history-2026-07-22-a4847aea",
       "label": "Legiony Tacticus (2026-07-22)",
       "sourceLabel": "[TW] Praetorians of Terra vs. Legiony Tacticus (2026-07-22)",
-      "url": "./data/history/a4847aea-746a-4ee9-90c0-750ec9145f8c.json"
+      "url": "./data/history/a4847aea-746a-4ee9-90c0-750ec9145f8c.json",
+      "start": "2026-07-20T12:59:08.102Z",
+      "end": "2026-07-22T20:31:16.888Z"
     },
     {
       "key": "history-2026-07-20-65648500",
       "label": "Tercio Espacial (2026-07-20)",
       "sourceLabel": "[TW] Praetorians of Terra vs. Tercio Espacial (2026-07-20)",
-      "url": "./data/history/65648500-b63c-4a80-8862-c36e9e7d800f.json"
+      "url": "./data/history/65648500-b63c-4a80-8862-c36e9e7d800f.json",
+      "start": "2026-07-17T21:50:57.659Z",
+      "end": "2026-07-20T05:45:19.582Z"
     }
   ],
-  "hash": "local-178713"
+  "hash": "local-178778"
 }

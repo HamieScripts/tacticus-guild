@@ -40,10 +40,12 @@ function normalizeDatasets(manifestDatasets) {
     const label = typeof dataset?.label === 'string' ? dataset.label.trim() : '';
     const sourceLabel = typeof dataset?.sourceLabel === 'string' ? dataset.sourceLabel.trim() : '';
     const url = typeof dataset?.url === 'string' ? dataset.url.trim() : '';
+    const start = typeof dataset?.start === 'string' ? dataset.start.trim() : '';
+    const end = typeof dataset?.end === 'string' ? dataset.end.trim() : '';
 
     if (!key || !label || !sourceLabel || !url) return;
 
-    normalized[key] = { label, sourceLabel, url };
+    normalized[key] = { label, sourceLabel, url, start: start || null, end: end || null };
   });
 
   return Object.keys(normalized).length > 0 ? normalized : null;
@@ -976,6 +978,64 @@ function getDefaultActiveGuildIndex(snapshots) {
   return praetoriansIndex >= 0 ? praetoriansIndex : 0;
 }
 
+const SEASON_GAP_DAYS = 5; // real inter-war gaps run ~1-2 days; season breaks run ~2-3 weeks
+
+function extractDatasetDate(datasetKey, dataset) {
+  if (dataset?.end) {
+    const end = new Date(dataset.end);
+    if (!Number.isNaN(end.getTime())) return end;
+  }
+  const source = `${datasetKey} ${dataset?.label || ''}`;
+  const match = source.match(/(\d{4})-(\d{2})-(\d{2})/);
+  if (!match) return null;
+  return new Date(Date.UTC(Number(match[1]), Number(match[2]) - 1, Number(match[3])));
+}
+
+function extractDatasetStart(datasetKey, dataset) {
+  if (dataset?.start) {
+    const start = new Date(dataset.start);
+    if (!Number.isNaN(start.getTime())) return start;
+  }
+  return extractDatasetDate(datasetKey, dataset);
+}
+
+function formatSeasonDate(date) {
+  return date.toISOString().slice(0, 10);
+}
+
+function groupDatasetsIntoSeasons(entries) {
+  // entries: [datasetKey, dataset][], sorted by end date descending (undated entries excluded)
+  const groups = [];
+  let currentGroup = null;
+  let previousStart = null;
+
+  entries.forEach(([datasetKey, dataset]) => {
+    const end = extractDatasetDate(datasetKey, dataset);
+    const start = extractDatasetStart(datasetKey, dataset);
+
+    // gap = time between this war's end and the next (later) war's start already seen
+    const gapDays = previousStart ? (previousStart - end) / (1000 * 60 * 60 * 24) : Infinity;
+
+    if (!currentGroup || gapDays > SEASON_GAP_DAYS) {
+      currentGroup = { label: null, startDate: start, endDate: end, entries: [] };
+      groups.push(currentGroup);
+    }
+
+    currentGroup.entries.push([datasetKey, dataset]);
+    currentGroup.startDate = start;
+    previousStart = start;
+  });
+
+  groups.forEach((group) => {
+    if (!group.startDate) return;
+    group.label = group.entries.length > 1
+      ? `Season ${formatSeasonDate(group.startDate)} to ${formatSeasonDate(group.endDate)}`
+      : `Season ${formatSeasonDate(group.startDate)}`;
+  });
+
+  return groups;
+}
+
 function renderDatasetTabs() {
   const datasetSelect = document.getElementById('dataset-select');
   const sourceLabel = document.getElementById('source-label');
@@ -984,11 +1044,30 @@ function renderDatasetTabs() {
 
   datasetSelect.innerHTML = '';
 
-  Object.entries(DATASETS).forEach(([datasetKey, dataset]) => {
+  const entries = Object.entries(DATASETS);
+  const datedEntries = entries
+    .filter(([key, dataset]) => extractDatasetDate(key, dataset))
+    .sort(([keyA, a], [keyB, b]) => extractDatasetDate(keyB, b) - extractDatasetDate(keyA, a));
+  const undatedEntries = entries.filter(([key, dataset]) => !extractDatasetDate(key, dataset));
+  const seasons = groupDatasetsIntoSeasons(datedEntries);
+
+  undatedEntries.forEach(([datasetKey, dataset]) => {
     const option = document.createElement('option');
     option.value = datasetKey;
     option.textContent = dataset.label;
     datasetSelect.appendChild(option);
+  });
+
+  seasons.forEach((season) => {
+    const optgroup = document.createElement('optgroup');
+    optgroup.label = season.label || 'Unknown season';
+    season.entries.forEach(([datasetKey, dataset]) => {
+      const option = document.createElement('option');
+      option.value = datasetKey;
+      option.textContent = dataset.label;
+      optgroup.appendChild(option);
+    });
+    datasetSelect.appendChild(optgroup);
   });
 
   if (!datasetSelect.dataset.initialized) {
