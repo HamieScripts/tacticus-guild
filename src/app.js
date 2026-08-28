@@ -145,6 +145,9 @@ let playerSummarySeasons = [];
 let selectedPlayerSummarySeasonIndex = 0;
 let playerSummarySort = { key: 'totalScore', direction: 'desc' };
 let expandedPlayerSummaryUserIds = new Set();
+let activePlayerSummaryTab = 'attack';
+let playerSummaryDefenseSort = { key: 'timesDefended', direction: 'desc' };
+let expandedDefensePlayerUserIds = new Set();
 let dragState = null;
 let activeMapDropTarget = null;
 let portraitMapperInitialized = false;
@@ -1149,6 +1152,10 @@ async function loadPlayerSummaryData() {
       const snapshot = snapshots[targetIndex];
       if (!snapshot || !Array.isArray(snapshot.players) || snapshot.players.length === 0) continue;
 
+      // Opponent's attack log doubles as our defense log (their attacker vs. our defender).
+      const opponentSnapshot = snapshots.find((entry, index) => index !== targetIndex) || null;
+      const opponentBattles = Array.isArray(opponentSnapshot?.battles) ? opponentSnapshot.battles : [];
+
       const { start, end } = getActivityTimestampRange(data);
       if (!end) continue;
 
@@ -1157,7 +1164,8 @@ async function loadPlayerSummaryData() {
         label: dataset.label,
         start: new Date(start || end).toISOString(),
         end: new Date(end).toISOString(),
-        snapshot
+        snapshot,
+        opponentBattles
       });
     } catch (error) {
       console.error(`Failed to load dataset ${key} for player summary`, error);
@@ -1225,6 +1233,32 @@ function summarizePlayerSeason(season, userId) {
   return { totalTokens, spent, remaining, avgPerToken, wins, cleanupWins, defeats, cleanupDefeats, abandoned, totalScore, possibleScore, totalSkillRating, avgSkillRating, wars };
 }
 
+function summarizePlayerDefenseSeason(season, userId) {
+  let timesDefended = 0;
+  let attackerLost = 0;
+  const wars = [];
+
+  season.datasets.forEach((dataset) => {
+    const battles = Array.isArray(dataset.opponentBattles) ? dataset.opponentBattles : [];
+    const defenseBattles = battles.filter((battle) => battle.defenderUserId === userId && !battle.abandoned);
+    const warAttackerLost = defenseBattles.filter((battle) => battle.defended).length;
+
+    timesDefended += defenseBattles.length;
+    attackerLost += warAttackerLost;
+
+    wars.push({
+      label: dataset.label,
+      timesDefended: defenseBattles.length,
+      attackerLost: warAttackerLost,
+      attackerLostPct: defenseBattles.length > 0 ? (warAttackerLost / defenseBattles.length) * 100 : 0
+    });
+  });
+
+  const attackerLostPct = timesDefended > 0 ? (attackerLost / timesDefended) * 100 : 0;
+
+  return { timesDefended, attackerLost, attackerLostPct, wars };
+}
+
 function renderPlayerSummarySeasonSelect() {
   const select = document.getElementById('player-summary-season-select');
   if (!select) return;
@@ -1243,6 +1277,7 @@ function renderPlayerSummarySeasonSelect() {
     select.addEventListener('change', (event) => {
       selectedPlayerSummarySeasonIndex = Number(event.target.value) || 0;
       expandedPlayerSummaryUserIds.clear();
+      expandedDefensePlayerUserIds.clear();
       renderPlayerSummaryBody();
     });
     select.dataset.initialized = 'true';
@@ -1333,7 +1368,12 @@ function renderPlayerSummaryDetailRow(player) {
 }
 
 function renderPlayerSummaryBody() {
-  const container = document.getElementById('player-summary-body');
+  renderPlayerSummaryAttackBody();
+  renderPlayerSummaryDefenceBody();
+}
+
+function renderPlayerSummaryAttackBody() {
+  const container = document.getElementById('player-summary-attack-body');
   if (!container) return;
 
   const season = playerSummarySeasons[selectedPlayerSummarySeasonIndex];
@@ -1422,7 +1462,7 @@ function renderPlayerSummaryBody() {
       } else {
         playerSummarySort = { key, direction: key === 'name' ? 'asc' : 'desc' };
       }
-      renderPlayerSummaryBody();
+      renderPlayerSummaryAttackBody();
     });
   });
 
@@ -1434,13 +1474,157 @@ function renderPlayerSummaryBody() {
       } else {
         expandedPlayerSummaryUserIds.add(userId);
       }
-      renderPlayerSummaryBody();
+      renderPlayerSummaryAttackBody();
+    });
+  });
+}
+
+function renderPlayerSummaryDefenceDetailRow(player) {
+  const warsHtml = player.stats.wars.map((war) => `
+    <div class="flex flex-wrap items-center justify-between gap-2 rounded-md bg-slate-900/40 px-3 py-2 text-xs">
+      <span class="font-semibold uppercase tracking-wide text-slate-400">${escapeHtml(war.label)}</span>
+      <span class="text-slate-200">Defended: <span class="font-semibold">${war.timesDefended.toLocaleString()}</span></span>
+      <span class="text-rose-200">Attacker lost: <span class="font-semibold">${war.attackerLost.toLocaleString()}</span></span>
+      <span class="text-rose-200">Attacker lost %: <span class="font-semibold">${war.attackerLostPct.toLocaleString(undefined, { maximumFractionDigits: 1 })}%</span></span>
+    </div>
+  `).join('');
+
+  return `
+    <tr class="border-t border-slate-800/60 bg-slate-950/40">
+      <td colspan="4" class="px-4 py-3">
+        <div class="flex flex-col gap-2">${warsHtml}</div>
+      </td>
+    </tr>
+  `;
+}
+
+function sortPlayerSummaryDefenseRows(rows) {
+  const { key, direction } = playerSummaryDefenseSort;
+  const dir = direction === 'asc' ? 1 : -1;
+
+  return [...rows].sort((a, b) => {
+    if (key === 'name') {
+      return dir * a.name.localeCompare(b.name);
+    }
+    return dir * (Number(a.stats[key] || 0) - Number(b.stats[key] || 0));
+  });
+}
+
+function renderPlayerSummaryDefenseSortHeader(key, label, { sticky = false } = {}) {
+  const isActive = playerSummaryDefenseSort.key === key;
+  const arrow = isActive ? (playerSummaryDefenseSort.direction === 'asc' ? '▲' : '▼') : '';
+  const thClass = sticky
+    ? 'sticky left-0 top-0 z-20 min-w-[15rem] whitespace-nowrap bg-slate-800/95 px-4 py-3 font-semibold'
+    : 'whitespace-nowrap px-4 py-3 font-semibold';
+  return `
+    <th class="${thClass}">
+      <button type="button" data-defense-sort-key="${key}" class="inline-flex items-center gap-1 text-slate-200 hover:text-cyan-200">
+        ${escapeHtml(label)}<span class="w-2.5 text-[10px] text-cyan-300">${arrow}</span>
+      </button>
+    </th>
+  `;
+}
+
+function renderPlayerSummaryDefenceBody() {
+  const container = document.getElementById('player-summary-defence-body');
+  if (!container) return;
+
+  const season = playerSummarySeasons[selectedPlayerSummarySeasonIndex];
+
+  if (!season) {
+    container.innerHTML = `
+      <div class="rounded-xl border border-dashed border-slate-700 bg-slate-900/50 p-6 text-center text-sm text-slate-400">
+        No season data available.
+      </div>
+    `;
+    return;
+  }
+
+  const players = getSeasonPlayerOptions(season).map(({ userId, name }) => {
+    const stats = summarizePlayerDefenseSeason(season, userId);
+    const avatarSource = season.datasets
+      .map((dataset) => dataset.snapshot.players.find((entry) => entry.userId === userId))
+      .find(Boolean) || null;
+    return {
+      userId,
+      name,
+      avatarUnitId: avatarSource?.avatarUnitId || null,
+      avatarFrameId: avatarSource?.avatarFrameId || null,
+      stats
+    };
+  });
+
+  const sortedPlayers = sortPlayerSummaryDefenseRows(players);
+
+  const rowsHtml = sortedPlayers.map((player, index) => {
+    const isExpanded = expandedDefensePlayerUserIds.has(player.userId);
+    const stats = player.stats;
+    const avatarHtml = renderPlayerAvatar(player);
+    const mainRow = `
+      <tr class="transition-colors duration-150 hover:bg-cyan-400/10">
+        <td class="sticky left-0 z-10 min-w-[15rem] whitespace-nowrap bg-slate-900/95 px-4 py-3 font-semibold text-slate-50">
+          <button type="button" data-toggle-defense-player="${escapeHtml(player.userId)}" class="flex w-full items-center gap-2 text-left hover:text-cyan-200">
+            <span class="inline-block w-3 shrink-0 text-slate-400">${isExpanded ? '▾' : '▸'}</span>
+            <span class="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cyan-400/20 text-xs font-bold text-cyan-100">${index + 1}</span>
+            ${avatarHtml}
+            <span class="truncate">${escapeHtml(player.name)}</span>
+          </button>
+        </td>
+        <td class="px-4 py-3">${stats.timesDefended.toLocaleString()}</td>
+        <td class="px-4 py-3 font-semibold text-rose-300">${stats.attackerLost.toLocaleString()}</td>
+        <td class="px-4 py-3 text-rose-200">${stats.attackerLostPct.toLocaleString(undefined, { maximumFractionDigits: 1 })}%</td>
+      </tr>
+    `;
+
+    return mainRow + (isExpanded ? renderPlayerSummaryDefenceDetailRow(player) : '');
+  }).join('');
+
+  container.innerHTML = `
+    <div class="w-full overflow-hidden rounded-xl border border-slate-800/80">
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse text-left text-xs sm:text-sm" style="table-layout: auto;">
+          <thead class="bg-slate-800/90 text-slate-200">
+            <tr>
+              ${renderPlayerSummaryDefenseSortHeader('name', 'Player', { sticky: true })}
+              ${renderPlayerSummaryDefenseSortHeader('timesDefended', 'Times defended')}
+              ${renderPlayerSummaryDefenseSortHeader('attackerLost', 'Attacker lost')}
+              ${renderPlayerSummaryDefenseSortHeader('attackerLostPct', 'Attacker lost %')}
+            </tr>
+          </thead>
+          <tbody class="text-slate-100">${rowsHtml}</tbody>
+        </table>
+      </div>
+    </div>
+  `;
+
+  container.querySelectorAll('[data-defense-sort-key]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const key = button.dataset.defenseSortKey;
+      if (playerSummaryDefenseSort.key === key) {
+        playerSummaryDefenseSort.direction = playerSummaryDefenseSort.direction === 'asc' ? 'desc' : 'asc';
+      } else {
+        playerSummaryDefenseSort = { key, direction: key === 'name' ? 'asc' : 'desc' };
+      }
+      renderPlayerSummaryDefenceBody();
+    });
+  });
+
+  container.querySelectorAll('[data-toggle-defense-player]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const userId = button.dataset.toggleDefensePlayer;
+      if (expandedDefensePlayerUserIds.has(userId)) {
+        expandedDefensePlayerUserIds.delete(userId);
+      } else {
+        expandedDefensePlayerUserIds.add(userId);
+      }
+      renderPlayerSummaryDefenceBody();
     });
   });
 }
 
 async function initPlayerSummaryTab() {
-  const container = document.getElementById('player-summary-body');
+  const attackContainer = document.getElementById('player-summary-attack-body');
+  const defenceContainer = document.getElementById('player-summary-defence-body');
   const select = document.getElementById('player-summary-season-select');
 
   if (playerSummaryLoaded) {
@@ -1450,13 +1634,13 @@ async function initPlayerSummaryTab() {
   }
 
   if (select) select.innerHTML = '<option value="">Loading seasons...</option>';
-  if (container) {
-    container.innerHTML = `
-      <div class="rounded-xl border border-dashed border-slate-700 bg-slate-900/50 p-6 text-center text-sm text-slate-400">
-        Loading season data...
-      </div>
-    `;
-  }
+  const loadingMessage = `
+    <div class="rounded-xl border border-dashed border-slate-700 bg-slate-900/50 p-6 text-center text-sm text-slate-400">
+      Loading season data...
+    </div>
+  `;
+  if (attackContainer) attackContainer.innerHTML = loadingMessage;
+  if (defenceContainer) defenceContainer.innerHTML = loadingMessage;
 
   await loadPlayerSummaryData();
   renderPlayerSummarySeasonSelect();

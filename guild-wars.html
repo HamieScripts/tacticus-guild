@@ -334,7 +334,18 @@
             </select>
           </div>
 
-          <div id="player-summary-body" class="flex flex-col gap-6">
+          <div class="mb-3 flex flex-wrap gap-2 border-b border-slate-700">
+            <button id="player-summary-tab-btn-attack" type="button" onclick="switchPlayerSummaryTab('attack')" class="border-b-2 border-cyan-400 px-4 py-2 text-sm font-semibold text-cyan-300 transition-colors hover:text-slate-100">Attack</button>
+            <button id="player-summary-tab-btn-defence" type="button" onclick="switchPlayerSummaryTab('defence')" class="border-b-2 border-transparent px-4 py-2 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100">Defence</button>
+          </div>
+
+          <div id="player-summary-attack-body" class="flex flex-col gap-6">
+            <div class="rounded-xl border border-dashed border-slate-700 bg-slate-900/50 p-6 text-center text-sm text-slate-400">
+              Loading season data...
+            </div>
+          </div>
+
+          <div id="player-summary-defence-body" class="hidden flex flex-col gap-6">
             <div class="rounded-xl border border-dashed border-slate-700 bg-slate-900/50 p-6 text-center text-sm text-slate-400">
               Loading season data...
             </div>
@@ -477,6 +488,22 @@
         if (tab === 'player-summary' && typeof initPlayerSummaryTab === 'function') {
           initPlayerSummaryTab();
         }
+      }
+
+      function switchPlayerSummaryTab(tab) {
+        const activeBtnClasses = ['text-cyan-300', 'border-cyan-400'];
+        const inactiveBtnClasses = ['text-slate-400', 'border-transparent'];
+        const panels = ['attack', 'defence'];
+        panels.forEach(function(id) {
+          const panel = document.getElementById('player-summary-' + id + '-body');
+          const btn = document.getElementById('player-summary-tab-btn-' + id);
+          const isActive = id === tab;
+          if (panel) panel.classList.toggle('hidden', !isActive);
+          if (btn) {
+            activeBtnClasses.forEach((cls) => btn.classList.toggle(cls, isActive));
+            inactiveBtnClasses.forEach((cls) => btn.classList.toggle(cls, !isActive));
+          }
+        });
       }
     </script>
   </body>
