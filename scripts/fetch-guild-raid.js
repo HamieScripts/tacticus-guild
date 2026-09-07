@@ -108,10 +108,28 @@ function summarizeSeason(payload) {
   };
 }
 
+function readJson(filePath) {
+  try {
+    return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+  } catch (error) {
+    return null;
+  }
+}
+
+// Skips the write when only `fetchedOn` would differ, so unchanged data stays out of git.
+function writeJson(filePath, payload) {
+  const existing = readJson(filePath);
+  const isSame = existing
+    && JSON.stringify({ ...existing, fetchedOn: 0 }) === JSON.stringify({ ...payload, fetchedOn: 0 });
+
+  if (isSame) return false;
+
+  fs.writeFileSync(filePath, `${JSON.stringify(payload, null, 2)}\n`, 'utf8');
+  return true;
+}
+
 function writeSeason(payload) {
-  const contents = `${JSON.stringify(payload, null, 2)}\n`;
-  fs.writeFileSync(path.join(RAID_DIR, `${payload.season}.json`), contents, 'utf8');
-  return contents;
+  return writeJson(path.join(RAID_DIR, `${payload.season}.json`), payload);
 }
 
 async function main() {
@@ -137,15 +155,25 @@ async function main() {
   const live = buildSeasonPayload(await apiGet('/guildRaid', apiKey), guild);
   const currentSeason = Number(live.season);
 
-  fs.writeFileSync(path.join(RAID_DIR, 'current.json'), writeSeason(live), 'utf8');
+  // A season we previously captured while it was live is incomplete, so refetch it once it ends.
+  const previousManifest = readJson(path.join(RAID_DIR, 'manifest.json'));
+  const previousCurrent = Number(previousManifest?.current);
+  const staleSeason = Number.isFinite(previousCurrent) && previousCurrent !== currentSeason ? previousCurrent : null;
+
+  writeSeason(live);
+  writeJson(path.join(RAID_DIR, 'current.json'), live);
   const seasons = [summarizeSeason(live)];
   console.log(`Season ${currentSeason} (live): ${live.entries.length} entries`);
+
+  if (staleSeason !== null) {
+    console.log(`Season rolled over from ${staleSeason} to ${currentSeason}, refetching ${staleSeason}`);
+  }
 
   for (let season = currentSeason - 1; season >= MIN_SEASON; season -= 1) {
     const seasonPath = path.join(RAID_DIR, `${season}.json`);
 
     // Completed seasons never change, so only refetch them on demand.
-    if (!force && fs.existsSync(seasonPath)) {
+    if (!force && season !== staleSeason && fs.existsSync(seasonPath)) {
       seasons.push(summarizeSeason(JSON.parse(fs.readFileSync(seasonPath, 'utf8'))));
       console.log(`Season ${season}: cached`);
       continue;
@@ -170,7 +198,7 @@ async function main() {
     current: currentSeason,
     seasons: seasons.sort((left, right) => right.season - left.season)
   };
-  fs.writeFileSync(path.join(RAID_DIR, 'manifest.json'), `${JSON.stringify(manifest, null, 2)}\n`, 'utf8');
+  writeJson(path.join(RAID_DIR, 'manifest.json'), manifest);
 
   console.log(`Wrote ${seasons.length} season(s) to data/raid/`);
 }

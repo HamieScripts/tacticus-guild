@@ -41,6 +41,7 @@ const raidState = {
   portraitManifestSet: new Set(),
   selectedBossKey: '',
   activeView: 'bosses',
+  playerSort: { key: 'totalDamage', direction: 'desc' },
   activeTab: 'attacks'
 };
 
@@ -645,15 +646,43 @@ function renderBossDetail() {
   });
 }
 
+const SEASON_PLAYER_COLUMNS = [
+  { key: 'name', label: 'Player', numeric: false },
+  { key: 'totalDamage', label: 'Damage', numeric: true, emphasis: true },
+  { key: 'tokens', label: 'Tokens', numeric: true },
+  { key: 'damagePerToken', label: 'Damage per token', numeric: true },
+  { key: 'bombs', label: 'Bombs', numeric: true },
+  { key: 'bombDamage', label: 'Bomb damage', numeric: true }
+];
+
+function sortSeasonPlayers(players) {
+  const { key, direction } = raidState.playerSort;
+  const column = SEASON_PLAYER_COLUMNS.find((entry) => entry.key === key) || SEASON_PLAYER_COLUMNS[1];
+  const sign = direction === 'asc' ? 1 : -1;
+
+  return players.slice().sort((left, right) => {
+    if (!column.numeric) return sign * String(left[column.key]).localeCompare(String(right[column.key]));
+    return sign * ((Number(left[column.key]) || 0) - (Number(right[column.key]) || 0));
+  });
+}
+
 function renderSeasonPlayers() {
   const container = document.getElementById('raid-season-players');
   if (!container) return;
 
-  const players = aggregatePlayers(raidState.entries);
+  const players = sortSeasonPlayers(aggregatePlayers(raidState.entries));
   if (players.length === 0) {
     container.innerHTML = '<p class="p-4 text-sm text-slate-400">No player activity recorded this season.</p>';
     return;
   }
+
+  const headers = SEASON_PLAYER_COLUMNS.map((column) => {
+    const isSorted = raidState.playerSort.key === column.key;
+    const arrow = isSorted ? (raidState.playerSort.direction === 'asc' ? ' ▲' : ' ▼') : '';
+    return `<th class="px-3 py-2 ${column.numeric ? 'text-right' : ''}" aria-sort="${isSorted ? (raidState.playerSort.direction === 'asc' ? 'ascending' : 'descending') : 'none'}">
+      <button type="button" data-player-sort="${column.key}" class="uppercase tracking-wide transition-colors hover:text-slate-100 ${isSorted ? 'text-cyan-300' : ''}">${escapeHtml(column.label)}${arrow}</button>
+    </th>`;
+  }).join('');
 
   container.innerHTML = `
     <div class="overflow-x-auto">
@@ -661,12 +690,7 @@ function renderSeasonPlayers() {
         <thead class="border-b border-slate-700 text-[11px] uppercase tracking-wide text-slate-400">
           <tr>
             <th class="px-3 py-2">#</th>
-            <th class="px-3 py-2">Player</th>
-            <th class="px-3 py-2 text-right">Damage</th>
-            <th class="px-3 py-2 text-right">Tokens</th>
-            <th class="px-3 py-2 text-right">Damage per token</th>
-            <th class="px-3 py-2 text-right">Bombs</th>
-            <th class="px-3 py-2 text-right">Bomb damage</th>
+            ${headers}
           </tr>
         </thead>
         <tbody class="divide-y divide-slate-800/80">
@@ -683,6 +707,20 @@ function renderSeasonPlayers() {
         </tbody>
       </table>
     </div>`;
+
+  container.querySelectorAll('[data-player-sort]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const key = button.getAttribute('data-player-sort');
+      const column = SEASON_PLAYER_COLUMNS.find((entry) => entry.key === key);
+      if (!column) return;
+
+      raidState.playerSort = raidState.playerSort.key === key
+        ? { key, direction: raidState.playerSort.direction === 'asc' ? 'desc' : 'asc' }
+        : { key, direction: column.numeric ? 'desc' : 'asc' };
+
+      renderSeasonPlayers();
+    });
+  });
 }
 
 function render() {

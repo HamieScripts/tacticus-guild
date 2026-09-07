@@ -1,0 +1,55 @@
+name: Refresh guild raid data
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: refresh-guild-raid
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Fetch live guild raid season
+        env:
+          GUILD_RAID_API_KEY: ${{ secrets.GUILD_RAID_API_KEY }}
+        run: node ./scripts/fetch-guild-raid.js
+
+      - name: Commit and push
+        id: commit
+        run: |
+          if [ -z "$(git status --porcelain data/raid)" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No raid data changes."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/raid
+          git commit -m "chore: refresh guild raid season $(node -p "require('./data/raid/manifest.json').current")"
+          git push origin HEAD:master
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      # Pushes made with GITHUB_TOKEN do not trigger other workflows, so deploy explicitly.
+      - name: Trigger Pages deploy
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run deploy-pages.yml --ref master
