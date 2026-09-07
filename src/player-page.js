@@ -517,9 +517,14 @@ function renderRaidChart() {
     const points = player.values
       .map((damage, index) => ({ damage, index }))
       .filter((point) => point.damage > 0)
-      .map((point) => ({ x: xForIndex(point.index), y: yForDamage(point.damage) }));
+      .map((point) => ({
+        ...point,
+        season: seasons[point.index].season,
+        x: xForIndex(point.index),
+        y: yForDamage(point.damage)
+      }));
     const path = points.map((point) => `${point.x},${point.y}`).join(' L ');
-    const markers = points.map((point) => `<circle cx="${point.x}" cy="${point.y}" r="2.8" fill="${color}" />`).join('');
+    const markers = points.map((point) => `<circle cx="${point.x}" cy="${point.y}" r="2.8" fill="${color}"><title>Season ${point.season}: ${formatDamage(point.damage)} damage</title></circle>`).join('');
     const finalPoint = points[points.length - 1];
     const label = selectedPlayerId === ALL_PLAYERS_OPTION_ID ? '' : `<text x="${Math.min(finalPoint.x + 8, width - padding.right - 90)}" y="${Math.max(finalPoint.y - 6, padding.top + 12)}" font-size="11" fill="${color}">${escapeText(player.name)}</text>`;
     return `<path d="M ${path}" fill="none" stroke="${color}" stroke-width="${selectedPlayerId === ALL_PLAYERS_OPTION_ID ? 1.7 : 2.5}" stroke-linecap="round" stroke-linejoin="round" />${markers}${label}`;
@@ -680,14 +685,14 @@ function renderChart() {
     const seriesPaths = playerSeries.map((series) => {
       const points = series.rows
         .filter((row) => row.avg !== null)
-        .map((row) => ({ x: xForIndex(row.index), y: yForScore(row.avg) }));
+        .map((row) => ({ index: row.index, x: xForIndex(row.index), y: yForScore(row.avg) }));
 
       if (points.length === 0) return '';
 
       const color = colorForPlayer(series.id);
       const pathData = points.map((point) => `${point.x},${point.y}`).join(' L ');
       const markers = points
-        .map((point) => `<circle cx="${point.x}" cy="${point.y}" r="2.7" fill="${color}" />`)
+        .map((point) => `<circle cx="${point.x}" cy="${point.y}" r="2.7" fill="${color}"><title>${escapeText(series.rows[point.index].war.label || series.rows[point.index].war.key || `War ${point.index + 1}`)}: ${Math.round(series.rows[point.index].avg)}</title></circle>`)
         .join('');
       const lastPoint = points[points.length - 1];
       const labelX = Math.min(lastPoint.x + 6, width - padding.right - 40);
@@ -775,12 +780,12 @@ function renderChart() {
 
   const attackMarkers = chartRows
     .filter((row) => row.attackAvg !== null)
-    .map((row) => `<circle cx="${xForIndex(row.index)}" cy="${yForScore(row.attackAvg)}" r="3.5" fill="rgba(6,182,212,1)" />`)
+    .map((row) => `<circle cx="${xForIndex(row.index)}" cy="${yForScore(row.attackAvg)}" r="3.5" fill="rgba(6,182,212,1)"><title>${escapeText(row.war.label || row.war.key || `War ${row.index + 1}`)}: ${Math.round(row.attackAvg)} average attack</title></circle>`)
     .join('');
 
   const defenseMarkers = chartRows
     .filter((row) => row.defenseAvg !== null)
-    .map((row) => `<circle cx="${xForIndex(row.index)}" cy="${yForScore(row.defenseAvg)}" r="3.5" fill="rgba(245,158,11,1)" />`)
+    .map((row) => `<circle cx="${xForIndex(row.index)}" cy="${yForScore(row.defenseAvg)}" r="3.5" fill="rgba(245,158,11,1)"><title>${escapeText(row.war.label || row.war.key || `War ${row.index + 1}`)}: ${Math.round(row.defenseAvg)} average defense</title></circle>`)
     .join('');
 
   svg.innerHTML = `
