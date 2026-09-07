@@ -5,12 +5,24 @@ const PLAYER_PAGE_STATE = {
   selectedPlayerId: '',
   activeView: 'raid',
   raidStartSeason: null,
-  raidEndSeason: null
+  raidEndSeason: null,
+  raidTrendFilter: ''
 };
 
 const ALL_PLAYERS_OPTION_ID = '__all_players__';
 const PLAYER_DIRECTORY_URL = './data/static/players.json';
 const RAID_MANIFEST_URL = './data/raid/manifest.json';
+
+function getKnownPlayerName(playerId) {
+  const id = String(playerId || '').trim();
+  const name = String(PLAYER_PAGE_STATE.playerNameMap.get(id) || '').trim();
+  return name && name !== id ? name : '';
+}
+
+function hasCurrentRaidDamage(playerId) {
+  const currentSeason = PLAYER_PAGE_STATE.raidSeasons.at(-1);
+  return Number(currentSeason?.totals.get(String(playerId || '')) || 0) > 0;
+}
 
 function getCoreBattleScore(scoreValue, zoneType) {
   if (typeof globalThis.getCoreScore === 'function') {
@@ -284,6 +296,73 @@ function getXAxisLabelIndexes(pointCount, maximumLabels = 10) {
   return indexes;
 }
 
+function getChartPlayerColor(playerId) {
+  const id = String(playerId || 'player');
+  let hash = 0;
+  for (let index = 0; index < id.length; index += 1) {
+    hash = ((hash << 5) - hash) + id.charCodeAt(index);
+    hash |= 0;
+  }
+  return `hsl(${Math.abs(hash) % 360}, 75%, 62%)`;
+}
+
+function renderPlayerChartLegend(players) {
+  const legend = document.getElementById('player-chart-legend');
+  if (!legend) return;
+
+  const entries = Array.isArray(players) ? players : [];
+  legend.hidden = entries.length === 0;
+  legend.innerHTML = entries.map((player) => `
+    <span class="inline-flex items-center gap-1.5 text-xs text-slate-300">
+      <span class="h-2.5 w-2.5 shrink-0 rounded-full" style="background: ${player.color || getChartPlayerColor(player.id)}"></span>
+      <span>${String(player.name || player.id || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</span>
+    </span>`).join('');
+}
+
+function getRaidTrend(values) {
+  const nonZeroValues = values.filter((value) => Number(value) > 0).map(Number);
+  if (nonZeroValues.length < 2) return 'stable';
+
+  const first = nonZeroValues[0];
+  const last = nonZeroValues[nonZeroValues.length - 1];
+  const change = (last - first) / Math.max(Math.abs(first), 1);
+  if (change > 0.1) return 'up';
+  if (change < -0.1) return 'down';
+  return 'stable';
+}
+
+function renderRaidTrendFilters() {
+  const container = document.getElementById('raid-trend-filters');
+  if (!container) return;
+
+  container.hidden = PLAYER_PAGE_STATE.activeView !== 'raid'
+    || PLAYER_PAGE_STATE.selectedPlayerId !== ALL_PLAYERS_OPTION_ID;
+  const filters = [
+    { value: 'up', label: 'Trending upwards', classes: 'border-emerald-400/60 bg-emerald-500/15 text-emerald-200' },
+    { value: 'down', label: 'Trending downwards', classes: 'border-rose-400/60 bg-rose-500/15 text-rose-200' },
+    { value: 'stable', label: 'Stable', classes: 'border-amber-400/60 bg-amber-500/15 text-amber-200' }
+  ];
+
+  container.innerHTML = filters.map((filter) => {
+    const active = PLAYER_PAGE_STATE.raidTrendFilter === filter.value;
+    return `<button type="button" data-raid-trend="${filter.value}" aria-pressed="${active}" class="rounded-full border px-3 py-1.5 text-xs font-semibold transition ${active ? filter.classes : 'border-slate-500/50 bg-slate-900/80 text-slate-300 hover:border-slate-300/70'}">${filter.label}</button>`;
+  }).join('');
+}
+
+function bindRaidTrendFilters() {
+  const container = document.getElementById('raid-trend-filters');
+  if (!container) return;
+
+  container.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-raid-trend]');
+    if (!button) return;
+    const filter = button.getAttribute('data-raid-trend') || '';
+    PLAYER_PAGE_STATE.raidTrendFilter = PLAYER_PAGE_STATE.raidTrendFilter === filter ? '' : filter;
+    renderRaidTrendFilters();
+    renderChart();
+  });
+}
+
 async function loadRaidPlayerStats() {
   try {
     const response = await fetch(RAID_MANIFEST_URL, { cache: 'no-store' });
@@ -421,9 +500,13 @@ function renderPlayerSelect() {
     });
   });
 
-  const players = Array.from(playerIds)
-    .filter((id) => PLAYER_PAGE_STATE.playerNameMap.has(id))
-    .map((id) => ({ id, name: PLAYER_PAGE_STATE.playerNameMap.get(id) }))
+  const knownPlayerIds = PLAYER_PAGE_STATE.activeView === 'raid'
+    ? [...playerIds].filter((id) => hasCurrentRaidDamage(id))
+    : [...playerIds];
+
+  const players = knownPlayerIds
+    .filter((id) => getKnownPlayerName(id))
+    .map((id) => ({ id, name: getKnownPlayerName(id) }))
     .sort((a, b) => a.name.localeCompare(b.name));
 
   select.innerHTML = '';
@@ -467,6 +550,7 @@ function renderRaidChart() {
   const selectedPlayerId = PLAYER_PAGE_STATE.selectedPlayerId;
   if (!selectedPlayerId || seasons.length === 0) {
     svg.innerHTML = '';
+    renderPlayerChartLegend([]);
     setSummaryText('No guild raid history is available.');
     return;
   }
@@ -474,11 +558,23 @@ function renderRaidChart() {
   const playerIds = selectedPlayerId === ALL_PLAYERS_OPTION_ID
     ? Array.from(new Set(seasons.flatMap((season) => Array.from(season.totals.keys()))))
     : [selectedPlayerId];
-  const players = playerIds.map((id) => ({
+  const players = playerIds.filter((id) => hasCurrentRaidDamage(id)).map((id) => ({
     id,
-    name: PLAYER_PAGE_STATE.playerNameMap.get(id) || id,
-    values: seasons.map((season) => Number(season.totals.get(id) || 0))
-  }));
+    name: getKnownPlayerName(id),
+    values: seasons.map((season) => Number(season.totals.get(id) || 0)),
+    color: getChartPlayerColor(id)
+  })).filter((player) => getKnownPlayerName(player.id) && (
+    selectedPlayerId !== ALL_PLAYERS_OPTION_ID
+    || !PLAYER_PAGE_STATE.raidTrendFilter
+    || getRaidTrend(player.values) === PLAYER_PAGE_STATE.raidTrendFilter
+  ));
+  if (players.length === 0) {
+    svg.innerHTML = '';
+    renderPlayerChartLegend([]);
+    setSummaryText('No players match the selected trend filter.');
+    return;
+  }
+  renderPlayerChartLegend(players);
   const maximumDamage = Math.max(0, ...players.flatMap((player) => player.values));
   const yMax = Math.max(1000000, Math.ceil(maximumDamage / 1000000) * 1000000);
   const width = 1200;
@@ -491,15 +587,6 @@ function renderRaidChart() {
     : padding.left + (index / (seasons.length - 1)) * plotWidth;
   const yForDamage = (damage) => padding.top + (1 - (Number(damage || 0) / yMax)) * plotHeight;
   const escapeText = (value) => String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;');
-  const colorForPlayer = (playerId) => {
-    let hash = 0;
-    for (let index = 0; index < playerId.length; index += 1) {
-      hash = ((hash << 5) - hash) + playerId.charCodeAt(index);
-      hash |= 0;
-    }
-    return `hsl(${Math.abs(hash) % 360}, 75%, 62%)`;
-  };
-
   const ticks = Array.from({ length: 6 }, (_, index) => (yMax / 5) * index);
   const grid = ticks.map((tick) => {
     const y = yForDamage(tick);
@@ -513,7 +600,7 @@ function renderRaidChart() {
       : '')
     .join('');
   const seriesPaths = players.map((player) => {
-    const color = colorForPlayer(player.id);
+    const color = player.color;
     const points = player.values
       .map((damage, index) => ({ damage, index }))
       .filter((point) => point.damage > 0)
@@ -526,6 +613,7 @@ function renderRaidChart() {
     const path = points.map((point) => `${point.x},${point.y}`).join(' L ');
     const markers = points.map((point) => `<circle cx="${point.x}" cy="${point.y}" r="2.8" fill="${color}"><title>Season ${point.season}: ${formatDamage(point.damage)} damage</title></circle>`).join('');
     const finalPoint = points[points.length - 1];
+    if (!finalPoint) return '';
     const label = selectedPlayerId === ALL_PLAYERS_OPTION_ID ? '' : `<text x="${Math.min(finalPoint.x + 8, width - padding.right - 90)}" y="${Math.max(finalPoint.y - 6, padding.top + 12)}" font-size="11" fill="${color}">${escapeText(player.name)}</text>`;
     return `<path d="M ${path}" fill="none" stroke="${color}" stroke-width="${selectedPlayerId === ALL_PLAYERS_OPTION_ID ? 1.7 : 2.5}" stroke-linecap="round" stroke-linejoin="round" />${markers}${label}`;
   }).join('');
@@ -584,6 +672,7 @@ function renderChart() {
   const selectedPlayerId = PLAYER_PAGE_STATE.selectedPlayerId;
   if (!selectedPlayerId) {
     svg.innerHTML = '';
+    renderPlayerChartLegend([]);
     setSummaryText('No player data available.');
     return;
   }
@@ -612,7 +701,8 @@ function renderChart() {
     });
 
     const players = Array.from(playerIdSet)
-      .map((id) => ({ id, name: PLAYER_PAGE_STATE.playerNameMap.get(id) || id }))
+      .filter((id) => getKnownPlayerName(id))
+      .map((id) => ({ id, name: getKnownPlayerName(id) }))
       .sort((a, b) => a.name.localeCompare(b.name));
 
     const playerSeries = players.map((player) => {
@@ -623,6 +713,7 @@ function renderChart() {
         const combinedScores = attackScores.concat(defenseScores);
 
         return {
+          war,
           index,
           avg: average(combinedScores),
           attackCount: attackScores.length,
@@ -637,6 +728,7 @@ function renderChart() {
         totalDefenses: rows.reduce((sum, row) => sum + row.defenseCount, 0)
       };
     }).filter((series) => series.rows.some((row) => row.avg !== null));
+    renderPlayerChartLegend(playerSeries);
 
     const avgValues = [];
     playerSeries.forEach((series) => {
@@ -671,17 +763,6 @@ function renderChart() {
       return `<text x="${x}" y="${height - 18}" text-anchor="middle" font-size="11" fill="rgba(148,163,184,0.95)">${escapeText(shortLabel)}</text>`;
     }).join('');
 
-    const colorForPlayer = (playerId) => {
-      const id = String(playerId || 'player');
-      let hash = 0;
-      for (let i = 0; i < id.length; i += 1) {
-        hash = ((hash << 5) - hash) + id.charCodeAt(i);
-        hash |= 0;
-      }
-      const hue = Math.abs(hash) % 360;
-      return `hsl(${hue}, 75%, 62%)`;
-    };
-
     const seriesPaths = playerSeries.map((series) => {
       const points = series.rows
         .filter((row) => row.avg !== null)
@@ -689,7 +770,7 @@ function renderChart() {
 
       if (points.length === 0) return '';
 
-      const color = colorForPlayer(series.id);
+      const color = getChartPlayerColor(series.id);
       const pathData = points.map((point) => `${point.x},${point.y}`).join(' L ');
       const markers = points
         .map((point) => `<circle cx="${point.x}" cy="${point.y}" r="2.7" fill="${color}"><title>${escapeText(series.rows[point.index].war.label || series.rows[point.index].war.key || `War ${point.index + 1}`)}: ${Math.round(series.rows[point.index].avg)}</title></circle>`)
@@ -734,6 +815,7 @@ function renderChart() {
       defenseAvg: average(stats.defenseScores)
     };
   });
+  renderPlayerChartLegend([{ id: selectedPlayerId, name: getKnownPlayerName(selectedPlayerId) || selectedPlayerId }]);
 
   const avgValues = [];
   chartRows.forEach((row) => {
@@ -864,11 +946,13 @@ async function initializePlayerPage() {
 
   renderPlayerSelect();
   renderRaidSeasonRangeControls();
+  renderRaidTrendFilters();
 
   const select = document.getElementById('player-select');
   if (select) {
     select.addEventListener('change', (event) => {
       PLAYER_PAGE_STATE.selectedPlayerId = String(event.target.value || '');
+      renderRaidTrendFilters();
       renderChart();
     });
   }
@@ -893,6 +977,7 @@ async function initializePlayerPage() {
           : 'Select a guild member to compare average attack and defense score per war.';
       }
       renderRaidSeasonRangeControls();
+      renderRaidTrendFilters();
       renderPlayerSelect();
       renderChart();
     });
