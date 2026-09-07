@@ -52,21 +52,35 @@
             <header class="py-1">
               <div class="w-full">
                 <h2 id="overview-heading" class="text-xl font-bold leading-tight text-cyan-100 sm:text-2xl">Player Performance Overview</h2>
-                <p class="mt-1 text-sm leading-relaxed text-slate-300 sm:text-base">Select a guild member to compare average attack and defense score per war, with all individual battle scores plotted as scatter points.</p>
+                <p id="player-page-description" class="mt-1 text-sm leading-relaxed text-slate-300 sm:text-base">Select a guild member to compare their total damage across guild raid seasons.</p>
               </div>
             </header>
           </section>
 
           <section class="flex min-h-0 flex-1 flex-col rounded-2xl border border-slate-800 bg-slate-900/70 p-4 shadow-2xl shadow-black/25">
-            <div class="grid gap-4 md:grid-cols-[minmax(16rem,22rem)_1fr] md:items-end">
+            <div class="border-b border-slate-700/80" role="tablist" aria-label="Player statistics mode">
+              <button id="raid-tab" type="button" role="tab" aria-selected="true" aria-controls="player-chart-panel" data-player-view="raid" class="border-b-2 border-cyan-400 px-3 py-2 text-sm font-semibold text-cyan-200">Guild Raid</button>
+              <button id="war-tab" type="button" role="tab" aria-selected="false" aria-controls="player-chart-panel" data-player-view="war" class="border-b-2 border-transparent px-3 py-2 text-sm font-semibold text-slate-400 transition hover:text-slate-200">Guild War</button>
+            </div>
+            <div class="grid gap-4 md:grid-cols-[minmax(16rem,22rem)_minmax(18rem,24rem)_1fr] md:items-end">
               <div>
                 <label for="player-select" class="block text-xs font-semibold uppercase tracking-wide text-slate-400">Player</label>
                 <select id="player-select" class="mt-1 w-full rounded-lg border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200 outline-none transition focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/30"></select>
               </div>
+              <div id="raid-season-range-controls" class="grid grid-cols-2 gap-2">
+                <div>
+                  <label for="raid-start-season" class="block text-xs font-semibold uppercase tracking-wide text-slate-400">Start season</label>
+                  <input id="raid-start-season" type="number" inputmode="numeric" class="mt-1 w-full rounded-lg border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200 outline-none transition focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/30" />
+                </div>
+                <div>
+                  <label for="raid-end-season" class="block text-xs font-semibold uppercase tracking-wide text-slate-400">End season</label>
+                  <input id="raid-end-season" type="number" inputmode="numeric" class="mt-1 w-full rounded-lg border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200 outline-none transition focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/30" />
+                </div>
+              </div>
               <p id="player-chart-summary" class="text-sm text-slate-400">Loading player history...</p>
             </div>
 
-            <div class="mt-3 flex min-h-[520px] flex-1 rounded-xl border border-slate-800/90 bg-slate-950/45 p-3">
+            <div id="player-chart-panel" role="tabpanel" aria-labelledby="raid-tab" class="mt-3 flex min-h-[520px] flex-1 rounded-xl border border-slate-800/90 bg-slate-950/45 p-3">
               <div class="overflow-x-auto">
                 <svg id="player-chart" class="h-[clamp(520px,66vh,900px)] w-full min-w-[860px]" viewBox="0 0 1200 620" preserveAspectRatio="xMidYMid meet"></svg>
               </div>
@@ -117,6 +131,7 @@
 
       document.addEventListener('DOMContentLoaded', () => {
         enforceProductionVisibility();
+        bindRaidSeasonRangeControls();
 
         AppNav.renderBreadcrumb([
           { label: 'Home', href: 'index.html' },

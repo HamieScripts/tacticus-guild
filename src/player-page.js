@@ -1,10 +1,16 @@
 const PLAYER_PAGE_STATE = {
   wars: [],
+  raidSeasons: [],
   playerNameMap: new Map(),
-  selectedPlayerId: ''
+  selectedPlayerId: '',
+  activeView: 'raid',
+  raidStartSeason: null,
+  raidEndSeason: null
 };
 
 const ALL_PLAYERS_OPTION_ID = '__all_players__';
+const PLAYER_DIRECTORY_URL = './data/static/players.json';
+const RAID_MANIFEST_URL = './data/raid/manifest.json';
 
 function getCoreBattleScore(scoreValue, zoneType) {
   if (typeof globalThis.getCoreScore === 'function') {
@@ -261,24 +267,163 @@ function getChartTicks(yMin, yMax) {
   return ticks;
 }
 
+function formatDamage(value) {
+  const numericValue = Number(value) || 0;
+  if (numericValue >= 1000000) return `${(numericValue / 1000000).toFixed(1)}M`;
+  if (numericValue >= 1000) return `${Math.round(numericValue / 1000)}K`;
+  return String(Math.round(numericValue));
+}
+
+function getXAxisLabelIndexes(pointCount, maximumLabels = 10) {
+  if (pointCount <= maximumLabels) return new Set(Array.from({ length: pointCount }, (_, index) => index));
+
+  const indexes = new Set([0, pointCount - 1]);
+  for (let labelIndex = 1; labelIndex < maximumLabels - 1; labelIndex += 1) {
+    indexes.add(Math.round((labelIndex / (maximumLabels - 1)) * (pointCount - 1)));
+  }
+  return indexes;
+}
+
+async function loadRaidPlayerStats() {
+  try {
+    const response = await fetch(RAID_MANIFEST_URL, { cache: 'no-store' });
+    if (!response.ok) return [];
+    const manifest = await response.json();
+    const seasons = Array.isArray(manifest?.seasons) ? manifest.seasons : [];
+
+    const results = await Promise.all(seasons.map(async (season) => {
+      try {
+        const seasonResponse = await fetch(String(season?.url || ''), { cache: 'no-store' });
+        if (!seasonResponse.ok) return null;
+        const data = await seasonResponse.json();
+        const totals = new Map();
+
+        (Array.isArray(data?.entries) ? data.entries : []).forEach((entry) => {
+          const userId = String(entry?.userId || '').trim();
+          const damage = Number(entry?.damageDealt || 0);
+          if (!userId || !Number.isFinite(damage)) return;
+          totals.set(userId, (totals.get(userId) || 0) + damage);
+        });
+
+        return {
+          season: Number(data?.season ?? season?.season),
+          start: Number(data?.fetchedOn || season?.end || season?.start || 0),
+          totals
+        };
+      } catch (error) {
+        return null;
+      }
+    }));
+
+    return results
+      .filter((season) => season && Number.isFinite(season.season))
+      .sort((a, b) => a.season - b.season);
+  } catch (error) {
+    return [];
+  }
+}
+
+function getDefaultRaidSeasonRange() {
+  const seasons = PLAYER_PAGE_STATE.raidSeasons;
+  if (seasons.length === 0) return { start: null, end: null };
+
+  return {
+    start: seasons[Math.max(0, seasons.length - 10)].season,
+    end: seasons[seasons.length - 1].season
+  };
+}
+
+function ensureRaidSeasonRange() {
+  const defaults = getDefaultRaidSeasonRange();
+  if (defaults.start === null) {
+    PLAYER_PAGE_STATE.raidStartSeason = null;
+    PLAYER_PAGE_STATE.raidEndSeason = null;
+    return;
+  }
+
+  const seasons = PLAYER_PAGE_STATE.raidSeasons;
+  const minimum = seasons[0].season;
+  const maximum = seasons[seasons.length - 1].season;
+  const start = Number.isFinite(PLAYER_PAGE_STATE.raidStartSeason)
+    ? PLAYER_PAGE_STATE.raidStartSeason
+    : defaults.start;
+  const end = Number.isFinite(PLAYER_PAGE_STATE.raidEndSeason)
+    ? PLAYER_PAGE_STATE.raidEndSeason
+    : defaults.end;
+
+  PLAYER_PAGE_STATE.raidStartSeason = Math.max(minimum, Math.min(maximum, Math.min(start, end)));
+  PLAYER_PAGE_STATE.raidEndSeason = Math.max(
+    PLAYER_PAGE_STATE.raidStartSeason,
+    Math.min(maximum, Math.max(start, end))
+  );
+}
+
+function getVisibleRaidSeasons() {
+  ensureRaidSeasonRange();
+  return PLAYER_PAGE_STATE.raidSeasons.filter((season) => (
+    season.season >= PLAYER_PAGE_STATE.raidStartSeason
+    && season.season <= PLAYER_PAGE_STATE.raidEndSeason
+  ));
+}
+
+function renderRaidSeasonRangeControls() {
+  const container = document.getElementById('raid-season-range-controls');
+  if (!container) return;
+
+  const hasSeasons = PLAYER_PAGE_STATE.raidSeasons.length > 0;
+  container.hidden = PLAYER_PAGE_STATE.activeView !== 'raid';
+  ensureRaidSeasonRange();
+
+  const startInput = document.getElementById('raid-start-season');
+  const endInput = document.getElementById('raid-end-season');
+  if (!startInput || !endInput) return;
+
+  const minimum = hasSeasons ? PLAYER_PAGE_STATE.raidSeasons[0].season : '';
+  const maximum = hasSeasons ? PLAYER_PAGE_STATE.raidSeasons.at(-1).season : '';
+  [startInput, endInput].forEach((input) => {
+    input.min = minimum;
+    input.max = maximum;
+    input.disabled = !hasSeasons;
+  });
+  startInput.value = PLAYER_PAGE_STATE.raidStartSeason ?? '';
+  endInput.value = PLAYER_PAGE_STATE.raidEndSeason ?? '';
+}
+
+function bindRaidSeasonRangeControls() {
+  const startInput = document.getElementById('raid-start-season');
+  const endInput = document.getElementById('raid-end-season');
+  if (!startInput || !endInput) return;
+
+  const updateRange = () => {
+    PLAYER_PAGE_STATE.raidStartSeason = Number(startInput.value);
+    PLAYER_PAGE_STATE.raidEndSeason = Number(endInput.value);
+    renderRaidSeasonRangeControls();
+    renderChart();
+  };
+
+  startInput.addEventListener('change', updateRange);
+  endInput.addEventListener('change', updateRange);
+}
+
 function renderPlayerSelect() {
   const select = document.getElementById('player-select');
   if (!select) return;
 
   const playerIds = new Set();
-  PLAYER_PAGE_STATE.wars.forEach((war) => {
-    war.perPlayer.forEach((_, playerId) => {
+  const sourceData = PLAYER_PAGE_STATE.activeView === 'raid'
+    ? PLAYER_PAGE_STATE.raidSeasons
+    : PLAYER_PAGE_STATE.wars;
+
+  sourceData.forEach((data) => {
+    const perPlayer = PLAYER_PAGE_STATE.activeView === 'raid' ? data.totals : data.perPlayer;
+    perPlayer.forEach((_, playerId) => {
       playerIds.add(playerId);
-    });
-    war.nameMap.forEach((name, playerId) => {
-      if (!PLAYER_PAGE_STATE.playerNameMap.has(playerId)) {
-        PLAYER_PAGE_STATE.playerNameMap.set(playerId, name);
-      }
     });
   });
 
   const players = Array.from(playerIds)
-    .map((id) => ({ id, name: PLAYER_PAGE_STATE.playerNameMap.get(id) || id }))
+    .filter((id) => PLAYER_PAGE_STATE.playerNameMap.has(id))
+    .map((id) => ({ id, name: PLAYER_PAGE_STATE.playerNameMap.get(id) }))
     .sort((a, b) => a.name.localeCompare(b.name));
 
   select.innerHTML = '';
@@ -314,7 +459,120 @@ function renderPlayerSelect() {
   select.value = PLAYER_PAGE_STATE.selectedPlayerId;
 }
 
+function renderRaidChart() {
+  const svg = document.getElementById('player-chart');
+  if (!svg) return;
+
+  const seasons = getVisibleRaidSeasons();
+  const selectedPlayerId = PLAYER_PAGE_STATE.selectedPlayerId;
+  if (!selectedPlayerId || seasons.length === 0) {
+    svg.innerHTML = '';
+    setSummaryText('No guild raid history is available.');
+    return;
+  }
+
+  const playerIds = selectedPlayerId === ALL_PLAYERS_OPTION_ID
+    ? Array.from(new Set(seasons.flatMap((season) => Array.from(season.totals.keys()))))
+    : [selectedPlayerId];
+  const players = playerIds.map((id) => ({
+    id,
+    name: PLAYER_PAGE_STATE.playerNameMap.get(id) || id,
+    values: seasons.map((season) => Number(season.totals.get(id) || 0))
+  }));
+  const maximumDamage = Math.max(0, ...players.flatMap((player) => player.values));
+  const yMax = Math.max(1000000, Math.ceil(maximumDamage / 1000000) * 1000000);
+  const width = 1200;
+  const height = 620;
+  const padding = { top: 34, right: 24, bottom: 70, left: 68 };
+  const plotWidth = width - padding.left - padding.right;
+  const plotHeight = height - padding.top - padding.bottom;
+  const xForIndex = (index) => seasons.length <= 1
+    ? padding.left + plotWidth / 2
+    : padding.left + (index / (seasons.length - 1)) * plotWidth;
+  const yForDamage = (damage) => padding.top + (1 - (Number(damage || 0) / yMax)) * plotHeight;
+  const escapeText = (value) => String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;');
+  const colorForPlayer = (playerId) => {
+    let hash = 0;
+    for (let index = 0; index < playerId.length; index += 1) {
+      hash = ((hash << 5) - hash) + playerId.charCodeAt(index);
+      hash |= 0;
+    }
+    return `hsl(${Math.abs(hash) % 360}, 75%, 62%)`;
+  };
+
+  const ticks = Array.from({ length: 6 }, (_, index) => (yMax / 5) * index);
+  const grid = ticks.map((tick) => {
+    const y = yForDamage(tick);
+    return `<line x1="${padding.left}" y1="${y}" x2="${width - padding.right}" y2="${y}" stroke="rgba(100,116,139,0.35)" stroke-width="1" />
+      <text x="${padding.left - 8}" y="${y + 4}" text-anchor="end" font-size="11" fill="rgba(148,163,184,0.9)">${formatDamage(tick)}</text>`;
+  }).join('');
+  const xLabelIndexes = getXAxisLabelIndexes(seasons.length);
+  const xLabels = seasons
+    .map((season, index) => xLabelIndexes.has(index)
+      ? `<text x="${xForIndex(index)}" y="${height - 18}" text-anchor="middle" font-size="11" fill="rgba(148,163,184,0.95)">Season ${season.season}</text>`
+      : '')
+    .join('');
+  const seriesPaths = players.map((player) => {
+    const color = colorForPlayer(player.id);
+    const points = player.values
+      .map((damage, index) => ({ damage, index }))
+      .filter((point) => point.damage > 0)
+      .map((point) => ({ x: xForIndex(point.index), y: yForDamage(point.damage) }));
+    const path = points.map((point) => `${point.x},${point.y}`).join(' L ');
+    const markers = points.map((point) => `<circle cx="${point.x}" cy="${point.y}" r="2.8" fill="${color}" />`).join('');
+    const finalPoint = points[points.length - 1];
+    const label = selectedPlayerId === ALL_PLAYERS_OPTION_ID ? '' : `<text x="${Math.min(finalPoint.x + 8, width - padding.right - 90)}" y="${Math.max(finalPoint.y - 6, padding.top + 12)}" font-size="11" fill="${color}">${escapeText(player.name)}</text>`;
+    return `<path d="M ${path}" fill="none" stroke="${color}" stroke-width="${selectedPlayerId === ALL_PLAYERS_OPTION_ID ? 1.7 : 2.5}" stroke-linecap="round" stroke-linejoin="round" />${markers}${label}`;
+  }).join('');
+  const selectedPlayer = selectedPlayerId === ALL_PLAYERS_OPTION_ID ? null : players[0];
+  let runningDamageTotal = 0;
+  let seasonsWithDamage = 0;
+  const runningAverages = selectedPlayer
+    ? selectedPlayer.values.map((damage) => {
+      if (damage > 0) {
+        runningDamageTotal += damage;
+        seasonsWithDamage += 1;
+        return runningDamageTotal / seasonsWithDamage;
+      }
+      return null;
+    })
+    : [];
+  const runningAveragePath = runningAverages
+    .map((damage, index) => ({ damage, index }))
+    .filter((point) => point.damage !== null)
+    .map((point) => `${xForIndex(point.index)},${yForDamage(point.damage)}`)
+    .join(' L ');
+  const finalRunningAverage = runningAverages.findLast((damage) => damage !== null);
+  const runningAverageAnnotation = selectedPlayer && Number.isFinite(finalRunningAverage)
+    ? `<text x="${width - padding.right}" y="16" text-anchor="end" fill="rgba(251,191,36,1)" font-size="12">Running average: ${formatDamage(finalRunningAverage)}</text>`
+    : '';
+
+  svg.innerHTML = `<rect x="0" y="0" width="${width}" height="${height}" fill="rgba(2,6,23,0.25)"></rect>
+    ${grid}
+    <line x1="${padding.left}" y1="${padding.top + plotHeight}" x2="${width - padding.right}" y2="${padding.top + plotHeight}" stroke="rgba(148,163,184,0.7)" stroke-width="1.2" />
+    <line x1="${padding.left}" y1="${padding.top}" x2="${padding.left}" y2="${padding.top + plotHeight}" stroke="rgba(148,163,184,0.7)" stroke-width="1.2" />
+    ${seriesPaths}
+    ${runningAveragePath ? `<path d="M ${runningAveragePath}" fill="none" stroke="rgba(251,191,36,0.95)" stroke-width="2.2" stroke-dasharray="7 5" stroke-linecap="round" stroke-linejoin="round" />` : ''}
+    ${xLabels}
+    <text x="${padding.left}" y="16" fill="rgba(186,230,253,0.95)" font-size="12">Total damage per guild raid season</text>
+    ${runningAverageAnnotation}`;
+
+  if (selectedPlayerId === ALL_PLAYERS_OPTION_ID) {
+    setSummaryText(`${players.length} players across ${seasons.length} guild raid seasons. Select a player to focus their damage history.`);
+    return;
+  }
+
+  const player = players[0];
+  const totalDamage = player.values.reduce((sum, damage) => sum + damage, 0);
+  setSummaryText(`${player.name}: ${formatDamage(totalDamage)} total damage across ${seasons.length} guild raid seasons.`);
+}
+
 function renderChart() {
+  if (PLAYER_PAGE_STATE.activeView === 'raid') {
+    renderRaidChart();
+    return;
+  }
+
   const svg = document.getElementById('player-chart');
   if (!svg) return;
 
@@ -400,7 +658,9 @@ function renderChart() {
       `;
     }).join('');
 
+    const xLabelIndexes = getXAxisLabelIndexes(wars.length);
     const xLabels = wars.map((war, index) => {
+      if (!xLabelIndexes.has(index)) return '';
       const x = xForIndex(index);
       const shortLabel = String(war.label || war.key || `War ${index + 1}`);
       return `<text x="${x}" y="${height - 18}" text-anchor="middle" font-size="11" fill="rgba(148,163,184,0.95)">${escapeText(shortLabel)}</text>`;
@@ -505,7 +765,9 @@ function renderChart() {
     `;
   }).join('');
 
+  const xLabelIndexes = getXAxisLabelIndexes(chartRows.length);
   const xLabels = chartRows.map((row) => {
+    if (!xLabelIndexes.has(row.index)) return '';
     const x = xForIndex(row.index);
     const shortLabel = String(row.war.label || row.war.key || `War ${row.index + 1}`);
     return `<text x="${x}" y="${height - 18}" text-anchor="middle" font-size="11" fill="rgba(148,163,184,0.95)">${escapeText(shortLabel)}</text>`;
@@ -552,7 +814,13 @@ function renderChart() {
 async function initializePlayerPage() {
   setSummaryText('Loading player history...');
 
-  const datasets = await loadDatasetManifest();
+  const [datasets, raidSeasons, playerDirectory] = await Promise.all([
+    loadDatasetManifest(),
+    loadRaidPlayerStats(),
+    fetch(PLAYER_DIRECTORY_URL, { cache: 'no-store' })
+      .then((response) => response.ok ? response.json() : [])
+      .catch(() => [])
+  ]);
   const results = await Promise.all(datasets.map(async (dataset) => {
     try {
       const response = await fetch(dataset.url, { cache: 'no-store' });
@@ -573,8 +841,24 @@ async function initializePlayerPage() {
       const bTime = Number(b.timestamp || 0);
       return aTime - bTime;
     });
+  PLAYER_PAGE_STATE.raidSeasons = raidSeasons;
+  ensureRaidSeasonRange();
+
+  (Array.isArray(playerDirectory) ? playerDirectory : []).forEach((player) => {
+    const playerId = String(player?.id || '').trim();
+    const playerName = String(player?.name || '').trim();
+    if (playerId && playerName) PLAYER_PAGE_STATE.playerNameMap.set(playerId, playerName);
+  });
+  PLAYER_PAGE_STATE.wars.forEach((war) => {
+    war.nameMap.forEach((name, playerId) => {
+      if (!PLAYER_PAGE_STATE.playerNameMap.has(playerId)) {
+        PLAYER_PAGE_STATE.playerNameMap.set(playerId, name);
+      }
+    });
+  });
 
   renderPlayerSelect();
+  renderRaidSeasonRangeControls();
 
   const select = document.getElementById('player-select');
   if (select) {
@@ -583,6 +867,31 @@ async function initializePlayerPage() {
       renderChart();
     });
   }
+
+  const chartPanel = document.getElementById('player-chart-panel');
+  const description = document.getElementById('player-page-description');
+  document.querySelectorAll('[data-player-view]').forEach((tab) => {
+    tab.addEventListener('click', () => {
+      PLAYER_PAGE_STATE.activeView = String(tab.dataset.playerView || 'raid');
+      document.querySelectorAll('[data-player-view]').forEach((button) => {
+        const isActive = button === tab;
+        button.setAttribute('aria-selected', String(isActive));
+        button.classList.toggle('border-cyan-400', isActive);
+        button.classList.toggle('text-cyan-200', isActive);
+        button.classList.toggle('border-transparent', !isActive);
+        button.classList.toggle('text-slate-400', !isActive);
+      });
+      if (chartPanel) chartPanel.setAttribute('aria-labelledby', tab.id);
+      if (description) {
+        description.textContent = PLAYER_PAGE_STATE.activeView === 'raid'
+          ? 'Select a guild member to compare their total damage across guild raid seasons.'
+          : 'Select a guild member to compare average attack and defense score per war.';
+      }
+      renderRaidSeasonRangeControls();
+      renderPlayerSelect();
+      renderChart();
+    });
+  });
 
   renderChart();
 }
