@@ -48,9 +48,11 @@
       <div class="site-scroll mt-6 flex-1 min-h-0 overflow-y-auto">
         <div class="flex flex-col gap-6 pb-6">
 
+      <nav data-breadcrumb aria-label="Breadcrumb" class="w-full"></nav>
+
       <div class="top-tab-strip flex flex-wrap gap-2 border-b border-slate-700">
-        <button id="top-tab-btn-war-summary" type="button" onclick="switchTopTab('war-summary')" class="rounded-t-lg border-b-2 border-cyan-400 px-5 py-3 text-sm font-semibold text-cyan-300 transition-colors hover:text-slate-100">War summary</button>
-        <button id="top-tab-btn-player-summary" type="button" onclick="switchTopTab('player-summary')" class="rounded-t-lg border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100">Player summary</button>
+        <button id="top-tab-btn-war-summary" type="button" onclick="navigateWarTab({ top: null, sub: null })" class="rounded-t-lg border-b-2 border-cyan-400 px-5 py-3 text-sm font-semibold text-cyan-300 transition-colors hover:text-slate-100">War summary</button>
+        <button id="top-tab-btn-player-summary" type="button" onclick="navigateWarTab({ top: 'player-summary' })" class="rounded-t-lg border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100">Player summary</button>
       </div>
 
       <div id="top-panel-war-summary" class="flex flex-col gap-6">
@@ -109,11 +111,11 @@
 
       <div class="rounded-xl border border-slate-800 bg-slate-900/70 shadow-2xl shadow-black/25">
         <div class="tab-strip flex flex-wrap border-b border-slate-700">
-          <button id="tab-btn-leaderboard" type="button" onclick="switchMainTab('leaderboard')" class="border-b-2 border-cyan-400 px-5 py-3 text-sm font-semibold text-cyan-300 transition-colors hover:text-slate-100">Token table</button>
-          <button id="tab-btn-battlelog" type="button" onclick="switchMainTab('battlelog')" class="border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100">
+          <button id="tab-btn-leaderboard" type="button" onclick="navigateWarTab({ tab: null })" class="border-b-2 border-cyan-400 px-5 py-3 text-sm font-semibold text-cyan-300 transition-colors hover:text-slate-100">Token table</button>
+          <button id="tab-btn-battlelog" type="button" onclick="navigateWarTab({ tab: 'battlelog' })" class="border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100">
             Battle log <span id="battle-log-count" class="ml-1 rounded-full bg-slate-700 px-2 py-0.5 text-xs text-slate-300">0</span>
           </button>
-          <button id="tab-btn-portraitmap" type="button" onclick="switchMainTab('portraitmap')" class="hidden border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100" aria-hidden="true" tabindex="-1">
+          <button id="tab-btn-portraitmap" type="button" onclick="navigateWarTab({ tab: 'portraitmap' })" class="hidden border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100" aria-hidden="true" tabindex="-1">
             Portrait mapper
           </button>
         </div>
@@ -338,8 +340,8 @@
           </div>
 
           <div class="mb-3 flex flex-wrap gap-2 border-b border-slate-700">
-            <button id="player-summary-tab-btn-attack" type="button" onclick="switchPlayerSummaryTab('attack')" class="border-b-2 border-cyan-400 px-4 py-2 text-sm font-semibold text-cyan-300 transition-colors hover:text-slate-100">Attack</button>
-            <button id="player-summary-tab-btn-defence" type="button" onclick="switchPlayerSummaryTab('defence')" class="border-b-2 border-transparent px-4 py-2 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100">Defence</button>
+            <button id="player-summary-tab-btn-attack" type="button" onclick="navigateWarTab({ sub: null })" class="border-b-2 border-cyan-400 px-4 py-2 text-sm font-semibold text-cyan-300 transition-colors hover:text-slate-100">Attack</button>
+            <button id="player-summary-tab-btn-defence" type="button" onclick="navigateWarTab({ sub: 'defence' })" class="border-b-2 border-transparent px-4 py-2 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100">Defence</button>
           </div>
 
           <div id="player-summary-attack-body" class="flex flex-col gap-6">
@@ -362,6 +364,7 @@
       </div>
     </div>
 
+    <script src="src/navigation.js"></script>
     <script src="src/consts/tile-scores.js"></script>
     <script src="src/consts/score-splitter.js"></script>
     <script src="src/app.js"></script>
@@ -508,6 +511,48 @@
           }
         });
       }
+
+      const WAR_TAB_LABELS = {
+        top: { 'war-summary': 'War summary', 'player-summary': 'Player summary' },
+        main: { leaderboard: 'Token table', battlelog: 'Battle log', portraitmap: 'Portrait map' },
+        sub: { attack: 'Attack', defence: 'Defence' }
+      };
+
+      function applyWarTabsFromUrl() {
+        const params = AppNav.getParams();
+        const top = WAR_TAB_LABELS.top[params.get('top')] ? params.get('top') : 'war-summary';
+        const main = WAR_TAB_LABELS.main[params.get('tab')] ? params.get('tab') : 'leaderboard';
+        const sub = WAR_TAB_LABELS.sub[params.get('sub')] ? params.get('sub') : 'attack';
+
+        switchTopTab(top);
+        switchMainTab(main);
+        switchPlayerSummaryTab(sub);
+
+        const trail = [
+          { label: 'Home', href: 'index.html' },
+          { label: 'Guild Wars', params: { top: null, tab: null, sub: null } }
+        ];
+
+        if (top === 'player-summary') {
+          trail.push({ label: WAR_TAB_LABELS.top[top], params: { sub: null } });
+          trail.push({ label: WAR_TAB_LABELS.sub[sub] });
+        } else {
+          trail.push({ label: WAR_TAB_LABELS.top[top], params: { tab: null } });
+          trail.push({ label: WAR_TAB_LABELS.main[main] });
+        }
+
+        AppNav.renderBreadcrumb(trail, applyWarTabsFromUrl);
+      }
+
+      function navigateWarTab(patch) {
+        AppNav.setParams(patch);
+        applyWarTabsFromUrl();
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        AppNav.onChange(applyWarTabsFromUrl);
+        applyWarTabsFromUrl();
+      });
     </script>
   </body>
 </html>

@@ -2691,28 +2691,44 @@ function setupBattleLogPageTabs() {
 
   const applyTabState = (tab) => {
     const tabs = [
-      { name: 'battle-history', button: battleHistoryBtn, panel: battleHistoryPanel },
-      { name: 'guild-performance', button: guildPerformanceBtn, panel: guildPerformancePanel },
-      { name: 'player-attack', button: playerAttackBtn, panel: playerAttackPanel },
-      { name: 'player-defense', button: playerDefenseBtn, panel: playerDefensePanel }
+      { name: 'battle-history', label: 'Battle history', button: battleHistoryBtn, panel: battleHistoryPanel },
+      { name: 'guild-performance', label: 'Guild performance', button: guildPerformanceBtn, panel: guildPerformancePanel },
+      { name: 'player-attack', label: 'Attack performance', button: playerAttackBtn, panel: playerAttackPanel },
+      { name: 'player-defense', label: 'Def performance', button: playerDefenseBtn, panel: playerDefensePanel }
     ];
 
+    const active = tabs.find((tabItem) => tabItem.name === tab) || tabs[0];
+
     tabs.forEach((tabItem) => {
-      const isActive = tabItem.name === tab;
+      const isActive = tabItem === active;
       tabItem.panel.classList.toggle('hidden', !isActive);
       tabItem.button.classList.toggle('border-cyan-400', isActive);
       tabItem.button.classList.toggle('text-cyan-300', isActive);
       tabItem.button.classList.toggle('border-transparent', !isActive);
       tabItem.button.classList.toggle('text-slate-400', !isActive);
     });
+
+    AppNav.renderBreadcrumb([
+      { label: 'Home', href: 'index.html' },
+      { label: 'Battle Log', params: { tab: null } },
+      { label: active.label }
+    ], applyTabsFromUrl);
   };
 
-  battleHistoryBtn.addEventListener('click', () => applyTabState('battle-history'));
-  guildPerformanceBtn.addEventListener('click', () => applyTabState('guild-performance'));
-  playerAttackBtn.addEventListener('click', () => applyTabState('player-attack'));
-  playerDefenseBtn.addEventListener('click', () => applyTabState('player-defense'));
+  const applyTabsFromUrl = () => applyTabState(AppNav.get('tab') || 'battle-history');
 
-  applyTabState('battle-history');
+  const navigateToTab = (tab) => {
+    AppNav.setParams({ tab: tab === 'battle-history' ? null : tab });
+    applyTabsFromUrl();
+  };
+
+  battleHistoryBtn.addEventListener('click', () => navigateToTab('battle-history'));
+  guildPerformanceBtn.addEventListener('click', () => navigateToTab('guild-performance'));
+  playerAttackBtn.addEventListener('click', () => navigateToTab('player-attack'));
+  playerDefenseBtn.addEventListener('click', () => navigateToTab('player-defense'));
+
+  AppNav.onChange(applyTabsFromUrl);
+  applyTabsFromUrl();
   battleLogPageTabsInitialized = true;
 }
 

@@ -192,11 +192,6 @@ async function loadStaticData() {
   );
 }
 
-function getSeasonFromUrl() {
-  const requested = Number(new URLSearchParams(window.location.search).get('season'));
-  return raidState.seasons.some((season) => season.season === requested) ? requested : null;
-}
-
 async function loadSeasonManifest() {
   const manifest = await loadJson(RAID_MANIFEST_URL, null);
   const seasons = Array.isArray(manifest?.seasons) ? manifest.seasons : [];
@@ -633,15 +628,15 @@ function renderBossDetail() {
   const backButton = document.getElementById('raid-back-button');
   if (backButton) {
     backButton.addEventListener('click', () => {
-      raidState.selectedBossKey = '';
-      render();
+      AppNav.setParams({ boss: null, tab: null });
+      applyUrlState();
     });
   }
 
   detail.querySelectorAll('[data-raid-tab]').forEach((button) => {
     button.addEventListener('click', () => {
-      raidState.activeTab = button.getAttribute('data-raid-tab') === 'players' ? 'players' : 'attacks';
-      renderBossDetail();
+      AppNav.setParams({ tab: button.getAttribute('data-raid-tab') === 'players' ? 'players' : null });
+      applyUrlState();
     });
   });
 }
@@ -731,6 +726,7 @@ function render() {
 
   renderSummary();
   renderSeasonSelect();
+  renderBreadcrumb();
 
   const showPlayers = raidState.activeView === 'players';
   const showDetail = !showPlayers && Boolean(raidState.selectedBossKey);
@@ -762,17 +758,17 @@ function bindGridEvents() {
   grid.addEventListener('click', (event) => {
     const button = event.target.closest('[data-boss-key]');
     if (!button) return;
-    raidState.selectedBossKey = button.getAttribute('data-boss-key');
-    raidState.activeTab = 'attacks';
-    render();
+    AppNav.setParams({ boss: button.getAttribute('data-boss-key'), tab: null, view: null });
+    applyUrlState();
   });
 }
 
 function bindViewTabs() {
   document.querySelectorAll('[data-raid-view]').forEach((button) => {
     button.addEventListener('click', () => {
-      raidState.activeView = button.getAttribute('data-raid-view') === 'players' ? 'players' : 'bosses';
-      render();
+      const view = button.getAttribute('data-raid-view') === 'players' ? 'players' : null;
+      AppNav.setParams({ view, boss: null, tab: null });
+      applyUrlState();
     });
   });
 }
@@ -781,28 +777,58 @@ function bindSeasonSelect() {
   const select = document.getElementById('raid-season-select');
   if (!select) return;
 
-  select.addEventListener('change', async () => {
+  select.addEventListener('change', () => {
     const season = Number(select.value);
     if (!Number.isFinite(season) || season === raidState.activeSeason) return;
 
-    raidState.selectedBossKey = '';
-    await loadSeason(season);
-
-    const params = new URLSearchParams(window.location.search);
-    params.set('season', String(season));
-    window.history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
-
-    render();
+    AppNav.setParams({ season, boss: null, tab: null });
+    applyUrlState();
   });
+}
+
+function renderBreadcrumb() {
+  const trail = [
+    { label: 'Home', href: 'index.html' },
+    { label: 'Guild Raid', params: { season: null, view: null, boss: null, tab: null } },
+    { label: `Season ${raidState.activeSeason ?? '-'}`, params: { view: null, boss: null, tab: null } }
+  ];
+
+  if (raidState.activeView === 'players') {
+    trail.push({ label: 'Players' });
+  } else if (raidState.selectedBossKey) {
+    const boss = getBosses().find((entry) => entry.key === raidState.selectedBossKey);
+    if (boss) {
+      trail.push({ label: `${boss.name} (Tier ${boss.tier + 1})`, params: { tab: null } });
+      trail.push({ label: raidState.activeTab === 'players' ? 'Players' : 'Attacks' });
+    }
+  }
+
+  AppNav.renderBreadcrumb(trail, applyUrlState);
+}
+
+async function applyUrlState() {
+  const params = AppNav.getParams();
+
+  const requested = Number(params.get('season'));
+  const season = raidState.seasons.some((entry) => entry.season === requested)
+    ? requested
+    : (raidState.currentSeason ?? raidState.seasons[0]?.season);
+
+  if (season !== raidState.activeSeason) await loadSeason(season);
+
+  raidState.activeView = params.get('view') === 'players' ? 'players' : 'bosses';
+  raidState.selectedBossKey = params.get('boss') || '';
+  raidState.activeTab = params.get('tab') === 'players' ? 'players' : 'attacks';
+
+  render();
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
   bindGridEvents();
   bindViewTabs();
   bindSeasonSelect();
+  AppNav.onChange(applyUrlState);
 
   await Promise.all([loadStaticData(), loadSeasonManifest()]);
-  await loadSeason(getSeasonFromUrl() ?? raidState.currentSeason ?? raidState.seasons[0]?.season);
-
-  render();
+  await applyUrlState();
 });

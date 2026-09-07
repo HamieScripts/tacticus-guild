@@ -47,6 +47,7 @@
 
       <div class="site-scroll mt-6 flex-1 min-h-0 overflow-y-auto">
         <div class="flex min-h-full flex-col gap-4 pb-2">
+          <nav data-breadcrumb aria-label="Breadcrumb" class="w-full"></nav>
           <section aria-labelledby="overview-heading" class="w-full">
             <header class="py-1">
               <div class="w-full">
@@ -75,6 +76,7 @@
       </div>
     </div>
 
+    <script src="src/navigation.js"></script>
     <script src="src/consts/tile-scores.js"></script>
     <script src="src/consts/score-splitter.js"></script>
     <script src="src/player-page.js"></script>
@@ -115,6 +117,11 @@
 
       document.addEventListener('DOMContentLoaded', () => {
         enforceProductionVisibility();
+
+        AppNav.renderBreadcrumb([
+          { label: 'Home', href: 'index.html' },
+          { label: 'Player Stats' }
+        ]);
 
         const menuButtons = document.querySelectorAll('.site-header-menu-button');
         menuButtons.forEach((button) => {

@@ -1012,26 +1012,41 @@ function syncTabButtonStates() {
   applyTabStyles(libraryBuilderBtn, isLibraryBuilder);
 }
 
+const TEAM_TAB_LABELS = {
+  library: 'Library',
+  'team-builder': 'Team Builder',
+  'library-builder': 'Library Builder'
+};
+
+function applyTabFromUrl() {
+  const tab = AppNav.get('tab');
+  teamsState.activeTab = TEAM_TAB_LABELS[tab] ? tab : 'library';
+  syncTabButtonStates();
+
+  AppNav.renderBreadcrumb([
+    { label: 'Home', href: 'index.html' },
+    { label: 'Guild Teams', params: { tab: null } },
+    { label: TEAM_TAB_LABELS[teamsState.activeTab] }
+  ], applyTabFromUrl);
+}
+
 function setupTabEvents() {
   const libraryBtn = document.getElementById('tab-btn-library');
   const teamBuilderBtn = document.getElementById('tab-btn-team-builder');
   const libraryBuilderBtn = document.getElementById('tab-btn-library-builder');
   if (!libraryBtn || !teamBuilderBtn || !libraryBuilderBtn) return;
 
-  libraryBtn.addEventListener('click', () => {
-    teamsState.activeTab = 'library';
-    syncTabButtonStates();
-  });
+  const navigateToTab = (tab) => {
+    AppNav.setParams({ tab: tab === 'library' ? null : tab });
+    applyTabFromUrl();
+  };
 
-  teamBuilderBtn.addEventListener('click', () => {
-    teamsState.activeTab = 'team-builder';
-    syncTabButtonStates();
-  });
+  libraryBtn.addEventListener('click', () => navigateToTab('library'));
+  teamBuilderBtn.addEventListener('click', () => navigateToTab('team-builder'));
+  libraryBuilderBtn.addEventListener('click', () => navigateToTab('library-builder'));
 
-  libraryBuilderBtn.addEventListener('click', () => {
-    teamsState.activeTab = 'library-builder';
-    syncTabButtonStates();
-  });
+  AppNav.onChange(applyTabFromUrl);
+  applyTabFromUrl();
 }
 
 function setupBuilderEvents() {
