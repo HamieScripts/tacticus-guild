@@ -29,6 +29,15 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
+      - name: Fetch guild raid season data
+        continue-on-error: true
+        env:
+          GUILD_RAID_API_KEY: ${{ secrets.GUILD_RAID_API_KEY }}
+        run: npm run fetch:raid
+
+      - name: Generate player directory
+        run: npm run generate:players
+
       - name: Generate dataset manifest
         env:
           GITHUB_SHA: ${{ github.sha }}

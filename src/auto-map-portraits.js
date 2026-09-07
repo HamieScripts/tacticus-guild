@@ -52,15 +52,13 @@ function normalizeDatasetUrlToPath(urlValue, dataRoot) {
 function collectSnapshotPaths(dataRoot) {
   const snapshotPaths = new Set();
 
-  const currentDir = path.join(dataRoot, 'current');
-  const historyDir = path.join(dataRoot, 'history');
+  const warDir = path.join(dataRoot, 'war');
 
-  [currentDir, historyDir].forEach((dirPath) => {
-    if (!fs.existsSync(dirPath)) return;
-    fs.readdirSync(dirPath)
+  if (fs.existsSync(warDir)) {
+    fs.readdirSync(warDir)
       .filter((name) => name.toLowerCase().endsWith('.json'))
-      .forEach((name) => snapshotPaths.add(path.join(dirPath, name)));
-  });
+      .forEach((name) => snapshotPaths.add(path.join(warDir, name)));
+  }
 
   const datasetManifestPath = path.join(dataRoot, 'dataset-manifest.json');
   if (fs.existsSync(datasetManifestPath)) {

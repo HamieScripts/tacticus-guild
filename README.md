@@ -8,6 +8,7 @@ A Guild Wars analytics and team composition dashboard for the game *Praetorians 
 |------|-------------|
 | `index.html` | Home overview with dataset selection |
 | `guild-wars.html` | Guild Wars overview — token usage, battle performance, score projections |
+| `guild-raid.html` | Guild Raid season — boss encounters by tier, attacks, and per-player damage |
 | `battle-log.html` | Battle history with filters for result, player, team, and units |
 | `guild-teams.html` | Team composition library and builder *(dev only)* |
 | `player-page.html` | Per-player average attack/defense scores with scatter plots *(dev only)* |
@@ -16,12 +17,16 @@ A Guild Wars analytics and team composition dashboard for the game *Praetorians 
 
 ```
 data/
-├── dataset-manifest.json     # Index of all datasets (labels, sources, cache hash)
-├── current/
-│   └── live-war.json         # Active war snapshot
-├── history/                  # Historical war snapshots (UUID-named)
+├── dataset-manifest.json     # Index of all war datasets (labels, sources, cache hash)
+├── war/
+│   ├── current.json           # Active war snapshot
+│   └── <id>.json              # Historical war snapshots (UUID-named)
+├── raid/
+│   ├── current.json           # Active guild raid season
+│   └── <season>.json          # Historical guild raid seasons
 └── static/
     ├── guild-teams.json      # Team composition library
+    ├── players.json          # Player directory (id, name, avatar) built from war data
     ├── portrait-map.json     # Unit ID → portrait image mapping
     └── image-manifest.json   # Available portrait images
 ```
@@ -31,7 +36,7 @@ Switch between datasets via the `?dataset=<key>` URL parameter.
 ## Scripts
 
 ```bash
-# Generate dataset-manifest.json from data/history/
+# Generate dataset-manifest.json from data/war/
 node scripts/generate-dataset-manifest.js
 
 # Auto-map unit portraits from all snapshots
@@ -47,6 +52,13 @@ Or via npm:
 npm run generate:datasets
 npm run map:portraits
 npm run copy:portraits
+
+# Store the Tacticus API key (Guild Raid scope) in .env.local
+npm run raid:key
+
+# Fetch the current guild raid season into data/raid/
+# Also backfills seasons 100+ that are not cached yet; add -- --force to refetch all
+npm run fetch:raid
 ```
 
 ## Tests
@@ -110,6 +122,6 @@ You should now be set up to extract the war data.
 
 ### Save live war data
 
-Save the JSON output from the scraped API responce to [live-war.json](tacticus-guild\data\current\live-war.json).
+Save the JSON output from the scraped API responce to [current.json](tacticus-guild\data\war\current.json).
 
 Commit and push back to master. A GitHub action will deploy the data to the live site.

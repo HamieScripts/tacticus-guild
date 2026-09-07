@@ -92,7 +92,7 @@ async function loadDatasetManifest() {
         {
           key: 'current',
           label: 'Active war',
-          url: './data/current/live-war.json'
+          url: './data/war/current.json'
         }
       ];
     }
@@ -107,7 +107,7 @@ async function loadDatasetManifest() {
         {
           key: 'current',
           label: 'Active war',
-          url: './data/current/live-war.json'
+          url: './data/war/current.json'
         }
       ];
     }
@@ -124,7 +124,7 @@ async function loadDatasetManifest() {
       {
         key: 'current',
         label: 'Active war',
-        url: './data/current/live-war.json'
+        url: './data/war/current.json'
       }
     ];
   }

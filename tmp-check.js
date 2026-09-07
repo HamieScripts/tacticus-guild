@@ -21,7 +21,7 @@ const context = {
 context.globalThis = context;
 vm.createContext(context);
 vm.runInContext(code, context);
-const data = JSON.parse(fs.readFileSync('./data/current/live-war.json', 'utf8'));
+const data = JSON.parse(fs.readFileSync('./data/war/current.json', 'utf8'));
 const snapshots = context.buildSnapshot(data);
 let easyCount = 0;
 for (const s of snapshots) {

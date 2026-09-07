@@ -5,6 +5,9 @@
   "scripts": {
     "map:portraits": "node ./src/auto-map-portraits.js",
     "copy:portraits": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/copy-portraits.ps1",
-    "generate:datasets": "node ./scripts/generate-dataset-manifest.js"
+    "generate:datasets": "node ./scripts/generate-dataset-manifest.js",
+    "generate:players": "node ./scripts/generate-player-directory.js",
+    "raid:key": "node ./scripts/set-guild-raid-key.js",
+    "fetch:raid": "node ./scripts/fetch-guild-raid.js"
   }
 }

@@ -2,7 +2,7 @@ const DEFAULT_DATASETS = {
   current: {
     label: 'Active war',
     sourceLabel: 'Current snapshot',
-    url: './data/current/live-war.json'
+    url: './data/war/current.json'
   }
 };
 

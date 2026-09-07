@@ -205,7 +205,7 @@ async function loadBattleLogsData() {
   const fallbackDatasets = [{
     key: 'current',
     label: 'Active war',
-    url: './data/current/live-war.json'
+    url: './data/war/current.json'
   }];
 
   let datasets = fallbackDatasets;

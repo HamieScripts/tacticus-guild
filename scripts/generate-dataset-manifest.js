@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const DATA_ROOT = path.join(__dirname, '..', 'data');
-const HISTORY_DIR = path.join(DATA_ROOT, 'history');
+const WAR_DIR = path.join(DATA_ROOT, 'war');
 const MANIFEST_PATH = path.join(DATA_ROOT, 'dataset-manifest.json');
 const HASH_PATH = path.join(DATA_ROOT, 'dataset-manifest.hash');
 
@@ -67,10 +67,10 @@ function getPrimaryGuildNames(data) {
 }
 
 function main() {
-  const historyFiles = fs.existsSync(HISTORY_DIR)
-    ? fs.readdirSync(HISTORY_DIR)
-        .filter((file) => file.toLowerCase().endsWith('.json'))
-        .map((file) => path.join(HISTORY_DIR, file))
+  const historyFiles = fs.existsSync(WAR_DIR)
+    ? fs.readdirSync(WAR_DIR)
+        .filter((file) => file.toLowerCase().endsWith('.json') && file.toLowerCase() !== 'current.json')
+        .map((file) => path.join(WAR_DIR, file))
     : [];
 
   const datasets = historyFiles.map((filePath) => {
@@ -96,7 +96,7 @@ function main() {
       key,
       label,
       sourceLabel,
-      url: `./data/history/${fileName}.json`,
+      url: `./data/war/${fileName}.json`,
       start: startCreatedOn ? new Date(startCreatedOn).toISOString() : null,
       end: latestCreatedOn ? new Date(latestCreatedOn).toISOString() : null,
       _createdOn: latestCreatedOn ?? 0,
