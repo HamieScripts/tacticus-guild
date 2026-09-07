@@ -59,7 +59,15 @@ npm run raid:key
 # Fetch the current guild raid season into data/raid/
 # Also backfills seasons 100+ that are not cached yet; add -- --force to refetch all
 npm run fetch:raid
+
+# Fetch a selected inclusive season range; add --force to refetch cached seasons
+npm run fetch:raid:range -- --start 90 --end 99
 ```
+
+The range fetcher accepts `--start <season>` and `--end <season>`. It writes the
+season JSON files and merges the fetched summaries into `data/raid/manifest.json`.
+Requests are paced with a random 1-3 second delay, with no more than 10 season
+requests running at once.
 
 ## Tests
 

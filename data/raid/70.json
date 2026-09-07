@@ -1,0 +1,3581 @@
+{
+  "fetchedOn": 1788814358,
+  "season": 70,
+  "seasonConfigId": "guild_boss_season_config_1",
+  "guild": {
+    "name": "[TW] Praetorians of Terra",
+    "guildTag": "XXPQS",
+    "level": 34,
+    "seasons": [
+      107,
+      108
+    ]
+  },
+  "entries": [
+    {
+      "userId": "408726a9-f7c2-42f2-a0ce-74849bd56007",
+      "tier": 1,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss1TyranWarriorLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Uncommon",
+      "damageDealt": 279,
+      "damageType": "Bomb",
+      "remainingHp": 9321,
+      "maxHp": 9600,
+      "startedOn": 1742218549,
+      "completedOn": 1742218549,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 1,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss1TyranTervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Uncommon",
+      "damageDealt": 225,
+      "damageType": "Bomb",
+      "remainingHp": 64934,
+      "maxHp": 120000,
+      "startedOn": 1742229551,
+      "completedOn": 1742229551,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 1,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss1TyranTervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Uncommon",
+      "damageDealt": 57190,
+      "damageType": "Battle",
+      "remainingHp": 7744,
+      "maxHp": 120000,
+      "startedOn": 1742229564,
+      "completedOn": 1742229768,
+      "heroDetails": [
+        {
+          "unitId": "tauShadowsun",
+          "power": 12293
+        },
+        {
+          "unitId": "darkaAzrael",
+          "power": 16618
+        },
+        {
+          "unitId": "templAncient",
+          "power": 12649
+        },
+        {
+          "unitId": "deathTyphus",
+          "power": 26028
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 29408
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 1275
+      }
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 1,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss1TyranWarriorLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Uncommon",
+      "damageDealt": 9321,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 9600,
+      "startedOn": 1742255876,
+      "completedOn": 1742255935,
+      "heroDetails": [
+        {
+          "unitId": "tauShadowsun",
+          "power": 12293
+        },
+        {
+          "unitId": "darkaAzrael",
+          "power": 16618
+        },
+        {
+          "unitId": "templAncient",
+          "power": 12649
+        },
+        {
+          "unitId": "deathTyphus",
+          "power": 26028
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 29408
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 1275
+      }
+    },
+    {
+      "userId": "47a22c22-3545-4a9b-82c4-5635770971c8",
+      "tier": 1,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss1TyranTervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Uncommon",
+      "damageDealt": 909,
+      "damageType": "Battle",
+      "remainingHp": 6835,
+      "maxHp": 120000,
+      "startedOn": 1742257060,
+      "completedOn": 1742257191,
+      "heroDetails": [
+        {
+          "unitId": "ultraTigurius",
+          "power": 550
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 333
+        },
+        {
+          "unitId": "spaceStormcaller",
+          "power": 110
+        },
+        {
+          "unitId": "darkaAzrael",
+          "power": 128
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 118
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "408726a9-f7c2-42f2-a0ce-74849bd56007",
+      "tier": 1,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss1TyranWarriorLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Uncommon",
+      "damageDealt": 2080,
+      "damageType": "Battle",
+      "remainingHp": 6428,
+      "maxHp": 9600,
+      "startedOn": 1742261932,
+      "completedOn": 1742262123,
+      "heroDetails": [
+        {
+          "unitId": "tauDarkstrider",
+          "power": 708
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 536
+        },
+        {
+          "unitId": "admecDestroyer",
+          "power": 827
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 604
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 713
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 52
+      }
+    },
+    {
+      "userId": "454e5391-1f16-4659-a9dc-d77e99790489",
+      "tier": 1,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss1TyranWarriorLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Uncommon",
+      "damageDealt": 237,
+      "damageType": "Bomb",
+      "remainingHp": 6191,
+      "maxHp": 9600,
+      "startedOn": 1742272436,
+      "completedOn": 1742272436,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "454e5391-1f16-4659-a9dc-d77e99790489",
+      "tier": 1,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss1TyranWarriorLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Uncommon",
+      "damageDealt": 494,
+      "damageType": "Battle",
+      "remainingHp": 5697,
+      "maxHp": 9600,
+      "startedOn": 1742272454,
+      "completedOn": 1742272564,
+      "heroDetails": [
+        {
+          "unitId": "necroDestroyer",
+          "power": 65
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 248
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 203
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 141
+        },
+        {
+          "unitId": "astraYarrick",
+          "power": 208
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "454e5391-1f16-4659-a9dc-d77e99790489",
+      "tier": 1,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss1TyranWarriorLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Uncommon",
+      "damageDealt": 491,
+      "damageType": "Battle",
+      "remainingHp": 5206,
+      "maxHp": 9600,
+      "startedOn": 1742272589,
+      "completedOn": 1742272672,
+      "heroDetails": [
+        {
+          "unitId": "necroDestroyer",
+          "power": 65
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 248
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 203
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 141
+        },
+        {
+          "unitId": "astraYarrick",
+          "power": 208
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "d77bd0bb-7e7b-4c7a-9dde-ffd5fab05fe1",
+      "tier": 1,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss1TyranTervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Uncommon",
+      "damageDealt": 69,
+      "damageType": "Battle",
+      "remainingHp": 6766,
+      "maxHp": 120000,
+      "startedOn": 1742275686,
+      "completedOn": 1742275777,
+      "heroDetails": [
+        {
+          "unitId": "ultraTigurius",
+          "power": 109
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 73
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 54
+        },
+        {
+          "unitId": "adeptRetributor",
+          "power": 52
+        },
+        {
+          "unitId": "ultraApothecary",
+          "power": 42
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "d77bd0bb-7e7b-4c7a-9dde-ffd5fab05fe1",
+      "tier": 1,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss1TyranTervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Uncommon",
+      "damageDealt": 275,
+      "damageType": "Bomb",
+      "remainingHp": 6491,
+      "maxHp": 120000,
+      "startedOn": 1742275789,
+      "completedOn": 1742275789,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "408726a9-f7c2-42f2-a0ce-74849bd56007",
+      "tier": 1,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss1TyranTervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Uncommon",
+      "damageDealt": 257,
+      "damageType": "Bomb",
+      "remainingHp": 6234,
+      "maxHp": 120000,
+      "startedOn": 1742316057,
+      "completedOn": 1742316057,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "408726a9-f7c2-42f2-a0ce-74849bd56007",
+      "tier": 1,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss1TyranTervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Uncommon",
+      "damageDealt": 5337,
+      "damageType": "Battle",
+      "remainingHp": 897,
+      "maxHp": 120000,
+      "startedOn": 1742316077,
+      "completedOn": 1742316248,
+      "heroDetails": [
+        {
+          "unitId": "tauDarkstrider",
+          "power": 708
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 536
+        },
+        {
+          "unitId": "admecDestroyer",
+          "power": 827
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 380
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 752
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 52
+      }
+    },
+    {
+      "userId": "408726a9-f7c2-42f2-a0ce-74849bd56007",
+      "tier": 1,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss1TyranTervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Uncommon",
+      "damageDealt": 897,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 120000,
+      "startedOn": 1742316293,
+      "completedOn": 1742316353,
+      "heroDetails": [
+        {
+          "unitId": "tauDarkstrider",
+          "power": 708
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 536
+        },
+        {
+          "unitId": "admecDestroyer",
+          "power": 827
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 380
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 752
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 52
+      }
+    },
+    {
+      "userId": "a5ac6fe2-5238-42b0-8418-fd3c79b3d226",
+      "tier": 1,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss2Boss3TyranHiveTyrantGorgon",
+      "type": "HiveTyrantGorgon",
+      "rarity": "Uncommon",
+      "damageDealt": 267,
+      "damageType": "Bomb",
+      "remainingHp": 149733,
+      "maxHp": 150000,
+      "startedOn": 1742329860,
+      "completedOn": 1742329860,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "a5ac6fe2-5238-42b0-8418-fd3c79b3d226",
+      "tier": 1,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss2Boss3TyranHiveTyrantGorgon",
+      "type": "HiveTyrantGorgon",
+      "rarity": "Uncommon",
+      "damageDealt": 257,
+      "damageType": "Battle",
+      "remainingHp": 149476,
+      "maxHp": 150000,
+      "startedOn": 1742329877,
+      "completedOn": 1742330099,
+      "heroDetails": [
+        {
+          "unitId": "ultraTigurius",
+          "power": 129
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 73
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 57
+        },
+        {
+          "unitId": "adeptRetributor",
+          "power": 57
+        },
+        {
+          "unitId": "ultraApothecary",
+          "power": 46
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "a5ac6fe2-5238-42b0-8418-fd3c79b3d226",
+      "tier": 1,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss2Boss3TyranHiveTyrantGorgon",
+      "type": "HiveTyrantGorgon",
+      "rarity": "Uncommon",
+      "damageDealt": 67,
+      "damageType": "Battle",
+      "remainingHp": 149409,
+      "maxHp": 150000,
+      "startedOn": 1742330119,
+      "completedOn": 1742330205,
+      "heroDetails": [
+        {
+          "unitId": "ultraTigurius",
+          "power": 129
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 73
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 57
+        },
+        {
+          "unitId": "adeptRetributor",
+          "power": 57
+        },
+        {
+          "unitId": "ultraApothecary",
+          "power": 46
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "a5ac6fe2-5238-42b0-8418-fd3c79b3d226",
+      "tier": 1,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss2Boss3TyranHiveTyrantGorgon",
+      "type": "HiveTyrantGorgon",
+      "rarity": "Uncommon",
+      "damageDealt": 311,
+      "damageType": "Battle",
+      "remainingHp": 149098,
+      "maxHp": 150000,
+      "startedOn": 1742330218,
+      "completedOn": 1742330332,
+      "heroDetails": [
+        {
+          "unitId": "ultraTigurius",
+          "power": 129
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 73
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 57
+        },
+        {
+          "unitId": "adeptRetributor",
+          "power": 57
+        },
+        {
+          "unitId": "ultraApothecary",
+          "power": 46
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 1,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss2Boss3TyranHiveTyrantGorgon",
+      "type": "HiveTyrantGorgon",
+      "rarity": "Uncommon",
+      "damageDealt": 248,
+      "damageType": "Bomb",
+      "remainingHp": 148850,
+      "maxHp": 150000,
+      "startedOn": 1742330684,
+      "completedOn": 1742330684,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 1,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss2Boss3TyranHiveTyrantGorgon",
+      "type": "HiveTyrantGorgon",
+      "rarity": "Uncommon",
+      "damageDealt": 66459,
+      "damageType": "Battle",
+      "remainingHp": 82391,
+      "maxHp": 150000,
+      "startedOn": 1742330693,
+      "completedOn": 1742330956,
+      "heroDetails": [
+        {
+          "unitId": "tauShadowsun",
+          "power": 12293
+        },
+        {
+          "unitId": "darkaAzrael",
+          "power": 16618
+        },
+        {
+          "unitId": "templAncient",
+          "power": 12649
+        },
+        {
+          "unitId": "deathTyphus",
+          "power": 26133
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 30209
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 1275
+      }
+    },
+    {
+      "userId": "12cae175-af34-4f89-be90-7a5b90d9f23e",
+      "tier": 1,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss2Boss3TyranHiveTyrantGorgon",
+      "type": "HiveTyrantGorgon",
+      "rarity": "Uncommon",
+      "damageDealt": 226,
+      "damageType": "Bomb",
+      "remainingHp": 82165,
+      "maxHp": 150000,
+      "startedOn": 1742332385,
+      "completedOn": 1742332385,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "12cae175-af34-4f89-be90-7a5b90d9f23e",
+      "tier": 1,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss2Boss3TyranHiveTyrantGorgon",
+      "type": "HiveTyrantGorgon",
+      "rarity": "Uncommon",
+      "damageDealt": 307,
+      "damageType": "Battle",
+      "remainingHp": 81858,
+      "maxHp": 150000,
+      "startedOn": 1742332392,
+      "completedOn": 1742332499,
+      "heroDetails": [
+        {
+          "unitId": "ultraTigurius",
+          "power": 131
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 94
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 82
+        },
+        {
+          "unitId": "adeptRetributor",
+          "power": 71
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 1,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss2Boss3TyranHiveTyrantGorgon",
+      "type": "HiveTyrantGorgon",
+      "rarity": "Uncommon",
+      "damageDealt": 77110,
+      "damageType": "Battle",
+      "remainingHp": 4748,
+      "maxHp": 150000,
+      "startedOn": 1742342721,
+      "completedOn": 1742342954,
+      "heroDetails": [
+        {
+          "unitId": "tauShadowsun",
+          "power": 12293
+        },
+        {
+          "unitId": "darkaAzrael",
+          "power": 16618
+        },
+        {
+          "unitId": "templAncient",
+          "power": 12649
+        },
+        {
+          "unitId": "deathTyphus",
+          "power": 26133
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 30209
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 1275
+      }
+    },
+    {
+      "userId": "47a22c22-3545-4a9b-82c4-5635770971c8",
+      "tier": 1,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss3TyranWarriorGorgon",
+      "type": "HiveTyrantGorgon",
+      "rarity": "Uncommon",
+      "damageDealt": 872,
+      "damageType": "Battle",
+      "remainingHp": 11128,
+      "maxHp": 12000,
+      "startedOn": 1742344460,
+      "completedOn": 1742344602,
+      "heroDetails": [
+        {
+          "unitId": "ultraTigurius",
+          "power": 582
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 440
+        },
+        {
+          "unitId": "adeptRetributor",
+          "power": 231
+        },
+        {
+          "unitId": "darkaAzrael",
+          "power": 128
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 426
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "12cae175-af34-4f89-be90-7a5b90d9f23e",
+      "tier": 1,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss3TyranWarriorGorgon",
+      "type": "HiveTyrantGorgon",
+      "rarity": "Uncommon",
+      "damageDealt": 349,
+      "damageType": "Battle",
+      "remainingHp": 10779,
+      "maxHp": 12000,
+      "startedOn": 1742349149,
+      "completedOn": 1742349245,
+      "heroDetails": [
+        {
+          "unitId": "ultraTigurius",
+          "power": 310
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 150
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 119
+        },
+        {
+          "unitId": "adeptRetributor",
+          "power": 127
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 198
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss2Boss3TyranHiveTyrantGorgon",
+      "type": "HiveTyrantGorgon",
+      "rarity": "Uncommon",
+      "damageDealt": 4748,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 150000,
+      "startedOn": 1742386090,
+      "completedOn": 1742386169,
+      "heroDetails": [
+        {
+          "unitId": "tauShadowsun",
+          "power": 12293
+        },
+        {
+          "unitId": "darkaAzrael",
+          "power": 16618
+        },
+        {
+          "unitId": "templAncient",
+          "power": 13172
+        },
+        {
+          "unitId": "deathTyphus",
+          "power": 26133
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 30769
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 1275
+      }
+    },
+    {
+      "userId": "12cae175-af34-4f89-be90-7a5b90d9f23e",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 0,
+      "damageType": "Battle",
+      "remainingHp": 10800,
+      "maxHp": 10800,
+      "startedOn": 1742396776,
+      "completedOn": 1742396858,
+      "heroDetails": [
+        {
+          "unitId": "ultraTigurius",
+          "power": 310
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 150
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 119
+        },
+        {
+          "unitId": "adeptRetributor",
+          "power": 127
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 198
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "a5ac6fe2-5238-42b0-8418-fd3c79b3d226",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 0,
+      "damageType": "Battle",
+      "remainingHp": 180000,
+      "maxHp": 180000,
+      "startedOn": 1742408459,
+      "completedOn": 1742408552,
+      "heroDetails": [
+        {
+          "unitId": "deathBlightlord",
+          "power": 103
+        },
+        {
+          "unitId": "bloodDeathCompany",
+          "power": 122
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 194
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 90
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 90
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "a5ac6fe2-5238-42b0-8418-fd3c79b3d226",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss2AdmecManipulus",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 241,
+      "damageType": "Bomb",
+      "remainingHp": 12359,
+      "maxHp": 12600,
+      "startedOn": 1742408592,
+      "completedOn": 1742408592,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "12cae175-af34-4f89-be90-7a5b90d9f23e",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 275,
+      "damageType": "Bomb",
+      "remainingHp": 179725,
+      "maxHp": 180000,
+      "startedOn": 1742421335,
+      "completedOn": 1742421335,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "e8df2e3d-a4e6-43f8-b0ac-eb31c1752110",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss2AdmecManipulus",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 230,
+      "damageType": "Bomb",
+      "remainingHp": 12129,
+      "maxHp": 12600,
+      "startedOn": 1742429287,
+      "completedOn": 1742429287,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "e8df2e3d-a4e6-43f8-b0ac-eb31c1752110",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss2AdmecManipulus",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 18,
+      "damageType": "Battle",
+      "remainingHp": 12111,
+      "maxHp": 12600,
+      "startedOn": 1742429307,
+      "completedOn": 1742429416,
+      "heroDetails": [
+        {
+          "unitId": "ultraTigurius",
+          "power": 175
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 89
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 85
+        },
+        {
+          "unitId": "adeptRetributor",
+          "power": 78
+        },
+        {
+          "unitId": "deathBlightlord",
+          "power": 77
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 214,
+      "damageType": "Bomb",
+      "remainingHp": 179511,
+      "maxHp": 180000,
+      "startedOn": 1742429665,
+      "completedOn": 1742429665,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 38296,
+      "damageType": "Battle",
+      "remainingHp": 141215,
+      "maxHp": 180000,
+      "startedOn": 1742429675,
+      "completedOn": 1742429989,
+      "heroDetails": [
+        {
+          "unitId": "tauShadowsun",
+          "power": 12293
+        },
+        {
+          "unitId": "darkaAzrael",
+          "power": 16618
+        },
+        {
+          "unitId": "templAncient",
+          "power": 13172
+        },
+        {
+          "unitId": "deathTyphus",
+          "power": 26133
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 30769
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 1275
+      }
+    },
+    {
+      "userId": "a5ac6fe2-5238-42b0-8418-fd3c79b3d226",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 0,
+      "damageType": "Battle",
+      "remainingHp": 141215,
+      "maxHp": 180000,
+      "startedOn": 1742429998,
+      "completedOn": 1742430071,
+      "heroDetails": [
+        {
+          "unitId": "deathBlightlord",
+          "power": 103
+        },
+        {
+          "unitId": "bloodDeathCompany",
+          "power": 156
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 213
+        },
+        {
+          "unitId": "tyranTyrantGuard",
+          "power": 92
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 141
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "47a22c22-3545-4a9b-82c4-5635770971c8",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 272,
+      "damageType": "Bomb",
+      "remainingHp": 10528,
+      "maxHp": 10800,
+      "startedOn": 1742430788,
+      "completedOn": 1742430788,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "47a22c22-3545-4a9b-82c4-5635770971c8",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 0,
+      "damageType": "Battle",
+      "remainingHp": 10528,
+      "maxHp": 10800,
+      "startedOn": 1742431002,
+      "completedOn": 1742431071,
+      "heroDetails": [
+        {
+          "unitId": "ultraTigurius",
+          "power": 674
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 505
+        },
+        {
+          "unitId": "adeptRetributor",
+          "power": 326
+        },
+        {
+          "unitId": "darkaAzrael",
+          "power": 128
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 519
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "454e5391-1f16-4659-a9dc-d77e99790489",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 234,
+      "damageType": "Bomb",
+      "remainingHp": 10294,
+      "maxHp": 10800,
+      "startedOn": 1742445421,
+      "completedOn": 1742445421,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "454e5391-1f16-4659-a9dc-d77e99790489",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 160,
+      "damageType": "Battle",
+      "remainingHp": 10134,
+      "maxHp": 10800,
+      "startedOn": 1742445434,
+      "completedOn": 1742445509,
+      "heroDetails": [
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 164
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 278
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 278
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 141
+        },
+        {
+          "unitId": "astraYarrick",
+          "power": 233
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "454e5391-1f16-4659-a9dc-d77e99790489",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss2AdmecManipulus",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 0,
+      "damageType": "Battle",
+      "remainingHp": 12111,
+      "maxHp": 12600,
+      "startedOn": 1742445540,
+      "completedOn": 1742445655,
+      "heroDetails": [
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 164
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 278
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 278
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 141
+        },
+        {
+          "unitId": "astraYarrick",
+          "power": 233
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "454e5391-1f16-4659-a9dc-d77e99790489",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 56,
+      "damageType": "Battle",
+      "remainingHp": 10078,
+      "maxHp": 10800,
+      "startedOn": 1742448119,
+      "completedOn": 1742448219,
+      "heroDetails": [
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 303
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 350
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 284
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 205
+        },
+        {
+          "unitId": "astraYarrick",
+          "power": 287
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 38686,
+      "damageType": "Battle",
+      "remainingHp": 102529,
+      "maxHp": 180000,
+      "startedOn": 1742489733,
+      "completedOn": 1742490022,
+      "heroDetails": [
+        {
+          "unitId": "tauShadowsun",
+          "power": 12532
+        },
+        {
+          "unitId": "darkaAzrael",
+          "power": 17265
+        },
+        {
+          "unitId": "templAncient",
+          "power": 13365
+        },
+        {
+          "unitId": "deathTyphus",
+          "power": 26133
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 33439
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 1275
+      }
+    },
+    {
+      "userId": "408726a9-f7c2-42f2-a0ce-74849bd56007",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss2AdmecManipulus",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 249,
+      "damageType": "Bomb",
+      "remainingHp": 11862,
+      "maxHp": 12600,
+      "startedOn": 1742506206,
+      "completedOn": 1742506206,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "408726a9-f7c2-42f2-a0ce-74849bd56007",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss2AdmecManipulus",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 117,
+      "damageType": "Battle",
+      "remainingHp": 11745,
+      "maxHp": 12600,
+      "startedOn": 1742506229,
+      "completedOn": 1742506341,
+      "heroDetails": [
+        {
+          "unitId": "tauDarkstrider",
+          "power": 760
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 536
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 380
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 752
+        },
+        {
+          "unitId": "darkaAzrael",
+          "power": 399
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 52
+      }
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 267,
+      "damageType": "Bomb",
+      "remainingHp": 102262,
+      "maxHp": 180000,
+      "startedOn": 1742515766,
+      "completedOn": 1742515766,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 50237,
+      "damageType": "Battle",
+      "remainingHp": 52025,
+      "maxHp": 180000,
+      "startedOn": 1742515780,
+      "completedOn": 1742516068,
+      "heroDetails": [
+        {
+          "unitId": "tauShadowsun",
+          "power": 12532
+        },
+        {
+          "unitId": "darkaAzrael",
+          "power": 17265
+        },
+        {
+          "unitId": "templAncient",
+          "power": 16019
+        },
+        {
+          "unitId": "deathTyphus",
+          "power": 26133
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 33439
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 1275
+      }
+    },
+    {
+      "userId": "a5ac6fe2-5238-42b0-8418-fd3c79b3d226",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss2AdmecManipulus",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 274,
+      "damageType": "Bomb",
+      "remainingHp": 11471,
+      "maxHp": 12600,
+      "startedOn": 1742516760,
+      "completedOn": 1742516760,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "a5ac6fe2-5238-42b0-8418-fd3c79b3d226",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss2AdmecManipulus",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 10,
+      "damageType": "Battle",
+      "remainingHp": 11461,
+      "maxHp": 12600,
+      "startedOn": 1742516880,
+      "completedOn": 1742517000,
+      "heroDetails": [
+        {
+          "unitId": "blackTerminator",
+          "power": 43
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 233
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 182
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 121
+        },
+        {
+          "unitId": "adeptRetributor",
+          "power": 127
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "47a22c22-3545-4a9b-82c4-5635770971c8",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss2AdmecManipulus",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 826,
+      "damageType": "Battle",
+      "remainingHp": 10635,
+      "maxHp": 12600,
+      "startedOn": 1742519025,
+      "completedOn": 1742519103,
+      "heroDetails": [
+        {
+          "unitId": "ultraTigurius",
+          "power": 776
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 589
+        },
+        {
+          "unitId": "adeptRetributor",
+          "power": 326
+        },
+        {
+          "unitId": "darkaAzrael",
+          "power": 128
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 595
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "d84be878-e8e1-4122-8932-8fecdd9cdb8d",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 217,
+      "damageType": "Bomb",
+      "remainingHp": 51808,
+      "maxHp": 180000,
+      "startedOn": 1742520205,
+      "completedOn": 1742520205,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "d84be878-e8e1-4122-8932-8fecdd9cdb8d",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 0,
+      "damageType": "Battle",
+      "remainingHp": 51808,
+      "maxHp": 180000,
+      "startedOn": 1742520226,
+      "completedOn": 1742520302,
+      "heroDetails": [
+        {
+          "unitId": "ultraTigurius",
+          "power": 117
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 73
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 57
+        },
+        {
+          "unitId": "adeptRetributor",
+          "power": 57
+        },
+        {
+          "unitId": "ultraApothecary",
+          "power": 39
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "454e5391-1f16-4659-a9dc-d77e99790489",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 231,
+      "damageType": "Bomb",
+      "remainingHp": 9847,
+      "maxHp": 10800,
+      "startedOn": 1742527378,
+      "completedOn": 1742527378,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "454e5391-1f16-4659-a9dc-d77e99790489",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 27,
+      "damageType": "Battle",
+      "remainingHp": 9820,
+      "maxHp": 10800,
+      "startedOn": 1742527481,
+      "completedOn": 1742527559,
+      "heroDetails": [
+        {
+          "unitId": "necroSpyder",
+          "power": 102
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 350
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 284
+        },
+        {
+          "unitId": "necroDestroyer",
+          "power": 81
+        },
+        {
+          "unitId": "astraYarrick",
+          "power": 344
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "a5ac6fe2-5238-42b0-8418-fd3c79b3d226",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss2AdmecManipulus",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 568,
+      "damageType": "Battle",
+      "remainingHp": 10067,
+      "maxHp": 12600,
+      "startedOn": 1742539434,
+      "completedOn": 1742539553,
+      "heroDetails": [
+        {
+          "unitId": "bloodIntercessor",
+          "power": 160
+        },
+        {
+          "unitId": "deathBlightlord",
+          "power": 165
+        },
+        {
+          "unitId": "bloodDeathCompany",
+          "power": 270
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 275
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 130
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 47572,
+      "damageType": "Battle",
+      "remainingHp": 4236,
+      "maxHp": 180000,
+      "startedOn": 1742556015,
+      "completedOn": 1742556243,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 34766
+        },
+        {
+          "unitId": "darkaAzrael",
+          "power": 18880
+        },
+        {
+          "unitId": "tauShadowsun",
+          "power": 12532
+        },
+        {
+          "unitId": "deathTyphus",
+          "power": 27985
+        },
+        {
+          "unitId": "templAncient",
+          "power": 16019
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 1275
+      }
+    },
+    {
+      "userId": "a5ac6fe2-5238-42b0-8418-fd3c79b3d226",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss2AdmecManipulus",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 382,
+      "damageType": "Battle",
+      "remainingHp": 9685,
+      "maxHp": 12600,
+      "startedOn": 1742574078,
+      "completedOn": 1742574224,
+      "heroDetails": [
+        {
+          "unitId": "bloodIntercessor",
+          "power": 164
+        },
+        {
+          "unitId": "bloodDeathCompany",
+          "power": 371
+        },
+        {
+          "unitId": "darkaTerminator",
+          "power": 129
+        },
+        {
+          "unitId": "ultraApothecary",
+          "power": 103
+        },
+        {
+          "unitId": "deathBlightlord",
+          "power": 203
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "a5ac6fe2-5238-42b0-8418-fd3c79b3d226",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss2AdmecManipulus",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 270,
+      "damageType": "Bomb",
+      "remainingHp": 9415,
+      "maxHp": 12600,
+      "startedOn": 1742593049,
+      "completedOn": 1742593049,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "a5ac6fe2-5238-42b0-8418-fd3c79b3d226",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss2AdmecManipulus",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 116,
+      "damageType": "Battle",
+      "remainingHp": 9299,
+      "maxHp": 12600,
+      "startedOn": 1742593068,
+      "completedOn": 1742593391,
+      "heroDetails": [
+        {
+          "unitId": "bloodIntercessor",
+          "power": 164
+        },
+        {
+          "unitId": "bloodDeathCompany",
+          "power": 371
+        },
+        {
+          "unitId": "darkaTerminator",
+          "power": 133
+        },
+        {
+          "unitId": "ultraApothecary",
+          "power": 103
+        },
+        {
+          "unitId": "deathBlightlord",
+          "power": 203
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 262,
+      "damageType": "Bomb",
+      "remainingHp": 3974,
+      "maxHp": 180000,
+      "startedOn": 1742604242,
+      "completedOn": 1742604242,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "Belisarius",
+      "rarity": "Uncommon",
+      "damageDealt": 3974,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 180000,
+      "startedOn": 1742604254,
+      "completedOn": 1742604339,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 34766
+        },
+        {
+          "unitId": "darkaAzrael",
+          "power": 22541
+        },
+        {
+          "unitId": "tauShadowsun",
+          "power": 12532
+        },
+        {
+          "unitId": "deathTyphus",
+          "power": 27985
+        },
+        {
+          "unitId": "templAncient",
+          "power": 16019
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 1275
+      }
+    },
+    {
+      "userId": "47a22c22-3545-4a9b-82c4-5635770971c8",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 950,
+      "damageType": "Battle",
+      "remainingHp": 27850,
+      "maxHp": 28800,
+      "startedOn": 1742607636,
+      "completedOn": 1742607760,
+      "heroDetails": [
+        {
+          "unitId": "ultraTigurius",
+          "power": 776
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 682
+        },
+        {
+          "unitId": "adeptRetributor",
+          "power": 326
+        },
+        {
+          "unitId": "darkaAzrael",
+          "power": 128
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 595
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "454e5391-1f16-4659-a9dc-d77e99790489",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 216,
+      "damageType": "Bomb",
+      "remainingHp": 27634,
+      "maxHp": 28800,
+      "startedOn": 1742615247,
+      "completedOn": 1742615247,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "454e5391-1f16-4659-a9dc-d77e99790489",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 1580,
+      "damageType": "Battle",
+      "remainingHp": 26054,
+      "maxHp": 28800,
+      "startedOn": 1742615262,
+      "completedOn": 1742615381,
+      "heroDetails": [
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 320
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 381
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 475
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 205
+        },
+        {
+          "unitId": "astraYarrick",
+          "power": 393
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss2TyranTervigonKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 61643,
+      "damageType": "Battle",
+      "remainingHp": 298357,
+      "maxHp": 360000,
+      "startedOn": 1742654464,
+      "completedOn": 1742654681,
+      "heroDetails": [
+        {
+          "unitId": "tauShadowsun",
+          "power": 12532
+        },
+        {
+          "unitId": "darkaAzrael",
+          "power": 23765
+        },
+        {
+          "unitId": "templAncient",
+          "power": 16163
+        },
+        {
+          "unitId": "deathTyphus",
+          "power": 27985
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 34766
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 1275
+      }
+    },
+    {
+      "userId": "a5ac6fe2-5238-42b0-8418-fd3c79b3d226",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 219,
+      "damageType": "Bomb",
+      "remainingHp": 25835,
+      "maxHp": 28800,
+      "startedOn": 1742659127,
+      "completedOn": 1742659127,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "a5ac6fe2-5238-42b0-8418-fd3c79b3d226",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 91,
+      "damageType": "Battle",
+      "remainingHp": 25744,
+      "maxHp": 28800,
+      "startedOn": 1742659199,
+      "completedOn": 1742659310,
+      "heroDetails": [
+        {
+          "unitId": "bloodIntercessor",
+          "power": 197
+        },
+        {
+          "unitId": "necroWarden",
+          "power": 208
+        },
+        {
+          "unitId": "deathBlightlord",
+          "power": 245
+        },
+        {
+          "unitId": "darkaTerminator",
+          "power": 137
+        },
+        {
+          "unitId": "blackTerminator",
+          "power": 79
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "a5ac6fe2-5238-42b0-8418-fd3c79b3d226",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 685,
+      "damageType": "Battle",
+      "remainingHp": 25059,
+      "maxHp": 28800,
+      "startedOn": 1742690487,
+      "completedOn": 1742690558,
+      "heroDetails": [
+        {
+          "unitId": "ultraApothecary",
+          "power": 109
+        },
+        {
+          "unitId": "worldJakhal",
+          "power": 299
+        },
+        {
+          "unitId": "deathBlightlord",
+          "power": 266
+        },
+        {
+          "unitId": "darkaTerminator",
+          "power": 140
+        },
+        {
+          "unitId": "bloodDeathCompany",
+          "power": 413
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss2TyranTervigonKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 277,
+      "damageType": "Bomb",
+      "remainingHp": 298080,
+      "maxHp": 360000,
+      "startedOn": 1742691490,
+      "completedOn": 1742691490,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss2TyranTervigonKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 63467,
+      "damageType": "Battle",
+      "remainingHp": 234613,
+      "maxHp": 360000,
+      "startedOn": 1742691504,
+      "completedOn": 1742691752,
+      "heroDetails": [
+        {
+          "unitId": "tauShadowsun",
+          "power": 12532
+        },
+        {
+          "unitId": "darkaAzrael",
+          "power": 23765
+        },
+        {
+          "unitId": "templAncient",
+          "power": 16163
+        },
+        {
+          "unitId": "deathTyphus",
+          "power": 27985
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 34766
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 1275
+      }
+    },
+    {
+      "userId": "47a22c22-3545-4a9b-82c4-5635770971c8",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 756,
+      "damageType": "Battle",
+      "remainingHp": 24303,
+      "maxHp": 28800,
+      "startedOn": 1742692072,
+      "completedOn": 1742692180,
+      "heroDetails": [
+        {
+          "unitId": "ultraTigurius",
+          "power": 797
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 682
+        },
+        {
+          "unitId": "adeptRetributor",
+          "power": 396
+        },
+        {
+          "unitId": "darkaAzrael",
+          "power": 128
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 595
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "454e5391-1f16-4659-a9dc-d77e99790489",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 231,
+      "damageType": "Bomb",
+      "remainingHp": 24072,
+      "maxHp": 28800,
+      "startedOn": 1742700316,
+      "completedOn": 1742700316,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "454e5391-1f16-4659-a9dc-d77e99790489",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 2083,
+      "damageType": "Battle",
+      "remainingHp": 21989,
+      "maxHp": 28800,
+      "startedOn": 1742700335,
+      "completedOn": 1742700438,
+      "heroDetails": [
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 415
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 381
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 478
+        },
+        {
+          "unitId": "necroSpyder",
+          "power": 244
+        },
+        {
+          "unitId": "astraYarrick",
+          "power": 529
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "8573cb1a-8cbd-44a3-8855-9c1da98baa92",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 0,
+      "damageType": "Battle",
+      "remainingHp": 21989,
+      "maxHp": 28800,
+      "startedOn": 1742700482,
+      "completedOn": 1742700536,
+      "heroDetails": [
+        {
+          "unitId": "ultraTigurius",
+          "power": 110
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 79
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 62
+        },
+        {
+          "unitId": "adeptRetributor",
+          "power": 54
+        },
+        {
+          "unitId": "ultraApothecary",
+          "power": 37
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "454e5391-1f16-4659-a9dc-d77e99790489",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 1203,
+      "damageType": "Battle",
+      "remainingHp": 20786,
+      "maxHp": 28800,
+      "startedOn": 1742704107,
+      "completedOn": 1742704219,
+      "heroDetails": [
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 418
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 476
+        },
+        {
+          "unitId": "orksBigMek",
+          "power": 60
+        },
+        {
+          "unitId": "necroSpyder",
+          "power": 244
+        },
+        {
+          "unitId": "astraYarrick",
+          "power": 529
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "408726a9-f7c2-42f2-a0ce-74849bd56007",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 263,
+      "damageType": "Bomb",
+      "remainingHp": 20523,
+      "maxHp": 28800,
+      "startedOn": 1742738084,
+      "completedOn": 1742738084,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "408726a9-f7c2-42f2-a0ce-74849bd56007",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 856,
+      "damageType": "Battle",
+      "remainingHp": 19667,
+      "maxHp": 28800,
+      "startedOn": 1742738101,
+      "completedOn": 1742738221,
+      "heroDetails": [
+        {
+          "unitId": "tauDarkstrider",
+          "power": 797
+        },
+        {
+          "unitId": "worldJakhal",
+          "power": 660
+        },
+        {
+          "unitId": "admecDestroyer",
+          "power": 827
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 566
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 862
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 52
+      }
+    },
+    {
+      "userId": "408726a9-f7c2-42f2-a0ce-74849bd56007",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 3378,
+      "damageType": "Battle",
+      "remainingHp": 16289,
+      "maxHp": 28800,
+      "startedOn": 1742738258,
+      "completedOn": 1742738377,
+      "heroDetails": [
+        {
+          "unitId": "tauDarkstrider",
+          "power": 797
+        },
+        {
+          "unitId": "worldJakhal",
+          "power": 660
+        },
+        {
+          "unitId": "admecDestroyer",
+          "power": 827
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 566
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 862
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 52
+      }
+    },
+    {
+      "userId": "454e5391-1f16-4659-a9dc-d77e99790489",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 465,
+      "damageType": "Battle",
+      "remainingHp": 15824,
+      "maxHp": 28800,
+      "startedOn": 1742739728,
+      "completedOn": 1742739790,
+      "heroDetails": [
+        {
+          "unitId": "blackObliterator",
+          "power": 135
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 568
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 348
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 491
+        },
+        {
+          "unitId": "astraYarrick",
+          "power": 529
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "a5ac6fe2-5238-42b0-8418-fd3c79b3d226",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 237,
+      "damageType": "Bomb",
+      "remainingHp": 15587,
+      "maxHp": 28800,
+      "startedOn": 1742757089,
+      "completedOn": 1742757089,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss2TyranTervigonKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 232,
+      "damageType": "Bomb",
+      "remainingHp": 234381,
+      "maxHp": 360000,
+      "startedOn": 1742760753,
+      "completedOn": 1742760753,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss2TyranTervigonKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 58545,
+      "damageType": "Battle",
+      "remainingHp": 175836,
+      "maxHp": 360000,
+      "startedOn": 1742760770,
+      "completedOn": 1742761004,
+      "heroDetails": [
+        {
+          "unitId": "templAncient",
+          "power": 16163
+        },
+        {
+          "unitId": "darkaAzrael",
+          "power": 23765
+        },
+        {
+          "unitId": "deathTyphus",
+          "power": 27985
+        },
+        {
+          "unitId": "tauShadowsun",
+          "power": 12532
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 34766
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 1275
+      }
+    },
+    {
+      "userId": "a5ac6fe2-5238-42b0-8418-fd3c79b3d226",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 253,
+      "damageType": "Battle",
+      "remainingHp": 15334,
+      "maxHp": 28800,
+      "startedOn": 1742770403,
+      "completedOn": 1742770585,
+      "heroDetails": [
+        {
+          "unitId": "ultraApothecary",
+          "power": 114
+        },
+        {
+          "unitId": "necroWarden",
+          "power": 312
+        },
+        {
+          "unitId": "necroSpyder",
+          "power": 163
+        },
+        {
+          "unitId": "necroDestroyer",
+          "power": 144
+        },
+        {
+          "unitId": "deathBlightbringer",
+          "power": 384
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "47a22c22-3545-4a9b-82c4-5635770971c8",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 756,
+      "damageType": "Battle",
+      "remainingHp": 14578,
+      "maxHp": 28800,
+      "startedOn": 1742776516,
+      "completedOn": 1742776635,
+      "heroDetails": [
+        {
+          "unitId": "ultraTigurius",
+          "power": 797
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 682
+        },
+        {
+          "unitId": "adeptRetributor",
+          "power": 396
+        },
+        {
+          "unitId": "darkaAzrael",
+          "power": 247
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 595
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "a5ac6fe2-5238-42b0-8418-fd3c79b3d226",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 297,
+      "damageType": "Battle",
+      "remainingHp": 14281,
+      "maxHp": 28800,
+      "startedOn": 1742792599,
+      "completedOn": 1742792805,
+      "heroDetails": [
+        {
+          "unitId": "blackHaarken",
+          "power": 171
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 206
+        },
+        {
+          "unitId": "bloodIntercessor",
+          "power": 221
+        },
+        {
+          "unitId": "bloodDeathCompany",
+          "power": 413
+        },
+        {
+          "unitId": "deathBlightbringer",
+          "power": 384
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "8573cb1a-8cbd-44a3-8855-9c1da98baa92",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 237,
+      "damageType": "Bomb",
+      "remainingHp": 14044,
+      "maxHp": 28800,
+      "startedOn": 1742796673,
+      "completedOn": 1742796673,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "8573cb1a-8cbd-44a3-8855-9c1da98baa92",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 834,
+      "damageType": "Battle",
+      "remainingHp": 13210,
+      "maxHp": 28800,
+      "startedOn": 1742796695,
+      "completedOn": 1742796796,
+      "heroDetails": [
+        {
+          "unitId": "ultraTigurius",
+          "power": 297
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 166
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 231
+        },
+        {
+          "unitId": "adeptRetributor",
+          "power": 189
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 349
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "8573cb1a-8cbd-44a3-8855-9c1da98baa92",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 953,
+      "damageType": "Battle",
+      "remainingHp": 12257,
+      "maxHp": 28800,
+      "startedOn": 1742796827,
+      "completedOn": 1742796931,
+      "heroDetails": [
+        {
+          "unitId": "ultraTigurius",
+          "power": 297
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 166
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 231
+        },
+        {
+          "unitId": "adeptRetributor",
+          "power": 189
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 349
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "8573cb1a-8cbd-44a3-8855-9c1da98baa92",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 1209,
+      "damageType": "Battle",
+      "remainingHp": 11048,
+      "maxHp": 28800,
+      "startedOn": 1742796961,
+      "completedOn": 1742797071,
+      "heroDetails": [
+        {
+          "unitId": "ultraTigurius",
+          "power": 297
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 166
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 231
+        },
+        {
+          "unitId": "adeptRetributor",
+          "power": 189
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 349
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "e60a1364-3557-4690-abd4-56ab01410727",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 270,
+      "damageType": "Bomb",
+      "remainingHp": 10778,
+      "maxHp": 28800,
+      "startedOn": 1742811864,
+      "completedOn": 1742811864,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "e60a1364-3557-4690-abd4-56ab01410727",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 44,
+      "damageType": "Battle",
+      "remainingHp": 10734,
+      "maxHp": 28800,
+      "startedOn": 1742811902,
+      "completedOn": 1742812050,
+      "heroDetails": [
+        {
+          "unitId": "ultraTigurius",
+          "power": 174
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 94
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 90
+        },
+        {
+          "unitId": "necroWarden",
+          "power": 58
+        },
+        {
+          "unitId": "deathBlightlord",
+          "power": 77
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "e60a1364-3557-4690-abd4-56ab01410727",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 55,
+      "damageType": "Battle",
+      "remainingHp": 10679,
+      "maxHp": 28800,
+      "startedOn": 1742812092,
+      "completedOn": 1742812162,
+      "heroDetails": [
+        {
+          "unitId": "ultraTigurius",
+          "power": 174
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 94
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 90
+        },
+        {
+          "unitId": "necroWarden",
+          "power": 58
+        },
+        {
+          "unitId": "deathBlightlord",
+          "power": 77
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "e60a1364-3557-4690-abd4-56ab01410727",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss2TyranTervigonKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 123,
+      "damageType": "Battle",
+      "remainingHp": 175713,
+      "maxHp": 360000,
+      "startedOn": 1742812196,
+      "completedOn": 1742812299,
+      "heroDetails": [
+        {
+          "unitId": "ultraTigurius",
+          "power": 174
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 94
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 90
+        },
+        {
+          "unitId": "necroWarden",
+          "power": 58
+        },
+        {
+          "unitId": "deathBlightlord",
+          "power": 77
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 10679,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 28800,
+      "startedOn": 1742812782,
+      "completedOn": 1742812851,
+      "heroDetails": [
+        {
+          "unitId": "templAncient",
+          "power": 16163
+        },
+        {
+          "unitId": "darkaAzrael",
+          "power": 23765
+        },
+        {
+          "unitId": "deathTyphus",
+          "power": 27985
+        },
+        {
+          "unitId": "tauShadowsun",
+          "power": 13689
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 34766
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 1275
+      }
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss2TyranTervigonKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 78292,
+      "damageType": "Battle",
+      "remainingHp": 97421,
+      "maxHp": 360000,
+      "startedOn": 1742815499,
+      "completedOn": 1742815715,
+      "heroDetails": [
+        {
+          "unitId": "templAncient",
+          "power": 16163
+        },
+        {
+          "unitId": "darkaAzrael",
+          "power": 24606
+        },
+        {
+          "unitId": "deathTyphus",
+          "power": 28649
+        },
+        {
+          "unitId": "tauShadowsun",
+          "power": 13689
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 34766
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 1275
+      }
+    },
+    {
+      "userId": "a5ac6fe2-5238-42b0-8418-fd3c79b3d226",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 211,
+      "damageType": "Bomb",
+      "remainingHp": 28589,
+      "maxHp": 28800,
+      "startedOn": 1742842669,
+      "completedOn": 1742842669,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "a5ac6fe2-5238-42b0-8418-fd3c79b3d226",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 184,
+      "damageType": "Battle",
+      "remainingHp": 28405,
+      "maxHp": 28800,
+      "startedOn": 1742842813,
+      "completedOn": 1742842972,
+      "heroDetails": [
+        {
+          "unitId": "orksBigMek",
+          "power": 55
+        },
+        {
+          "unitId": "necroSpyder",
+          "power": 178
+        },
+        {
+          "unitId": "necroWarden",
+          "power": 323
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 104
+        },
+        {
+          "unitId": "deathBlightbringer",
+          "power": 384
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "47a22c22-3545-4a9b-82c4-5635770971c8",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 1917,
+      "damageType": "Battle",
+      "remainingHp": 26488,
+      "maxHp": 28800,
+      "startedOn": 1742862065,
+      "completedOn": 1742862181,
+      "heroDetails": [
+        {
+          "unitId": "ultraTigurius",
+          "power": 797
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 706
+        },
+        {
+          "unitId": "adeptRetributor",
+          "power": 396
+        },
+        {
+          "unitId": "deathBlightlord",
+          "power": 286
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 595
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss2TyranTervigonKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 238,
+      "damageType": "Bomb",
+      "remainingHp": 97183,
+      "maxHp": 360000,
+      "startedOn": 1742863474,
+      "completedOn": 1742863474,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss2TyranTervigonKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 68833,
+      "damageType": "Battle",
+      "remainingHp": 28350,
+      "maxHp": 360000,
+      "startedOn": 1742863484,
+      "completedOn": 1742863677,
+      "heroDetails": [
+        {
+          "unitId": "templAncient",
+          "power": 16381
+        },
+        {
+          "unitId": "darkaAzrael",
+          "power": 25579
+        },
+        {
+          "unitId": "deathTyphus",
+          "power": 28649
+        },
+        {
+          "unitId": "tauShadowsun",
+          "power": 13689
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 34766
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 1275
+      }
+    },
+    {
+      "userId": "454e5391-1f16-4659-a9dc-d77e99790489",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 232,
+      "damageType": "Bomb",
+      "remainingHp": 26256,
+      "maxHp": 28800,
+      "startedOn": 1742869185,
+      "completedOn": 1742869185,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "454e5391-1f16-4659-a9dc-d77e99790489",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 890,
+      "damageType": "Battle",
+      "remainingHp": 25125,
+      "maxHp": 28800,
+      "startedOn": 1742869218,
+      "completedOn": 1742869345,
+      "heroDetails": [
+        {
+          "unitId": "adeptHospitaller",
+          "power": 238
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 568
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 418
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 550
+        },
+        {
+          "unitId": "astraYarrick",
+          "power": 529
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "408726a9-f7c2-42f2-a0ce-74849bd56007",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 241,
+      "damageType": "Bomb",
+      "remainingHp": 26015,
+      "maxHp": 28800,
+      "startedOn": 1742869285,
+      "completedOn": 1742869285,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "408726a9-f7c2-42f2-a0ce-74849bd56007",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 3991,
+      "damageType": "Battle",
+      "remainingHp": 20443,
+      "maxHp": 28800,
+      "startedOn": 1742869302,
+      "completedOn": 1742869439,
+      "heroDetails": [
+        {
+          "unitId": "tauDarkstrider",
+          "power": 798
+        },
+        {
+          "unitId": "worldJakhal",
+          "power": 771
+        },
+        {
+          "unitId": "admecDestroyer",
+          "power": 925
+        },
+        {
+          "unitId": "darkaAzrael",
+          "power": 607
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 907
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 52
+      }
+    },
+    {
+      "userId": "454e5391-1f16-4659-a9dc-d77e99790489",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 691,
+      "damageType": "Battle",
+      "remainingHp": 24434,
+      "maxHp": 28800,
+      "startedOn": 1742869364,
+      "completedOn": 1742869426,
+      "heroDetails": [
+        {
+          "unitId": "adeptHospitaller",
+          "power": 238
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 568
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 243
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 550
+        },
+        {
+          "unitId": "astraYarrick",
+          "power": 529
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "454e5391-1f16-4659-a9dc-d77e99790489",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 1376,
+      "damageType": "Battle",
+      "remainingHp": 19067,
+      "maxHp": 28800,
+      "startedOn": 1742869439,
+      "completedOn": 1742869510,
+      "heroDetails": [
+        {
+          "unitId": "adeptHospitaller",
+          "power": 238
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 568
+        },
+        {
+          "unitId": "ultraEliminatorSgt",
+          "power": 243
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 550
+        },
+        {
+          "unitId": "astraYarrick",
+          "power": 529
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "408726a9-f7c2-42f2-a0ce-74849bd56007",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 3382,
+      "damageType": "Battle",
+      "remainingHp": 15685,
+      "maxHp": 28800,
+      "startedOn": 1742869465,
+      "completedOn": 1742869626,
+      "heroDetails": [
+        {
+          "unitId": "tauDarkstrider",
+          "power": 798
+        },
+        {
+          "unitId": "worldJakhal",
+          "power": 771
+        },
+        {
+          "unitId": "admecDestroyer",
+          "power": 925
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 623
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 907
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 52
+      }
+    },
+    {
+      "userId": "408726a9-f7c2-42f2-a0ce-74849bd56007",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 4915,
+      "damageType": "Battle",
+      "remainingHp": 10770,
+      "maxHp": 28800,
+      "startedOn": 1742869644,
+      "completedOn": 1742869806,
+      "heroDetails": [
+        {
+          "unitId": "tauDarkstrider",
+          "power": 798
+        },
+        {
+          "unitId": "worldJakhal",
+          "power": 771
+        },
+        {
+          "unitId": "admecDestroyer",
+          "power": 925
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 623
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 907
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 52
+      }
+    },
+    {
+      "userId": "a5ac6fe2-5238-42b0-8418-fd3c79b3d226",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss1MiniBoss2TyranWarriorKronos",
+      "type": "TervigonKronos",
+      "rarity": "Rare",
+      "damageDealt": 295,
+      "damageType": "Battle",
+      "remainingHp": 10475,
+      "maxHp": 28800,
+      "startedOn": 1742880423,
+      "completedOn": 1742880565,
+      "heroDetails": [
+        {
+          "unitId": "necroSpyder",
+          "power": 178
+        },
+        {
+          "unitId": "necroWarden",
+          "power": 323
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 104
+        },
+        {
+          "unitId": "deathBlightbringer",
+          "power": 384
+        }
+      ],
+      "machineOfWarDetails": null
+    }
+  ]
+}

@@ -5,7 +5,7 @@ const API_BASE = 'https://api.tacticusgame.com/api/v1';
 const ROOT = path.join(__dirname, '..');
 const RAID_DIR = path.join(ROOT, 'data', 'raid');
 const ENV_FILE = path.join(ROOT, '.env.local');
-const MIN_SEASON = 100;
+const MIN_SEASON = 90;
 
 function readApiKey() {
   const fromEnv = String(process.env.GUILD_RAID_API_KEY || '').trim();
@@ -203,7 +203,20 @@ async function main() {
   console.log(`Wrote ${seasons.length} season(s) to data/raid/`);
 }
 
-main().catch((error) => {
-  console.error(error.message);
-  process.exitCode = 1;
-});
+if (require.main === module) {
+  main().catch((error) => {
+    console.error(error.message);
+    process.exitCode = 1;
+  });
+}
+
+module.exports = {
+  RAID_DIR,
+  apiGet,
+  buildSeasonPayload,
+  readApiKey,
+  readJson,
+  summarizeSeason,
+  writeJson,
+  writeSeason
+};

@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1788812418,
+  "fetchedOn": 1788813537,
   "season": 108,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -34560,6 +34560,108 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 61810
+      }
+    },
+    {
+      "userId": "cf7b7ebf-dd25-4371-ba75-b2cb51102dde",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 97339,
+      "damageType": "Battle",
+      "remainingHp": 17261089,
+      "maxHp": 45000000,
+      "startedOn": 1788812801,
+      "completedOn": 1788812874,
+      "heroDetails": [
+        {
+          "unitId": "admecDominus",
+          "power": 379535
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 505520
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 877527
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 370908
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 169916
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 26553
+      }
+    },
+    {
+      "userId": "293f4b63-28b1-4b5e-88ee-59936eed8ddb",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 7676,
+      "damageType": "Bomb",
+      "remainingHp": 17253413,
+      "maxHp": 45000000,
+      "startedOn": 1788813176,
+      "completedOn": 1788813176,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "293f4b63-28b1-4b5e-88ee-59936eed8ddb",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 269152,
+      "damageType": "Battle",
+      "remainingHp": 16984261,
+      "maxHp": 45000000,
+      "startedOn": 1788813183,
+      "completedOn": 1788813316,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 884953
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 789619
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 761475
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 863255
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 313485
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 43444
       }
     }
   ]
