@@ -122,12 +122,15 @@ async function loadDatasetManifest() {
   datasetsLoaded = true;
 }
 
-function updateDatasetInUrl(datasetKey) {
+function updateDatasetInUrl(datasetKey, { replace = true } = {}) {
   const params = new URLSearchParams(window.location.search);
   params.set('dataset', datasetKey);
   const newQuery = params.toString();
   const newUrl = `${window.location.pathname}${newQuery ? `?${newQuery}` : ''}${window.location.hash}`;
-  window.history.replaceState({}, '', newUrl);
+  if (newUrl === `${window.location.pathname}${window.location.search}${window.location.hash}`) return;
+
+  if (replace) window.history.replaceState({}, '', newUrl);
+  else window.history.pushState({}, '', newUrl);
 }
 
 let guildSnapshots = [];
@@ -1098,7 +1101,15 @@ function renderDatasetTabs() {
       if (selectedKey === activeDatasetKey) return;
 
       activeDatasetKey = selectedKey;
-      updateDatasetInUrl(activeDatasetKey);
+      updateDatasetInUrl(activeDatasetKey, { replace: false });
+      loadGuildData();
+    });
+
+    window.addEventListener('popstate', () => {
+      const key = getDatasetKeyFromUrl();
+      if (key === activeDatasetKey) return;
+
+      activeDatasetKey = key;
       loadGuildData();
     });
 
