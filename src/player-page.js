@@ -364,6 +364,12 @@ function bindRaidTrendFilters() {
 }
 
 async function loadRaidPlayerStats() {
+  // Two paged queries replace the 40 season-file fetches this used to need.
+  if (window.supabaseData) {
+    const totals = await window.supabaseData.getRaidPlayerTotals().catch(() => null);
+    if (Array.isArray(totals) && totals.length > 0) return totals;
+  }
+
   try {
     const response = await fetch(RAID_MANIFEST_URL, { cache: 'no-store' });
     if (!response.ok) return [];
@@ -904,9 +910,12 @@ async function initializePlayerPage() {
   const [datasets, raidSeasons, playerDirectory] = await Promise.all([
     loadDatasetManifest(),
     loadRaidPlayerStats(),
-    fetch(PLAYER_DIRECTORY_URL, { cache: 'no-store' })
-      .then((response) => response.ok ? response.json() : [])
-      .catch(() => [])
+    (window.supabaseData ? window.supabaseData.getPlayers().catch(() => null) : Promise.resolve(null))
+      .then((dbPlayers) => Array.isArray(dbPlayers) && dbPlayers.length > 0
+        ? dbPlayers
+        : fetch(PLAYER_DIRECTORY_URL, { cache: 'no-store' })
+            .then((response) => response.ok ? response.json() : [])
+            .catch(() => []))
   ]);
   const results = await Promise.all(datasets.map(async (dataset) => {
     try {

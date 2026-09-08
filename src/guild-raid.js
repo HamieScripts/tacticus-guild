@@ -172,11 +172,17 @@ async function loadJson(url, fallback) {
 }
 
 async function loadStaticData() {
-  const [players, portraitMap, imageManifest] = await Promise.all([
+  // Players come from Supabase (source of truth); the JSON directory is the
+  // fallback. Portrait maps stay as static JSON — they are game assets, not
+  // guild data.
+  const [dbPlayers, players, portraitMap, imageManifest] = await Promise.all([
+    window.supabaseData ? window.supabaseData.getPlayers().catch(() => null) : Promise.resolve(null),
     loadJson(PLAYER_DIRECTORY_URL, []),
     loadJson('./data/static/portrait-map.json', {}),
     loadJson('./data/static/image-manifest.json', [])
   ]);
+
+  const directory = Array.isArray(dbPlayers) && dbPlayers.length > 0 ? dbPlayers : players;
 
   raidState.players = new Map(
     (Array.isArray(players) ? players : [])
@@ -193,7 +199,11 @@ async function loadStaticData() {
 }
 
 async function loadSeasonManifest() {
-  const manifest = await loadJson(RAID_MANIFEST_URL, null);
+  // Source of truth is the raid_seasons table; manifest.json is the fallback.
+  const dbManifest = window.supabaseData
+    ? await window.supabaseData.getRaidManifest().catch(() => null)
+    : null;
+  const manifest = dbManifest || await loadJson(RAID_MANIFEST_URL, null);
   const seasons = Array.isArray(manifest?.seasons) ? manifest.seasons : [];
 
   raidState.seasons = seasons
@@ -206,7 +216,11 @@ async function loadSeasonManifest() {
 async function loadSeason(season) {
   const entry = raidState.seasons.find((item) => item.season === season);
   const url = entry?.url || (season === raidState.currentSeason ? RAID_CURRENT_URL : `./data/raid/${season}.json`);
-  const raid = await loadJson(raidState.seasons.length === 0 ? RAID_CURRENT_URL : url, null);
+
+  // raid_entries is the source of truth; the season JSON file is the fallback.
+  const raid = window.supabaseData
+    ? (await window.supabaseData.getRaidSeason(season).catch(() => null)) || await loadJson(url, null)
+    : await loadJson(raidState.seasons.length === 0 ? RAID_CURRENT_URL : url, null);
 
   if (!raid) {
     raidState.error = 'Guild raid data has not been published yet.';

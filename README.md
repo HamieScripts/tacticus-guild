@@ -85,6 +85,11 @@ security; writes go through the service-role key.
   plus `mow_unit_id` / `mow_power`. `guild_id` (the guild tag) scopes each
   row so other guilds can be added later.
 
+`guild-raid.html` and `player-page.html` read from Supabase in the browser via
+`src/lib/supabase-config.js` (public anon key) and `src/lib/supabase-data.js`,
+which returns the same shapes the JSON files provided. The JSON files under
+`data/` remain as fallback and exports.
+
 ```bash
 # Store Supabase credentials in .env.local (from Project Settings -> API)
 npm run supabase:keys
