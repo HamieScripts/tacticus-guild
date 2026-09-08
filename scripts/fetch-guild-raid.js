@@ -1,5 +1,7 @@
 const fs = require('fs');
 const path = require('path');
+const { createAdminClient } = require('./lib/supabase-admin');
+const { upsertSeason } = require('./lib/raid-db');
 
 const API_BASE = 'https://api.tacticusgame.com/api/v1';
 const ROOT = path.join(__dirname, '..');
@@ -141,6 +143,22 @@ async function main() {
   }
 
   const force = process.argv.includes('--force');
+  const noDb = process.argv.includes('--no-db');
+
+  // DB is the source of truth; a missing config only skips the write, it never
+  // blocks the JSON export.
+  const db = noDb ? null : createAdminClient({ optional: true });
+  const dbResults = [];
+  const syncSeason = async (payload) => {
+    if (!db) return;
+    try {
+      const result = await upsertSeason(db, payload);
+      dbResults.push(`season ${result.season}: ${result.entries} entries -> supabase`);
+    } catch (error) {
+      console.warn(`Supabase write failed for season ${payload.season}: ${error.message}`);
+      process.exitCode = 1;
+    }
+  };
 
   fs.mkdirSync(RAID_DIR, { recursive: true });
 
@@ -162,6 +180,7 @@ async function main() {
 
   writeSeason(live);
   writeJson(path.join(RAID_DIR, 'current.json'), live);
+  await syncSeason(live);
   const seasons = [summarizeSeason(live)];
   console.log(`Season ${currentSeason} (live): ${live.entries.length} entries`);
 
@@ -186,6 +205,7 @@ async function main() {
         continue;
       }
       writeSeason(payload);
+      await syncSeason(payload);
       seasons.push(summarizeSeason(payload));
       console.log(`Season ${season}: ${payload.entries.length} entries`);
     } catch (error) {
@@ -200,6 +220,7 @@ async function main() {
   };
   writeJson(path.join(RAID_DIR, 'manifest.json'), manifest);
 
+  for (const line of dbResults) console.log(line);
   console.log(`Wrote ${seasons.length} season(s) to data/raid/`);
 }
 

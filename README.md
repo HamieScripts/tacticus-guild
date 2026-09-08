@@ -69,6 +69,43 @@ season JSON files and merges the fetched summaries into `data/raid/manifest.json
 Requests are paced with a random 1-3 second delay, with no more than 10 season
 requests running at once.
 
+## Supabase
+
+Player and guild raid data lives in Supabase (Postgres) — the database is the
+source of truth, and the JSON files under `data/` are kept as exports/backups.
+The schema (players, raid_seasons, raid_entries) lives in
+`supabase/migrations/` and is public read-only via the anon key + row level
+security; writes go through the service-role key.
+
+- `players` — player directory (id, name, avatar)
+- `raid_seasons` — one row per season, including summary columns (entries,
+  players, damage, start, end) that mirror `data/raid/manifest.json`
+- `raid_entries` — one row per boss attack, with the full lineup flattened
+  onto the row: `unit_id_1`..`unit_id_5` / `unit_1_power`..`unit_5_power`
+  plus `mow_unit_id` / `mow_power`. `guild_id` (the guild tag) scopes each
+  row so other guilds can be added later.
+
+```bash
+# Store Supabase credentials in .env.local (from Project Settings -> API)
+npm run supabase:keys
+
+# Apply the schema: paste supabase/migrations/20260908000000_init.sql
+# into the Supabase SQL editor (or use the Supabase CLI)
+
+# Backfill: import players + all raid seasons from data/
+npm run db:import
+
+# Useful flags
+npm run db:import -- --dry-run        # count rows, write nothing
+npm run db:import -- --season 108     # a single season
+npm run db:import -- --players-only   # refresh the players directory
+```
+
+Once credentials are in place, `npm run fetch:raid` also upserts each fetched
+season into Supabase (use `-- --no-db` to skip; a failed DB write warns but
+never blocks the JSON export). After regenerating the player directory with
+`npm run generate:players`, sync it with `npm run db:import -- --players-only`.
+
 ## Tests
 
 Tests use the built-in `node:test` runner — no extra dependencies required.

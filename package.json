@@ -8,7 +8,12 @@
     "generate:datasets": "node ./scripts/generate-dataset-manifest.js",
     "generate:players": "node ./scripts/generate-player-directory.js",
     "raid:key": "node ./scripts/set-guild-raid-key.js",
+    "supabase:keys": "node ./scripts/set-supabase-keys.js",
+    "db:import": "node ./scripts/import-to-supabase.js",
     "fetch:raid": "node ./scripts/fetch-guild-raid.js",
     "fetch:raid:range": "node ./scripts/fetch-guild-raid-range.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0"
   }
 }
