@@ -1,15 +1,24 @@
 {
-  "fetchedOn": 1788853557,
-  "current": 108,
+  "fetchedOn": 1788870854,
+  "current": 109,
   "seasons": [
+    {
+      "season": 109,
+      "url": "./data/raid/109.json",
+      "entries": 0,
+      "players": 0,
+      "damage": 0,
+      "start": null,
+      "end": null
+    },
     {
       "season": 108,
       "url": "./data/raid/108.json",
-      "entries": 1057,
+      "entries": 1063,
       "players": 35,
-      "damage": 183986996,
+      "damage": 184616207,
       "start": 1787739055,
-      "end": 1788852151
+      "end": 1788859244
     },
     {
       "season": 107,
