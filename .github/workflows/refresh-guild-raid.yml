@@ -29,6 +29,8 @@ jobs:
       - name: Fetch live guild raid season
         env:
           GUILD_RAID_API_KEY: ${{ secrets.GUILD_RAID_API_KEY }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
         run: node ./scripts/fetch-guild-raid.js
 
       - name: Commit and push

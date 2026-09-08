@@ -7,12 +7,13 @@
   const HERO_SLOTS = 5;
   // PostgREST caps responses at 1000 rows by default; page through.
   const PAGE_SIZE = 1000;
-  // The supabase-js client retries failed requests internally, which would
-  // stall page load when Supabase is unreachable. Queries race a timeout so
-  // callers fall back to the JSON files quickly instead.
-  const QUERY_TIMEOUT_MS = 4000;
+  // supabase-js retries failed requests internally, which would stall page
+  // load when Supabase is unreachable. So instead of fighting retries per
+  // query, probe once and remember the answer.
+  const HEALTH_TIMEOUT_MS = 3000;
 
   let client = null;
+  let available = null;
 
   function getClient() {
     if (client) return client;
@@ -21,13 +22,21 @@
     return client;
   }
 
-  function withTimeout(promise) {
-    return Promise.race([
-      promise,
-      new Promise((resolve, reject) => {
-        setTimeout(() => reject(new Error('supabase query timed out')), QUERY_TIMEOUT_MS);
-      })
-    ]);
+  async function isAvailable() {
+    if (available !== null) return available;
+    const db = getClient();
+    if (!db) return false;
+
+    try {
+      const timeout = new Promise((resolve) => setTimeout(() => resolve(false), HEALTH_TIMEOUT_MS));
+      const probe = db.from('players').select('id', { head: true, count: 'exact' })
+        .then(({ error }) => !error)
+        .catch(() => false);
+      available = await Promise.race([probe, timeout]);
+    } catch (error) {
+      available = false;
+    }
+    return available;
   }
 
   function toUnixSeconds(value) {
@@ -40,7 +49,7 @@
   async function fetchAll(queryFactory) {
     const rows = [];
     for (let from = 0; ; from += PAGE_SIZE) {
-      const { data, error } = await withTimeout(queryFactory().range(from, from + PAGE_SIZE - 1));
+      const { data, error } = await queryFactory().range(from, from + PAGE_SIZE - 1);
       if (error) throw new Error(error.message);
       rows.push(...data);
       if (data.length < PAGE_SIZE) return rows;
