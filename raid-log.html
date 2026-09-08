@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Praetorians of Terra - Raid Log</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <link rel="stylesheet" href="src/mobile-responsive.css" />
+  </head>
+  <body data-page="raid-log" class="min-h-screen overflow-x-hidden bg-slate-950 text-slate-100">
+    <div class="site-shell mx-auto flex min-h-screen max-w-none flex-col px-4 py-4 sm:px-6 lg:px-8">
+      <header class="site-header rounded-3xl border border-cyan-400/20 bg-slate-900/80 p-6 shadow-2xl shadow-cyan-500/10">
+        <div class="site-header-bar flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <h1 class="text-2xl font-black sm:text-3xl">Praetorians of Terra</h1>
+          <button type="button" class="site-header-menu-button inline-flex items-center justify-center rounded-lg border border-slate-600/80 bg-slate-900/80 p-2 text-slate-100 md:hidden" aria-label="Toggle navigation" aria-controls="primary-nav" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="flex h-5 w-5 flex-col items-center justify-center gap-1.5">
+              <span class="block h-0.5 w-5 rounded-full bg-current"></span>
+              <span class="block h-0.5 w-5 rounded-full bg-current"></span>
+              <span class="block h-0.5 w-5 rounded-full bg-current"></span>
+            </span>
+          </button>
+        </div>
+        <nav id="primary-nav" aria-label="Primary" class="site-header-nav mt-3 md:mt-0">
+          <ul class="flex flex-wrap items-center gap-2 md:flex-row">
+            <li>
+              <a href="index.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Home</a>
+            </li>
+            <li>
+              <a href="guild-wars.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Guild Wars</a>
+            </li>
+            <li>
+              <a href="guild-raid.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Guild Raid</a>
+            </li>
+            <li data-prod-hidden>
+              <a href="guild-teams.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Guild Teams</a>
+            </li>
+            <li>
+              <a href="battle-log.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Battle Log</a>
+            </li>
+            <li>
+              <a href="raid-log.html" aria-current="page" class="inline-flex rounded-lg border border-cyan-400/70 bg-cyan-500/15 px-4 py-2 text-sm font-semibold text-cyan-200">Raid Log</a>
+            </li>
+            <li data-prod-hidden>
+              <a href="player-page.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Player Stats</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <div class="site-scroll mt-6 flex-1 min-h-0 overflow-y-auto">
+        <div class="flex flex-col gap-6 pb-6">
+
+      <nav data-breadcrumb aria-label="Breadcrumb" class="w-full"></nav>
+
+      <section aria-labelledby="overview-heading" class="w-full">
+        <header class="py-1">
+          <div class="w-full">
+            <h2 id="overview-heading" class="text-xl font-bold leading-tight text-cyan-100 sm:text-2xl">Raid Log</h2>
+            <p class="mt-1 text-sm leading-relaxed text-slate-300 sm:text-base">Every guild raid attack across all tracked seasons, with filters for season, player, boss, rarity, and team lineups.</p>
+          </div>
+        </header>
+      </section>
+
+      <div class="rounded-xl border border-slate-800 bg-slate-900/70 p-4 shadow-2xl shadow-black/25">
+        <div class="mb-3 flex flex-col gap-3 md:flex-row md:items-end">
+          <div class="flex flex-col gap-1.5">
+            <label class="text-xs font-semibold uppercase tracking-wide text-slate-400">Encounter</label>
+            <div id="raid-filter-encounter-group" class="inline-flex overflow-hidden rounded-md border border-slate-500/50 bg-slate-900/80" role="radiogroup" aria-label="Encounter type filter">
+              <button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-slate-700/80" data-encounter="all" role="radio" aria-checked="false">All</button>
+              <button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-slate-700/80" data-encounter="boss" role="radio" aria-checked="true">Boss</button>
+              <button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-slate-700/80" data-encounter="sideboss" role="radio" aria-checked="false">Side boss</button>
+            </div>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label class="text-xs font-semibold uppercase tracking-wide text-slate-400">Damage type</label>
+            <div id="raid-filter-damage-type-group" class="inline-flex overflow-hidden rounded-md border border-slate-500/50 bg-slate-900/80" role="radiogroup" aria-label="Damage type filter">
+              <button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-slate-700/80" data-damage-type="all" role="radio" aria-checked="false">All</button>
+              <button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-slate-700/80" data-damage-type="battle" role="radio" aria-checked="true">Battle</button>
+              <button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-slate-700/80" data-damage-type="bomb" role="radio" aria-checked="false">Bomb</button>
+            </div>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label class="text-xs font-semibold uppercase tracking-wide text-slate-400">Result</label>
+            <div id="raid-filter-result-group" class="inline-flex overflow-hidden rounded-md border border-slate-500/50 bg-slate-900/80" role="radiogroup" aria-label="Result filter">
+              <button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-slate-700/80" data-result="all" role="radio" aria-checked="true">All</button>
+              <button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-slate-700/80" data-result="kill" role="radio" aria-checked="false">Kill</button>
+              <button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-slate-700/80" data-result="survived" role="radio" aria-checked="false">Survived</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-4 grid grid-cols-1 gap-3 lg:grid-cols-2">
+          <div class="rounded-xl border border-slate-500/30 bg-slate-900/45 p-3">
+            <div class="mb-2 text-xs font-bold uppercase tracking-wide text-sky-300">Raid filters</div>
+            <div class="grid grid-cols-1 gap-3">
+              <div class="flex flex-col gap-1.5" id="raid-filter-season-control">
+                <label for="raid-filter-season-input" class="text-xs font-semibold uppercase tracking-wide text-sky-300">Season</label>
+                <div class="relative">
+                  <input id="raid-filter-season-input" type="text" autocomplete="off" placeholder="Search seasons..." class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200" />
+                  <div id="raid-filter-season-selected" class="mt-2 flex flex-wrap justify-start gap-1.5"></div>
+                  <div id="raid-filter-season-dropdown" class="absolute left-0 right-0 top-full mt-1.5 z-30 hidden rounded-md border border-slate-500/50 bg-slate-950/95 shadow-2xl shadow-slate-950/60">
+                    <div id="raid-filter-season-options" class="max-h-60 overflow-auto p-1"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col gap-1.5" id="raid-filter-player-control">
+                <label for="raid-filter-player-input" class="text-xs font-semibold uppercase tracking-wide text-sky-300">Player</label>
+                <div class="relative">
+                  <input id="raid-filter-player-input" type="text" autocomplete="off" placeholder="Search players..." class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200" />
+                  <div id="raid-filter-player-selected" class="mt-2 flex flex-wrap justify-start gap-1.5"></div>
+                  <div id="raid-filter-player-dropdown" class="absolute left-0 right-0 top-full mt-1.5 z-30 hidden rounded-md border border-slate-500/50 bg-slate-950/95 shadow-2xl shadow-slate-950/60">
+                    <div id="raid-filter-player-options" class="max-h-60 overflow-auto p-1"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col gap-1.5" id="raid-filter-boss-control">
+                <label for="raid-filter-boss-input" class="text-xs font-semibold uppercase tracking-wide text-sky-300">Boss</label>
+                <div class="relative">
+                  <input id="raid-filter-boss-input" type="text" autocomplete="off" placeholder="Search bosses..." class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200" />
+                  <div id="raid-filter-boss-selected" class="mt-2 flex flex-wrap justify-start gap-1.5"></div>
+                  <div id="raid-filter-boss-dropdown" class="absolute left-0 right-0 top-full mt-1.5 z-30 hidden rounded-md border border-slate-500/50 bg-slate-950/95 shadow-2xl shadow-slate-950/60">
+                    <div id="raid-filter-boss-options" class="max-h-60 overflow-auto p-1"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col gap-1.5" id="raid-filter-rarity-control">
+                <label for="raid-filter-rarity-input" class="text-xs font-semibold uppercase tracking-wide text-sky-300">Rarity</label>
+                <div class="relative">
+                  <input id="raid-filter-rarity-input" type="text" autocomplete="off" placeholder="Search rarities..." class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200" />
+                  <div id="raid-filter-rarity-selected" class="mt-2 flex flex-wrap justify-start gap-1.5"></div>
+                  <div id="raid-filter-rarity-dropdown" class="absolute left-0 right-0 top-full mt-1.5 z-30 hidden rounded-md border border-slate-500/50 bg-slate-950/95 shadow-2xl shadow-slate-950/60">
+                    <div id="raid-filter-rarity-options" class="max-h-60 overflow-auto p-1"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-xl border border-slate-500/30 bg-slate-900/45 p-3">
+            <div class="mb-2 text-xs font-bold uppercase tracking-wide text-pink-300">Lineup filters</div>
+            <div class="grid grid-cols-1 gap-3">
+              <div class="flex flex-col gap-1.5" id="raid-filter-character-control">
+                <label for="raid-filter-character-input" class="text-xs font-semibold uppercase tracking-wide text-pink-300">Characters (all selected required)</label>
+                <div class="relative">
+                  <input id="raid-filter-character-input" type="text" autocomplete="off" placeholder="Search characters..." class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200" />
+                  <div id="raid-filter-character-selected" class="mt-2 flex flex-wrap justify-start gap-1.5"></div>
+                  <div id="raid-filter-character-dropdown" class="absolute left-0 right-0 top-full mt-1.5 z-30 hidden rounded-md border border-slate-500/50 bg-slate-950/95 shadow-2xl shadow-slate-950/60">
+                    <div id="raid-filter-character-options" class="max-h-60 overflow-auto p-1"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col gap-1.5" id="raid-filter-mow-control">
+                <label for="raid-filter-mow-input" class="text-xs font-semibold uppercase tracking-wide text-pink-300">Machine of War</label>
+                <div class="relative">
+                  <input id="raid-filter-mow-input" type="text" autocomplete="off" placeholder="Search machines of war..." class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200" />
+                  <div id="raid-filter-mow-selected" class="mt-2 flex flex-wrap justify-start gap-1.5"></div>
+                  <div id="raid-filter-mow-dropdown" class="absolute left-0 right-0 top-full mt-1.5 z-30 hidden rounded-md border border-slate-500/50 bg-slate-950/95 shadow-2xl shadow-slate-950/60">
+                    <div id="raid-filter-mow-options" class="max-h-60 overflow-auto p-1"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="raid-log-stats" class="mb-3 flex flex-wrap items-center gap-2">
+          <div id="raid-log-stat-damage" class="inline-flex items-center rounded-md bg-cyan-400/20 px-2 py-1 text-sm font-semibold text-cyan-100">Total damage: 0</div>
+          <div id="raid-log-stat-attacks" class="inline-flex items-center rounded-md bg-sky-400/20 px-2 py-1 text-sm font-semibold text-sky-100">Attacks: 0</div>
+          <div id="raid-log-stat-bombs" class="inline-flex items-center rounded-md bg-amber-400/20 px-2 py-1 text-sm font-semibold text-amber-100">Bombs: 0</div>
+          <div id="raid-log-stat-kills" class="inline-flex items-center rounded-md bg-emerald-400/20 px-2 py-1 text-sm font-semibold text-lime-100">Kills: 0</div>
+          <div id="raid-log-stat-players" class="inline-flex items-center rounded-md bg-violet-400/20 px-2 py-1 text-sm font-semibold text-violet-100">Players: 0</div>
+        </div>
+
+        <div class="mb-4 flex items-center justify-between gap-3 max-md:flex-col max-md:items-start">
+          <p id="raid-filter-summary" class="text-sm text-slate-400">Loading raid seasons...</p>
+          <button id="raid-filter-clear" type="button" class="rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm font-semibold text-slate-300 transition hover:border-cyan-400/60 hover:text-slate-100">Clear filters</button>
+        </div>
+
+        <div class="overflow-x-auto rounded-lg border border-slate-800/80" id="raid-log-table-wrap">
+          <table id="raid-log-table" class="w-full min-w-[1180px] text-left text-sm text-slate-200">
+            <thead class="sticky top-0 z-10 bg-slate-900 text-xs uppercase tracking-wide text-slate-400">
+              <tr>
+                <th data-sort-key="date" class="cursor-pointer select-none px-3 py-2 transition hover:text-slate-100" aria-sort="none">Date <span data-sort-arrow class="ml-1 text-[10px]"></span></th>
+                <th data-sort-key="season" class="cursor-pointer select-none px-3 py-2 transition hover:text-slate-100" aria-sort="none">Season <span data-sort-arrow class="ml-1 text-[10px]"></span></th>
+                <th data-sort-key="player" class="cursor-pointer select-none px-3 py-2 transition hover:text-slate-100" aria-sort="none">Player <span data-sort-arrow class="ml-1 text-[10px]"></span></th>
+                <th data-sort-key="boss" class="cursor-pointer select-none px-3 py-2 transition hover:text-slate-100" aria-sort="none">Boss <span data-sort-arrow class="ml-1 text-[10px]"></span></th>
+                <th data-sort-key="rarity" class="cursor-pointer select-none px-3 py-2 transition hover:text-slate-100" aria-sort="none">Rarity <span data-sort-arrow class="ml-1 text-[10px]"></span></th>
+                <th data-sort-key="tier" class="cursor-pointer select-none px-3 py-2 transition hover:text-slate-100" aria-sort="none">Tier / Set <span data-sort-arrow class="ml-1 text-[10px]"></span></th>
+                <th data-sort-key="damage" class="cursor-pointer select-none px-3 py-2 text-right transition hover:text-slate-100" aria-sort="none"><span data-sort-arrow class="mr-1 text-[10px]"></span>Damage</th>
+                <th class="px-3 py-2">Type</th>
+                <th class="px-3 py-2">Result</th>
+                <th class="px-3 py-2">Team</th>
+              </tr>
+            </thead>
+            <tbody id="raid-log-body" class="divide-y divide-slate-700/60"></tbody>
+          </table>
+        </div>
+      </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="src/navigation.js"></script>
+    <script src="src/lib/supabase-config.js"></script>
+    <script src="src/lib/supabase-data.js"></script>
+    <script src="src/raid-log.js"></script>
+    <script>
+      const isLocalDevelopmentHost = () => {
+        const host = (window.location.hostname || '').toLowerCase();
+        const protocol = (window.location.protocol || '').toLowerCase();
+
+        if (protocol === 'file:') {
+          return true;
+        }
+
+        return !host
+          || host === 'localhost'
+          || host === '127.0.0.1'
+          || host === '::1'
+          || host === '[::1]'
+          || host === '0.0.0.0'
+          || host.endsWith('.local');
+      };
+
+      const enforceProductionVisibility = () => {
+        const shouldHide = !isLocalDevelopmentHost();
+        document.querySelectorAll('[data-prod-hidden]').forEach((element) => {
+          element.hidden = shouldHide;
+          element.style.display = shouldHide ? 'none' : '';
+          if (shouldHide) {
+            element.setAttribute('aria-hidden', 'true');
+          } else {
+            element.removeAttribute('aria-hidden');
+          }
+        });
+      };
+
+      document.addEventListener('DOMContentLoaded', () => {
+        enforceProductionVisibility();
+
+        const menuButtons = document.querySelectorAll('.site-header-menu-button');
+        menuButtons.forEach((button) => {
+          const nav = document.getElementById(button.getAttribute('aria-controls'));
+          if (!nav) return;
+          button.addEventListener('click', () => {
+            const isOpen = nav.classList.toggle('is-open');
+            button.setAttribute('aria-expanded', String(isOpen));
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
