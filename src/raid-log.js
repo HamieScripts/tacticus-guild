@@ -567,11 +567,26 @@ function renderTeamCell(entry) {
 
   if (all.length === 0) return '<span class="text-xs text-slate-500">-</span>';
 
+  // When characters are filtered, dim every unit in the row that is not selected.
+  const selectedCharacters = new Set(raidLogState.filters.characters);
+  const hasCharacterFilter = selectedCharacters.size > 0;
+
   return `<div class="flex flex-wrap items-center gap-1">${all.map((hero, index) => {
     const isMow = index === all.length - 1 && entry.machineOfWarDetails && hero.unitId === entry.machineOfWarDetails.unitId;
     const label = `${getUnitDisplayName(hero.unitId)} (${formatNumber(hero.power)})${isMow ? ' · MoW' : ''}`;
+    const isSelected = hasCharacterFilter && selectedCharacters.has(hero.unitId);
+    const dimmed = hasCharacterFilter && !isSelected;
+
+    const borderClass = isSelected
+      ? 'border-cyan-300/90'
+      : isMow
+        ? 'border-amber-500/60'
+        : 'border-slate-700/70';
+    const dimClass = dimmed ? ' opacity-25 saturate-0' : '';
+    const ringClass = isSelected ? ' ring-1 ring-cyan-300/70' : '';
+
     return `
-    <span class="inline-flex h-7 w-7 items-center justify-center overflow-hidden rounded border ${isMow ? 'border-amber-500/60' : 'border-slate-700/70'} bg-slate-900/70" title="${escapeHtml(label)}">
+    <span class="inline-flex h-7 w-7 items-center justify-center overflow-hidden rounded border ${borderClass} bg-slate-900/70 transition${ringClass}${dimClass}" title="${escapeHtml(label)}">
       <img src="${escapeHtml(getPortraitUrlForUnitId(hero.unitId))}" alt="${escapeHtml(label)}" class="h-full w-full object-cover" loading="lazy" onerror="this.src='${MISSING_UNIT_AVATAR_URL}'" />
     </span>`;
   }).join('')}</div>`;
