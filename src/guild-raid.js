@@ -119,6 +119,15 @@ function getPlayerName(userId) {
   return `Unknown (${String(userId || '').slice(0, 8)})`;
 }
 
+function getRaidTeamTotalPower(entry) {
+  const heroes = Array.isArray(entry?.heroDetails) ? entry.heroDetails : [];
+  let total = heroes.reduce((sum, hero) => sum + (Number(hero?.power) || 0), 0);
+  if (entry?.machineOfWarDetails?.power) {
+    total += Number(entry.machineOfWarDetails.power) || 0;
+  }
+  return total;
+}
+
 function renderPlayerAvatar(userId) {
   const player = getPlayer(userId);
   const avatarUnitId = String(player?.avatarUnitId || '').trim().toLowerCase();
@@ -543,19 +552,24 @@ function renderAttacksTab(bossKey) {
             <th class="px-3 py-2">Player</th>
             <th class="px-3 py-2">Type</th>
             <th class="px-3 py-2 text-right">Damage</th>
+            <th class="px-3 py-2 text-right">Power</th>
             <th class="px-3 py-2">Team</th>
             <th class="px-3 py-2">Completed</th>
           </tr>
         </thead>
         <tbody class="divide-y divide-slate-800/80">
-          ${entries.map((entry) => `
+          ${entries.map((entry) => {
+            const power = getRaidTeamTotalPower(entry);
+            return `
             <tr class="hover:bg-slate-900/60">
               <td class="px-3 py-2">${renderPlayerCell(entry.userId)}</td>
               <td class="px-3 py-2"><span class="rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${entry.damageType === 'Bomb' ? 'border-amber-400/40 bg-amber-500/10 text-amber-200' : 'border-cyan-400/40 bg-cyan-500/10 text-cyan-200'}">${escapeHtml(entry.damageType || 'Battle')}</span></td>
               <td class="px-3 py-2 text-right font-bold text-slate-100">${escapeHtml(formatNumber(entry.damageDealt))}</td>
+              <td class="px-3 py-2 text-right text-xs font-semibold text-slate-300">${power > 0 ? escapeHtml(formatNumber(power)) : '-'}</td>
               <td class="px-3 py-2">${renderHeroPortraits(entry)}</td>
               <td class="px-3 py-2 text-slate-400">${escapeHtml(formatTimestamp(entry.completedOn || entry.startedOn))}</td>
-            </tr>`).join('')}
+            </tr>`;
+          }).join('')}
         </tbody>
       </table>
     </div>`;

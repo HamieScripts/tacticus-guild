@@ -520,6 +520,15 @@ function entryMatchesFilters(entry) {
   return true;
 }
 
+function getRaidTeamTotalPower(entry) {
+  const heroes = Array.isArray(entry?.heroDetails) ? entry.heroDetails : [];
+  let total = heroes.reduce((sum, hero) => sum + (Number(hero?.power) || 0), 0);
+  if (entry?.machineOfWarDetails?.power) {
+    total += Number(entry.machineOfWarDetails.power) || 0;
+  }
+  return total;
+}
+
 // Per-column comparators; direction is applied by sortEntries.
 const SORT_COLUMNS = {
   date: {
@@ -552,6 +561,10 @@ const SORT_COLUMNS = {
   damage: {
     defaultDirection: 'desc',
     compare: (a, b) => (Number(a.damageDealt) || 0) - (Number(b.damageDealt) || 0)
+  },
+  power: {
+    defaultDirection: 'desc',
+    compare: (a, b) => getRaidTeamTotalPower(a) - getRaidTeamTotalPower(b)
   }
 };
 
@@ -616,6 +629,9 @@ function renderRow(entry) {
     ? '<span class="block text-[10px] font-semibold uppercase tracking-wide text-slate-500">Side boss</span>'
     : '';
 
+  const totalPower = getRaidTeamTotalPower(entry);
+  const powerCell = totalPower > 0 ? escapeHtml(formatNumber(totalPower)) : '-';
+
   return `<tr class="hover:bg-slate-800/40">
     <td class="whitespace-nowrap px-3 py-2 text-xs text-slate-400">${escapeHtml(formatTimestamp(entry.__time))}</td>
     <td class="px-3 py-2 text-sm font-semibold text-slate-300">${escapeHtml(String(entry.__season))}</td>
@@ -624,6 +640,7 @@ function renderRow(entry) {
     <td class="px-3 py-2">${rarityBadge}</td>
     <td class="whitespace-nowrap px-3 py-2 text-xs text-slate-400">T${escapeHtml(String((Number(entry.tier) || 0) + 1))} · S${escapeHtml(String((Number(entry.set) || 0) + 1))}</td>
     <td class="whitespace-nowrap px-3 py-2 text-right text-sm font-bold text-slate-100">${escapeHtml(formatNumber(entry.damageDealt))}</td>
+    <td class="whitespace-nowrap px-3 py-2 text-right text-xs font-semibold text-slate-300">${powerCell}</td>
     <td class="px-3 py-2">${typeBadge}</td>
     <td class="px-3 py-2">${resultCell}</td>
     <td class="px-3 py-2">${renderTeamCell(entry)}</td>
@@ -680,7 +697,7 @@ function renderRaidLog() {
   renderStats(filtered);
 
   if (filtered.length === 0) {
-    body.innerHTML = `<tr><td colspan="10" class="px-3 py-6 text-center text-sm text-slate-400">${raidLogState.loading ? 'Loading raid season...' : 'No raid entries match the current filters.'}</td></tr>`;
+    body.innerHTML = `<tr><td colspan="11" class="px-3 py-6 text-center text-sm text-slate-400">${raidLogState.loading ? 'Loading raid season...' : 'No raid entries match the current filters.'}</td></tr>`;
   } else {
     const rowCount = filtered.length;
     const start = Math.max(0, Math.floor(raidLogState.scrollTop / ROW_HEIGHT_PX) - OVERSCAN_ROWS);
@@ -692,9 +709,9 @@ function renderRaidLog() {
     const bottomPad = Math.max(0, (rowCount - end) * ROW_HEIGHT_PX);
 
     let html = '';
-    if (topPad > 0) html += `<tr aria-hidden="true" style="height:${topPad}px"><td colspan="10" class="p-0"></td></tr>`;
+    if (topPad > 0) html += `<tr aria-hidden="true" style="height:${topPad}px"><td colspan="11" class="p-0"></td></tr>`;
     for (let index = start; index < end; index += 1) html += renderRow(filtered[index]);
-    if (bottomPad > 0) html += `<tr aria-hidden="true" style="height:${bottomPad}px"><td colspan="10" class="p-0"></td></tr>`;
+    if (bottomPad > 0) html += `<tr aria-hidden="true" style="height:${bottomPad}px"><td colspan="11" class="p-0"></td></tr>`;
     body.innerHTML = html;
   }
 
