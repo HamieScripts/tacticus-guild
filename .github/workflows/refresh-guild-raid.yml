@@ -2,7 +2,7 @@ name: Refresh guild raid data
 
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '*/15 * * * *'
   workflow_dispatch:
 
 permissions:

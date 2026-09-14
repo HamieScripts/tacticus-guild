@@ -18,7 +18,11 @@
   function getClient() {
     if (client) return client;
     if (typeof supabase === 'undefined' || typeof SUPABASE_URL === 'undefined') return null;
-    client = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    client = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+      global: {
+        fetch: (url, options = {}) => fetch(url, { ...options, cache: 'no-store' })
+      }
+    });
     return client;
   }
 
