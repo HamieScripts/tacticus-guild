@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1789404066,
+  "fetchedOn": 1789404314,
   "season": 109,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -16405,6 +16405,90 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 19048
+      }
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss5Boss1DeathMortarion",
+      "type": "Mortarion",
+      "rarity": "Mythic",
+      "damageDealt": 58874,
+      "damageType": "Battle",
+      "remainingHp": 1264807,
+      "maxHp": 30000000,
+      "startedOn": 1789404141,
+      "completedOn": 1789404211,
+      "heroDetails": [
+        {
+          "unitId": "bloodDante",
+          "power": 134992
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 486270
+        },
+        {
+          "unitId": "spaceBlackmane",
+          "power": 56527
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 84377
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 414861
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1432
+      }
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss5Boss1DeathMortarion",
+      "type": "Mortarion",
+      "rarity": "Mythic",
+      "damageDealt": 69003,
+      "damageType": "Battle",
+      "remainingHp": 1195804,
+      "maxHp": 30000000,
+      "startedOn": 1789404219,
+      "completedOn": 1789404293,
+      "heroDetails": [
+        {
+          "unitId": "bloodDante",
+          "power": 134992
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 486270
+        },
+        {
+          "unitId": "spaceBlackmane",
+          "power": 56527
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 84377
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 414861
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1432
       }
     }
   ]

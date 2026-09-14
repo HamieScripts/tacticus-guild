@@ -2743,6 +2743,18 @@ function setupBattleLogPageTabs() {
   battleLogPageTabsInitialized = true;
 }
 
+let playerAttackTotalsSort = { key: 'averageScore', direction: 'desc' };
+let playerDefenseTotalsSort = { key: 'averageScore', direction: 'asc' };
+
+const PLAYER_TOTALS_COLUMNS = [
+  { key: 'name', label: 'Player' },
+  { key: 'averageScore', label: 'Average score' },
+  { key: 'totalScore', label: 'Total score' },
+  { key: 'battles', label: 'Battles' },
+  { key: 'wins', label: 'Wins' },
+  { key: 'losses', label: 'Loses' }
+];
+
 function getBattleOutcomeForGuildRole(battle, role) {
   const baseOutcome = getBattleOutcome(battle);
   if (role === 'defense') {
@@ -2754,6 +2766,7 @@ function getBattleOutcomeForGuildRole(battle, role) {
 
 function renderPlayerTotalsTable(battles, role = 'attack') {
   const isDefenseRole = role === 'defense';
+  const tableHead = document.getElementById(isDefenseRole ? 'player-defense-head' : 'player-attack-head');
   const tableBody = document.getElementById(isDefenseRole ? 'player-defense-body' : 'player-attack-body');
   const summary = document.getElementById(isDefenseRole ? 'player-defense-summary' : 'player-attack-summary');
   const emptyState = document.getElementById(isDefenseRole ? 'player-defense-empty' : 'player-attack-empty');
@@ -2797,21 +2810,52 @@ function renderPlayerTotalsTable(battles, role = 'attack') {
     }
   });
 
+  const sort = isDefenseRole ? playerDefenseTotalsSort : playerAttackTotalsSort;
+
   const rows = Array.from(aggregateMap.values())
     .map((entry) => ({
       ...entry,
       averageScore: entry.battles > 0 ? entry.totalScore / entry.battles : 0
     }))
     .sort((a, b) => {
-      if (isDefenseRole && a.averageScore !== b.averageScore) return a.averageScore - b.averageScore;
-      if (!isDefenseRole && b.averageScore !== a.averageScore) return b.averageScore - a.averageScore;
-      if (b.totalScore !== a.totalScore) return b.totalScore - a.totalScore;
-      if (b.battles !== a.battles) return b.battles - a.battles;
+      const key = sort.key;
+      const sign = sort.direction === 'asc' ? 1 : -1;
+      if (key === 'name') {
+        return sign * String(a.name).localeCompare(String(b.name));
+      }
+      const valA = Number(a[key]) || 0;
+      const valB = Number(b[key]) || 0;
+      if (valA !== valB) return sign * (valA - valB);
       return a.name.localeCompare(b.name);
     });
 
   if (summary) {
     summary.textContent = `${rows.length.toLocaleString()} players`;
+  }
+
+  if (tableHead) {
+    tableHead.innerHTML = `<tr>${PLAYER_TOTALS_COLUMNS.map((column) => {
+      const isSorted = sort.key === column.key;
+      const arrow = isSorted ? (sort.direction === 'asc' ? ' ▲' : ' ▼') : '';
+      return `<th class="px-3 py-2" aria-sort="${isSorted ? (sort.direction === 'asc' ? 'ascending' : 'descending') : 'none'}">
+        <button type="button" data-totals-sort="${column.key}" data-role="${role}" class="uppercase tracking-wide transition-colors hover:text-slate-100 ${isSorted ? 'text-cyan-300' : ''}">${escapeHtml(column.label)}${arrow}</button>
+      </th>`;
+    }).join('')}</tr>`;
+
+    tableHead.querySelectorAll('[data-totals-sort]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const key = button.getAttribute('data-totals-sort');
+        const currentSort = isDefenseRole ? playerDefenseTotalsSort : playerAttackTotalsSort;
+        if (currentSort.key === key) {
+          currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
+        } else {
+          currentSort.key = key;
+          currentSort.direction = key === 'name' ? 'asc' : (isDefenseRole && key === 'averageScore' ? 'asc' : 'desc');
+        }
+        const activeBattles = Array.isArray(guildSnapshots[activeGuildIndex]?.battles) ? guildSnapshots[activeGuildIndex].battles : [];
+        renderPlayerTotalsTable(activeBattles, role);
+      });
+    });
   }
 
   tableBody.innerHTML = '';

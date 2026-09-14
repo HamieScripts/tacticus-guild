@@ -42,6 +42,8 @@ const raidState = {
   selectedBossKey: '',
   activeView: 'bosses',
   playerSort: { key: 'totalDamage', direction: 'desc' },
+  bossAttacksSort: { key: 'completedOn', direction: 'desc' },
+  bossPlayersSort: { key: 'totalDamage', direction: 'desc' },
   activeTab: 'attacks'
 };
 
@@ -535,26 +537,93 @@ function renderSideBossTile(boss, style) {
     </button>`;
 }
 
-function renderAttacksTab(bossKey) {
-  const entries = getEntriesForBoss(bossKey)
-    .slice()
-    .sort((left, right) => Number(right.completedOn || right.startedOn || 0) - Number(left.completedOn || left.startedOn || 0));
+const BOSS_ATTACKS_COLUMNS = [
+  { key: 'player', label: 'Player', numeric: false },
+  { key: 'damageType', label: 'Type', numeric: false },
+  { key: 'damageDealt', label: 'Damage', numeric: true },
+  { key: 'power', label: 'Power', numeric: true },
+  { key: 'completedOn', label: 'Completed', numeric: false }
+];
 
-  if (entries.length === 0) {
+const BOSS_PLAYERS_COLUMNS = [
+  { key: 'name', label: 'Player', numeric: false },
+  { key: 'totalDamage', label: 'Total damage', numeric: true },
+  { key: 'tokens', label: 'Tokens', numeric: true },
+  { key: 'damagePerToken', label: 'Damage per token', numeric: true },
+  { key: 'bombs', label: 'Bombs', numeric: true },
+  { key: 'bombDamage', label: 'Bomb damage', numeric: true },
+  { key: 'bestDamage', label: 'Best hit', numeric: true },
+  { key: 'lastActivity', label: 'Last hit', numeric: false }
+];
+
+function sortBossAttacks(entries) {
+  const { key, direction } = raidState.bossAttacksSort || { key: 'completedOn', direction: 'desc' };
+  const sign = direction === 'asc' ? 1 : -1;
+
+  return entries.slice().sort((a, b) => {
+    if (key === 'player') {
+      return sign * getPlayerName(a.userId).localeCompare(getPlayerName(b.userId));
+    }
+    if (key === 'damageType') {
+      return sign * String(a.damageType || '').localeCompare(String(b.damageType || ''));
+    }
+    if (key === 'power') {
+      return sign * (getRaidTeamTotalPower(a) - getRaidTeamTotalPower(b));
+    }
+    if (key === 'damageDealt') {
+      return sign * ((Number(a.damageDealt) || 0) - (Number(b.damageDealt) || 0));
+    }
+    if (key === 'completedOn') {
+      const timeA = Number(a.completedOn || a.startedOn) || 0;
+      const timeB = Number(b.completedOn || b.startedOn) || 0;
+      return sign * (timeA - timeB);
+    }
+    return 0;
+  });
+}
+
+function sortBossPlayers(players) {
+  const { key, direction } = raidState.bossPlayersSort || { key: 'totalDamage', direction: 'desc' };
+  const sign = direction === 'asc' ? 1 : -1;
+
+  return players.slice().sort((a, b) => {
+    if (key === 'name') {
+      return sign * getPlayerName(a.userId).localeCompare(getPlayerName(b.userId));
+    }
+    const valA = Number(a[key]) || 0;
+    const valB = Number(b[key]) || 0;
+    if (valA !== valB) return sign * (valA - valB);
+    return a.userId.localeCompare(b.userId);
+  });
+}
+
+function renderAttacksTab(bossKey) {
+  const rawEntries = getEntriesForBoss(bossKey);
+  if (rawEntries.length === 0) {
     return '<p class="p-4 text-sm text-slate-400">No attacks recorded.</p>';
   }
+
+  const entries = sortBossAttacks(rawEntries);
+
+  const headers = BOSS_ATTACKS_COLUMNS.map((column) => {
+    const isSorted = raidState.bossAttacksSort.key === column.key;
+    const arrow = isSorted ? (raidState.bossAttacksSort.direction === 'asc' ? ' ▲' : ' ▼') : '';
+    return `<th class="px-3 py-2 ${column.numeric ? 'text-right' : ''}" aria-sort="${isSorted ? (raidState.bossAttacksSort.direction === 'asc' ? 'ascending' : 'descending') : 'none'}">
+      <button type="button" data-boss-attacks-sort="${column.key}" class="uppercase tracking-wide transition-colors hover:text-slate-100 ${isSorted ? 'text-cyan-300' : ''}">${escapeHtml(column.label)}${arrow}</button>
+    </th>`;
+  });
 
   return `
     <div class="overflow-x-auto">
       <table class="min-w-full text-left text-sm">
         <thead class="border-b border-slate-700 text-[11px] uppercase tracking-wide text-slate-400">
           <tr>
-            <th class="px-3 py-2">Player</th>
-            <th class="px-3 py-2">Type</th>
-            <th class="px-3 py-2 text-right">Damage</th>
-            <th class="px-3 py-2 text-right">Power</th>
+            ${headers[0]}
+            ${headers[1]}
+            ${headers[2]}
+            ${headers[3]}
             <th class="px-3 py-2">Team</th>
-            <th class="px-3 py-2">Completed</th>
+            ${headers[4]}
           </tr>
         </thead>
         <tbody class="divide-y divide-slate-800/80">
@@ -576,11 +645,20 @@ function renderAttacksTab(bossKey) {
 }
 
 function renderPlayersTab(bossKey) {
-  const players = getPlayerStatsForBoss(bossKey);
-
-  if (players.length === 0) {
+  const rawPlayers = getPlayerStatsForBoss(bossKey);
+  if (rawPlayers.length === 0) {
     return '<p class="p-4 text-sm text-slate-400">No player activity recorded.</p>';
   }
+
+  const players = sortBossPlayers(rawPlayers);
+
+  const headers = BOSS_PLAYERS_COLUMNS.map((column) => {
+    const isSorted = raidState.bossPlayersSort.key === column.key;
+    const arrow = isSorted ? (raidState.bossPlayersSort.direction === 'asc' ? ' ▲' : ' ▼') : '';
+    return `<th class="px-3 py-2 ${column.numeric ? 'text-right' : ''}" aria-sort="${isSorted ? (raidState.bossPlayersSort.direction === 'asc' ? 'ascending' : 'descending') : 'none'}">
+      <button type="button" data-boss-players-sort="${column.key}" class="uppercase tracking-wide transition-colors hover:text-slate-100 ${isSorted ? 'text-cyan-300' : ''}">${escapeHtml(column.label)}${arrow}</button>
+    </th>`;
+  }).join('');
 
   return `
     <div class="overflow-x-auto">
@@ -588,14 +666,7 @@ function renderPlayersTab(bossKey) {
         <thead class="border-b border-slate-700 text-[11px] uppercase tracking-wide text-slate-400">
           <tr>
             <th class="px-3 py-2">#</th>
-            <th class="px-3 py-2">Player</th>
-            <th class="px-3 py-2 text-right">Total damage</th>
-            <th class="px-3 py-2 text-right">Tokens</th>
-            <th class="px-3 py-2 text-right">Damage per token</th>
-            <th class="px-3 py-2 text-right">Bombs</th>
-            <th class="px-3 py-2 text-right">Bomb damage</th>
-            <th class="px-3 py-2 text-right">Best hit</th>
-            <th class="px-3 py-2">Last hit</th>
+            ${headers}
           </tr>
         </thead>
         <tbody class="divide-y divide-slate-800/80">
@@ -665,6 +736,32 @@ function renderBossDetail() {
     button.addEventListener('click', () => {
       AppNav.setParams({ tab: button.getAttribute('data-raid-tab') === 'players' ? 'players' : null });
       applyUrlState();
+    });
+  });
+
+  detail.querySelectorAll('[data-boss-attacks-sort]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const key = button.getAttribute('data-boss-attacks-sort');
+      if (raidState.bossAttacksSort.key === key) {
+        raidState.bossAttacksSort.direction = raidState.bossAttacksSort.direction === 'asc' ? 'desc' : 'asc';
+      } else {
+        raidState.bossAttacksSort.key = key;
+        raidState.bossAttacksSort.direction = (key === 'player' || key === 'damageType') ? 'asc' : 'desc';
+      }
+      renderBossDetail();
+    });
+  });
+
+  detail.querySelectorAll('[data-boss-players-sort]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const key = button.getAttribute('data-boss-players-sort');
+      if (raidState.bossPlayersSort.key === key) {
+        raidState.bossPlayersSort.direction = raidState.bossPlayersSort.direction === 'asc' ? 'desc' : 'asc';
+      } else {
+        raidState.bossPlayersSort.key = key;
+        raidState.bossPlayersSort.direction = key === 'name' ? 'asc' : 'desc';
+      }
+      renderBossDetail();
     });
   });
 }
