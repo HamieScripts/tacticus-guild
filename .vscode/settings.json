@@ -24,6 +24,7 @@
         "/^python - <<'PY'\nfrom pathlib import Path\np = Path\\('c:/Users/jamie/Documents/GitHub/tacticus-guild/src/app\\.js'\\)\ntext = p\\.read_text\\(encoding='utf-8'\\)\nlines = text\\.splitlines\\(\\)\nfor i in range\\(3030, 3078\\):\n    if i <= len\\(lines\\):\n        line = lines\\[i-1\\]\n        print\\(f'\\{i\\}: \\{line!r\\}'\\)\nPY$/": {
             "approve": true,
             "matchCommandLine": true
-        }
+        },
+        "npm.cmd": true
     }
 }
