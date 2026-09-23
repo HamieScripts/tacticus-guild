@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790175793,
+  "fetchedOn": 1790187286,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -2110,6 +2110,438 @@
       "machineOfWarDetails": {
         "unitId": "deathCrawler",
         "power": 9964
+      }
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss1TyranTervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Legendary",
+      "damageDealt": 8229,
+      "damageType": "Bomb",
+      "remainingHp": 4253015,
+      "maxHp": 7500000,
+      "startedOn": 1790176310,
+      "completedOn": 1790176310,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "0c261907-c335-47b6-9e22-a81f03e4064d",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss1TyranTervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Legendary",
+      "damageDealt": 222155,
+      "damageType": "Battle",
+      "remainingHp": 4030860,
+      "maxHp": 7500000,
+      "startedOn": 1790177026,
+      "completedOn": 1790177142,
+      "heroDetails": [
+        {
+          "unitId": "blackHaarken",
+          "power": 783076
+        },
+        {
+          "unitId": "eldarAutarch",
+          "power": 475596
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 592403
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 752366
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 184389
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 3202
+      }
+    },
+    {
+      "userId": "293f4b63-28b1-4b5e-88ee-59936eed8ddb",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss1TyranTervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Legendary",
+      "damageDealt": 870858,
+      "damageType": "Battle",
+      "remainingHp": 3160002,
+      "maxHp": 7500000,
+      "startedOn": 1790181287,
+      "completedOn": 1790181396,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 789619
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 761475
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 884953
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 313485
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 863255
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 43444
+      }
+    },
+    {
+      "userId": "9a9b9a9d-cbd4-4821-842c-e2c24920ae27",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss1TyranTervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Legendary",
+      "damageDealt": 7417,
+      "damageType": "Bomb",
+      "remainingHp": 3152585,
+      "maxHp": 7500000,
+      "startedOn": 1790182239,
+      "completedOn": 1790182239,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "9a9b9a9d-cbd4-4821-842c-e2c24920ae27",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss1TyranTervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Legendary",
+      "damageDealt": 114597,
+      "damageType": "Battle",
+      "remainingHp": 3037988,
+      "maxHp": 7500000,
+      "startedOn": 1790182257,
+      "completedOn": 1790182329,
+      "heroDetails": [
+        {
+          "unitId": "necroDestroyer",
+          "power": 207637
+        },
+        {
+          "unitId": "spaceBlackmane",
+          "power": 174776
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 224750
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 75669
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 62778
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 19504
+      }
+    },
+    {
+      "userId": "9a9b9a9d-cbd4-4821-842c-e2c24920ae27",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss1TyranTervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Legendary",
+      "damageDealt": 140487,
+      "damageType": "Battle",
+      "remainingHp": 2897501,
+      "maxHp": 7500000,
+      "startedOn": 1790182371,
+      "completedOn": 1790182482,
+      "heroDetails": [
+        {
+          "unitId": "necroDestroyer",
+          "power": 207637
+        },
+        {
+          "unitId": "spaceBlackmane",
+          "power": 174776
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 224750
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 75669
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 62778
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 19504
+      }
+    },
+    {
+      "userId": "9a9b9a9d-cbd4-4821-842c-e2c24920ae27",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss1TyranTervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Legendary",
+      "damageDealt": 164160,
+      "damageType": "Battle",
+      "remainingHp": 2733341,
+      "maxHp": 7500000,
+      "startedOn": 1790182545,
+      "completedOn": 1790182630,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 50700
+        },
+        {
+          "unitId": "spaceBlackmane",
+          "power": 174776
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 224750
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 75669
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 62778
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 19504
+      }
+    },
+    {
+      "userId": "8485b330-6671-46b7-a258-9a2ed7d0e5f0",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss1TyranTervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Legendary",
+      "damageDealt": 7170,
+      "damageType": "Bomb",
+      "remainingHp": 2726171,
+      "maxHp": 7500000,
+      "startedOn": 1790183426,
+      "completedOn": 1790183426,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "8485b330-6671-46b7-a258-9a2ed7d0e5f0",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss1TyranTervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Legendary",
+      "damageDealt": 553528,
+      "damageType": "Battle",
+      "remainingHp": 2172643,
+      "maxHp": 7500000,
+      "startedOn": 1790183495,
+      "completedOn": 1790183664,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 750011
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 240068
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 336356
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 57759
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 755833
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 2195
+      }
+    },
+    {
+      "userId": "8485b330-6671-46b7-a258-9a2ed7d0e5f0",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss1TyranTervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Legendary",
+      "damageDealt": 568186,
+      "damageType": "Battle",
+      "remainingHp": 1604457,
+      "maxHp": 7500000,
+      "startedOn": 1790183938,
+      "completedOn": 1790184135,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 755833
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 750011
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 336356
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 172600
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 240068
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 2195
+      }
+    },
+    {
+      "userId": "c47778d3-3a3c-4cc0-b405-3aed0d993c45",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss1TyranTervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Legendary",
+      "damageDealt": 612005,
+      "damageType": "Battle",
+      "remainingHp": 992452,
+      "maxHp": 7500000,
+      "startedOn": 1790184915,
+      "completedOn": 1790185088,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 640531
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 517254
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 616131
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 249876
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 618534
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 1030
+      }
+    },
+    {
+      "userId": "a736e5fd-6a0b-4137-9ec0-526345cd6e96",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss1TyranTervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Legendary",
+      "damageDealt": 726691,
+      "damageType": "Battle",
+      "remainingHp": 265761,
+      "maxHp": 7500000,
+      "startedOn": 1790186113,
+      "completedOn": 1790186308,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 544770
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 684751
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 627544
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 586554
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 338399
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 20019
       }
     }
   ]
