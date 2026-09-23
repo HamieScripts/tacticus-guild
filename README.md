@@ -13,6 +13,41 @@ A Guild Wars analytics and team composition dashboard for the game *Praetorians 
 | `guild-teams.html` | Team composition library and builder *(dev only)* |
 | `player-page.html` | Per-player average attack/defense scores with scatter plots *(dev only)* |
 
+## Skill Ratings
+
+Skill rating is calculated per used, non-abandoned battle token and then summed
+for each player. The calculation is:
+
+```text
+rating = core score
+rating *= each applicable unique skill buff multiplier
+rating *= 0.75 if the battle is a cleanup
+rating *= 0.10 if the battle is an NPC game (easy round)
+rating *= 2 if the attack wins
+skill rating = rating / 10
+```
+
+The core score is the battle score with any tile-clear bonus removed. Tokens
+without a score, abandoned tokens, and scores of zero contribute `0`. A win is
+an attack where the defender did not defend successfully; a defended attack
+does not receive the win multiplier. Easy games are battles containing the
+`templNpc1Initiate` NPC on either side.
+
+The currently recognized skill buffs and their multipliers are:
+
+| Buff | Multiplier |
+|------|------------|
+| `EnvDefenderHealthBuff2` | 1.25 |
+| `EnvFlakFire` | 1.20 |
+| `EnvArtillerySupport` | 1.15 |
+| `EnvArmourSupplies` | 1.10 |
+| `EnvAngelsOfDeath` | 1.10 |
+| `EnvFortified` | 1.025 |
+
+Duplicate instances of the same buff are applied only once. Player totals are
+the sum of their token ratings; multi-war summaries use the average player
+rating across the selected war datasets.
+
 ## Data Structure
 
 ```

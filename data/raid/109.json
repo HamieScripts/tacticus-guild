@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790069200,
+  "fetchedOn": 1790163051,
   "season": 109,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -7,8 +7,8 @@
     "guildTag": "XXPQS",
     "level": 34,
     "seasons": [
-      108,
-      109
+      109,
+      110
     ]
   },
   "entries": [
@@ -38458,6 +38458,108 @@
       "machineOfWarDetails": {
         "unitId": "thousDaemonPrince",
         "power": 124860
+      }
+    },
+    {
+      "userId": "cf7b7ebf-dd25-4371-ba75-b2cb51102dde",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 7523,
+      "damageType": "Bomb",
+      "remainingHp": 1514837,
+      "maxHp": 45000000,
+      "startedOn": 1790069920,
+      "completedOn": 1790069920,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "cf7b7ebf-dd25-4371-ba75-b2cb51102dde",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 174118,
+      "damageType": "Battle",
+      "remainingHp": 1340719,
+      "maxHp": 45000000,
+      "startedOn": 1790069927,
+      "completedOn": 1790070042,
+      "heroDetails": [
+        {
+          "unitId": "admecDominus",
+          "power": 379535
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 505520
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 877527
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 370908
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 169916
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 65173
+      }
+    },
+    {
+      "userId": "cf7b7ebf-dd25-4371-ba75-b2cb51102dde",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 136514,
+      "damageType": "Battle",
+      "remainingHp": 1204205,
+      "maxHp": 45000000,
+      "startedOn": 1790070060,
+      "completedOn": 1790070148,
+      "heroDetails": [
+        {
+          "unitId": "admecDominus",
+          "power": 379535
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 505520
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 877527
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 370908
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 169916
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 65173
       }
     }
   ]
