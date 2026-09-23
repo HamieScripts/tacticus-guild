@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790201930,
+  "fetchedOn": 1790207883,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -2890,6 +2890,48 @@
       "machineOfWarDetails": {
         "unitId": "thousDaemonPrince",
         "power": 204854
+      }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 4,
+      "set": 2,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss11MiniBoss2TauCrisis",
+      "type": "Riptide",
+      "rarity": "Legendary",
+      "damageDealt": 169420,
+      "damageType": "Battle",
+      "remainingHp": 430580,
+      "maxHp": 600000,
+      "startedOn": 1790204103,
+      "completedOn": 1790204856,
+      "heroDetails": [
+        {
+          "unitId": "bloodTerminator",
+          "power": 63471
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 231580
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 754017
+        },
+        {
+          "unitId": "admecRuststalker",
+          "power": 53955
+        },
+        {
+          "unitId": "deathBlightlord",
+          "power": 537798
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 748
       }
     }
   ]
