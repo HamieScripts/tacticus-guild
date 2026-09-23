@@ -1,6 +1,22 @@
 {
   "datasets": [
     {
+      "key": "history-2026-09-23-b1872ac2",
+      "label": "Murder_Inc (2026-09-23)",
+      "sourceLabel": "Murder_Inc vs. [TW] Praetorians of Terra (2026-09-23)",
+      "url": "./data/war/b1872ac2-40e6-4351-aa53-da79211a64fc.json",
+      "start": "2026-09-20T21:32:53.269Z",
+      "end": "2026-09-23T08:12:30.273Z"
+    },
+    {
+      "key": "history-2026-09-20-b0b833c8",
+      "label": "Moon wolfes (2026-09-20)",
+      "sourceLabel": "[TW] Praetorians of Terra vs. Moon wolfes (2026-09-20)",
+      "url": "./data/war/b0b833c8-7047-46f7-83ee-637a2d3e8683.json",
+      "start": "2026-09-16T09:31:27.649Z",
+      "end": "2026-09-20T20:11:37.653Z"
+    },
+    {
       "key": "history-2026-08-29-ffe10dce",
       "label": "Tercio Espacial (2026-08-29)",
       "sourceLabel": "[TW] Praetorians of Terra vs. Tercio Espacial (2026-08-29)",
@@ -73,5 +89,5 @@
       "end": "2026-07-20T05:45:19.582Z"
     }
   ],
-  "hash": "local-178879"
+  "hash": "1.0.0"
 }
