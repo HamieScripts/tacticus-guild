@@ -26,6 +26,9 @@ jobs:
         with:
           node-version: 20
 
+      - name: Install dependencies
+        run: npm ci
+
       - name: Fetch live guild raid season
         env:
           GUILD_RAID_API_KEY: ${{ secrets.GUILD_RAID_API_KEY }}
