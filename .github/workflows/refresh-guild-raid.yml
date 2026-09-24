@@ -2,7 +2,9 @@ name: Refresh guild raid data
 
 on:
   schedule:
-    - cron: '*/15 * * * *'
+    # Avoid the crowded quarter-hour boundaries where GitHub can delay or drop
+    # scheduled workflows under heavy load.
+    - cron: '7,22,37,52 * * * *'
   workflow_dispatch:
 
 permissions:
