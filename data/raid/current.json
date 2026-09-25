@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790364075,
+  "fetchedOn": 1790365343,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -8407,6 +8407,48 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 127322
+      }
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss1TyranNeurothrope",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 541304,
+      "damageType": "Battle",
+      "remainingHp": 1858696,
+      "maxHp": 2400000,
+      "startedOn": 1790364758,
+      "completedOn": 1790364853,
+      "heroDetails": [
+        {
+          "unitId": "bloodMephiston",
+          "power": 571719
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 906661
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 823347
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 759521
+        },
+        {
+          "unitId": "bloodSanguinary",
+          "power": 638170
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 434174
       }
     }
   ]
