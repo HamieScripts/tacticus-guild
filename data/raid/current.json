@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790311772,
+  "fetchedOn": 1790325109,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -6850,6 +6850,372 @@
       "machineOfWarDetails": {
         "unitId": "astraOrdnanceBattery",
         "power": 3202
+      }
+    },
+    {
+      "userId": "c62ee67f-0a9e-4e29-8861-320e57788e6c",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Legendary",
+      "damageDealt": 496820,
+      "damageType": "Battle",
+      "remainingHp": 10450088,
+      "maxHp": 12500000,
+      "startedOn": 1790312105,
+      "completedOn": 1790312487,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 493407
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 160311
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 396498
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 532836
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 783472
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 80444
+      }
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Legendary",
+      "damageDealt": 7496,
+      "damageType": "Bomb",
+      "remainingHp": 10442592,
+      "maxHp": 12500000,
+      "startedOn": 1790312711,
+      "completedOn": 1790312711,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Legendary",
+      "damageDealt": 31665,
+      "damageType": "Battle",
+      "remainingHp": 10410927,
+      "maxHp": 12500000,
+      "startedOn": 1790312714,
+      "completedOn": 1790312814,
+      "heroDetails": [
+        {
+          "unitId": "blackPossession",
+          "power": 77640
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 75790
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 69553
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 60587
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 59510
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "ultraDreadnought",
+        "power": 1126
+      }
+    },
+    {
+      "userId": "0c261907-c335-47b6-9e22-a81f03e4064d",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Legendary",
+      "damageDealt": 215133,
+      "damageType": "Battle",
+      "remainingHp": 10195794,
+      "maxHp": 12500000,
+      "startedOn": 1790313674,
+      "completedOn": 1790313815,
+      "heroDetails": [
+        {
+          "unitId": "blackHaarken",
+          "power": 783076
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 592403
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 235548
+        },
+        {
+          "unitId": "necroDestroyer",
+          "power": 355200
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 752366
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 3202
+      }
+    },
+    {
+      "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Legendary",
+      "damageDealt": 7950,
+      "damageType": "Bomb",
+      "remainingHp": 10187844,
+      "maxHp": 12500000,
+      "startedOn": 1790314118,
+      "completedOn": 1790314118,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Legendary",
+      "damageDealt": 243621,
+      "damageType": "Battle",
+      "remainingHp": 9944223,
+      "maxHp": 12500000,
+      "startedOn": 1790314205,
+      "completedOn": 1790314505,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 143382
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 229188
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 483395
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 136559
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 338836
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "deathCrawler",
+        "power": 694
+      }
+    },
+    {
+      "userId": "d63f3e75-83d4-4679-8d01-4e025716ea45",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Legendary",
+      "damageDealt": 6985,
+      "damageType": "Bomb",
+      "remainingHp": 9937238,
+      "maxHp": 12500000,
+      "startedOn": 1790319371,
+      "completedOn": 1790319371,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "d63f3e75-83d4-4679-8d01-4e025716ea45",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Legendary",
+      "damageDealt": 629250,
+      "damageType": "Battle",
+      "remainingHp": 9307988,
+      "maxHp": 12500000,
+      "startedOn": 1790319389,
+      "completedOn": 1790319620,
+      "heroDetails": [
+        {
+          "unitId": "admecDominus",
+          "power": 736101
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 694893
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 165655
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 1016780
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 854929
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 45553
+      }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Legendary",
+      "damageDealt": 7556,
+      "damageType": "Bomb",
+      "remainingHp": 9300432,
+      "maxHp": 12500000,
+      "startedOn": 1790322225,
+      "completedOn": 1790322225,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Legendary",
+      "damageDealt": 976176,
+      "damageType": "Battle",
+      "remainingHp": 8324256,
+      "maxHp": 12500000,
+      "startedOn": 1790324288,
+      "completedOn": 1790324460,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 515906
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 817779
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 906661
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 759521
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 887601
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 476066
+      }
+    },
+    {
+      "userId": "d63f3e75-83d4-4679-8d01-4e025716ea45",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Legendary",
+      "damageDealt": 424955,
+      "damageType": "Battle",
+      "remainingHp": 7899301,
+      "maxHp": 12500000,
+      "startedOn": 1790324651,
+      "completedOn": 1790324841,
+      "heroDetails": [
+        {
+          "unitId": "admecDominus",
+          "power": 736101
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 694893
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 165655
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 1016780
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 854929
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 45553
       }
     }
   ]
