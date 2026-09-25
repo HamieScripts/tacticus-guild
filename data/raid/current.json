@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790330093,
+  "fetchedOn": 1790336411,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -7394,6 +7394,144 @@
       "completedOn": 1790327368,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "d9c3ef49-eadf-499d-ab81-d655dbcc086f",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Legendary",
+      "damageDealt": 7725,
+      "damageType": "Bomb",
+      "remainingHp": 6629751,
+      "maxHp": 12500000,
+      "startedOn": 1790330850,
+      "completedOn": 1790330850,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "667d435c-4668-4676-a002-e533709f1cc6",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Legendary",
+      "damageDealt": 7473,
+      "damageType": "Bomb",
+      "remainingHp": 6622278,
+      "maxHp": 12500000,
+      "startedOn": 1790331066,
+      "completedOn": 1790331066,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "667d435c-4668-4676-a002-e533709f1cc6",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Legendary",
+      "damageDealt": 125453,
+      "damageType": "Battle",
+      "remainingHp": 6496825,
+      "maxHp": 12500000,
+      "startedOn": 1790331101,
+      "completedOn": 1790331216,
+      "heroDetails": [
+        {
+          "unitId": "admecDominus",
+          "power": 374570
+        },
+        {
+          "unitId": "admecManipulus",
+          "power": 461676
+        },
+        {
+          "unitId": "admecMarshall",
+          "power": 525116
+        },
+        {
+          "unitId": "admecRuststalker",
+          "power": 495312
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 832907
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "deathCrawler",
+        "power": 1965
+      }
+    },
+    {
+      "userId": "9a9b9a9d-cbd4-4821-842c-e2c24920ae27",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Legendary",
+      "damageDealt": 7320,
+      "damageType": "Bomb",
+      "remainingHp": 6489505,
+      "maxHp": 12500000,
+      "startedOn": 1790334395,
+      "completedOn": 1790334395,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "9a9b9a9d-cbd4-4821-842c-e2c24920ae27",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Legendary",
+      "damageDealt": 49065,
+      "damageType": "Battle",
+      "remainingHp": 6440440,
+      "maxHp": 12500000,
+      "startedOn": 1790335279,
+      "completedOn": 1790335327,
+      "heroDetails": [
+        {
+          "unitId": "blackHaarken",
+          "power": 224750
+        },
+        {
+          "unitId": "spaceBlackmane",
+          "power": 174776
+        },
+        {
+          "unitId": "darkaAzrael",
+          "power": 201567
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 75669
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 64087
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 19504
+      }
     }
   ]
 }
