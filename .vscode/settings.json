@@ -25,6 +25,26 @@
             "approve": true,
             "matchCommandLine": true
         },
-        "npm.cmd": true
+        "npm.cmd": true,
+        "/^node --check \\.\\\\src\\\\app\\.js$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^node --check \\.\\\\tmp-check\\.js$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^git push origin master$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^git fetch origin; git log --oneline --decorate HEAD\\.\\.origin/master; git status --short$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^git rebase origin/master$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
     }
 }
