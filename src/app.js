@@ -156,6 +156,8 @@ let activeMapDropTarget = null;
 let portraitMapperInitialized = false;
 let battleLogGuildNameMap = new Map();
 let defenseWarRows = [];
+let defensePlayerSearch = '';
+let defensePlayerSearchInitialized = false;
 const MISSING_UNIT_AVATAR_URL = './img/missing-unit.svg';
 const battleLogFilters = {
   sort: 'newest',
@@ -2634,7 +2636,7 @@ function renderDefences() {
   const empty = document.getElementById('defences-empty');
   if (!list) return;
 
-  const currentRows = defenseWarRows.filter((row) => row.datasetKey === 'current');
+  const currentRows = defenseWarRows.filter((row) => row.datasetKey === activeDatasetKey);
   const allRows = defenseWarRows;
   const currentByPlayer = new Map();
   const allByLineup = new Map();
@@ -2655,6 +2657,7 @@ function renderDefences() {
     lineups.set(row.lineupKey, existing);
   });
 
+  const searchTerm = defensePlayerSearch.toLowerCase();
   const players = Array.from(currentByPlayer.entries())
     .map(([playerId, lineups]) => ({
       playerId,
@@ -2667,6 +2670,7 @@ function renderDefences() {
         })
         .slice(0, 5)
     }))
+    .filter((player) => !searchTerm || player.name.toLowerCase().includes(searchTerm))
     .sort((a, b) => a.name.localeCompare(b.name));
 
   list.innerHTML = players.map((player) => `
@@ -2697,9 +2701,9 @@ function renderDefences() {
           return `<details class="rounded-lg border border-slate-700/70 bg-slate-900/55">
             <summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-3 py-2.5 text-sm marker:hidden">
               <span class="flex min-w-0 items-center gap-1.5 overflow-hidden">${avatarStrip}</span>
-              <span class="grid w-32 shrink-0 grid-cols-2 gap-2 text-right text-xs tabular-nums">
-                <span class="font-semibold text-pink-200">${Math.round(currentAverageScore).toLocaleString()}</span>
-                <span class="text-slate-400">${Math.round(averageScore).toLocaleString()} avg</span>
+              <span class="grid w-44 shrink-0 grid-cols-2 gap-2 text-right text-xs tabular-nums">
+                <span class="font-semibold text-pink-200">${Math.round(currentAverageScore).toLocaleString()} (${lineup.rows.length})</span>
+                <span class="text-slate-400">${Math.round(averageScore).toLocaleString()} avg (${matchingRows.length})</span>
               </span>
             </summary>
             <div class="border-t border-slate-700/70 p-2.5">
@@ -2741,11 +2745,24 @@ function renderDefences() {
       </div>
     </article>`).join('');
 
-  if (summary) summary.textContent = `${players.length.toLocaleString()} players with current defense teams.`;
+  if (summary) summary.textContent = `${players.length.toLocaleString()} players${searchTerm ? ' matching the search' : ''} with current defense teams.`;
   if (empty) {
     empty.textContent = 'No defense teams are available for the current war yet.';
     empty.classList.toggle('hidden', players.length > 0);
   }
+}
+
+function setupDefencesPlayerSearch() {
+  if (defensePlayerSearchInitialized) return;
+  const input = document.getElementById('defences-player-search');
+  if (!input) return;
+
+  input.value = defensePlayerSearch;
+  input.addEventListener('input', (event) => {
+    defensePlayerSearch = String(event.target.value || '').trim().toLowerCase();
+    renderDefences();
+  });
+  defensePlayerSearchInitialized = true;
 }
 
 async function loadDefenseHistory() {
@@ -4469,6 +4486,7 @@ async function loadGuildData() {
   }
   try {
     await initializePortraitMapper();
+    setupDefencesPlayerSearch();
     renderDefences();
     loadDefenseHistory();
     const response = await fetch(dataset.url, { cache: 'no-store' });

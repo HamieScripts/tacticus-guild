@@ -276,6 +276,10 @@
             Defense scores are the attacker's conceded score. Lower is better.
             Only defense teams that have defended at least once in this war are shown.
           </div>
+          <div class="mb-3 max-w-sm">
+            <label for="defences-player-search" class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">Search player</label>
+            <input id="defences-player-search" type="search" autocomplete="off" placeholder="Search defense players" class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-500 focus:border-cyan-400/60 focus:outline-none focus:ring-2 focus:ring-cyan-400/30" />
+          </div>
           <p id="defences-summary" class="mb-3 text-sm text-slate-400">Loading defense teams...</p>
           <div id="defences-empty" class="hidden rounded-lg border border-dashed border-slate-500/40 p-3 text-slate-400"></div>
           <div id="defences-list" class="flex flex-col gap-3"></div>
