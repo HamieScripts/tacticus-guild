@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790365343,
+  "fetchedOn": 1790369063,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -8449,6 +8449,48 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 434174
+      }
+    },
+    {
+      "userId": "0c261907-c335-47b6-9e22-a81f03e4064d",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss1TyranNeurothrope",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 454161,
+      "damageType": "Battle",
+      "remainingHp": 1404535,
+      "maxHp": 2400000,
+      "startedOn": 1790368872,
+      "completedOn": 1790368982,
+      "heroDetails": [
+        {
+          "unitId": "blackHaarken",
+          "power": 783076
+        },
+        {
+          "unitId": "eldarAutarch",
+          "power": 475596
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 592403
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 752366
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 184389
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 3202
       }
     }
   ]
