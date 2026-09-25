@@ -130,13 +130,23 @@ async function loadDatasetManifest() {
       ];
     }
 
-    return manifestDatasets
+    const datasets = manifestDatasets
       .map((entry) => ({
         key: String(entry?.key || '').trim(),
         label: String(entry?.label || 'Unknown war').trim(),
         url: String(entry?.url || '').trim()
       }))
       .filter((entry) => entry.key && entry.url);
+
+    if (!datasets.some((dataset) => dataset.key === 'current')) {
+      datasets.push({
+        key: 'current',
+        label: 'Active war',
+        url: './data/war/current.json'
+      });
+    }
+
+    return datasets;
   } catch (error) {
     return [
       {
