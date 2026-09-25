@@ -118,6 +118,7 @@
           <button id="tab-btn-battlelog" type="button" onclick="navigateWarTab({ tab: 'battlelog' })" class="border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100">
             Battle log <span id="battle-log-count" class="ml-1 rounded-full bg-slate-700 px-2 py-0.5 text-xs text-slate-300">0</span>
           </button>
+          <button id="tab-btn-defences" type="button" onclick="navigateWarTab({ tab: 'defences' })" class="border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100">Defences</button>
           <button id="tab-btn-portraitmap" type="button" onclick="navigateWarTab({ tab: 'portraitmap' })" class="hidden border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100" aria-hidden="true" tabindex="-1">
             Portrait mapper
           </button>
@@ -268,6 +269,16 @@
           </div>
 
           <div id="battle-log-list" class="flex flex-col gap-3"></div>
+        </div>
+
+        <div id="tab-panel-defences" class="hidden p-4">
+          <div class="mb-3 rounded-lg border border-pink-400/35 bg-pink-500/10 px-3 py-2 text-sm text-pink-100">
+            Defense scores are the attacker's conceded score. Lower is better.
+            Only defense teams that have defended at least once in this war are shown.
+          </div>
+          <p id="defences-summary" class="mb-3 text-sm text-slate-400">Loading defense teams...</p>
+          <div id="defences-empty" class="hidden rounded-lg border border-dashed border-slate-500/40 p-3 text-slate-400"></div>
+          <div id="defences-list" class="flex flex-col gap-3"></div>
         </div>
 
         <div id="tab-panel-portraitmap" class="hidden p-4">
@@ -466,7 +477,7 @@
       function switchMainTab(tab) {
         const activeBtnClasses = ['text-cyan-300', 'border-cyan-400'];
         const inactiveBtnClasses = ['text-slate-400', 'border-transparent'];
-        const panels = ['leaderboard', 'battlelog', 'portraitmap'];
+        const panels = ['leaderboard', 'battlelog', 'defences', 'portraitmap'];
         panels.forEach(function(id) {
           const panel = document.getElementById('tab-panel-' + id);
           const btn = document.getElementById('tab-btn-' + id);
@@ -517,7 +528,7 @@
 
       const WAR_TAB_LABELS = {
         top: { 'war-summary': 'War summary', 'player-summary': 'Player summary' },
-        main: { leaderboard: 'Token table', battlelog: 'Battle log', portraitmap: 'Portrait map' },
+        main: { leaderboard: 'Token table', battlelog: 'Battle log', defences: 'Defences', portraitmap: 'Portrait map' },
         sub: { attack: 'Attack', defence: 'Defence' }
       };
 

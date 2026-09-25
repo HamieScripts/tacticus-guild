@@ -155,6 +155,7 @@ let dragState = null;
 let activeMapDropTarget = null;
 let portraitMapperInitialized = false;
 let battleLogGuildNameMap = new Map();
+let defenseWarRows = [];
 const MISSING_UNIT_AVATAR_URL = './img/missing-unit.svg';
 const battleLogFilters = {
   sort: 'newest',
@@ -2615,6 +2616,168 @@ function getLoadedDatasetDescriptors() {
     });
 }
 
+function getDefenseLineupKey(units, machineOfWar) {
+  return buildBattleSideUnits(units, machineOfWar)
+    .map((unit) => getBattleUnitId(unit))
+    .filter(Boolean)
+    .sort((a, b) => a.localeCompare(b))
+    .join('|');
+}
+
+function getDefenseCoreScore(battle) {
+  return getCoreScore(getBattleRawScore(battle)).core;
+}
+
+function renderDefences() {
+  const list = document.getElementById('defences-list');
+  const summary = document.getElementById('defences-summary');
+  const empty = document.getElementById('defences-empty');
+  if (!list) return;
+
+  const currentRows = defenseWarRows.filter((row) => row.datasetKey === 'current');
+  const allRows = defenseWarRows;
+  const currentByPlayer = new Map();
+  const allByLineup = new Map();
+
+  allRows.forEach((row) => {
+    if (!allByLineup.has(row.lineupKey)) allByLineup.set(row.lineupKey, []);
+    allByLineup.get(row.lineupKey).push(row);
+  });
+
+  currentRows.forEach((row) => {
+    const playerId = String(row.defenderUserId || '').trim();
+    if (!playerId) return;
+    if (!currentByPlayer.has(playerId)) currentByPlayer.set(playerId, new Map());
+    const lineups = currentByPlayer.get(playerId);
+    const existing = lineups.get(row.lineupKey) || { latest: row, rows: [] };
+    existing.rows.push(row);
+    if (row.createdOn > existing.latest.createdOn) existing.latest = row;
+    lineups.set(row.lineupKey, existing);
+  });
+
+  const players = Array.from(currentByPlayer.entries())
+    .map(([playerId, lineups]) => ({
+      playerId,
+      name: String(Array.from(lineups.values())[0]?.latest?.defenderName || playerId),
+      lineups: Array.from(lineups.values())
+        .sort((a, b) => {
+          const aScore = a.rows.reduce((sum, row) => sum + getDefenseCoreScore(row), 0) / Math.max(a.rows.length, 1);
+          const bScore = b.rows.reduce((sum, row) => sum + getDefenseCoreScore(row), 0) / Math.max(b.rows.length, 1);
+          return aScore - bScore || b.latest.createdOn - a.latest.createdOn;
+        })
+        .slice(0, 5)
+    }))
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  list.innerHTML = players.map((player) => `
+    <article class="rounded-xl border border-slate-700/80 bg-slate-950/45 p-3">
+      <div class="mb-3 flex items-center gap-2 border-b border-slate-700/70 pb-2">
+        ${renderPlayerAvatar({ name: player.name, avatarUnitId: player.lineups[0]?.latest?.defenderAvatarUnitId, avatarFrameId: player.lineups[0]?.latest?.defenderAvatarFrameId })}
+        <h3 class="font-bold text-slate-100">${escapeHtml(player.name)}</h3>
+      </div>
+      <div class="flex flex-col gap-2">
+        ${player.lineups.map((lineup, index) => {
+          const row = lineup.latest;
+          const matchingRows = allByLineup.get(row.lineupKey) || [];
+          const currentAverageScore = lineup.rows.length > 0
+            ? lineup.rows.reduce((sum, entry) => sum + getDefenseCoreScore(entry), 0) / lineup.rows.length
+            : 0;
+          const averageScore = matchingRows.length > 0
+            ? matchingRows.reduce((sum, entry) => sum + getDefenseCoreScore(entry), 0) / matchingRows.length
+            : 0;
+          const battleEntries = lineup.rows
+            .slice()
+            .sort((a, b) => b.createdOn - a.createdOn);
+          const units = buildBattleSideUnits(row.defenderUnits, row.defenderMachineOfWar);
+          const avatarStrip = units.map((unit) => {
+            const imageUrl = getBattleUnitAvatarUrl(unit) || MISSING_UNIT_AVATAR_URL;
+            const unitLabel = getBattleUnitLabel(unit);
+            return `<img class="h-8 w-8 rounded-md border border-slate-700 bg-slate-950 object-cover" src="${escapeHtml(imageUrl)}" alt="${escapeHtml(unitLabel)}" title="${escapeHtml(unitLabel)}" loading="lazy" onerror="this.src='${MISSING_UNIT_AVATAR_URL}'">`;
+          }).join('');
+          return `<details class="rounded-lg border border-slate-700/70 bg-slate-900/55">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-3 py-2.5 text-sm marker:hidden">
+              <span class="flex min-w-0 items-center gap-1.5 overflow-hidden">${avatarStrip}</span>
+              <span class="grid w-32 shrink-0 grid-cols-2 gap-2 text-right text-xs tabular-nums">
+                <span class="font-semibold text-pink-200">${Math.round(currentAverageScore).toLocaleString()}</span>
+                <span class="text-slate-400">${Math.round(averageScore).toLocaleString()} avg</span>
+              </span>
+            </summary>
+            <div class="border-t border-slate-700/70 p-2.5">
+              <div class="flex flex-col divide-y divide-slate-700/60">
+                ${battleEntries.map((battle) => {
+                  const attackerName = String(battle.attackerName || battle.attackerUserId || 'Unknown attacker');
+                  const defenderName = String(battle.defenderName || row.defenderName || 'Unknown defender');
+                  const attackerUnits = buildBattleSideUnits(battle.attackerUnits, battle.attackerMachineOfWar);
+                  const defenderUnits = buildBattleSideUnits(battle.defenderUnits, battle.defenderMachineOfWar);
+                  const defended = Boolean(battle.defended);
+                  const stateClass = defended
+                    ? 'rounded-md bg-emerald-400/20 px-2 py-1 text-lime-100'
+                    : 'rounded-md bg-rose-400/20 px-2 py-1 text-rose-200';
+                  const stateLabel = defended ? 'Defended' : 'Breached';
+                  const zoneLabel = battle.zoneType
+                    ? `<span class="rounded-full border border-slate-500/50 bg-slate-900/70 px-2 py-0.5 text-xs text-slate-300">${escapeHtml(battle.zoneType)}</span>`
+                    : '';
+                  return `<article class="grid grid-cols-1 justify-items-center gap-3 border-t border-slate-700/60 py-3 first:border-t-0 md:grid-cols-3 md:justify-items-stretch">
+                    <div class="flex min-w-0 flex-col items-center gap-2 text-center md:items-start md:text-left">
+                      <div class="truncate font-bold text-slate-200">${escapeHtml(attackerName)}</div>
+                      <div class="flex flex-wrap justify-center gap-1.5 md:justify-start">${renderBattleUnits(attackerUnits, 'attacker')}</div>
+                    </div>
+                    <div class="flex min-w-28 flex-col items-center justify-center gap-1 text-center">
+                      <span class="inline-flex items-center ${stateClass}"><span class="font-semibold text-slate-200">${Math.round(getDefenseCoreScore(battle)).toLocaleString()}</span></span>
+                      <span class="text-xs uppercase tracking-wide text-slate-300">${stateLabel}</span>
+                      ${zoneLabel}
+                      <span class="text-[11px] text-slate-500">${escapeHtml(formatDateTime(Number(battle.createdOn || 0)) || 'Unknown time')}</span>
+                    </div>
+                    <div class="flex min-w-0 flex-col items-center gap-2 text-center md:items-end md:text-right">
+                      <div class="truncate font-bold text-slate-200">${escapeHtml(defenderName)}</div>
+                      <div class="flex flex-wrap justify-center gap-1.5 md:justify-end">${renderBattleUnits(defenderUnits, 'defender')}</div>
+                    </div>
+                  </article>`;
+                }).join('')}
+              </div>
+            </div>
+          </details>`;
+        }).join('')}
+      </div>
+    </article>`).join('');
+
+  if (summary) summary.textContent = `${players.length.toLocaleString()} players with current defense teams.`;
+  if (empty) {
+    empty.textContent = 'No defense teams are available for the current war yet.';
+    empty.classList.toggle('hidden', players.length > 0);
+  }
+}
+
+async function loadDefenseHistory() {
+  try {
+    await loadDatasetManifest();
+    const datasets = getLoadedDatasetDescriptors();
+    const rowsByWar = await Promise.all(datasets.map(async (dataset) => {
+      try {
+        const response = await fetch(dataset.url, { cache: 'no-store' });
+        if (!response.ok) return [];
+        const data = await response.json();
+        const snapshots = buildSnapshot(data);
+        const targetTeamIndex = getPrimaryGuildTeamIndexFromData(data) || null;
+        const targetSnapshot = snapshots.find((snapshot) => Number(snapshot?.teamIndex) === Number(targetTeamIndex)) || snapshots[0];
+        const targetIndex = Number(targetSnapshot?.teamIndex);
+        const opponentSnapshot = snapshots.find((snapshot) => Number(snapshot?.teamIndex) !== targetIndex);
+        return (Array.isArray(opponentSnapshot?.battles) ? opponentSnapshot.battles : [])
+          .filter((battle) => Number(battle?.defenderTeamIndex) === targetIndex && battle?.defenderUserId)
+          .map((battle) => ({ ...battle, datasetKey: dataset.key, lineupKey: getDefenseLineupKey(battle.defenderUnits, battle.defenderMachineOfWar) }))
+          .filter((row) => row.lineupKey);
+      } catch (error) {
+        return [];
+      }
+    }));
+    defenseWarRows = rowsByWar.flat();
+    renderDefences();
+  } catch (error) {
+    defenseWarRows = [];
+    renderDefences();
+  }
+}
+
 function getPrimaryGuildTeamIndexFromData(data) {
   const guildData = Array.isArray(getPrimaryEventResponseData(data)?.guildData) ? getPrimaryEventResponseData(data).guildData : [];
   const guildMatch = guildData.find((guild) => String(guild?.name || '').includes('Praetorians of Terra'));
@@ -4306,6 +4469,8 @@ async function loadGuildData() {
   }
   try {
     await initializePortraitMapper();
+    renderDefences();
+    loadDefenseHistory();
     const response = await fetch(dataset.url, { cache: 'no-store' });
 
     if (!response.ok) {
