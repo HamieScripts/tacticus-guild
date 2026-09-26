@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790414526,
+  "fetchedOn": 1790415194,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -9938,6 +9938,48 @@
       "completedOn": 1790414469,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "667d435c-4668-4676-a002-e533709f1cc6",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss2TyranWingedPrime",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 21657,
+      "damageType": "Battle",
+      "remainingHp": 393254,
+      "maxHp": 2400000,
+      "startedOn": 1790414487,
+      "completedOn": 1790414818,
+      "heroDetails": [
+        {
+          "unitId": "admecDominus",
+          "power": 374570
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 391613
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 470325
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 516652
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 832907
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 2314
+      }
     }
   ]
 }
