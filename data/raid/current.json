@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790393134,
+  "fetchedOn": 1790394376,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -9476,6 +9476,66 @@
         "unitId": "blackForgefiend",
         "power": 28130
       }
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss2TyranWingedPrime",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 19012,
+      "damageType": "Battle",
+      "remainingHp": 910432,
+      "maxHp": 2400000,
+      "startedOn": 1790393260,
+      "completedOn": 1790393339,
+      "heroDetails": [
+        {
+          "unitId": "spaceBlackmane",
+          "power": 56527
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 155167
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 486270
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 97178
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 419497
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 1116
+      }
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 8122,
+      "damageType": "Bomb",
+      "remainingHp": 29001416,
+      "maxHp": 30000000,
+      "startedOn": 1790393353,
+      "completedOn": 1790393353,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
