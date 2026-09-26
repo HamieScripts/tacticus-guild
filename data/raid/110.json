@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790404460,
+  "fetchedOn": 1790407384,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -9721,6 +9721,126 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 8391
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 8270,
+      "damageType": "Bomb",
+      "remainingHp": 27696450,
+      "maxHp": 30000000,
+      "startedOn": 1790406065,
+      "completedOn": 1790406065,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 8012,
+      "damageType": "Bomb",
+      "remainingHp": 27688438,
+      "maxHp": 30000000,
+      "startedOn": 1790406187,
+      "completedOn": 1790406187,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss2TyranWingedPrime",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 457517,
+      "damageType": "Battle",
+      "remainingHp": 414911,
+      "maxHp": 2400000,
+      "startedOn": 1790406219,
+      "completedOn": 1790406369,
+      "heroDetails": [
+        {
+          "unitId": "eldarFarseer",
+          "power": 433452
+        },
+        {
+          "unitId": "admecManipulus",
+          "power": 436180
+        },
+        {
+          "unitId": "tauDarkstrider",
+          "power": 516193
+        },
+        {
+          "unitId": "tauFarsight",
+          "power": 532273
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 746294
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 434174
+      }
+    },
+    {
+      "userId": "553c48cc-fcd5-4d34-94cd-691ecad888cc",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 205982,
+      "damageType": "Battle",
+      "remainingHp": 27482456,
+      "maxHp": 30000000,
+      "startedOn": 1790406715,
+      "completedOn": 1790406835,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 514687
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 796274
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 559410
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 539522
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 992667
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 105879
       }
     }
   ]
