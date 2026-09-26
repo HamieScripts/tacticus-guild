@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790426880,
+  "fetchedOn": 1790428758,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -10597,6 +10597,90 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 1188
+      }
+    },
+    {
+      "userId": "d9c3ef49-eadf-499d-ab81-d655dbcc086f",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 1482644,
+      "damageType": "Battle",
+      "remainingHp": 21454904,
+      "maxHp": 30000000,
+      "startedOn": 1790427782,
+      "completedOn": 1790427950,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 853537
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 625729
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 568191
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 566343
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 754873
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "deathCrawler",
+        "power": 100
+      }
+    },
+    {
+      "userId": "9d50010a-82f9-4db9-aa55-e292388ea749",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 469898,
+      "damageType": "Battle",
+      "remainingHp": 20985006,
+      "maxHp": 30000000,
+      "startedOn": 1790428234,
+      "completedOn": 1790428350,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 808849
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 603747
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 297019
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 120876
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 690484
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 15490
       }
     }
   ]
