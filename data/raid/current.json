@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790437383,
+  "fetchedOn": 1790439786,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -11335,6 +11335,84 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 2195
+      }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 7356,
+      "damageType": "Bomb",
+      "remainingHp": 16324575,
+      "maxHp": 30000000,
+      "startedOn": 1790439244,
+      "completedOn": 1790439244,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "b29d75a2-5540-4ded-9383-998307fa1a4a",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 7152,
+      "damageType": "Bomb",
+      "remainingHp": 16317423,
+      "maxHp": 30000000,
+      "startedOn": 1790439359,
+      "completedOn": 1790439359,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "b29d75a2-5540-4ded-9383-998307fa1a4a",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 267418,
+      "damageType": "Battle",
+      "remainingHp": 16050005,
+      "maxHp": 30000000,
+      "startedOn": 1790439364,
+      "completedOn": 1790439473,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 679063
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 637111
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 1023246
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 778273
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 257460
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 28130
       }
     }
   ]
