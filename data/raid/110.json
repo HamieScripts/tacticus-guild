@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790439786,
+  "fetchedOn": 1790443815,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -11413,6 +11413,48 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 28130
+      }
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 18773,
+      "damageType": "Battle",
+      "remainingHp": 16031232,
+      "maxHp": 30000000,
+      "startedOn": 1790443628,
+      "completedOn": 1790443704,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 59510
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 60640
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 69553
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 75790
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 77640
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 1188
       }
     }
   ]
