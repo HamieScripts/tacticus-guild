@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790419334,
+  "fetchedOn": 1790420181,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -10165,6 +10165,90 @@
       "machineOfWarDetails": {
         "unitId": "astraOrdnanceBattery",
         "power": 19849
+      }
+    },
+    {
+      "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 19433,
+      "damageType": "Battle",
+      "remainingHp": 25693503,
+      "maxHp": 30000000,
+      "startedOn": 1790419429,
+      "completedOn": 1790419567,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 483395
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 136559
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 143382
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 338836
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 229188
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 7276
+      }
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss2TyranWingedPrime",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 11198,
+      "damageType": "Battle",
+      "remainingHp": 167772,
+      "maxHp": 2400000,
+      "startedOn": 1790419596,
+      "completedOn": 1790419678,
+      "heroDetails": [
+        {
+          "unitId": "admecDominus",
+          "power": 70713
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 71073
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 147648
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 193822
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 325028
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 1735
       }
     }
   ]
