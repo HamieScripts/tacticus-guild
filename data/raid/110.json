@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790418669,
+  "fetchedOn": 1790419334,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -10123,6 +10123,48 @@
       "machineOfWarDetails": {
         "unitId": "deathCrawler",
         "power": 20587
+      }
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 742212,
+      "damageType": "Battle",
+      "remainingHp": 25712936,
+      "maxHp": 30000000,
+      "startedOn": 1790418425,
+      "completedOn": 1790418713,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 1019992
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 788514
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 502981
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 905823
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 902761
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 19849
       }
     }
   ]
