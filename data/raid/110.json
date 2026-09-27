@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790531778,
+  "fetchedOn": 1790536689,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -14144,6 +14144,66 @@
         "unitId": "tyranBiovore",
         "power": 36226
       }
+    },
+    {
+      "userId": "2ca306f7-1848-4fc9-9acb-a310f217db1f",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss4MiniBoss2OrksNob",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 409759,
+      "damageType": "Battle",
+      "remainingHp": 1023337,
+      "maxHp": 3000000,
+      "startedOn": 1790535995,
+      "completedOn": 1790536323,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 423684
+        },
+        {
+          "unitId": "bloodDeathCompany",
+          "power": 536809
+        },
+        {
+          "unitId": "bloodTerminator",
+          "power": 453135
+        },
+        {
+          "unitId": "bloodSanguinary",
+          "power": 385781
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 722269
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 70
+      }
+    },
+    {
+      "userId": "08a7e111-0193-4d88-bc27-c5124e90039e",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 7756,
+      "damageType": "Bomb",
+      "remainingHp": 30393388,
+      "maxHp": 31250000,
+      "startedOn": 1790536461,
+      "completedOn": 1790536461,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
