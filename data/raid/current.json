@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790508659,
+  "fetchedOn": 1790512278,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -13328,6 +13328,66 @@
       "completedOn": 1790508395,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "a736e5fd-6a0b-4137-9ec0-526345cd6e96",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 7179,
+      "damageType": "Bomb",
+      "remainingHp": 31226999,
+      "maxHp": 31250000,
+      "startedOn": 1790511722,
+      "completedOn": 1790511722,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "a736e5fd-6a0b-4137-9ec0-526345cd6e96",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss4MiniBoss1OrksBigMek",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 159612,
+      "damageType": "Battle",
+      "remainingHp": 2840388,
+      "maxHp": 3000000,
+      "startedOn": 1790511751,
+      "completedOn": 1790511846,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 685193
+        },
+        {
+          "unitId": "deathBlightlord",
+          "power": 456347
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 425942
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 544770
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 684751
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 8910
+      }
     }
   ]
 }
