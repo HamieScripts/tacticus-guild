@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790515880,
+  "fetchedOn": 1790518827,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -13777,6 +13777,48 @@
       "machineOfWarDetails": {
         "unitId": "thousDaemonPrince",
         "power": 237510
+      }
+    },
+    {
+      "userId": "9d50010a-82f9-4db9-aa55-e292388ea749",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss4MiniBoss2OrksNob",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 395667,
+      "damageType": "Battle",
+      "remainingHp": 2006977,
+      "maxHp": 3000000,
+      "startedOn": 1790518055,
+      "completedOn": 1790518205,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 586675
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 603747
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 303492
+        },
+        {
+          "unitId": "bloodDeathCompany",
+          "power": 549733
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 808849
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 149526
       }
     }
   ]
