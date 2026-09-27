@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790506576,
+  "fetchedOn": 1790507980,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -13250,6 +13250,66 @@
         "unitId": "blackForgefiend",
         "power": 11790
       }
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 807149,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 30000000,
+      "startedOn": 1790507120,
+      "completedOn": 1790507279,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 902761
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 952540
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 502981
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 1019992
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 788514
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 19849
+      }
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 7848,
+      "damageType": "Bomb",
+      "remainingHp": 31242152,
+      "maxHp": 31250000,
+      "startedOn": 1790507317,
+      "completedOn": 1790507317,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
