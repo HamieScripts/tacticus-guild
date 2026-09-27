@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790518827,
+  "fetchedOn": 1790519496,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -13820,6 +13820,66 @@
         "unitId": "tyranBiovore",
         "power": 149526
       }
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss4MiniBoss2OrksNob",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 129728,
+      "damageType": "Battle",
+      "remainingHp": 1877249,
+      "maxHp": 3000000,
+      "startedOn": 1790518841,
+      "completedOn": 1790518926,
+      "heroDetails": [
+        {
+          "unitId": "bloodMephiston",
+          "power": 66118
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 77640
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 69553
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 65171
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 59510
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "ultraDreadnought",
+        "power": 1126
+      }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 8517,
+      "damageType": "Bomb",
+      "remainingHp": 31131038,
+      "maxHp": 31250000,
+      "startedOn": 1790519143,
+      "completedOn": 1790519143,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
