@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790528175,
+  "fetchedOn": 1790530210,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -14041,6 +14041,66 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 72061
+      }
+    },
+    {
+      "userId": "fce63e8e-b46e-4fe1-9031-9475f46ee504",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss4MiniBoss2OrksNob",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 8400,
+      "damageType": "Bomb",
+      "remainingHp": 1554936,
+      "maxHp": 3000000,
+      "startedOn": 1790529625,
+      "completedOn": 1790529625,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "fce63e8e-b46e-4fe1-9031-9475f46ee504",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss4MiniBoss2OrksNob",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 121840,
+      "damageType": "Battle",
+      "remainingHp": 1433096,
+      "maxHp": 3000000,
+      "startedOn": 1790529651,
+      "completedOn": 1790529761,
+      "heroDetails": [
+        {
+          "unitId": "eldarMauganRa",
+          "power": 224957
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 106124
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 562391
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 517983
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 528175
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 15904
       }
     }
   ]
