@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790513397,
+  "fetchedOn": 1790513950,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -13406,6 +13406,150 @@
       "completedOn": 1790512588,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "9e4b7170-a4a4-4b28-ac57-6cd3cb8efed0",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss4MiniBoss1OrksBigMek",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 813036,
+      "damageType": "Battle",
+      "remainingHp": 2027352,
+      "maxHp": 3000000,
+      "startedOn": 1790513371,
+      "completedOn": 1790513547,
+      "heroDetails": [
+        {
+          "unitId": "ultraTitus",
+          "power": 1054271
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 1046683
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 976684
+        },
+        {
+          "unitId": "bloodDeathCompany",
+          "power": 953601
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 1108911
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 984974
+      }
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 8523,
+      "damageType": "Bomb",
+      "remainingHp": 31211400,
+      "maxHp": 31250000,
+      "startedOn": 1790513529,
+      "completedOn": 1790513529,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss4MiniBoss1OrksBigMek",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 149511,
+      "damageType": "Battle",
+      "remainingHp": 1877841,
+      "maxHp": 3000000,
+      "startedOn": 1790513534,
+      "completedOn": 1790513598,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 486270
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 187085
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 34511
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 419497
+        },
+        {
+          "unitId": "spaceBlackmane",
+          "power": 56527
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1701
+      }
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss4MiniBoss1OrksBigMek",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 172629,
+      "damageType": "Battle",
+      "remainingHp": 1705212,
+      "maxHp": 3000000,
+      "startedOn": 1790513606,
+      "completedOn": 1790513694,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 486270
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 187085
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 34511
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 419497
+        },
+        {
+          "unitId": "spaceBlackmane",
+          "power": 56527
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1701
+      }
     }
   ]
 }
