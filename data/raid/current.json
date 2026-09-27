@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790485003,
+  "fetchedOn": 1790486536,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -12697,6 +12697,132 @@
       "machineOfWarDetails": {
         "unitId": "deathCrawler",
         "power": 21722
+      }
+    },
+    {
+      "userId": "b29d75a2-5540-4ded-9383-998307fa1a4a",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 127558,
+      "damageType": "Battle",
+      "remainingHp": 5972995,
+      "maxHp": 30000000,
+      "startedOn": 1790485302,
+      "completedOn": 1790485385,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 679063
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 637111
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 1023246
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 778273
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 257460
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 28130
+      }
+    },
+    {
+      "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 300243,
+      "damageType": "Battle",
+      "remainingHp": 5672752,
+      "maxHp": 30000000,
+      "startedOn": 1790485630,
+      "completedOn": 1790485731,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 657529
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 616001
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 387874
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 866505
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 958748
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 16415
+      }
+    },
+    {
+      "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 121809,
+      "damageType": "Battle",
+      "remainingHp": 5550943,
+      "maxHp": 30000000,
+      "startedOn": 1790485767,
+      "completedOn": 1790485860,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 657529
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 616001
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 387874
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 866505
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 958748
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 16415
       }
     }
   ]
