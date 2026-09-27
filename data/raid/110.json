@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790519496,
+  "fetchedOn": 1790520185,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -13878,6 +13878,24 @@
       "maxHp": 31250000,
       "startedOn": 1790519143,
       "completedOn": 1790519143,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "b29d75a2-5540-4ded-9383-998307fa1a4a",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss4MiniBoss2OrksNob",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 6784,
+      "damageType": "Bomb",
+      "remainingHp": 1870465,
+      "maxHp": 3000000,
+      "startedOn": 1790520149,
+      "completedOn": 1790520149,
       "heroDetails": [],
       "machineOfWarDetails": null
     }
