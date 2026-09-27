@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790551699,
+  "fetchedOn": 1790552504,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -14491,6 +14491,66 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 55849
+      }
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 7058,
+      "damageType": "Bomb",
+      "remainingHp": 29020074,
+      "maxHp": 31250000,
+      "startedOn": 1790551972,
+      "completedOn": 1790551972,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "d63f3e75-83d4-4679-8d01-4e025716ea45",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 542943,
+      "damageType": "Battle",
+      "remainingHp": 28477131,
+      "maxHp": 31250000,
+      "startedOn": 1790552097,
+      "completedOn": 1790552273,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 165655
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 244220
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 736101
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 694893
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 1016780
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 45553
       }
     }
   ]
