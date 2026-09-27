@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790527447,
+  "fetchedOn": 1790528175,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -13981,6 +13981,66 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 1126
+      }
+    },
+    {
+      "userId": "cf7b7ebf-dd25-4371-ba75-b2cb51102dde",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 7616,
+      "damageType": "Bomb",
+      "remainingHp": 31123422,
+      "maxHp": 31250000,
+      "startedOn": 1790528024,
+      "completedOn": 1790528024,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "cf7b7ebf-dd25-4371-ba75-b2cb51102dde",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 312353,
+      "damageType": "Battle",
+      "remainingHp": 30811069,
+      "maxHp": 31250000,
+      "startedOn": 1790528030,
+      "completedOn": 1790528162,
+      "heroDetails": [
+        {
+          "unitId": "blackHaarken",
+          "power": 169916
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 376123
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 379535
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 877527
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 505520
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 72061
       }
     }
   ]
