@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790581968,
+  "fetchedOn": 1790584741,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -15805,6 +15805,144 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 80444
+      }
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 8314,
+      "damageType": "Bomb",
+      "remainingHp": 16920624,
+      "maxHp": 31250000,
+      "startedOn": 1790584093,
+      "completedOn": 1790584093,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 8048,
+      "damageType": "Bomb",
+      "remainingHp": 16912576,
+      "maxHp": 31250000,
+      "startedOn": 1790584243,
+      "completedOn": 1790584243,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 411027,
+      "damageType": "Battle",
+      "remainingHp": 15682472,
+      "maxHp": 31250000,
+      "startedOn": 1790584263,
+      "completedOn": 1790584615,
+      "heroDetails": [
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 778199
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 621777
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 379344
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 439067
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 514707
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 237510
+      }
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 7910,
+      "damageType": "Bomb",
+      "remainingHp": 16904666,
+      "maxHp": 31250000,
+      "startedOn": 1790584296,
+      "completedOn": 1790584296,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 811167,
+      "damageType": "Battle",
+      "remainingHp": 16093499,
+      "maxHp": 31250000,
+      "startedOn": 1790584313,
+      "completedOn": 1790584548,
+      "heroDetails": [
+        {
+          "unitId": "tauDarkstrider",
+          "power": 516193
+        },
+        {
+          "unitId": "tauFarsight",
+          "power": 532273
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 433452
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 750555
+        },
+        {
+          "unitId": "admecManipulus",
+          "power": 436180
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 476066
       }
     }
   ]
