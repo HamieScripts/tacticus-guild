@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790599090,
+  "fetchedOn": 1790603338,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -16544,6 +16544,24 @@
         "unitId": "tyranBiovore",
         "power": 16046
       }
+    },
+    {
+      "userId": "d9c3ef49-eadf-499d-ab81-d655dbcc086f",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 7994,
+      "damageType": "Bomb",
+      "remainingHp": 11086746,
+      "maxHp": 31250000,
+      "startedOn": 1790602817,
+      "completedOn": 1790602817,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
