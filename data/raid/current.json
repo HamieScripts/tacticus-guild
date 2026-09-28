@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790567675,
+  "fetchedOn": 1790569855,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -15560,6 +15560,108 @@
       "completedOn": 1790567347,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "077980e3-7cb5-44ab-977e-846af676ccce",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 8041,
+      "damageType": "Bomb",
+      "remainingHp": 18733865,
+      "maxHp": 31250000,
+      "startedOn": 1790568120,
+      "completedOn": 1790568120,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "077980e3-7cb5-44ab-977e-846af676ccce",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 417658,
+      "damageType": "Battle",
+      "remainingHp": 18316207,
+      "maxHp": 31250000,
+      "startedOn": 1790568211,
+      "completedOn": 1790568400,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 959510
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 146660
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 584092
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 600299
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 794968
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 613685
+      }
+    },
+    {
+      "userId": "b29d75a2-5540-4ded-9383-998307fa1a4a",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 358209,
+      "damageType": "Battle",
+      "remainingHp": 17957998,
+      "maxHp": 31250000,
+      "startedOn": 1790569183,
+      "completedOn": 1790569386,
+      "heroDetails": [
+        {
+          "unitId": "bloodDante",
+          "power": 249368
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 679063
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 257460
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 637111
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 1023246
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 518336
+      }
     }
   ]
 }
