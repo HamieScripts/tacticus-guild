@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790617561,
+  "fetchedOn": 1790618170,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -16952,6 +16952,66 @@
         "unitId": "tyranBiovore",
         "power": 476066
       }
+    },
+    {
+      "userId": "667d435c-4668-4676-a002-e533709f1cc6",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 323908,
+      "damageType": "Battle",
+      "remainingHp": 6825253,
+      "maxHp": 31250000,
+      "startedOn": 1790617703,
+      "completedOn": 1790617911,
+      "heroDetails": [
+        {
+          "unitId": "admecRuststalker",
+          "power": 495312
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 374570
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 537925
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 470325
+        },
+        {
+          "unitId": "admecMarshall",
+          "power": 525116
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 127322
+      }
+    },
+    {
+      "userId": "c62ee67f-0a9e-4e29-8861-320e57788e6c",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 8016,
+      "damageType": "Bomb",
+      "remainingHp": 7149161,
+      "maxHp": 31250000,
+      "startedOn": 1790617771,
+      "completedOn": 1790617771,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
