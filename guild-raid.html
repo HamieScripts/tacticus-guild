@@ -37,9 +37,6 @@
               <a href="guild-teams.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Guild Teams</a>
             </li>
             <li>
-              <a href="battle-log.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Battle Log</a>
-            </li>
-            <li>
               <a href="raid-log.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Raid Log</a>
             </li>
             <li data-prod-hidden>
@@ -55,14 +52,25 @@
       <nav data-breadcrumb aria-label="Breadcrumb" class="w-full"></nav>
 
       <section aria-labelledby="overview-heading" class="w-full">
-        <header class="flex flex-col gap-3 py-1 sm:flex-row sm:items-end sm:justify-between">
+        <h2 id="overview-heading" class="py-1 text-xl font-bold leading-tight text-cyan-100 sm:text-2xl">Guild Raids</h2>
+      </section>
+
+      <div class="top-tab-strip flex flex-wrap gap-2 border-b border-slate-700" role="tablist" aria-label="Guild Raid views">
+        <button id="raid-top-tab-season" type="button" role="tab" aria-selected="true" class="rounded-t-lg border-b-2 border-cyan-400 px-5 py-3 text-sm font-semibold text-cyan-300 transition-colors hover:text-slate-100">Seasons</button>
+        <button id="raid-top-tab-log" type="button" role="tab" aria-selected="false" class="rounded-t-lg border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100">Raid Log</button>
+      </div>
+
+      <div id="raid-top-panel-season" class="-mt-3">
+
+      <section aria-labelledby="season-heading" class="w-full">
+        <header class="flex flex-col gap-3 pb-3">
           <div>
-            <h2 id="overview-heading" class="text-xl font-bold leading-tight text-cyan-100 sm:text-2xl">Guild Raid Season</h2>
+            <h3 id="season-heading" class="text-lg font-bold text-cyan-100">Season</h3>
             <p class="mt-1 text-sm leading-relaxed text-slate-300 sm:text-base">Pick a raid boss to review every attack made against it and how each player performed this season.</p>
-          </div>
-          <div class="shrink-0">
-            <label for="raid-season-select" class="block text-xs font-semibold uppercase tracking-wide text-slate-400">Season</label>
-            <select id="raid-season-select" class="mt-1 w-full rounded-md border border-slate-600 bg-slate-900/80 px-3 py-2 text-sm font-semibold text-slate-100 sm:w-56"></select>
+            <div class="mt-3 w-full sm:max-w-sm">
+              <label for="raid-season-select" class="block text-xs font-semibold uppercase tracking-wide text-slate-400">Season</label>
+              <select id="raid-season-select" class="mt-1 w-full rounded-md border border-slate-600 bg-slate-900/80 px-3 py-2 text-sm font-semibold text-slate-100"></select>
+            </div>
           </div>
         </header>
       </section>
@@ -74,7 +82,7 @@
       <main class="space-y-4">
         <div class="tab-strip flex flex-wrap border-b border-slate-700">
           <button id="raid-view-tab-bosses" type="button" data-raid-view="bosses" class="border-b-2 border-cyan-400 px-5 py-3 text-sm font-semibold text-cyan-300 transition-colors hover:text-slate-100">Raid Bosses</button>
-          <button id="raid-view-tab-players" type="button" data-raid-view="players" class="border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100">Players</button>
+          <button id="raid-view-tab-players" type="button" data-raid-view="players" class="border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100">Player summary</button>
         </div>
 
         <section id="raid-grid-view" aria-label="Raid bosses">
@@ -89,6 +97,11 @@
           <div id="raid-season-players" class="rounded-xl border border-slate-800 bg-slate-900/70 p-2 shadow-2xl shadow-black/25"></div>
         </section>
       </main>
+      </div>
+
+      <section id="raid-top-panel-log" class="hidden" aria-label="Raid Log empty state">
+        <div class="rounded-xl border border-dashed border-slate-700 bg-slate-900/50 p-8 text-center text-sm text-slate-400">Raid Log is not available yet.</div>
+      </section>
         </div>
       </div>
     </div>
@@ -130,6 +143,38 @@
 
       document.addEventListener('DOMContentLoaded', () => {
         enforceProductionVisibility();
+
+        const seasonTab = document.getElementById('raid-top-tab-season');
+        const logTab = document.getElementById('raid-top-tab-log');
+        const seasonPanel = document.getElementById('raid-top-panel-season');
+        const logPanel = document.getElementById('raid-top-panel-log');
+        const setTopTab = (activeTab) => {
+          const seasonActive = activeTab === 'season';
+          seasonPanel.classList.toggle('hidden', !seasonActive);
+          logPanel.classList.toggle('hidden', seasonActive);
+          seasonTab.setAttribute('aria-selected', String(seasonActive));
+          logTab.setAttribute('aria-selected', String(!seasonActive));
+          seasonTab.classList.toggle('border-cyan-400', seasonActive);
+          seasonTab.classList.toggle('text-cyan-300', seasonActive);
+          seasonTab.classList.toggle('border-transparent', !seasonActive);
+          seasonTab.classList.toggle('text-slate-400', !seasonActive);
+          logTab.classList.toggle('border-cyan-400', !seasonActive);
+          logTab.classList.toggle('text-cyan-300', !seasonActive);
+          logTab.classList.toggle('border-transparent', seasonActive);
+          logTab.classList.toggle('text-slate-400', seasonActive);
+        };
+        seasonTab.addEventListener('click', () => {
+          AppNav.setParams({ raidView: null });
+          setTopTab('season');
+          renderBreadcrumb();
+        });
+        logTab.addEventListener('click', () => {
+          AppNav.setParams({ raidView: 'log' });
+          setTopTab('log');
+          renderBreadcrumb();
+        });
+        setTopTab(AppNav.get('raidView') === 'log' ? 'log' : 'season');
+        window.addEventListener('popstate', () => setTopTab(AppNav.get('raidView') === 'log' ? 'log' : 'season'));
 
         const menuButtons = document.querySelectorAll('.site-header-menu-button');
         menuButtons.forEach((button) => {

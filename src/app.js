@@ -10,6 +10,9 @@ let DATASETS = { ...DEFAULT_DATASETS };
 let datasetsLoaded = false;
 
 let activeDatasetKey = 'current';
+let seasonGroups = [];
+let activeSeasonWarRecords = [];
+let selectedWarDatasetKey = '';
 
 function getDefaultDatasetKey() {
   if (Object.prototype.hasOwnProperty.call(DATASETS, 'current')) {
@@ -161,6 +164,9 @@ let defensePlayerSearchInitialized = false;
 const MISSING_UNIT_AVATAR_URL = './img/missing-unit.svg';
 const battleLogFilters = {
   sort: 'newest',
+  guild: '',
+  season: '',
+  war: '',
   result: 'all',
   cleanup: 'all',
   mode: 'attacks',
@@ -171,6 +177,9 @@ const battleLogFilters = {
   defenderUnitIds: []
 };
 const battleLogFilterOptions = {
+  guild: [],
+  season: [],
+  war: [],
   attacker: [],
   defender: []
 };
@@ -181,6 +190,8 @@ const battleLogPlayerFilterOptions = {
 let battleLogTileTypeOptions = [];
 let battleLogFiltersInitialized = false;
 let battleLogPageTabsInitialized = false;
+let battleLogDataLoaded = false;
+let battleLogDataLoading = false;
 let leaderboardLayout = 'table';
 let leaderboardLayoutInitialized = false;
 let leaderboardSort = { key: 'score', direction: 'desc' };
@@ -969,24 +980,19 @@ function renderGuildTabs() {
     return;
   }
 
-  const orderedGuilds = guildSnapshots
-    .map((guild, index) => ({ guild, index }))
-    .sort((a, b) => {
-      const aName = String(a.guild?.name || '');
-      const bName = String(b.guild?.name || '');
-      const aIsPraetorians = aName.includes('Praetorians');
-      const bIsPraetorians = bName.includes('Praetorians');
-      if (aIsPraetorians !== bIsPraetorians) {
-        return aIsPraetorians ? -1 : 1;
-      }
-      return a.index - b.index;
-    });
+  const attackIndex = getDefaultActiveGuildIndex(guildSnapshots);
+  const tabs = [
+    { label: 'Attack', index: attackIndex },
+    ...(guildSnapshots.length > 1
+      ? [{ label: 'Defence', index: guildSnapshots.findIndex((_, index) => index !== attackIndex) }]
+      : [])
+  ];
 
-  orderedGuilds.forEach(({ guild, index }) => {
+  tabs.forEach(({ label, index }) => {
     const button = document.createElement('button');
     button.type = 'button';
     button.className = `inline-flex min-h-[2.25rem] items-center justify-center rounded-full border px-4 py-2 text-sm font-semibold leading-4 transition ${index === activeGuildIndex ? 'border-cyan-400 bg-cyan-500/15 text-cyan-200 shadow-lg shadow-cyan-500/10' : 'border-slate-700 bg-slate-800/70 text-slate-300 hover:border-slate-500 hover:text-white'}`;
-    button.textContent = guild.name;
+    button.textContent = label;
     button.addEventListener('click', () => {
       activeGuildIndex = index;
       renderActiveGuild();
@@ -1006,6 +1012,7 @@ function getDefaultActiveGuildIndex(snapshots) {
 }
 
 const SEASON_GAP_DAYS = 5; // real inter-war gaps run ~1-2 days; season breaks run ~2-3 weeks
+const MAX_WARS_PER_SEASON = 6;
 
 function extractDatasetDate(datasetKey, dataset) {
   if (dataset?.end) {
@@ -1043,7 +1050,7 @@ function groupDatasetsIntoSeasons(entries) {
     // gap = time between this war's end and the next (later) war's start already seen
     const gapDays = previousStart ? (previousStart - end) / (1000 * 60 * 60 * 24) : Infinity;
 
-    if (!currentGroup || gapDays > SEASON_GAP_DAYS) {
+    if (!currentGroup || gapDays > SEASON_GAP_DAYS || currentGroup.entries.length >= MAX_WARS_PER_SEASON) {
       currentGroup = { label: null, startDate: start, endDate: end, entries: [] };
       groups.push(currentGroup);
     }
@@ -1063,6 +1070,45 @@ function groupDatasetsIntoSeasons(entries) {
   return groups;
 }
 
+function renderWarSeasonCards(records) {
+  const grid = document.getElementById('war-season-wars-grid');
+  if (!grid) return;
+
+  if (!Array.isArray(records) || records.length === 0) {
+    grid.innerHTML = '<p class="col-span-full rounded-xl border border-dashed border-slate-700 bg-slate-900/50 p-6 text-center text-sm text-slate-400">Loading wars...</p>';
+    return;
+  }
+
+  const options = records.map((record) => {
+    const opponentName = record.opponentSnapshot?.name || 'Unknown opponent';
+    const warDate = extractDatasetDate(record.dataset.key, record.dataset);
+    return `<option value="${escapeHtml(record.dataset.key)}">${escapeHtml(opponentName)} - ${escapeHtml(warDate ? formatSeasonDate(warDate) : 'Unknown date')}</option>`;
+  }).join('');
+
+  grid.innerHTML = `
+    <label for="war-opponent-select" class="sr-only">Opponent war</label>
+    <select id="war-opponent-select" class="w-full rounded-md border border-slate-600 bg-slate-900/80 px-3 py-2 text-sm font-semibold text-slate-100 sm:max-w-xl">
+      ${options}
+    </select>`;
+  const select = document.getElementById('war-opponent-select');
+  if (!select) return;
+
+  select.value = selectedWarDatasetKey || records[0].dataset.key;
+  select.addEventListener('change', () => {
+    const datasetKey = select.value;
+    if (!datasetKey || !Object.prototype.hasOwnProperty.call(DATASETS, datasetKey)) return;
+    selectedWarDatasetKey = datasetKey;
+    activeDatasetKey = datasetKey;
+    updateDatasetInUrl(datasetKey, { replace: false });
+    loadGuildData();
+  });
+}
+
+function setWarSummaryVisibility(isVisible) {
+  const summary = document.getElementById('war-selected-summary');
+  if (summary) summary.classList.toggle('hidden', !isVisible);
+}
+
 function renderDatasetTabs() {
   const datasetSelect = document.getElementById('dataset-select');
   const sourceLabel = document.getElementById('source-label');
@@ -1077,6 +1123,7 @@ function renderDatasetTabs() {
     .sort(([keyA, a], [keyB, b]) => extractDatasetDate(keyB, b) - extractDatasetDate(keyA, a));
   const undatedEntries = entries.filter(([key, dataset]) => !extractDatasetDate(key, dataset));
   const seasons = groupDatasetsIntoSeasons(datedEntries);
+  seasonGroups = seasons;
 
   undatedEntries.forEach(([datasetKey, dataset]) => {
     const option = document.createElement('option');
@@ -1086,15 +1133,13 @@ function renderDatasetTabs() {
   });
 
   seasons.forEach((season) => {
-    const optgroup = document.createElement('optgroup');
-    optgroup.label = season.label || 'Unknown season';
-    season.entries.forEach(([datasetKey, dataset]) => {
-      const option = document.createElement('option');
-      option.value = datasetKey;
-      option.textContent = dataset.label;
-      optgroup.appendChild(option);
-    });
-    datasetSelect.appendChild(optgroup);
+    const option = document.createElement('option');
+    const firstEntry = season.entries[0];
+    option.value = firstEntry?.[0] || '';
+    option.textContent = season.startDate && season.endDate
+      ? `War season - ${formatSeasonDate(season.startDate)} - ${formatSeasonDate(season.endDate)}`
+      : 'War season';
+    datasetSelect.appendChild(option);
   });
 
   if (!datasetSelect.dataset.initialized) {
@@ -1103,6 +1148,7 @@ function renderDatasetTabs() {
       if (!Object.prototype.hasOwnProperty.call(DATASETS, selectedKey)) return;
       if (selectedKey === activeDatasetKey) return;
 
+      selectedWarDatasetKey = '';
       activeDatasetKey = selectedKey;
       updateDatasetInUrl(activeDatasetKey, { replace: false });
       loadGuildData();
@@ -1119,7 +1165,8 @@ function renderDatasetTabs() {
     datasetSelect.dataset.initialized = 'true';
   }
 
-  datasetSelect.value = activeDatasetKey;
+  const activeSeason = seasons.find((season) => season.entries.some(([datasetKey]) => datasetKey === activeDatasetKey));
+  datasetSelect.value = activeSeason?.entries?.[0]?.[0] || activeDatasetKey;
 
   if (sourceLabel) {
     sourceLabel.textContent = DATASETS[activeDatasetKey]?.sourceLabel || 'Unknown source';
@@ -2879,6 +2926,7 @@ function setupBattleLogPageTabs() {
   const playerDefensePanel = document.getElementById('tab-panel-player-defense');
 
   if (!battleHistoryBtn || !guildPerformanceBtn || !playerAttackBtn || !playerDefenseBtn || !battleHistoryPanel || !guildPerformancePanel || !playerAttackPanel || !playerDefensePanel) return;
+  const isStandaloneBattleLogPage = document.body?.dataset?.page === 'battle-log';
 
   const applyTabState = (tab) => {
     const tabs = [
@@ -2899,11 +2947,13 @@ function setupBattleLogPageTabs() {
       tabItem.button.classList.toggle('text-slate-400', !isActive);
     });
 
-    AppNav.renderBreadcrumb([
-      { label: 'Home', href: 'index.html' },
-      { label: 'Battle Log', params: { tab: null } },
-      { label: active.label }
-    ], applyTabsFromUrl);
+    if (isStandaloneBattleLogPage) {
+      AppNav.renderBreadcrumb([
+        { label: 'Home', href: 'index.html' },
+        { label: 'Battle Log', params: { tab: null } },
+        { label: active.label }
+      ], applyTabsFromUrl);
+    }
   };
 
   const applyTabsFromUrl = () => applyTabState(AppNav.get('tab') || 'battle-history');
@@ -3202,6 +3252,8 @@ function mergeBattleLogsFromSnapshots(snapshots) {
 }
 
 async function loadAllWarsBattleLogData() {
+  if (battleLogDataLoaded || battleLogDataLoading) return;
+  battleLogDataLoading = true;
   await loadDatasetManifest();
   battleLogGuildNameMap = new Map();
 
@@ -3240,6 +3292,9 @@ async function loadAllWarsBattleLogData() {
     let latestResponseModifiedTime = 0;
 
     results.forEach(({ dataset, data, responseLastModified, dataTimestamp }) => {
+      const season = seasonGroups.find((group) => group.entries.some(([key]) => key === dataset.key));
+      const seasonKey = season?.entries?.[0]?.[0] || dataset.key;
+      const seasonLabel = season?.label || dataset.label;
       const targetTeamIndex = getPrimaryGuildTeamIndexFromData(data);
       const targetGuildName = getPrimaryGuildNameFromData(data);
       const snapshots = buildSnapshot(data);
@@ -3254,6 +3309,10 @@ async function loadAllWarsBattleLogData() {
               .filter((battle) => Number(battle?.defenderTeamIndex) === Number(targetSnapshot.teamIndex))
               .map((battle) => ({
                 ...battle,
+                datasetKey: dataset.key,
+                datasetLabel: dataset.label,
+                seasonKey,
+                seasonLabel,
                 battleRole: 'defense',
                 attackerGuildName: defenderGuildName,
                 defenderGuildName: attackerGuildName
@@ -3262,6 +3321,10 @@ async function loadAllWarsBattleLogData() {
         const attackBattles = Array.isArray(targetSnapshot.battles)
           ? targetSnapshot.battles.map((battle) => ({
               ...battle,
+              datasetKey: dataset.key,
+              datasetLabel: dataset.label,
+              seasonKey,
+              seasonLabel,
               battleRole: 'attack',
               attackerGuildName,
               defenderGuildName
@@ -3305,6 +3368,20 @@ async function loadAllWarsBattleLogData() {
       battles: mergeBattleLogsFromSnapshots(allGuildSnapshots)
     };
 
+    const currentSeason = seasonGroups[0];
+    if (!battleLogFilters.season && currentSeason?.entries?.[0]?.[0]) {
+      battleLogFilters.season = currentSeason.entries[0][0];
+    }
+    if (!battleLogFilters.war && currentSeason?.entries?.[0]?.[0]) {
+      battleLogFilters.war = currentSeason.entries[0][0];
+    }
+    if (!battleLogFilters.guild) {
+      const guildName = combinedSnapshot.battles
+        .flatMap((battle) => [battle.attackerGuildName, battle.defenderGuildName])
+        .find((name) => String(name || '').toLowerCase().includes('praetorians'));
+      if (guildName) battleLogFilters.guild = guildName;
+    }
+
     guildSnapshots = [combinedSnapshot];
     activeGuildIndex = 0;
     renderLastUpdated({ responseLastModified: latestResponseModified || null, dataTimestamp: latestTimestamp || null });
@@ -3317,6 +3394,8 @@ async function loadAllWarsBattleLogData() {
     if (statusMessage) {
       statusMessage.textContent = `Loaded ${combinedSnapshot.battles.length.toLocaleString()} battles across ${results.length.toLocaleString()} wars for Praetorians of Terra.`;
     }
+    battleLogDataLoaded = true;
+    battleLogDataLoading = false;
   } catch (error) {
     console.error(error);
     guildSnapshots = [{ teamIndex: null, battleLogScope: 'combined', name: 'Praetorians of Terra', battles: [] }];
@@ -3331,6 +3410,7 @@ async function loadAllWarsBattleLogData() {
     if (statusMessage) {
       statusMessage.textContent = 'The all wars battle log could not be loaded. Open the app from a local web server to enable fetch().';
     }
+    battleLogDataLoading = false;
   }
 }
 
@@ -3489,6 +3569,51 @@ function updateBattleLogUnitFilterOptions(snapshot) {
   renderBattleLogUnitFilterControl('defender');
 }
 
+function updateBattleLogScopeFilterOptions(snapshot) {
+  const guildSelect = document.getElementById('battle-filter-guild');
+  const seasonSelect = document.getElementById('battle-filter-season');
+  const warSelect = document.getElementById('battle-filter-war');
+  if (!guildSelect || !seasonSelect || !warSelect) return;
+
+  const battles = Array.isArray(snapshot?.battles) ? snapshot.battles : [];
+  const guilds = new Set();
+  const seasons = new Map();
+  const wars = new Map();
+
+  battles.forEach((battle) => {
+    [battle.attackerGuildName, battle.defenderGuildName].forEach((name) => {
+      if (name) guilds.add(String(name));
+    });
+    if (battle.seasonKey) seasons.set(String(battle.seasonKey), String(battle.seasonLabel || battle.seasonKey));
+    if (battle.datasetKey && (!battleLogFilters.season || battle.seasonKey === battleLogFilters.season)) {
+      wars.set(String(battle.datasetKey), String(battle.datasetLabel || battle.datasetKey));
+    }
+  });
+
+  battleLogFilterOptions.guild = Array.from(guilds).sort((a, b) => a.localeCompare(b));
+  battleLogFilterOptions.season = Array.from(seasons.entries()).sort((a, b) => b[1].localeCompare(a[1]));
+  battleLogFilterOptions.war = Array.from(wars.entries()).sort((a, b) => b[1].localeCompare(a[1]));
+  if (battleLogFilters.war && !wars.has(battleLogFilters.war)) {
+    battleLogFilters.war = '';
+  }
+
+  guildSelect.innerHTML = '<option value="">All guilds</option>';
+  battleLogFilterOptions.guild.forEach((guild) => {
+    guildSelect.innerHTML += `<option value="${escapeHtml(guild)}">${escapeHtml(guild)}</option>`;
+  });
+  seasonSelect.innerHTML = '<option value="">All seasons</option>';
+  battleLogFilterOptions.season.forEach(([key, label]) => {
+    seasonSelect.innerHTML += `<option value="${escapeHtml(key)}">${escapeHtml(label)}</option>`;
+  });
+  warSelect.innerHTML = '<option value="">All wars</option>';
+  battleLogFilterOptions.war.forEach(([key, label]) => {
+    warSelect.innerHTML += `<option value="${escapeHtml(key)}">${escapeHtml(label)}</option>`;
+  });
+  guildSelect.value = battleLogFilters.guild;
+  seasonSelect.value = battleLogFilters.season;
+  warSelect.value = battleLogFilters.war;
+}
+
 function renderBattleLogUnitFilterControl(side) {
   const key = getBattleFilterKeyForSide(side);
   const input = document.getElementById(`battle-filter-${side}-input`);
@@ -3579,6 +3704,9 @@ function setupBattleLogFilters() {
   if (battleLogFiltersInitialized) return;
 
   const sortSelect = document.getElementById('battle-filter-sort');
+  const guildSelect = document.getElementById('battle-filter-guild');
+  const seasonSelect = document.getElementById('battle-filter-season');
+  const warSelect = document.getElementById('battle-filter-war');
   const zoneSelect = document.getElementById('battle-filter-zone');
   const resultGroup = document.getElementById('battle-filter-result-group');
   const resultButtons = resultGroup ? Array.from(resultGroup.querySelectorAll('button[data-result]')) : [];
@@ -3596,9 +3724,12 @@ function setupBattleLogFilters() {
   const defenderControl = document.getElementById('battle-filter-defender-control');
   const clearButton = document.getElementById('battle-filter-clear');
 
-  if (!sortSelect || !zoneSelect || !resultGroup || resultButtons.length === 0 || !cleanupGroup || cleanupButtons.length === 0 || !attackerPlayerInput || !defenderPlayerInput || !attackerPlayerControl || !defenderPlayerControl || !attackerInput || !defenderInput || !attackerControl || !defenderControl || !clearButton) return;
+  if (!sortSelect || !guildSelect || !seasonSelect || !warSelect || !zoneSelect || !resultGroup || resultButtons.length === 0 || !cleanupGroup || cleanupButtons.length === 0 || !attackerPlayerInput || !defenderPlayerInput || !attackerPlayerControl || !defenderPlayerControl || !attackerInput || !defenderInput || !attackerControl || !defenderControl || !clearButton) return;
 
   sortSelect.value = battleLogFilters.sort;
+  guildSelect.value = battleLogFilters.guild;
+  seasonSelect.value = battleLogFilters.season;
+  warSelect.value = battleLogFilters.war;
   zoneSelect.value = battleLogFilters.zoneType || '';
 
   const syncResultButtons = () => {
@@ -3651,6 +3782,21 @@ function setupBattleLogFilters() {
 
   sortSelect.addEventListener('change', () => {
     battleLogFilters.sort = sortSelect.value || 'newest';
+    rerenderBattleLog();
+  });
+
+  guildSelect.addEventListener('change', () => {
+    battleLogFilters.guild = guildSelect.value || '';
+    rerenderBattleLog();
+  });
+
+  seasonSelect.addEventListener('change', () => {
+    battleLogFilters.season = seasonSelect.value || '';
+    rerenderBattleLog();
+  });
+
+  warSelect.addEventListener('change', () => {
+    battleLogFilters.war = warSelect.value || '';
     rerenderBattleLog();
   });
 
@@ -3751,6 +3897,9 @@ function setupBattleLogFilters() {
 
   clearButton.addEventListener('click', () => {
     battleLogFilters.sort = 'newest';
+    battleLogFilters.guild = '';
+    battleLogFilters.season = '';
+    battleLogFilters.war = '';
     battleLogFilters.result = 'all';
     battleLogFilters.cleanup = 'all';
     battleLogFilters.mode = 'attacks';
@@ -3761,6 +3910,9 @@ function setupBattleLogFilters() {
     battleLogFilters.defenderUnitIds = [];
 
     sortSelect.value = 'newest';
+    guildSelect.value = '';
+    seasonSelect.value = '';
+    warSelect.value = '';
     zoneSelect.value = '';
     battleLogFilters.result = 'all';
     battleLogFilters.cleanup = 'all';
@@ -3796,6 +3948,7 @@ function renderBattleLog(snapshot) {
   if (!battleList) return;
 
   const battles = Array.isArray(snapshot?.battles) ? snapshot.battles : [];
+  updateBattleLogScopeFilterOptions(snapshot);
   updateBattleLogTileTypeFilterOptions(snapshot);
   updateBattleLogPlayerFilterOptions(snapshot);
   updateBattleLogUnitFilterOptions(snapshot);
@@ -3806,6 +3959,20 @@ function renderBattleLog(snapshot) {
   const filteredBattles = battles
     .filter((battle) => {
       const outcome = getBattleOutcome(battle);
+
+      if (battleLogFilters.guild) {
+        const matchesGuild = battle.attackerGuildName === battleLogFilters.guild
+          || battle.defenderGuildName === battleLogFilters.guild;
+        if (!matchesGuild) return false;
+      }
+
+      if (battleLogFilters.season && battle.seasonKey !== battleLogFilters.season) {
+        return false;
+      }
+
+      if (battleLogFilters.war && battle.datasetKey !== battleLogFilters.war) {
+        return false;
+      }
 
       if (battleLogFilters.result === 'win' && outcome !== 'win') {
         return false;
@@ -4474,6 +4641,9 @@ async function loadGuildData() {
 
   guildProjectionLoading = true;
   guildTabsLoading = true;
+  activeSeasonWarRecords = [];
+  setWarSummaryVisibility(Boolean(selectedWarDatasetKey));
+  renderWarSeasonCards([]);
   renderGuildTokenProjectionTable();
   renderGuildTabs();
   renderTable(null);
@@ -4489,14 +4659,29 @@ async function loadGuildData() {
     setupDefencesPlayerSearch();
     renderDefences();
     loadDefenseHistory();
-    const response = await fetch(dataset.url, { cache: 'no-store' });
-
-    if (!response.ok) {
-      throw new Error(`Unable to fetch JSON (${response.status})`);
+    const season = seasonGroups.find((group) => group.entries.some(([key]) => key === activeDatasetKey));
+    const seasonEntries = season?.entries || [[activeDatasetKey, dataset]];
+    const records = await Promise.all(seasonEntries.map(async ([key, seasonDataset]) => {
+      const response = await fetch(seasonDataset.url, { cache: 'no-store' });
+      if (!response.ok) throw new Error(`Unable to fetch JSON (${response.status})`);
+      const data = await response.json();
+      const snapshots = buildSnapshot(data);
+      const targetTeamIndex = getPrimaryGuildTeamIndexFromData(data);
+      const targetGuildName = getPrimaryGuildNameFromData(data);
+      const targetSnapshot = pickGuildSnapshotForAllWars(snapshots, targetTeamIndex, targetGuildName);
+      const opponentSnapshot = snapshots.find((snapshot) => Number(snapshot?.teamIndex) !== Number(targetSnapshot?.teamIndex)) || null;
+      return { dataset: { key, ...seasonDataset }, data, responseLastModified: response.headers.get('last-modified'), snapshots, targetSnapshot, opponentSnapshot };
+    }));
+    activeSeasonWarRecords = records;
+    if (!selectedWarDatasetKey && records[0]) {
+      selectedWarDatasetKey = records[0].dataset.key;
+      activeDatasetKey = selectedWarDatasetKey;
     }
-
-    const data = await response.json();
-    const responseLastModified = response.headers.get('last-modified');
+    renderWarSeasonCards(records);
+    const activeRecord = records.find((record) => record.dataset.key === activeDatasetKey) || records[0];
+    if (!activeRecord) throw new Error('No wars found for selected season.');
+    const data = activeRecord.data;
+    const responseLastModified = activeRecord.responseLastModified;
     const dataTimestamp = getLatestActivityTimestamp(data);
 
     renderLastUpdated({ responseLastModified, dataTimestamp });
@@ -4507,8 +4692,9 @@ async function loadGuildData() {
     guildTabsLoading = false;
     legendFilterLoading = false;
     renderGuildTokenProjectionTable();
-    renderActiveGuild();
+    if (AppNav.get('warView') !== 'log') renderActiveGuild();
     renderDatasetTabs();
+    setWarSummaryVisibility(Boolean(selectedWarDatasetKey));
 
     if (statusMessage) {
       statusMessage.textContent = `Loaded ${guildSnapshots[activeGuildIndex]?.players.length || 0} players for ${guildSnapshots[activeGuildIndex]?.name || 'the selected guild'} from ${dataset.label.toLowerCase()}.`;
@@ -4523,7 +4709,7 @@ async function loadGuildData() {
     legendFilterLoading = false;
     renderLastUpdated({ responseLastModified: null, dataTimestamp: null });
     renderGuildTokenProjectionTable();
-    renderActiveGuild();
+    if (AppNav.get('warView') !== 'log') renderActiveGuild();
     renderDatasetTabs();
 
     if (statusMessage) {

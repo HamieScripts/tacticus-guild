@@ -36,9 +36,6 @@
               <a href="guild-teams.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Guild Teams</a>
             </li>
             <li>
-              <a href="battle-log.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Battle Log</a>
-            </li>
-            <li>
               <a href="raid-log.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Raid Log</a>
             </li>
             <li data-prod-hidden>
@@ -53,34 +50,31 @@
 
       <nav data-breadcrumb aria-label="Breadcrumb" class="w-full"></nav>
 
-      <div class="top-tab-strip flex flex-wrap gap-2 border-b border-slate-700">
-        <button id="top-tab-btn-war-summary" type="button" onclick="navigateWarTab({ top: null, sub: null })" class="rounded-t-lg border-b-2 border-cyan-400 px-5 py-3 text-sm font-semibold text-cyan-300 transition-colors hover:text-slate-100">War summary</button>
-        <button id="top-tab-btn-player-summary" type="button" onclick="navigateWarTab({ top: 'player-summary' })" class="rounded-t-lg border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100">Player summary</button>
+      <section aria-labelledby="overview-heading" class="w-full">
+        <h2 id="overview-heading" class="py-1 text-xl font-bold leading-tight text-cyan-100 sm:text-2xl">Guild Wars</h2>
+      </section>
+
+      <div class="top-tab-strip flex flex-wrap gap-2 border-b border-slate-700" role="tablist" aria-label="Guild War views">
+        <button id="war-top-tab-season" type="button" role="tab" aria-selected="true" class="rounded-t-lg border-b-2 border-cyan-400 px-5 py-3 text-sm font-semibold text-cyan-300 transition-colors hover:text-slate-100">Seasons</button>
+        <button id="war-top-tab-log" type="button" role="tab" aria-selected="false" class="rounded-t-lg border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100">Battle Log</button>
       </div>
 
-      <div id="top-panel-war-summary" class="flex flex-col gap-6">
+      <div id="war-top-panel-season" class="-mt-3">
 
-      <section aria-labelledby="overview-heading" class="w-full">
-        <header class="py-1">
-          <div class="w-full">
-            <h2 id="overview-heading" class="text-xl font-bold leading-tight text-cyan-100 sm:text-2xl">Guild Wars Overview</h2>
-            <p class="mt-1 text-sm leading-relaxed text-slate-300 sm:text-base">Compare guild progress at a glance with token usage, battle performance, and score projections for your guild.</p>
+      <section aria-labelledby="season-heading" class="w-full">
+        <header class="flex flex-col gap-3 pb-3">
+          <div>
+            <h3 id="season-heading" class="text-lg font-bold text-cyan-100">Season</h3>
+            <p class="mt-1 text-sm leading-relaxed text-slate-300 sm:text-base">Pick a war season to review guild progress at a glance with token usage, battle performance, and score projections.</p>
+            <div class="mt-3 w-full sm:max-w-sm">
+              <label for="dataset-select" class="block text-xs font-semibold uppercase tracking-wide text-slate-400">War season</label>
+              <select id="dataset-select" class="mt-1 w-full rounded-md border border-slate-600 bg-slate-900/80 px-3 py-2 text-sm font-semibold text-slate-100"></select>
+            </div>
           </div>
         </header>
       </section>
 
-
-      <section>
-        <div class="flex flex-col gap-3 lg:flex-row lg:items-end">
-          <div class="w-full lg:w-80">
-            <label for="dataset-select" class="block text-xs font-semibold uppercase tracking-wide text-slate-400">Dataset</label>
-            <select id="dataset-select" class="mt-1 w-full rounded-lg border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200 outline-none transition focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/30"></select>
-          </div>
-          <div id="guild-tabs" class="flex flex-wrap gap-3 lg:self-end"></div>
-        </div>
-      </section>
-
-      <section class="hidden md:block">
+      <section class="hidden">
         <div class="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4 shadow-lg shadow-emerald-900/20">
           <p class="text-sm text-emerald-200 uppercase tracking-wide">Guild token projection</p>
           <div class="mt-2 overflow-x-auto">
@@ -112,12 +106,28 @@
         </div>
       </section>
 
+      <div class="top-tab-strip flex flex-wrap gap-2 border-b border-slate-700">
+        <button id="top-tab-btn-war-summary" type="button" onclick="navigateWarTab({ top: null, sub: null })" class="rounded-t-lg border-b-2 border-cyan-400 px-5 py-3 text-sm font-semibold text-cyan-300 transition-colors hover:text-slate-100">Wars</button>
+        <button id="top-tab-btn-player-summary" type="button" onclick="navigateWarTab({ top: 'player-summary' })" class="rounded-t-lg border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100">Player summary</button>
+      </div>
+
+      <div id="top-panel-war-summary" class="flex flex-col gap-6">
+
+      <section aria-labelledby="war-season-wars-heading" class="w-full">
+        <header class="py-1">
+          <h3 id="war-season-wars-heading" class="text-lg font-bold text-cyan-100">Wars</h3>
+        </header>
+        <div class="flex flex-wrap items-center gap-3">
+          <div id="war-season-wars-grid" class="min-w-0 flex-1"></div>
+          <div id="guild-tabs" class="flex flex-wrap gap-3"></div>
+        </div>
+      </section>
+
+      <div id="war-selected-summary" class="hidden flex flex-col gap-6">
+
       <div class="rounded-xl border border-slate-800 bg-slate-900/70 shadow-2xl shadow-black/25">
         <div class="tab-strip flex flex-wrap border-b border-slate-700">
           <button id="tab-btn-leaderboard" type="button" onclick="navigateWarTab({ tab: null })" class="border-b-2 border-cyan-400 px-5 py-3 text-sm font-semibold text-cyan-300 transition-colors hover:text-slate-100">Token table</button>
-          <button id="tab-btn-battlelog" type="button" onclick="navigateWarTab({ tab: 'battlelog' })" class="border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100">
-            Battle log <span id="battle-log-count" class="ml-1 rounded-full bg-slate-700 px-2 py-0.5 text-xs text-slate-300">0</span>
-          </button>
           <button id="tab-btn-defences" type="button" onclick="navigateWarTab({ tab: 'defences' })" class="border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100">Defences</button>
           <button id="tab-btn-portraitmap" type="button" onclick="navigateWarTab({ tab: 'portraitmap' })" class="hidden border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100" aria-hidden="true" tabindex="-1">
             Portrait mapper
@@ -167,108 +177,6 @@
             </table>
           </div>
           <div id="leaderboard-cards" class="hidden grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3"></div>
-        </div>
-
-        <div id="tab-panel-battlelog" class="hidden p-4">
-          <div class="mb-3 flex flex-col gap-3 md:flex-row md:items-end">
-            <div class="flex min-w-0 flex-1 flex-col gap-1.5">
-              <label for="battle-filter-sort" class="text-xs font-semibold uppercase tracking-wide text-slate-400">Sort</label>
-              <select id="battle-filter-sort" class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200">
-                <option value="newest">Newest</option>
-                <option value="score-desc">Score: high to low</option>
-                <option value="score-asc">Score: low to high</option>
-              </select>
-            </div>
-            <div class="flex min-w-0 flex-1 flex-col gap-1.5">
-              <label for="battle-filter-zone" class="text-xs font-semibold uppercase tracking-wide text-slate-400">Tile type</label>
-              <select id="battle-filter-zone" class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200">
-                <option value="">All tile types</option>
-              </select>
-            </div>
-            <div class="flex flex-col gap-1.5">
-              <label class="text-xs font-semibold uppercase tracking-wide text-slate-400">Result</label>
-              <div id="battle-filter-result-group" class="inline-flex overflow-hidden rounded-md border border-slate-500/50 bg-slate-900/80" role="radiogroup" aria-label="Result filter">
-                <button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-slate-700/80" data-result="all" role="radio" aria-checked="true">All</button>
-                <button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-slate-700/80" data-result="win" role="radio" aria-checked="false">Win</button>
-                <button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-slate-700/80" data-result="loss" role="radio" aria-checked="false">Lose</button>
-              </div>
-            </div>
-            <div class="flex flex-col gap-1.5">
-              <label class="text-xs font-semibold uppercase tracking-wide text-slate-400">Cleanup</label>
-              <div id="battle-filter-cleanup-group" class="inline-flex overflow-hidden rounded-md border border-slate-500/50 bg-slate-900/80" role="radiogroup" aria-label="Cleanup filter">
-                <button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-slate-700/80" data-cleanup="all" role="radio" aria-checked="true">All</button>
-                <button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-slate-700/80" data-cleanup="yes" role="radio" aria-checked="false">Cleanup</button>
-                <button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-slate-700/80" data-cleanup="no" role="radio" aria-checked="false">No cleanup</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="mb-4 grid grid-cols-1 gap-3 lg:grid-cols-2">
-            <div class="rounded-xl border border-slate-500/30 bg-slate-900/45 p-3">
-              <div class="mb-2 text-xs font-bold uppercase tracking-wide text-sky-300">Offense filters</div>
-              <div class="grid grid-cols-1 gap-3">
-                <div class="flex flex-col gap-1.5" id="battle-filter-attacker-player-control">
-                  <label for="battle-filter-attacker-player-input" class="text-xs font-semibold uppercase tracking-wide text-sky-300">Player</label>
-                  <div class="relative">
-                    <input id="battle-filter-attacker-player-input" type="text" autocomplete="off" placeholder="Search offense players..." class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200" />
-                    <div id="battle-filter-attacker-player-selected" class="mt-2 flex flex-wrap justify-start gap-1.5"></div>
-                    <div id="battle-filter-attacker-player-dropdown" class="absolute left-0 right-0 top-full mt-1.5 z-30 hidden rounded-md border border-slate-500/50 bg-slate-950/95 shadow-2xl shadow-slate-950/60">
-                      <div id="battle-filter-attacker-player-options" class="max-h-60 overflow-auto p-1"></div>
-                    </div>
-                  </div>
-                </div>
-                <div id="battle-filter-attacker-control" class="flex flex-col gap-1.5">
-                  <label for="battle-filter-attacker-input" class="text-xs font-semibold uppercase tracking-wide text-sky-300">Characters (all selected required)</label>
-                  <div class="relative">
-                    <input id="battle-filter-attacker-input" type="text" autocomplete="off" placeholder="Search offense characters..." class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200" />
-                    <div id="battle-filter-attacker-selected" class="mt-2 flex flex-wrap justify-start gap-1.5"></div>
-                    <div id="battle-filter-attacker-dropdown" class="absolute left-0 right-0 top-full mt-1.5 z-30 hidden rounded-md border border-slate-500/50 bg-slate-950/95 shadow-2xl shadow-slate-950/60">
-                      <div id="battle-filter-attacker-options" class="max-h-60 overflow-auto p-1"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="rounded-xl border border-slate-500/30 bg-slate-900/45 p-3">
-              <div class="mb-2 text-xs font-bold uppercase tracking-wide text-pink-300">Defense filters</div>
-              <div class="grid grid-cols-1 gap-3">
-                <div class="flex flex-col gap-1.5" id="battle-filter-defender-player-control">
-                  <label for="battle-filter-defender-player-input" class="text-xs font-semibold uppercase tracking-wide text-pink-300">Player</label>
-                  <div class="relative">
-                    <input id="battle-filter-defender-player-input" type="text" autocomplete="off" placeholder="Search defense players..." class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200" />
-                    <div id="battle-filter-defender-player-selected" class="mt-2 flex flex-wrap justify-end gap-1.5 max-md:justify-start"></div>
-                    <div id="battle-filter-defender-player-dropdown" class="absolute left-0 right-0 top-full mt-1.5 z-30 hidden rounded-md border border-slate-500/50 bg-slate-950/95 shadow-2xl shadow-slate-950/60">
-                      <div id="battle-filter-defender-player-options" class="max-h-60 overflow-auto p-1"></div>
-                    </div>
-                  </div>
-                </div>
-                <div id="battle-filter-defender-control" class="flex flex-col gap-1.5">
-                  <label for="battle-filter-defender-input" class="text-xs font-semibold uppercase tracking-wide text-pink-300">Characters (all selected required)</label>
-                  <div class="relative">
-                    <input id="battle-filter-defender-input" type="text" autocomplete="off" placeholder="Search defense characters..." class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200" />
-                    <div id="battle-filter-defender-selected" class="mt-2 flex flex-wrap justify-end gap-1.5 max-md:justify-start"></div>
-                    <div id="battle-filter-defender-dropdown" class="absolute left-0 right-0 top-full mt-1.5 z-30 hidden rounded-md border border-slate-500/50 bg-slate-950/95 shadow-2xl shadow-slate-950/60">
-                      <div id="battle-filter-defender-options" class="max-h-60 overflow-auto p-1"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div id="battle-log-stats" class="mb-3 flex flex-wrap items-center gap-2">
-            <div id="battle-log-stat-win-avg" class="inline-flex items-center rounded-md bg-emerald-400/20 px-2 py-1 text-sm font-semibold text-lime-100">Win avg: 0</div>
-            <div id="battle-log-stat-loss-avg" class="inline-flex items-center rounded-md bg-rose-400/20 px-2 py-1 text-sm font-semibold text-rose-200">Lose avg: 0</div>
-            <div id="battle-log-stat-win-cleanup" class="inline-flex items-center rounded-md bg-cyan-400/20 px-2 py-1 text-sm font-semibold text-cyan-100">Win cleanup: 0</div>
-            <div id="battle-log-stat-loss-cleanup" class="inline-flex items-center rounded-md bg-amber-400/20 px-2 py-1 text-sm font-semibold text-amber-100">Lose cleanup: 0</div>
-          </div>
-
-          <div class="mb-4 flex items-center justify-between gap-3 max-md:flex-col max-md:items-start">
-            <p id="battle-filter-summary" class="text-sm text-slate-400">Showing 0 logs</p>
-            <button id="battle-filter-clear" type="button" class="rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm font-semibold text-slate-300 transition hover:border-cyan-400/60 hover:text-slate-100">Clear filters</button>
-          </div>
-
-          <div id="battle-log-list" class="flex flex-col gap-3"></div>
         </div>
 
         <div id="tab-panel-defences" class="hidden p-4">
@@ -339,6 +247,8 @@
 
       </div>
 
+      </div>
+
       <div id="top-panel-player-summary" class="hidden flex-col gap-6">
         <section aria-labelledby="player-summary-heading" class="w-full">
           <header class="py-1">
@@ -377,6 +287,52 @@
 
       </div>
 
+
+      </div>
+
+      <section id="war-top-panel-log" class="hidden" aria-label="Battle Log">
+        <div class="rounded-xl border border-slate-800 bg-slate-900/70 shadow-2xl shadow-black/25">
+          <div id="tab-panel-battle-history" class="p-4">
+            <div class="mb-3 grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-4">
+              <div class="flex flex-col gap-1.5">
+                <label for="battle-filter-guild" class="text-xs font-semibold uppercase tracking-wide text-slate-400">Guild</label>
+                <select id="battle-filter-guild" class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200"><option value="">All guilds</option></select>
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <label for="battle-filter-season" class="text-xs font-semibold uppercase tracking-wide text-slate-400">Season</label>
+                <select id="battle-filter-season" class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200"><option value="">All seasons</option></select>
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <label for="battle-filter-war" class="text-xs font-semibold uppercase tracking-wide text-slate-400">War</label>
+                <select id="battle-filter-war" class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200"><option value="">All wars</option></select>
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <label for="battle-filter-sort" class="text-xs font-semibold uppercase tracking-wide text-slate-400">Sort</label>
+                <select id="battle-filter-sort" class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200">
+                  <option value="newest">Newest</option><option value="score-desc">Score: high to low</option><option value="score-asc">Score: low to high</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mb-3 flex flex-wrap gap-3">
+              <div class="flex flex-col gap-1.5"><label class="text-xs font-semibold uppercase tracking-wide text-slate-400">Result</label><div id="battle-filter-result-group" class="inline-flex overflow-hidden rounded-md border border-slate-500/50 bg-slate-900/80" role="radiogroup" aria-label="Result filter"><button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300" data-result="all" role="radio" aria-checked="true">All</button><button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300" data-result="win" role="radio" aria-checked="false">Win</button><button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300" data-result="loss" role="radio" aria-checked="false">Lose</button></div></div>
+              <div class="flex flex-col gap-1.5"><label class="text-xs font-semibold uppercase tracking-wide text-slate-400">Cleanup</label><div id="battle-filter-cleanup-group" class="inline-flex overflow-hidden rounded-md border border-slate-500/50 bg-slate-900/80" role="radiogroup" aria-label="Cleanup filter"><button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300" data-cleanup="all" role="radio" aria-checked="true">All</button><button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300" data-cleanup="yes" role="radio" aria-checked="false">Cleanup</button><button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300" data-cleanup="no" role="radio" aria-checked="false">No cleanup</button></div></div>
+              <div class="flex flex-col gap-1.5"><label class="text-xs font-semibold uppercase tracking-wide text-slate-400">Mode</label><div id="battle-filter-mode-group" class="inline-flex overflow-hidden rounded-md border border-slate-500/50 bg-slate-900/80" role="radiogroup" aria-label="Battle mode filter"><button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300" data-mode="attacks" role="radio" aria-checked="true">Attacks</button><button type="button" class="px-3 py-2 text-sm font-semibold text-slate-300" data-mode="defenses" role="radio" aria-checked="false">Defenses</button></div></div>
+              <div class="flex flex-col gap-1.5"><label for="battle-filter-zone" class="text-xs font-semibold uppercase tracking-wide text-slate-400">Tile type</label><select id="battle-filter-zone" class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200"><option value="">All tile types</option></select></div>
+            </div>
+
+            <div class="mb-4 grid grid-cols-1 gap-3 lg:grid-cols-2">
+              <div class="rounded-xl border border-slate-500/30 bg-slate-900/45 p-3"><div class="mb-2 text-xs font-bold uppercase tracking-wide text-sky-300">Offense filters</div><div class="grid grid-cols-1 gap-3"><div class="flex flex-col gap-1.5" id="battle-filter-attacker-player-control"><label for="battle-filter-attacker-player-input" class="text-xs font-semibold uppercase tracking-wide text-sky-300">Player</label><div class="relative"><input id="battle-filter-attacker-player-input" type="text" autocomplete="off" placeholder="Search offense players..." class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200" /><div id="battle-filter-attacker-player-selected" class="mt-2 flex flex-wrap gap-1.5"></div><div id="battle-filter-attacker-player-dropdown" class="absolute left-0 right-0 top-full z-30 mt-1.5 hidden rounded-md border border-slate-500/50 bg-slate-950/95 shadow-2xl"><div id="battle-filter-attacker-player-options" class="max-h-60 overflow-auto p-1"></div></div></div></div><div class="flex flex-col gap-1.5" id="battle-filter-attacker-control"><label for="battle-filter-attacker-input" class="text-xs font-semibold uppercase tracking-wide text-sky-300">Characters</label><div class="relative"><input id="battle-filter-attacker-input" type="text" autocomplete="off" placeholder="Search offense characters..." class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200" /><div id="battle-filter-attacker-selected" class="mt-2 flex flex-wrap gap-1.5"></div><div id="battle-filter-attacker-dropdown" class="absolute left-0 right-0 top-full z-30 mt-1.5 hidden rounded-md border border-slate-500/50 bg-slate-950/95 shadow-2xl"><div id="battle-filter-attacker-options" class="max-h-60 overflow-auto p-1"></div></div></div></div></div></div>
+              <div class="rounded-xl border border-slate-500/30 bg-slate-900/45 p-3"><div class="mb-2 text-xs font-bold uppercase tracking-wide text-pink-300">Defense filters</div><div class="grid grid-cols-1 gap-3"><div class="flex flex-col gap-1.5" id="battle-filter-defender-player-control"><label for="battle-filter-defender-player-input" class="text-xs font-semibold uppercase tracking-wide text-pink-300">Player</label><div class="relative"><input id="battle-filter-defender-player-input" type="text" autocomplete="off" placeholder="Search defense players..." class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200" /><div id="battle-filter-defender-player-selected" class="mt-2 flex flex-wrap gap-1.5"></div><div id="battle-filter-defender-player-dropdown" class="absolute left-0 right-0 top-full z-30 mt-1.5 hidden rounded-md border border-slate-500/50 bg-slate-950/95 shadow-2xl"><div id="battle-filter-defender-player-options" class="max-h-60 overflow-auto p-1"></div></div></div></div><div class="flex flex-col gap-1.5" id="battle-filter-defender-control"><label for="battle-filter-defender-input" class="text-xs font-semibold uppercase tracking-wide text-pink-300">Characters</label><div class="relative"><input id="battle-filter-defender-input" type="text" autocomplete="off" placeholder="Search defense characters..." class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200" /><div id="battle-filter-defender-selected" class="mt-2 flex flex-wrap gap-1.5"></div><div id="battle-filter-defender-dropdown" class="absolute left-0 right-0 top-full z-30 mt-1.5 hidden rounded-md border border-slate-500/50 bg-slate-950/95 shadow-2xl"><div id="battle-filter-defender-options" class="max-h-60 overflow-auto p-1"></div></div></div></div></div></div>
+            </div>
+
+            <div id="battle-log-stats" class="mb-3 flex flex-wrap items-center gap-2"><div id="battle-log-stat-win-avg" class="inline-flex rounded-md bg-emerald-400/20 px-2 py-1 text-sm font-semibold text-lime-100">Win avg: 0</div><div id="battle-log-stat-loss-avg" class="inline-flex rounded-md bg-rose-400/20 px-2 py-1 text-sm font-semibold text-rose-200">Lose avg: 0</div><div id="battle-log-stat-win-cleanup" class="inline-flex rounded-md bg-cyan-400/20 px-2 py-1 text-sm font-semibold text-cyan-100">Win cleanup: 0</div><div id="battle-log-stat-loss-cleanup" class="inline-flex rounded-md bg-amber-400/20 px-2 py-1 text-sm font-semibold text-amber-100">Lose cleanup: 0</div></div>
+            <div class="mb-4 flex items-center justify-between gap-3 max-md:flex-col max-md:items-start"><p id="battle-filter-summary" class="text-sm text-slate-400">Showing 0 logs</p><button id="battle-filter-clear" type="button" class="rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm font-semibold text-slate-300">Clear filters</button></div>
+            <div id="battle-log-list" class="flex flex-col gap-3"></div>
+          </div>
+
+        </div>
+      </section>
 
         </div>
       </div>
@@ -481,7 +437,7 @@
       function switchMainTab(tab) {
         const activeBtnClasses = ['text-cyan-300', 'border-cyan-400'];
         const inactiveBtnClasses = ['text-slate-400', 'border-transparent'];
-        const panels = ['leaderboard', 'battlelog', 'defences', 'portraitmap'];
+        const panels = ['leaderboard', 'defences', 'portraitmap'];
         panels.forEach(function(id) {
           const panel = document.getElementById('tab-panel-' + id);
           const btn = document.getElementById('tab-btn-' + id);
@@ -531,13 +487,14 @@
       }
 
       const WAR_TAB_LABELS = {
-        top: { 'war-summary': 'War summary', 'player-summary': 'Player summary' },
-        main: { leaderboard: 'Token table', battlelog: 'Battle log', defences: 'Defences', portraitmap: 'Portrait map' },
+        top: { 'war-summary': 'Wars', 'player-summary': 'Player summary' },
+        main: { leaderboard: 'Token table', defences: 'Defences', portraitmap: 'Portrait map' },
         sub: { attack: 'Attack', defence: 'Defence' }
       };
 
       function applyWarTabsFromUrl() {
         const params = AppNav.getParams();
+        const topView = params.get('warView') === 'log' ? 'log' : 'season';
         const top = WAR_TAB_LABELS.top[params.get('top')] ? params.get('top') : 'war-summary';
         const main = WAR_TAB_LABELS.main[params.get('tab')] ? params.get('tab') : 'leaderboard';
         const sub = WAR_TAB_LABELS.sub[params.get('sub')] ? params.get('sub') : 'attack';
@@ -548,8 +505,14 @@
 
         const trail = [
           { label: 'Home', href: 'index.html' },
-          { label: 'Guild Wars', params: { top: null, tab: null, sub: null } }
+          { label: 'Guild Wars', params: { warView: null, top: null, tab: null, sub: null } }
         ];
+
+        if (topView === 'log') {
+          trail.push({ label: 'Battle Log' });
+          AppNav.renderBreadcrumb(trail, applyWarTabsFromUrl);
+          return;
+        }
 
         if (top === 'player-summary') {
           trail.push({ label: WAR_TAB_LABELS.top[top], params: { sub: null } });
@@ -570,6 +533,41 @@
       document.addEventListener('DOMContentLoaded', () => {
         AppNav.onChange(applyWarTabsFromUrl);
         applyWarTabsFromUrl();
+
+        const seasonTab = document.getElementById('war-top-tab-season');
+        const logTab = document.getElementById('war-top-tab-log');
+        const seasonPanel = document.getElementById('war-top-panel-season');
+        const logPanel = document.getElementById('war-top-panel-log');
+        const setTopTab = (activeTab) => {
+          const seasonActive = activeTab === 'season';
+          seasonPanel.classList.toggle('hidden', !seasonActive);
+          logPanel.classList.toggle('hidden', seasonActive);
+          seasonTab.setAttribute('aria-selected', String(seasonActive));
+          logTab.setAttribute('aria-selected', String(!seasonActive));
+          seasonTab.classList.toggle('border-cyan-400', seasonActive);
+          seasonTab.classList.toggle('text-cyan-300', seasonActive);
+          seasonTab.classList.toggle('border-transparent', !seasonActive);
+          seasonTab.classList.toggle('text-slate-400', !seasonActive);
+          logTab.classList.toggle('border-cyan-400', !seasonActive);
+          logTab.classList.toggle('text-cyan-300', !seasonActive);
+          logTab.classList.toggle('border-transparent', seasonActive);
+          logTab.classList.toggle('text-slate-400', seasonActive);
+          if (!seasonActive && typeof setupBattleLogPageTabs === 'function') {
+            setupBattleLogPageTabs();
+            if (typeof loadAllWarsBattleLogData === 'function') loadAllWarsBattleLogData();
+          }
+        };
+        seasonTab.addEventListener('click', () => {
+          AppNav.setParams({ warView: null });
+          setTopTab('season');
+          applyWarTabsFromUrl();
+        });
+        logTab.addEventListener('click', () => {
+          AppNav.setParams({ warView: 'log' });
+          setTopTab('log');
+          applyWarTabsFromUrl();
+        });
+        setTopTab(AppNav.get('warView') === 'log' ? 'log' : 'season');
       });
     </script>
   </body>

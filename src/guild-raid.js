@@ -912,11 +912,19 @@ function bindSeasonSelect() {
 }
 
 function renderBreadcrumb() {
+  const topView = AppNav.get('raidView') === 'log' ? 'log' : 'season';
   const trail = [
     { label: 'Home', href: 'index.html' },
-    { label: 'Guild Raid', params: { season: null, view: null, boss: null, tab: null } },
-    { label: `Season ${raidState.activeSeason ?? '-'}`, params: { view: null, boss: null, tab: null } }
+    { label: 'Guild Raid', params: { raidView: null, season: null, view: null, boss: null, tab: null } }
   ];
+
+  if (topView === 'log') {
+    trail.push({ label: 'Raid Log' });
+    AppNav.renderBreadcrumb(trail, applyUrlState);
+    return;
+  }
+
+  trail.push({ label: `Season ${raidState.activeSeason ?? '-'}`, params: { view: null, boss: null, tab: null } });
 
   if (raidState.activeView === 'players') {
     trail.push({ label: 'Players' });

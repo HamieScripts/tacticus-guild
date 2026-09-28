@@ -9,7 +9,6 @@ A Guild Wars analytics and team composition dashboard for the game *Praetorians 
 | `index.html` | Home overview with dataset selection |
 | `guild-wars.html` | Guild Wars overview — token usage, battle performance, score projections |
 | `guild-raid.html` | Guild Raid season — boss encounters by tier, attacks, and per-player damage |
-| `battle-log.html` | Battle history with filters for result, player, team, and units |
 | `guild-teams.html` | Team composition library and builder *(dev only)* |
 | `player-page.html` | Per-player average attack/defense scores with scatter plots *(dev only)* |
 
