@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790563747,
+  "fetchedOn": 1790564618,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -15397,6 +15397,108 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 36226
+      }
+    },
+    {
+      "userId": "9d50010a-82f9-4db9-aa55-e292388ea749",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 568077,
+      "damageType": "Battle",
+      "remainingHp": 18959117,
+      "maxHp": 31250000,
+      "startedOn": 1790563771,
+      "completedOn": 1790564104,
+      "heroDetails": [
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 120876
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 603747
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 303492
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 92465
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 808849
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 149526
+      }
+    },
+    {
+      "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 7078,
+      "damageType": "Bomb",
+      "remainingHp": 19852196,
+      "maxHp": 31250000,
+      "startedOn": 1790563792,
+      "completedOn": 1790563792,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 325002,
+      "damageType": "Battle",
+      "remainingHp": 19527194,
+      "maxHp": 31250000,
+      "startedOn": 1790563801,
+      "completedOn": 1790563962,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 657529
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 866505
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 368517
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 616001
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 958748
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 16046
       }
     }
   ]
