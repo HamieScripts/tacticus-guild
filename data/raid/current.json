@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790674076,
+  "fetchedOn": 1790675354,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -19004,6 +19004,42 @@
         "unitId": "blackForgefiend",
         "power": 105879
       }
+    },
+    {
+      "userId": "d9c3ef49-eadf-499d-ab81-d655dbcc086f",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 7388,
+      "damageType": "Bomb",
+      "remainingHp": 44118830,
+      "maxHp": 45000000,
+      "startedOn": 1790674979,
+      "completedOn": 1790674979,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 6921,
+      "damageType": "Bomb",
+      "remainingHp": 44111909,
+      "maxHp": 45000000,
+      "startedOn": 1790675000,
+      "completedOn": 1790675000,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
