@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790722553,
+  "fetchedOn": 1790724047,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -20095,6 +20095,48 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 956210
+      }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 93770,
+      "damageType": "Battle",
+      "remainingHp": 42505176,
+      "maxHp": 45000000,
+      "startedOn": 1790723214,
+      "completedOn": 1790723373,
+      "heroDetails": [
+        {
+          "unitId": "bloodDante",
+          "power": 231580
+        },
+        {
+          "unitId": "genesKelermorph",
+          "power": 484160
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 263370
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 840521
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 754017
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 66681
       }
     }
   ]
