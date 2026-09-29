@@ -36,9 +36,6 @@
             <li data-prod-hidden>
               <a href="guild-teams.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Guild Teams</a>
             </li>
-            <li>
-              <a href="raid-log.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Raid Log</a>
-            </li>
             <li data-prod-hidden>
               <a href="player-page.html" class="inline-flex rounded-lg border border-slate-600/80 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/70 hover:text-white">Player Stats</a>
             </li>
@@ -99,8 +96,23 @@
       </main>
       </div>
 
-      <section id="raid-top-panel-log" class="hidden" aria-label="Raid Log empty state">
-        <div class="rounded-xl border border-dashed border-slate-700 bg-slate-900/50 p-8 text-center text-sm text-slate-400">Raid Log is not available yet.</div>
+      <section id="raid-top-panel-log" class="hidden" aria-label="Raid Log">
+        <div class="rounded-xl border border-slate-800 bg-slate-900/70 p-4 shadow-2xl shadow-black/25">
+          <div class="mb-4 grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-4">
+            <div class="flex flex-col gap-1.5"><label for="raid-filter-guild" class="text-xs font-semibold uppercase tracking-wide text-slate-400">Guild</label><select id="raid-filter-guild" class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200"><option value="">All guilds</option></select></div>
+            <div class="flex flex-col gap-1.5"><label for="raid-filter-season" class="text-xs font-semibold uppercase tracking-wide text-slate-400">Season</label><select id="raid-filter-season" class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200"><option value="">All seasons</option></select></div>
+            <div class="flex flex-col gap-1.5"><label for="raid-filter-boss" class="text-xs font-semibold uppercase tracking-wide text-slate-400">Raid boss</label><select id="raid-filter-boss" class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200"><option value="">All raid bosses</option></select></div>
+            <div class="flex flex-col gap-1.5"><label for="raid-filter-player" class="text-xs font-semibold uppercase tracking-wide text-slate-400">Player</label><select id="raid-filter-player" class="w-full rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm text-slate-200"><option value="">All players</option></select></div>
+          </div>
+          <div class="mb-4 flex flex-wrap gap-3">
+            <div class="flex flex-col gap-1.5"><label class="text-xs font-semibold uppercase tracking-wide text-slate-400">Encounter</label><div id="raid-filter-encounter-group" class="inline-flex overflow-hidden rounded-md border border-slate-500/50 bg-slate-900/80" role="radiogroup"><button type="button" class="px-3 py-2 text-sm text-slate-300" data-encounter="all">All</button><button type="button" class="px-3 py-2 text-sm text-slate-300" data-encounter="boss">Boss</button><button type="button" class="px-3 py-2 text-sm text-slate-300" data-encounter="sideboss">Side boss</button></div></div>
+            <div class="flex flex-col gap-1.5"><label class="text-xs font-semibold uppercase tracking-wide text-slate-400">Damage type</label><div id="raid-filter-damage-type-group" class="inline-flex overflow-hidden rounded-md border border-slate-500/50 bg-slate-900/80" role="radiogroup"><button type="button" class="px-3 py-2 text-sm text-slate-300" data-damage-type="all">All</button><button type="button" class="px-3 py-2 text-sm text-slate-300" data-damage-type="battle">Battle</button><button type="button" class="px-3 py-2 text-sm text-slate-300" data-damage-type="bomb">Bomb</button></div></div>
+            <div class="flex flex-col gap-1.5"><label class="text-xs font-semibold uppercase tracking-wide text-slate-400">Result</label><div id="raid-filter-result-group" class="inline-flex overflow-hidden rounded-md border border-slate-500/50 bg-slate-900/80" role="radiogroup"><button type="button" class="px-3 py-2 text-sm text-slate-300" data-result="all">All</button><button type="button" class="px-3 py-2 text-sm text-slate-300" data-result="kill">Kill</button><button type="button" class="px-3 py-2 text-sm text-slate-300" data-result="survived">Survived</button></div></div>
+          </div>
+          <div id="raid-log-stats" class="mb-3 flex flex-wrap gap-2"><div id="raid-log-stat-damage" class="rounded-md bg-cyan-400/20 px-2 py-1 text-sm font-semibold text-cyan-100">Total damage: 0</div><div id="raid-log-stat-attacks" class="rounded-md bg-sky-400/20 px-2 py-1 text-sm font-semibold text-sky-100">Attacks: 0</div><div id="raid-log-stat-bombs" class="rounded-md bg-amber-400/20 px-2 py-1 text-sm font-semibold text-amber-100">Bombs: 0</div><div id="raid-log-stat-kills" class="rounded-md bg-emerald-400/20 px-2 py-1 text-sm font-semibold text-lime-100">Kills: 0</div><div id="raid-log-stat-players" class="rounded-md bg-violet-400/20 px-2 py-1 text-sm font-semibold text-violet-100">Players: 0</div></div>
+          <div class="mb-4 flex items-center justify-between gap-3 max-md:flex-col max-md:items-start"><p id="raid-filter-summary" class="text-sm text-slate-400">Loading raid seasons...</p><button id="raid-filter-clear" type="button" class="rounded-md border border-slate-500/50 bg-slate-900/80 px-3 py-2 text-sm font-semibold text-slate-300">Clear filters</button></div>
+          <div class="overflow-x-auto rounded-lg border border-slate-800/80" id="raid-log-table-wrap"><table id="raid-log-table" class="w-full min-w-[1180px] text-left text-sm text-slate-200"><thead class="sticky top-0 z-10 bg-slate-900 text-xs uppercase tracking-wide text-slate-400"><tr><th data-sort-key="date" class="cursor-pointer px-3 py-2">Date</th><th data-sort-key="season" class="cursor-pointer px-3 py-2">Season</th><th data-sort-key="player" class="cursor-pointer px-3 py-2">Player</th><th data-sort-key="boss" class="cursor-pointer px-3 py-2">Boss</th><th data-sort-key="rarity" class="cursor-pointer px-3 py-2">Rarity</th><th data-sort-key="tier" class="cursor-pointer px-3 py-2">Tier / Set</th><th data-sort-key="damage" class="cursor-pointer px-3 py-2 text-right">Damage</th><th data-sort-key="power" class="cursor-pointer px-3 py-2 text-right">Power</th><th class="px-3 py-2">Type</th><th class="px-3 py-2">Result</th><th class="px-3 py-2">Team</th></tr></thead><tbody id="raid-log-body" class="divide-y divide-slate-700/60"></tbody></table></div>
+        </div>
       </section>
         </div>
       </div>
@@ -110,6 +122,7 @@
     <script src="src/lib/supabase-config.js"></script>
     <script src="src/lib/supabase-data.js"></script>
     <script src="src/guild-raid.js"></script>
+    <script src="src/raid-log.js"></script>
     <script>
       const isLocalDevelopmentHost = () => {
         const host = (window.location.hostname || '').toLowerCase();
@@ -148,6 +161,12 @@
         const logTab = document.getElementById('raid-top-tab-log');
         const seasonPanel = document.getElementById('raid-top-panel-season');
         const logPanel = document.getElementById('raid-top-panel-log');
+        let raidLogInitialized = false;
+        const ensureRaidLogLoaded = () => {
+          if (raidLogInitialized || typeof window.initRaidLogPage !== 'function') return;
+          raidLogInitialized = true;
+          window.initRaidLogPage();
+        };
         const setTopTab = (activeTab) => {
           const seasonActive = activeTab === 'season';
           seasonPanel.classList.toggle('hidden', !seasonActive);
@@ -162,6 +181,7 @@
           logTab.classList.toggle('text-cyan-300', !seasonActive);
           logTab.classList.toggle('border-transparent', seasonActive);
           logTab.classList.toggle('text-slate-400', seasonActive);
+          if (!seasonActive) ensureRaidLogLoaded();
         };
         seasonTab.addEventListener('click', () => {
           AppNav.setParams({ raidView: null });

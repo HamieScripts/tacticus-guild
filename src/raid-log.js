@@ -1,3 +1,4 @@
+(function initRaidLogModule() {
 // Raid Log: one table row per raid entry across every tracked season.
 // Data comes from Supabase (raid_entries) with the per-season JSON files as fallback,
 // mirroring the loading strategy in guild-raid.js.
@@ -40,6 +41,7 @@ const raidLogState = {
     sortDirection: 'desc',
     // Defaults to the current season once known; other seasons load on demand.
     seasons: [],
+      guilds: [],
     players: [],
     bosses: [],
     rarities: [],
@@ -59,6 +61,7 @@ const raidLogState = {
   // Option pools grow as seasons load; Sets/Maps keep dedupe cheap.
   optionPools: {
     seasons: new Set(),
+      guilds: new Set(),
     players: new Set(),
     bosses: new Map(),
     rarities: new Set(),
@@ -255,6 +258,7 @@ async function loadSeasonEntries(seasonMeta) {
   const entries = Array.isArray(raid?.entries) ? raid.entries : [];
   entries.forEach((entry) => {
     entry.__season = season;
+    entry.__guild = String(raid.guild?.name || 'Unknown guild');
     entry.__time = Number(entry.completedOn || entry.startedOn) || 0;
   });
   return entries;
@@ -263,6 +267,7 @@ async function loadSeasonEntries(seasonMeta) {
 function indexEntryOptions(entry) {
   const pools = raidLogState.optionPools;
   pools.seasons.add(entry.__season);
+    pools.guilds.add(entry.__guild || 'Unknown guild');
   if (entry.userId) pools.players.add(String(entry.userId));
   if (entry.rarity) pools.rarities.add(entry.rarity);
 
@@ -352,6 +357,10 @@ function scheduleRender() {
 function getSortedOptions(key) {
   const pools = raidLogState.optionPools;
   switch (key) {
+    case 'guild':
+      return [...pools.guilds]
+        .map((guild) => ({ id: guild, label: guild }))
+        .sort((a, b) => a.label.localeCompare(b.label));
     case 'season':
       return [...pools.seasons]
         .sort((a, b) => b - a)
@@ -382,6 +391,7 @@ function getSortedOptions(key) {
 }
 
 const FILTER_KEY_BY_CONTROL = {
+  guild: 'guilds',
   season: 'seasons',
   player: 'players',
   boss: 'bosses',
@@ -486,9 +496,38 @@ function renderMultiSelectControl(key) {
   });
 }
 
+function renderRaidLogScopeSelects() {
+  const controls = [
+    { id: 'raid-filter-guild', key: 'guild', filterKey: 'guilds', emptyLabel: 'All guilds' },
+    { id: 'raid-filter-season', key: 'season', filterKey: 'seasons', emptyLabel: 'All seasons' },
+    { id: 'raid-filter-boss', key: 'boss', filterKey: 'bosses', emptyLabel: 'All raid bosses' },
+    { id: 'raid-filter-player', key: 'player', filterKey: 'players', emptyLabel: 'All players' }
+  ];
+
+  controls.forEach(({ id, key, filterKey, emptyLabel }) => {
+    const select = document.getElementById(id);
+    if (!select) return;
+
+    const options = getSortedOptions(key);
+    select.innerHTML = `<option value="">${escapeHtml(emptyLabel)}</option>${options.map((option) => `<option value="${escapeHtml(option.id)}">${escapeHtml(option.label)}</option>`).join('')}`;
+    select.value = raidLogState.filters[filterKey][0] || '';
+
+    if (select.dataset.initialized) return;
+    select.addEventListener('change', () => {
+      const value = select.value || '';
+      raidLogState.filters[filterKey] = value ? [value] : [];
+      resetScrollWindow();
+      renderRaidLog();
+      if (key === 'season') ensureSeasonsLoaded();
+    });
+    select.dataset.initialized = 'true';
+  });
+}
+
 function entryMatchesFilters(entry) {
   const filters = raidLogState.filters;
 
+  if (filters.guilds.length > 0 && !filters.guilds.includes(entry.__guild || 'Unknown guild')) return false;
   if (filters.seasons.length > 0 && !filters.seasons.includes(String(entry.__season))) return false;
   if (filters.players.length > 0 && !filters.players.includes(String(entry.userId || ''))) return false;
   if (filters.bosses.length > 0 && !filters.bosses.includes(getBossFilterId(entry))) return false;
@@ -686,6 +725,7 @@ function resetScrollWindow() {
 }
 
 function renderRaidLog() {
+  renderRaidLogScopeSelects();
   Object.keys(FILTER_KEY_BY_CONTROL).forEach(renderMultiSelectControl);
 
   const body = document.getElementById('raid-log-body');
@@ -833,6 +873,7 @@ function setupFilters() {
         sortKey: 'date',
         sortDirection: 'desc',
         // Keep the current-season default; the user has to opt into older seasons.
+        guilds: [],
         seasons: (() => {
           const fallback = getDefaultSeason();
           return fallback ? [String(fallback)] : [];
@@ -897,8 +938,21 @@ async function initRaidLogPage() {
   updateScrollWindow();
   renderRaidLog();
   await ensureSeasonsLoaded();
+  if (raidLogState.filters.guilds.length === 0) {
+    const defaultGuild = [...raidLogState.optionPools.guilds].find((guild) => guild.toLowerCase().includes('praetorians'))
+      || [...raidLogState.optionPools.guilds][0];
+    if (defaultGuild) {
+      raidLogState.filters.guilds = [defaultGuild];
+      renderRaidLog();
+    }
+  }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  initRaidLogPage();
-});
+  window.initRaidLogPage = initRaidLogPage;
+
+  if (document.body?.dataset?.page === 'raid-log') {
+    document.addEventListener('DOMContentLoaded', () => {
+      initRaidLogPage();
+    });
+  }
+})();

@@ -45,6 +45,14 @@
         "/^git rebase origin/master$/": {
             "approve": true,
             "matchCommandLine": true
+        },
+        "/^node --check src/app\\.js$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^node --check src/app\\.js; node --test tests/live-war-dataset\\.test\\.js$/": {
+            "approve": true,
+            "matchCommandLine": true
         }
     }
 }
