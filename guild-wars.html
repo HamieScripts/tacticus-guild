@@ -71,8 +71,22 @@
         </header>
       </section>
 
-      <section class="hidden">
-        <div class="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4 shadow-lg shadow-emerald-900/20">
+      <div class="top-tab-strip flex flex-wrap gap-2 border-b border-slate-700">
+        <button id="top-tab-btn-war-summary" type="button" onclick="navigateWarTab({ top: null, sub: null })" class="rounded-t-lg border-b-2 border-cyan-400 px-5 py-3 text-sm font-semibold text-cyan-300 transition-colors hover:text-slate-100">Wars</button>
+        <button id="top-tab-btn-player-summary" type="button" onclick="navigateWarTab({ top: 'player-summary' })" class="rounded-t-lg border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100">Player summary</button>
+      </div>
+
+      <div id="top-panel-war-summary" class="flex flex-col gap-6">
+
+      <section aria-labelledby="war-season-wars-heading" class="w-full">
+        <header class="py-1">
+          <h3 id="war-season-wars-heading" class="text-lg font-bold text-cyan-100">Wars</h3>
+        </header>
+        <div class="flex flex-wrap items-center gap-3">
+          <div id="war-season-wars-grid" class="min-w-0 flex-1"></div>
+          <div id="guild-tabs" class="flex flex-wrap gap-3"></div>
+        </div>
+        <div class="mt-6 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4 shadow-lg shadow-emerald-900/20">
           <p class="text-sm text-emerald-200 uppercase tracking-wide">Guild token projection</p>
           <div class="mt-2 overflow-x-auto">
             <table class="w-full text-left text-xs sm:text-sm">
@@ -91,7 +105,7 @@
                   <th class="pb-2 pr-3 font-semibold">Avg/token</th>
                   <th class="border-l border-slate-700/70 pb-2 pl-3 pr-3 font-semibold">Wins</th>
                   <th class="pb-2 pr-3 font-semibold">Defeats</th>
-                  <th class="pb-2 pr-3 font-semibold">Abandoned</th>
+                  <th class="pb-2 pr-3 font-semibold" title="Battle abandoned">BA</th>
                   <th class="border-l border-slate-700/70 pb-2 pl-3 pr-3 font-semibold">Player total</th>
                   <th class="pb-2 pr-3 font-semibold">Projected total</th>
                   <th class="border-l border-slate-700/70 pb-2 pl-3 font-semibold">Tile total</th>
@@ -100,23 +114,6 @@
               <tbody id="guild-token-projection-body" class="text-slate-100"></tbody>
             </table>
           </div>
-        </div>
-      </section>
-
-      <div class="top-tab-strip flex flex-wrap gap-2 border-b border-slate-700">
-        <button id="top-tab-btn-war-summary" type="button" onclick="navigateWarTab({ top: null, sub: null })" class="rounded-t-lg border-b-2 border-cyan-400 px-5 py-3 text-sm font-semibold text-cyan-300 transition-colors hover:text-slate-100">Wars</button>
-        <button id="top-tab-btn-player-summary" type="button" onclick="navigateWarTab({ top: 'player-summary' })" class="rounded-t-lg border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100">Player summary</button>
-      </div>
-
-      <div id="top-panel-war-summary" class="flex flex-col gap-6">
-
-      <section aria-labelledby="war-season-wars-heading" class="w-full">
-        <header class="py-1">
-          <h3 id="war-season-wars-heading" class="text-lg font-bold text-cyan-100">Wars</h3>
-        </header>
-        <div class="flex flex-wrap items-center gap-3">
-          <div id="war-season-wars-grid" class="min-w-0 flex-1"></div>
-          <div id="guild-tabs" class="flex flex-wrap gap-3"></div>
         </div>
       </section>
 
