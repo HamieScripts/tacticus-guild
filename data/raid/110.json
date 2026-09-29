@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790663988,
+  "fetchedOn": 1790665649,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -18884,6 +18884,84 @@
         "unitId": "tyranBiovore",
         "power": 80444
       }
+    },
+    {
+      "userId": "667d435c-4668-4676-a002-e533709f1cc6",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 7047,
+      "damageType": "Bomb",
+      "remainingHp": 44134543,
+      "maxHp": 45000000,
+      "startedOn": 1790664107,
+      "completedOn": 1790664107,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "667d435c-4668-4676-a002-e533709f1cc6",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 2335,
+      "damageType": "Battle",
+      "remainingHp": 2921022,
+      "maxHp": 3600000,
+      "startedOn": 1790664122,
+      "completedOn": 1790664205,
+      "heroDetails": [
+        {
+          "unitId": "orksRuntherd",
+          "power": 424630
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 391613
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 470325
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 537925
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 832907
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 127322
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 8325,
+      "damageType": "Bomb",
+      "remainingHp": 44126218,
+      "maxHp": 45000000,
+      "startedOn": 1790665456,
+      "completedOn": 1790665456,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
