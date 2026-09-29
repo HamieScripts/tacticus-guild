@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790710427,
+  "fetchedOn": 1790713528,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -19843,6 +19843,90 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 127322
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 50405,
+      "damageType": "Battle",
+      "remainingHp": 2310681,
+      "maxHp": 3600000,
+      "startedOn": 1790711915,
+      "completedOn": 1790712103,
+      "heroDetails": [
+        {
+          "unitId": "blackPossession",
+          "power": 621777
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 379344
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 778199
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 514707
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 439067
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 237510
+      }
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 200032,
+      "damageType": "Battle",
+      "remainingHp": 2110649,
+      "maxHp": 3600000,
+      "startedOn": 1790712182,
+      "completedOn": 1790712352,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 880312
+        },
+        {
+          "unitId": "tauFarsight",
+          "power": 532273
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 433452
+        },
+        {
+          "unitId": "tauDarkstrider",
+          "power": 516193
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 750555
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 434174
       }
     }
   ]
