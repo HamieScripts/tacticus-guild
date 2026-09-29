@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790714743,
+  "fetchedOn": 1790717656,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -19969,6 +19969,90 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 80444
+      }
+    },
+    {
+      "userId": "08a7e111-0193-4d88-bc27-c5124e90039e",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 26139,
+      "damageType": "Battle",
+      "remainingHp": 2084510,
+      "maxHp": 3600000,
+      "startedOn": 1790716950,
+      "completedOn": 1790717050,
+      "heroDetails": [
+        {
+          "unitId": "orksRuntherd",
+          "power": 474696
+        },
+        {
+          "unitId": "adeptMorvenn",
+          "power": 246525
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 703238
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 717317
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 581921
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 2944
+      }
+    },
+    {
+      "userId": "08a7e111-0193-4d88-bc27-c5124e90039e",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 38422,
+      "damageType": "Battle",
+      "remainingHp": 2046088,
+      "maxHp": 3600000,
+      "startedOn": 1790717068,
+      "completedOn": 1790717142,
+      "heroDetails": [
+        {
+          "unitId": "orksRuntherd",
+          "power": 474696
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 264450
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 703238
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 717317
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 581921
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 2944
       }
     }
   ]
