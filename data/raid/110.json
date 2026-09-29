@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790675354,
+  "fetchedOn": 1790678822,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -19040,6 +19040,48 @@
       "completedOn": 1790675000,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 50210,
+      "damageType": "Battle",
+      "remainingHp": 2713325,
+      "maxHp": 3600000,
+      "startedOn": 1790678114,
+      "completedOn": 1790678190,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 419497
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 486270
+        },
+        {
+          "unitId": "spaceBlackmane",
+          "power": 56527
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 99058
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 187085
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1701
+      }
     }
   ]
 }
