@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790665649,
+  "fetchedOn": 1790674076,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -18962,6 +18962,48 @@
       "completedOn": 1790665456,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "553c48cc-fcd5-4d34-94cd-691ecad888cc",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 157487,
+      "damageType": "Battle",
+      "remainingHp": 2763535,
+      "maxHp": 3600000,
+      "startedOn": 1790672771,
+      "completedOn": 1790672991,
+      "heroDetails": [
+        {
+          "unitId": "tauDarkstrider",
+          "power": 345123
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 341707
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 1027707
+        },
+        {
+          "unitId": "tauFarsight",
+          "power": 451095
+        },
+        {
+          "unitId": "tauMarksman",
+          "power": 764862
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 105879
+      }
     }
   ]
 }
