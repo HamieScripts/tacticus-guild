@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790771941,
+  "fetchedOn": 1790773544,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -21649,6 +21649,150 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 1625
+      }
+    },
+    {
+      "userId": "0c261907-c335-47b6-9e22-a81f03e4064d",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 24043,
+      "damageType": "Battle",
+      "remainingHp": 41006882,
+      "maxHp": 45000000,
+      "startedOn": 1790773131,
+      "completedOn": 1790773241,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 752366
+        },
+        {
+          "unitId": "necroDestroyer",
+          "power": 355200
+        },
+        {
+          "unitId": "eldarAutarch",
+          "power": 475596
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 783076
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 592715
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 21052
+      }
+    },
+    {
+      "userId": "c9b88058-b28d-49da-9e8d-a2c68770ac97",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 8740,
+      "damageType": "Bomb",
+      "remainingHp": 613622,
+      "maxHp": 3600000,
+      "startedOn": 1790773294,
+      "completedOn": 1790773294,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "c9b88058-b28d-49da-9e8d-a2c68770ac97",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 20873,
+      "damageType": "Battle",
+      "remainingHp": 547930,
+      "maxHp": 3600000,
+      "startedOn": 1790773308,
+      "completedOn": 1790773431,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 407426
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 362379
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 796278
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 551298
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 420222
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 47206
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 44819,
+      "damageType": "Battle",
+      "remainingHp": 568803,
+      "maxHp": 3600000,
+      "startedOn": 1790773313,
+      "completedOn": 1790773398,
+      "heroDetails": [
+        {
+          "unitId": "blackPossession",
+          "power": 621777
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 379344
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 778199
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 514707
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 439067
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 274196
       }
     }
   ]
