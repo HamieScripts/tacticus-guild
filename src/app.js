@@ -2745,6 +2745,22 @@ function getDefenseCoreScore(battle) {
   return getCoreScore(getBattleRawScore(battle)).core;
 }
 
+function resetBattleLogScroll() {
+  const reset = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    const scrollContainer = document.querySelector('.site-scroll');
+    if (scrollContainer) scrollContainer.scrollTop = 0;
+  };
+
+  reset();
+  requestAnimationFrame(() => {
+    reset();
+    requestAnimationFrame(reset);
+  });
+}
+
 function openDefenseTeamBattleLog(playerId, lineupKey) {
   battleLogFilters.sort = 'newest';
   battleLogFilters.guild = '';
@@ -2766,6 +2782,8 @@ function openDefenseTeamBattleLog(playerId, lineupKey) {
   } else if (typeof AppNav !== 'undefined' && typeof AppNav.setParams === 'function') {
     AppNav.setParams({ warView: 'log' });
   }
+
+  resetBattleLogScroll();
 
   if (battleLogDataLoaded && guildSnapshots[activeGuildIndex]) {
     renderBattleLog(guildSnapshots[activeGuildIndex]);
@@ -2902,6 +2920,7 @@ function renderDefences() {
     button.addEventListener('click', (event) => {
       event.preventDefault();
       event.stopPropagation();
+      button.blur();
       openDefenseTeamBattleLog(button.dataset.playerId, button.dataset.lineupKey);
     });
   });
