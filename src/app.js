@@ -176,6 +176,20 @@ const battleLogFilters = {
   attackerUnitIds: [],
   defenderUnitIds: []
 };
+const BATTLE_LOG_QUERY_KEYS = {
+  sort: 'battleSort',
+  guild: 'battleGuild',
+  season: 'battleSeason',
+  war: 'battleWar',
+  result: 'battleResult',
+  cleanup: 'battleCleanup',
+  mode: 'battleMode',
+  zoneType: 'battleZone',
+  attackerPlayer: 'battleAttacker',
+  defenderPlayer: 'battleDefender',
+  attackerUnitIds: 'battleAttackerUnits',
+  defenderUnitIds: 'battleDefenderUnits'
+};
 const battleLogFilterOptions = {
   guild: [],
   season: [],
@@ -183,6 +197,60 @@ const battleLogFilterOptions = {
   attacker: [],
   defender: []
 };
+
+function loadBattleLogFiltersFromUrl() {
+  if (typeof window === 'undefined') return;
+
+  const params = new URLSearchParams(window.location.search);
+  const read = (key, fallback = '') => params.get(BATTLE_LOG_QUERY_KEYS[key]) ?? fallback;
+  const readList = (key) => read(key).split(',').map((value) => value.trim()).filter(Boolean);
+  const validOrFallback = (value, allowed, fallback) => allowed.includes(value) ? value : fallback;
+
+  battleLogFilters.sort = validOrFallback(read('sort'), ['newest', 'score-desc', 'score-asc'], 'newest');
+  battleLogFilters.guild = read('guild');
+  battleLogFilters.season = read('season');
+  battleLogFilters.war = read('war');
+  battleLogFilters.result = validOrFallback(read('result'), ['all', 'win', 'loss'], 'all');
+  battleLogFilters.cleanup = validOrFallback(read('cleanup'), ['all', 'yes', 'no'], 'all');
+  battleLogFilters.mode = validOrFallback(read('mode'), ['attacks', 'defenses'], 'attacks');
+  battleLogFilters.zoneType = read('zoneType');
+  battleLogFilters.attackerPlayer = read('attackerPlayer');
+  battleLogFilters.defenderPlayer = read('defenderPlayer');
+  battleLogFilters.attackerUnitIds = readList('attackerUnitIds');
+  battleLogFilters.defenderUnitIds = readList('defenderUnitIds');
+}
+
+function syncBattleLogFiltersToUrl() {
+  if (typeof window === 'undefined') return;
+
+  const params = new URLSearchParams(window.location.search);
+  const values = {
+    sort: battleLogFilters.sort !== 'newest' ? battleLogFilters.sort : '',
+    guild: battleLogFilters.guild,
+    season: battleLogFilters.season,
+    war: battleLogFilters.war,
+    result: battleLogFilters.result !== 'all' ? battleLogFilters.result : '',
+    cleanup: battleLogFilters.cleanup !== 'all' ? battleLogFilters.cleanup : '',
+    mode: battleLogFilters.mode !== 'attacks' ? battleLogFilters.mode : '',
+    zoneType: battleLogFilters.zoneType,
+    attackerPlayer: battleLogFilters.attackerPlayer,
+    defenderPlayer: battleLogFilters.defenderPlayer,
+    attackerUnitIds: battleLogFilters.attackerUnitIds.join(','),
+    defenderUnitIds: battleLogFilters.defenderUnitIds.join(',')
+  };
+
+  Object.entries(BATTLE_LOG_QUERY_KEYS).forEach(([key, queryKey]) => {
+    if (values[key]) params.set(queryKey, values[key]);
+    else params.delete(queryKey);
+  });
+
+  const query = params.toString();
+  const nextUrl = `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`;
+  const currentUrl = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+  if (nextUrl !== currentUrl) {
+    window.history.replaceState({}, '', nextUrl);
+  }
+}
 const battleLogPlayerFilterOptions = {
   attacker: [],
   defender: []
@@ -2677,6 +2745,33 @@ function getDefenseCoreScore(battle) {
   return getCoreScore(getBattleRawScore(battle)).core;
 }
 
+function openDefenseTeamBattleLog(playerId, lineupKey) {
+  battleLogFilters.sort = 'newest';
+  battleLogFilters.guild = '';
+  battleLogFilters.season = '';
+  battleLogFilters.war = '';
+  battleLogFilters.result = 'all';
+  battleLogFilters.cleanup = 'all';
+  battleLogFilters.mode = 'defenses';
+  battleLogFilters.zoneType = '';
+  battleLogFilters.attackerPlayer = '';
+  battleLogFilters.defenderPlayer = `id:${String(playerId || '').trim()}`;
+  battleLogFilters.attackerUnitIds = [];
+  battleLogFilters.defenderUnitIds = String(lineupKey || '').split('|').filter(Boolean);
+  syncBattleLogFiltersToUrl();
+
+  const battleLogTab = document.getElementById('war-top-tab-log');
+  if (battleLogTab) {
+    battleLogTab.click();
+  } else if (typeof AppNav !== 'undefined' && typeof AppNav.setParams === 'function') {
+    AppNav.setParams({ warView: 'log' });
+  }
+
+  if (battleLogDataLoaded && guildSnapshots[activeGuildIndex]) {
+    renderBattleLog(guildSnapshots[activeGuildIndex]);
+  }
+}
+
 function renderDefences() {
   const list = document.getElementById('defences-list');
   const summary = document.getElementById('defences-summary');
@@ -2685,7 +2780,11 @@ function renderDefences() {
 
   const currentRows = defenseWarRows.filter((row) => row.datasetKey === activeDatasetKey);
   const allRows = defenseWarRows;
+  const averageDefenseScore = (rows) => rows.length > 0
+    ? rows.reduce((sum, row) => sum + getDefenseCoreScore(row), 0) / rows.length
+    : 0;
   const currentByPlayer = new Map();
+  const currentByLineup = new Map();
   const allByLineup = new Map();
 
   allRows.forEach((row) => {
@@ -2696,6 +2795,8 @@ function renderDefences() {
   currentRows.forEach((row) => {
     const playerId = String(row.defenderUserId || '').trim();
     if (!playerId) return;
+    if (!currentByLineup.has(row.lineupKey)) currentByLineup.set(row.lineupKey, []);
+    currentByLineup.get(row.lineupKey).push(row);
     if (!currentByPlayer.has(playerId)) currentByPlayer.set(playerId, new Map());
     const lineups = currentByPlayer.get(playerId);
     const existing = lineups.get(row.lineupKey) || { latest: row, rows: [] };
@@ -2725,17 +2826,22 @@ function renderDefences() {
       <div class="mb-3 flex items-center gap-2 border-b border-slate-700/70 pb-2">
         ${renderPlayerAvatar({ name: player.name, avatarUnitId: player.lineups[0]?.latest?.defenderAvatarUnitId, avatarFrameId: player.lineups[0]?.latest?.defenderAvatarFrameId })}
         <h3 class="font-bold text-slate-100">${escapeHtml(player.name)}</h3>
+        <div class="ml-auto grid w-72 shrink-0 grid-cols-2 gap-x-3 text-right text-[11px] font-semibold text-slate-300">
+          <span>Average this war</span>
+          <span>Average all wars</span>
+        </div>
       </div>
       <div class="flex flex-col gap-2">
-        ${player.lineups.map((lineup, index) => {
+        ${player.lineups.map((lineup) => {
           const row = lineup.latest;
-          const matchingRows = allByLineup.get(row.lineupKey) || [];
-          const currentAverageScore = lineup.rows.length > 0
-            ? lineup.rows.reduce((sum, entry) => sum + getDefenseCoreScore(entry), 0) / lineup.rows.length
-            : 0;
-          const averageScore = matchingRows.length > 0
-            ? matchingRows.reduce((sum, entry) => sum + getDefenseCoreScore(entry), 0) / matchingRows.length
-            : 0;
+          const currentLineupRows = currentByLineup.get(row.lineupKey) || [];
+          const allLineupRows = allByLineup.get(row.lineupKey) || [];
+          const playerCurrentLineupRows = currentLineupRows.filter((entry) => entry.defenderUserId === player.playerId);
+          const playerAllLineupRows = allLineupRows.filter((entry) => entry.defenderUserId === player.playerId);
+          const playerCurrentAverage = averageDefenseScore(playerCurrentLineupRows);
+          const playerAllAverage = averageDefenseScore(playerAllLineupRows);
+          const guildCurrentAverage = averageDefenseScore(currentLineupRows);
+          const guildAllAverage = averageDefenseScore(allLineupRows);
           const battleEntries = lineup.rows
             .slice()
             .sort((a, b) => b.createdOn - a.createdOn);
@@ -2747,10 +2853,10 @@ function renderDefences() {
           }).join('');
           return `<details class="rounded-lg border border-slate-700/70 bg-slate-900/55">
             <summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-3 py-2.5 text-sm marker:hidden">
-              <span class="flex min-w-0 items-center gap-1.5 overflow-hidden">${avatarStrip}</span>
-              <span class="grid w-44 shrink-0 grid-cols-2 gap-2 text-right text-xs tabular-nums">
-                <span class="font-semibold text-pink-200">${Math.round(currentAverageScore).toLocaleString()} (${lineup.rows.length})</span>
-                <span class="text-slate-400">${Math.round(averageScore).toLocaleString()} avg (${matchingRows.length})</span>
+              <button type="button" class="flex min-w-0 items-center gap-1.5 overflow-hidden text-left" data-defense-team data-player-id="${escapeHtml(player.playerId)}" data-lineup-key="${escapeHtml(row.lineupKey)}" title="Open this defence team in the Battle Log" aria-label="Open ${escapeHtml(player.name)} defence team in the Battle Log">${avatarStrip}<span class="ml-1 text-lg leading-none text-cyan-300" aria-hidden="true">&#128065;</span></button>
+              <span class="grid w-72 shrink-0 grid-cols-2 gap-x-3 gap-y-1 text-right text-[11px] tabular-nums">
+                <span class="text-pink-200" title="Your average this war">You: ${Math.round(playerCurrentAverage).toLocaleString()} (${playerCurrentLineupRows.length})<br><span class="text-slate-400" title="Guild average this war">Guild: ${Math.round(guildCurrentAverage).toLocaleString()} (${currentLineupRows.length})</span></span>
+                <span class="text-pink-200" title="Your average over all wars">You: ${Math.round(playerAllAverage).toLocaleString()} (${playerAllLineupRows.length})<br><span class="text-slate-400" title="Guild average over all wars">Guild: ${Math.round(guildAllAverage).toLocaleString()} (${allLineupRows.length})</span></span>
               </span>
             </summary>
             <div class="border-t border-slate-700/70 p-2.5">
@@ -2791,6 +2897,14 @@ function renderDefences() {
         }).join('')}
       </div>
     </article>`).join('');
+
+  list.querySelectorAll('[data-defense-team]').forEach((button) => {
+    button.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      openDefenseTeamBattleLog(button.dataset.playerId, button.dataset.lineupKey);
+    });
+  });
 
   if (summary) summary.textContent = `${players.length.toLocaleString()} players${searchTerm ? ' matching the search' : ''} with current defense teams.`;
   if (empty) {
@@ -3381,6 +3495,7 @@ async function loadAllWarsBattleLogData() {
         .find((name) => String(name || '').toLowerCase().includes('praetorians'));
       if (guildName) battleLogFilters.guild = guildName;
     }
+    syncBattleLogFiltersToUrl();
 
     guildSnapshots = [combinedSnapshot];
     activeGuildIndex = 0;
@@ -3449,6 +3564,7 @@ function renderBattleLogPlayerFilterControl(side) {
     chip.addEventListener('click', (event) => {
       event.stopPropagation();
       battleLogFilters[key] = '';
+      syncBattleLogFiltersToUrl();
       const snapshot = guildSnapshots[activeGuildIndex];
       if (snapshot) {
         renderBattleLog(snapshot);
@@ -3482,6 +3598,7 @@ function renderBattleLogPlayerFilterControl(side) {
     option.addEventListener('click', (event) => {
       event.stopPropagation();
       battleLogFilters[key] = selectedSet.has(optionData.value) ? '' : optionData.value;
+      syncBattleLogFiltersToUrl();
       const snapshot = guildSnapshots[activeGuildIndex];
       if (snapshot) {
         renderBattleLog(snapshot);
@@ -3647,6 +3764,7 @@ function renderBattleLogUnitFilterControl(side) {
     chip.addEventListener('click', (event) => {
       event.stopPropagation();
       battleLogFilters[key] = battleLogFilters[key].filter((id) => id !== unitId);
+      syncBattleLogFiltersToUrl();
       const snapshot = guildSnapshots[activeGuildIndex];
       if (snapshot) {
         renderBattleLog(snapshot);
@@ -3684,6 +3802,7 @@ function renderBattleLogUnitFilterControl(side) {
       } else {
         battleLogFilters[key] = [...battleLogFilters[key], unitId];
       }
+      syncBattleLogFiltersToUrl();
 
       const snapshot = guildSnapshots[activeGuildIndex];
       if (snapshot) {
@@ -3782,26 +3901,31 @@ function setupBattleLogFilters() {
 
   sortSelect.addEventListener('change', () => {
     battleLogFilters.sort = sortSelect.value || 'newest';
+    syncBattleLogFiltersToUrl();
     rerenderBattleLog();
   });
 
   guildSelect.addEventListener('change', () => {
     battleLogFilters.guild = guildSelect.value || '';
+    syncBattleLogFiltersToUrl();
     rerenderBattleLog();
   });
 
   seasonSelect.addEventListener('change', () => {
     battleLogFilters.season = seasonSelect.value || '';
+    syncBattleLogFiltersToUrl();
     rerenderBattleLog();
   });
 
   warSelect.addEventListener('change', () => {
     battleLogFilters.war = warSelect.value || '';
+    syncBattleLogFiltersToUrl();
     rerenderBattleLog();
   });
 
   zoneSelect.addEventListener('change', () => {
     battleLogFilters.zoneType = zoneSelect.value || '';
+    syncBattleLogFiltersToUrl();
     rerenderBattleLog();
   });
 
@@ -3809,6 +3933,7 @@ function setupBattleLogFilters() {
     button.addEventListener('click', () => {
       const nextValue = button.getAttribute('data-result') || 'all';
       battleLogFilters.result = nextValue;
+      syncBattleLogFiltersToUrl();
       syncResultButtons();
       rerenderBattleLog();
     });
@@ -3819,6 +3944,7 @@ function setupBattleLogFilters() {
       button.addEventListener('click', () => {
         const nextValue = button.getAttribute('data-mode') || 'attacks';
         battleLogFilters.mode = nextValue;
+        syncBattleLogFiltersToUrl();
         syncModeButtons();
         rerenderBattleLog();
       });
@@ -3829,6 +3955,7 @@ function setupBattleLogFilters() {
     button.addEventListener('click', () => {
       const nextValue = button.getAttribute('data-cleanup') || 'all';
       battleLogFilters.cleanup = nextValue;
+      syncBattleLogFiltersToUrl();
       syncCleanupButtons();
       rerenderBattleLog();
     });
@@ -3908,6 +4035,7 @@ function setupBattleLogFilters() {
     battleLogFilters.defenderPlayer = '';
     battleLogFilters.attackerUnitIds = [];
     battleLogFilters.defenderUnitIds = [];
+    syncBattleLogFiltersToUrl();
 
     sortSelect.value = 'newest';
     guildSelect.value = '';
@@ -3952,6 +4080,7 @@ function renderBattleLog(snapshot) {
   updateBattleLogTileTypeFilterOptions(snapshot);
   updateBattleLogPlayerFilterOptions(snapshot);
   updateBattleLogUnitFilterOptions(snapshot);
+  syncBattleLogFiltersToUrl();
 
   const activeGuildTeamIndex = Number(snapshot?.teamIndex);
   const shouldApplyGuildFilter = snapshot?.battleLogScope !== 'combined' && Number.isFinite(activeGuildTeamIndex);
@@ -4637,6 +4766,7 @@ async function loadGuildData() {
   setupLeaderboardSortButtons();
   setupLeaderboardSearch();
   setupLegendVisibilityToggle();
+  loadBattleLogFiltersFromUrl();
   setupBattleLogFilters();
 
   guildProjectionLoading = true;
