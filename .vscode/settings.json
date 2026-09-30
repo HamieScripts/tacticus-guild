@@ -53,6 +53,10 @@
         "/^node --check src/app\\.js; node --test tests/live-war-dataset\\.test\\.js$/": {
             "approve": true,
             "matchCommandLine": true
+        },
+        "/^& 'C:\\\\Program Files\\\\nodejs\\\\node\\.exe' --check src/app\\.js; if \\(\\$LASTEXITCODE -ne 0\\) \\{ exit \\$LASTEXITCODE \\}; 'Validation passed'$/": {
+            "approve": true,
+            "matchCommandLine": true
         }
     }
 }
