@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790804739,
+  "fetchedOn": 1790805399,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -23071,6 +23071,90 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 21052
+      }
+    },
+    {
+      "userId": "d9c3ef49-eadf-499d-ab81-d655dbcc086f",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 267664,
+      "damageType": "Battle",
+      "remainingHp": 36807824,
+      "maxHp": 45000000,
+      "startedOn": 1790804645,
+      "completedOn": 1790804870,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 907631
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 568191
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 853537
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 754873
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 663003
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1025752
+      }
+    },
+    {
+      "userId": "d9c3ef49-eadf-499d-ab81-d655dbcc086f",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 550729,
+      "damageType": "Battle",
+      "remainingHp": 36257095,
+      "maxHp": 45000000,
+      "startedOn": 1790804903,
+      "completedOn": 1790805169,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 907631
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 568191
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 853537
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 566343
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 663003
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1025752
       }
     }
   ]
