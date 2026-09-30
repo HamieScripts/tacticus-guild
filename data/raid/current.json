@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790763898,
+  "fetchedOn": 1790767290,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -21337,6 +21337,108 @@
       "machineOfWarDetails": {
         "unitId": "astraOrdnanceBattery",
         "power": 1126
+      }
+    },
+    {
+      "userId": "9a9b9a9d-cbd4-4821-842c-e2c24920ae27",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 7677,
+      "damageType": "Bomb",
+      "remainingHp": 41476646,
+      "maxHp": 45000000,
+      "startedOn": 1790766468,
+      "completedOn": 1790766468,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "9a9b9a9d-cbd4-4821-842c-e2c24920ae27",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 7986,
+      "damageType": "Battle",
+      "remainingHp": 882871,
+      "maxHp": 3600000,
+      "startedOn": 1790766473,
+      "completedOn": 1790766506,
+      "heroDetails": [
+        {
+          "unitId": "blackHaarken",
+          "power": 224750
+        },
+        {
+          "unitId": "spaceBlackmane",
+          "power": 174776
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 165764
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 85089
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 77434
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 4135
+      }
+    },
+    {
+      "userId": "9a9b9a9d-cbd4-4821-842c-e2c24920ae27",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 24803,
+      "damageType": "Battle",
+      "remainingHp": 41451843,
+      "maxHp": 45000000,
+      "startedOn": 1790766516,
+      "completedOn": 1790766567,
+      "heroDetails": [
+        {
+          "unitId": "blackHaarken",
+          "power": 224750
+        },
+        {
+          "unitId": "spaceBlackmane",
+          "power": 174776
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 165764
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 85089
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 77434
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 4135
       }
     }
   ]
