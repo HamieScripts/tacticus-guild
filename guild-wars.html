@@ -551,6 +551,9 @@
             if (typeof loadAllWarsBattleLogData === 'function') loadAllWarsBattleLogData();
           }
         };
+        AppNav.onChange((params) => {
+          setTopTab(params.get('warView') === 'log' ? 'log' : 'season');
+        });
         seasonTab.addEventListener('click', () => {
           AppNav.setParams({ warView: null });
           setTopTab('season');
