@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790790283,
+  "fetchedOn": 1790790977,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -22596,6 +22596,48 @@
       "maxHp": 45000000,
       "startedOn": 1790789227,
       "completedOn": 1790789557,
+      "heroDetails": [
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 439067
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 379344
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 778199
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 514707
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 621777
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 274196
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 97982,
+      "damageType": "Battle",
+      "remainingHp": 38806684,
+      "maxHp": 45000000,
+      "startedOn": 1790790696,
+      "completedOn": 1790790925,
       "heroDetails": [
         {
           "unitId": "thousInfernalMaster",
