@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790752032,
+  "fetchedOn": 1790755153,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -21162,6 +21162,24 @@
       "maxHp": 45000000,
       "startedOn": 1790751335,
       "completedOn": 1790751335,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 8539,
+      "damageType": "Bomb",
+      "remainingHp": 41508746,
+      "maxHp": 45000000,
+      "startedOn": 1790754879,
+      "completedOn": 1790754879,
       "heroDetails": [],
       "machineOfWarDetails": null
     }
