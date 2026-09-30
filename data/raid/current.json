@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790717656,
+  "fetchedOn": 1790757248,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -20053,6 +20053,1176 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 2944
+      }
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 539729,
+      "damageType": "Battle",
+      "remainingHp": 42598946,
+      "maxHp": 45000000,
+      "startedOn": 1790722049,
+      "completedOn": 1790722318,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 502981
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 788514
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 952540
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 902761
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 1019992
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 956210
+      }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 93770,
+      "damageType": "Battle",
+      "remainingHp": 42505176,
+      "maxHp": 45000000,
+      "startedOn": 1790723214,
+      "completedOn": 1790723373,
+      "heroDetails": [
+        {
+          "unitId": "bloodDante",
+          "power": 231580
+        },
+        {
+          "unitId": "genesKelermorph",
+          "power": 484160
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 263370
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 840521
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 754017
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 66681
+      }
+    },
+    {
+      "userId": "cf7b7ebf-dd25-4371-ba75-b2cb51102dde",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 7691,
+      "damageType": "Bomb",
+      "remainingHp": 42497485,
+      "maxHp": 45000000,
+      "startedOn": 1790726430,
+      "completedOn": 1790726430,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "cf7b7ebf-dd25-4371-ba75-b2cb51102dde",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 42854,
+      "damageType": "Battle",
+      "remainingHp": 2003234,
+      "maxHp": 3600000,
+      "startedOn": 1790726469,
+      "completedOn": 1790726576,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 376123
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 900581
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 169916
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 505520
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 112245
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 72061
+      }
+    },
+    {
+      "userId": "fce63e8e-b46e-4fe1-9031-9475f46ee504",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 8586,
+      "damageType": "Bomb",
+      "remainingHp": 1994648,
+      "maxHp": 3600000,
+      "startedOn": 1790727050,
+      "completedOn": 1790727050,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "fce63e8e-b46e-4fe1-9031-9475f46ee504",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 3499,
+      "damageType": "Battle",
+      "remainingHp": 1991149,
+      "maxHp": 3600000,
+      "startedOn": 1790727081,
+      "completedOn": 1790727186,
+      "heroDetails": [
+        {
+          "unitId": "blackPossession",
+          "power": 64968
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 106124
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 530114
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 517983
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 562391
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 15994
+      }
+    },
+    {
+      "userId": "86dc308e-8ca0-4470-ae78-ced2ef219eea",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 8586,
+      "damageType": "Bomb",
+      "remainingHp": 1982563,
+      "maxHp": 3600000,
+      "startedOn": 1790728801,
+      "completedOn": 1790728801,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "86dc308e-8ca0-4470-ae78-ced2ef219eea",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 116710,
+      "damageType": "Battle",
+      "remainingHp": 1865853,
+      "maxHp": 3600000,
+      "startedOn": 1790728816,
+      "completedOn": 1790728922,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 683837
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 618565
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 573233
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 660073
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 709767
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 75712
+      }
+    },
+    {
+      "userId": "9d50010a-82f9-4db9-aa55-e292388ea749",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 7583,
+      "damageType": "Bomb",
+      "remainingHp": 42489902,
+      "maxHp": 45000000,
+      "startedOn": 1790730260,
+      "completedOn": 1790730260,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "9d50010a-82f9-4db9-aa55-e292388ea749",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 37551,
+      "damageType": "Battle",
+      "remainingHp": 1828302,
+      "maxHp": 3600000,
+      "startedOn": 1790730300,
+      "completedOn": 1790730449,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 690484
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 586675
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 603747
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 318978
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 866503
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 149526
+      }
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 7334,
+      "damageType": "Bomb",
+      "remainingHp": 42482568,
+      "maxHp": 45000000,
+      "startedOn": 1790730923,
+      "completedOn": 1790730923,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "9e4b7170-a4a4-4b28-ac57-6cd3cb8efed0",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 7254,
+      "damageType": "Bomb",
+      "remainingHp": 42475314,
+      "maxHp": 45000000,
+      "startedOn": 1790732162,
+      "completedOn": 1790732162,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "9e4b7170-a4a4-4b28-ac57-6cd3cb8efed0",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 173549,
+      "damageType": "Battle",
+      "remainingHp": 1654753,
+      "maxHp": 3600000,
+      "startedOn": 1790732197,
+      "completedOn": 1790732384,
+      "heroDetails": [
+        {
+          "unitId": "ultraTitus",
+          "power": 1054271
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 794288
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 976684
+        },
+        {
+          "unitId": "bloodDeathCompany",
+          "power": 953601
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 1108911
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 984974
+      }
+    },
+    {
+      "userId": "9e4b7170-a4a4-4b28-ac57-6cd3cb8efed0",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 123255,
+      "damageType": "Battle",
+      "remainingHp": 1531498,
+      "maxHp": 3600000,
+      "startedOn": 1790734921,
+      "completedOn": 1790735058,
+      "heroDetails": [
+        {
+          "unitId": "ultraTitus",
+          "power": 1054271
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 794288
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 976684
+        },
+        {
+          "unitId": "bloodDeathCompany",
+          "power": 953601
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 1108911
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 984974
+      }
+    },
+    {
+      "userId": "d9c3ef49-eadf-499d-ab81-d655dbcc086f",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 19078,
+      "damageType": "Battle",
+      "remainingHp": 1512420,
+      "maxHp": 3600000,
+      "startedOn": 1790735036,
+      "completedOn": 1790735147,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 754873
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 568191
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 853537
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 566343
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 614408
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1025752
+      }
+    },
+    {
+      "userId": "0c261907-c335-47b6-9e22-a81f03e4064d",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 7498,
+      "damageType": "Bomb",
+      "remainingHp": 42467816,
+      "maxHp": 45000000,
+      "startedOn": 1790735959,
+      "completedOn": 1790735959,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "0c261907-c335-47b6-9e22-a81f03e4064d",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 161444,
+      "damageType": "Battle",
+      "remainingHp": 42306372,
+      "maxHp": 45000000,
+      "startedOn": 1790735963,
+      "completedOn": 1790736121,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 752366
+        },
+        {
+          "unitId": "necroDestroyer",
+          "power": 355200
+        },
+        {
+          "unitId": "eldarAutarch",
+          "power": 475596
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 783076
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 592715
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 21052
+      }
+    },
+    {
+      "userId": "d63f3e75-83d4-4679-8d01-4e025716ea45",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 6977,
+      "damageType": "Bomb",
+      "remainingHp": 42299395,
+      "maxHp": 45000000,
+      "startedOn": 1790736256,
+      "completedOn": 1790736256,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "d63f3e75-83d4-4679-8d01-4e025716ea45",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 179991,
+      "damageType": "Battle",
+      "remainingHp": 42119404,
+      "maxHp": 45000000,
+      "startedOn": 1790736260,
+      "completedOn": 1790736499,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 694893
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 165655
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 1016780
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 244220
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 854929
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 45553
+      }
+    },
+    {
+      "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 8765,
+      "damageType": "Bomb",
+      "remainingHp": 1503655,
+      "maxHp": 3600000,
+      "startedOn": 1790736582,
+      "completedOn": 1790736582,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 10039,
+      "damageType": "Battle",
+      "remainingHp": 1379291,
+      "maxHp": 3600000,
+      "startedOn": 1790736637,
+      "completedOn": 1790736826,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 229188
+        },
+        {
+          "unitId": "deathRotbone",
+          "power": 233788
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 154373
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 483395
+        },
+        {
+          "unitId": "deathBlightlord",
+          "power": 293336
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 100412
+      }
+    },
+    {
+      "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 114325,
+      "damageType": "Battle",
+      "remainingHp": 1389330,
+      "maxHp": 3600000,
+      "startedOn": 1790736688,
+      "completedOn": 1790736780,
+      "heroDetails": [
+        {
+          "unitId": "ultraCalgar",
+          "power": 866505
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 657529
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 387874
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 958748
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 616001
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 16046
+      }
+    },
+    {
+      "userId": "553c48cc-fcd5-4d34-94cd-691ecad888cc",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 7508,
+      "damageType": "Bomb",
+      "remainingHp": 42111896,
+      "maxHp": 45000000,
+      "startedOn": 1790737377,
+      "completedOn": 1790737377,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "553c48cc-fcd5-4d34-94cd-691ecad888cc",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 103518,
+      "damageType": "Battle",
+      "remainingHp": 41999938,
+      "maxHp": 45000000,
+      "startedOn": 1790737398,
+      "completedOn": 1790737575,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 539522
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 559410
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 604780
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 801765
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 992667
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 641082
+      }
+    },
+    {
+      "userId": "077980e3-7cb5-44ab-977e-846af676ccce",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 8440,
+      "damageType": "Bomb",
+      "remainingHp": 42103456,
+      "maxHp": 45000000,
+      "startedOn": 1790737509,
+      "completedOn": 1790737509,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "a736e5fd-6a0b-4137-9ec0-526345cd6e96",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 66522,
+      "damageType": "Battle",
+      "remainingHp": 1312769,
+      "maxHp": 3600000,
+      "startedOn": 1790738654,
+      "completedOn": 1790738766,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 544770
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 685193
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 684751
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 586554
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 425942
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 8910
+      }
+    },
+    {
+      "userId": "b29d75a2-5540-4ded-9383-998307fa1a4a",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 8211,
+      "damageType": "Bomb",
+      "remainingHp": 1304558,
+      "maxHp": 3600000,
+      "startedOn": 1790739127,
+      "completedOn": 1790739127,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "b29d75a2-5540-4ded-9383-998307fa1a4a",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 21081,
+      "damageType": "Battle",
+      "remainingHp": 1283477,
+      "maxHp": 3600000,
+      "startedOn": 1790739135,
+      "completedOn": 1790739266,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 257460
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 637111
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 679063
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 778273
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 1023246
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 518336
+      }
+    },
+    {
+      "userId": "c47778d3-3a3c-4cc0-b405-3aed0d993c45",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 8759,
+      "damageType": "Bomb",
+      "remainingHp": 41991179,
+      "maxHp": 45000000,
+      "startedOn": 1790739871,
+      "completedOn": 1790739871,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "c47778d3-3a3c-4cc0-b405-3aed0d993c45",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 64839,
+      "damageType": "Battle",
+      "remainingHp": 1218638,
+      "maxHp": 3600000,
+      "startedOn": 1790739899,
+      "completedOn": 1790740039,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 618534
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 640531
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 616131
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 665127
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 517254
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 178
+      }
+    },
+    {
+      "userId": "c47778d3-3a3c-4cc0-b405-3aed0d993c45",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 45052,
+      "damageType": "Battle",
+      "remainingHp": 1173586,
+      "maxHp": 3600000,
+      "startedOn": 1790740058,
+      "completedOn": 1790740164,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 618534
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 640531
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 616131
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 665127
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 517254
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 178
+      }
+    },
+    {
+      "userId": "077980e3-7cb5-44ab-977e-846af676ccce",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 465185,
+      "damageType": "Battle",
+      "remainingHp": 41525994,
+      "maxHp": 45000000,
+      "startedOn": 1790741089,
+      "completedOn": 1790741262,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 584092
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 794968
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 666861
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 959510
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 229314
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 613685
+      }
+    },
+    {
+      "userId": "667d435c-4668-4676-a002-e533709f1cc6",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 7668,
+      "damageType": "Bomb",
+      "remainingHp": 1165918,
+      "maxHp": 3600000,
+      "startedOn": 1790750511,
+      "completedOn": 1790750511,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "667d435c-4668-4676-a002-e533709f1cc6",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 28281,
+      "damageType": "Battle",
+      "remainingHp": 1137637,
+      "maxHp": 3600000,
+      "startedOn": 1790750525,
+      "completedOn": 1790750692,
+      "heroDetails": [
+        {
+          "unitId": "orksRuntherd",
+          "power": 424630
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 391613
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 470325
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 537925
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 832907
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 127322
+      }
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 8709,
+      "damageType": "Bomb",
+      "remainingHp": 41517285,
+      "maxHp": 45000000,
+      "startedOn": 1790751335,
+      "completedOn": 1790751335,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 8539,
+      "damageType": "Bomb",
+      "remainingHp": 41508746,
+      "maxHp": 45000000,
+      "startedOn": 1790754879,
+      "completedOn": 1790754879,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 219828,
+      "damageType": "Battle",
+      "remainingHp": 917809,
+      "maxHp": 3600000,
+      "startedOn": 1790755400,
+      "completedOn": 1790755556,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 880312
+        },
+        {
+          "unitId": "tauFarsight",
+          "power": 532273
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 750555
+        },
+        {
+          "unitId": "tauDarkstrider",
+          "power": 516193
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 433452
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 434174
       }
     }
   ]
