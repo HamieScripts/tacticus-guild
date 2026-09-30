@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790761752,
+  "fetchedOn": 1790763898,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -21260,6 +21260,84 @@
       "completedOn": 1790760510,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "d9c3ef49-eadf-499d-ab81-d655dbcc086f",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 7544,
+      "damageType": "Bomb",
+      "remainingHp": 41484323,
+      "maxHp": 45000000,
+      "startedOn": 1790763095,
+      "completedOn": 1790763095,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 8032,
+      "damageType": "Bomb",
+      "remainingHp": 909777,
+      "maxHp": 3600000,
+      "startedOn": 1790763157,
+      "completedOn": 1790763157,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 18920,
+      "damageType": "Battle",
+      "remainingHp": 890857,
+      "maxHp": 3600000,
+      "startedOn": 1790763164,
+      "completedOn": 1790763246,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 75790
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 77640
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 59510
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 60640
+        },
+        {
+          "unitId": "blackObliterator",
+          "power": 71764
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 1126
+      }
     }
   ]
 }
