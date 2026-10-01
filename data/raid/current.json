@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790816994,
+  "fetchedOn": 1790819585,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -23623,6 +23623,90 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 1625
+      }
+    },
+    {
+      "userId": "a736e5fd-6a0b-4137-9ec0-526345cd6e96",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 184511,
+      "damageType": "Battle",
+      "remainingHp": 34325907,
+      "maxHp": 45000000,
+      "startedOn": 1790816849,
+      "completedOn": 1790817054,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 425942
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 685193
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 544770
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 586554
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 684751
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 8910
+      }
+    },
+    {
+      "userId": "9e4b7170-a4a4-4b28-ac57-6cd3cb8efed0",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 296437,
+      "damageType": "Battle",
+      "remainingHp": 34029470,
+      "maxHp": 45000000,
+      "startedOn": 1790817615,
+      "completedOn": 1790817864,
+      "heroDetails": [
+        {
+          "unitId": "ultraTitus",
+          "power": 1054271
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 799649
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 976684
+        },
+        {
+          "unitId": "bloodDeathCompany",
+          "power": 953601
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 1108911
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 984974
       }
     }
   ]
