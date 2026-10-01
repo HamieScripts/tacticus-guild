@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790867416,
+  "fetchedOn": 1790868272,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -25105,6 +25105,66 @@
       "machineOfWarDetails": {
         "unitId": "thousDaemonPrince",
         "power": 314964
+      }
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 6764,
+      "damageType": "Bomb",
+      "remainingHp": 30265620,
+      "maxHp": 45000000,
+      "startedOn": 1790867626,
+      "completedOn": 1790867626,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 112905,
+      "damageType": "Battle",
+      "remainingHp": 30152715,
+      "maxHp": 45000000,
+      "startedOn": 1790867630,
+      "completedOn": 1790867802,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 419497
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 486270
+        },
+        {
+          "unitId": "spaceBlackmane",
+          "power": 56527
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 100984
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 187085
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1701
       }
     }
   ]
