@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790855121,
+  "fetchedOn": 1790855842,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -24716,6 +24716,66 @@
       "completedOn": 1790854933,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "08a7e111-0193-4d88-bc27-c5124e90039e",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 7258,
+      "damageType": "Bomb",
+      "remainingHp": 31696074,
+      "maxHp": 45000000,
+      "startedOn": 1790855642,
+      "completedOn": 1790855642,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "08a7e111-0193-4d88-bc27-c5124e90039e",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 72081,
+      "damageType": "Battle",
+      "remainingHp": 31623993,
+      "maxHp": 45000000,
+      "startedOn": 1790855654,
+      "completedOn": 1790855731,
+      "heroDetails": [
+        {
+          "unitId": "orksRuntherd",
+          "power": 474696
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 264450
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 581921
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 717317
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 703238
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 2944
+      }
     }
   ]
 }
