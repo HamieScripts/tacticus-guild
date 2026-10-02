@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790929917,
+  "fetchedOn": 1790930979,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -26959,6 +26959,66 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 970507
+      }
+    },
+    {
+      "userId": "2ca306f7-1848-4fc9-9acb-a310f217db1f",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 7810,
+      "damageType": "Bomb",
+      "remainingHp": 22508113,
+      "maxHp": 45000000,
+      "startedOn": 1790930714,
+      "completedOn": 1790930714,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "2ca306f7-1848-4fc9-9acb-a310f217db1f",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 124872,
+      "damageType": "Battle",
+      "remainingHp": 22383241,
+      "maxHp": 45000000,
+      "startedOn": 1790930752,
+      "completedOn": 1790930904,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 442348
+        },
+        {
+          "unitId": "bloodSanguinary",
+          "power": 385781
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 650591
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 423684
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 722269
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 940
       }
     }
   ]
