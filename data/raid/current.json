@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790966946,
+  "fetchedOn": 1790970959,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -28388,6 +28388,108 @@
       "completedOn": 1790965900,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "9a9b9a9d-cbd4-4821-842c-e2c24920ae27",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 39368,
+      "damageType": "Battle",
+      "remainingHp": 17930935,
+      "maxHp": 45000000,
+      "startedOn": 1790970695,
+      "completedOn": 1790970742,
+      "heroDetails": [
+        {
+          "unitId": "blackHaarken",
+          "power": 224750
+        },
+        {
+          "unitId": "spaceBlackmane",
+          "power": 174776
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 165764
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 85089
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 79692
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 4135
+      }
+    },
+    {
+      "userId": "fce63e8e-b46e-4fe1-9031-9475f46ee504",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 8338,
+      "damageType": "Bomb",
+      "remainingHp": 17970303,
+      "maxHp": 45000000,
+      "startedOn": 1790970715,
+      "completedOn": 1790970715,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "fce63e8e-b46e-4fe1-9031-9475f46ee504",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 45647,
+      "damageType": "Battle",
+      "remainingHp": 17885288,
+      "maxHp": 45000000,
+      "startedOn": 1790970723,
+      "completedOn": 1790970861,
+      "heroDetails": [
+        {
+          "unitId": "ultraCalgar",
+          "power": 562391
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 517983
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 621604
+        },
+        {
+          "unitId": "eldarMauganRa",
+          "power": 315303
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 106124
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 15994
+      }
     }
   ]
 }
