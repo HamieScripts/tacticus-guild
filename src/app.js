@@ -1785,7 +1785,130 @@ function renderActiveGuild() {
   renderTable(snapshot);
   renderBuffLegend(snapshot);
   renderBattleLog(snapshot);
+  renderTokenTiming(snapshot);
   renderGuildTabs();
+}
+
+function getTokenCountColorClass(count) {
+  if (count >= 10) return 'text-emerald-400';
+  if (count === 9) return 'text-lime-300';
+  if (count >= 5) return 'text-yellow-300';
+  return 'text-rose-400';
+}
+
+function formatDurationHours(ms) {
+  const hours = ms / 3600000;
+  if (hours < 1) return `${Math.round(ms / 60000)}m`;
+  return `${hours.toFixed(hours < 10 ? 1 : 0)}h`;
+}
+
+let tokenTimingSort = { key: 'name', direction: 'asc' };
+
+function renderTokenTiming(snapshot) {
+  const container = document.getElementById('token-timing-chart');
+  if (!container) return;
+
+  // Shared axis across both guilds so Attack/Defence views line up.
+  const allTimes = guildSnapshots
+    .flatMap((guild) => guild?.battles || [])
+    .map((battle) => battle.createdOn)
+    .filter((time) => time > 0);
+  if (!snapshot || allTimes.length === 0) {
+    container.innerHTML = '<div class="rounded-lg border border-dashed border-slate-500/40 p-3 text-slate-400">No token activity for this war yet.</div>';
+    return;
+  }
+
+  const minTime = Math.min(...allTimes);
+  const maxTime = Math.max(...allTimes);
+  const range = Math.max(maxTime - minTime, 1);
+  const toPct = (time) => ((time - minTime) / range) * 100;
+
+  const battlesByUser = new Map();
+  (snapshot.battles || []).forEach((battle) => {
+    if (!(battle.createdOn > 0)) return;
+    if (!battlesByUser.has(battle.attackerUserId)) battlesByUser.set(battle.attackerUserId, []);
+    battlesByUser.get(battle.attackerUserId).push(battle);
+  });
+
+  const compareName = (a, b) => String(a.player.name).localeCompare(String(b.player.name), undefined, { sensitivity: 'base' });
+  const sortValue = { tokens: (row) => row.battles.length, span: (row) => row.span };
+  const sortDirection = tokenTimingSort.direction === 'asc' ? 1 : -1;
+  const rows = (snapshot.players || []).map((player) => {
+    const battles = (battlesByUser.get(player.userId) || []).slice().sort((a, b) => a.createdOn - b.createdOn);
+    const span = battles.length > 1 ? battles[battles.length - 1].createdOn - battles[0].createdOn : 0;
+    return { player, battles, span };
+  }).sort((a, b) => {
+    const getValue = sortValue[tokenTimingSort.key];
+    const primary = getValue ? getValue(a) - getValue(b) : compareName(a, b);
+    return primary * sortDirection || compareName(a, b);
+  });
+
+  const tickStep = range > 3 * 86400000 ? 24 * 3600000 : 12 * 3600000;
+  const firstTick = new Date(minTime);
+  firstTick.setMinutes(0, 0, 0);
+  firstTick.setHours(tickStep === 24 * 3600000 ? 24 : (firstTick.getHours() < 12 ? 12 : 24));
+  const ticks = [];
+  for (let tick = firstTick.getTime(); tick < maxTime; tick += tickStep) ticks.push(tick);
+  const tickFormat = new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+
+  const gridLines = ticks.map((tick) => `<div class="pointer-events-none absolute inset-y-0 border-l border-slate-700/50" style="left:${toPct(tick)}%"></div>`).join('');
+  const axisLabels = ticks.map((tick) => `<span class="absolute -translate-x-1/2 whitespace-nowrap text-[10px] text-slate-500" style="left:${toPct(tick)}%">${escapeHtml(tickFormat.format(tick))}</span>`).join('');
+
+  const dotClass = (battle) => {
+    const fill = { abandoned: 'bg-slate-500', defeat: 'bg-rose-500', win: 'bg-emerald-500' }[getTokenLegendOutcomeKey(battle)];
+    return `${fill} border-slate-900`;
+  };
+
+  const rowHtml = rows.map(({ player, battles, span }) => {
+    const points = battles.map((battle) => `${toPct(battle.createdOn)},50`).join(' ');
+    const line = battles.length > 1
+      ? `<svg class="absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><polyline points="${points}" fill="none" stroke="#64748b" stroke-width="1.5" stroke-opacity="0.8" vector-effect="non-scaling-stroke" /></svg>`
+      : '';
+    const dots = battles.map((battle, index) => {
+      const label = `Token ${index + 1}: ${formatDateTime(battle.createdOn) || ''} - ${battle.abandoned ? 'Abandoned' : `${Math.round(battle.score).toLocaleString()} pts${battle.defended ? ' (lost)' : ''}`} vs ${battle.defenderName}`;
+      return `<span class="absolute top-1/2 h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 ${dotClass(battle)}" style="left:${toPct(battle.createdOn)}%" title="${escapeHtml(label)}"></span>`;
+    }).join('');
+
+    return `
+      <div class="flex items-center border-b border-slate-800/80 last:border-b-0">
+        <div class="flex w-72 shrink-0 items-center gap-2 py-1.5 pr-3">
+          <span class="min-w-0 flex-1 truncate text-sm text-slate-200" title="${escapeHtml(player.name)}">${escapeHtml(player.name)}</span>
+          <span class="w-16 shrink-0 text-right text-xs font-bold tabular-nums ${getTokenCountColorClass(battles.length)}">${battles.length}</span>
+          <span class="w-20 shrink-0 text-right text-xs tabular-nums text-slate-400">${battles.length > 1 ? formatDurationHours(span) : '-'}</span>
+        </div>
+        <div class="relative h-8 flex-1">${gridLines}${line}${dots}</div>
+      </div>`;
+  }).join('');
+
+  const sortHeader = (key, label, widthClass) => {
+    const isActive = tokenTimingSort.key === key;
+    const arrow = isActive ? (tokenTimingSort.direction === 'asc' ? '▲' : '▼') : '';
+    return `<button type="button" data-timing-sort-key="${key}" class="${widthClass} inline-flex items-center gap-1 font-semibold uppercase tracking-wide ${key === 'name' ? 'justify-start' : 'justify-end'} ${isActive ? 'text-cyan-200' : 'text-slate-400'} hover:text-cyan-200">${label}<span class="text-[10px]">${arrow}</span></button>`;
+  };
+
+  container.innerHTML = `
+    <div class="min-w-[720px]">
+      <div class="mb-2 flex flex-wrap gap-4 text-xs text-slate-400">
+        <span class="inline-flex items-center gap-1.5"><span class="h-3.5 w-3.5 rounded-full border-2 border-slate-900 bg-emerald-500"></span>Win</span>
+        <span class="inline-flex items-center gap-1.5"><span class="h-3.5 w-3.5 rounded-full border-2 border-slate-900 bg-rose-500"></span>Lost</span>
+        <span class="inline-flex items-center gap-1.5"><span class="h-3.5 w-3.5 rounded-full border-2 border-slate-900 bg-slate-500"></span>Abandoned</span>
+      </div>
+      <div class="flex items-end border-b border-slate-700 pb-1">
+        <div class="flex w-72 shrink-0 gap-2 pr-3 text-xs">${sortHeader('name', 'Player', 'flex-1')}${sortHeader('tokens', 'Tokens', 'w-16')}${sortHeader('span', 'Timespan', 'w-20')}</div>
+        <div class="relative h-4 flex-1">${axisLabels}</div>
+      </div>
+      ${rowHtml}
+    </div>`;
+
+  container.querySelectorAll('[data-timing-sort-key]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const key = button.dataset.timingSortKey;
+      tokenTimingSort = tokenTimingSort.key === key
+        ? { key, direction: tokenTimingSort.direction === 'asc' ? 'desc' : 'asc' }
+        : { key, direction: key === 'name' ? 'asc' : 'desc' };
+      renderTokenTiming(snapshot);
+    });
+  });
 }
 
 function isMobileLeaderboardLayout() {
@@ -4575,7 +4698,7 @@ function renderTable(snapshot) {
     const avatarHtml = renderPlayerAvatar(player);
 
     const cells = [
-      `<td class="sticky left-0 z-10 min-w-[15rem] whitespace-nowrap bg-slate-900/95 px-4 py-3 font-semibold text-slate-50" style="width: max-content;"><div class="flex items-center gap-2"><span class="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cyan-400/20 text-xs font-bold text-cyan-100">${index + 1}</span>${avatarHtml}<div class="min-w-0"><div class="flex min-w-0 items-center gap-2"><span class="truncate whitespace-nowrap">${escapeHtml(player.name)} (${player.usedTokens}/10)</span></div></div></div></td>`,
+      `<td class="sticky left-0 z-10 min-w-[15rem] whitespace-nowrap bg-slate-900/95 px-4 py-3 font-semibold text-slate-50" style="width: max-content;"><div class="flex items-center gap-2"><span class="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cyan-400/20 text-xs font-bold text-cyan-100">${index + 1}</span>${avatarHtml}<div class="min-w-0 flex-1"><div class="flex min-w-0 items-center justify-between gap-3"><span class="truncate whitespace-nowrap">${escapeHtml(player.name)}</span><span class="shrink-0 font-normal text-slate-400">(<span class="${getTokenCountColorClass(player.usedTokens)}">${player.usedTokens}</span>/10)</span></div></div></div></td>`,
       ...player.tokens.map((token) => {
         const tokenVisual = getTokenVisual(token);
         const tokenContent = `<span class="inline-flex items-center justify-center ${tokenVisual.stateClass}">${tokenVisual.display}</span>${tokenVisual.buffsHtml}`;
@@ -4621,7 +4744,7 @@ function renderTable(snapshot) {
           ${avatarHtml}
           <div class="min-w-0">
             <div class="truncate font-semibold text-slate-100">${escapeHtml(player.name)}</div>
-            <div class="text-xs text-slate-400">${player.usedTokens}/10 used</div>
+            <div class="text-xs text-slate-400"><span class="font-semibold ${getTokenCountColorClass(player.usedTokens)}">${player.usedTokens}</span>/10 used</div>
           </div>
         </div>
         <div class="mb-3 grid grid-cols-3 gap-2 text-xs">

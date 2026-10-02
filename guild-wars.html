@@ -123,6 +123,7 @@
         <div class="tab-strip flex flex-wrap border-b border-slate-700">
           <button id="tab-btn-leaderboard" type="button" onclick="navigateWarTab({ tab: null })" class="border-b-2 border-cyan-400 px-5 py-3 text-sm font-semibold text-cyan-300 transition-colors hover:text-slate-100">Token table</button>
           <button id="tab-btn-defences" type="button" onclick="navigateWarTab({ tab: 'defences' })" class="border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100">Defences</button>
+          <button id="tab-btn-time" type="button" onclick="navigateWarTab({ tab: 'time' })" class="border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100">Time</button>
           <button id="tab-btn-portraitmap" type="button" onclick="navigateWarTab({ tab: 'portraitmap' })" class="hidden border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100" aria-hidden="true" tabindex="-1">
             Portrait mapper
           </button>
@@ -185,6 +186,11 @@
           <p id="defences-summary" class="mb-3 text-sm text-slate-400">Loading defense teams...</p>
           <div id="defences-empty" class="hidden rounded-lg border border-dashed border-slate-500/40 p-3 text-slate-400"></div>
           <div id="defences-list" class="flex flex-col gap-3"></div>
+        </div>
+
+        <div id="tab-panel-time" class="hidden p-4">
+          <p class="mb-3 text-sm text-slate-400">Each dot is a token, placed at the time it was spent. Timespan is the time between a player's first and last token.</p>
+          <div id="token-timing-chart" class="overflow-x-auto"></div>
         </div>
 
         <div id="tab-panel-portraitmap" class="hidden p-4">
@@ -431,7 +437,7 @@
       function switchMainTab(tab) {
         const activeBtnClasses = ['text-cyan-300', 'border-cyan-400'];
         const inactiveBtnClasses = ['text-slate-400', 'border-transparent'];
-        const panels = ['leaderboard', 'defences', 'portraitmap'];
+        const panels = ['leaderboard', 'defences', 'time', 'portraitmap'];
         panels.forEach(function(id) {
           const panel = document.getElementById('tab-panel-' + id);
           const btn = document.getElementById('tab-btn-' + id);
@@ -482,7 +488,7 @@
 
       const WAR_TAB_LABELS = {
         top: { 'war-summary': 'Wars', 'player-summary': 'Player summary' },
-        main: { leaderboard: 'Token table', defences: 'Defences', portraitmap: 'Portrait map' },
+        main: { leaderboard: 'Token table', defences: 'Defences', time: 'Time', portraitmap: 'Portrait map' },
         sub: { attack: 'Attack', defence: 'Defence' }
       };
 
