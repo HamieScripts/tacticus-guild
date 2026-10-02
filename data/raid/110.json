@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790956624,
+  "fetchedOn": 1790959652,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -28081,6 +28081,108 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 15994
+      }
+    },
+    {
+      "userId": "0c261907-c335-47b6-9e22-a81f03e4064d",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 7080,
+      "damageType": "Bomb",
+      "remainingHp": 18825309,
+      "maxHp": 45000000,
+      "startedOn": 1790958403,
+      "completedOn": 1790958403,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "0c261907-c335-47b6-9e22-a81f03e4064d",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 95420,
+      "damageType": "Battle",
+      "remainingHp": 18729889,
+      "maxHp": 45000000,
+      "startedOn": 1790958412,
+      "completedOn": 1790958599,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 752366
+        },
+        {
+          "unitId": "necroDestroyer",
+          "power": 355200
+        },
+        {
+          "unitId": "eldarAutarch",
+          "power": 475596
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 783076
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 592715
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 21052
+      }
+    },
+    {
+      "userId": "553c48cc-fcd5-4d34-94cd-691ecad888cc",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 207044,
+      "damageType": "Battle",
+      "remainingHp": 18522845,
+      "maxHp": 45000000,
+      "startedOn": 1790959462,
+      "completedOn": 1790959610,
+      "heroDetails": [
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 816078
+        },
+        {
+          "unitId": "tauMarksman",
+          "power": 764862
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 860499
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 1027707
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 992667
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 105879
       }
     }
   ]
