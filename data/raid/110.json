@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1790930979,
+  "fetchedOn": 1790937945,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -27020,6 +27020,84 @@
         "unitId": "tyranBiovore",
         "power": 940
       }
+    },
+    {
+      "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 7274,
+      "damageType": "Bomb",
+      "remainingHp": 22375967,
+      "maxHp": 45000000,
+      "startedOn": 1790937351,
+      "completedOn": 1790937351,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 129196,
+      "damageType": "Battle",
+      "remainingHp": 22246771,
+      "maxHp": 45000000,
+      "startedOn": 1790937399,
+      "completedOn": 1790937677,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 154373
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 338836
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 229188
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 483395
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 291017
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 100412
+      }
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 7344,
+      "damageType": "Bomb",
+      "remainingHp": 22239427,
+      "maxHp": 45000000,
+      "startedOn": 1790937781,
+      "completedOn": 1790937781,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
