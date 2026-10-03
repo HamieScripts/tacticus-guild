@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791018058,
+  "fetchedOn": 1791019421,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -30068,6 +30068,48 @@
       "completedOn": 1791017899,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "667d435c-4668-4676-a002-e533709f1cc6",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 118263,
+      "damageType": "Battle",
+      "remainingHp": 9206662,
+      "maxHp": 45000000,
+      "startedOn": 1791017927,
+      "completedOn": 1791018086,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 832907
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 391613
+        },
+        {
+          "unitId": "orksRuntherd",
+          "power": 424630
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 470325
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 537925
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 127322
+      }
     }
   ]
 }
