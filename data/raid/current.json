@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791065877,
+  "fetchedOn": 1791069495,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -31816,6 +31816,66 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 1625
+      }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 7649,
+      "damageType": "Bomb",
+      "remainingHp": 1803516,
+      "maxHp": 45000000,
+      "startedOn": 1791067255,
+      "completedOn": 1791067255,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 119195,
+      "damageType": "Battle",
+      "remainingHp": 1684321,
+      "maxHp": 45000000,
+      "startedOn": 1791067271,
+      "completedOn": 1791067406,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 182320
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 182421
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 754017
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 840521
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 231580
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 66681
       }
     }
   ]
