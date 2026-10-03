@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791001847,
+  "fetchedOn": 1791002914,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -29623,6 +29623,168 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 78923
+      }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 106456,
+      "damageType": "Battle",
+      "remainingHp": 12809278,
+      "maxHp": 45000000,
+      "startedOn": 1791001378,
+      "completedOn": 1791001856,
+      "heroDetails": [
+        {
+          "unitId": "bloodDante",
+          "power": 231580
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 182421
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 182320
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 840521
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 754017
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 66681
+      }
+    },
+    {
+      "userId": "9d50010a-82f9-4db9-aa55-e292388ea749",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 828397,
+      "damageType": "Battle",
+      "remainingHp": 11980881,
+      "maxHp": 45000000,
+      "startedOn": 1791001631,
+      "completedOn": 1791001880,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 866503
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 690484
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 603747
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 390745
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 586675
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 149526
+      }
+    },
+    {
+      "userId": "077980e3-7cb5-44ab-977e-846af676ccce",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 8063,
+      "damageType": "Bomb",
+      "remainingHp": 11972818,
+      "maxHp": 45000000,
+      "startedOn": 1791002569,
+      "completedOn": 1791002569,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "553c48cc-fcd5-4d34-94cd-691ecad888cc",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 8233,
+      "damageType": "Bomb",
+      "remainingHp": 11964585,
+      "maxHp": 45000000,
+      "startedOn": 1791002665,
+      "completedOn": 1791002665,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "553c48cc-fcd5-4d34-94cd-691ecad888cc",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Mythic",
+      "damageDealt": 140156,
+      "damageType": "Battle",
+      "remainingHp": 11824429,
+      "maxHp": 45000000,
+      "startedOn": 1791002686,
+      "completedOn": 1791002800,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 559410
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 539522
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 801765
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 663076
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 992667
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 641082
       }
     }
   ]
