@@ -31,6 +31,8 @@ const raidState = {
   seasons: [],
   activeSeason: null,
   currentSeason: null,
+  previousSeason: null,
+  previousEntries: [],
   seasonConfigId: null,
   guild: null,
   fetchedOn: null,
@@ -61,6 +63,25 @@ function escapeHtml(value) {
 function formatNumber(value) {
   const numeric = Number(value);
   return Number.isFinite(numeric) ? numberFormatter.format(Math.round(numeric)) : '0';
+}
+
+function renderSeasonDelta(currentValue, previousValue) {
+  if (raidState.previousSeason === null) {
+    return '<span class="text-[11px] font-medium text-slate-500" title="Previous season data unavailable">—</span>';
+  }
+  if (previousValue === undefined) {
+    return '<span class="text-[11px] font-medium text-slate-500" title="No activity in previous season">New</span>';
+  }
+
+  const baseline = Number(previousValue);
+  if (!Number.isFinite(baseline) || baseline === 0) {
+    return '<span class="text-[11px] font-medium text-slate-500" title="Previous season value was zero">—</span>';
+  }
+
+  const change = ((Number(currentValue) - baseline) / Math.abs(baseline)) * 100;
+  const color = change > 0 ? 'text-emerald-300' : change < 0 ? 'text-rose-300' : 'text-slate-400';
+  const sign = change > 0 ? '+' : '';
+  return `<span class="text-[11px] font-semibold ${color}" title="Compared with season ${escapeHtml(String(raidState.previousSeason))}">${sign}${change.toFixed(1)}%</span>`;
 }
 
 function formatCompactNumber(value) {
@@ -224,18 +245,27 @@ async function loadSeasonManifest() {
   raidState.currentSeason = Number(manifest?.current);
 }
 
+async function loadRaidSeasonData(season, entry) {
+  const url = entry?.url || (season === raidState.currentSeason ? RAID_CURRENT_URL : `./data/raid/${season}.json`);
+  if (window.supabaseData) {
+    return (await window.supabaseData.getRaidSeason(season).catch(() => null)) || await loadJson(url, null);
+  }
+  return loadJson(raidState.seasons.length === 0 ? RAID_CURRENT_URL : url, null);
+}
+
 async function loadSeason(season) {
   const entry = raidState.seasons.find((item) => item.season === season);
-  const url = entry?.url || (season === raidState.currentSeason ? RAID_CURRENT_URL : `./data/raid/${season}.json`);
-
-  // raid_entries is the source of truth; the season JSON file is the fallback.
-  const raid = window.supabaseData
-    ? (await window.supabaseData.getRaidSeason(season).catch(() => null)) || await loadJson(url, null)
-    : await loadJson(raidState.seasons.length === 0 ? RAID_CURRENT_URL : url, null);
+  const previousEntry = raidState.seasons.find((item) => item.season < Number(season));
+  const [raid, previousRaid] = await Promise.all([
+    loadRaidSeasonData(season, entry),
+    previousEntry ? loadRaidSeasonData(previousEntry.season, previousEntry) : Promise.resolve(null)
+  ]);
 
   if (!raid) {
     raidState.error = 'Guild raid data has not been published yet.';
     raidState.entries = [];
+    raidState.previousSeason = null;
+    raidState.previousEntries = [];
     raidState.loaded = true;
     return;
   }
@@ -247,6 +277,8 @@ async function loadSeason(season) {
   raidState.guild = raid.guild ?? null;
   raidState.fetchedOn = raid.fetchedOn ?? null;
   raidState.entries = Array.isArray(raid.entries) ? raid.entries : [];
+  raidState.previousSeason = previousRaid ? Number(previousRaid.season ?? previousEntry?.season) : null;
+  raidState.previousEntries = Array.isArray(previousRaid?.entries) ? previousRaid.entries : [];
   raidState.loaded = true;
 }
 
@@ -791,6 +823,7 @@ function renderSeasonPlayers() {
   if (!container) return;
 
   const players = sortSeasonPlayers(aggregatePlayers(raidState.entries));
+  const previousPlayers = new Map(aggregatePlayers(raidState.previousEntries).map((player) => [player.userId, player]));
   if (players.length === 0) {
     container.innerHTML = '<p class="p-4 text-sm text-slate-400">No player activity recorded this season.</p>';
     return;
@@ -799,9 +832,15 @@ function renderSeasonPlayers() {
   const headers = SEASON_PLAYER_COLUMNS.map((column) => {
     const isSorted = raidState.playerSort.key === column.key;
     const arrow = isSorted ? (raidState.playerSort.direction === 'asc' ? ' ▲' : ' ▼') : '';
-    return `<th class="px-3 py-2 ${column.numeric ? 'text-right' : ''}" aria-sort="${isSorted ? (raidState.playerSort.direction === 'asc' ? 'ascending' : 'descending') : 'none'}">
+    const header = `<th class="px-3 py-2 whitespace-nowrap ${column.numeric ? 'text-right' : ''}" aria-sort="${isSorted ? (raidState.playerSort.direction === 'asc' ? 'ascending' : 'descending') : 'none'}">
       <button type="button" data-player-sort="${column.key}" class="uppercase tracking-wide transition-colors hover:text-slate-100 ${isSorted ? 'text-cyan-300' : ''}">${escapeHtml(column.label)}${arrow}</button>
     </th>`;
+    const deltaHeader = column.key === 'totalDamage'
+      ? '<th class="px-3 py-2 whitespace-nowrap text-left" title="Percentage change from last season">vs. Previous</th>'
+      : column.key === 'damagePerToken'
+        ? '<th class="px-3 py-2 whitespace-nowrap text-left" title="Percentage change from last season">vs. Previous</th>'
+        : '';
+    return header + deltaHeader;
   }).join('');
 
   container.innerHTML = `
@@ -814,16 +853,21 @@ function renderSeasonPlayers() {
           </tr>
         </thead>
         <tbody class="divide-y divide-slate-800/80">
-          ${players.map((player, index) => `
+          ${players.map((player, index) => {
+            const previousPlayer = previousPlayers.get(player.userId);
+            return `
             <tr class="hover:bg-slate-900/60">
               <td class="px-3 py-2 text-slate-400">${index + 1}</td>
               <td class="px-3 py-2">${renderPlayerCell(player.userId)}</td>
               <td class="px-3 py-2 text-right font-bold text-cyan-200">${escapeHtml(formatNumber(player.totalDamage))}</td>
+              <td class="px-3 py-2 text-left">${renderSeasonDelta(player.totalDamage, previousPlayer?.totalDamage)}</td>
               <td class="px-3 py-2 text-right text-slate-300">${escapeHtml(formatNumber(player.tokens))}</td>
               <td class="px-3 py-2 text-right text-slate-300">${escapeHtml(formatNumber(player.damagePerToken))}</td>
+              <td class="px-3 py-2 text-left">${renderSeasonDelta(player.damagePerToken, previousPlayer?.damagePerToken)}</td>
               <td class="px-3 py-2 text-right text-slate-300">${escapeHtml(formatNumber(player.bombs))}</td>
               <td class="px-3 py-2 text-right text-slate-300">${escapeHtml(formatNumber(player.bombDamage))}</td>
-            </tr>`).join('')}
+            </tr>`;
+          }).join('')}
         </tbody>
       </table>
     </div>`;
