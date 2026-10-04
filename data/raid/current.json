@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791142422,
+  "fetchedOn": 1791145806,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -34786,6 +34786,48 @@
       "machineOfWarDetails": {
         "unitId": "thousDaemonPrince",
         "power": 66681
+      }
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 6,
+      "set": 4,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss8MiniBoss1EldarAutarch",
+      "type": "AvatarOfKhaine",
+      "rarity": "Legendary",
+      "damageDealt": 11877,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 1200000,
+      "startedOn": 1791145643,
+      "completedOn": 1791145675,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 75790
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 98957
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 69553
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 77640
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 59510
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "ultraDreadnought",
+        "power": 1126
       }
     }
   ]
