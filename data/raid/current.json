@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791137690,
+  "fetchedOn": 1791142422,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -34726,6 +34726,66 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 1040687
+      }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 6,
+      "set": 4,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss8MiniBoss1EldarAutarch",
+      "type": "AvatarOfKhaine",
+      "rarity": "Legendary",
+      "damageDealt": 6904,
+      "damageType": "Bomb",
+      "remainingHp": 11877,
+      "maxHp": 1200000,
+      "startedOn": 1791137737,
+      "completedOn": 1791137737,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 6,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Legendary",
+      "damageDealt": 90919,
+      "damageType": "Battle",
+      "remainingHp": 10267989,
+      "maxHp": 12500000,
+      "startedOn": 1791137752,
+      "completedOn": 1791137933,
+      "heroDetails": [
+        {
+          "unitId": "bloodDante",
+          "power": 231580
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 840521
+        },
+        {
+          "unitId": "astraDreir",
+          "power": 204475
+        },
+        {
+          "unitId": "genesKelermorph",
+          "power": 484160
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 754017
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 66681
       }
     }
   ]
