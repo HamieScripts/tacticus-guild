@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791077852,
+  "fetchedOn": 1791081239,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -32398,6 +32398,150 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 641082
+      }
+    },
+    {
+      "userId": "c9b88058-b28d-49da-9e8d-a2c68770ac97",
+      "tier": 6,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 8015,
+      "damageType": "Bomb",
+      "remainingHp": 12481835,
+      "maxHp": 12500000,
+      "startedOn": 1791078833,
+      "completedOn": 1791078833,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 6,
+      "set": 3,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss7MiniBoss2AstraOrdnance",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 146830,
+      "damageType": "Battle",
+      "remainingHp": 57183,
+      "maxHp": 1000000,
+      "startedOn": 1791078942,
+      "completedOn": 1791079072,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 325028
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 205401
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 147648
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 71268
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 193822
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1625
+      }
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 6,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 98037,
+      "damageType": "Battle",
+      "remainingHp": 12383798,
+      "maxHp": 12500000,
+      "startedOn": 1791079121,
+      "completedOn": 1791079243,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 325028
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 205401
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 147648
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 71268
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 193822
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1625
+      }
+    },
+    {
+      "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+      "tier": 6,
+      "set": 3,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss7MiniBoss2AstraOrdnance",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 57183,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 1000000,
+      "startedOn": 1791080845,
+      "completedOn": 1791080880,
+      "heroDetails": [
+        {
+          "unitId": "blackHaarken",
+          "power": 964630
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 368517
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 616001
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 866505
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 657529
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 16415
       }
     }
   ]
