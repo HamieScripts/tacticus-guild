@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791186421,
+  "fetchedOn": 1791187684,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -35933,6 +35933,66 @@
       "completedOn": 1791184226,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 7,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 8036,
+      "damageType": "Bomb",
+      "remainingHp": 29984055,
+      "maxHp": 30000000,
+      "startedOn": 1791186522,
+      "completedOn": 1791186522,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "cf7b7ebf-dd25-4371-ba75-b2cb51102dde",
+      "tier": 7,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss1TyranNeurothrope",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 66697,
+      "damageType": "Battle",
+      "remainingHp": 2333303,
+      "maxHp": 2400000,
+      "startedOn": 1791187435,
+      "completedOn": 1791187551,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 147892
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 379535
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 535193
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 900581
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 396698
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 31726
+      }
     }
   ]
 }
