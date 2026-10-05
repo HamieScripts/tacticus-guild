@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791197320,
+  "fetchedOn": 1791199417,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -36233,6 +36233,144 @@
       "completedOn": 1791196947,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 7,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 7901,
+      "damageType": "Bomb",
+      "remainingHp": 29952725,
+      "maxHp": 30000000,
+      "startedOn": 1791198147,
+      "completedOn": 1791198147,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 7,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss1TyranNeurothrope",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 30985,
+      "damageType": "Battle",
+      "remainingHp": 1016937,
+      "maxHp": 2400000,
+      "startedOn": 1791198158,
+      "completedOn": 1791198246,
+      "heroDetails": [
+        {
+          "unitId": "necroSpyder",
+          "power": 144445
+        },
+        {
+          "unitId": "admecMarshall",
+          "power": 89877
+        },
+        {
+          "unitId": "admecManipulus",
+          "power": 67691
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 304791
+        },
+        {
+          "unitId": "admecRuststalker",
+          "power": 158291
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 656
+      }
+    },
+    {
+      "userId": "a736e5fd-6a0b-4137-9ec0-526345cd6e96",
+      "tier": 7,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 7934,
+      "damageType": "Bomb",
+      "remainingHp": 29944791,
+      "maxHp": 30000000,
+      "startedOn": 1791198784,
+      "completedOn": 1791198784,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
+      "tier": 7,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 8179,
+      "damageType": "Bomb",
+      "remainingHp": 29936612,
+      "maxHp": 30000000,
+      "startedOn": 1791198922,
+      "completedOn": 1791198922,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
+      "tier": 7,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss1TyranNeurothrope",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 407614,
+      "damageType": "Battle",
+      "remainingHp": 609323,
+      "maxHp": 2400000,
+      "startedOn": 1791198995,
+      "completedOn": 1791199237,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 483395
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 229188
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 338836
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 154373
+        },
+        {
+          "unitId": "orksRuntherd",
+          "power": 346321
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 7276
+      }
     }
   ]
 }
