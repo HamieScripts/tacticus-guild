@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791223075,
+  "fetchedOn": 1791225068,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -37699,6 +37699,90 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 2314
+      }
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 7,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 1582006,
+      "damageType": "Battle",
+      "remainingHp": 20278221,
+      "maxHp": 30000000,
+      "startedOn": 1791223673,
+      "completedOn": 1791223808,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 906661
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 887601
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 591034
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 451420
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 880312
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 434174
+      }
+    },
+    {
+      "userId": "553c48cc-fcd5-4d34-94cd-691ecad888cc",
+      "tier": 7,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 374821,
+      "damageType": "Battle",
+      "remainingHp": 19903400,
+      "maxHp": 30000000,
+      "startedOn": 1791223715,
+      "completedOn": 1791223849,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 559410
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 811064
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 671477
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 539522
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 992667
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "deathCrawler",
+        "power": 10132
       }
     }
   ]
