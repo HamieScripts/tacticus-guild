@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791250674,
+  "fetchedOn": 1791252310,
   "season": 110,
   "seasonConfigId": "guild_boss_season_config_1",
   "guild": {
@@ -38437,6 +38437,90 @@
       "machineOfWarDetails": {
         "unitId": "deathCrawler",
         "power": 10132
+      }
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 7,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss2TyranWingedPrime",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 6933,
+      "damageType": "Battle",
+      "remainingHp": 1010283,
+      "maxHp": 2400000,
+      "startedOn": 1791250706,
+      "completedOn": 1791250778,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 61459
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 137506
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 69553
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 80945
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 77640
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 1188
+      }
+    },
+    {
+      "userId": "c9b88058-b28d-49da-9e8d-a2c68770ac97",
+      "tier": 7,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 406904,
+      "damageType": "Battle",
+      "remainingHp": 12273189,
+      "maxHp": 30000000,
+      "startedOn": 1791251682,
+      "completedOn": 1791251787,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 841384
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 705332
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 413282
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 420222
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 407426
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "deathCrawler",
+        "power": 1735
       }
     }
   ]
