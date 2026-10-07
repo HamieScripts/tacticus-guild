@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791373570,
+  "fetchedOn": 1791376617,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -943,6 +943,288 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 984974
+      }
+    },
+    {
+      "userId": "08a7e111-0193-4d88-bc27-c5124e90039e",
+      "tier": 3,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Epic",
+      "damageDealt": 9245,
+      "damageType": "Bomb",
+      "remainingHp": 1254149,
+      "maxHp": 1500000,
+      "startedOn": 1791374327,
+      "completedOn": 1791374327,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "d9c3ef49-eadf-499d-ab81-d655dbcc086f",
+      "tier": 3,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Epic",
+      "damageDealt": 9152,
+      "damageType": "Bomb",
+      "remainingHp": 1244997,
+      "maxHp": 1500000,
+      "startedOn": 1791374550,
+      "completedOn": 1791374550,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "9a9b9a9d-cbd4-4821-842c-e2c24920ae27",
+      "tier": 3,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Epic",
+      "damageDealt": 7473,
+      "damageType": "Bomb",
+      "remainingHp": 1237524,
+      "maxHp": 1500000,
+      "startedOn": 1791374559,
+      "completedOn": 1791374559,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "9a9b9a9d-cbd4-4821-842c-e2c24920ae27",
+      "tier": 3,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Epic",
+      "damageDealt": 168597,
+      "damageType": "Battle",
+      "remainingHp": 1068927,
+      "maxHp": 1500000,
+      "startedOn": 1791374565,
+      "completedOn": 1791374678,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 85089
+        },
+        {
+          "unitId": "spaceBlackmane",
+          "power": 174776
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 270581
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 165764
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 119436
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 4135
+      }
+    },
+    {
+      "userId": "d9c3ef49-eadf-499d-ab81-d655dbcc086f",
+      "tier": 3,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss4MiniBoss1OrksBigMek",
+      "type": "Ghazghkull",
+      "rarity": "Epic",
+      "damageDealt": 144000,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 144000,
+      "startedOn": 1791374608,
+      "completedOn": 1791374788,
+      "heroDetails": [
+        {
+          "unitId": "admecDominus",
+          "power": 480374
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 853537
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 566343
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 605226
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 682746
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1040687
+      }
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 3,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Epic",
+      "damageDealt": 8972,
+      "damageType": "Bomb",
+      "remainingHp": 1059955,
+      "maxHp": 1500000,
+      "startedOn": 1791374879,
+      "completedOn": 1791374879,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "9a9b9a9d-cbd4-4821-842c-e2c24920ae27",
+      "tier": 3,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Epic",
+      "damageDealt": 230430,
+      "damageType": "Battle",
+      "remainingHp": 829525,
+      "maxHp": 1500000,
+      "startedOn": 1791374884,
+      "completedOn": 1791374991,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 85089
+        },
+        {
+          "unitId": "spaceBlackmane",
+          "power": 174776
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 270581
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 165764
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 119436
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 4135
+      }
+    },
+    {
+      "userId": "c62ee67f-0a9e-4e29-8861-320e57788e6c",
+      "tier": 3,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Epic",
+      "damageDealt": 528041,
+      "damageType": "Battle",
+      "remainingHp": 301484,
+      "maxHp": 1500000,
+      "startedOn": 1791374976,
+      "completedOn": 1791375218,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 532836
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 493407
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 171387
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 783472
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 94974
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 105653
+      }
+    },
+    {
+      "userId": "c47778d3-3a3c-4cc0-b405-3aed0d993c45",
+      "tier": 3,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Epic",
+      "damageDealt": 301484,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 1500000,
+      "startedOn": 1791376311,
+      "completedOn": 1791376451,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 640531
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 444261
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 566901
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 665127
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 650865
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 1030
       }
     }
   ]
