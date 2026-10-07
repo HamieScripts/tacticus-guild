@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791388393,
+  "fetchedOn": 1791390488,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -2167,6 +2167,150 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 518336
+      }
+    },
+    {
+      "userId": "c47778d3-3a3c-4cc0-b405-3aed0d993c45",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Legendary",
+      "damageDealt": 302574,
+      "damageType": "Battle",
+      "remainingHp": 52931,
+      "maxHp": 5000000,
+      "startedOn": 1791388269,
+      "completedOn": 1791388458,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 650865
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 566901
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 640531
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 665127
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 616131
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "ultraDreadnought",
+        "power": 673
+      }
+    },
+    {
+      "userId": "c47778d3-3a3c-4cc0-b405-3aed0d993c45",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Legendary",
+      "damageDealt": 7689,
+      "damageType": "Bomb",
+      "remainingHp": 45242,
+      "maxHp": 5000000,
+      "startedOn": 1791388507,
+      "completedOn": 1791388507,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "c47778d3-3a3c-4cc0-b405-3aed0d993c45",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Legendary",
+      "damageDealt": 45242,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 5000000,
+      "startedOn": 1791388515,
+      "completedOn": 1791388565,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 650865
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 566901
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 640531
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 665127
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 616131
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "ultraDreadnought",
+        "power": 673
+      }
+    },
+    {
+      "userId": "293f4b63-28b1-4b5e-88ee-59936eed8ddb",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss7MiniBoss1AstraPrimarisPsy",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 504620,
+      "damageType": "Battle",
+      "remainingHp": 95380,
+      "maxHp": 600000,
+      "startedOn": 1791389010,
+      "completedOn": 1791389166,
+      "heroDetails": [
+        {
+          "unitId": "ultraTitus",
+          "power": 885602
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 908816
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 823252
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 863255
+        },
+        {
+          "unitId": "tauMarksman",
+          "power": 146114
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "ultraDreadnought",
+        "power": 21016
       }
     }
   ]
