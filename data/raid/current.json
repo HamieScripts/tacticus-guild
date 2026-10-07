@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791394517,
+  "fetchedOn": 1791395947,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -2328,6 +2328,66 @@
       "maxHp": 7500000,
       "startedOn": 1791393554,
       "completedOn": 1791393554,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss7MiniBoss1AstraPrimarisPsy",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 95380,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 600000,
+      "startedOn": 1791395697,
+      "completedOn": 1791395791,
+      "heroDetails": [
+        {
+          "unitId": "genesKelermorph",
+          "power": 484160
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 182421
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 771461
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 231580
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 840521
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 66681
+      }
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 8289,
+      "damageType": "Bomb",
+      "remainingHp": 7482385,
+      "maxHp": 7500000,
+      "startedOn": 1791395814,
+      "completedOn": 1791395814,
       "heroDetails": [],
       "machineOfWarDetails": null
     }
