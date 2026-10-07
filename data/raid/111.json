@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791380903,
+  "fetchedOn": 1791383160,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -1759,6 +1759,90 @@
       "machineOfWarDetails": {
         "unitId": "ultraDreadnought",
         "power": 2084
+      }
+    },
+    {
+      "userId": "8485b330-6671-46b7-a258-9a2ed7d0e5f0",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Legendary",
+      "damageDealt": 154897,
+      "damageType": "Battle",
+      "remainingHp": 3653433,
+      "maxHp": 5000000,
+      "startedOn": 1791382215,
+      "completedOn": 1791382368,
+      "heroDetails": [
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 205429
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 750011
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 172827
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 55198
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 58494
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 62737
+      }
+    },
+    {
+      "userId": "8485b330-6671-46b7-a258-9a2ed7d0e5f0",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Legendary",
+      "damageDealt": 508693,
+      "damageType": "Battle",
+      "remainingHp": 3144740,
+      "maxHp": 5000000,
+      "startedOn": 1791382397,
+      "completedOn": 1791382607,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 755833
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 750011
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 182899
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 454218
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 639179
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 62737
       }
     }
   ]
