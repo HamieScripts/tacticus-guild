@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791395947,
+  "fetchedOn": 1791397830,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -2388,6 +2388,108 @@
       "maxHp": 7500000,
       "startedOn": 1791395814,
       "completedOn": 1791395814,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 862219,
+      "damageType": "Battle",
+      "remainingHp": 6620166,
+      "maxHp": 7500000,
+      "startedOn": 1791395830,
+      "completedOn": 1791396084,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 821968
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 591034
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 887601
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 906661
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 956860
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 476066
+      }
+    },
+    {
+      "userId": "077980e3-7cb5-44ab-977e-846af676ccce",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 887524,
+      "damageType": "Battle",
+      "remainingHp": 5724623,
+      "maxHp": 7500000,
+      "startedOn": 1791396437,
+      "completedOn": 1791396684,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 959510
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 666861
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 794968
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 146660
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 855675
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 672326
+      }
+    },
+    {
+      "userId": "9e4b7170-a4a4-4b28-ac57-6cd3cb8efed0",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 8019,
+      "damageType": "Bomb",
+      "remainingHp": 6612147,
+      "maxHp": 7500000,
+      "startedOn": 1791396644,
+      "completedOn": 1791396644,
       "heroDetails": [],
       "machineOfWarDetails": null
     }
