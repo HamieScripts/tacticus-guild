@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791370025,
+  "fetchedOn": 1791370696,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -610,6 +610,90 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 476066
+      }
+    },
+    {
+      "userId": "39064004-8034-4d34-abea-e7f414f9437b",
+      "tier": 3,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Epic",
+      "damageDealt": 1050842,
+      "damageType": "Battle",
+      "remainingHp": 149158,
+      "maxHp": 1200000,
+      "startedOn": 1791370041,
+      "completedOn": 1791370340,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 846280
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 667615
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 691277
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 673799
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 830584
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 509978
+      }
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 3,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Epic",
+      "damageDealt": 190570,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 1200000,
+      "startedOn": 1791370280,
+      "completedOn": 1791370567,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 93525
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 48690
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 251726
+        },
+        {
+          "unitId": "adeptHospitaller",
+          "power": 91114
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 335739
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1324
       }
     }
   ]
