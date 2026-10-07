@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791416750,
+  "fetchedOn": 1791417363,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -2929,6 +2929,48 @@
       "machineOfWarDetails": {
         "unitId": "ultraDreadnought",
         "power": 1216
+      }
+    },
+    {
+      "userId": "c9b88058-b28d-49da-9e8d-a2c68770ac97",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 223182,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 7500000,
+      "startedOn": 1791417057,
+      "completedOn": 1791417157,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 841384
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 407426
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 705332
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 413282
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 420222
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 51310
       }
     }
   ]
