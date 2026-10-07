@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791370696,
+  "fetchedOn": 1791372149,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -694,6 +694,171 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 1324
+      }
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 3,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Epic",
+      "damageDealt": 72444,
+      "damageType": "Battle",
+      "remainingHp": 1427556,
+      "maxHp": 1500000,
+      "startedOn": 1791370870,
+      "completedOn": 1791371035,
+      "heroDetails": [
+        {
+          "unitId": "tauCrisis",
+          "power": 304791
+        },
+        {
+          "unitId": "adeptHospitaller",
+          "power": 91114
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 48690
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 93525
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 251726
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 3,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Epic",
+      "damageDealt": 58710,
+      "damageType": "Battle",
+      "remainingHp": 1368846,
+      "maxHp": 1500000,
+      "startedOn": 1791371136,
+      "completedOn": 1791371398,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 93525
+        },
+        {
+          "unitId": "adeptHospitaller",
+          "power": 91114
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 48690
+        },
+        {
+          "unitId": "bloodIntercessor",
+          "power": 77785
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 251726
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1324
+      }
+    },
+    {
+      "userId": "86dc308e-8ca0-4470-ae78-ced2ef219eea",
+      "tier": 3,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Epic",
+      "damageDealt": 406717,
+      "damageType": "Battle",
+      "remainingHp": 962129,
+      "maxHp": 1500000,
+      "startedOn": 1791371462,
+      "completedOn": 1791371649,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 683837
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 709767
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 624159
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 343930
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 660073
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 75712
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 3,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Epic",
+      "damageDealt": 627051,
+      "damageType": "Battle",
+      "remainingHp": 335078,
+      "maxHp": 1500000,
+      "startedOn": 1791371833,
+      "completedOn": 1791372140,
+      "heroDetails": [
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 448923
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 379344
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 634677
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 514707
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 778199
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 359814
       }
     }
   ]
