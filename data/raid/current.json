@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791409526,
+  "fetchedOn": 1791411690,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -2701,6 +2701,66 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 2314
+      }
+    },
+    {
+      "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 7722,
+      "damageType": "Bomb",
+      "remainingHp": 2950936,
+      "maxHp": 7500000,
+      "startedOn": 1791410982,
+      "completedOn": 1791410982,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 288600,
+      "damageType": "Battle",
+      "remainingHp": 2662336,
+      "maxHp": 7500000,
+      "startedOn": 1791410989,
+      "completedOn": 1791411087,
+      "heroDetails": [
+        {
+          "unitId": "blackHaarken",
+          "power": 964630
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 616001
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 368517
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 866505
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 657529
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 16415
       }
     }
   ]
