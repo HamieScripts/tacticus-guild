@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791379684,
+  "fetchedOn": 1791380903,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -1657,6 +1657,108 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 641082
+      }
+    },
+    {
+      "userId": "553c48cc-fcd5-4d34-94cd-691ecad888cc",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Legendary",
+      "damageDealt": 8306,
+      "damageType": "Bomb",
+      "remainingHp": 4991694,
+      "maxHp": 5000000,
+      "startedOn": 1791379820,
+      "completedOn": 1791379820,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "553c48cc-fcd5-4d34-94cd-691ecad888cc",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Legendary",
+      "damageDealt": 685335,
+      "damageType": "Battle",
+      "remainingHp": 4306359,
+      "maxHp": 5000000,
+      "startedOn": 1791379843,
+      "completedOn": 1791380001,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 556483
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 602057
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 671477
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 820511
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 992667
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 641082
+      }
+    },
+    {
+      "userId": "c9b88058-b28d-49da-9e8d-a2c68770ac97",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Legendary",
+      "damageDealt": 498029,
+      "damageType": "Battle",
+      "remainingHp": 3808330,
+      "maxHp": 5000000,
+      "startedOn": 1791380172,
+      "completedOn": 1791380352,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 407426
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 841384
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 420222
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 705332
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 413282
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "ultraDreadnought",
+        "power": 2084
       }
     }
   ]
