@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791282291,
+  "fetchedOn": 1791367233,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -7,8 +7,28 @@
     "guildTag": "XXPQS",
     "level": 34,
     "seasons": [
-      110
+      110,
+      111
     ]
   },
-  "entries": []
+  "entries": [
+    {
+      "userId": "c9b88058-b28d-49da-9e8d-a2c68770ac97",
+      "tier": 0,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss1TyranTervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Common",
+      "damageDealt": 6972,
+      "damageType": "Bomb",
+      "remainingHp": 11028,
+      "maxHp": 18000,
+      "startedOn": 1791367225,
+      "completedOn": 1791367225,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    }
+  ]
 }
