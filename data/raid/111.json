@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791430312,
+  "fetchedOn": 1791435128,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -3928,6 +3928,48 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 672326
+      }
+    },
+    {
+      "userId": "b29d75a2-5540-4ded-9383-998307fa1a4a",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss2AdmecManipulus",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 249732,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 1000000,
+      "startedOn": 1791434436,
+      "completedOn": 1791434486,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 271558
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 761698
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 693170
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 778273
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 1023246
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 518336
       }
     }
   ]
