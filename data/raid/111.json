@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791453030,
+  "fetchedOn": 1791455203,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -4305,6 +4305,24 @@
       "maxHp": 12500000,
       "startedOn": 1791452632,
       "completedOn": 1791452632,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "667d435c-4668-4676-a002-e533709f1cc6",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 7418,
+      "damageType": "Bomb",
+      "remainingHp": 9015,
+      "maxHp": 1000000,
+      "startedOn": 1791454121,
+      "completedOn": 1791454121,
       "heroDetails": [],
       "machineOfWarDetails": null
     }
