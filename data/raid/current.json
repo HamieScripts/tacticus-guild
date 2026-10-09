@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791529813,
+  "fetchedOn": 1791531873,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -6866,6 +6866,90 @@
       "completedOn": 1791529464,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 347619,
+      "damageType": "Battle",
+      "remainingHp": 12097475,
+      "maxHp": 15000000,
+      "startedOn": 1791530447,
+      "completedOn": 1791530828,
+      "heroDetails": [
+        {
+          "unitId": "blackPossession",
+          "power": 634677
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 448923
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 514707
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 778199
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 379344
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 416416
+      }
+    },
+    {
+      "userId": "553c48cc-fcd5-4d34-94cd-691ecad888cc",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 200839,
+      "damageType": "Battle",
+      "remainingHp": 11896636,
+      "maxHp": 15000000,
+      "startedOn": 1791530863,
+      "completedOn": 1791530993,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 602057
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 825411
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 671477
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 602840
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 478440
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 641082
+      }
     }
   ]
 }
