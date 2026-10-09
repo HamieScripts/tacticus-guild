@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791565175,
+  "fetchedOn": 1791568010,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -7993,6 +7993,48 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 75712
+      }
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 453313,
+      "damageType": "Battle",
+      "remainingHp": 4572348,
+      "maxHp": 15000000,
+      "startedOn": 1791567503,
+      "completedOn": 1791567688,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 906661
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 591034
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 887601
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 956860
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 485671
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 476066
       }
     }
   ]
