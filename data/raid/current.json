@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791560857,
+  "fetchedOn": 1791563139,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -7771,6 +7771,48 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 1005220
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 454389,
+      "damageType": "Battle",
+      "remainingHp": 5895798,
+      "maxHp": 15000000,
+      "startedOn": 1791561773,
+      "completedOn": 1791562019,
+      "heroDetails": [
+        {
+          "unitId": "blackPossession",
+          "power": 634677
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 448923
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 514707
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 778199
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 379344
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 416416
       }
     }
   ]
