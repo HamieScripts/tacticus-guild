@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791514208,
+  "fetchedOn": 1791515083,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -6004,6 +6004,150 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 1040687
+      }
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 9340,
+      "damageType": "Bomb",
+      "remainingHp": 14973590,
+      "maxHp": 15000000,
+      "startedOn": 1791514603,
+      "completedOn": 1791514603,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 93651,
+      "damageType": "Battle",
+      "remainingHp": 14879939,
+      "maxHp": 15000000,
+      "startedOn": 1791514607,
+      "completedOn": 1791514719,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 486270
+        },
+        {
+          "unitId": "spaceBlackmane",
+          "power": 56527
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 197620
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 419497
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 188113
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1701
+      }
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss12MiniBoss2DarkaCompanion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 137077,
+      "damageType": "Battle",
+      "remainingHp": 341250,
+      "maxHp": 1200000,
+      "startedOn": 1791514734,
+      "completedOn": 1791514846,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 486270
+        },
+        {
+          "unitId": "spaceBlackmane",
+          "power": 56527
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 197620
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 419497
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 188113
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1701
+      }
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss12MiniBoss2DarkaCompanion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 92832,
+      "damageType": "Battle",
+      "remainingHp": 248418,
+      "maxHp": 1200000,
+      "startedOn": 1791514881,
+      "completedOn": 1791514991,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 486270
+        },
+        {
+          "unitId": "spaceBlackmane",
+          "power": 56527
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 197620
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 419497
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 188113
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1701
       }
     }
   ]
