@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791528053,
+  "fetchedOn": 1791529813,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -6770,6 +6770,102 @@
         "unitId": "tyranBiovore",
         "power": 100412
       }
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 7936,
+      "damageType": "Bomb",
+      "remainingHp": 12536688,
+      "maxHp": 15000000,
+      "startedOn": 1791528818,
+      "completedOn": 1791528818,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 72792,
+      "damageType": "Battle",
+      "remainingHp": 12463896,
+      "maxHp": 15000000,
+      "startedOn": 1791528832,
+      "completedOn": 1791528967,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 147648
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 205401
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 71268
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 193822
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 325028
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 2314
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 9607,
+      "damageType": "Bomb",
+      "remainingHp": 12454289,
+      "maxHp": 15000000,
+      "startedOn": 1791529231,
+      "completedOn": 1791529231,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 9195,
+      "damageType": "Bomb",
+      "remainingHp": 12445094,
+      "maxHp": 15000000,
+      "startedOn": 1791529464,
+      "completedOn": 1791529464,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
