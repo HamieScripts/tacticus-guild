@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791515083,
+  "fetchedOn": 1791516772,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -6148,6 +6148,90 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 1701
+      }
+    },
+    {
+      "userId": "293f4b63-28b1-4b5e-88ee-59936eed8ddb",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 291023,
+      "damageType": "Battle",
+      "remainingHp": 14588916,
+      "maxHp": 15000000,
+      "startedOn": 1791515950,
+      "completedOn": 1791516091,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 823252
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 908816
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 884953
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 863255
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 320634
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 36226
+      }
+    },
+    {
+      "userId": "a736e5fd-6a0b-4137-9ec0-526345cd6e96",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss12MiniBoss2DarkaCompanion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 199451,
+      "damageType": "Battle",
+      "remainingHp": 48967,
+      "maxHp": 1200000,
+      "startedOn": 1791515975,
+      "completedOn": 1791516236,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 573549
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 685193
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 684751
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 582038
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 617347
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 8910
       }
     }
   ]
