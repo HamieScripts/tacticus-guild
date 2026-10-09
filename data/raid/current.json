@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791507852,
+  "fetchedOn": 1791510363,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -5530,6 +5530,192 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 1126
+      }
+    },
+    {
+      "userId": "c47778d3-3a3c-4cc0-b405-3aed0d993c45",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 9527,
+      "damageType": "Bomb",
+      "remainingHp": 14990473,
+      "maxHp": 15000000,
+      "startedOn": 1791508449,
+      "completedOn": 1791508449,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "c47778d3-3a3c-4cc0-b405-3aed0d993c45",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss12MiniBoss2DarkaCompanion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 128205,
+      "damageType": "Battle",
+      "remainingHp": 1071795,
+      "maxHp": 1200000,
+      "startedOn": 1791508468,
+      "completedOn": 1791508603,
+      "heroDetails": [
+        {
+          "unitId": "ultraTitus",
+          "power": 665127
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 640531
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 669708
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 566901
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 650865
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 178
+      }
+    },
+    {
+      "userId": "9e4b7170-a4a4-4b28-ac57-6cd3cb8efed0",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss12MiniBoss2DarkaCompanion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 139101,
+      "damageType": "Battle",
+      "remainingHp": 932694,
+      "maxHp": 1200000,
+      "startedOn": 1791508746,
+      "completedOn": 1791508921,
+      "heroDetails": [
+        {
+          "unitId": "ultraTitus",
+          "power": 1054271
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 1108911
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 976684
+        },
+        {
+          "unitId": "bloodDeathCompany",
+          "power": 953601
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 1046683
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 984974
+      }
+    },
+    {
+      "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss12MiniBoss2DarkaCompanion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 209099,
+      "damageType": "Battle",
+      "remainingHp": 723595,
+      "maxHp": 1200000,
+      "startedOn": 1791508958,
+      "completedOn": 1791509071,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 657529
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 616001
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 970469
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 296071
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 866505
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 16046
+      }
+    },
+    {
+      "userId": "39064004-8034-4d34-abea-e7f414f9437b",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss12MiniBoss1DarkaTerminator",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 610640,
+      "damageType": "Battle",
+      "remainingHp": 589360,
+      "maxHp": 1200000,
+      "startedOn": 1791509979,
+      "completedOn": 1791510248,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 667615
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 846280
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 902809
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 691277
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 524143
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 509978
       }
     }
   ]
