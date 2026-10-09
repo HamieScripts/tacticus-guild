@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791543502,
+  "fetchedOn": 1791544961,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -7135,6 +7135,90 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 672326
+      }
+    },
+    {
+      "userId": "39064004-8034-4d34-abea-e7f414f9437b",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 477481,
+      "damageType": "Battle",
+      "remainingHp": 9847702,
+      "maxHp": 15000000,
+      "startedOn": 1791543964,
+      "completedOn": 1791544361,
+      "heroDetails": [
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 524143
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 673799
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 902809
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 846280
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 674697
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 509978
+      }
+    },
+    {
+      "userId": "39064004-8034-4d34-abea-e7f414f9437b",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 384902,
+      "damageType": "Battle",
+      "remainingHp": 9462800,
+      "maxHp": 15000000,
+      "startedOn": 1791544428,
+      "completedOn": 1791544794,
+      "heroDetails": [
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 524143
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 673799
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 902809
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 846280
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 674697
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 509978
       }
     }
   ]
