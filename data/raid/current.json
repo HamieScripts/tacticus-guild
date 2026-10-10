@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791618489,
+  "fetchedOn": 1791619074,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -9422,6 +9422,48 @@
       "completedOn": 1791618368,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss11MiniBoss1TauMarksman",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 450115,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 1800000,
+      "startedOn": 1791618668,
+      "completedOn": 1791618790,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 889839
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 906661
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 956860
+        },
+        {
+          "unitId": "bloodDeathCompany",
+          "power": 535038
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 571719
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 434174
+      }
     }
   ]
 }
