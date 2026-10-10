@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791645683,
+  "fetchedOn": 1791647199,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -10339,6 +10339,66 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 84266
+      }
+    },
+    {
+      "userId": "8649a621-c725-411f-a7a7-56808749c706",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss11MiniBoss2TauCrisis",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 8692,
+      "damageType": "Bomb",
+      "remainingHp": 589642,
+      "maxHp": 1800000,
+      "startedOn": 1791647056,
+      "completedOn": 1791647056,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "8649a621-c725-411f-a7a7-56808749c706",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss11MiniBoss2TauCrisis",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 26054,
+      "damageType": "Battle",
+      "remainingHp": 563588,
+      "maxHp": 1800000,
+      "startedOn": 1791647067,
+      "completedOn": 1791647165,
+      "heroDetails": [
+        {
+          "unitId": "templSwordBrother",
+          "power": 370907
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 368932
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 819666
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 421120
+        },
+        {
+          "unitId": "deathBlightlord",
+          "power": 390493
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 36226
       }
     }
   ]
