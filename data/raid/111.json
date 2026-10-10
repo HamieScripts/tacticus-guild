@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791604330,
+  "fetchedOn": 1791606502,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -9055,6 +9055,48 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 672326
+      }
+    },
+    {
+      "userId": "293f4b63-28b1-4b5e-88ee-59936eed8ddb",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss11MiniBoss1TauMarksman",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 375734,
+      "damageType": "Battle",
+      "remainingHp": 1424266,
+      "maxHp": 1800000,
+      "startedOn": 1791604546,
+      "completedOn": 1791604699,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 884953
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 908816
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 823252
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 863255
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 885602
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 43444
       }
     }
   ]
