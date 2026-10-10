@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791632736,
+  "fetchedOn": 1791635503,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -9907,6 +9907,66 @@
       "machineOfWarDetails": {
         "unitId": "deathCrawler",
         "power": 1965
+      }
+    },
+    {
+      "userId": "86dc308e-8ca0-4470-ae78-ced2ef219eea",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 9390,
+      "damageType": "Bomb",
+      "remainingHp": 28729744,
+      "maxHp": 30000000,
+      "startedOn": 1791633646,
+      "completedOn": 1791633646,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "86dc308e-8ca0-4470-ae78-ced2ef219eea",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 266575,
+      "damageType": "Battle",
+      "remainingHp": 28463169,
+      "maxHp": 30000000,
+      "startedOn": 1791633692,
+      "completedOn": 1791633817,
+      "heroDetails": [
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 343930
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 717471
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 719464
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 624159
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 711600
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 75712
       }
     }
   ]
