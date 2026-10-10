@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791611850,
+  "fetchedOn": 1791615690,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -9283,6 +9283,48 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 78923
+      }
+    },
+    {
+      "userId": "553c48cc-fcd5-4d34-94cd-691ecad888cc",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss11MiniBoss2TauCrisis",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 340512,
+      "damageType": "Battle",
+      "remainingHp": 1459488,
+      "maxHp": 1800000,
+      "startedOn": 1791614344,
+      "completedOn": 1791614523,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 611578
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 478440
+        },
+        {
+          "unitId": "admecRuststalker",
+          "power": 721837
+        },
+        {
+          "unitId": "admecManipulus",
+          "power": 539395
+        },
+        {
+          "unitId": "admecMarshall",
+          "power": 741271
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 105879
       }
     }
   ]
