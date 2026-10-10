@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791609832,
+  "fetchedOn": 1791611850,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -9223,6 +9223,66 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 554
+      }
+    },
+    {
+      "userId": "cf7b7ebf-dd25-4371-ba75-b2cb51102dde",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 9350,
+      "damageType": "Bomb",
+      "remainingHp": 29990650,
+      "maxHp": 30000000,
+      "startedOn": 1791611580,
+      "completedOn": 1791611580,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "cf7b7ebf-dd25-4371-ba75-b2cb51102dde",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss11MiniBoss1TauMarksman",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 175847,
+      "damageType": "Battle",
+      "remainingHp": 668661,
+      "maxHp": 1800000,
+      "startedOn": 1791611596,
+      "completedOn": 1791611675,
+      "heroDetails": [
+        {
+          "unitId": "admecDominus",
+          "power": 379535
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 535193
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 900581
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 404933
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 169916
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 78923
       }
     }
   ]
