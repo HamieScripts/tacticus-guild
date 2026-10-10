@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791600503,
+  "fetchedOn": 1791601469,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -8869,6 +8869,90 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 178
+      }
+    },
+    {
+      "userId": "c47778d3-3a3c-4cc0-b405-3aed0d993c45",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 113141,
+      "damageType": "Battle",
+      "remainingHp": 738584,
+      "maxHp": 15000000,
+      "startedOn": 1791600924,
+      "completedOn": 1791601071,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 684394
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 640531
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 669708
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 566901
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 665127
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 178
+      }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 115403,
+      "damageType": "Battle",
+      "remainingHp": 623181,
+      "maxHp": 15000000,
+      "startedOn": 1791601098,
+      "completedOn": 1791601296,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 182320
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 231580
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 840521
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 771461
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 182421
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 66681
       }
     }
   ]
