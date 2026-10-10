@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791647768,
+  "fetchedOn": 1791650793,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -10441,6 +10441,108 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 672326
+      }
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 9392,
+      "damageType": "Bomb",
+      "remainingHp": 26751387,
+      "maxHp": 30000000,
+      "startedOn": 1791650060,
+      "completedOn": 1791650060,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "c47778d3-3a3c-4cc0-b405-3aed0d993c45",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss11MiniBoss2TauCrisis",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 25494,
+      "damageType": "Battle",
+      "remainingHp": 538094,
+      "maxHp": 1800000,
+      "startedOn": 1791650064,
+      "completedOn": 1791650149,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 684394
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 584779
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 641490
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 665127
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 669708
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "ultraDreadnought",
+        "power": 673
+      }
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 38097,
+      "damageType": "Battle",
+      "remainingHp": 26713290,
+      "maxHp": 30000000,
+      "startedOn": 1791650066,
+      "completedOn": 1791650210,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 419497
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 197620
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 188113
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 486270
+        },
+        {
+          "unitId": "spaceBlackmane",
+          "power": 56527
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1701
       }
     }
   ]
