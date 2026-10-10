@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791631225,
+  "fetchedOn": 1791631981,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -9805,6 +9805,48 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 1324
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 262269,
+      "damageType": "Battle",
+      "remainingHp": 28801400,
+      "maxHp": 30000000,
+      "startedOn": 1791631274,
+      "completedOn": 1791631481,
+      "heroDetails": [
+        {
+          "unitId": "thousAhriman",
+          "power": 379344
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 514707
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 778199
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 448923
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 641790
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 416416
       }
     }
   ]
