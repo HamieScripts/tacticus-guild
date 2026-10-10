@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791619074,
+  "fetchedOn": 1791624277,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -9464,6 +9464,108 @@
         "unitId": "blackForgefiend",
         "power": 434174
       }
+    },
+    {
+      "userId": "553c48cc-fcd5-4d34-94cd-691ecad888cc",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss11MiniBoss2TauCrisis",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 496985,
+      "damageType": "Battle",
+      "remainingHp": 962503,
+      "maxHp": 1800000,
+      "startedOn": 1791622679,
+      "completedOn": 1791622923,
+      "heroDetails": [
+        {
+          "unitId": "admecMarshall",
+          "power": 741271
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 611578
+        },
+        {
+          "unitId": "admecRuststalker",
+          "power": 721837
+        },
+        {
+          "unitId": "admecManipulus",
+          "power": 539395
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 478440
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 105879
+      }
+    },
+    {
+      "userId": "667d435c-4668-4676-a002-e533709f1cc6",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss11MiniBoss2TauCrisis",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 348585,
+      "damageType": "Battle",
+      "remainingHp": 613918,
+      "maxHp": 1800000,
+      "startedOn": 1791622804,
+      "completedOn": 1791623007,
+      "heroDetails": [
+        {
+          "unitId": "admecDominus",
+          "power": 374570
+        },
+        {
+          "unitId": "admecManipulus",
+          "power": 461676
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 905334
+        },
+        {
+          "unitId": "admecRuststalker",
+          "power": 495312
+        },
+        {
+          "unitId": "admecMarshall",
+          "power": 525116
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 127322
+      }
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 8508,
+      "damageType": "Bomb",
+      "remainingHp": 29953598,
+      "maxHp": 30000000,
+      "startedOn": 1791623805,
+      "completedOn": 1791623805,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
