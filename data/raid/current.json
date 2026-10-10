@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791601469,
+  "fetchedOn": 1791603075,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -8953,6 +8953,48 @@
       "machineOfWarDetails": {
         "unitId": "thousDaemonPrince",
         "power": 66681
+      }
+    },
+    {
+      "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 108709,
+      "damageType": "Battle",
+      "remainingHp": 514472,
+      "maxHp": 15000000,
+      "startedOn": 1791601446,
+      "completedOn": 1791601815,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 657529
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 616001
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 970469
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 866505
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 402330
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 16046
       }
     }
   ]
