@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791626214,
+  "fetchedOn": 1791629095,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -9626,6 +9626,66 @@
         "unitId": "tyranBiovore",
         "power": 149526
       }
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss11MiniBoss2TauCrisis",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 6072,
+      "damageType": "Battle",
+      "remainingHp": 607846,
+      "maxHp": 1800000,
+      "startedOn": 1791628307,
+      "completedOn": 1791628396,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 81259
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 69553
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 190185
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 77640
+        },
+        {
+          "unitId": "blackObliterator",
+          "power": 71764
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 1188
+      }
+    },
+    {
+      "userId": "d9c3ef49-eadf-499d-ab81-d655dbcc086f",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss11MiniBoss2TauCrisis",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 9512,
+      "damageType": "Bomb",
+      "remainingHp": 598334,
+      "maxHp": 1800000,
+      "startedOn": 1791628745,
+      "completedOn": 1791628745,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
