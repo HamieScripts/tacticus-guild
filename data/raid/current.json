@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791644174,
+  "fetchedOn": 1791645683,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -10298,6 +10298,48 @@
       "completedOn": 1791643953,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "a736e5fd-6a0b-4137-9ec0-526345cd6e96",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 79690,
+      "damageType": "Battle",
+      "remainingHp": 27056547,
+      "maxHp": 30000000,
+      "startedOn": 1791644056,
+      "completedOn": 1791644193,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 684751
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 578564
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 365848
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 157032
+        },
+        {
+          "unitId": "votanUthar",
+          "power": 929
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 84266
+      }
     }
   ]
 }
