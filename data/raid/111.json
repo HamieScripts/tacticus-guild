@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791631981,
+  "fetchedOn": 1791632736,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -9847,6 +9847,66 @@
       "machineOfWarDetails": {
         "unitId": "thousDaemonPrince",
         "power": 416416
+      }
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 9164,
+      "damageType": "Bomb",
+      "remainingHp": 28792236,
+      "maxHp": 30000000,
+      "startedOn": 1791632219,
+      "completedOn": 1791632219,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 53102,
+      "damageType": "Battle",
+      "remainingHp": 28739134,
+      "maxHp": 30000000,
+      "startedOn": 1791632245,
+      "completedOn": 1791632370,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 325028
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 193822
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 205401
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 147648
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 71268
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "deathCrawler",
+        "power": 1965
       }
     }
   ]
