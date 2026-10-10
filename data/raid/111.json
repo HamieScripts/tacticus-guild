@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791615690,
+  "fetchedOn": 1791618489,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -9326,6 +9326,102 @@
         "unitId": "blackForgefiend",
         "power": 105879
       }
+    },
+    {
+      "userId": "667d435c-4668-4676-a002-e533709f1cc6",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 9611,
+      "damageType": "Bomb",
+      "remainingHp": 29981039,
+      "maxHp": 30000000,
+      "startedOn": 1791618176,
+      "completedOn": 1791618176,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "667d435c-4668-4676-a002-e533709f1cc6",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss11MiniBoss1TauMarksman",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 218546,
+      "damageType": "Battle",
+      "remainingHp": 450115,
+      "maxHp": 1800000,
+      "startedOn": 1791618202,
+      "completedOn": 1791618389,
+      "heroDetails": [
+        {
+          "unitId": "admecDominus",
+          "power": 374570
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 537925
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 391613
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 905334
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 470325
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 127322
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 9751,
+      "damageType": "Bomb",
+      "remainingHp": 29971288,
+      "maxHp": 30000000,
+      "startedOn": 1791618246,
+      "completedOn": 1791618246,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 9182,
+      "damageType": "Bomb",
+      "remainingHp": 29962106,
+      "maxHp": 30000000,
+      "startedOn": 1791618368,
+      "completedOn": 1791618368,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
