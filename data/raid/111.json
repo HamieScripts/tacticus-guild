@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791740002,
+  "fetchedOn": 1791746379,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -13549,6 +13549,66 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 476066
+      }
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 8274,
+      "damageType": "Bomb",
+      "remainingHp": 10844079,
+      "maxHp": 30000000,
+      "startedOn": 1791745455,
+      "completedOn": 1791745455,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 0,
+      "damageType": "Battle",
+      "remainingHp": 10844079,
+      "maxHp": 30000000,
+      "startedOn": 1791745460,
+      "completedOn": 1791745540,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 81259
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 69553
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 190185
+        },
+        {
+          "unitId": "blackObliterator",
+          "power": 71764
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 77640
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 1188
       }
     }
   ]
