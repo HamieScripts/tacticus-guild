@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791702382,
+  "fetchedOn": 1791703843,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -12056,6 +12056,66 @@
       "completedOn": 1791702013,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 7695,
+      "damageType": "Bomb",
+      "remainingHp": 18872887,
+      "maxHp": 30000000,
+      "startedOn": 1791702962,
+      "completedOn": 1791702962,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 466558,
+      "damageType": "Battle",
+      "remainingHp": 18406329,
+      "maxHp": 30000000,
+      "startedOn": 1791702977,
+      "completedOn": 1791703144,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 906661
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 591034
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 887601
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 956860
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 889839
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 476066
+      }
     }
   ]
 }
