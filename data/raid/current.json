@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791747843,
+  "fetchedOn": 1791748557,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -13669,6 +13669,48 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 984974
+      }
+    },
+    {
+      "userId": "275a8663-7ad1-4ec7-86ef-f4c97182473d",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 56689,
+      "damageType": "Battle",
+      "remainingHp": 10554430,
+      "maxHp": 30000000,
+      "startedOn": 1791747961,
+      "completedOn": 1791748065,
+      "heroDetails": [
+        {
+          "unitId": "thousTerminator",
+          "power": 986508
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 457959
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 400585
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 98202
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 401042
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 142038
       }
     }
   ]
