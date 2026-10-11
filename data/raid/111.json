@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791729941,
+  "fetchedOn": 1791732090,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -13033,6 +13033,48 @@
       "machineOfWarDetails": {
         "unitId": "deathCrawler",
         "power": 1965
+      }
+    },
+    {
+      "userId": "08a7e111-0193-4d88-bc27-c5124e90039e",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 158799,
+      "damageType": "Battle",
+      "remainingHp": 13231475,
+      "maxHp": 30000000,
+      "startedOn": 1791730844,
+      "completedOn": 1791730974,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 703238
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 190072
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 581921
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 717317
+        },
+        {
+          "unitId": "orksRuntherd",
+          "power": 474696
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 1501
       }
     }
   ]
