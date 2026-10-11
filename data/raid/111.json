@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791704940,
+  "fetchedOn": 1791707440,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -12218,6 +12218,84 @@
         "unitId": "thousDaemonPrince",
         "power": 416416
       }
+    },
+    {
+      "userId": "cf7b7ebf-dd25-4371-ba75-b2cb51102dde",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 7961,
+      "damageType": "Bomb",
+      "remainingHp": 17740957,
+      "maxHp": 30000000,
+      "startedOn": 1791705773,
+      "completedOn": 1791705773,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "cf7b7ebf-dd25-4371-ba75-b2cb51102dde",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 271691,
+      "damageType": "Battle",
+      "remainingHp": 17469266,
+      "maxHp": 30000000,
+      "startedOn": 1791705794,
+      "completedOn": 1791705940,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 404933
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 535193
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 900581
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 379535
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 159334
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 78923
+      }
+    },
+    {
+      "userId": "667d435c-4668-4676-a002-e533709f1cc6",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 7767,
+      "damageType": "Bomb",
+      "remainingHp": 17461499,
+      "maxHp": 30000000,
+      "startedOn": 1791707286,
+      "completedOn": 1791707286,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
