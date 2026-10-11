@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791735888,
+  "fetchedOn": 1791737863,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -13423,6 +13423,48 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 84266
+      }
+    },
+    {
+      "userId": "275a8663-7ad1-4ec7-86ef-f4c97182473d",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss11MiniBoss2TauCrisis",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 18185,
+      "damageType": "Battle",
+      "remainingHp": 500910,
+      "maxHp": 1800000,
+      "startedOn": 1791737282,
+      "completedOn": 1791737376,
+      "heroDetails": [
+        {
+          "unitId": "thousTerminator",
+          "power": 986508
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 457959
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 400585
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 98202
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 401042
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 142038
       }
     }
   ]
