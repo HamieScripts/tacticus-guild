@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791820156,
+  "fetchedOn": 1791822427,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -16288,6 +16288,90 @@
         {
           "unitId": "tauMarksman",
           "power": 146114
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 863255
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "deathCrawler",
+        "power": 19936
+      }
+    },
+    {
+      "userId": "d9c3ef49-eadf-499d-ab81-d655dbcc086f",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 454667,
+      "damageType": "Battle",
+      "remainingHp": 30768846,
+      "maxHp": 31250000,
+      "startedOn": 1791820971,
+      "completedOn": 1791821257,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 666604
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 825237
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 853537
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 907631
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 480374
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1040687
+      }
+    },
+    {
+      "userId": "293f4b63-28b1-4b5e-88ee-59936eed8ddb",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 379084,
+      "damageType": "Battle",
+      "remainingHp": 30389762,
+      "maxHp": 31250000,
+      "startedOn": 1791821877,
+      "completedOn": 1791822074,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 908816
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 823252
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 885602
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 884953
         },
         {
           "unitId": "custoBladeChampion",
