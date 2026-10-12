@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791805707,
+  "fetchedOn": 1791809457,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -15625,6 +15625,168 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 100412
+      }
+    },
+    {
+      "userId": "08a7e111-0193-4d88-bc27-c5124e90039e",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 124900,
+      "damageType": "Battle",
+      "remainingHp": 1068778,
+      "maxHp": 30000000,
+      "startedOn": 1791806884,
+      "completedOn": 1791807086,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 710425
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 190072
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 581921
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 723359
+        },
+        {
+          "unitId": "orksRuntherd",
+          "power": 474696
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 1501
+      }
+    },
+    {
+      "userId": "08a7e111-0193-4d88-bc27-c5124e90039e",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 128915,
+      "damageType": "Battle",
+      "remainingHp": 939863,
+      "maxHp": 30000000,
+      "startedOn": 1791807115,
+      "completedOn": 1791807257,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 710425
+        },
+        {
+          "unitId": "adeptMorvenn",
+          "power": 246525
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 581921
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 723359
+        },
+        {
+          "unitId": "orksRuntherd",
+          "power": 474696
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 1501
+      }
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 8390,
+      "damageType": "Bomb",
+      "remainingHp": 931473,
+      "maxHp": 30000000,
+      "startedOn": 1791808658,
+      "completedOn": 1791808658,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "39064004-8034-4d34-abea-e7f414f9437b",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 8687,
+      "damageType": "Bomb",
+      "remainingHp": 922786,
+      "maxHp": 30000000,
+      "startedOn": 1791809055,
+      "completedOn": 1791809055,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss11MiniBoss2TauCrisis",
+      "type": "Riptide",
+      "rarity": "Mythic",
+      "damageDealt": 161902,
+      "damageType": "Battle",
+      "remainingHp": 339008,
+      "maxHp": 1800000,
+      "startedOn": 1791809214,
+      "completedOn": 1791809343,
+      "heroDetails": [
+        {
+          "unitId": "admecMarshall",
+          "power": 101774
+        },
+        {
+          "unitId": "admecManipulus",
+          "power": 67691
+        },
+        {
+          "unitId": "astraPrimarisPsy",
+          "power": 64282
+        },
+        {
+          "unitId": "admecRuststalker",
+          "power": 158291
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 364934
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1324
       }
     }
   ]
