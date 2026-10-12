@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791815557,
+  "fetchedOn": 1791816947,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -15986,6 +15986,48 @@
         {
           "unitId": "custoBladeChampion",
           "power": 783472
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 105653
+      }
+    },
+    {
+      "userId": "c62ee67f-0a9e-4e29-8861-320e57788e6c",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss8MiniBoss2EldarFarseer",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 1304274,
+      "damageType": "Battle",
+      "remainingHp": 700169,
+      "maxHp": 3000000,
+      "startedOn": 1791815677,
+      "completedOn": 1791815961,
+      "heroDetails": [
+        {
+          "unitId": "orksRuntherd",
+          "power": 521617
+        },
+        {
+          "unitId": "necroSpyder",
+          "power": 126631
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 560984
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 117950
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 607624
         }
       ],
       "machineOfWarDetails": {
