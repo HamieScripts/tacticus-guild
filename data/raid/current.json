@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791824307,
+  "fetchedOn": 1791825825,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -16423,6 +16423,48 @@
       "machineOfWarDetails": {
         "unitId": "thousDaemonPrince",
         "power": 66681
+      }
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss8MiniBoss1EldarAutarch",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 41210,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 3000000,
+      "startedOn": 1791824884,
+      "completedOn": 1791824961,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 251726
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 364934
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 304791
+        },
+        {
+          "unitId": "admecManipulus",
+          "power": 67691
+        },
+        {
+          "unitId": "admecRuststalker",
+          "power": 158291
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1324
       }
     }
   ]
