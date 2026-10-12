@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791822427,
+  "fetchedOn": 1791824307,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -16381,6 +16381,48 @@
       "machineOfWarDetails": {
         "unitId": "deathCrawler",
         "power": 19936
+      }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss8MiniBoss1EldarAutarch",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 865584,
+      "damageType": "Battle",
+      "remainingHp": 41210,
+      "maxHp": 3000000,
+      "startedOn": 1791823867,
+      "completedOn": 1791824128,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 182320
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 771461
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 263370
+        },
+        {
+          "unitId": "genesKelermorph",
+          "power": 484160
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 840521
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 66681
       }
     }
   ]
