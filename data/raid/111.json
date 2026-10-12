@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791818794,
+  "fetchedOn": 1791820156,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -16195,6 +16195,108 @@
       "machineOfWarDetails": {
         "unitId": "deathCrawler",
         "power": 250
+      }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 9129,
+      "damageType": "Bomb",
+      "remainingHp": 31223513,
+      "maxHp": 31250000,
+      "startedOn": 1791818940,
+      "completedOn": 1791818940,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss8MiniBoss1EldarAutarch",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 616404,
+      "damageType": "Battle",
+      "remainingHp": 906794,
+      "maxHp": 3000000,
+      "startedOn": 1791819375,
+      "completedOn": 1791819546,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 182320
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 771461
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 263370
+        },
+        {
+          "unitId": "genesKelermorph",
+          "power": 484160
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 840521
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 66681
+      }
+    },
+    {
+      "userId": "293f4b63-28b1-4b5e-88ee-59936eed8ddb",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss8MiniBoss1EldarAutarch",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 536672,
+      "damageType": "Battle",
+      "remainingHp": 1523198,
+      "maxHp": 3000000,
+      "startedOn": 1791819385,
+      "completedOn": 1791819505,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 908816
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 823252
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 885602
+        },
+        {
+          "unitId": "tauMarksman",
+          "power": 146114
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 863255
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "deathCrawler",
+        "power": 19936
       }
     }
   ]
