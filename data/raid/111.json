@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791892790,
+  "fetchedOn": 1791895110,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -18793,6 +18793,66 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 589670
+      }
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 9220,
+      "damageType": "Bomb",
+      "remainingHp": 18787434,
+      "maxHp": 31250000,
+      "startedOn": 1791892954,
+      "completedOn": 1791892954,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 86525,
+      "damageType": "Battle",
+      "remainingHp": 18700909,
+      "maxHp": 31250000,
+      "startedOn": 1791892967,
+      "completedOn": 1791893094,
+      "heroDetails": [
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 205401
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 325028
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 71268
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 147648
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 193822
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 2314
       }
     }
   ]
