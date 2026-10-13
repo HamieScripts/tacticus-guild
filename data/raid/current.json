@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791933469,
+  "fetchedOn": 1791934935,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -19768,6 +19768,90 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 62737
+      }
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 131505,
+      "damageType": "Battle",
+      "remainingHp": 12693492,
+      "maxHp": 31250000,
+      "startedOn": 1791934537,
+      "completedOn": 1791934675,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 325028
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 205401
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 147648
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 193822
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 71268
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 2314
+      }
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 65375,
+      "damageType": "Battle",
+      "remainingHp": 12628117,
+      "maxHp": 31250000,
+      "startedOn": 1791934734,
+      "completedOn": 1791934884,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 325028
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 205401
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 147648
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 193822
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 71268
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 2314
       }
     }
   ]
