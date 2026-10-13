@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791900112,
+  "fetchedOn": 1791901758,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -19124,6 +19124,66 @@
         "unitId": "tyranBiovore",
         "power": 1040687
       }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 408296,
+      "damageType": "Battle",
+      "remainingHp": 15753695,
+      "maxHp": 31250000,
+      "startedOn": 1791900616,
+      "completedOn": 1791900876,
+      "heroDetails": [
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 778199
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 738255
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 448923
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 406407
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 514707
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 416416
+      }
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 7917,
+      "damageType": "Bomb",
+      "remainingHp": 15745778,
+      "maxHp": 31250000,
+      "startedOn": 1791901397,
+      "completedOn": 1791901397,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
