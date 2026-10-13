@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791890690,
+  "fetchedOn": 1791892084,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -18674,6 +18674,84 @@
         "unitId": "tyranBiovore",
         "power": 1701
       }
+    },
+    {
+      "userId": "86dc308e-8ca0-4470-ae78-ced2ef219eea",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 212173,
+      "damageType": "Battle",
+      "remainingHp": 19051742,
+      "maxHp": 31250000,
+      "startedOn": 1791891085,
+      "completedOn": 1791891191,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 719464
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 624159
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 406389
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 711600
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 717471
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "deathCrawler",
+        "power": 11623
+      }
+    },
+    {
+      "userId": "d9c3ef49-eadf-499d-ab81-d655dbcc086f",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 8762,
+      "damageType": "Bomb",
+      "remainingHp": 19042980,
+      "maxHp": 31250000,
+      "startedOn": 1791891777,
+      "completedOn": 1791891777,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "39064004-8034-4d34-abea-e7f414f9437b",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 7864,
+      "damageType": "Bomb",
+      "remainingHp": 19035116,
+      "maxHp": 31250000,
+      "startedOn": 1791891869,
+      "completedOn": 1791891869,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
