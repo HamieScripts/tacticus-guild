@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791865979,
+  "fetchedOn": 1791867349,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -18001,6 +18001,48 @@
       "machineOfWarDetails": {
         "unitId": "tauBroadside",
         "power": 1030
+      }
+    },
+    {
+      "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 195004,
+      "damageType": "Battle",
+      "remainingHp": 22489122,
+      "maxHp": 31250000,
+      "startedOn": 1791866108,
+      "completedOn": 1791866224,
+      "heroDetails": [
+        {
+          "unitId": "blackHaarken",
+          "power": 970469
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 616001
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 657529
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 866505
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 402330
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 16046
       }
     }
   ]
