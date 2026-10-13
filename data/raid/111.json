@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791870691,
+  "fetchedOn": 1791871327,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -18145,6 +18145,108 @@
       "machineOfWarDetails": {
         "unitId": "thousDaemonPrince",
         "power": 142038
+      }
+    },
+    {
+      "userId": "cf7b7ebf-dd25-4371-ba75-b2cb51102dde",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 7565,
+      "damageType": "Bomb",
+      "remainingHp": 21946907,
+      "maxHp": 31250000,
+      "startedOn": 1791870783,
+      "completedOn": 1791870783,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "cf7b7ebf-dd25-4371-ba75-b2cb51102dde",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 135460,
+      "damageType": "Battle",
+      "remainingHp": 21811447,
+      "maxHp": 31250000,
+      "startedOn": 1791870788,
+      "completedOn": 1791870917,
+      "heroDetails": [
+        {
+          "unitId": "admecDominus",
+          "power": 379535
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 900581
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 535193
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 159334
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 404933
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "deathCrawler",
+        "power": 8305
+      }
+    },
+    {
+      "userId": "cf7b7ebf-dd25-4371-ba75-b2cb51102dde",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 302211,
+      "damageType": "Battle",
+      "remainingHp": 21509236,
+      "maxHp": 31250000,
+      "startedOn": 1791870999,
+      "completedOn": 1791871143,
+      "heroDetails": [
+        {
+          "unitId": "admecDominus",
+          "power": 379535
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 900581
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 535193
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 159334
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 404933
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "deathCrawler",
+        "power": 8305
       }
     }
   ]
