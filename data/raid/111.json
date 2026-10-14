@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791966641,
+  "fetchedOn": 1791969953,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -21100,6 +21100,168 @@
       "machineOfWarDetails": {
         "unitId": "deathCrawler",
         "power": 105902
+      }
+    },
+    {
+      "userId": "c62ee67f-0a9e-4e29-8861-320e57788e6c",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 256054,
+      "damageType": "Battle",
+      "remainingHp": 4266267,
+      "maxHp": 31250000,
+      "startedOn": 1791968188,
+      "completedOn": 1791968440,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 532836
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 171387
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 560984
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 783472
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 493407
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "deathCrawler",
+        "power": 1735
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 8486,
+      "damageType": "Bomb",
+      "remainingHp": 4257781,
+      "maxHp": 31250000,
+      "startedOn": 1791968893,
+      "completedOn": 1791968893,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 511096,
+      "damageType": "Battle",
+      "remainingHp": 3746685,
+      "maxHp": 31250000,
+      "startedOn": 1791968902,
+      "completedOn": 1791969270,
+      "heroDetails": [
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 778199
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 738255
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 448923
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 425718
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 514707
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 416416
+      }
+    },
+    {
+      "userId": "fce63e8e-b46e-4fe1-9031-9475f46ee504",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 8067,
+      "damageType": "Bomb",
+      "remainingHp": 3738618,
+      "maxHp": 31250000,
+      "startedOn": 1791969693,
+      "completedOn": 1791969693,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "fce63e8e-b46e-4fe1-9031-9475f46ee504",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 46361,
+      "damageType": "Battle",
+      "remainingHp": 3692257,
+      "maxHp": 31250000,
+      "startedOn": 1791969699,
+      "completedOn": 1791969829,
+      "heroDetails": [
+        {
+          "unitId": "orksRuntherd",
+          "power": 68362
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 562391
+        },
+        {
+          "unitId": "orksKillaKan",
+          "power": 66684
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 626907
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 64968
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 1064
       }
     }
   ]
