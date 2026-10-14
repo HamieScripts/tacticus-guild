@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792006363,
+  "fetchedOn": 1792011373,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -22546,6 +22546,108 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 105653
+      }
+    },
+    {
+      "userId": "275a8663-7ad1-4ec7-86ef-f4c97182473d",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 9718,
+      "damageType": "Bomb",
+      "remainingHp": 43992229,
+      "maxHp": 45000000,
+      "startedOn": 1792011097,
+      "completedOn": 1792011097,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "275a8663-7ad1-4ec7-86ef-f4c97182473d",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 19303,
+      "damageType": "Battle",
+      "remainingHp": 43972926,
+      "maxHp": 45000000,
+      "startedOn": 1792011108,
+      "completedOn": 1792011225,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 401042
+        },
+        {
+          "unitId": "templAggressor",
+          "power": 456384
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 457959
+        },
+        {
+          "unitId": "adeptRetributor",
+          "power": 381022
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 702666
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 29612
+      }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 47384,
+      "damageType": "Battle",
+      "remainingHp": 43925542,
+      "maxHp": 45000000,
+      "startedOn": 1792011231,
+      "completedOn": 1792011327,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 182421
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 263370
+        },
+        {
+          "unitId": "templHelbrecht",
+          "power": 149304
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 838544
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 182320
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 820
       }
     }
   ]
