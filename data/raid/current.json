@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791986220,
+  "fetchedOn": 1791987804,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -22072,6 +22072,48 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 38504
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss9MiniBoss1ThousSorcerer",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 0,
+      "damageType": "Battle",
+      "remainingHp": 2700000,
+      "maxHp": 2700000,
+      "startedOn": 1791986654,
+      "completedOn": 1791986693,
+      "heroDetails": [
+        {
+          "unitId": "worldEightbound",
+          "power": 108
+        },
+        {
+          "unitId": "worldJakhal",
+          "power": 105
+        },
+        {
+          "unitId": "emperNoiseMarine",
+          "power": 103
+        },
+        {
+          "unitId": "votanMemnyr",
+          "power": 100
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 738255
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 9964
       }
     }
   ]
