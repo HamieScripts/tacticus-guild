@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791955350,
+  "fetchedOn": 1791966641,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -21059,6 +21059,48 @@
       "completedOn": 1791954643,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 644432,
+      "damageType": "Battle",
+      "remainingHp": 4522321,
+      "maxHp": 31250000,
+      "startedOn": 1791965168,
+      "completedOn": 1791965593,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 597406
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 952540
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 884832
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 902761
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 1162911
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "deathCrawler",
+        "power": 105902
+      }
     }
   ]
 }
