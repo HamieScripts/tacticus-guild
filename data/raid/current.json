@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791985671,
+  "fetchedOn": 1791986220,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -21929,6 +21929,150 @@
       "completedOn": 1791985632,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss9MiniBoss2ThousInfernalMaster",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 1399793,
+      "damageType": "Battle",
+      "remainingHp": 2200207,
+      "maxHp": 3600000,
+      "startedOn": 1791985668,
+      "completedOn": 1791985853,
+      "heroDetails": [
+        {
+          "unitId": "admecManipulus",
+          "power": 67691
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 340393
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 364934
+        },
+        {
+          "unitId": "admecRuststalker",
+          "power": 222783
+        },
+        {
+          "unitId": "necroOverlord",
+          "power": 190938
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1324
+      }
+    },
+    {
+      "userId": "cf7b7ebf-dd25-4371-ba75-b2cb51102dde",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 7456,
+      "damageType": "Bomb",
+      "remainingHp": 44975684,
+      "maxHp": 45000000,
+      "startedOn": 1791985885,
+      "completedOn": 1791985885,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "cf7b7ebf-dd25-4371-ba75-b2cb51102dde",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss9MiniBoss2ThousInfernalMaster",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 1455285,
+      "damageType": "Battle",
+      "remainingHp": 744922,
+      "maxHp": 3600000,
+      "startedOn": 1791985894,
+      "completedOn": 1791985981,
+      "heroDetails": [
+        {
+          "unitId": "admecDominus",
+          "power": 379535
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 167649
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 900581
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 404933
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 535193
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 38504
+      }
+    },
+    {
+      "userId": "cf7b7ebf-dd25-4371-ba75-b2cb51102dde",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss9MiniBoss2ThousInfernalMaster",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 744922,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 3600000,
+      "startedOn": 1791986100,
+      "completedOn": 1791986149,
+      "heroDetails": [
+        {
+          "unitId": "admecDominus",
+          "power": 379535
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 167649
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 900581
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 404933
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 535193
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 38504
+      }
     }
   ]
 }
