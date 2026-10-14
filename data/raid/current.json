@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791946701,
+  "fetchedOn": 1791948377,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -20404,6 +20404,168 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 93964
+      }
+    },
+    {
+      "userId": "c47778d3-3a3c-4cc0-b405-3aed0d993c45",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 8349,
+      "damageType": "Bomb",
+      "remainingHp": 8678200,
+      "maxHp": 31250000,
+      "startedOn": 1791946755,
+      "completedOn": 1791946755,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "c47778d3-3a3c-4cc0-b405-3aed0d993c45",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 157490,
+      "damageType": "Battle",
+      "remainingHp": 8520710,
+      "maxHp": 31250000,
+      "startedOn": 1791946782,
+      "completedOn": 1791946944,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 641490
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 665127
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 669708
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 584779
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 684394
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 1030
+      }
+    },
+    {
+      "userId": "08a7e111-0193-4d88-bc27-c5124e90039e",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 8502,
+      "damageType": "Bomb",
+      "remainingHp": 8512208,
+      "maxHp": 31250000,
+      "startedOn": 1791947050,
+      "completedOn": 1791947050,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "08a7e111-0193-4d88-bc27-c5124e90039e",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 197542,
+      "damageType": "Battle",
+      "remainingHp": 8314666,
+      "maxHp": 31250000,
+      "startedOn": 1791947062,
+      "completedOn": 1791947203,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 808097
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 190072
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 581921
+        },
+        {
+          "unitId": "orksRuntherd",
+          "power": 474696
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 723359
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "deathCrawler",
+        "power": 250
+      }
+    },
+    {
+      "userId": "08a7e111-0193-4d88-bc27-c5124e90039e",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 216518,
+      "damageType": "Battle",
+      "remainingHp": 8098148,
+      "maxHp": 31250000,
+      "startedOn": 1791947231,
+      "completedOn": 1791947346,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 808097
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 190072
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 581921
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 209739
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 723359
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "deathCrawler",
+        "power": 250
       }
     }
   ]
