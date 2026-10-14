@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1791944993,
+  "fetchedOn": 1791946156,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -20302,6 +20302,66 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 984974
+      }
+    },
+    {
+      "userId": "275a8663-7ad1-4ec7-86ef-f4c97182473d",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 9196,
+      "damageType": "Bomb",
+      "remainingHp": 9337209,
+      "maxHp": 31250000,
+      "startedOn": 1791945517,
+      "completedOn": 1791945517,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "275a8663-7ad1-4ec7-86ef-f4c97182473d",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Mythic",
+      "damageDealt": 82404,
+      "damageType": "Battle",
+      "remainingHp": 9254805,
+      "maxHp": 31250000,
+      "startedOn": 1791945528,
+      "completedOn": 1791945629,
+      "heroDetails": [
+        {
+          "unitId": "thousTerminator",
+          "power": 986508
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 400585
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 401042
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 702666
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 457959
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 142038
       }
     }
   ]
