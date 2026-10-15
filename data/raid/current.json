@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792091908,
+  "fetchedOn": 1792102911,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -25132,6 +25132,66 @@
       "machineOfWarDetails": {
         "unitId": "deathCrawler",
         "power": 2080
+      }
+    },
+    {
+      "userId": "fce63e8e-b46e-4fe1-9031-9475f46ee504",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 8752,
+      "damageType": "Bomb",
+      "remainingHp": 34652491,
+      "maxHp": 45000000,
+      "startedOn": 1792101838,
+      "completedOn": 1792101838,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "fce63e8e-b46e-4fe1-9031-9475f46ee504",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 22193,
+      "damageType": "Battle",
+      "remainingHp": 34630298,
+      "maxHp": 45000000,
+      "startedOn": 1792101855,
+      "completedOn": 1792102018,
+      "heroDetails": [
+        {
+          "unitId": "ultraCalgar",
+          "power": 562391
+        },
+        {
+          "unitId": "eldarMauganRa",
+          "power": 475503
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 627311
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 64968
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 517983
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 1064
       }
     }
   ]
