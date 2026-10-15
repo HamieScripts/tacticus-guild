@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792040225,
+  "fetchedOn": 1792041758,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -23849,6 +23849,90 @@
       "completedOn": 1792040062,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "553c48cc-fcd5-4d34-94cd-691ecad888cc",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 301076,
+      "damageType": "Battle",
+      "remainingHp": 39233666,
+      "maxHp": 45000000,
+      "startedOn": 1792040069,
+      "completedOn": 1792040264,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 664759
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 602057
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 895028
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 992667
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 674654
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 641082
+      }
+    },
+    {
+      "userId": "cf7b7ebf-dd25-4371-ba75-b2cb51102dde",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 176240,
+      "damageType": "Battle",
+      "remainingHp": 39057426,
+      "maxHp": 45000000,
+      "startedOn": 1792041648,
+      "completedOn": 1792041750,
+      "heroDetails": [
+        {
+          "unitId": "admecDominus",
+          "power": 380682
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 167649
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 900581
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 411859
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 606313
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 78923
+      }
     }
   ]
 }
