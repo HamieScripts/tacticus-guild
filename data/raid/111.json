@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792090242,
+  "fetchedOn": 1792090786,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -25031,6 +25031,24 @@
         "unitId": "tyranBiovore",
         "power": 476066
       }
+    },
+    {
+      "userId": "667d435c-4668-4676-a002-e533709f1cc6",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 9019,
+      "damageType": "Bomb",
+      "remainingHp": 34773425,
+      "maxHp": 45000000,
+      "startedOn": 1792090705,
+      "completedOn": 1792090705,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
