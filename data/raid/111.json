@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792068957,
+  "fetchedOn": 1792070681,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -24580,6 +24580,48 @@
       "machineOfWarDetails": {
         "unitId": "deathCrawler",
         "power": 250
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 22339,
+      "damageType": "Battle",
+      "remainingHp": 36105275,
+      "maxHp": 45000000,
+      "startedOn": 1792069902,
+      "completedOn": 1792070050,
+      "heroDetails": [
+        {
+          "unitId": "blackAbaddon",
+          "power": 523058
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 391115
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 484209
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 174436
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 133552
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 36226
       }
     }
   ]
