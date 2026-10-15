@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792036104,
+  "fetchedOn": 1792038305,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -23703,6 +23703,48 @@
       "maxHp": 45000000,
       "startedOn": 1792035790,
       "completedOn": 1792035886,
+      "heroDetails": [
+        {
+          "unitId": "ultraCalgar",
+          "power": 866505
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 368517
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 657529
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 970469
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 616001
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 16046
+      }
+    },
+    {
+      "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 126758,
+      "damageType": "Battle",
+      "remainingHp": 39701759,
+      "maxHp": 45000000,
+      "startedOn": 1792037988,
+      "completedOn": 1792038094,
       "heroDetails": [
         {
           "unitId": "ultraCalgar",
