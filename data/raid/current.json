@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792115927,
+  "fetchedOn": 1792118980,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -25822,6 +25822,66 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 820
+      }
+    },
+    {
+      "userId": "553c48cc-fcd5-4d34-94cd-691ecad888cc",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 8518,
+      "damageType": "Bomb",
+      "remainingHp": 32798307,
+      "maxHp": 45000000,
+      "startedOn": 1792118575,
+      "completedOn": 1792118575,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "553c48cc-fcd5-4d34-94cd-691ecad888cc",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 156854,
+      "damageType": "Battle",
+      "remainingHp": 32641453,
+      "maxHp": 45000000,
+      "startedOn": 1792118580,
+      "completedOn": 1792118727,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 674654
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 602057
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 895028
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 992667
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 664759
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 641082
       }
     }
   ]
