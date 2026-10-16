@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792111870,
+  "fetchedOn": 1792113058,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -25516,6 +25516,108 @@
       "machineOfWarDetails": {
         "unitId": "deathCrawler",
         "power": 250
+      }
+    },
+    {
+      "userId": "86dc308e-8ca0-4470-ae78-ced2ef219eea",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 9014,
+      "damageType": "Bomb",
+      "remainingHp": 33799251,
+      "maxHp": 45000000,
+      "startedOn": 1792112072,
+      "completedOn": 1792112072,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "86dc308e-8ca0-4470-ae78-ced2ef219eea",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 80094,
+      "damageType": "Battle",
+      "remainingHp": 33719157,
+      "maxHp": 45000000,
+      "startedOn": 1792112095,
+      "completedOn": 1792112210,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 624159
+        },
+        {
+          "unitId": "custoAtlacoya",
+          "power": 317448
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 711600
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 719464
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 573233
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 75712
+      }
+    },
+    {
+      "userId": "39064004-8034-4d34-abea-e7f414f9437b",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 298163,
+      "damageType": "Battle",
+      "remainingHp": 33420994,
+      "maxHp": 45000000,
+      "startedOn": 1792112169,
+      "completedOn": 1792112612,
+      "heroDetails": [
+        {
+          "unitId": "custoAtlacoya",
+          "power": 492994
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 703321
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 732807
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 846280
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 673799
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 589670
       }
     }
   ]
