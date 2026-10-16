@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792113058,
+  "fetchedOn": 1792114677,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -25618,6 +25618,48 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 589670
+      }
+    },
+    {
+      "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 61374,
+      "damageType": "Battle",
+      "remainingHp": 33359620,
+      "maxHp": 45000000,
+      "startedOn": 1792114188,
+      "completedOn": 1792114422,
+      "heroDetails": [
+        {
+          "unitId": "orksRuntherd",
+          "power": 346321
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 136559
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 154373
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 483395
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 368300
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 11314
       }
     }
   ]
