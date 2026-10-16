@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792132569,
+  "fetchedOn": 1792134052,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -26596,6 +26596,66 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 78923
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 9478,
+      "damageType": "Bomb",
+      "remainingHp": 29894219,
+      "maxHp": 45000000,
+      "startedOn": 1792133522,
+      "completedOn": 1792133522,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 49700,
+      "damageType": "Battle",
+      "remainingHp": 29844519,
+      "maxHp": 45000000,
+      "startedOn": 1792133555,
+      "completedOn": 1792133724,
+      "heroDetails": [
+        {
+          "unitId": "eldarFarseer",
+          "power": 118320
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 456318
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 540524
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 738255
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 778199
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 36226
       }
     }
   ]
