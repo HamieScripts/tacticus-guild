@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792134052,
+  "fetchedOn": 1792141195,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -26656,6 +26656,108 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 36226
+      }
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 8066,
+      "damageType": "Bomb",
+      "remainingHp": 29836453,
+      "maxHp": 45000000,
+      "startedOn": 1792140656,
+      "completedOn": 1792140656,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 391045,
+      "damageType": "Battle",
+      "remainingHp": 29445408,
+      "maxHp": 45000000,
+      "startedOn": 1792140662,
+      "completedOn": 1792140814,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 1003738
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 889839
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 887601
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 906661
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 591034
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 476066
+      }
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 4602,
+      "damageType": "Battle",
+      "remainingHp": 29440806,
+      "maxHp": 45000000,
+      "startedOn": 1792140737,
+      "completedOn": 1792140822,
+      "heroDetails": [
+        {
+          "unitId": "admecManipulus",
+          "power": 67691
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 340393
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 364934
+        },
+        {
+          "unitId": "admecRuststalker",
+          "power": 222783
+        },
+        {
+          "unitId": "necroOverlord",
+          "power": 190938
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1324
       }
     }
   ]
