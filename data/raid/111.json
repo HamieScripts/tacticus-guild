@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792155255,
+  "fetchedOn": 1792157038,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -27175,6 +27175,48 @@
       "machineOfWarDetails": null
     },
     {
+      "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 57737,
+      "damageType": "Battle",
+      "remainingHp": 27595284,
+      "maxHp": 45000000,
+      "startedOn": 1792155192,
+      "completedOn": 1792155394,
+      "heroDetails": [
+        {
+          "unitId": "orksRuntherd",
+          "power": 346321
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 136559
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 154373
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 483395
+        },
+        {
+          "unitId": "blackTerminator",
+          "power": 274413
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 11314
+      }
+    },
+    {
       "userId": "08a7e111-0193-4d88-bc27-c5124e90039e",
       "tier": 5,
       "set": 2,
@@ -27191,6 +27233,48 @@
       "completedOn": 1792155233,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "08a7e111-0193-4d88-bc27-c5124e90039e",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 110657,
+      "damageType": "Battle",
+      "remainingHp": 27653021,
+      "maxHp": 45000000,
+      "startedOn": 1792155259,
+      "completedOn": 1792155372,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 808097
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 581921
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 190072
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 723359
+        },
+        {
+          "unitId": "orksRuntherd",
+          "power": 474696
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "deathCrawler",
+        "power": 250
+      }
     }
   ]
 }
