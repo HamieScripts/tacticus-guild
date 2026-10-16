@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792166172,
+  "fetchedOn": 1792169131,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -27545,6 +27545,84 @@
         "unitId": "tyranBiovore",
         "power": 1040687
       }
+    },
+    {
+      "userId": "667d435c-4668-4676-a002-e533709f1cc6",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 7516,
+      "damageType": "Bomb",
+      "remainingHp": 25697526,
+      "maxHp": 45000000,
+      "startedOn": 1792168029,
+      "completedOn": 1792168029,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "667d435c-4668-4676-a002-e533709f1cc6",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 55408,
+      "damageType": "Battle",
+      "remainingHp": 25642118,
+      "maxHp": 45000000,
+      "startedOn": 1792168041,
+      "completedOn": 1792168152,
+      "heroDetails": [
+        {
+          "unitId": "admecDominus",
+          "power": 374570
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 391613
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 498554
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 625617
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 905334
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 127322
+      }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 8595,
+      "damageType": "Bomb",
+      "remainingHp": 25633523,
+      "maxHp": 45000000,
+      "startedOn": 1792169056,
+      "completedOn": 1792169056,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
