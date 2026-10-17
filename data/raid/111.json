@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792245368,
+  "fetchedOn": 1792246750,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -30052,6 +30052,108 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 2314
+      }
+    },
+    {
+      "userId": "260cfd81-b5de-433e-bc13-cb5f9a08b137",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 2781,
+      "damageType": "Battle",
+      "remainingHp": 16382981,
+      "maxHp": 45000000,
+      "startedOn": 1792245811,
+      "completedOn": 1792245879,
+      "heroDetails": [
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 236633
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 64592
+        },
+        {
+          "unitId": "templAncient",
+          "power": 57021
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 616618
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 211146
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 163793
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 8750,
+      "damageType": "Bomb",
+      "remainingHp": 16374231,
+      "maxHp": 45000000,
+      "startedOn": 1792246269,
+      "completedOn": 1792246269,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 96948,
+      "damageType": "Battle",
+      "remainingHp": 16277283,
+      "maxHp": 45000000,
+      "startedOn": 1792246282,
+      "completedOn": 1792246410,
+      "heroDetails": [
+        {
+          "unitId": "eldarFarseer",
+          "power": 118320
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 456318
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 562342
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 738255
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 778199
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 36226
       }
     }
   ]
