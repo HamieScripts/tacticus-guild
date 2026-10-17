@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792273282,
+  "fetchedOn": 1792277761,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -30779,6 +30779,66 @@
       "completedOn": 1792273060,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 7882,
+      "damageType": "Bomb",
+      "remainingHp": 13838075,
+      "maxHp": 45000000,
+      "startedOn": 1792276998,
+      "completedOn": 1792276998,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 60668,
+      "damageType": "Battle",
+      "remainingHp": 13777407,
+      "maxHp": 45000000,
+      "startedOn": 1792277055,
+      "completedOn": 1792277197,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 154373
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 144367
+        },
+        {
+          "unitId": "eldarAutarch",
+          "power": 210528
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 483395
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 229188
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 11314
+      }
     }
   ]
 }
