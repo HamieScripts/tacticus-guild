@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792280469,
+  "fetchedOn": 1792285048,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -30964,6 +30964,168 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 149526
+      }
+    },
+    {
+      "userId": "275a8663-7ad1-4ec7-86ef-f4c97182473d",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 7609,
+      "damageType": "Bomb",
+      "remainingHp": 12860711,
+      "maxHp": 45000000,
+      "startedOn": 1792283738,
+      "completedOn": 1792283738,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "275a8663-7ad1-4ec7-86ef-f4c97182473d",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 25868,
+      "damageType": "Battle",
+      "remainingHp": 12834843,
+      "maxHp": 45000000,
+      "startedOn": 1792283758,
+      "completedOn": 1792283864,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 401042
+        },
+        {
+          "unitId": "templAggressor",
+          "power": 456384
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 457959
+        },
+        {
+          "unitId": "adeptRetributor",
+          "power": 381022
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 702666
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 29612
+      }
+    },
+    {
+      "userId": "d9c3ef49-eadf-499d-ab81-d655dbcc086f",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 503491,
+      "damageType": "Battle",
+      "remainingHp": 12331352,
+      "maxHp": 45000000,
+      "startedOn": 1792284341,
+      "completedOn": 1792284574,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 896997
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 853537
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 666604
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 756375
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 907631
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1040687
+      }
+    },
+    {
+      "userId": "9e4b7170-a4a4-4b28-ac57-6cd3cb8efed0",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 8641,
+      "damageType": "Bomb",
+      "remainingHp": 12322711,
+      "maxHp": 45000000,
+      "startedOn": 1792284878,
+      "completedOn": 1792284878,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "9e4b7170-a4a4-4b28-ac57-6cd3cb8efed0",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 127159,
+      "damageType": "Battle",
+      "remainingHp": 12195552,
+      "maxHp": 45000000,
+      "startedOn": 1792284887,
+      "completedOn": 1792285012,
+      "heroDetails": [
+        {
+          "unitId": "ultraTitus",
+          "power": 1054271
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 1021932
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 976684
+        },
+        {
+          "unitId": "bloodDeathCompany",
+          "power": 953601
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 1108911
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 984974
       }
     }
   ]
