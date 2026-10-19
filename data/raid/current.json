@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792427162,
+  "fetchedOn": 1792428481,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -36076,6 +36076,90 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 125814
+      }
+    },
+    {
+      "userId": "fce63e8e-b46e-4fe1-9031-9475f46ee504",
+      "tier": 6,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 121001,
+      "damageType": "Battle",
+      "remainingHp": 1915069,
+      "maxHp": 12500000,
+      "startedOn": 1792427517,
+      "completedOn": 1792427655,
+      "heroDetails": [
+        {
+          "unitId": "ultraCalgar",
+          "power": 562391
+        },
+        {
+          "unitId": "eldarMauganRa",
+          "power": 504695
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 630661
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 64968
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 517983
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 15994
+      }
+    },
+    {
+      "userId": "fce63e8e-b46e-4fe1-9031-9475f46ee504",
+      "tier": 6,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 144306,
+      "damageType": "Battle",
+      "remainingHp": 1770763,
+      "maxHp": 12500000,
+      "startedOn": 1792427687,
+      "completedOn": 1792427835,
+      "heroDetails": [
+        {
+          "unitId": "ultraCalgar",
+          "power": 562391
+        },
+        {
+          "unitId": "eldarMauganRa",
+          "power": 504695
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 630661
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 64968
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 517983
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 15994
       }
     }
   ]
