@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792396207,
+  "fetchedOn": 1792399038,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -34853,6 +34853,48 @@
       "completedOn": 1792394835,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 6,
+      "set": 3,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss2AdmecManipulus",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 663117,
+      "damageType": "Battle",
+      "remainingHp": 336883,
+      "maxHp": 1000000,
+      "startedOn": 1792397315,
+      "completedOn": 1792397590,
+      "heroDetails": [
+        {
+          "unitId": "blackPossession",
+          "power": 738255
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 524545
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 778199
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 642148
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 484725
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 464429
+      }
     }
   ]
 }
