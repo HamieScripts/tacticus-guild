@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792452070,
+  "fetchedOn": 1792453461,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -37270,6 +37270,48 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 178
+      }
+    },
+    {
+      "userId": "cf7b7ebf-dd25-4371-ba75-b2cb51102dde",
+      "tier": 6,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 140089,
+      "damageType": "Battle",
+      "remainingHp": 12987276,
+      "maxHp": 15000000,
+      "startedOn": 1792452674,
+      "completedOn": 1792452771,
+      "heroDetails": [
+        {
+          "unitId": "admecDominus",
+          "power": 380682
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 670390
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 900581
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 411859
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 168663
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 78923
       }
     }
   ]
