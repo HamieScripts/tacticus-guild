@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792402454,
+  "fetchedOn": 1792403611,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -34913,6 +34913,90 @@
       "completedOn": 1792401274,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
+      "tier": 6,
+      "set": 3,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss2AdmecManipulus",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 330825,
+      "damageType": "Battle",
+      "remainingHp": 6058,
+      "maxHp": 1000000,
+      "startedOn": 1792402417,
+      "completedOn": 1792402713,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 154373
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 368300
+        },
+        {
+          "unitId": "blackTerminator",
+          "power": 274413
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 483395
+        },
+        {
+          "unitId": "orksRuntherd",
+          "power": 346321
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 100412
+      }
+    },
+    {
+      "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
+      "tier": 6,
+      "set": 3,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss2AdmecManipulus",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 6058,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 1000000,
+      "startedOn": 1792402903,
+      "completedOn": 1792402919,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 154373
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 368300
+        },
+        {
+          "unitId": "blackTerminator",
+          "power": 274413
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 483395
+        },
+        {
+          "unitId": "orksRuntherd",
+          "power": 346321
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 100412
+      }
     }
   ]
 }
