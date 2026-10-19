@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792389448,
+  "fetchedOn": 1792392483,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -34732,6 +34732,66 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 127322
+      }
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 6,
+      "set": 3,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 9652,
+      "damageType": "Bomb",
+      "remainingHp": 423622,
+      "maxHp": 1000000,
+      "startedOn": 1792389489,
+      "completedOn": 1792389489,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 6,
+      "set": 3,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 289354,
+      "damageType": "Battle",
+      "remainingHp": 134268,
+      "maxHp": 1000000,
+      "startedOn": 1792389546,
+      "completedOn": 1792389736,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 1003738
+        },
+        {
+          "unitId": "tauFarsight",
+          "power": 532273
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 759363
+        },
+        {
+          "unitId": "tauDarkstrider",
+          "power": 516193
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 464477
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 434174
       }
     }
   ]
