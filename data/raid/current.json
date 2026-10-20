@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792464648,
+  "fetchedOn": 1792466778,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -38080,6 +38080,108 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 36226
+      }
+    },
+    {
+      "userId": "077980e3-7cb5-44ab-977e-846af676ccce",
+      "tier": 6,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 8515,
+      "damageType": "Bomb",
+      "remainingHp": 9047516,
+      "maxHp": 15000000,
+      "startedOn": 1792466008,
+      "completedOn": 1792466008,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "077980e3-7cb5-44ab-977e-846af676ccce",
+      "tier": 6,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 446360,
+      "damageType": "Battle",
+      "remainingHp": 8601156,
+      "maxHp": 15000000,
+      "startedOn": 1792466014,
+      "completedOn": 1792466203,
+      "heroDetails": [
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 583245
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 794968
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 930081
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 959510
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 666861
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 672326
+      }
+    },
+    {
+      "userId": "c47778d3-3a3c-4cc0-b405-3aed0d993c45",
+      "tier": 6,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 125246,
+      "damageType": "Battle",
+      "remainingHp": 8475910,
+      "maxHp": 15000000,
+      "startedOn": 1792466456,
+      "completedOn": 1792466639,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 684394
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 641490
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 669708
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 584779
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 665127
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 178
       }
     }
   ]
