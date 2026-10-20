@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792478164,
+  "fetchedOn": 1792479668,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -38347,6 +38347,48 @@
       }
     },
     {
+      "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
+      "tier": 6,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 118542,
+      "damageType": "Battle",
+      "remainingHp": 7761744,
+      "maxHp": 15000000,
+      "startedOn": 1792478045,
+      "completedOn": 1792478361,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 483395
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 154373
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 229188
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 387616
+        },
+        {
+          "unitId": "orksRuntherd",
+          "power": 346321
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 100412
+      }
+    },
+    {
       "userId": "553c48cc-fcd5-4d34-94cd-691ecad888cc",
       "tier": 6,
       "set": 4,
@@ -38363,6 +38405,150 @@
       "completedOn": 1792478094,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "553c48cc-fcd5-4d34-94cd-691ecad888cc",
+      "tier": 6,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 253919,
+      "damageType": "Battle",
+      "remainingHp": 7880286,
+      "maxHp": 15000000,
+      "startedOn": 1792478110,
+      "completedOn": 1792478245,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 620121
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 895028
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 674654
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 682270
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 992667
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 641082
+      }
+    },
+    {
+      "userId": "667d435c-4668-4676-a002-e533709f1cc6",
+      "tier": 6,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 9202,
+      "damageType": "Bomb",
+      "remainingHp": 7752542,
+      "maxHp": 15000000,
+      "startedOn": 1792478910,
+      "completedOn": 1792478910,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "667d435c-4668-4676-a002-e533709f1cc6",
+      "tier": 6,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 243984,
+      "damageType": "Battle",
+      "remainingHp": 7508558,
+      "maxHp": 15000000,
+      "startedOn": 1792478923,
+      "completedOn": 1792479124,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 905334
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 498554
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 633378
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 374570
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 391613
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 127322
+      }
+    },
+    {
+      "userId": "667d435c-4668-4676-a002-e533709f1cc6",
+      "tier": 6,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 77682,
+      "damageType": "Battle",
+      "remainingHp": 7430876,
+      "maxHp": 15000000,
+      "startedOn": 1792479172,
+      "completedOn": 1792479346,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 905334
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 498554
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 633378
+        },
+        {
+          "unitId": "admecMarshall",
+          "power": 525116
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 391613
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 127322
+      }
     }
   ]
 }
