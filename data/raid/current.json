@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792486262,
+  "fetchedOn": 1792488308,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -38650,6 +38650,126 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 476066
+      }
+    },
+    {
+      "userId": "a736e5fd-6a0b-4137-9ec0-526345cd6e96",
+      "tier": 6,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 243922,
+      "damageType": "Battle",
+      "remainingHp": 6735568,
+      "maxHp": 15000000,
+      "startedOn": 1792487050,
+      "completedOn": 1792487295,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 628957
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 685193
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 684751
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 585167
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 707860
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 125814
+      }
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 6,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 8734,
+      "damageType": "Bomb",
+      "remainingHp": 6726834,
+      "maxHp": 15000000,
+      "startedOn": 1792488006,
+      "completedOn": 1792488006,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 6,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 8606,
+      "damageType": "Bomb",
+      "remainingHp": 6718228,
+      "maxHp": 15000000,
+      "startedOn": 1792488020,
+      "completedOn": 1792488020,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 6,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 184754,
+      "damageType": "Battle",
+      "remainingHp": 6533474,
+      "maxHp": 15000000,
+      "startedOn": 1792488031,
+      "completedOn": 1792488200,
+      "heroDetails": [
+        {
+          "unitId": "blackPossession",
+          "power": 738255
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 500913
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 642148
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 778199
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 524545
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 464429
       }
     }
   ]
