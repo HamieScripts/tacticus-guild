@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792488308,
+  "fetchedOn": 1792489632,
   "season": 111,
   "seasonConfigId": "guild_boss_season_config_2",
   "guild": {
@@ -38771,6 +38771,108 @@
         "unitId": "thousDaemonPrince",
         "power": 464429
       }
+    },
+    {
+      "userId": "cf7b7ebf-dd25-4371-ba75-b2cb51102dde",
+      "tier": 6,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 96120,
+      "damageType": "Battle",
+      "remainingHp": 6437354,
+      "maxHp": 15000000,
+      "startedOn": 1792489035,
+      "completedOn": 1792489133,
+      "heroDetails": [
+        {
+          "unitId": "admecDominus",
+          "power": 380682
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 685391
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 904166
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 411859
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 168782
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 78923
+      }
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 6,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 427677,
+      "damageType": "Battle",
+      "remainingHp": 6000260,
+      "maxHp": 15000000,
+      "startedOn": 1792489068,
+      "completedOn": 1792489346,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 961204
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 884832
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 602246
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 1162911
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 902761
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1020155
+      }
+    },
+    {
+      "userId": "39064004-8034-4d34-abea-e7f414f9437b",
+      "tier": 6,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Legendary",
+      "damageDealt": 9417,
+      "damageType": "Bomb",
+      "remainingHp": 6427937,
+      "maxHp": 15000000,
+      "startedOn": 1792489222,
+      "completedOn": 1792489222,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
