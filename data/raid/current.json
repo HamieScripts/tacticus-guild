@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792581709,
+  "fetchedOn": 1792582547,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -758,6 +758,108 @@
       "completedOn": 1792581658,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 3,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Epic",
+      "damageDealt": 262303,
+      "damageType": "Battle",
+      "remainingHp": 65743,
+      "maxHp": 1200000,
+      "startedOn": 1792581678,
+      "completedOn": 1792581886,
+      "heroDetails": [
+        {
+          "unitId": "admecDominus",
+          "power": 80265
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 147648
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 71073
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 325028
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 193822
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 2314
+      }
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 3,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Epic",
+      "damageDealt": 7775,
+      "damageType": "Bomb",
+      "remainingHp": 57968,
+      "maxHp": 1200000,
+      "startedOn": 1792581901,
+      "completedOn": 1792581901,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 3,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Epic",
+      "damageDealt": 57968,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 1200000,
+      "startedOn": 1792582410,
+      "completedOn": 1792582475,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 486270
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 228877
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 419497
+        },
+        {
+          "unitId": "spaceBlackmane",
+          "power": 56527
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 188113
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1701
+      }
     }
   ]
 }
