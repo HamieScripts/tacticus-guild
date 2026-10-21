@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792596194,
+  "fetchedOn": 1792597609,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -1822,6 +1822,174 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 1324
+      }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss7MiniBoss1AstraPrimarisPsy",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 188702,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 400000,
+      "startedOn": 1792596183,
+      "completedOn": 1792596331,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 263370
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 182421
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 838544
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 231580
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 840521
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 66681
+      }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 238132,
+      "damageType": "Battle",
+      "remainingHp": 4026366,
+      "maxHp": 5000000,
+      "startedOn": 1792596351,
+      "completedOn": 1792596493,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 263370
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 182421
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 838544
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 231580
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 840521
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 66681
+      }
+    },
+    {
+      "userId": "260cfd81-b5de-433e-bc13-cb5f9a08b137",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 88568,
+      "damageType": "Battle",
+      "remainingHp": 3937798,
+      "maxHp": 5000000,
+      "startedOn": 1792596818,
+      "completedOn": 1792596956,
+      "heroDetails": [
+        {
+          "unitId": "spaceBlackmane",
+          "power": 412617
+        },
+        {
+          "unitId": "templAncient",
+          "power": 63666
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 616618
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 415358
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 211146
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 713700
+      }
+    },
+    {
+      "userId": "293f4b63-28b1-4b5e-88ee-59936eed8ddb",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 455825,
+      "damageType": "Battle",
+      "remainingHp": 3481973,
+      "maxHp": 5000000,
+      "startedOn": 1792596838,
+      "completedOn": 1792597029,
+      "heroDetails": [
+        {
+          "unitId": "ultraTitus",
+          "power": 885602
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 908816
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 894839
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 863255
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 884953
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "ultraDreadnought",
+        "power": 21016
       }
     }
   ]
