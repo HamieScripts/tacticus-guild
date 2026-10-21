@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792582547,
+  "fetchedOn": 1792583313,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -859,6 +859,108 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 1701
+      }
+    },
+    {
+      "userId": "86dc308e-8ca0-4470-ae78-ced2ef219eea",
+      "tier": 3,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Epic",
+      "damageDealt": 1303282,
+      "damageType": "Battle",
+      "remainingHp": 196718,
+      "maxHp": 1500000,
+      "startedOn": 1792582540,
+      "completedOn": 1792582707,
+      "heroDetails": [
+        {
+          "unitId": "admecManipulus",
+          "power": 380800
+        },
+        {
+          "unitId": "eldarLhykhis",
+          "power": 182904
+        },
+        {
+          "unitId": "tauFarsight",
+          "power": 361269
+        },
+        {
+          "unitId": "tauDarkstrider",
+          "power": 385876
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 552266
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "necroReanimator",
+        "power": 452
+      }
+    },
+    {
+      "userId": "275a8663-7ad1-4ec7-86ef-f4c97182473d",
+      "tier": 3,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Epic",
+      "damageDealt": 7572,
+      "damageType": "Bomb",
+      "remainingHp": 189146,
+      "maxHp": 1500000,
+      "startedOn": 1792582805,
+      "completedOn": 1792582805,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "275a8663-7ad1-4ec7-86ef-f4c97182473d",
+      "tier": 3,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Epic",
+      "damageDealt": 189146,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 1500000,
+      "startedOn": 1792582817,
+      "completedOn": 1792582887,
+      "heroDetails": [
+        {
+          "unitId": "thousAhriman",
+          "power": 400585
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 483534
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 702666
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 401042
+        },
+        {
+          "unitId": "thousTerminator",
+          "power": 986508
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 142038
       }
     }
   ]
