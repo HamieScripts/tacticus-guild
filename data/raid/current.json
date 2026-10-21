@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792591040,
+  "fetchedOn": 1792592677,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -1475,6 +1475,168 @@
         "unitId": "tyranBiovore",
         "power": 641082
       }
+    },
+    {
+      "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 203857,
+      "damageType": "Battle",
+      "remainingHp": 4788089,
+      "maxHp": 5000000,
+      "startedOn": 1792591461,
+      "completedOn": 1792591576,
+      "heroDetails": [
+        {
+          "unitId": "blackHaarken",
+          "power": 976343
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 642718
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 368517
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 866505
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 657529
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 16415
+      }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 8054,
+      "damageType": "Bomb",
+      "remainingHp": 4991946,
+      "maxHp": 5000000,
+      "startedOn": 1792591466,
+      "completedOn": 1792591466,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 37095,
+      "damageType": "Battle",
+      "remainingHp": 4750994,
+      "maxHp": 5000000,
+      "startedOn": 1792591527,
+      "completedOn": 1792591644,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 190185
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 65682
+        },
+        {
+          "unitId": "orksRuntherd",
+          "power": 72531
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 69553
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 88325
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 1188
+      }
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 79002,
+      "damageType": "Battle",
+      "remainingHp": 4662504,
+      "maxHp": 5000000,
+      "startedOn": 1792591669,
+      "completedOn": 1792591866,
+      "heroDetails": [
+        {
+          "unitId": "adeptCelestine",
+          "power": 69553
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 65682
+        },
+        {
+          "unitId": "orksRuntherd",
+          "power": 72531
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 190185
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 88325
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 1188
+      }
+    },
+    {
+      "userId": "c62ee67f-0a9e-4e29-8861-320e57788e6c",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 9488,
+      "damageType": "Bomb",
+      "remainingHp": 4741506,
+      "maxHp": 5000000,
+      "startedOn": 1792591775,
+      "completedOn": 1792591775,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
