@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792607249,
+  "fetchedOn": 1792610344,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -2632,6 +2632,48 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 5558
+      }
+    },
+    {
+      "userId": "cf7b7ebf-dd25-4371-ba75-b2cb51102dde",
+      "tier": 4,
+      "set": 2,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss4MiniBoss2OrksNob",
+      "type": "Ghazghkull",
+      "rarity": "Legendary",
+      "damageDealt": 329621,
+      "damageType": "Battle",
+      "remainingHp": 470379,
+      "maxHp": 800000,
+      "startedOn": 1792609102,
+      "completedOn": 1792609256,
+      "heroDetails": [
+        {
+          "unitId": "blackHaarken",
+          "power": 167649
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 411859
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 380682
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 904166
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 736685
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 78923
       }
     }
   ]
