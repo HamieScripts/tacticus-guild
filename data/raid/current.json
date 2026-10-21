@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792594638,
+  "fetchedOn": 1792596194,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -1738,6 +1738,90 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 2314
+      }
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss7MiniBoss1AstraPrimarisPsy",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 111298,
+      "damageType": "Battle",
+      "remainingHp": 288702,
+      "maxHp": 400000,
+      "startedOn": 1792595453,
+      "completedOn": 1792595748,
+      "heroDetails": [
+        {
+          "unitId": "adeptHospitaller",
+          "power": 91114
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 101248
+        },
+        {
+          "unitId": "bloodIntercessor",
+          "power": 83573
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 284438
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 48690
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1324
+      }
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss7MiniBoss1AstraPrimarisPsy",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 100000,
+      "damageType": "Battle",
+      "remainingHp": 188702,
+      "maxHp": 400000,
+      "startedOn": 1792595836,
+      "completedOn": 1792596090,
+      "heroDetails": [
+        {
+          "unitId": "bloodIntercessor",
+          "power": 83573
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 101248
+        },
+        {
+          "unitId": "adeptHospitaller",
+          "power": 91114
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 284438
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 48690
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1324
       }
     }
   ]
