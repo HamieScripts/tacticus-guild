@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792580203,
+  "fetchedOn": 1792581709,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -557,6 +557,207 @@
         "unitId": "thousDaemonPrince",
         "power": 464429
       }
+    },
+    {
+      "userId": "c47778d3-3a3c-4cc0-b405-3aed0d993c45",
+      "tier": 2,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Rare",
+      "damageDealt": 252460,
+      "damageType": "Battle",
+      "remainingHp": 272540,
+      "maxHp": 525000,
+      "startedOn": 1792580582,
+      "completedOn": 1792580802,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 641490
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 474561
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 584779
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 394581
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 684394
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 1030
+      }
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 2,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Rare",
+      "damageDealt": 103179,
+      "damageType": "Battle",
+      "remainingHp": 169361,
+      "maxHp": 525000,
+      "startedOn": 1792580983,
+      "completedOn": 1792581164,
+      "heroDetails": [
+        {
+          "unitId": "necroSpyder",
+          "power": 149373
+        },
+        {
+          "unitId": "admecManipulus",
+          "power": 74144
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 340393
+        },
+        {
+          "unitId": "admecMarshall",
+          "power": 156483
+        },
+        {
+          "unitId": "admecRuststalker",
+          "power": 222783
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "260cfd81-b5de-433e-bc13-cb5f9a08b137",
+      "tier": 2,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Rare",
+      "damageDealt": 181054,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 525000,
+      "startedOn": 1792581139,
+      "completedOn": 1792581287,
+      "heroDetails": [
+        {
+          "unitId": "tauAunShi",
+          "power": 57152
+        },
+        {
+          "unitId": "spaceBlackmane",
+          "power": 412617
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 211146
+        },
+        {
+          "unitId": "templAncient",
+          "power": 63666
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 415358
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 713700
+      }
+    },
+    {
+      "userId": "86dc308e-8ca0-4470-ae78-ced2ef219eea",
+      "tier": 3,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Epic",
+      "damageDealt": 855956,
+      "damageType": "Battle",
+      "remainingHp": 344044,
+      "maxHp": 1200000,
+      "startedOn": 1792581359,
+      "completedOn": 1792581599,
+      "heroDetails": [
+        {
+          "unitId": "eldarLhykhis",
+          "power": 182904
+        },
+        {
+          "unitId": "tauFarsight",
+          "power": 361269
+        },
+        {
+          "unitId": "admecManipulus",
+          "power": 380800
+        },
+        {
+          "unitId": "tauDarkstrider",
+          "power": 385876
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 552266
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 75712
+      }
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 3,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Epic",
+      "damageDealt": 8114,
+      "damageType": "Bomb",
+      "remainingHp": 335930,
+      "maxHp": 1200000,
+      "startedOn": 1792581652,
+      "completedOn": 1792581652,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 3,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Epic",
+      "damageDealt": 7884,
+      "damageType": "Bomb",
+      "remainingHp": 328046,
+      "maxHp": 1200000,
+      "startedOn": 1792581658,
+      "completedOn": 1792581658,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
