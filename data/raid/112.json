@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792622711,
+  "fetchedOn": 1792626983,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -2855,6 +2855,48 @@
       "completedOn": 1792622503,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 4,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss4MiniBoss1OrksBigMek",
+      "type": "Ghazghkull",
+      "rarity": "Legendary",
+      "damageDealt": 36051,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 800000,
+      "startedOn": 1792626881,
+      "completedOn": 1792626939,
+      "heroDetails": [
+        {
+          "unitId": "admecDominus",
+          "power": 80265
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 325028
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 61087
+        },
+        {
+          "unitId": "admecMarshall",
+          "power": 55525
+        },
+        {
+          "unitId": "admecRuststalker",
+          "power": 59195
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 2314
+      }
     }
   ]
 }
