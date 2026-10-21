@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792611854,
+  "fetchedOn": 1792621273,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -2717,6 +2717,84 @@
         "unitId": "thousDaemonPrince",
         "power": 66681
       }
+    },
+    {
+      "userId": "260cfd81-b5de-433e-bc13-cb5f9a08b137",
+      "tier": 4,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Legendary",
+      "damageDealt": 9319,
+      "damageType": "Bomb",
+      "remainingHp": 8320681,
+      "maxHp": 8330000,
+      "startedOn": 1792620285,
+      "completedOn": 1792620285,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "9d50010a-82f9-4db9-aa55-e292388ea749",
+      "tier": 4,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss4MiniBoss1OrksBigMek",
+      "type": "Ghazghkull",
+      "rarity": "Legendary",
+      "damageDealt": 371509,
+      "damageType": "Battle",
+      "remainingHp": 428491,
+      "maxHp": 800000,
+      "startedOn": 1792620720,
+      "completedOn": 1792620894,
+      "heroDetails": [
+        {
+          "unitId": "tauCrisis",
+          "power": 135725
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 866503
+        },
+        {
+          "unitId": "bloodIntercessor",
+          "power": 425913
+        },
+        {
+          "unitId": "bloodDeathCompany",
+          "power": 549733
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 586675
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 149526
+      }
+    },
+    {
+      "userId": "9d50010a-82f9-4db9-aa55-e292388ea749",
+      "tier": 4,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Legendary",
+      "damageDealt": 8009,
+      "damageType": "Bomb",
+      "remainingHp": 8312672,
+      "maxHp": 8330000,
+      "startedOn": 1792620918,
+      "completedOn": 1792620918,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
