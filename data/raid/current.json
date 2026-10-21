@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792579549,
+  "fetchedOn": 1792580203,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -472,6 +472,90 @@
       "machineOfWarDetails": {
         "unitId": "astraOrdnanceBattery",
         "power": 19849
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 2,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Rare",
+      "damageDealt": 375000,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 375000,
+      "startedOn": 1792579726,
+      "completedOn": 1792579850,
+      "heroDetails": [
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 778199
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 738255
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 565317
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 524545
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 642148
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 464429
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 2,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Rare",
+      "damageDealt": 540000,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 540000,
+      "startedOn": 1792579976,
+      "completedOn": 1792580122,
+      "heroDetails": [
+        {
+          "unitId": "blackPossession",
+          "power": 738255
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 524545
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 778199
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 642148
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 565317
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 464429
       }
     }
   ]
