@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792601235,
+  "fetchedOn": 1792601883,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -2260,6 +2260,48 @@
       "machineOfWarDetails": {
         "unitId": "necroReanimator",
         "power": 452
+      }
+    },
+    {
+      "userId": "fce63e8e-b46e-4fe1-9031-9475f46ee504",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Legendary",
+      "damageDealt": 160910,
+      "damageType": "Battle",
+      "remainingHp": 6026658,
+      "maxHp": 7500000,
+      "startedOn": 1792601608,
+      "completedOn": 1792601722,
+      "heroDetails": [
+        {
+          "unitId": "blackAbaddon",
+          "power": 630661
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 517983
+        },
+        {
+          "unitId": "eldarMauganRa",
+          "power": 504695
+        },
+        {
+          "unitId": "necroDestroyer",
+          "power": 97118
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 562391
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 1064
       }
     }
   ]
