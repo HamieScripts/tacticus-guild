@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792679072,
+  "fetchedOn": 1792680370,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -4880,6 +4880,84 @@
         "unitId": "tyranBiovore",
         "power": 2314
       }
+    },
+    {
+      "userId": "8485b330-6671-46b7-a258-9a2ed7d0e5f0",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss2AdmecManipulus",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 336217,
+      "damageType": "Battle",
+      "remainingHp": 343935,
+      "maxHp": 1200000,
+      "startedOn": 1792679776,
+      "completedOn": 1792679931,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 700345
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 750011
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 759557
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 454218
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 182899
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 67105
+      }
+    },
+    {
+      "userId": "8485b330-6671-46b7-a258-9a2ed7d0e5f0",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 9632,
+      "damageType": "Bomb",
+      "remainingHp": 14974107,
+      "maxHp": 15000000,
+      "startedOn": 1792679944,
+      "completedOn": 1792679944,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "39064004-8034-4d34-abea-e7f414f9437b",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 7884,
+      "damageType": "Bomb",
+      "remainingHp": 1036443,
+      "maxHp": 1200000,
+      "startedOn": 1792680011,
+      "completedOn": 1792680011,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
