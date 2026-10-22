@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792659117,
+  "fetchedOn": 1792661172,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -4250,6 +4250,42 @@
         "unitId": "thousDaemonPrince",
         "power": 464429
       }
+    },
+    {
+      "userId": "c62ee67f-0a9e-4e29-8861-320e57788e6c",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Legendary",
+      "damageDealt": 8041,
+      "damageType": "Bomb",
+      "remainingHp": 6101820,
+      "maxHp": 10400000,
+      "startedOn": 1792660506,
+      "completedOn": 1792660506,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Legendary",
+      "damageDealt": 8514,
+      "damageType": "Bomb",
+      "remainingHp": 6093306,
+      "maxHp": 10400000,
+      "startedOn": 1792661169,
+      "completedOn": 1792661169,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
