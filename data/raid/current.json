@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792641570,
+  "fetchedOn": 1792643154,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -3704,6 +3704,84 @@
         "unitId": "tyranBiovore",
         "power": 1701
       }
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss8MiniBoss1EldarAutarch",
+      "type": "AvatarOfKhaine",
+      "rarity": "Legendary",
+      "damageDealt": 234651,
+      "damageType": "Battle",
+      "remainingHp": 442335,
+      "maxHp": 1000000,
+      "startedOn": 1792641564,
+      "completedOn": 1792641707,
+      "heroDetails": [
+        {
+          "unitId": "bloodDante",
+          "power": 188113
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 232706
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 486270
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 419497
+        },
+        {
+          "unitId": "spaceBlackmane",
+          "power": 56527
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1701
+      }
+    },
+    {
+      "userId": "077980e3-7cb5-44ab-977e-846af676ccce",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Legendary",
+      "damageDealt": 7731,
+      "damageType": "Bomb",
+      "remainingHp": 10392269,
+      "maxHp": 10400000,
+      "startedOn": 1792642843,
+      "completedOn": 1792642843,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "553c48cc-fcd5-4d34-94cd-691ecad888cc",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Legendary",
+      "damageDealt": 8686,
+      "damageType": "Bomb",
+      "remainingHp": 10383583,
+      "maxHp": 10400000,
+      "startedOn": 1792643058,
+      "completedOn": 1792643058,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
