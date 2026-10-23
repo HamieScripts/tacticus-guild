@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792761794,
+  "fetchedOn": 1792763188,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -7664,6 +7664,90 @@
       "completedOn": 1792761732,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "c62ee67f-0a9e-4e29-8861-320e57788e6c",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 276226,
+      "damageType": "Battle",
+      "remainingHp": 1758486,
+      "maxHp": 15000000,
+      "startedOn": 1792762492,
+      "completedOn": 1792762744,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 171387
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 493407
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 787798
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 560984
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 532836
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 105653
+      }
+    },
+    {
+      "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 189387,
+      "damageType": "Battle",
+      "remainingHp": 1569099,
+      "maxHp": 15000000,
+      "startedOn": 1792762880,
+      "completedOn": 1792762988,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 657529
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 368517
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 642718
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 866505
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 976343
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 16046
+      }
     }
   ]
 }
