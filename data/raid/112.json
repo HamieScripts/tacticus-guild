@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792768996,
+  "fetchedOn": 1792770408,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -7957,6 +7957,48 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 713700
+      }
+    },
+    {
+      "userId": "553c48cc-fcd5-4d34-94cd-691ecad888cc",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss7MiniBoss2AstraOrdnance",
+      "type": "RogalDorn",
+      "rarity": "Mythic",
+      "damageDealt": 902957,
+      "damageType": "Battle",
+      "remainingHp": 788825,
+      "maxHp": 2400000,
+      "startedOn": 1792769931,
+      "completedOn": 1792770109,
+      "heroDetails": [
+        {
+          "unitId": "tauMarksman",
+          "power": 764862
+        },
+        {
+          "unitId": "admecManipulus",
+          "power": 539395
+        },
+        {
+          "unitId": "admecRuststalker",
+          "power": 721837
+        },
+        {
+          "unitId": "admecMarshall",
+          "power": 741271
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 478440
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 105879
       }
     }
   ]
