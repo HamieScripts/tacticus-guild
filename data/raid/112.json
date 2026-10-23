@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792765588,
+  "fetchedOn": 1792766943,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -7873,6 +7873,48 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 1040687
+      }
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss7MiniBoss1AstraPrimarisPsy",
+      "type": "RogalDorn",
+      "rarity": "Mythic",
+      "damageDealt": 197967,
+      "damageType": "Battle",
+      "remainingHp": 2202033,
+      "maxHp": 2400000,
+      "startedOn": 1792765570,
+      "completedOn": 1792765692,
+      "heroDetails": [
+        {
+          "unitId": "adeptCelestine",
+          "power": 69553
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 65682
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 190185
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 80825
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 88325
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 1188
       }
     }
   ]
