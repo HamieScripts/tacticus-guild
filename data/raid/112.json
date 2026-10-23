@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792771081,
+  "fetchedOn": 1792772813,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -8042,6 +8042,66 @@
         "unitId": "tyranBiovore",
         "power": 1126
       }
+    },
+    {
+      "userId": "fce63e8e-b46e-4fe1-9031-9475f46ee504",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss7MiniBoss2AstraOrdnance",
+      "type": "RogalDorn",
+      "rarity": "Mythic",
+      "damageDealt": 204287,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 2400000,
+      "startedOn": 1792771584,
+      "completedOn": 1792771658,
+      "heroDetails": [
+        {
+          "unitId": "blackAbaddon",
+          "power": 630661
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 562391
+        },
+        {
+          "unitId": "necroDestroyer",
+          "power": 129767
+        },
+        {
+          "unitId": "eldarMauganRa",
+          "power": 504695
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 517983
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "ultraDreadnought",
+        "power": 1216
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Mythic",
+      "damageDealt": 7513,
+      "damageType": "Bomb",
+      "remainingHp": 29992487,
+      "maxHp": 30000000,
+      "startedOn": 1792771722,
+      "completedOn": 1792771722,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
