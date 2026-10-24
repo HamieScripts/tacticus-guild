@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792882569,
+  "fetchedOn": 1792886168,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -11206,6 +11206,108 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 1324
+      }
+    },
+    {
+      "userId": "275a8663-7ad1-4ec7-86ef-f4c97182473d",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Mythic",
+      "damageDealt": 9526,
+      "damageType": "Bomb",
+      "remainingHp": 6022608,
+      "maxHp": 30000000,
+      "startedOn": 1792885328,
+      "completedOn": 1792885328,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "275a8663-7ad1-4ec7-86ef-f4c97182473d",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Mythic",
+      "damageDealt": 146053,
+      "damageType": "Battle",
+      "remainingHp": 5876555,
+      "maxHp": 30000000,
+      "startedOn": 1792885341,
+      "completedOn": 1792885471,
+      "heroDetails": [
+        {
+          "unitId": "bloodMephiston",
+          "power": 491113
+        },
+        {
+          "unitId": "admecMarshall",
+          "power": 342002
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 702666
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 401042
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 400585
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 142038
+      }
+    },
+    {
+      "userId": "275a8663-7ad1-4ec7-86ef-f4c97182473d",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Mythic",
+      "damageDealt": 107119,
+      "damageType": "Battle",
+      "remainingHp": 5769436,
+      "maxHp": 30000000,
+      "startedOn": 1792885524,
+      "completedOn": 1792885654,
+      "heroDetails": [
+        {
+          "unitId": "bloodMephiston",
+          "power": 491113
+        },
+        {
+          "unitId": "admecMarshall",
+          "power": 342002
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 702666
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 401042
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 400585
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 142038
       }
     }
   ]
