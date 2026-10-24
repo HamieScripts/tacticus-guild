@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792807185,
+  "fetchedOn": 1792810150,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -9109,6 +9109,108 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 149526
+      }
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Mythic",
+      "damageDealt": 9504,
+      "damageType": "Bomb",
+      "remainingHp": 21998502,
+      "maxHp": 30000000,
+      "startedOn": 1792809362,
+      "completedOn": 1792809362,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Mythic",
+      "damageDealt": 125985,
+      "damageType": "Battle",
+      "remainingHp": 21872517,
+      "maxHp": 30000000,
+      "startedOn": 1792809402,
+      "completedOn": 1792809573,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 325028
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 205401
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 61087
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 80265
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 193822
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 2314
+      }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Mythic",
+      "damageDealt": 122427,
+      "damageType": "Battle",
+      "remainingHp": 21750090,
+      "maxHp": 30000000,
+      "startedOn": 1792809689,
+      "completedOn": 1792809848,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 263370
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 182421
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 838544
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 231580
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 840521
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 66681
       }
     }
   ]
