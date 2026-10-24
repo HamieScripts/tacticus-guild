@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792805983,
+  "fetchedOn": 1792807185,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -9025,6 +9025,90 @@
       "machineOfWarDetails": {
         "unitId": "deathCrawler",
         "power": 694
+      }
+    },
+    {
+      "userId": "8485b330-6671-46b7-a258-9a2ed7d0e5f0",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Mythic",
+      "damageDealt": 151832,
+      "damageType": "Battle",
+      "remainingHp": 22571436,
+      "maxHp": 30000000,
+      "startedOn": 1792805987,
+      "completedOn": 1792806182,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 454218
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 775244
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 700345
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 182899
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 750011
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 69499
+      }
+    },
+    {
+      "userId": "9d50010a-82f9-4db9-aa55-e292388ea749",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Mythic",
+      "damageDealt": 563430,
+      "damageType": "Battle",
+      "remainingHp": 22008006,
+      "maxHp": 30000000,
+      "startedOn": 1792806147,
+      "completedOn": 1792806442,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 878103
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 191808
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 658588
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 408940
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 750526
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 149526
       }
     }
   ]
