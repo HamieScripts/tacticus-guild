@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792797584,
+  "fetchedOn": 1792803062,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -8516,6 +8516,168 @@
         "unitId": "blackForgefiend",
         "power": 41202
       }
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Mythic",
+      "damageDealt": 720215,
+      "damageType": "Battle",
+      "remainingHp": 26925225,
+      "maxHp": 30000000,
+      "startedOn": 1792800293,
+      "completedOn": 1792800736,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 902761
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 608118
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 1162911
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 961204
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 884832
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1020155
+      }
+    },
+    {
+      "userId": "86dc308e-8ca0-4470-ae78-ced2ef219eea",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Mythic",
+      "damageDealt": 9342,
+      "damageType": "Bomb",
+      "remainingHp": 26915883,
+      "maxHp": 30000000,
+      "startedOn": 1792801225,
+      "completedOn": 1792801225,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "86dc308e-8ca0-4470-ae78-ced2ef219eea",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Mythic",
+      "damageDealt": 126700,
+      "damageType": "Battle",
+      "remainingHp": 26789183,
+      "maxHp": 30000000,
+      "startedOn": 1792801252,
+      "completedOn": 1792801422,
+      "heroDetails": [
+        {
+          "unitId": "eldarLhykhis",
+          "power": 239840
+        },
+        {
+          "unitId": "tauFarsight",
+          "power": 361269
+        },
+        {
+          "unitId": "admecManipulus",
+          "power": 380800
+        },
+        {
+          "unitId": "tauDarkstrider",
+          "power": 385876
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 552266
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 76206
+      }
+    },
+    {
+      "userId": "86dc308e-8ca0-4470-ae78-ced2ef219eea",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Mythic",
+      "damageDealt": 808955,
+      "damageType": "Battle",
+      "remainingHp": 25980228,
+      "maxHp": 30000000,
+      "startedOn": 1792801446,
+      "completedOn": 1792801640,
+      "heroDetails": [
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 430796
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 624159
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 711600
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 717471
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 719464
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 76206
+      }
+    },
+    {
+      "userId": "9d50010a-82f9-4db9-aa55-e292388ea749",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Mythic",
+      "damageDealt": 9244,
+      "damageType": "Bomb",
+      "remainingHp": 25970984,
+      "maxHp": 30000000,
+      "startedOn": 1792803016,
+      "completedOn": 1792803016,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
