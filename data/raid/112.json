@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792904257,
+  "fetchedOn": 1792905665,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -12557,6 +12557,108 @@
         "unitId": "thousDaemonPrince",
         "power": 66681
       }
+    },
+    {
+      "userId": "c47778d3-3a3c-4cc0-b405-3aed0d993c45",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss1TyranNeurothrope",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 147796,
+      "damageType": "Battle",
+      "remainingHp": 165500,
+      "maxHp": 3000000,
+      "startedOn": 1792904908,
+      "completedOn": 1792905043,
+      "heroDetails": [
+        {
+          "unitId": "adeptCelestine",
+          "power": 604306
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 669708
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 584779
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 665127
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 684394
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 1030
+      }
+    },
+    {
+      "userId": "c47778d3-3a3c-4cc0-b405-3aed0d993c45",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss1TyranNeurothrope",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 165500,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 3000000,
+      "startedOn": 1792905059,
+      "completedOn": 1792905187,
+      "heroDetails": [
+        {
+          "unitId": "adeptCelestine",
+          "power": 604306
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 669708
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 584779
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 665127
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 684394
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 1030
+      }
+    },
+    {
+      "userId": "077980e3-7cb5-44ab-977e-846af676ccce",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 9239,
+      "damageType": "Bomb",
+      "remainingHp": 37474512,
+      "maxHp": 37500000,
+      "startedOn": 1792905465,
+      "completedOn": 1792905465,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
