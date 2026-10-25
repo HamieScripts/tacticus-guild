@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792900847,
+  "fetchedOn": 1792903636,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -12388,6 +12388,48 @@
       "machineOfWarDetails": {
         "unitId": "astraOrdnanceBattery",
         "power": 43444
+      }
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss1TyranNeurothrope",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 38240,
+      "damageType": "Battle",
+      "remainingHp": 1025271,
+      "maxHp": 3000000,
+      "startedOn": 1792903067,
+      "completedOn": 1792903165,
+      "heroDetails": [
+        {
+          "unitId": "necroSpyder",
+          "power": 149373
+        },
+        {
+          "unitId": "admecMarshall",
+          "power": 156483
+        },
+        {
+          "unitId": "admecManipulus",
+          "power": 74144
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 340393
+        },
+        {
+          "unitId": "admecRuststalker",
+          "power": 222783
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 656
       }
     }
   ]
