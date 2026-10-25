@@ -1,6 +1,7 @@
 const MISSING_UNIT_AVATAR_URL = './img/missing-unit.svg';
 const TEAM_COLUMNS = ['core', 'flex', 'mow'];
 const TEAMS_DATA_URL = './data/static/guild-teams.json';
+const FACTION_PREFIXES = ['adept', 'admec', 'astar', 'astra', 'black', 'blood', 'custo', 'darka', 'death', 'eldar', 'genes', 'necro', 'orks', 'space', 'thous', 'tyran', 'ultra', 'world', 'votann', 'tau'];
 
 const teamsState = {
   teams: [],
@@ -141,6 +142,17 @@ function normalizeUnitId(value) {
     .replace(/[^a-z0-9]/g, '');
 }
 
+function getUnitDisplayName(unitId) {
+  const raw = String(unitId || '').trim();
+  if (!raw) return 'Unknown';
+  const faction = FACTION_PREFIXES.find((prefix) => raw.toLowerCase().startsWith(prefix));
+  const name = faction ? raw.slice(faction.length) : raw;
+  return `${name.charAt(0).toUpperCase()}${name.slice(1)}`
+    .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 function normalizeUnitIdList(units) {
   return (Array.isArray(units) ? units : [])
     .map((unit) => normalizeUnitId(getBattleUnitId(unit)))
@@ -151,7 +163,8 @@ function normalizeUnitIdList(units) {
 function buildLineupUnitIdsWithMachineOfWar(battleSide) {
   const units = Array.isArray(battleSide?.units) ? battleSide.units : [];
   const machineOfWarUnitId = getBattleUnitId(battleSide?.machineOfWar || null);
-  const baseUnitIds = units.map((unit) => getBattleUnitId(unit)).filter(Boolean);
+  const baseUnitIds = units.map((unit) => getBattleUnitId(unit)).filter(Boolean)
+    .sort((left, right) => getUnitDisplayName(left).localeCompare(getUnitDisplayName(right)));
 
   if (machineOfWarUnitId) {
     baseUnitIds.push(machineOfWarUnitId);

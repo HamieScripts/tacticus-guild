@@ -614,7 +614,9 @@ function sortEntries(entries) {
 }
 
 function renderTeamCell(entry) {
-  const heroes = Array.isArray(entry.heroDetails) ? entry.heroDetails : [];
+  const heroes = (Array.isArray(entry.heroDetails) ? entry.heroDetails : [])
+    .slice()
+    .sort((left, right) => getUnitDisplayName(left?.unitId).localeCompare(getUnitDisplayName(right?.unitId)));
   const all = entry.machineOfWarDetails ? [...heroes, entry.machineOfWarDetails] : heroes;
 
   if (all.length === 0) return '<span class="text-xs text-slate-500">-</span>';
@@ -623,8 +625,8 @@ function renderTeamCell(entry) {
   const selectedCharacters = new Set(raidLogState.filters.characters);
   const hasCharacterFilter = selectedCharacters.size > 0;
 
-  return `<div class="flex flex-wrap items-center gap-1">${all.map((hero, index) => {
-    const isMow = index === all.length - 1 && entry.machineOfWarDetails && hero.unitId === entry.machineOfWarDetails.unitId;
+  return `<div class="flex flex-wrap items-center gap-1">${all.map((hero) => {
+    const isMow = hero === entry.machineOfWarDetails;
     const label = `${getUnitDisplayName(hero.unitId)} (${formatNumber(hero.power)})${isMow ? ' · MoW' : ''}`;
     const isSelected = hasCharacterFilter && selectedCharacters.has(hero.unitId);
     const dimmed = hasCharacterFilter && !isSelected;

@@ -114,6 +114,14 @@ function prettifyUnitName(value) {
 
 const FACTION_PREFIXES = ['adept', 'admec', 'astar', 'astra', 'black', 'blood', 'custo', 'darka', 'death', 'eldar', 'genes', 'necro', 'orks', 'space', 'thous', 'tyran', 'ultra', 'world', 'votann', 'tau'];
 
+function getUnitDisplayName(unitId) {
+  const raw = String(unitId || '').trim();
+  if (!raw) return 'Unknown';
+  const faction = FACTION_PREFIXES.find((prefix) => raw.toLowerCase().startsWith(prefix));
+  const name = faction ? raw.slice(faction.length) : raw;
+  return prettifyUnitName(name.charAt(0).toUpperCase() + name.slice(1));
+}
+
 // Boss ids look like GuildBoss11MiniBoss1TauMarksman; strip the encounter and faction prefixes.
 function getBossUnitKey(unitId) {
   const stripped = String(unitId || '').replace(/^GuildBoss\d*(Mini)?Boss\d*/i, '');
@@ -398,7 +406,9 @@ function getPlayerStatsForBoss(bossKey) {
 }
 
 function renderHeroPortraits(entry) {
-  const heroes = Array.isArray(entry.heroDetails) ? entry.heroDetails : [];
+  const heroes = (Array.isArray(entry.heroDetails) ? entry.heroDetails : [])
+    .slice()
+    .sort((left, right) => getUnitDisplayName(left?.unitId).localeCompare(getUnitDisplayName(right?.unitId)));
   const all = entry.machineOfWarDetails ? [...heroes, entry.machineOfWarDetails] : heroes;
 
   if (all.length === 0) {
