@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792914281,
+  "fetchedOn": 1792916806,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -12737,6 +12737,48 @@
       "completedOn": 1792913758,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss2TyranWingedPrime",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 53442,
+      "damageType": "Battle",
+      "remainingHp": 2402115,
+      "maxHp": 3000000,
+      "startedOn": 1792915844,
+      "completedOn": 1792916034,
+      "heroDetails": [
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 565317
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 524545
+        },
+        {
+          "unitId": "astraOrdnance",
+          "power": 129889
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 642148
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 738255
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 464429
+      }
     }
   ]
 }
