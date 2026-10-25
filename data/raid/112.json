@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792963870,
+  "fetchedOn": 1792966703,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -14002,6 +14002,48 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 2944
+      }
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss2TyranWingedPrime",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 19079,
+      "damageType": "Battle",
+      "remainingHp": 1311214,
+      "maxHp": 3000000,
+      "startedOn": 1792966280,
+      "completedOn": 1792966436,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 364934
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 292357
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 118520
+        },
+        {
+          "unitId": "necroOverlord",
+          "power": 202421
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 340393
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 656
       }
     }
   ]
