@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792961765,
+  "fetchedOn": 1792963107,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -13941,6 +13941,24 @@
       "maxHp": 37500000,
       "startedOn": 1792961136,
       "completedOn": 1792961136,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "08a7e111-0193-4d88-bc27-c5124e90039e",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 8636,
+      "damageType": "Bomb",
+      "remainingHp": 32476205,
+      "maxHp": 37500000,
+      "startedOn": 1792963083,
+      "completedOn": 1792963083,
       "heroDetails": [],
       "machineOfWarDetails": null
     }
