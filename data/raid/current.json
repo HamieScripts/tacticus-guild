@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792921521,
+  "fetchedOn": 1792922172,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -12880,6 +12880,66 @@
       "machineOfWarDetails": {
         "unitId": "astraOrdnanceBattery",
         "power": 19849
+      }
+    },
+    {
+      "userId": "c9b88058-b28d-49da-9e8d-a2c68770ac97",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss2TyranWingedPrime",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 9369,
+      "damageType": "Bomb",
+      "remainingHp": 2358477,
+      "maxHp": 3000000,
+      "startedOn": 1792921764,
+      "completedOn": 1792921764,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "c9b88058-b28d-49da-9e8d-a2c68770ac97",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss2TyranWingedPrime",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 38341,
+      "damageType": "Battle",
+      "remainingHp": 2320136,
+      "maxHp": 3000000,
+      "startedOn": 1792921770,
+      "completedOn": 1792921879,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 442854
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 480981
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 448588
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 841384
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 751718
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "deathCrawler",
+        "power": 1735
       }
     }
   ]
