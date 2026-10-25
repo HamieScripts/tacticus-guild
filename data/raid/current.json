@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792897243,
+  "fetchedOn": 1792898801,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -12184,6 +12184,66 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 2944
+      }
+    },
+    {
+      "userId": "c47778d3-3a3c-4cc0-b405-3aed0d993c45",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 8146,
+      "damageType": "Bomb",
+      "remainingHp": 37491854,
+      "maxHp": 37500000,
+      "startedOn": 1792898252,
+      "completedOn": 1792898252,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "c47778d3-3a3c-4cc0-b405-3aed0d993c45",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss1TyranNeurothrope",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 177801,
+      "damageType": "Battle",
+      "remainingHp": 2158968,
+      "maxHp": 3000000,
+      "startedOn": 1792898269,
+      "completedOn": 1792898392,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 641490
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 584779
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 669708
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 665127
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 684394
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 1030
       }
     }
   ]
