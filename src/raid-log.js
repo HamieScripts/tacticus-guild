@@ -128,12 +128,51 @@ function getBossUnitKey(unitId) {
 function getBossDisplayName(entry) {
   const unitKey = getBossUnitKey(entry.unitId);
   // `type` names the whole encounter, so side bosses have to be named from their own unit id.
-  if (entry.encounterType !== 'SideBoss' && entry.type) return prettifyUnitName(entry.type);
+  if (entry.encounterType !== 'SideBoss' && entry.type) {
+    return prettifyUnitName(entry.type);
+  }
   if (!unitKey) return prettifyUnitName(entry.type || entry.unitId);
 
   const faction = FACTION_PREFIXES.find((prefix) => unitKey.toLowerCase().startsWith(prefix));
-  const name = faction ? unitKey.slice(faction.length) : unitKey;
-  return prettifyUnitName(name.charAt(0).toUpperCase() + name.slice(1));
+  const unitName = faction ? unitKey.slice(faction.length) : unitKey;
+  return prettifyUnitName(unitName.charAt(0).toUpperCase() + unitName.slice(1));
+}
+
+function getBossTierNumber(entry) {
+  if (entry?.set === null || entry?.set === undefined || entry?.set === '') return null;
+  const set = Number(entry.set);
+  return Number.isFinite(set) && set >= 0 ? set + 1 : null;
+}
+
+function toRomanNumeral(value) {
+  const numerals = [
+    [1000, 'M'], [900, 'CM'], [500, 'D'], [400, 'CD'],
+    [100, 'C'], [90, 'XC'], [50, 'L'], [40, 'XL'],
+    [10, 'X'], [9, 'IX'], [5, 'V'], [4, 'IV'], [1, 'I']
+  ];
+  let remainder = value;
+  let result = '';
+  numerals.forEach(([number, numeral]) => {
+    while (remainder >= number) {
+      result += numeral;
+      remainder -= number;
+    }
+  });
+  return result;
+}
+
+function renderBossTierBadge(rarity, tierNumber) {
+  if (!rarity) return '<span class="text-xs text-slate-500">-</span>';
+  const label = `${rarity}${tierNumber === null ? '' : ` ${toRomanNumeral(tierNumber)}`}`;
+  return `<span class="inline-flex whitespace-nowrap rounded border px-1.5 py-0.5 text-[10px] font-bold ${RARITY_BADGES[rarity] || RARITY_BADGES.Common}">${escapeHtml(label)}</span>`;
+}
+
+function renderBossOptionName(option) {
+  const name = option.name || option.label || '';
+  const primeLabel = option.isSideBoss
+    ? '<span class="text-xs font-medium text-slate-400">(prime)</span>'
+    : '';
+  return `<span class="text-sm font-semibold">${escapeHtml(name)}</span>${primeLabel}`;
 }
 
 // Hero/MoW ids look like orksWarboss; strip the faction prefix for a friendly label.
@@ -190,7 +229,8 @@ function renderBossAvatar(entry, name) {
     return `<span class="${shell}"><img src="${escapeHtml(src)}" alt="" class="h-full w-full object-cover" loading="lazy" onerror="this.src='${MISSING_UNIT_AVATAR_URL}'" /></span>`;
   }
 
-  const initials = String(name || '').split(' ').map((word) => word.charAt(0)).join('').slice(0, 2).toUpperCase();
+  const baseName = String(name || '').replace(/^\[[A-Z]+\d+\]\s*/, '');
+  const initials = baseName.split(' ').map((word) => word.charAt(0)).join('').slice(0, 2).toUpperCase();
   return `<span class="${shell} text-sm font-black tracking-wide text-slate-400">${escapeHtml(initials || '?')}</span>`;
 }
 
@@ -272,13 +312,19 @@ function indexEntryOptions(entry) {
   if (entry.rarity) pools.rarities.add(entry.rarity);
 
   const bossId = getBossFilterId(entry);
-  if (bossId && !pools.bosses.has(bossId)) {
-    pools.bosses.set(bossId, {
-      id: bossId,
-      name: getBossDisplayName(entry),
-      rarity: entry.rarity || '',
-      portrait: getBossPortraitUrl(entry)
-    });
+  if (bossId) {
+    if (!pools.bosses.has(bossId)) {
+      pools.bosses.set(bossId, {
+        id: bossId,
+        name: getBossDisplayName(entry),
+        rarity: entry.rarity || '',
+        tierNumber: getBossTierNumber(entry),
+        encounterIndex: Number(entry.encounterIndex) || 0,
+        isSideBoss: entry.encounterType === 'SideBoss',
+        seasons: new Set()
+      });
+    }
+    pools.bosses.get(bossId).seasons.add(String(entry.__season));
   }
 
   (Array.isArray(entry.heroDetails) ? entry.heroDetails : []).forEach((hero) => {
@@ -294,17 +340,31 @@ function indexEntryOptions(entry) {
   }
 }
 
-// Bosses repeat across seasons; rarity distinguishes the variants in the filter list.
+// Bosses repeat across seasons; rarity and tier distinguish the filter options.
 function getBossFilterId(entry) {
   const name = getBossDisplayName(entry);
   if (!name) return '';
-  return `${name}|${entry.rarity || ''}`;
+  return `${name}|${entry.rarity || ''}|${getBossTierNumber(entry) ?? ''}|${entry.encounterType || ''}|${Number(entry.encounterIndex) || 0}`;
 }
 
 function getSelectedSeasons() {
   return raidLogState.filters.seasons
     .map((season) => Number(season))
     .filter((season) => Number.isFinite(season));
+}
+
+function getSortedBossOptions(includeOtherSeasons = false) {
+  const selectedSeasons = new Set(raidLogState.filters.seasons.map(String));
+  return [...raidLogState.optionPools.bosses.values()]
+    .filter((boss) => includeOtherSeasons
+      || selectedSeasons.size === 0
+      || [...boss.seasons].some((season) => selectedSeasons.has(String(season))))
+    .map((boss) => ({ ...boss, label: `${boss.name}${boss.isSideBoss ? ' (prime)' : ''}` }))
+    .sort((a, b) =>
+      RARITY_ORDER.indexOf(b.rarity) - RARITY_ORDER.indexOf(a.rarity)
+      || (Number(b.tierNumber) || 0) - (Number(a.tierNumber) || 0)
+      || (Number(a.encounterIndex) || 0) - (Number(b.encounterIndex) || 0)
+      || a.name.localeCompare(b.name));
 }
 
 // A season that just rolled over can sit at 0 entries for days; default to the
@@ -370,9 +430,7 @@ function getSortedOptions(key) {
         .map((userId) => ({ id: userId, label: getPlayerName(userId) }))
         .sort((a, b) => a.label.localeCompare(b.label));
     case 'boss':
-      return [...pools.bosses.values()]
-        .map((boss) => ({ ...boss, label: boss.name }))
-        .sort((a, b) => a.name.localeCompare(b.name) || RARITY_ORDER.indexOf(a.rarity) - RARITY_ORDER.indexOf(b.rarity));
+      return getSortedBossOptions();
     case 'rarity':
       return RARITY_ORDER
         .filter((rarity) => pools.rarities.has(rarity))
@@ -426,7 +484,8 @@ function renderMultiSelectControl(key) {
     : 'border-sky-400/45 bg-sky-900/40 text-sky-100';
   const chipRemoveTone = key === 'character' || key === 'mow' ? 'text-pink-300' : 'text-sky-300';
 
-  const byId = new Map(getSortedOptions(key).map((option) => [option.id, option]));
+  const optionsForSelection = key === 'boss' ? getSortedBossOptions(true) : getSortedOptions(key);
+  const byId = new Map(optionsForSelection.map((option) => [option.id, option]));
 
   selectedContainer.innerHTML = '';
   selectedIds.forEach((id) => {
@@ -434,8 +493,15 @@ function renderMultiSelectControl(key) {
     const chip = document.createElement('button');
     chip.type = 'button';
     chip.className = `inline-flex items-center gap-2 rounded-full border px-2 py-1 ${chipTone}`;
+    const bossTierBadge = key === 'boss' && !option.isSideBoss
+      ? renderBossTierBadge(option.rarity, option.tierNumber)
+      : '';
+    const optionName = key === 'boss'
+      ? renderBossOptionName(option)
+      : `<span class="text-sm font-semibold">${escapeHtml(option.label)}</span>`;
     chip.innerHTML = `
-      <span class="text-sm font-semibold">${escapeHtml(option.label)}</span>
+      ${bossTierBadge}
+      ${optionName}
       <span class="text-sm ${chipRemoveTone}" aria-hidden="true">x</span>
     `;
     chip.addEventListener('click', (event) => {
@@ -462,21 +528,25 @@ function renderMultiSelectControl(key) {
     const isSelected = selectedSet.has(option.id);
     const button = document.createElement('button');
     button.type = 'button';
-    button.className = `flex w-full items-center gap-2 rounded-md px-2 py-2 text-left text-slate-200 hover:bg-slate-700/80 ${isSelected ? 'bg-sky-900/45' : ''}`;
+    const sideBossIndent = key === 'boss' && option.isSideBoss ? 'pl-8 pr-2' : 'px-2';
+    button.className = `flex w-full items-center gap-2 rounded-md ${sideBossIndent} py-2 text-left text-slate-200 hover:bg-slate-700/80 ${isSelected ? 'bg-sky-900/45' : ''}`;
 
     let icon = '';
     if (key === 'player') icon = renderPlayerAvatar(option.id);
     else if (key === 'boss' && option.portrait) icon = `<span class="inline-flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-slate-700/70 bg-slate-950/70"><img src="${escapeHtml(option.portrait)}" alt="" class="h-full w-full object-cover" loading="lazy" onerror="this.src='${MISSING_UNIT_AVATAR_URL}'" /></span>`;
     else if (key === 'character' || key === 'mow') icon = `<span class="inline-flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-slate-700/70 bg-slate-950/70"><img src="${escapeHtml(getPortraitUrlForUnitId(option.id))}" alt="" class="h-full w-full object-cover" loading="lazy" onerror="this.src='${MISSING_UNIT_AVATAR_URL}'" /></span>`;
 
-    const rarityBadge = key === 'boss' && option.rarity
-      ? `<span class="rounded border px-1 py-0.5 text-[10px] font-bold uppercase ${RARITY_BADGES[option.rarity] || RARITY_BADGES.Common}">${escapeHtml(option.rarity)}</span>`
+    const bossTierBadge = key === 'boss' && !option.isSideBoss
+      ? renderBossTierBadge(option.rarity, option.tierNumber)
       : '';
+    const optionName = key === 'boss'
+      ? renderBossOptionName(option)
+      : `<span class="text-sm font-semibold">${escapeHtml(option.label)}</span>`;
 
     button.innerHTML = `
       ${icon}
-      <span class="text-sm font-semibold">${escapeHtml(option.label)}</span>
-      ${rarityBadge}
+      ${bossTierBadge}
+      ${optionName}
       <span class="ml-auto text-base font-bold text-cyan-300" aria-hidden="true">${isSelected ? '✓' : ''}</span>
     `;
     button.addEventListener('click', (event) => {
@@ -500,7 +570,6 @@ function renderRaidLogScopeSelects() {
   const controls = [
     { id: 'raid-filter-guild', key: 'guild', filterKey: 'guilds', emptyLabel: 'All guilds' },
     { id: 'raid-filter-season', key: 'season', filterKey: 'seasons', emptyLabel: 'All seasons' },
-    { id: 'raid-filter-boss', key: 'boss', filterKey: 'bosses', emptyLabel: 'All raid bosses' },
     { id: 'raid-filter-player', key: 'player', filterKey: 'players', emptyLabel: 'All players' }
   ];
 
@@ -649,9 +718,8 @@ function renderTeamCell(entry) {
 function renderRow(entry) {
   const bossName = getBossDisplayName(entry);
   const rarity = entry.rarity || '';
-  const rarityBadge = rarity
-    ? `<span class="inline-flex rounded border px-1.5 py-0.5 text-[10px] font-bold uppercase ${RARITY_BADGES[rarity] || RARITY_BADGES.Common}">${escapeHtml(rarity)}</span>`
-    : '<span class="text-xs text-slate-500">-</span>';
+  const tierNumber = getBossTierNumber(entry);
+  const bossTierBadge = renderBossTierBadge(rarity, tierNumber);
   const isBomb = entry.damageType === 'Bomb';
   const typeBadge = isBomb
     ? '<span class="inline-flex rounded border border-amber-400/45 bg-amber-500/15 px-1.5 py-0.5 text-[10px] font-bold uppercase text-amber-200">Bomb</span>'
@@ -677,9 +745,8 @@ function renderRow(entry) {
     <td class="whitespace-nowrap px-3 py-2 text-xs text-slate-400">${escapeHtml(formatTimestamp(entry.__time))}</td>
     <td class="px-3 py-2 text-sm font-semibold text-slate-300">${escapeHtml(String(entry.__season))}</td>
     <td class="px-3 py-2"><div class="flex items-center gap-2">${renderPlayerAvatar(entry.userId)}<span class="whitespace-nowrap font-semibold text-slate-100">${escapeHtml(getPlayerName(entry.userId))}</span></div></td>
+    <td class="px-3 py-2">${bossTierBadge}</td>
     <td class="px-3 py-2"><div class="flex items-center gap-2">${renderBossAvatar(entry, bossName)}<span class="whitespace-nowrap font-semibold text-slate-100">${escapeHtml(bossName)}</span>${sideTag}</div></td>
-    <td class="px-3 py-2">${rarityBadge}</td>
-    <td class="whitespace-nowrap px-3 py-2 text-xs text-slate-400">T${escapeHtml(String((Number(entry.tier) || 0) + 1))} · S${escapeHtml(String((Number(entry.set) || 0) + 1))}</td>
     <td class="whitespace-nowrap px-3 py-2 text-right text-sm font-bold text-slate-100">${escapeHtml(formatNumber(entry.damageDealt))}</td>
     <td class="whitespace-nowrap px-3 py-2 text-right text-xs font-semibold text-slate-300">${powerCell}</td>
     <td class="px-3 py-2">${typeBadge}</td>

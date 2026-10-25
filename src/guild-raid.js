@@ -129,15 +129,29 @@ function getBossUnitKey(unitId) {
   return stripped.charAt(0).toLowerCase() + stripped.slice(1);
 }
 
+function getBossTierCode(entry) {
+  if (entry?.tier === null || entry?.tier === undefined || entry?.tier === '') return '';
+  const tier = Number(entry.tier);
+  if (!Number.isFinite(tier)) return '';
+  const rarity = entry.rarity || RARITY_ORDER[tier] || 'Tier';
+  return `${rarity.charAt(0).toUpperCase()}${tier + 1}`;
+}
+
 function getBossDisplayName(entry) {
   const unitKey = getBossUnitKey(entry.unitId);
+  let name;
   // `type` names the whole encounter, so side bosses have to be named from their own unit id.
-  if (entry.encounterType !== 'SideBoss' && entry.type) return prettifyUnitName(entry.type);
-  if (!unitKey) return prettifyUnitName(entry.type || entry.unitId);
-
-  const faction = FACTION_PREFIXES.find((prefix) => unitKey.toLowerCase().startsWith(prefix));
-  const name = faction ? unitKey.slice(faction.length) : unitKey;
-  return prettifyUnitName(name.charAt(0).toUpperCase() + name.slice(1));
+  if (entry.encounterType !== 'SideBoss' && entry.type) {
+    name = prettifyUnitName(entry.type);
+  } else if (!unitKey) {
+    name = prettifyUnitName(entry.type || entry.unitId);
+  } else {
+    const faction = FACTION_PREFIXES.find((prefix) => unitKey.toLowerCase().startsWith(prefix));
+    const unitName = faction ? unitKey.slice(faction.length) : unitKey;
+    name = prettifyUnitName(unitName.charAt(0).toUpperCase() + unitName.slice(1));
+  }
+  const tierCode = getBossTierCode(entry);
+  return tierCode ? `[${tierCode}] ${name}` : name;
 }
 
 function getPlayer(userId) {
@@ -196,7 +210,8 @@ function renderBossAvatar(boss, sizeClasses) {
     </span>`;
   }
 
-  const initials = boss.name.split(' ').map((word) => word.charAt(0)).join('').slice(0, 2).toUpperCase();
+  const baseName = boss.name.replace(/^\[[A-Z]+\d+\]\s*/, '');
+  const initials = baseName.split(' ').map((word) => word.charAt(0)).join('').slice(0, 2).toUpperCase();
   return `<span class="${shell} text-sm font-black tracking-wide text-slate-400">${escapeHtml(initials || '?')}</span>`;
 }
 
@@ -751,7 +766,7 @@ function renderBossDetail() {
         <div>
           <div class="flex flex-wrap items-center gap-2">
             <h3 class="text-xl font-black text-slate-100">${escapeHtml(boss.name)}</h3>
-            <span class="rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.2em] ${style.badge}">Tier ${escapeHtml(String(boss.tier + 1))} · ${escapeHtml(style.label)}</span>
+            <span class="rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.2em] ${style.badge}">${escapeHtml(style.label)}</span>
           </div>
           <p class="text-xs text-slate-400">Set ${escapeHtml(String(boss.set + 1))} · ${escapeHtml(boss.encounterType === 'SideBoss' ? `Side boss ${boss.encounterIndex}` : 'Boss')} · ${escapeHtml(formatNumber(boss.totalDamage))} total damage · ${escapeHtml(formatNumber(boss.attacks + boss.bombs))} hits</p>
         </div>
@@ -985,7 +1000,7 @@ function renderBreadcrumb() {
   } else if (raidState.selectedBossKey) {
     const boss = getBosses().find((entry) => entry.key === raidState.selectedBossKey);
     if (boss) {
-      trail.push({ label: `${boss.name} (Tier ${boss.tier + 1})`, params: { tab: null } });
+      trail.push({ label: boss.name, params: { tab: null } });
       trail.push({ label: raidState.activeTab === 'players' ? 'Players' : 'Attacks' });
     }
   }
