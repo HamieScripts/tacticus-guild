@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792911367,
+  "fetchedOn": 1792914281,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -12675,6 +12675,66 @@
       "maxHp": 37500000,
       "startedOn": 1792910226,
       "completedOn": 1792910226,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss2TyranWingedPrime",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 507817,
+      "damageType": "Battle",
+      "remainingHp": 2465072,
+      "maxHp": 3000000,
+      "startedOn": 1792913550,
+      "completedOn": 1792913741,
+      "heroDetails": [
+        {
+          "unitId": "eldarFarseer",
+          "power": 464477
+        },
+        {
+          "unitId": "admecManipulus",
+          "power": 436180
+        },
+        {
+          "unitId": "tauDarkstrider",
+          "power": 531687
+        },
+        {
+          "unitId": "tauFarsight",
+          "power": 532273
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 759363
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 434174
+      }
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss2TyranWingedPrime",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 9515,
+      "damageType": "Bomb",
+      "remainingHp": 2455557,
+      "maxHp": 3000000,
+      "startedOn": 1792913758,
+      "completedOn": 1792913758,
       "heroDetails": [],
       "machineOfWarDetails": null
     }
