@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792971014,
+  "fetchedOn": 1792972566,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -14104,6 +14104,66 @@
       "machineOfWarDetails": {
         "unitId": "deathCrawler",
         "power": 100
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 8329,
+      "damageType": "Bomb",
+      "remainingHp": 31689273,
+      "maxHp": 37500000,
+      "startedOn": 1792972214,
+      "completedOn": 1792972214,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 21792,
+      "damageType": "Battle",
+      "remainingHp": 31667481,
+      "maxHp": 37500000,
+      "startedOn": 1792972234,
+      "completedOn": 1792972329,
+      "heroDetails": [
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 565317
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 536850
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 462409
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 642148
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 738255
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 464429
       }
     }
   ]
