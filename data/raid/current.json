@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793049701,
+  "fetchedOn": 1793053387,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -17074,6 +17074,48 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 9411
+      }
+    },
+    {
+      "userId": "260cfd81-b5de-433e-bc13-cb5f9a08b137",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 359326,
+      "damageType": "Battle",
+      "remainingHp": 14789013,
+      "maxHp": 37500000,
+      "startedOn": 1793052285,
+      "completedOn": 1793052416,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 883564
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 759085
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 616618
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 630094
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 900992
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 163793
       }
     }
   ]
