@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1792985516,
+  "fetchedOn": 1792986914,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -14728,6 +14728,66 @@
       "machineOfWarDetails": {
         "unitId": "thousDaemonPrince",
         "power": 142038
+      }
+    },
+    {
+      "userId": "a736e5fd-6a0b-4137-9ec0-526345cd6e96",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 8273,
+      "damageType": "Bomb",
+      "remainingHp": 29875683,
+      "maxHp": 37500000,
+      "startedOn": 1792985818,
+      "completedOn": 1792985818,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "a736e5fd-6a0b-4137-9ec0-526345cd6e96",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 349082,
+      "damageType": "Battle",
+      "remainingHp": 29526601,
+      "maxHp": 37500000,
+      "startedOn": 1792985838,
+      "completedOn": 1792986003,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 685193
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 685806
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 748078
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 592367
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 684751
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 20019
       }
     }
   ]
