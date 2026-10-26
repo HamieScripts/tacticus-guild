@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793035344,
+  "fetchedOn": 1793036709,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -16737,6 +16737,48 @@
       "maxHp": 3000000,
       "startedOn": 1793035154,
       "completedOn": 1793035298,
+      "heroDetails": [
+        {
+          "unitId": "deathBlightlord",
+          "power": 609501
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 838544
+        },
+        {
+          "unitId": "bloodDeathCompany",
+          "power": 102230
+        },
+        {
+          "unitId": "astraDreir",
+          "power": 204475
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 884233
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 66681
+      }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss2TyranWingedPrime",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 182224,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 3000000,
+      "startedOn": 1793035365,
+      "completedOn": 1793035427,
       "heroDetails": [
         {
           "unitId": "deathBlightlord",
