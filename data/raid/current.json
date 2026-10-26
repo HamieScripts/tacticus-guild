@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793007381,
+  "fetchedOn": 1793011701,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -15382,6 +15382,66 @@
       "machineOfWarDetails": {
         "unitId": "astraOrdnanceBattery",
         "power": 19849
+      }
+    },
+    {
+      "userId": "260cfd81-b5de-433e-bc13-cb5f9a08b137",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 8046,
+      "damageType": "Bomb",
+      "remainingHp": 25081031,
+      "maxHp": 37500000,
+      "startedOn": 1793011531,
+      "completedOn": 1793011531,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "260cfd81-b5de-433e-bc13-cb5f9a08b137",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 97667,
+      "damageType": "Battle",
+      "remainingHp": 24983364,
+      "maxHp": 37500000,
+      "startedOn": 1793011557,
+      "completedOn": 1793011638,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 883564
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 756302
+        },
+        {
+          "unitId": "deathRotbone",
+          "power": 340050
+        },
+        {
+          "unitId": "orksRuntherd",
+          "power": 800838
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 900992
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 163793
       }
     }
   ]
