@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793105957,
+  "fetchedOn": 1793107691,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -18985,6 +18985,90 @@
       "machineOfWarDetails": {
         "unitId": "thousDaemonPrince",
         "power": 488000
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss4MiniBoss1OrksBigMek",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 597784,
+      "damageType": "Battle",
+      "remainingHp": 2373826,
+      "maxHp": 3600000,
+      "startedOn": 1793105974,
+      "completedOn": 1793106134,
+      "heroDetails": [
+        {
+          "unitId": "blackPossession",
+          "power": 738255
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 885483
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 462409
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 565317
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 642148
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 488000
+      }
+    },
+    {
+      "userId": "08a7e111-0193-4d88-bc27-c5124e90039e",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss4MiniBoss1OrksBigMek",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 147211,
+      "damageType": "Battle",
+      "remainingHp": 2226615,
+      "maxHp": 3600000,
+      "startedOn": 1793106773,
+      "completedOn": 1793106864,
+      "heroDetails": [
+        {
+          "unitId": "admecDominus",
+          "power": 118129
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 587791
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 733521
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 264450
+        },
+        {
+          "unitId": "adeptMorvenn",
+          "power": 246525
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1126
       }
     }
   ]
