@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793128513,
+  "fetchedOn": 1793129178,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -19739,6 +19739,66 @@
         "unitId": "ultraDreadnought",
         "power": 1126
       }
+    },
+    {
+      "userId": "293f4b63-28b1-4b5e-88ee-59936eed8ddb",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss4MiniBoss2OrksNob",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 456178,
+      "damageType": "Battle",
+      "remainingHp": 1610155,
+      "maxHp": 3600000,
+      "startedOn": 1793128784,
+      "completedOn": 1793128917,
+      "heroDetails": [
+        {
+          "unitId": "tauMarksman",
+          "power": 146114
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 863255
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 320634
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 908816
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 885602
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 36226
+      }
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 9760,
+      "damageType": "Bomb",
+      "remainingHp": 37220589,
+      "maxHp": 37500000,
+      "startedOn": 1793128987,
+      "completedOn": 1793128987,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
