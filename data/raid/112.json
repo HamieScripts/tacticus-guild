@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793066326,
+  "fetchedOn": 1793068322,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -17747,6 +17747,45 @@
         "unitId": "blackForgefiend",
         "power": 157804
       }
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 17274,
+      "damageType": "Battle",
+      "remainingHp": 9649001,
+      "maxHp": 37500000,
+      "startedOn": 1793067976,
+      "completedOn": 1793068045,
+      "heroDetails": [
+        {
+          "unitId": "admecRuststalker",
+          "power": 222783
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 340393
+        },
+        {
+          "unitId": "adeptHospitaller",
+          "power": 91114
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 372363
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 331553
+        }
+      ],
+      "machineOfWarDetails": null
     }
   ]
 }
