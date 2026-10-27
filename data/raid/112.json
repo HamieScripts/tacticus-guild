@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793123753,
+  "fetchedOn": 1793125180,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -19556,6 +19556,63 @@
         "unitId": "tyranBiovore",
         "power": 127322
       }
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 7967,
+      "damageType": "Bomb",
+      "remainingHp": 37230349,
+      "maxHp": 37500000,
+      "startedOn": 1793123923,
+      "completedOn": 1793123923,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss4MiniBoss2OrksNob",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 10027,
+      "damageType": "Battle",
+      "remainingHp": 2977332,
+      "maxHp": 3600000,
+      "startedOn": 1793123952,
+      "completedOn": 1793124019,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 131052
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 193822
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 211128
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 325028
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 80265
+        }
+      ],
+      "machineOfWarDetails": null
     }
   ]
 }
