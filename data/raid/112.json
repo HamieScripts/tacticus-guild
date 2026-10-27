@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793104490,
+  "fetchedOn": 1793105957,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -18943,6 +18943,48 @@
       "machineOfWarDetails": {
         "unitId": "deathCrawler",
         "power": 11623
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss4MiniBoss1OrksBigMek",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 628390,
+      "damageType": "Battle",
+      "remainingHp": 2971610,
+      "maxHp": 3600000,
+      "startedOn": 1793105702,
+      "completedOn": 1793105851,
+      "heroDetails": [
+        {
+          "unitId": "blackPossession",
+          "power": 738255
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 885483
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 554453
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 565317
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 642148
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 488000
       }
     }
   ]
