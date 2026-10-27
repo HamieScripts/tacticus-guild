@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793130088,
+  "fetchedOn": 1793132280,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -19882,6 +19882,132 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 1701
+      }
+    },
+    {
+      "userId": "8485b330-6671-46b7-a258-9a2ed7d0e5f0",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss4MiniBoss2OrksNob",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 720861,
+      "damageType": "Battle",
+      "remainingHp": 174897,
+      "maxHp": 3600000,
+      "startedOn": 1793131192,
+      "completedOn": 1793131315,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 775244
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 454218
+        },
+        {
+          "unitId": "blackTerminator",
+          "power": 285744
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 750011
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 256450
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 83737
+      }
+    },
+    {
+      "userId": "8485b330-6671-46b7-a258-9a2ed7d0e5f0",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss4MiniBoss2OrksNob",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 174897,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 3600000,
+      "startedOn": 1793131332,
+      "completedOn": 1793131419,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 775244
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 454218
+        },
+        {
+          "unitId": "blackTerminator",
+          "power": 285744
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 750011
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 256450
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 83737
+      }
+    },
+    {
+      "userId": "8485b330-6671-46b7-a258-9a2ed7d0e5f0",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 341328,
+      "damageType": "Battle",
+      "remainingHp": 36879261,
+      "maxHp": 37500000,
+      "startedOn": 1793131968,
+      "completedOn": 1793132136,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 775244
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 454218
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 90600
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 750011
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 186809
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 83737
       }
     }
   ]
