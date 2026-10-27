@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793139301,
+  "fetchedOn": 1793145371,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -20211,6 +20211,24 @@
       "maxHp": 37500000,
       "startedOn": 1793139190,
       "completedOn": 1793139190,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "fce63e8e-b46e-4fe1-9031-9475f46ee504",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 8177,
+      "damageType": "Bomb",
+      "remainingHp": 34142124,
+      "maxHp": 37500000,
+      "startedOn": 1793145167,
+      "completedOn": 1793145167,
       "heroDetails": [],
       "machineOfWarDetails": null
     }
