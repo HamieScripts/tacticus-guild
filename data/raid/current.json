@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793129178,
+  "fetchedOn": 1793130088,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -19799,6 +19799,90 @@
       "completedOn": 1793128987,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss4MiniBoss2OrksNob",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 285596,
+      "damageType": "Battle",
+      "remainingHp": 1324559,
+      "maxHp": 3600000,
+      "startedOn": 1793129252,
+      "completedOn": 1793129348,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 486270
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 188113
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 34511
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 419497
+        },
+        {
+          "unitId": "spaceBlackmane",
+          "power": 56527
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1701
+      }
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss4MiniBoss2OrksNob",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 428801,
+      "damageType": "Battle",
+      "remainingHp": 895758,
+      "maxHp": 3600000,
+      "startedOn": 1793129637,
+      "completedOn": 1793129750,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 486270
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 188113
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 419497
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 28489
+        },
+        {
+          "unitId": "spaceBlackmane",
+          "power": 56527
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1701
+      }
     }
   ]
 }
