@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793154168,
+  "fetchedOn": 1793155311,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -20939,6 +20939,48 @@
       "completedOn": 1793153971,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "553c48cc-fcd5-4d34-94cd-691ecad888cc",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 837276,
+      "damageType": "Battle",
+      "remainingHp": 28147758,
+      "maxHp": 37500000,
+      "startedOn": 1793154204,
+      "completedOn": 1793154387,
+      "heroDetails": [
+        {
+          "unitId": "eldarFarseer",
+          "power": 341707
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 1027707
+        },
+        {
+          "unitId": "tauDarkstrider",
+          "power": 345123
+        },
+        {
+          "unitId": "admecManipulus",
+          "power": 539395
+        },
+        {
+          "unitId": "tauFarsight",
+          "power": 451095
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 641082
+      }
     }
   ]
 }
