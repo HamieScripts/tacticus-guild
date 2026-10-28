@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793175760,
+  "fetchedOn": 1793177756,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -21328,6 +21328,66 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 127322
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 9151,
+      "damageType": "Bomb",
+      "remainingHp": 24555194,
+      "maxHp": 37500000,
+      "startedOn": 1793177014,
+      "completedOn": 1793177014,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 546034,
+      "damageType": "Battle",
+      "remainingHp": 24009160,
+      "maxHp": 37500000,
+      "startedOn": 1793177021,
+      "completedOn": 1793177358,
+      "heroDetails": [
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 890893
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 738255
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 554453
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 565317
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 642148
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 488000
       }
     }
   ]
