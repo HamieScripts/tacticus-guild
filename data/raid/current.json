@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793190257,
+  "fetchedOn": 1793191432,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -21695,6 +21695,108 @@
       "completedOn": 1793189970,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 497476,
+      "damageType": "Battle",
+      "remainingHp": 20093285,
+      "maxHp": 37500000,
+      "startedOn": 1793190203,
+      "completedOn": 1793190478,
+      "heroDetails": [
+        {
+          "unitId": "admecDominus",
+          "power": 352408
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 884832
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 620390
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 961204
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 902761
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1040687
+      }
+    },
+    {
+      "userId": "08a7e111-0193-4d88-bc27-c5124e90039e",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 7656,
+      "damageType": "Bomb",
+      "remainingHp": 20590761,
+      "maxHp": 37500000,
+      "startedOn": 1793190413,
+      "completedOn": 1793190413,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "08a7e111-0193-4d88-bc27-c5124e90039e",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 334303,
+      "damageType": "Battle",
+      "remainingHp": 19758982,
+      "maxHp": 37500000,
+      "startedOn": 1793190428,
+      "completedOn": 1793190570,
+      "heroDetails": [
+        {
+          "unitId": "adeptMorvenn",
+          "power": 246525
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 587791
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 733521
+        },
+        {
+          "unitId": "ultraTigurius",
+          "power": 291348
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 190072
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1126
+      }
     }
   ]
 }
