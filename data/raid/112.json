@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793219333,
+  "fetchedOn": 1793220095,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -22408,6 +22408,66 @@
       "machineOfWarDetails": {
         "unitId": "thousDaemonPrince",
         "power": 501824
+      }
+    },
+    {
+      "userId": "c47778d3-3a3c-4cc0-b405-3aed0d993c45",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 9107,
+      "damageType": "Bomb",
+      "remainingHp": 14363074,
+      "maxHp": 37500000,
+      "startedOn": 1793219863,
+      "completedOn": 1793219863,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "c47778d3-3a3c-4cc0-b405-3aed0d993c45",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 251017,
+      "damageType": "Battle",
+      "remainingHp": 14112057,
+      "maxHp": 37500000,
+      "startedOn": 1793219878,
+      "completedOn": 1793220058,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 641490
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 604306
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 584779
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 665127
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 684394
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 1030
       }
     }
   ]
