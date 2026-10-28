@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793155311,
+  "fetchedOn": 1793156194,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -20980,6 +20980,48 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 641082
+      }
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 111509,
+      "damageType": "Battle",
+      "remainingHp": 28036249,
+      "maxHp": 37500000,
+      "startedOn": 1793155246,
+      "completedOn": 1793155390,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 325028
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 193822
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 59721
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 211128
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 61087
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 2314
       }
     }
   ]
