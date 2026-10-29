@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793244759,
+  "fetchedOn": 1793246175,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -23789,6 +23789,48 @@
         {
           "unitId": "thousTerminator",
           "power": 986508
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 29612
+      }
+    },
+    {
+      "userId": "275a8663-7ad1-4ec7-86ef-f4c97182473d",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 137010,
+      "damageType": "Battle",
+      "remainingHp": 3138281,
+      "maxHp": 37500000,
+      "startedOn": 1793245454,
+      "completedOn": 1793245587,
+      "heroDetails": [
+        {
+          "unitId": "eldarMauganRa",
+          "power": 301167
+        },
+        {
+          "unitId": "eldarAutarch",
+          "power": 282688
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 702666
+        },
+        {
+          "unitId": "necroDestroyer",
+          "power": 296079
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 234360
         }
       ],
       "machineOfWarDetails": {
