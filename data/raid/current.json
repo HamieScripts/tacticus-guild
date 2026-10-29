@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793238273,
+  "fetchedOn": 1793240579,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -23506,6 +23506,90 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 83737
+      }
+    },
+    {
+      "userId": "553c48cc-fcd5-4d34-94cd-691ecad888cc",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 506674,
+      "damageType": "Battle",
+      "remainingHp": 6409251,
+      "maxHp": 37500000,
+      "startedOn": 1793239802,
+      "completedOn": 1793239995,
+      "heroDetails": [
+        {
+          "unitId": "eldarFarseer",
+          "power": 341707
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 1027707
+        },
+        {
+          "unitId": "tauDarkstrider",
+          "power": 345123
+        },
+        {
+          "unitId": "admecManipulus",
+          "power": 539395
+        },
+        {
+          "unitId": "tauFarsight",
+          "power": 451095
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 641082
+      }
+    },
+    {
+      "userId": "39064004-8034-4d34-abea-e7f414f9437b",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 804599,
+      "damageType": "Battle",
+      "remainingHp": 5604652,
+      "maxHp": 37500000,
+      "startedOn": 1793240270,
+      "completedOn": 1793240557,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 681525
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 894150
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 708299
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 642929
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 732807
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 589670
       }
     }
   ]
