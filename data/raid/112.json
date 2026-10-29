@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793265542,
+  "fetchedOn": 1793269659,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -24526,6 +24526,48 @@
       "machineOfWarDetails": {
         "unitId": "deathCrawler",
         "power": 124371
+      }
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 6,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Legendary",
+      "damageDealt": 137927,
+      "damageType": "Battle",
+      "remainingHp": 10244304,
+      "maxHp": 10400000,
+      "startedOn": 1793268875,
+      "completedOn": 1793269086,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 325028
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 343147
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 131052
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 80265
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 193822
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 2314
       }
     }
   ]
