@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793251692,
+  "fetchedOn": 1793252477,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -24161,6 +24161,108 @@
       "completedOn": 1793251459,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "a736e5fd-6a0b-4137-9ec0-526345cd6e96",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 421436,
+      "damageType": "Battle",
+      "remainingHp": 686070,
+      "maxHp": 37500000,
+      "startedOn": 1793251465,
+      "completedOn": 1793251698,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 685193
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 157032
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 684751
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 685806
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 592367
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 125814
+      }
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 9435,
+      "damageType": "Bomb",
+      "remainingHp": 676635,
+      "maxHp": 37500000,
+      "startedOn": 1793252224,
+      "completedOn": 1793252224,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 91920,
+      "damageType": "Battle",
+      "remainingHp": 584715,
+      "maxHp": 37500000,
+      "startedOn": 1793252236,
+      "completedOn": 1793252456,
+      "heroDetails": [
+        {
+          "unitId": "admecManipulus",
+          "power": 74144
+        },
+        {
+          "unitId": "necroSpyder",
+          "power": 149373
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 340393
+        },
+        {
+          "unitId": "admecMarshall",
+          "power": 156483
+        },
+        {
+          "unitId": "admecRuststalker",
+          "power": 222783
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1324
+      }
     }
   ]
 }
