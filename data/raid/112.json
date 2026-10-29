@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793310062,
+  "fetchedOn": 1793310973,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -25609,6 +25609,66 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 127322
+      }
+    },
+    {
+      "userId": "9d50010a-82f9-4db9-aa55-e292388ea749",
+      "tier": 6,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 9213,
+      "damageType": "Bomb",
+      "remainingHp": 14971618,
+      "maxHp": 15000000,
+      "startedOn": 1793310163,
+      "completedOn": 1793310163,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 6,
+      "set": 4,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss2AdmecManipulus",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 186946,
+      "damageType": "Battle",
+      "remainingHp": 522236,
+      "maxHp": 1200000,
+      "startedOn": 1793310270,
+      "completedOn": 1793310468,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 331553
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 340393
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 101248
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 50080
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 72688
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1324
       }
     }
   ]
