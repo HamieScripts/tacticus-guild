@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793280554,
+  "fetchedOn": 1793283526,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -25121,6 +25121,45 @@
         "unitId": "tyranBiovore",
         "power": 105653
       }
+    },
+    {
+      "userId": "86dc308e-8ca0-4470-ae78-ced2ef219eea",
+      "tier": 6,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Legendary",
+      "damageDealt": 545175,
+      "damageType": "Battle",
+      "remainingHp": 4335653,
+      "maxHp": 10400000,
+      "startedOn": 1793282775,
+      "completedOn": 1793282907,
+      "heroDetails": [
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 430796
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 624159
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 717167
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 717471
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 719464
+        }
+      ],
+      "machineOfWarDetails": null
     }
   ]
 }
