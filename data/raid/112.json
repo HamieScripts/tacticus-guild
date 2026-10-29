@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793277898,
+  "fetchedOn": 1793278562,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -25019,6 +25019,48 @@
       "completedOn": 1793277704,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 6,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Legendary",
+      "damageDealt": 252360,
+      "damageType": "Battle",
+      "remainingHp": 5395900,
+      "maxHp": 10400000,
+      "startedOn": 1793277718,
+      "completedOn": 1793277910,
+      "heroDetails": [
+        {
+          "unitId": "bloodDante",
+          "power": 231580
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 838544
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 263370
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 182320
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 884233
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 66681
+      }
     }
   ]
 }
