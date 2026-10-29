@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793271385,
+  "fetchedOn": 1793272548,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -24610,6 +24610,108 @@
       "machineOfWarDetails": {
         "unitId": "ultraDreadnought",
         "power": 1126
+      }
+    },
+    {
+      "userId": "9d50010a-82f9-4db9-aa55-e292388ea749",
+      "tier": 6,
+      "set": 3,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss8MiniBoss1EldarAutarch",
+      "type": "AvatarOfKhaine",
+      "rarity": "Legendary",
+      "damageDealt": 327188,
+      "damageType": "Battle",
+      "remainingHp": 185553,
+      "maxHp": 1000000,
+      "startedOn": 1793271499,
+      "completedOn": 1793271649,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 878103
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 586675
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 750526
+        },
+        {
+          "unitId": "bloodDeathCompany",
+          "power": 606547
+        },
+        {
+          "unitId": "bloodIntercessor",
+          "power": 425913
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 1825
+      }
+    },
+    {
+      "userId": "d9c3ef49-eadf-499d-ab81-d655dbcc086f",
+      "tier": 6,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Legendary",
+      "damageDealt": 8772,
+      "damageType": "Bomb",
+      "remainingHp": 10235532,
+      "maxHp": 10400000,
+      "startedOn": 1793272074,
+      "completedOn": 1793272074,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "077980e3-7cb5-44ab-977e-846af676ccce",
+      "tier": 6,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Legendary",
+      "damageDealt": 1166329,
+      "damageType": "Battle",
+      "remainingHp": 9069203,
+      "maxHp": 10400000,
+      "startedOn": 1793272181,
+      "completedOn": 1793272374,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 1010207
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 583245
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 961644
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 666861
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 794968
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 701054
       }
     }
   ]
