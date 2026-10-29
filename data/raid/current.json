@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793244023,
+  "fetchedOn": 1793244759,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -23734,6 +23734,66 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 139178
+      }
+    },
+    {
+      "userId": "275a8663-7ad1-4ec7-86ef-f4c97182473d",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 9115,
+      "damageType": "Bomb",
+      "remainingHp": 3420841,
+      "maxHp": 37500000,
+      "startedOn": 1793244427,
+      "completedOn": 1793244427,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "275a8663-7ad1-4ec7-86ef-f4c97182473d",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 145550,
+      "damageType": "Battle",
+      "remainingHp": 3275291,
+      "maxHp": 37500000,
+      "startedOn": 1793244436,
+      "completedOn": 1793244563,
+      "heroDetails": [
+        {
+          "unitId": "bloodMephiston",
+          "power": 592815
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 401042
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 702666
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 400585
+        },
+        {
+          "unitId": "thousTerminator",
+          "power": 986508
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 29612
       }
     }
   ]
