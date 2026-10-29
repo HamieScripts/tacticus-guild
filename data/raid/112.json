@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793240579,
+  "fetchedOn": 1793241737,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -23565,6 +23565,48 @@
       "maxHp": 37500000,
       "startedOn": 1793240270,
       "completedOn": 1793240557,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 681525
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 894150
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 708299
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 642929
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 732807
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 589670
+      }
+    },
+    {
+      "userId": "39064004-8034-4d34-abea-e7f414f9437b",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Mythic",
+      "damageDealt": 812993,
+      "damageType": "Battle",
+      "remainingHp": 4791659,
+      "maxHp": 37500000,
+      "startedOn": 1793240603,
+      "completedOn": 1793240922,
       "heroDetails": [
         {
           "unitId": "emperExultant",
