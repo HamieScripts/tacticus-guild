@@ -1,7 +1,7 @@
 {
     "eventResults": [
         {
-            "eventId": "3be17375-ad0a-4e3c-a477-73193bbc1810",
+            "eventId": "f6b5f0dd-4300-4be8-b10a-bb7f00645051",
             "eventResultType": "SUCCESS",
             "eventResponseData": {
                 "activityLogs": [
@@ -56567,6 +56567,127 @@
                         },
                         "totalAttempts": 10,
                         "createdOn": 1793389210397
+                    },
+                    {
+                        "type": "markTarget",
+                        "id": "b3732b05-8446-408c-8e6c-de97feca4f4c",
+                        "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+                        "teamIndex": 1,
+                        "zone": {
+                            "id": "462fd734-cff7-4167-8992-d2f35c54d99e",
+                            "type": "AntiAirBattery",
+                            "visualId": "antiAirBattery"
+                        },
+                        "targetId": "arrowId1",
+                        "createdOn": 1793389284426
+                    },
+                    {
+                        "type": "battleFinished",
+                        "id": "3f157a07-5635-41ff-a562-e1e7292f1ba8",
+                        "userId": "9e4b7170-a4a4-4b28-ac57-6cd3cb8efed0",
+                        "teamIndex": 1,
+                        "zone": {
+                            "id": "462fd734-cff7-4167-8992-d2f35c54d99e",
+                            "type": "AntiAirBattery",
+                            "visualId": "antiAirBattery"
+                        },
+                        "score": 1400,
+                        "attacker": {
+                            "userId": "9e4b7170-a4a4-4b28-ac57-6cd3cb8efed0",
+                            "lineupPower": 609166,
+                            "units": [
+                                {
+                                    "unitId": "worldKharn",
+                                    "progressionIndex": 16,
+                                    "rank": 15,
+                                    "remainingHPAfter": 110
+                                },
+                                {
+                                    "unitId": "worldTerminator",
+                                    "progressionIndex": 12,
+                                    "rank": 12,
+                                    "remainingHPAfter": 480
+                                },
+                                {
+                                    "unitId": "blackObliterator",
+                                    "progressionIndex": 12,
+                                    "rank": 12,
+                                    "remainingHPAfter": 91
+                                },
+                                {
+                                    "unitId": "custoBladeChampion",
+                                    "progressionIndex": 13,
+                                    "rank": 12
+                                },
+                                {
+                                    "unitId": "templHelbrecht",
+                                    "progressionIndex": 12,
+                                    "rank": 12,
+                                    "remainingHPAfter": 445
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "ultraDreadnought",
+                                "progressionIndex": 12
+                            }
+                        },
+                        "defender": {
+                            "userId": "82c64c54-7168-4911-b2a2-8831f3b5a5b8",
+                            "lineupPower": 9142,
+                            "units": [
+                                {
+                                    "unitId": "thousInfernalMaster",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 378,
+                                    "remainingHPBefore": 378,
+                                    "startHPAfter": 378
+                                },
+                                {
+                                    "unitId": "blackPossession",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 431,
+                                    "remainingHPBefore": 431,
+                                    "startHPAfter": 431
+                                },
+                                {
+                                    "unitId": "blackAbaddon",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 539,
+                                    "remainingHPBefore": 539,
+                                    "startHPAfter": 539
+                                },
+                                {
+                                    "unitId": "thousTerminator",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 485,
+                                    "remainingHPBefore": 485,
+                                    "startHPAfter": 485
+                                },
+                                {
+                                    "unitId": "tauCrisis",
+                                    "progressionIndex": 5,
+                                    "rank": 6,
+                                    "startHPBefore": 565,
+                                    "remainingHPBefore": 565,
+                                    "startHPAfter": 565
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "thousDaemonPrince",
+                                "progressionIndex": 5
+                            }
+                        },
+                        "buffs": [
+                            {
+                                "abilityId": "EnvFlakFire",
+                                "scope": "Regional"
+                            }
+                        ],
+                        "createdOn": 1793389414702
                     }
                 ],
                 "playerData": [
@@ -56667,10 +56788,10 @@
                         "avatarFrameId": "frameDefault"
                     },
                     {
-                        "userId": "496188d7-ba43-4ca0-bb0c-7be19d8365bf",
-                        "displayName": "寇基雷《CH》",
-                        "avatarUnitId": "blood_mephiston_01",
-                        "avatarFrameId": "frame1yAnniversary"
+                        "userId": "22953840-abac-4da4-8779-232acd217d05",
+                        "displayName": "什么意思",
+                        "avatarUnitId": "ultra_titus_01",
+                        "avatarFrameId": "frameMay2026"
                     },
                     {
                         "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
@@ -56679,10 +56800,10 @@
                         "avatarFrameId": "frame1yAnniversary"
                     },
                     {
-                        "userId": "22953840-abac-4da4-8779-232acd217d05",
-                        "displayName": "什么意思",
-                        "avatarUnitId": "ultra_titus_01",
-                        "avatarFrameId": "frameMay2026"
+                        "userId": "496188d7-ba43-4ca0-bb0c-7be19d8365bf",
+                        "displayName": "寇基雷《CH》",
+                        "avatarUnitId": "blood_mephiston_01",
+                        "avatarFrameId": "frame1yAnniversary"
                     },
                     {
                         "userId": "b65b9404-efea-4a2f-a188-ccc5ed98a129",
@@ -56739,16 +56860,16 @@
                         "avatarFrameId": "frameApril2026"
                     },
                     {
-                        "userId": "b29d75a2-5540-4ded-9383-998307fa1a4a",
-                        "displayName": "Dragerz",
-                        "avatarUnitId": "aelda_lhykhis_01",
-                        "avatarFrameId": "frameDefault"
-                    },
-                    {
                         "userId": "9ac075df-0e3f-4070-92ba-f8284b75f9dc",
                         "displayName": "堡主ID4717《CH》",
                         "avatarUnitId": "blood_deathcompany_01_premium",
                         "avatarFrameId": "frameLoyalty_tier_castellan"
+                    },
+                    {
+                        "userId": "b29d75a2-5540-4ded-9383-998307fa1a4a",
+                        "displayName": "Dragerz",
+                        "avatarUnitId": "aelda_lhykhis_01",
+                        "avatarFrameId": "frameDefault"
                     },
                     {
                         "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
@@ -56817,16 +56938,16 @@
                         "avatarFrameId": "frame1yAnniversary"
                     },
                     {
-                        "userId": "6247d769-e41f-4fd4-859b-45045f1a6601",
-                        "displayName": "楼外的帝皇泰坦《CH》",
-                        "avatarUnitId": "tauta_farsight_01",
-                        "avatarFrameId": "frameHolidays2025"
-                    },
-                    {
                         "userId": "244177d8-f84e-4ca0-aa16-9b038f1195c6",
                         "displayName": "忠诚不绝对就是绝对不忠诚",
                         "avatarUnitId": "emper_exultant_01_premium",
                         "avatarFrameId": "frameHalloween2025"
+                    },
+                    {
+                        "userId": "6247d769-e41f-4fd4-859b-45045f1a6601",
+                        "displayName": "楼外的帝皇泰坦《CH》",
+                        "avatarUnitId": "tauta_farsight_01",
+                        "avatarFrameId": "frameHolidays2025"
                     },
                     {
                         "userId": "553c48cc-fcd5-4d34-94cd-691ecad888cc",
@@ -56889,16 +57010,16 @@
                         "avatarFrameId": "frameMythic01"
                     },
                     {
-                        "userId": "1fecf2c0-31dc-47c1-9796-cb5709ae783f",
-                        "displayName": "牛牛哥",
-                        "avatarUnitId": "tauta_farsight_01",
-                        "avatarFrameId": "frameSeptember2026"
-                    },
-                    {
                         "userId": "fecf65bd-ab20-421c-88af-181d364c582e",
                         "displayName": "复仇野狼",
                         "avatarUnitId": "custo_bladechampion_01_premium",
                         "avatarFrameId": "frameLoyalty_tier_castellan"
+                    },
+                    {
+                        "userId": "1fecf2c0-31dc-47c1-9796-cb5709ae783f",
+                        "displayName": "牛牛哥",
+                        "avatarUnitId": "tauta_farsight_01",
+                        "avatarFrameId": "frameSeptember2026"
                     },
                     {
                         "userId": "6ad8696f-4ebd-4353-ae5f-7046f58cd658",
