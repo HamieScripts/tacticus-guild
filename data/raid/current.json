@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793320938,
+  "fetchedOn": 1793322107,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -25952,6 +25952,48 @@
       "completedOn": 1793320923,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "275a8663-7ad1-4ec7-86ef-f4c97182473d",
+      "tier": 6,
+      "set": 4,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 64786,
+      "damageType": "Battle",
+      "remainingHp": 651332,
+      "maxHp": 1200000,
+      "startedOn": 1793320927,
+      "completedOn": 1793321053,
+      "heroDetails": [
+        {
+          "unitId": "thousTerminator",
+          "power": 986508
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 702666
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 592815
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 400585
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 401042
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 142038
+      }
     }
   ]
 }
