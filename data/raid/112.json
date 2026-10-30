@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793402771,
+  "fetchedOn": 1793403672,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -28476,6 +28476,48 @@
       "maxHp": 15000000,
       "startedOn": 1793402472,
       "completedOn": 1793402702,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 878103
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 232524
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 658588
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 408940
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 586675
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 149526
+      }
+    },
+    {
+      "userId": "9d50010a-82f9-4db9-aa55-e292388ea749",
+      "tier": 6,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 497647,
+      "damageType": "Battle",
+      "remainingHp": 2090985,
+      "maxHp": 15000000,
+      "startedOn": 1793402746,
+      "completedOn": 1793402943,
       "heroDetails": [
         {
           "unitId": "custoBladeChampion",
