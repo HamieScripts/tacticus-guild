@@ -1,8 +1,16 @@
 {
-  "fetchedOn": 1793388406,
+  "fetchedOn": 1793389310,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
-  "guild": null,
+  "guild": {
+    "name": "[TW] Praetorians of Terra",
+    "guildTag": "XXPQS",
+    "level": 35,
+    "seasons": [
+      111,
+      112
+    ]
+  },
   "entries": [
     {
       "userId": "077980e3-7cb5-44ab-977e-846af676ccce",
@@ -28080,6 +28088,90 @@
       "completedOn": 1793388314,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "c62ee67f-0a9e-4e29-8861-320e57788e6c",
+      "tier": 6,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 97646,
+      "damageType": "Battle",
+      "remainingHp": 4835550,
+      "maxHp": 15000000,
+      "startedOn": 1793388330,
+      "completedOn": 1793388477,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 171387
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 493407
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 787798
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 560984
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 532836
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 105653
+      }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 6,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 200588,
+      "damageType": "Battle",
+      "remainingHp": 4634962,
+      "maxHp": 15000000,
+      "startedOn": 1793388675,
+      "completedOn": 1793388806,
+      "heroDetails": [
+        {
+          "unitId": "bloodMephiston",
+          "power": 884233
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 263370
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 182320
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 838544
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 231580
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 66681
+      }
     }
   ]
 }
