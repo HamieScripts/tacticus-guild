@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793392864,
+  "fetchedOn": 1793399166,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -28315,6 +28315,48 @@
       "machineOfWarDetails": {
         "unitId": "thousDaemonPrince",
         "power": 501824
+      }
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 6,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 576170,
+      "damageType": "Battle",
+      "remainingHp": 3640093,
+      "maxHp": 15000000,
+      "startedOn": 1793398597,
+      "completedOn": 1793398730,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 906661
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 887601
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 656804
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 889839
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 545099
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 434174
       }
     }
   ]
