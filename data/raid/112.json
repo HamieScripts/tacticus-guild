@@ -1,16 +1,8 @@
 {
-  "fetchedOn": 1793381185,
+  "fetchedOn": 1793388406,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
-  "guild": {
-    "name": "[TW] Praetorians of Terra",
-    "guildTag": "XXPQS",
-    "level": 35,
-    "seasons": [
-      111,
-      112
-    ]
-  },
+  "guild": null,
   "entries": [
     {
       "userId": "077980e3-7cb5-44ab-977e-846af676ccce",
@@ -27992,6 +27984,102 @@
         "unitId": "tyranBiovore",
         "power": 518336
       }
+    },
+    {
+      "userId": "a736e5fd-6a0b-4137-9ec0-526345cd6e96",
+      "tier": 6,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 7791,
+      "damageType": "Bomb",
+      "remainingHp": 4965388,
+      "maxHp": 15000000,
+      "startedOn": 1793387987,
+      "completedOn": 1793387987,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 6,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 8710,
+      "damageType": "Bomb",
+      "remainingHp": 4956678,
+      "maxHp": 15000000,
+      "startedOn": 1793388004,
+      "completedOn": 1793388004,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 6,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 15295,
+      "damageType": "Battle",
+      "remainingHp": 4941383,
+      "maxHp": 15000000,
+      "startedOn": 1793388021,
+      "completedOn": 1793388153,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 331553
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 50080
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 101248
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 72688
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 464069
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1324
+      }
+    },
+    {
+      "userId": "c62ee67f-0a9e-4e29-8861-320e57788e6c",
+      "tier": 6,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 8187,
+      "damageType": "Bomb",
+      "remainingHp": 4933196,
+      "maxHp": 15000000,
+      "startedOn": 1793388314,
+      "completedOn": 1793388314,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
