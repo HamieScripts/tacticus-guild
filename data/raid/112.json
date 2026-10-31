@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793409324,
+  "fetchedOn": 1793409972,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -29011,6 +29011,66 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 41202
+      }
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 7,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss7MiniBoss1AstraPrimarisPsy",
+      "type": "RogalDorn",
+      "rarity": "Mythic",
+      "damageDealt": 8264,
+      "damageType": "Bomb",
+      "remainingHp": 1420050,
+      "maxHp": 2400000,
+      "startedOn": 1793409776,
+      "completedOn": 1793409776,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 7,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss7MiniBoss1AstraPrimarisPsy",
+      "type": "RogalDorn",
+      "rarity": "Mythic",
+      "damageDealt": 303804,
+      "damageType": "Battle",
+      "remainingHp": 1116246,
+      "maxHp": 2400000,
+      "startedOn": 1793409794,
+      "completedOn": 1793409942,
+      "heroDetails": [
+        {
+          "unitId": "adeptCelestine",
+          "power": 72310
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 203349
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 323238
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 80825
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 95636
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 1312
       }
     }
   ]
