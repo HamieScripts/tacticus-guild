@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793407714,
+  "fetchedOn": 1793408267,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -28892,6 +28892,66 @@
       "completedOn": 1793407124,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 6,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 9036,
+      "damageType": "Bomb",
+      "remainingHp": 57354,
+      "maxHp": 15000000,
+      "startedOn": 1793407786,
+      "completedOn": 1793407786,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 6,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 57354,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 15000000,
+      "startedOn": 1793407793,
+      "completedOn": 1793407872,
+      "heroDetails": [
+        {
+          "unitId": "bloodMephiston",
+          "power": 884233
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 263370
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 182320
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 838544
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 231580
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 66681
+      }
     }
   ]
 }
