@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793429767,
+  "fetchedOn": 1793430819,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -29970,6 +29970,150 @@
       "maxHp": 30000000,
       "startedOn": 1793429143,
       "completedOn": 1793429305,
+      "heroDetails": [
+        {
+          "unitId": "blackHaarken",
+          "power": 526762
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 611305
+        },
+        {
+          "unitId": "eldarAutarch",
+          "power": 301145
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 470065
+        },
+        {
+          "unitId": "orksRuntherd",
+          "power": 695970
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 3853
+      }
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 7,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Mythic",
+      "damageDealt": 7916,
+      "damageType": "Bomb",
+      "remainingHp": 25558957,
+      "maxHp": 30000000,
+      "startedOn": 1793430103,
+      "completedOn": 1793430103,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 7,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Mythic",
+      "damageDealt": 450091,
+      "damageType": "Battle",
+      "remainingHp": 25108866,
+      "maxHp": 30000000,
+      "startedOn": 1793430143,
+      "completedOn": 1793430349,
+      "heroDetails": [
+        {
+          "unitId": "eldarLhykhis",
+          "power": 321739
+        },
+        {
+          "unitId": "admecManipulus",
+          "power": 436180
+        },
+        {
+          "unitId": "tauDarkstrider",
+          "power": 531687
+        },
+        {
+          "unitId": "tauFarsight",
+          "power": 532273
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 772579
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 476066
+      }
+    },
+    {
+      "userId": "95b257c3-1516-4e51-b583-4b0006216a10",
+      "tier": 7,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Mythic",
+      "damageDealt": 169263,
+      "damageType": "Battle",
+      "remainingHp": 24939603,
+      "maxHp": 30000000,
+      "startedOn": 1793430221,
+      "completedOn": 1793430378,
+      "heroDetails": [
+        {
+          "unitId": "blackHaarken",
+          "power": 526762
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 611305
+        },
+        {
+          "unitId": "eldarAutarch",
+          "power": 301145
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 470065
+        },
+        {
+          "unitId": "orksRuntherd",
+          "power": 695970
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 3853
+      }
+    },
+    {
+      "userId": "95b257c3-1516-4e51-b583-4b0006216a10",
+      "tier": 7,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Mythic",
+      "damageDealt": 143450,
+      "damageType": "Battle",
+      "remainingHp": 24796153,
+      "maxHp": 30000000,
+      "startedOn": 1793430647,
+      "completedOn": 1793430810,
       "heroDetails": [
         {
           "unitId": "blackHaarken",
