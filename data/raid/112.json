@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793413671,
+  "fetchedOn": 1793414488,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -29478,6 +29478,48 @@
       "maxHp": 30000000,
       "startedOn": 1793413410,
       "completedOn": 1793413522,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 122190
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 77387
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 364540
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 72688
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 468011
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1324
+      }
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 7,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss7MiniBoss2AstraOrdnance",
+      "type": "RogalDorn",
+      "rarity": "Mythic",
+      "damageDealt": 187198,
+      "damageType": "Battle",
+      "remainingHp": 500265,
+      "maxHp": 2400000,
+      "startedOn": 1793413561,
+      "completedOn": 1793413723,
       "heroDetails": [
         {
           "unitId": "custoTrajann",
