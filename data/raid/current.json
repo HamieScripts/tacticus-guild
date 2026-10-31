@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793417194,
+  "fetchedOn": 1793418089,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -29666,6 +29666,90 @@
       "completedOn": 1793417151,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "275a8663-7ad1-4ec7-86ef-f4c97182473d",
+      "tier": 7,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Mythic",
+      "damageDealt": 190165,
+      "damageType": "Battle",
+      "remainingHp": 29267436,
+      "maxHp": 30000000,
+      "startedOn": 1793417161,
+      "completedOn": 1793417329,
+      "heroDetails": [
+        {
+          "unitId": "bloodMephiston",
+          "power": 592815
+        },
+        {
+          "unitId": "admecMarshall",
+          "power": 342002
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 702666
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 401042
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 400585
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 142038
+      }
+    },
+    {
+      "userId": "275a8663-7ad1-4ec7-86ef-f4c97182473d",
+      "tier": 7,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Mythic",
+      "damageDealt": 197714,
+      "damageType": "Battle",
+      "remainingHp": 29069722,
+      "maxHp": 30000000,
+      "startedOn": 1793417370,
+      "completedOn": 1793417549,
+      "heroDetails": [
+        {
+          "unitId": "bloodMephiston",
+          "power": 592815
+        },
+        {
+          "unitId": "admecMarshall",
+          "power": 342002
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 702666
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 401042
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 400585
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 142038
+      }
     }
   ]
 }
