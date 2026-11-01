@@ -11,6 +11,7 @@ A Guild Wars analytics and team composition dashboard for the game *Praetorians 
 | `guild-raid.html` | Guild Raid season — boss encounters by tier, attacks, and per-player damage |
 | `guild-teams.html` | Team composition library and builder *(dev only)* |
 | `player-page.html` | Per-player average attack/defense scores with scatter plots *(dev only)* |
+| `report-cards.html` | Recent raid and war performance cards *(dev only)* |
 
 ## Skill Ratings
 
