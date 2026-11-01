@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793565695,
+  "fetchedOn": 1793566560,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -33728,6 +33728,48 @@
       "completedOn": 1793565662,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "a736e5fd-6a0b-4137-9ec0-526345cd6e96",
+      "tier": 7,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss1TyranNeurothrope",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 372030,
+      "damageType": "Battle",
+      "remainingHp": 404470,
+      "maxHp": 3000000,
+      "startedOn": 1793565684,
+      "completedOn": 1793565785,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 684751
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 685806
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 748078
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 592367
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 685193
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 20019
+      }
     }
   ]
 }
