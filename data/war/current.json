@@ -1,7 +1,7 @@
 {
     "eventResults": [
         {
-            "eventId": "a48e9744-6ebe-4fba-80f9-957cadccefdb",
+            "eventId": "f7ed33f8-09ed-4bfa-a68c-86f5ece3c2ad",
             "eventResultType": "SUCCESS",
             "eventResponseData": {
                 "activityLogs": [
@@ -11631,6 +11631,117 @@
                             }
                         ],
                         "createdOn": 1793526657618
+                    },
+                    {
+                        "type": "battleFinished",
+                        "id": "8a1391ea-b856-4c3d-ab2d-3a4b3f7fd6cb",
+                        "userId": "d4716cd2-e8f4-45ba-8686-91b98ae0b1bc",
+                        "teamIndex": 1,
+                        "zone": {
+                            "id": "53ae6af6-aae1-45d8-b0c3-9ba170fa8d94",
+                            "type": "HQ",
+                            "visualId": "hq"
+                        },
+                        "score": 1200,
+                        "attacker": {
+                            "userId": "d4716cd2-e8f4-45ba-8686-91b98ae0b1bc",
+                            "lineupPower": 2802487,
+                            "units": [
+                                {
+                                    "unitId": "thousInfernalMaster",
+                                    "progressionIndex": 16,
+                                    "rank": 18,
+                                    "remainingHPAfter": 1868
+                                },
+                                {
+                                    "unitId": "tyranNeurothrope",
+                                    "progressionIndex": 16,
+                                    "rank": 18,
+                                    "remainingHPAfter": 1977
+                                },
+                                {
+                                    "unitId": "bloodMephiston",
+                                    "progressionIndex": 16,
+                                    "rank": 16
+                                },
+                                {
+                                    "unitId": "thousAhriman",
+                                    "progressionIndex": 16,
+                                    "rank": 15
+                                },
+                                {
+                                    "unitId": "blackPossession",
+                                    "progressionIndex": 14,
+                                    "rank": 16,
+                                    "remainingHPAfter": 2138
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "thousDaemonPrince",
+                                "progressionIndex": 13
+                            }
+                        },
+                        "defender": {
+                            "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
+                            "lineupPower": 270719,
+                            "units": [
+                                {
+                                    "unitId": "deathTyphus",
+                                    "progressionIndex": 11,
+                                    "rank": 12,
+                                    "startHPBefore": 4806,
+                                    "remainingHPBefore": 4806,
+                                    "startHPAfter": 4806
+                                },
+                                {
+                                    "unitId": "deathBlightbringer",
+                                    "progressionIndex": 11,
+                                    "rank": 12,
+                                    "startHPBefore": 5506,
+                                    "remainingHPBefore": 5506,
+                                    "startHPAfter": 5506
+                                },
+                                {
+                                    "unitId": "deathBlightlord",
+                                    "progressionIndex": 11,
+                                    "rank": 12,
+                                    "startHPBefore": 4806,
+                                    "remainingHPBefore": 4806,
+                                    "startHPAfter": 4806
+                                },
+                                {
+                                    "unitId": "deathRotbone",
+                                    "progressionIndex": 11,
+                                    "rank": 12,
+                                    "startHPBefore": 4806,
+                                    "remainingHPBefore": 4806,
+                                    "startHPAfter": 4806
+                                },
+                                {
+                                    "unitId": "tauMarksman",
+                                    "progressionIndex": 11,
+                                    "rank": 12,
+                                    "startHPBefore": 2605,
+                                    "remainingHPBefore": 2605,
+                                    "startHPAfter": 2605
+                                }
+                            ],
+                            "machineOfWar": {
+                                "unitId": "deathCrawler",
+                                "progressionIndex": 11
+                            }
+                        },
+                        "buffs": [
+                            {
+                                "abilityId": "EnvDefenderHealthBuff2",
+                                "scope": "Global"
+                            },
+                            {
+                                "abilityId": "EnvDefenderHealthBuff2",
+                                "scope": "Global"
+                            }
+                        ],
+                        "createdOn": 1793528074841
                     }
                 ],
                 "playerData": [
@@ -11659,16 +11770,16 @@
                         "avatarFrameId": "frameAugust2026"
                     },
                     {
-                        "userId": "c9b88058-b28d-49da-9e8d-a2c68770ac97",
-                        "displayName": "KrooterMcGavin",
-                        "avatarUnitId": "tauta_farsight_01",
-                        "avatarFrameId": "frameMythic01"
-                    },
-                    {
                         "userId": "503f8aae-d5fd-46a1-88e8-2b8b904d8f9c",
                         "displayName": "Inverticus",
                         "avatarUnitId": "darka_asmodai_01",
                         "avatarFrameId": "frameAnniversary2025"
+                    },
+                    {
+                        "userId": "c9b88058-b28d-49da-9e8d-a2c68770ac97",
+                        "displayName": "KrooterMcGavin",
+                        "avatarUnitId": "tauta_farsight_01",
+                        "avatarFrameId": "frameMythic01"
                     },
                     {
                         "userId": "d9c3ef49-eadf-499d-ab81-d655dbcc086f",
@@ -11677,16 +11788,16 @@
                         "avatarFrameId": "frameHolidays2025"
                     },
                     {
-                        "userId": "260cfd81-b5de-433e-bc13-cb5f9a08b137",
-                        "displayName": "BubbaHotep",
-                        "avatarUnitId": "thous_sekhetar_01",
-                        "avatarFrameId": "frameOctober2026"
-                    },
-                    {
                         "userId": "7a707470-50d4-4d80-a644-2f3ddea4be0b",
                         "displayName": "Sigismund",
                         "avatarUnitId": "astar_lysander_01",
                         "avatarFrameId": "frameHolidays2025"
+                    },
+                    {
+                        "userId": "260cfd81-b5de-433e-bc13-cb5f9a08b137",
+                        "displayName": "BubbaHotep",
+                        "avatarUnitId": "thous_sekhetar_01",
+                        "avatarFrameId": "frameOctober2026"
                     },
                     {
                         "userId": "5fc2312d-2e89-4b30-878b-1c3d772ffc39",
@@ -11719,6 +11830,12 @@
                         "avatarFrameId": "frameEarlyContributor"
                     },
                     {
+                        "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+                        "displayName": "mycatisben",
+                        "avatarUnitId": "black_haarken_01",
+                        "avatarFrameId": "frame1yAnniversary"
+                    },
+                    {
                         "userId": "add3603f-69ac-43a1-9584-9aa50f5745c3",
                         "displayName": "Hyro",
                         "avatarUnitId": "october_2026_01",
@@ -11731,22 +11848,16 @@
                         "avatarFrameId": "frameMay2026"
                     },
                     {
-                        "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
-                        "displayName": "mycatisben",
-                        "avatarUnitId": "black_haarken_01",
-                        "avatarFrameId": "frame1yAnniversary"
+                        "userId": "08b9afa8-f201-40d1-8f47-1e759ce55d99",
+                        "displayName": "bohemund",
+                        "avatarUnitId": "templ_helbrecht_01",
+                        "avatarFrameId": "framePreRegistration"
                     },
                     {
                         "userId": "28c83405-4692-4029-906a-d28a1d2a4e51",
                         "displayName": "Honsou",
                         "avatarUnitId": "necro_overlord_01",
                         "avatarFrameId": "frameSeptember2026"
-                    },
-                    {
-                        "userId": "08b9afa8-f201-40d1-8f47-1e759ce55d99",
-                        "displayName": "bohemund",
-                        "avatarUnitId": "templ_helbrecht_01",
-                        "avatarFrameId": "framePreRegistration"
                     },
                     {
                         "userId": "58819be3-80e3-438d-a625-a63adbf5de8a",
@@ -11797,16 +11908,16 @@
                         "avatarFrameId": "frameDefault"
                     },
                     {
-                        "userId": "8adac742-2b29-4f96-a602-2374d8097485",
-                        "displayName": "BUDA",
-                        "avatarUnitId": "september_2026_01",
-                        "avatarFrameId": "frameSeptember2026"
-                    },
-                    {
                         "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
                         "displayName": "Jib",
                         "avatarUnitId": "aelda_maugan_01",
                         "avatarFrameId": "frameHalloween2025"
+                    },
+                    {
+                        "userId": "8adac742-2b29-4f96-a602-2374d8097485",
+                        "displayName": "BUDA",
+                        "avatarUnitId": "september_2026_01",
+                        "avatarFrameId": "frameSeptember2026"
                     },
                     {
                         "userId": "ba4915c6-8cf9-4ff5-92ec-5fcc29b674b6",
@@ -11851,28 +11962,22 @@
                         "avatarFrameId": "frameMay2026"
                     },
                     {
-                        "userId": "3a1aee70-612d-4783-b6ec-860ea8f44717",
-                        "displayName": "Glendin",
-                        "avatarUnitId": "ultra_calgar_01_premium",
-                        "avatarFrameId": "frameLoyalty_tier_colonel"
-                    },
-                    {
                         "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
                         "displayName": "Edgelord",
                         "avatarUnitId": "orkss_weirdboy_01",
                         "avatarFrameId": "frameMay2026"
                     },
                     {
+                        "userId": "3a1aee70-612d-4783-b6ec-860ea8f44717",
+                        "displayName": "Glendin",
+                        "avatarUnitId": "ultra_calgar_01_premium",
+                        "avatarFrameId": "frameLoyalty_tier_colonel"
+                    },
+                    {
                         "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
                         "displayName": "GolyiSatana",
                         "avatarUnitId": "aelda_lhykhis_01",
                         "avatarFrameId": "frame1yAnniversary"
-                    },
-                    {
-                        "userId": "553c48cc-fcd5-4d34-94cd-691ecad888cc",
-                        "displayName": "Hewie",
-                        "avatarUnitId": "thous_ahriman_01",
-                        "avatarFrameId": "frameApril2026"
                     },
                     {
                         "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
@@ -11885,6 +11990,12 @@
                         "displayName": "joss43",
                         "avatarUnitId": "emper_exultant_01_premium",
                         "avatarFrameId": "frameLoyalty_tier_general"
+                    },
+                    {
+                        "userId": "553c48cc-fcd5-4d34-94cd-691ecad888cc",
+                        "displayName": "Hewie",
+                        "avatarUnitId": "thous_ahriman_01",
+                        "avatarFrameId": "frameApril2026"
                     },
                     {
                         "userId": "8d7eb68a-6bd3-4a17-9f09-ab27a150ce09",
@@ -11947,10 +12058,10 @@
                         "avatarFrameId": "frameDefault"
                     },
                     {
-                        "userId": "0fd4a554-c3fb-4018-a298-a1a3600c25fb",
-                        "displayName": "Deacon",
-                        "avatarUnitId": "ultra_calgar_01_premium",
-                        "avatarFrameId": "frameMay2026"
+                        "userId": "68bc1563-70dc-4129-bc21-2d5a8a4bfd45",
+                        "displayName": "Leaderless",
+                        "avatarUnitId": "space_arjac_01",
+                        "avatarFrameId": "frameOctober2026"
                     },
                     {
                         "userId": "cd291e57-fd33-4668-97b3-b71db0bd9fcc",
@@ -11959,10 +12070,10 @@
                         "avatarFrameId": "frameMythic01"
                     },
                     {
-                        "userId": "68bc1563-70dc-4129-bc21-2d5a8a4bfd45",
-                        "displayName": "Leaderless",
-                        "avatarUnitId": "space_arjac_01",
-                        "avatarFrameId": "frameOctober2026"
+                        "userId": "0fd4a554-c3fb-4018-a298-a1a3600c25fb",
+                        "displayName": "Deacon",
+                        "avatarUnitId": "ultra_calgar_01_premium",
+                        "avatarFrameId": "frameMay2026"
                     },
                     {
                         "userId": "660e724e-caf5-4fe3-8fd7-26b77efa3cab",
