@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793532376,
+  "fetchedOn": 1793534162,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -33050,6 +33050,90 @@
       "completedOn": 1793531784,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "9d50010a-82f9-4db9-aa55-e292388ea749",
+      "tier": 7,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss2TyranWingedPrime",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 493867,
+      "damageType": "Battle",
+      "remainingHp": 1980711,
+      "maxHp": 3000000,
+      "startedOn": 1793533560,
+      "completedOn": 1793533777,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 750526
+        },
+        {
+          "unitId": "bloodDeathCompany",
+          "power": 606547
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 878103
+        },
+        {
+          "unitId": "astraOrdnance",
+          "power": 40817
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 135725
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 1825
+      }
+    },
+    {
+      "userId": "9d50010a-82f9-4db9-aa55-e292388ea749",
+      "tier": 7,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss2TyranWingedPrime",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 453692,
+      "damageType": "Battle",
+      "remainingHp": 1527019,
+      "maxHp": 3000000,
+      "startedOn": 1793533823,
+      "completedOn": 1793534005,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 750526
+        },
+        {
+          "unitId": "bloodDeathCompany",
+          "power": 606547
+        },
+        {
+          "unitId": "astraOrdnance",
+          "power": 40817
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 878103
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 135725
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 1825
+      }
     }
   ]
 }
