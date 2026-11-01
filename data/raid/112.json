@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793545917,
+  "fetchedOn": 1793551294,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -33463,6 +33463,48 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 984974
+      }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 7,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss1TyranNeurothrope",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 269984,
+      "damageType": "Battle",
+      "remainingHp": 1377870,
+      "maxHp": 3000000,
+      "startedOn": 1793550581,
+      "completedOn": 1793550756,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 838544
+        },
+        {
+          "unitId": "astraDreir",
+          "power": 292344
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 231580
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 263370
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 884233
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 66681
       }
     }
   ]
