@@ -377,7 +377,37 @@ async function loadRaidPlayerStats() {
   // Two paged queries replace the 40 season-file fetches this used to need.
   if (window.supabaseData) {
     const totals = await window.supabaseData.getRaidPlayerTotals().catch(() => null);
-    if (Array.isArray(totals) && totals.length > 0) return totals;
+    if (Array.isArray(totals) && totals.length > 0) {
+      try {
+        const response = await fetch('./data/raid/current.json', { cache: 'no-store' });
+        if (response.ok) {
+          const currentData = await response.json();
+          const currentSeason = Number(currentData?.season);
+          if (Number.isFinite(currentSeason)) {
+            const currentTotals = new Map();
+            (Array.isArray(currentData?.entries) ? currentData.entries : []).forEach((entry) => {
+              const userId = String(entry?.userId || '').trim();
+              const damage = Number(entry?.damageDealt || 0);
+              if (!userId || !Number.isFinite(damage)) return;
+              currentTotals.set(userId, (currentTotals.get(userId) || 0) + damage);
+            });
+
+            return [
+              ...totals.filter((season) => Number(season.season) !== currentSeason),
+              {
+                season: currentSeason,
+                start: Number(currentData?.fetchedOn || 0),
+                totals: currentTotals
+              }
+            ].sort((a, b) => a.season - b.season);
+          }
+        }
+      } catch (error) {
+        // Keep the database history if the current snapshot cannot be loaded.
+      }
+
+      return totals;
+    }
   }
 
   try {

@@ -1,6 +1,38 @@
 {
   "datasets": [
     {
+      "key": "history-2026-10-30-27af79c0",
+      "label": "[CH] 无尽轮回 (2026-10-30)",
+      "sourceLabel": "[TW] Praetorians of Terra vs. [CH] 无尽轮回 (2026-10-30)",
+      "url": "./data/war/27af79c0-56ef-4d88-afa5-1dcbc354f4aa.json",
+      "start": "2026-10-28T11:06:08.138Z",
+      "end": "2026-10-30T19:43:34.702Z"
+    },
+    {
+      "key": "history-2026-10-28-5666cdc6",
+      "label": "The Dutch Custodians (2026-10-28)",
+      "sourceLabel": "The Dutch Custodians vs. [TW] Praetorians of Terra (2026-10-28)",
+      "url": "./data/war/5666cdc6-cf8a-43f7-a9ea-d976840b38d5.json",
+      "start": "2026-10-25T21:39:05.560Z",
+      "end": "2026-10-28T07:31:56.803Z"
+    },
+    {
+      "key": "history-2026-10-25-90835d7e",
+      "label": "Polish Warlords (2026-10-25)",
+      "sourceLabel": "Polish Warlords vs. [TW] Praetorians of Terra (2026-10-25)",
+      "url": "./data/war/90835d7e-6f73-4e5d-b44c-8a8269b4dcee.json",
+      "start": "2026-10-21T09:31:28.422Z",
+      "end": "2026-10-25T20:38:39.282Z"
+    },
+    {
+      "key": "history-2026-10-03-a81d10dd",
+      "label": "[Fr]Napalm Death Guard (2026-10-03)",
+      "sourceLabel": "[TW] Praetorians of Terra vs. [Fr]Napalm Death Guard (2026-10-03)",
+      "url": "./data/war/a81d10dd-af0c-4d55-b8f1-abc27155e7b1.json",
+      "start": "2026-09-30T21:55:14.587Z",
+      "end": "2026-10-03T08:41:58.045Z"
+    },
+    {
       "key": "history-2026-09-30-effdbc91",
       "label": "German Funsport (2026-09-30)",
       "sourceLabel": "[TW] Praetorians of Terra vs. German Funsport (2026-09-30)",
@@ -113,5 +145,5 @@
       "end": "2026-07-20T05:45:19.582Z"
     }
   ],
-  "hash": "1.0.0"
+  "hash": "local-179352"
 }
