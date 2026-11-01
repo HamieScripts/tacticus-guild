@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793551294,
+  "fetchedOn": 1793554895,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -33505,6 +33505,66 @@
       "machineOfWarDetails": {
         "unitId": "thousDaemonPrince",
         "power": 66681
+      }
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 7,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 9203,
+      "damageType": "Bomb",
+      "remainingHp": 37455042,
+      "maxHp": 37500000,
+      "startedOn": 1793554028,
+      "completedOn": 1793554028,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 7,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss1TyranNeurothrope",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 115389,
+      "damageType": "Battle",
+      "remainingHp": 1262481,
+      "maxHp": 3000000,
+      "startedOn": 1793554633,
+      "completedOn": 1793554791,
+      "heroDetails": [
+        {
+          "unitId": "necroSpyder",
+          "power": 171553
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 364540
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 509157
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 342885
+        },
+        {
+          "unitId": "admecRuststalker",
+          "power": 222783
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 656
       }
     }
   ]
