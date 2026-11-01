@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793524483,
+  "fetchedOn": 1793526991,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -32936,6 +32936,42 @@
         "unitId": "blackForgefiend",
         "power": 3142
       }
+    },
+    {
+      "userId": "c62ee67f-0a9e-4e29-8861-320e57788e6c",
+      "tier": 7,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 9602,
+      "damageType": "Bomb",
+      "remainingHp": 37490398,
+      "maxHp": 37500000,
+      "startedOn": 1793526485,
+      "completedOn": 1793526485,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 7,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss2TyranWingedPrime",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 8155,
+      "damageType": "Bomb",
+      "remainingHp": 2991845,
+      "maxHp": 3000000,
+      "startedOn": 1793526847,
+      "completedOn": 1793526847,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
