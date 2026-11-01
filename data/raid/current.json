@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793545917,
+  "fetchedOn": 1793558496,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -33463,6 +33463,210 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 984974
+      }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 7,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss1TyranNeurothrope",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 269984,
+      "damageType": "Battle",
+      "remainingHp": 1377870,
+      "maxHp": 3000000,
+      "startedOn": 1793550581,
+      "completedOn": 1793550756,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 838544
+        },
+        {
+          "unitId": "astraDreir",
+          "power": 292344
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 231580
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 263370
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 884233
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 66681
+      }
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 7,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 9203,
+      "damageType": "Bomb",
+      "remainingHp": 37455042,
+      "maxHp": 37500000,
+      "startedOn": 1793554028,
+      "completedOn": 1793554028,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 7,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss1TyranNeurothrope",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 115389,
+      "damageType": "Battle",
+      "remainingHp": 1262481,
+      "maxHp": 3000000,
+      "startedOn": 1793554633,
+      "completedOn": 1793554791,
+      "heroDetails": [
+        {
+          "unitId": "necroSpyder",
+          "power": 171553
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 364540
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 509157
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 342885
+        },
+        {
+          "unitId": "admecRuststalker",
+          "power": 222783
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 656
+      }
+    },
+    {
+      "userId": "39064004-8034-4d34-abea-e7f414f9437b",
+      "tier": 7,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss2TyranWingedPrime",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 7613,
+      "damageType": "Bomb",
+      "remainingHp": 1413001,
+      "maxHp": 3000000,
+      "startedOn": 1793555131,
+      "completedOn": 1793555131,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "293f4b63-28b1-4b5e-88ee-59936eed8ddb",
+      "tier": 7,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss1TyranNeurothrope",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 364047,
+      "damageType": "Battle",
+      "remainingHp": 898434,
+      "maxHp": 3000000,
+      "startedOn": 1793555703,
+      "completedOn": 1793555841,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 908816
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 894839
+        },
+        {
+          "unitId": "bloodSanguinary",
+          "power": 227330
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 885602
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 863255
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 43444
+      }
+    },
+    {
+      "userId": "cf7b7ebf-dd25-4371-ba75-b2cb51102dde",
+      "tier": 7,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss1TyranNeurothrope",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 121934,
+      "damageType": "Battle",
+      "remainingHp": 776500,
+      "maxHp": 3000000,
+      "startedOn": 1793558284,
+      "completedOn": 1793558334,
+      "heroDetails": [
+        {
+          "unitId": "blackHaarken",
+          "power": 167649
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 380682
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 760021
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 904166
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 411859
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 41202
       }
     }
   ]
