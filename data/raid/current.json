@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793556946,
+  "fetchedOn": 1793558496,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -33625,6 +33625,48 @@
       "machineOfWarDetails": {
         "unitId": "astraOrdnanceBattery",
         "power": 43444
+      }
+    },
+    {
+      "userId": "cf7b7ebf-dd25-4371-ba75-b2cb51102dde",
+      "tier": 7,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss1TyranNeurothrope",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 121934,
+      "damageType": "Battle",
+      "remainingHp": 776500,
+      "maxHp": 3000000,
+      "startedOn": 1793558284,
+      "completedOn": 1793558334,
+      "heroDetails": [
+        {
+          "unitId": "blackHaarken",
+          "power": 167649
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 380682
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 760021
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 904166
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 411859
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 41202
       }
     }
   ]
