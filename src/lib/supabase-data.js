@@ -158,7 +158,7 @@
 
     const { data: seasonRow, error: seasonError } = await db
       .from('raid_seasons')
-      .select('season, season_config_id, guild_name, guild_tag, guild_level, fetched_on')
+      .select('season, guild_id, season_config_id, guild_name, guild_tag, guild_level, fetched_on')
       .eq('season', season)
       .maybeSingle();
 
@@ -168,7 +168,8 @@
     const rows = await fetchAll(() => db
       .from('raid_entries')
       .select(ENTRY_COLUMNS)
-      .eq('season', season));
+      .eq('season', season)
+      .eq('guild_id', seasonRow.guild_id));
 
     return {
       fetchedOn: toUnixSeconds(seasonRow.fetched_on),
@@ -191,14 +192,17 @@
     const db = getClient();
 
     const [seasonRows, entryRows] = await Promise.all([
-      fetchAll(() => db.from('raid_seasons').select('season, start, end').order('season', { ascending: true })),
-      fetchAll(() => db.from('raid_entries').select('season, user_id, user_id_text, damage_dealt'))
+      fetchAll(() => db.from('raid_seasons').select('season, guild_id, start, end').order('season', { ascending: true })),
+      fetchAll(() => db.from('raid_entries').select('season, guild_id, user_id, user_id_text, damage_dealt'))
     ]);
 
     const seasonsByNumber = new Map(seasonRows.map((row) => [row.season, row]));
     const totalsBySeason = new Map();
 
     entryRows.forEach((row) => {
+      const seasonRow = seasonsByNumber.get(row.season);
+      if (!seasonRow || String(row.guild_id || '') !== String(seasonRow.guild_id || '')) return;
+
       const userId = String(row.user_id || row.user_id_text || '').trim();
       const damage = Number(row.damage_dealt) || 0;
       if (!userId || !Number.isFinite(damage)) return;
