@@ -35,12 +35,18 @@
     });
   }
 
-  function assignGrades(players, metric, gradeField, rankField) {
-    const ordered = players.slice().sort((left, right) => (
-      right[metric] - left[metric]
-      || left.name.localeCompare(right.name, 'en', { sensitivity: 'base' })
+  function assignGrades(players, metric, gradeField, rankField, lowerIsBetter = false, isEligible = () => true) {
+    const ordered = players.filter((player) => isEligible(player) && Number.isFinite(player[metric])).slice().sort((left, right) => (
+      (lowerIsBetter ? left[metric] - right[metric] : right[metric] - left[metric])
+      || String(left.name || left.userId || '').localeCompare(String(right.name || right.userId || ''), 'en', { sensitivity: 'base' })
     ));
     const remainingGrades = ['A', 'B', 'C', 'D', 'F'];
+
+    players.forEach((player) => {
+      if (isEligible(player) && Number.isFinite(player[metric])) return;
+      player[rankField] = null;
+      player[gradeField] = '—';
+    });
 
     ordered.forEach((player, index) => {
       player[rankField] = index + 1;
@@ -73,6 +79,7 @@
     players.forEach((player) => {
       player.averageDamage = player.tokens > 0 ? player.battleDamage / player.tokens : 0;
     });
+    assignGrades([...players.values()], 'totalDamage', 'grade', 'rank');
     addPercentiles(players, 'totalDamage');
 
     return {
@@ -91,6 +98,79 @@
       .sort((left, right) => (
         (right.activityLogs?.length || 0) - (left.activityLogs?.length || 0)
       ))[0] || null;
+  }
+
+  function hasCurrentWarActivity(data) {
+    const results = Array.isArray(data?.eventResults) ? data.eventResults : [];
+    return results.some((result) => {
+      if (result?.eventResultType !== 'SUCCESS') return false;
+      const eventData = result.eventResponseData;
+      const guilds = Array.isArray(eventData?.guildData) ? eventData.guildData : [];
+      const includesOurGuild = guilds.some((guild) => (
+        String(guild?.guildTag || '').toUpperCase() === 'XXPQS'
+        || String(guild?.name || '').toLowerCase().includes('praetorians of terra')
+      ));
+      return includesOurGuild && Array.isArray(eventData?.activityLogs) && eventData.activityLogs.length > 0;
+    });
+  }
+
+  function getWarActivityRange(data) {
+    const eventData = getEventResponseData(data);
+    const timestamps = (Array.isArray(eventData?.activityLogs) ? eventData.activityLogs : [])
+      .map((log) => Number(log?.createdOn))
+      .filter((timestamp) => Number.isFinite(timestamp) && timestamp > 0);
+    if (timestamps.length === 0) return null;
+    return { start: Math.min(...timestamps), end: Math.max(...timestamps) };
+  }
+
+  function getManifestWarRange(dataset) {
+    const dateMatch = `${dataset?.key || ''} ${dataset?.label || ''}`.match(/\d{4}-\d{2}-\d{2}/);
+    const fallback = dateMatch ? Date.parse(`${dateMatch[0]}T00:00:00Z`) : NaN;
+    const parsedStart = Date.parse(dataset?.start || '');
+    const parsedEnd = Date.parse(dataset?.end || '');
+    const start = Number.isFinite(parsedStart) ? parsedStart : fallback;
+    const end = Number.isFinite(parsedEnd) ? parsedEnd : fallback;
+    return Number.isFinite(start) && Number.isFinite(end) ? { start, end } : null;
+  }
+
+  function selectWarSeasons(current, archives = [], seasonLimit = 3) {
+    const entries = [];
+    if (hasCurrentWarActivity(current)) {
+      const range = getWarActivityRange(current) || { start: Date.now(), end: Date.now() };
+      entries.push({ key: 'current', label: 'Active war', data: current, ...range });
+    }
+
+    (Array.isArray(archives) ? archives : []).forEach((dataset) => {
+      const range = getManifestWarRange(dataset);
+      if (range) entries.push({ ...dataset, ...range });
+    });
+
+    entries.sort((left, right) => right.end - left.end);
+
+    const groups = [];
+    let group = null;
+    let previousStart = null;
+    entries.forEach((entry) => {
+      const gapDays = previousStart === null ? Infinity : (previousStart - entry.end) / 86400000;
+      if (!group || gapDays > 5 || group.length >= 6) {
+        group = [];
+        groups.push(group);
+      }
+      group.push(entry);
+      previousStart = entry.start;
+    });
+
+    return groups.slice(0, seasonLimit).map((entries, index) => {
+      const isCurrent = entries.some((entry) => entry.key === 'current');
+      const start = entries.at(-1)?.start || entries[0]?.start;
+      const end = entries[0]?.end;
+      const startDate = new Date(start).toISOString().slice(0, 10);
+      const endDate = new Date(end).toISOString().slice(0, 10);
+      const seasonName = isCurrent
+        ? 'Current war season'
+        : (index === 0 ? 'Latest completed season' : `Completed war season ${index}`);
+      return { label: `${seasonName} (${startDate} to ${endDate})`, start, end, isCurrent, entries };
+    });
   }
 
   function isCleanup(log) {
@@ -203,7 +283,8 @@
     players.forEach((player) => {
       player.averageScore = player.tokens > 0 ? player.totalScore / player.tokens : 0;
     });
-    addPercentiles(players, 'skillRating');
+    assignGrades([...players.values()], 'totalScore', 'grade', 'rank', false, (player) => player.tokens > 0);
+    addPercentiles(new Map([...players.entries()].filter(([, player]) => player.tokens > 0)), 'skillRating');
 
     return { label, players };
   }
@@ -222,7 +303,14 @@
     });
 
     const raidReports = raidSeasons.map(buildRaidSeasonStats);
-    const warReports = wars.map(({ data, label }) => buildWarStats(data, label));
+    const warReports = wars.map(({ data, label, seasonIndex = 0 }) => ({
+      ...buildWarStats(data, label),
+      seasonIndex
+    }));
+    const warCount = warReports.length;
+    const activeWarPlayers = new Set(warReports
+      .filter((war) => war.seasonIndex === 0)
+      .flatMap((war) => [...war.players.keys()]));
     const cards = new Map();
     const ensurePlayer = (userId) => {
       if (!cards.has(userId)) {
@@ -252,18 +340,22 @@
         const card = ensurePlayer(userId);
         if (!nameMap.has(userId) && stats.name && stats.name !== userId) card.name = stats.name;
         card.activityTokens += stats.tokens;
-        card.wars.push({ label: war.label, stats });
+        card.wars.push({ label: war.label, stats, seasonIndex: war.seasonIndex });
       });
     });
 
     const topPlayers = [...cards.values()]
+      .filter((card) => activeWarPlayers.has(card.id))
       .sort((left, right) => right.activityTokens - left.activityTokens || left.name.localeCompare(right.name))
       .slice(0, 30)
       .map((card) => {
         const seasonsPlayed = card.raids.filter((entry) => entry.stats.totalDamage > 0);
         const totalDamage = seasonsPlayed.reduce((total, entry) => total + entry.stats.totalDamage, 0);
-        const warsPlayed = card.wars.filter((entry) => entry.stats.tokens > 0);
-        const totalWarScore = warsPlayed.reduce((total, entry) => total + entry.stats.totalScore, 0);
+        const warsPlayed = card.wars.filter((entry) => entry.stats.tokens > 0 && Number.isFinite(entry.stats.rank));
+        const warRanks = warsPlayed.map((entry) => entry.stats.rank);
+        const averageWarRank = warRanks.length > 0
+          ? warRanks.reduce((total, rank) => total + rank, 0) / warRanks.length
+          : null;
         const raidPercentiles = seasonsPlayed.map((entry) => entry.stats.percentile);
         const warPercentiles = warsPlayed.map((entry) => entry.stats.percentile);
         const averageRaidPercentile = raidPercentiles.length > 0
@@ -275,20 +367,28 @@
         const combinedPercentiles = [averageRaidPercentile, averageWarPercentile].filter(Number.isFinite);
         return {
           ...card,
-          averageRaidDamage: seasonsPlayed.length > 0 ? totalDamage / seasonsPlayed.length : 0,
-          totalWarScore,
+          averageRaidDamage: seasonsPlayed.length > 0 ? totalDamage / seasonsPlayed.length : null,
+          raidSeasonsPlayed: seasonsPlayed.length,
+          raidSeasonCount: raidReports.length,
+          raidDataIncomplete: seasonsPlayed.length < raidReports.length,
+          averageWarRank,
+          warWarsPlayed: warRanks.length,
+          warCount,
+          warDataIncomplete: warRanks.length < warCount,
           averageRaidPercentile,
           averageWarPercentile,
           combinedAveragePercentile: combinedPercentiles.length > 0
             ? combinedPercentiles.reduce((total, value) => total + value, 0) / combinedPercentiles.length
-            : 0
+            : null
         };
       });
 
     assignGrades(topPlayers, 'averageRaidDamage', 'raidGrade', 'raidRank');
-    assignGrades(topPlayers, 'totalWarScore', 'warGrade', 'warRank');
+    assignGrades(topPlayers, 'averageWarRank', 'warGrade', 'warRank', true);
     topPlayers.forEach((card) => {
-      card.combinedAverageRank = (card.raidRank + card.warRank) / 2;
+      card.combinedAverageRank = Number.isFinite(card.raidRank) && Number.isFinite(card.warRank)
+        ? (card.raidRank + card.warRank) / 2
+        : null;
     });
 
     topPlayers.sort((left, right) => left.name.localeCompare(right.name, 'en', { sensitivity: 'base' }));
@@ -296,7 +396,14 @@
     return { raidReports, warReports, cards: topPlayers };
   }
 
-  const api = { percentileRank, buildRaidSeasonStats, buildWarStats, buildReportCards };
+  const api = {
+    percentileRank,
+    buildRaidSeasonStats,
+    buildWarStats,
+    buildReportCards,
+    hasCurrentWarActivity,
+    selectWarSeasons
+  };
   globalScope.ReportCardMetrics = api;
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this);

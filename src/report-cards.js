@@ -2,8 +2,8 @@
   const RAID_MANIFEST_URL = './data/raid/manifest.json';
   const WAR_MANIFEST_URL = './data/dataset-manifest.json';
   const RAID_WINDOW_SIZE = 6;
-  const WAR_ARCHIVE_COUNT = 5;
   const numberFormat = new Intl.NumberFormat('en-GB', { maximumFractionDigits: 0 });
+  let showAllTables = false;
 
   function escapeHtml(value) {
     return String(value ?? '')
@@ -42,33 +42,31 @@
       fetchJson('./data/war/current.json').catch(() => null),
       fetchJson(WAR_MANIFEST_URL)
     ]);
-    const archives = (Array.isArray(manifest?.datasets) ? manifest.datasets : [])
-      .slice()
-      .sort((left, right) => Date.parse(right.end || right.start || 0) - Date.parse(left.end || left.start || 0))
-      .slice(0, WAR_ARCHIVE_COUNT);
-    const archiveReports = await Promise.all(archives.map(async (dataset) => {
-      try {
-        return {
-          label: dataset.label || dataset.sourceLabel || 'Archived war',
-          data: await fetchJson(dataset.url)
-        };
-      } catch (error) {
-        return null;
-      }
-    }));
+    const seasonGroups = window.ReportCardMetrics.selectWarSeasons(
+      current,
+      Array.isArray(manifest?.datasets) ? manifest.datasets : [],
+      3
+    );
 
-    const wars = [];
-    if (current) wars.push({ label: 'Active war', data: current });
-    wars.push(...archiveReports.filter(Boolean));
-    return wars;
+    return Promise.all(seasonGroups.map(async (season, seasonIndex) => {
+      const wars = await Promise.all(season.entries.map(async (entry) => {
+        if (entry.data) return { label: entry.label, data: entry.data, seasonIndex };
+        try {
+          return {
+            label: entry.label || entry.sourceLabel || 'Archived war',
+            data: await fetchJson(entry.url),
+            seasonIndex
+          };
+        } catch (error) {
+          return null;
+        }
+      }));
+      return { label: season.label, wars: wars.filter(Boolean) };
+    }));
   }
 
   function formatNumber(value) {
     return numberFormat.format(Number(value) || 0);
-  }
-
-  function formatPercentile(value) {
-    return Number.isFinite(value) ? `${Math.round(value)}%` : '—';
   }
 
   function renderPlayerAvatar(card) {
@@ -94,9 +92,34 @@
       B: 'border-cyan-400/50 bg-cyan-400/10 text-cyan-200',
       C: 'border-amber-400/50 bg-amber-400/10 text-amber-200',
       D: 'border-orange-400/50 bg-orange-400/10 text-orange-200',
-      F: 'border-rose-400/50 bg-rose-400/10 text-rose-200'
+      F: 'border-rose-400/50 bg-rose-400/10 text-rose-200',
+      '—': 'border-slate-500/50 bg-slate-700/20 text-slate-300'
     };
     return classes[grade] || classes.F;
+  }
+
+  function getGradeLabel(grade, incomplete) {
+    return `${grade}${incomplete ? '*' : ''}`;
+  }
+
+  function renderRowGrade(grade) {
+    return `<span class="inline-flex min-w-8 justify-center rounded border px-1 text-[10px] font-bold ${getGradeClasses(grade)}">${escapeHtml(grade)}</span>`;
+  }
+
+  function compareRanks(left, right, field) {
+    const leftRank = left[field];
+    const rightRank = right[field];
+    if (!Number.isFinite(leftRank)) return Number.isFinite(rightRank) ? 1 : 0;
+    if (!Number.isFinite(rightRank)) return -1;
+    return leftRank - rightRank;
+  }
+
+  function compareHigherMetric(left, right, field) {
+    const leftValue = left[field];
+    const rightValue = right[field];
+    if (!Number.isFinite(leftValue)) return Number.isFinite(rightValue) ? 1 : 0;
+    if (!Number.isFinite(rightValue)) return -1;
+    return rightValue - leftValue;
   }
 
   function renderDamageChange(currentStats, previousStats, previousSeason) {
@@ -133,7 +156,7 @@
     const rows = seasons.map((season, index) => {
       const stats = season.players.get(card.id);
       if (!stats) {
-        return `<tr class="border-b border-slate-800/60 text-slate-600"><td class="px-2 py-1.5">${season.season}</td><td colspan="4" class="px-2 py-1.5">No recorded activity</td></tr>`;
+        return `<tr class="border-b border-slate-800/60 text-slate-600"><td class="px-2 py-1.5">${season.season}</td><td colspan="5" class="px-2 py-1.5">No recorded activity</td></tr>`;
       }
       const previousSeason = seasons[index + 1] || olderSeason;
       const previousStats = previousSeason?.players.get(card.id);
@@ -143,11 +166,12 @@
         <td class="px-2 py-1.5 text-right tabular-nums">${formatNumber(stats.totalDamage)}</td>
         <td class="whitespace-nowrap px-2 py-1.5 text-right tabular-nums">${damageChange}</td>
         <td class="px-2 py-1.5 text-right tabular-nums">${formatNumber(stats.averageDamage)}</td>
-        <td class="px-2 py-1.5 text-right tabular-nums text-cyan-200">${formatPercentile(stats.percentile)}</td>
+        <td class="px-2 py-1.5 text-right tabular-nums">${stats.rank ?? '—'}</td>
+        <td class="px-2 py-1.5 text-right">${renderRowGrade(stats.grade)}</td>
       </tr>`;
     });
 
-    return renderTable(['Season', 'Total dmg', '', 'Avg/token', 'Guild %'], rows, 'No raid data.', [1, 2, 3, 4]);
+    return renderTable(['Season', 'Total dmg', '', 'Avg/token', 'Rank', 'Grade'], rows, 'No raid data.', [1, 2, 3, 4, 5]);
   }
 
   function renderWarTable(card, wars) {
@@ -155,7 +179,7 @@
       const stats = war.players.get(card.id);
       const label = escapeHtml(war.label);
       if (!stats) {
-        return `<tr class="border-b border-slate-800/60 text-slate-600"><th scope="row" title="${label}" class="max-w-36 truncate px-2 py-1.5 font-medium">${label}</th><td colspan="5" class="px-2 py-1.5">No recorded activity</td></tr>`;
+        return `<tr class="border-b border-slate-800/60 text-slate-600"><th scope="row" title="${label}" class="max-w-36 truncate px-2 py-1.5 font-medium">${label}</th><td colspan="6" class="px-2 py-1.5">No recorded activity</td></tr>`;
       }
       return `<tr class="border-b border-slate-800/60">
         <th scope="row" title="${label}" class="max-w-36 truncate px-2 py-1.5 font-medium text-slate-300">${label}</th>
@@ -163,14 +187,15 @@
         <td class="px-2 py-1.5 text-right tabular-nums">${formatNumber(stats.averageScore)}</td>
         <td class="px-2 py-1.5 text-right tabular-nums">${formatNumber(stats.tokens)}</td>
         <td class="px-2 py-1.5 text-right tabular-nums text-violet-200">${formatNumber(stats.skillRating)}</td>
-        <td class="px-2 py-1.5 text-right tabular-nums text-cyan-200">${formatPercentile(stats.percentile)}</td>
+        <td class="px-2 py-1.5 text-right tabular-nums">${stats.rank ?? '—'}</td>
+        <td class="px-2 py-1.5 text-right">${renderRowGrade(stats.grade)}</td>
       </tr>`;
     });
 
-    return renderTable(['War', 'Score', 'Avg/token', 'Spent', 'Skill', 'Guild %'], rows, 'No war data.', [1, 2, 3, 4, 5]);
+    return renderTable(['War', 'Score', 'Avg/token', 'Spent', 'Skill', 'Rank', 'Grade'], rows, 'No war data.', [1, 2, 3, 4, 5, 6]);
   }
 
-  function renderCards(cards, raidSeasons, olderRaidSeason, wars, query) {
+  function renderCards(cards, raidSeasons, olderRaidSeason, warSeasons, query) {
     const normalizedQuery = query.trim().toLowerCase();
     const sortMode = document.getElementById('report-sort').value;
     const visibleCards = cards
@@ -178,10 +203,10 @@
       .slice()
       .sort((left, right) => {
         const byName = left.name.localeCompare(right.name, 'en', { sensitivity: 'base' });
-        if (sortMode === 'raid-rank') return left.raidRank - right.raidRank || byName;
-        if (sortMode === 'war-rank') return left.warRank - right.warRank || byName;
-        if (sortMode === 'combined-average') return right.combinedAveragePercentile - left.combinedAveragePercentile || byName;
-        if (sortMode === 'combined-rank') return left.combinedAverageRank - right.combinedAverageRank || byName;
+        if (sortMode === 'raid-rank') return compareRanks(left, right, 'raidRank') || byName;
+        if (sortMode === 'war-rank') return compareRanks(left, right, 'warRank') || byName;
+        if (sortMode === 'combined-average') return compareHigherMetric(left, right, 'combinedAveragePercentile') || byName;
+        if (sortMode === 'combined-rank') return compareRanks(left, right, 'combinedAverageRank') || byName;
         return byName;
       });
     const container = document.getElementById('report-cards');
@@ -194,37 +219,43 @@
       : (visibleCards.length === 0 ? 'No players match that search.' : '');
     container.innerHTML = visibleCards.map((card) => `
       <article class="min-w-0 rounded-lg border border-slate-700/80 bg-slate-900/80 p-3 shadow-lg shadow-black/20">
-        <header class="mb-2 border-b border-slate-800 pb-2">
+        <header class="mb-2">
           <div class="flex min-w-0 items-center gap-2.5">
             ${renderPlayerAvatar(card)}
             <h3 class="min-w-0 truncate text-base font-bold text-slate-100" title="${escapeHtml(card.name)}">${escapeHtml(card.name)}</h3>
           </div>
           <div class="mt-2 flex justify-center gap-8">
             <div class="flex flex-col items-center gap-1">
-              <div class="flex h-14 w-14 items-center justify-center rounded-md border text-2xl font-black ${getGradeClasses(card.raidGrade)}" title="Average raid damage: ${formatNumber(card.averageRaidDamage)}">${escapeHtml(card.raidGrade)}</div>
+              <div class="flex h-14 w-14 items-center justify-center rounded-md border text-2xl font-black ${getGradeClasses(card.raidGrade)}" title="Average total damage across ${card.raidSeasonsPlayed} of ${card.raidSeasonCount} raid seasons">${escapeHtml(getGradeLabel(card.raidGrade, card.raidDataIncomplete))}</div>
               <span class="text-[10px] font-bold uppercase text-slate-400">Raid</span>
             </div>
             <div class="flex flex-col items-center gap-1">
-              <div class="flex h-14 w-14 items-center justify-center rounded-md border text-2xl font-black ${getGradeClasses(card.warGrade)}" title="Total score across recent wars: ${formatNumber(card.totalWarScore)}">${escapeHtml(card.warGrade)}</div>
+              <div class="flex h-14 w-14 items-center justify-center rounded-md border text-2xl font-black ${getGradeClasses(card.warGrade)}" title="Average rank ${Number.isFinite(card.averageWarRank) ? card.averageWarRank.toFixed(1) : '—'} across ${card.warWarsPlayed} of ${card.warCount} wars">${escapeHtml(getGradeLabel(card.warGrade, card.warDataIncomplete))}</div>
               <span class="text-[10px] font-bold uppercase text-slate-400">War</span>
             </div>
           </div>
         </header>
-        <section aria-label="Raid performance">
-          <h4 class="mb-1 text-xs font-bold uppercase text-rose-200">Guild Raid</h4>
-          ${renderRaidTable(card, raidSeasons, olderRaidSeason)}
-        </section>
-        <section aria-label="War performance" class="mt-3 border-t border-slate-800 pt-2">
-          <h4 class="mb-1 text-xs font-bold uppercase text-cyan-200">Guild War</h4>
-          ${renderWarTable(card, wars)}
-        </section>
+        <div class="mt-3 border-t border-slate-800 pt-3 ${showAllTables ? '' : 'hidden'}"${showAllTables ? '' : ' hidden'}>
+          <section aria-label="Raid performance">
+            <h4 class="mb-1 text-xs font-bold uppercase text-rose-200">Guild Raid</h4>
+            ${renderRaidTable(card, raidSeasons, olderRaidSeason)}
+          </section>
+          <section aria-label="War performance" class="mt-3 border-t border-slate-800 pt-2">
+            <h4 class="mb-1 text-xs font-bold uppercase text-cyan-200">Guild War</h4>
+            ${warSeasons.map((season) => `
+              <div class="mb-3 last:mb-0">
+                <h5 class="mb-1 text-[10px] font-bold uppercase text-slate-400">${escapeHtml(season.label)}</h5>
+                ${renderWarTable(card, season.wars)}
+              </div>`).join('') || '<p class="py-2 text-xs text-slate-500">No war data.</p>'}
+          </section>
+        </div>
       </article>`).join('');
   }
 
   async function initialize() {
     const status = document.getElementById('report-status');
     try {
-      const [raidData, wars, playerDirectory] = await Promise.all([
+      const [raidData, warSeasons, playerDirectory] = await Promise.all([
         loadRaidSeasons(),
         loadWars(),
         fetchJson('./data/static/players.json').catch(() => [])
@@ -234,17 +265,35 @@
       const olderRaidSeason = olderRaidSeasonData
         ? window.ReportCardMetrics.buildRaidSeasonStats(olderRaidSeasonData)
         : null;
+      const wars = warSeasons.flatMap((season) => season.wars);
       const metrics = window.ReportCardMetrics.buildReportCards(raidSeasons, wars, playerDirectory);
+      const reportWarSeasons = warSeasons.map((season, seasonIndex) => ({
+        label: season.label,
+        wars: metrics.warReports.filter((war) => war.seasonIndex === seasonIndex)
+      }));
 
       const raidWindow = raidSeasons.map((season) => season.season).filter(Number.isFinite);
-      const warWindow = wars.map((war) => war.label === 'Active war' ? 'Active' : war.label);
+      const warWindow = reportWarSeasons.map((season) => season.label);
       document.getElementById('report-window').textContent = `Raids ${raidWindow.join(', ') || 'unavailable'} · Wars ${warWindow.join(' · ') || 'unavailable'}`;
 
       const search = document.getElementById('report-search');
       const sort = document.getElementById('report-sort');
-      const draw = () => renderCards(metrics.cards, metrics.raidReports, olderRaidSeason, metrics.warReports, search.value);
+      const tablesToggle = document.getElementById('report-toggle-all');
+      const tablesToggleLabel = document.getElementById('report-toggle-label');
+      const tablesToggleTrack = document.getElementById('report-toggle-track');
+      const tablesToggleThumb = document.getElementById('report-toggle-thumb');
+      const draw = () => renderCards(metrics.cards, metrics.raidReports, olderRaidSeason, reportWarSeasons, search.value);
       search.addEventListener('input', draw);
       sort.addEventListener('change', draw);
+      tablesToggle.addEventListener('click', () => {
+        showAllTables = !showAllTables;
+        tablesToggle.setAttribute('aria-checked', String(showAllTables));
+        tablesToggleLabel.textContent = showAllTables ? 'Hide all tables' : 'Show all tables';
+        tablesToggleTrack.classList.toggle('bg-slate-700', !showAllTables);
+        tablesToggleTrack.classList.toggle('bg-cyan-500', showAllTables);
+        tablesToggleThumb.classList.toggle('translate-x-4', showAllTables);
+        draw();
+      });
       draw();
     } catch (error) {
       status.textContent = `Could not load report data: ${error.message}`;
