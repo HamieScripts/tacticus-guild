@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793598086,
+  "fetchedOn": 1793598974,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -35008,6 +35008,90 @@
       "machineOfWarDetails": {
         "unitId": "astraOrdnanceBattery",
         "power": 656
+      }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 7,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 67874,
+      "damageType": "Battle",
+      "remainingHp": 31483916,
+      "maxHp": 37500000,
+      "startedOn": 1793597995,
+      "completedOn": 1793598116,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 263370
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 182320
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 231580
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 884233
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 838544
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 66681
+      }
+    },
+    {
+      "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+      "tier": 7,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 67051,
+      "damageType": "Battle",
+      "remainingHp": 31416865,
+      "maxHp": 37500000,
+      "startedOn": 1793598098,
+      "completedOn": 1793598177,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 657529
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 642718
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 982212
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 866505
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 430054
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 16415
       }
     }
   ]
