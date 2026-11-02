@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793650458,
+  "fetchedOn": 1793652115,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -36149,6 +36149,84 @@
         "unitId": "thousDaemonPrince",
         "power": 501824
       }
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 7,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 48570,
+      "damageType": "Battle",
+      "remainingHp": 21593718,
+      "maxHp": 37500000,
+      "startedOn": 1793651242,
+      "completedOn": 1793651320,
+      "heroDetails": [
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 80795
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 145008
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 122396
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 509157
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 364540
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 766
+      }
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 7,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 8150,
+      "damageType": "Bomb",
+      "remainingHp": 21585568,
+      "maxHp": 37500000,
+      "startedOn": 1793651332,
+      "completedOn": 1793651332,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 7,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 9576,
+      "damageType": "Bomb",
+      "remainingHp": 21575992,
+      "maxHp": 37500000,
+      "startedOn": 1793651846,
+      "completedOn": 1793651846,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
