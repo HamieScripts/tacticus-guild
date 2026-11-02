@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793654770,
+  "fetchedOn": 1793656564,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -36352,6 +36352,108 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 9411
+      }
+    },
+    {
+      "userId": "c47778d3-3a3c-4cc0-b405-3aed0d993c45",
+      "tier": 7,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 8191,
+      "damageType": "Bomb",
+      "remainingHp": 20922032,
+      "maxHp": 37500000,
+      "startedOn": 1793655961,
+      "completedOn": 1793655961,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "c47778d3-3a3c-4cc0-b405-3aed0d993c45",
+      "tier": 7,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 143270,
+      "damageType": "Battle",
+      "remainingHp": 20778762,
+      "maxHp": 37500000,
+      "startedOn": 1793655986,
+      "completedOn": 1793656104,
+      "heroDetails": [
+        {
+          "unitId": "bloodDante",
+          "power": 584779
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 684394
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 490666
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 641490
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 669708
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 1030
+      }
+    },
+    {
+      "userId": "c47778d3-3a3c-4cc0-b405-3aed0d993c45",
+      "tier": 7,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 106063,
+      "damageType": "Battle",
+      "remainingHp": 20672699,
+      "maxHp": 37500000,
+      "startedOn": 1793656291,
+      "completedOn": 1793656527,
+      "heroDetails": [
+        {
+          "unitId": "bloodDante",
+          "power": 584779
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 684394
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 490666
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 641490
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 669708
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 1030
       }
     }
   ]
