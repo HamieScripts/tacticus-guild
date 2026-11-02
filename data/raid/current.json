@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793593072,
+  "fetchedOn": 1793597166,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -34864,6 +34864,66 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 28130
+      }
+    },
+    {
+      "userId": "077980e3-7cb5-44ab-977e-846af676ccce",
+      "tier": 7,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 7700,
+      "damageType": "Bomb",
+      "remainingHp": 34019885,
+      "maxHp": 37500000,
+      "startedOn": 1793596837,
+      "completedOn": 1793596837,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "077980e3-7cb5-44ab-977e-846af676ccce",
+      "tier": 7,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 1234588,
+      "damageType": "Battle",
+      "remainingHp": 32785297,
+      "maxHp": 37500000,
+      "startedOn": 1793596917,
+      "completedOn": 1793597147,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 1010207
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 794968
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 666861
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 583245
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 961644
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 11790
       }
     }
   ]
