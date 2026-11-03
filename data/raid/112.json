@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793693974,
+  "fetchedOn": 1793696207,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -37744,6 +37744,90 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 3142
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 7,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 94051,
+      "damageType": "Battle",
+      "remainingHp": 6566960,
+      "maxHp": 37500000,
+      "startedOn": 1793695658,
+      "completedOn": 1793695752,
+      "heroDetails": [
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 570406
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 488235
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 573819
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 642148
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 738255
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 501824
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 7,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 133677,
+      "damageType": "Battle",
+      "remainingHp": 6433283,
+      "maxHp": 37500000,
+      "startedOn": 1793695802,
+      "completedOn": 1793695918,
+      "heroDetails": [
+        {
+          "unitId": "blackAbaddon",
+          "power": 642148
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 488235
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 573819
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 570406
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 738255
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 501824
       }
     }
   ]
