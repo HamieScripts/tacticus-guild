@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793679407,
+  "fetchedOn": 1793680009,
   "season": 112,
   "seasonConfigId": "guild_boss_season_config_3",
   "guild": {
@@ -37481,6 +37481,66 @@
       "completedOn": 1793679386,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+      "tier": 7,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 9212,
+      "damageType": "Bomb",
+      "remainingHp": 9181097,
+      "maxHp": 37500000,
+      "startedOn": 1793679795,
+      "completedOn": 1793679795,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+      "tier": 7,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Mythic",
+      "damageDealt": 102401,
+      "damageType": "Battle",
+      "remainingHp": 9078696,
+      "maxHp": 37500000,
+      "startedOn": 1793679811,
+      "completedOn": 1793679876,
+      "heroDetails": [
+        {
+          "unitId": "ultraCalgar",
+          "power": 866505
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 430054
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 982212
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 642718
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 657529
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 16415
+      }
     }
   ]
 }
