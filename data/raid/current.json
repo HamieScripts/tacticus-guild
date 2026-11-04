@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793796992,
+  "fetchedOn": 1793798058,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -1010,6 +1010,108 @@
         "unitId": "tyranBiovore",
         "power": 76414
       }
+    },
+    {
+      "userId": "b29d75a2-5540-4ded-9383-998307fa1a4a",
+      "tier": 3,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Epic",
+      "damageDealt": 389549,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 1800000,
+      "startedOn": 1793796960,
+      "completedOn": 1793797160,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 272947
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 761698
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 693170
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 852058
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 1023246
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 518336
+      }
+    },
+    {
+      "userId": "fce63e8e-b46e-4fe1-9031-9475f46ee504",
+      "tier": 3,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Epic",
+      "damageDealt": 189271,
+      "damageType": "Battle",
+      "remainingHp": 1560729,
+      "maxHp": 1750000,
+      "startedOn": 1793797800,
+      "completedOn": 1793797952,
+      "heroDetails": [
+        {
+          "unitId": "blackAbaddon",
+          "power": 647196
+        },
+        {
+          "unitId": "necroDestroyer",
+          "power": 169317
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 562391
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 517983
+        },
+        {
+          "unitId": "eldarMauganRa",
+          "power": 513853
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 15994
+      }
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 3,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Epic",
+      "damageDealt": 8976,
+      "damageType": "Bomb",
+      "remainingHp": 1551753,
+      "maxHp": 1750000,
+      "startedOn": 1793797970,
+      "completedOn": 1793797970,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
