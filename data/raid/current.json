@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793809582,
+  "fetchedOn": 1793810467,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -2170,6 +2170,90 @@
       "machineOfWarDetails": {
         "unitId": "ultraDreadnought",
         "power": 67126
+      }
+    },
+    {
+      "userId": "bb692d43-0c30-4d9d-8472-5eab7706487e",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Legendary",
+      "damageDealt": 1205766,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 5000000,
+      "startedOn": 1793809533,
+      "completedOn": 1793809696,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 460430
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 414905
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 558807
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 892176
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 568725
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "ultraDreadnought",
+        "power": 67126
+      }
+    },
+    {
+      "userId": "c62ee67f-0a9e-4e29-8861-320e57788e6c",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss11MiniBoss1TauMarksman",
+      "type": "Riptide",
+      "rarity": "Legendary",
+      "damageDealt": 204415,
+      "damageType": "Battle",
+      "remainingHp": 245585,
+      "maxHp": 450000,
+      "startedOn": 1793809922,
+      "completedOn": 1793810154,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 493407
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 532836
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 787798
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 560984
+        },
+        {
+          "unitId": "orksRuntherd",
+          "power": 521617
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 105653
       }
     }
   ]
