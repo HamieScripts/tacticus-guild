@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793806902,
+  "fetchedOn": 1793807774,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -2003,6 +2003,48 @@
       "completedOn": 1793806897,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Legendary",
+      "damageDealt": 344044,
+      "damageType": "Battle",
+      "remainingHp": 4638540,
+      "maxHp": 5000000,
+      "startedOn": 1793806901,
+      "completedOn": 1793807127,
+      "heroDetails": [
+        {
+          "unitId": "bloodDante",
+          "power": 188113
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 486270
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 232706
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 419497
+        },
+        {
+          "unitId": "spaceBlackmane",
+          "power": 56527
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 1116
+      }
     }
   ]
 }
