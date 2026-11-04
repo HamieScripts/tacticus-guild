@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793805967,
+  "fetchedOn": 1793806902,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -1817,6 +1817,192 @@
         "unitId": "blackForgefiend",
         "power": 10517
       }
+    },
+    {
+      "userId": "8485b330-6671-46b7-a258-9a2ed7d0e5f0",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss2TyranWingedPrime",
+      "type": "ScreamerKiller",
+      "rarity": "Legendary",
+      "damageDealt": 134253,
+      "damageType": "Battle",
+      "remainingHp": 265747,
+      "maxHp": 400000,
+      "startedOn": 1793806066,
+      "completedOn": 1793806222,
+      "heroDetails": [
+        {
+          "unitId": "astraOrdnance",
+          "power": 61075
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 771232
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 731685
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 154777
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 58494
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 940
+      }
+    },
+    {
+      "userId": "293f4b63-28b1-4b5e-88ee-59936eed8ddb",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss2TyranWingedPrime",
+      "type": "ScreamerKiller",
+      "rarity": "Legendary",
+      "damageDealt": 175835,
+      "damageType": "Battle",
+      "remainingHp": 89912,
+      "maxHp": 400000,
+      "startedOn": 1793806395,
+      "completedOn": 1793806517,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 951669
+        },
+        {
+          "unitId": "astraOrdnance",
+          "power": 42620
+        },
+        {
+          "unitId": "adeptRetributor",
+          "power": 40264
+        },
+        {
+          "unitId": "tauShadowsun",
+          "power": 52522
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 67682
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 4510
+      }
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss2TyranWingedPrime",
+      "type": "ScreamerKiller",
+      "rarity": "Legendary",
+      "damageDealt": 78036,
+      "damageType": "Battle",
+      "remainingHp": 11876,
+      "maxHp": 400000,
+      "startedOn": 1793806548,
+      "completedOn": 1793806684,
+      "heroDetails": [
+        {
+          "unitId": "spaceBlackmane",
+          "power": 56527
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 188113
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 419497
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 486270
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 232706
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 1116
+      }
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss2TyranWingedPrime",
+      "type": "ScreamerKiller",
+      "rarity": "Legendary",
+      "damageDealt": 11876,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 400000,
+      "startedOn": 1793806705,
+      "completedOn": 1793806760,
+      "heroDetails": [
+        {
+          "unitId": "spaceBlackmane",
+          "power": 56527
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 188113
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 419497
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 486270
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 232706
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 1116
+      }
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Legendary",
+      "damageDealt": 8761,
+      "damageType": "Bomb",
+      "remainingHp": 4982584,
+      "maxHp": 5000000,
+      "startedOn": 1793806897,
+      "completedOn": 1793806897,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
