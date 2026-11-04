@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793820379,
+  "fetchedOn": 1793825785,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -2458,6 +2458,48 @@
       "machineOfWarDetails": {
         "unitId": "astraOrdnanceBattery",
         "power": 1074
+      }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss11MiniBoss2TauCrisis",
+      "type": "Riptide",
+      "rarity": "Legendary",
+      "damageDealt": 122960,
+      "damageType": "Battle",
+      "remainingHp": 327040,
+      "maxHp": 450000,
+      "startedOn": 1793824991,
+      "completedOn": 1793825170,
+      "heroDetails": [
+        {
+          "unitId": "necroOverlord",
+          "power": 48392
+        },
+        {
+          "unitId": "admecRuststalker",
+          "power": 53955
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 838544
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 231580
+        },
+        {
+          "unitId": "deathBlightlord",
+          "power": 614622
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 66681
       }
     }
   ]
