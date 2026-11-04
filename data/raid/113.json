@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793831192,
+  "fetchedOn": 1793836576,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -2603,6 +2603,24 @@
         "unitId": "ultraDreadnought",
         "power": 712
       }
+    },
+    {
+      "userId": "9d50010a-82f9-4db9-aa55-e292388ea749",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Legendary",
+      "damageDealt": 8525,
+      "damageType": "Bomb",
+      "remainingHp": 7294891,
+      "maxHp": 7500000,
+      "startedOn": 1793835868,
+      "completedOn": 1793835868,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
