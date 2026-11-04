@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793808915,
+  "fetchedOn": 1793809582,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -2086,6 +2086,90 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 31978
+      }
+    },
+    {
+      "userId": "bb692d43-0c30-4d9d-8472-5eab7706487e",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Legendary",
+      "damageDealt": 1191115,
+      "damageType": "Battle",
+      "remainingHp": 2476394,
+      "maxHp": 5000000,
+      "startedOn": 1793809008,
+      "completedOn": 1793809199,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 568725
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 414905
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 558807
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 460430
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 892176
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "ultraDreadnought",
+        "power": 67126
+      }
+    },
+    {
+      "userId": "bb692d43-0c30-4d9d-8472-5eab7706487e",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Legendary",
+      "damageDealt": 1270628,
+      "damageType": "Battle",
+      "remainingHp": 1205766,
+      "maxHp": 5000000,
+      "startedOn": 1793809294,
+      "completedOn": 1793809470,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 568725
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 414905
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 558807
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 460430
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 892176
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "ultraDreadnought",
+        "power": 67126
       }
     }
   ]
