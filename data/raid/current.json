@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793804167,
+  "fetchedOn": 1793805338,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -1550,6 +1550,171 @@
       "completedOn": 1793804009,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "9e4b7170-a4a4-4b28-ac57-6cd3cb8efed0",
+      "tier": 3,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Epic",
+      "damageDealt": 592455,
+      "damageType": "Battle",
+      "remainingHp": 1478450,
+      "maxHp": 2080000,
+      "startedOn": 1793804017,
+      "completedOn": 1793804214,
+      "heroDetails": [
+        {
+          "unitId": "ultraTitus",
+          "power": 1054271
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 1079285
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 976684
+        },
+        {
+          "unitId": "bloodDeathCompany",
+          "power": 953601
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 1108911
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 984974
+      }
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 3,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Epic",
+      "damageDealt": 199016,
+      "damageType": "Battle",
+      "remainingHp": 371662,
+      "maxHp": 2080000,
+      "startedOn": 1793804552,
+      "completedOn": 1793804791,
+      "heroDetails": [
+        {
+          "unitId": "adeptHospitaller",
+          "power": 91114
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 73794
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 89230
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 146352
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 364540
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "86dc308e-8ca0-4470-ae78-ced2ef219eea",
+      "tier": 3,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Epic",
+      "damageDealt": 907772,
+      "damageType": "Battle",
+      "remainingHp": 570678,
+      "maxHp": 2080000,
+      "startedOn": 1793804558,
+      "completedOn": 1793804710,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 717167
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 688826
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 728184
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 513254
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 806817
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "deathCrawler",
+        "power": 11623
+      }
+    },
+    {
+      "userId": "c9b88058-b28d-49da-9e8d-a2c68770ac97",
+      "tier": 3,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Epic",
+      "damageDealt": 371662,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 2080000,
+      "startedOn": 1793804858,
+      "completedOn": 1793804947,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 751718
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 448588
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 480981
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 841384
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 442854
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 139178
+      }
     }
   ]
 }
