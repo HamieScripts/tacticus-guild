@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793792471,
+  "fetchedOn": 1793794864,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -623,6 +623,249 @@
         "unitId": "astraOrdnanceBattery",
         "power": 17350
       }
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 2,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Rare",
+      "damageDealt": 266013,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 450000,
+      "startedOn": 1793793341,
+      "completedOn": 1793793374,
+      "heroDetails": [
+        {
+          "unitId": "eldarLhykhis",
+          "power": 425509
+        },
+        {
+          "unitId": "tauDarkstrider",
+          "power": 531687
+        },
+        {
+          "unitId": "tauFarsight",
+          "power": 532273
+        },
+        {
+          "unitId": "admecManipulus",
+          "power": 436180
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 865037
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 476066
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 2,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss8Boss1EldarAvatar",
+      "type": "AvatarOfKhaine",
+      "rarity": "Rare",
+      "damageDealt": 525000,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 525000,
+      "startedOn": 1793793501,
+      "completedOn": 1793793661,
+      "heroDetails": [
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 890893
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 738255
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 570406
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 573819
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 642148
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 501824
+      }
+    },
+    {
+      "userId": "86dc308e-8ca0-4470-ae78-ced2ef219eea",
+      "tier": 3,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Epic",
+      "damageDealt": 1200000,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 1200000,
+      "startedOn": 1793793729,
+      "completedOn": 1793793861,
+      "heroDetails": [
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 513254
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 688826
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 717167
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 806817
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 728184
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 3,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Epic",
+      "damageDealt": 8927,
+      "damageType": "Bomb",
+      "remainingHp": 1491073,
+      "maxHp": 1500000,
+      "startedOn": 1793794001,
+      "completedOn": 1793794001,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 3,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Epic",
+      "damageDealt": 211606,
+      "damageType": "Battle",
+      "remainingHp": 1279467,
+      "maxHp": 1500000,
+      "startedOn": 1793794055,
+      "completedOn": 1793794233,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 325028
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 193822
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 376208
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 61087
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 80265
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 2314
+      }
+    },
+    {
+      "userId": "553c48cc-fcd5-4d34-94cd-691ecad888cc",
+      "tier": 3,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Epic",
+      "damageDealt": 824271,
+      "damageType": "Battle",
+      "remainingHp": 446885,
+      "maxHp": 1500000,
+      "startedOn": 1793794267,
+      "completedOn": 1793794473,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 992667
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 697370
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 850369
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 620121
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 907631
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 641082
+      }
+    },
+    {
+      "userId": "96ef9f5b-d818-4530-8b2c-37c9a4efb35a",
+      "tier": 3,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Epic",
+      "damageDealt": 8311,
+      "damageType": "Bomb",
+      "remainingHp": 1271156,
+      "maxHp": 1500000,
+      "startedOn": 1793794326,
+      "completedOn": 1793794326,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
