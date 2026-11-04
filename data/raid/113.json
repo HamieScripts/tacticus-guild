@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793798058,
+  "fetchedOn": 1793798781,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -1112,6 +1112,90 @@
       "completedOn": 1793797970,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "44b76120-14ab-4567-882d-8cc6883fa0a9",
+      "tier": 3,
+      "set": 3,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss4MiniBoss1OrksBigMek",
+      "type": "Ghazghkull",
+      "rarity": "Epic",
+      "damageDealt": 82820,
+      "damageType": "Battle",
+      "remainingHp": 85180,
+      "maxHp": 168000,
+      "startedOn": 1793798089,
+      "completedOn": 1793798353,
+      "heroDetails": [
+        {
+          "unitId": "blackPossession",
+          "power": 211572
+        },
+        {
+          "unitId": "admecManipulus",
+          "power": 74144
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 342885
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 364540
+        },
+        {
+          "unitId": "admecMarshall",
+          "power": 159615
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1324
+      }
+    },
+    {
+      "userId": "667d435c-4668-4676-a002-e533709f1cc6",
+      "tier": 3,
+      "set": 3,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss4MiniBoss1OrksBigMek",
+      "type": "Ghazghkull",
+      "rarity": "Epic",
+      "damageDealt": 168000,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 168000,
+      "startedOn": 1793798295,
+      "completedOn": 1793798410,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 450534
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 374570
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 814996
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 498554
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 420440
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 127322
+      }
     }
   ]
 }
