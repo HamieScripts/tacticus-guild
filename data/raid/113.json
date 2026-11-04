@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793805338,
+  "fetchedOn": 1793805967,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -1714,6 +1714,108 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 139178
+      }
+    },
+    {
+      "userId": "8485b330-6671-46b7-a258-9a2ed7d0e5f0",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Legendary",
+      "damageDealt": 8655,
+      "damageType": "Bomb",
+      "remainingHp": 4991345,
+      "maxHp": 5000000,
+      "startedOn": 1793805669,
+      "completedOn": 1793805669,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "8485b330-6671-46b7-a258-9a2ed7d0e5f0",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss1TyranNeurothrope",
+      "type": "ScreamerKiller",
+      "rarity": "Legendary",
+      "damageDealt": 241368,
+      "damageType": "Battle",
+      "remainingHp": 158632,
+      "maxHp": 400000,
+      "startedOn": 1793805699,
+      "completedOn": 1793805837,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 835477
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 256450
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 454218
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 731685
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 771232
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 10517
+      }
+    },
+    {
+      "userId": "8485b330-6671-46b7-a258-9a2ed7d0e5f0",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss6MiniBoss1TyranNeurothrope",
+      "type": "ScreamerKiller",
+      "rarity": "Legendary",
+      "damageDealt": 158632,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 400000,
+      "startedOn": 1793805872,
+      "completedOn": 1793805945,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 835477
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 256450
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 454218
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 731685
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 771232
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 10517
       }
     }
   ]
