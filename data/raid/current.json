@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793894177,
+  "fetchedOn": 1793900467,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -4894,6 +4894,62 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 36226
+      }
+    },
+    {
+      "userId": "2ced1809-940f-4ea3-a99a-64a858f7926c",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Legendary",
+      "damageDealt": 8454,
+      "damageType": "Bomb",
+      "remainingHp": 10366347,
+      "maxHp": 10400000,
+      "startedOn": 1793899674,
+      "completedOn": 1793899674,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "2ced1809-940f-4ea3-a99a-64a858f7926c",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss4MiniBoss1OrksBigMek",
+      "type": "Ghazghkull",
+      "rarity": "Legendary",
+      "damageDealt": 88404,
+      "damageType": "Battle",
+      "remainingHp": 305260,
+      "maxHp": 1000000,
+      "startedOn": 1793899772,
+      "completedOn": 1793899942,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 416010
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 675861
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 500330
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 654004
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 85605
       }
     }
   ]
