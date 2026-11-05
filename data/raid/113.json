@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793913973,
+  "fetchedOn": 1793914863,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -5155,6 +5155,24 @@
         "unitId": "astraOrdnanceBattery",
         "power": 17350
       }
+    },
+    {
+      "userId": "d9c3ef49-eadf-499d-ab81-d655dbcc086f",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Legendary",
+      "damageDealt": 9174,
+      "damageType": "Bomb",
+      "remainingHp": 9675465,
+      "maxHp": 10400000,
+      "startedOn": 1793914630,
+      "completedOn": 1793914630,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
