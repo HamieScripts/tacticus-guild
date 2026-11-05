@@ -4,7 +4,7 @@ on:
   schedule:
     # Avoid the crowded quarter-hour boundaries where GitHub can delay or drop
     # scheduled workflows under heavy load.
-    - cron: '7,22,37,52 * * * *'
+    - cron: '7 * * * *'
   workflow_dispatch:
 
 permissions:
