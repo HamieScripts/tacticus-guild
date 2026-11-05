@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793917567,
+  "fetchedOn": 1793918483,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -5317,6 +5317,90 @@
       "completedOn": 1793917497,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "c47778d3-3a3c-4cc0-b405-3aed0d993c45",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Legendary",
+      "damageDealt": 533639,
+      "damageType": "Battle",
+      "remainingHp": 6887181,
+      "maxHp": 10400000,
+      "startedOn": 1793917536,
+      "completedOn": 1793917762,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 684394
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 490666
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 584779
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 665127
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 641490
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 1030
+      }
+    },
+    {
+      "userId": "c47778d3-3a3c-4cc0-b405-3aed0d993c45",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Legendary",
+      "damageDealt": 656256,
+      "damageType": "Battle",
+      "remainingHp": 6230925,
+      "maxHp": 10400000,
+      "startedOn": 1793917806,
+      "completedOn": 1793918013,
+      "heroDetails": [
+        {
+          "unitId": "ultraTitus",
+          "power": 665127
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 490666
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 584779
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 641490
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 684394
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 1030
+      }
     }
   ]
 }
