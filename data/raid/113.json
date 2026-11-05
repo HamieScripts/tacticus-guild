@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793913140,
+  "fetchedOn": 1793913973,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -5094,6 +5094,66 @@
       "machineOfWarDetails": {
         "unitId": "thousDaemonPrince",
         "power": 66681
+      }
+    },
+    {
+      "userId": "3062a0b8-d318-44a8-a8f2-fe239835c307",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Legendary",
+      "damageDealt": 9020,
+      "damageType": "Bomb",
+      "remainingHp": 10011900,
+      "maxHp": 10400000,
+      "startedOn": 1793913476,
+      "completedOn": 1793913476,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "3062a0b8-d318-44a8-a8f2-fe239835c307",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Legendary",
+      "damageDealt": 327261,
+      "damageType": "Battle",
+      "remainingHp": 9684639,
+      "maxHp": 10400000,
+      "startedOn": 1793913487,
+      "completedOn": 1793913745,
+      "heroDetails": [
+        {
+          "unitId": "ultraTitus",
+          "power": 507252
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 453420
+        },
+        {
+          "unitId": "blackTerminator",
+          "power": 632089
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 605855
+        },
+        {
+          "unitId": "astraOrdnance",
+          "power": 660495
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 17350
       }
     }
   ]
