@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793870218,
+  "fetchedOn": 1793871663,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -3923,6 +3923,24 @@
         "unitId": "thousDaemonPrince",
         "power": 501824
       }
+    },
+    {
+      "userId": "bb692d43-0c30-4d9d-8472-5eab7706487e",
+      "tier": 4,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 8846,
+      "damageType": "Bomb",
+      "remainingHp": 5037737,
+      "maxHp": 10000000,
+      "startedOn": 1793871300,
+      "completedOn": 1793871300,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
