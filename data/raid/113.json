@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793878862,
+  "fetchedOn": 1793879768,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -4367,6 +4367,108 @@
       "completedOn": 1793878791,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
+      "tier": 4,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 230978,
+      "damageType": "Battle",
+      "remainingHp": 795882,
+      "maxHp": 10000000,
+      "startedOn": 1793878848,
+      "completedOn": 1793879204,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 495992
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 154373
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 238032
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 387616
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 325354
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 100412
+      }
+    },
+    {
+      "userId": "c62ee67f-0a9e-4e29-8861-320e57788e6c",
+      "tier": 4,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 8379,
+      "damageType": "Bomb",
+      "remainingHp": 1026860,
+      "maxHp": 10000000,
+      "startedOn": 1793878890,
+      "completedOn": 1793878890,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "c62ee67f-0a9e-4e29-8861-320e57788e6c",
+      "tier": 4,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 593108,
+      "damageType": "Battle",
+      "remainingHp": 202774,
+      "maxHp": 10000000,
+      "startedOn": 1793878940,
+      "completedOn": 1793879302,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 171387
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 532836
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 493407
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 560984
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 787798
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 105653
+      }
     }
   ]
 }
