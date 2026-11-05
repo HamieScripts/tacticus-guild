@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793892374,
+  "fetchedOn": 1793894177,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -4792,6 +4792,108 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 83737
+      }
+    },
+    {
+      "userId": "8485b330-6671-46b7-a258-9a2ed7d0e5f0",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Legendary",
+      "damageDealt": 7751,
+      "damageType": "Bomb",
+      "remainingHp": 10374801,
+      "maxHp": 10400000,
+      "startedOn": 1793893329,
+      "completedOn": 1793893329,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "8485b330-6671-46b7-a258-9a2ed7d0e5f0",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss4MiniBoss2OrksNob",
+      "type": "Ghazghkull",
+      "rarity": "Legendary",
+      "damageDealt": 283924,
+      "damageType": "Battle",
+      "remainingHp": 94157,
+      "maxHp": 1000000,
+      "startedOn": 1793893347,
+      "completedOn": 1793893499,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 835477
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 454218
+        },
+        {
+          "unitId": "blackTerminator",
+          "power": 285744
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 776970
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 256450
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 83737
+      }
+    },
+    {
+      "userId": "293f4b63-28b1-4b5e-88ee-59936eed8ddb",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss4MiniBoss1OrksBigMek",
+      "type": "Ghazghkull",
+      "rarity": "Legendary",
+      "damageDealt": 294475,
+      "damageType": "Battle",
+      "remainingHp": 393664,
+      "maxHp": 1000000,
+      "startedOn": 1793893795,
+      "completedOn": 1793893910,
+      "heroDetails": [
+        {
+          "unitId": "ultraTitus",
+          "power": 885602
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 863255
+        },
+        {
+          "unitId": "spaceBlackmane",
+          "power": 404476
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 908816
+        },
+        {
+          "unitId": "tauMarksman",
+          "power": 146114
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 36226
       }
     }
   ]
