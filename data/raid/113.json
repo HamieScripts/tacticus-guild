@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793857265,
+  "fetchedOn": 1793858192,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -3593,6 +3593,24 @@
         "unitId": "tyranBiovore",
         "power": 16046
       }
+    },
+    {
+      "userId": "c9b88058-b28d-49da-9e8d-a2c68770ac97",
+      "tier": 4,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss1AdmecMarshall",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 9051,
+      "damageType": "Bomb",
+      "remainingHp": 522536,
+      "maxHp": 800000,
+      "startedOn": 1793858084,
+      "completedOn": 1793858084,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
