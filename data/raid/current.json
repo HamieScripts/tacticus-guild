@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793850982,
+  "fetchedOn": 1793852214,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -3491,6 +3491,24 @@
         "unitId": "tyranBiovore",
         "power": 518336
       }
+    },
+    {
+      "userId": "077980e3-7cb5-44ab-977e-846af676ccce",
+      "tier": 4,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 9664,
+      "damageType": "Bomb",
+      "remainingHp": 9990336,
+      "maxHp": 10000000,
+      "startedOn": 1793851623,
+      "completedOn": 1793851623,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
