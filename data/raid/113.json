@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793861770,
+  "fetchedOn": 1793868999,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -3820,6 +3820,66 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 858750
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 4,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 9450,
+      "damageType": "Bomb",
+      "remainingHp": 6780781,
+      "maxHp": 10000000,
+      "startedOn": 1793868553,
+      "completedOn": 1793868553,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 4,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 792757,
+      "damageType": "Battle",
+      "remainingHp": 5988024,
+      "maxHp": 10000000,
+      "startedOn": 1793868562,
+      "completedOn": 1793868937,
+      "heroDetails": [
+        {
+          "unitId": "blackPossession",
+          "power": 738255
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 573819
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 890893
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 642148
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 570406
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 501824
       }
     }
   ]
