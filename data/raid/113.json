@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793914863,
+  "fetchedOn": 1793916870,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -5173,6 +5173,132 @@
       "completedOn": 1793914630,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "bb692d43-0c30-4d9d-8472-5eab7706487e",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Legendary",
+      "damageDealt": 664176,
+      "damageType": "Battle",
+      "remainingHp": 9011289,
+      "maxHp": 10400000,
+      "startedOn": 1793915712,
+      "completedOn": 1793915931,
+      "heroDetails": [
+        {
+          "unitId": "bloodDante",
+          "power": 558807
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 414905
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 460430
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 568725
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 892176
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 144154
+      }
+    },
+    {
+      "userId": "2ced1809-940f-4ea3-a99a-64a858f7926c",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Legendary",
+      "damageDealt": 624085,
+      "damageType": "Battle",
+      "remainingHp": 8387204,
+      "maxHp": 10400000,
+      "startedOn": 1793916106,
+      "completedOn": 1793916314,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 439898
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 675861
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 500330
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 489074
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 654004
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 85605
+      }
+    },
+    {
+      "userId": "2ced1809-940f-4ea3-a99a-64a858f7926c",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Legendary",
+      "damageDealt": 958649,
+      "damageType": "Battle",
+      "remainingHp": 7428555,
+      "maxHp": 10400000,
+      "startedOn": 1793916382,
+      "completedOn": 1793916593,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 439898
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 675861
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 500330
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 489074
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 654004
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 85605
+      }
     }
   ]
 }
