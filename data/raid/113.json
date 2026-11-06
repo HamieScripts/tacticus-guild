@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793935100,
+  "fetchedOn": 1793942167,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -6079,6 +6079,126 @@
         "unitId": "tyranBiovore",
         "power": 36226
       }
+    },
+    {
+      "userId": "260cfd81-b5de-433e-bc13-cb5f9a08b137",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss5Boss1DeathMortarion",
+      "type": "Mortarion",
+      "rarity": "Legendary",
+      "damageDealt": 8142,
+      "damageType": "Bomb",
+      "remainingHp": 14982623,
+      "maxHp": 15000000,
+      "startedOn": 1793939022,
+      "completedOn": 1793939022,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "260cfd81-b5de-433e-bc13-cb5f9a08b137",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss5MiniBoss2DeathBlightbringer",
+      "type": "Mortarion",
+      "rarity": "Legendary",
+      "damageDealt": 104929,
+      "damageType": "Battle",
+      "remainingHp": 190487,
+      "maxHp": 500500,
+      "startedOn": 1793939029,
+      "completedOn": 1793939192,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 883564
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 900992
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 616618
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 775290
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 751514
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 713700
+      }
+    },
+    {
+      "userId": "9d50010a-82f9-4db9-aa55-e292388ea749",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss5MiniBoss1DeathRotbone",
+      "type": "Mortarion",
+      "rarity": "Legendary",
+      "damageDealt": 456687,
+      "damageType": "Battle",
+      "remainingHp": 63523,
+      "maxHp": 1050000,
+      "startedOn": 1793940209,
+      "completedOn": 1793940393,
+      "heroDetails": [
+        {
+          "unitId": "bloodDeathCompany",
+          "power": 606547
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 586675
+        },
+        {
+          "unitId": "bloodIntercessor",
+          "power": 425913
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 750526
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 878103
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 149526
+      }
+    },
+    {
+      "userId": "9d50010a-82f9-4db9-aa55-e292388ea749",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss5Boss1DeathMortarion",
+      "type": "Mortarion",
+      "rarity": "Legendary",
+      "damageDealt": 8098,
+      "damageType": "Bomb",
+      "remainingHp": 14974525,
+      "maxHp": 15000000,
+      "startedOn": 1793940479,
+      "completedOn": 1793940479,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
