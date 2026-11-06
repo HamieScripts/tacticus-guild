@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793985257,
+  "fetchedOn": 1793989161,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -7207,6 +7207,150 @@
         {
           "unitId": "thousTzaangor",
           "power": 383977
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 356611
+      }
+    },
+    {
+      "userId": "a736e5fd-6a0b-4137-9ec0-526345cd6e96",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss5Boss1DeathMortarion",
+      "type": "Mortarion",
+      "rarity": "Legendary",
+      "damageDealt": 295973,
+      "damageType": "Battle",
+      "remainingHp": 7910456,
+      "maxHp": 15000000,
+      "startedOn": 1793985117,
+      "completedOn": 1793985396,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 592367
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 685806
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 685193
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 748078
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 684751
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 152768
+      }
+    },
+    {
+      "userId": "fce63e8e-b46e-4fe1-9031-9475f46ee504",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss5Boss1DeathMortarion",
+      "type": "Mortarion",
+      "rarity": "Legendary",
+      "damageDealt": 95102,
+      "damageType": "Battle",
+      "remainingHp": 8206429,
+      "maxHp": 15000000,
+      "startedOn": 1793985163,
+      "completedOn": 1793985262,
+      "heroDetails": [
+        {
+          "unitId": "eldarFarseer",
+          "power": 106124
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 654704
+        },
+        {
+          "unitId": "eldarMauganRa",
+          "power": 517024
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 562391
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 517983
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 1064
+      }
+    },
+    {
+      "userId": "2ced1809-940f-4ea3-a99a-64a858f7926c",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss5Boss1DeathMortarion",
+      "type": "Mortarion",
+      "rarity": "Legendary",
+      "damageDealt": 8587,
+      "damageType": "Bomb",
+      "remainingHp": 7901869,
+      "maxHp": 15000000,
+      "startedOn": 1793986141,
+      "completedOn": 1793986141,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "bb692d43-0c30-4d9d-8472-5eab7706487e",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss5Boss1DeathMortarion",
+      "type": "Mortarion",
+      "rarity": "Legendary",
+      "damageDealt": 319023,
+      "damageType": "Battle",
+      "remainingHp": 7582846,
+      "maxHp": 15000000,
+      "startedOn": 1793987591,
+      "completedOn": 1793987824,
+      "heroDetails": [
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 486544
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 516720
+        },
+        {
+          "unitId": "thousTzaangor",
+          "power": 383977
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 394014
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 629479
         }
       ],
       "machineOfWarDetails": {
