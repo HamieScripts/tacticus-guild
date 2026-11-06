@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793978130,
+  "fetchedOn": 1793985257,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -7152,6 +7152,66 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 149526
+      }
+    },
+    {
+      "userId": "bb692d43-0c30-4d9d-8472-5eab7706487e",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss5Boss1DeathMortarion",
+      "type": "Mortarion",
+      "rarity": "Legendary",
+      "damageDealt": 8178,
+      "damageType": "Bomb",
+      "remainingHp": 8781211,
+      "maxHp": 15000000,
+      "startedOn": 1793983630,
+      "completedOn": 1793983630,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "bb692d43-0c30-4d9d-8472-5eab7706487e",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss5Boss1DeathMortarion",
+      "type": "Mortarion",
+      "rarity": "Legendary",
+      "damageDealt": 479680,
+      "damageType": "Battle",
+      "remainingHp": 8301531,
+      "maxHp": 15000000,
+      "startedOn": 1793983658,
+      "completedOn": 1793983942,
+      "heroDetails": [
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 486544
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 516720
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 629479
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 394014
+        },
+        {
+          "unitId": "thousTzaangor",
+          "power": 383977
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 356611
       }
     }
   ]
