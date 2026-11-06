@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793942167,
+  "fetchedOn": 1793946296,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -6199,6 +6199,270 @@
       "completedOn": 1793940479,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss5MiniBoss2DeathBlightbringer",
+      "type": "Mortarion",
+      "rarity": "Legendary",
+      "damageDealt": 130286,
+      "damageType": "Battle",
+      "remainingHp": 60201,
+      "maxHp": 500500,
+      "startedOn": 1793943000,
+      "completedOn": 1793943119,
+      "heroDetails": [
+        {
+          "unitId": "eldarFarseer",
+          "power": 368517
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 657529
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 866505
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 642718
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 982212
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 16046
+      }
+    },
+    {
+      "userId": "077980e3-7cb5-44ab-977e-846af676ccce",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss5Boss1DeathMortarion",
+      "type": "Mortarion",
+      "rarity": "Legendary",
+      "damageDealt": 7776,
+      "damageType": "Bomb",
+      "remainingHp": 14966749,
+      "maxHp": 15000000,
+      "startedOn": 1793943385,
+      "completedOn": 1793943385,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "3062a0b8-d318-44a8-a8f2-fe239835c307",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss5Boss1DeathMortarion",
+      "type": "Mortarion",
+      "rarity": "Legendary",
+      "damageDealt": 66026,
+      "damageType": "Battle",
+      "remainingHp": 14892379,
+      "maxHp": 15000000,
+      "startedOn": 1793944250,
+      "completedOn": 1793944444,
+      "heroDetails": [
+        {
+          "unitId": "ultraTitus",
+          "power": 537167
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 453420
+        },
+        {
+          "unitId": "blackTerminator",
+          "power": 632089
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 605855
+        },
+        {
+          "unitId": "astraOrdnance",
+          "power": 660495
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 17350
+      }
+    },
+    {
+      "userId": "b29d75a2-5540-4ded-9383-998307fa1a4a",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss5Boss1DeathMortarion",
+      "type": "Mortarion",
+      "rarity": "Legendary",
+      "damageDealt": 8344,
+      "damageType": "Bomb",
+      "remainingHp": 14958405,
+      "maxHp": 15000000,
+      "startedOn": 1793944296,
+      "completedOn": 1793944296,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "b29d75a2-5540-4ded-9383-998307fa1a4a",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss5MiniBoss1DeathRotbone",
+      "type": "Mortarion",
+      "rarity": "Legendary",
+      "damageDealt": 63523,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 1050000,
+      "startedOn": 1793944303,
+      "completedOn": 1793944400,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 272947
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 693170
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 767753
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 1024915
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 859967
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 518336
+      }
+    },
+    {
+      "userId": "3062a0b8-d318-44a8-a8f2-fe239835c307",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss5MiniBoss2DeathBlightbringer",
+      "type": "Mortarion",
+      "rarity": "Legendary",
+      "damageDealt": 60201,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 500500,
+      "startedOn": 1793944484,
+      "completedOn": 1793944640,
+      "heroDetails": [
+        {
+          "unitId": "ultraTitus",
+          "power": 537167
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 555484
+        },
+        {
+          "unitId": "blackTerminator",
+          "power": 632089
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 605855
+        },
+        {
+          "unitId": "astraOrdnance",
+          "power": 660495
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 17350
+      }
+    },
+    {
+      "userId": "c62ee67f-0a9e-4e29-8861-320e57788e6c",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss5Boss1DeathMortarion",
+      "type": "Mortarion",
+      "rarity": "Legendary",
+      "damageDealt": 8775,
+      "damageType": "Bomb",
+      "remainingHp": 14883604,
+      "maxHp": 15000000,
+      "startedOn": 1793944533,
+      "completedOn": 1793944533,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "077980e3-7cb5-44ab-977e-846af676ccce",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss5Boss1DeathMortarion",
+      "type": "Mortarion",
+      "rarity": "Legendary",
+      "damageDealt": 531491,
+      "damageType": "Battle",
+      "remainingHp": 14352113,
+      "maxHp": 15000000,
+      "startedOn": 1793944800,
+      "completedOn": 1793945080,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 961644
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 1010207
+        },
+        {
+          "unitId": "custoAtlacoya",
+          "power": 369022
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 666861
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 794968
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 858750
+      }
     }
   ]
 }
