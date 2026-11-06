@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793927822,
+  "fetchedOn": 1793931645,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -5832,6 +5832,66 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 78923
+      }
+    },
+    {
+      "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Legendary",
+      "damageDealt": 7899,
+      "damageType": "Bomb",
+      "remainingHp": 796076,
+      "maxHp": 10400000,
+      "startedOn": 1793928918,
+      "completedOn": 1793928918,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Legendary",
+      "damageDealt": 400460,
+      "damageType": "Battle",
+      "remainingHp": 395616,
+      "maxHp": 10400000,
+      "startedOn": 1793928925,
+      "completedOn": 1793929045,
+      "heroDetails": [
+        {
+          "unitId": "eldarFarseer",
+          "power": 368517
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 982212
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 642718
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 866505
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 657529
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 16046
       }
     }
   ]
