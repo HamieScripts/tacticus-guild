@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793946296,
+  "fetchedOn": 1793953205,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -6462,6 +6462,66 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 858750
+      }
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss5Boss1DeathMortarion",
+      "type": "Mortarion",
+      "rarity": "Legendary",
+      "damageDealt": 8335,
+      "damageType": "Bomb",
+      "remainingHp": 14343778,
+      "maxHp": 15000000,
+      "startedOn": 1793950168,
+      "completedOn": 1793950168,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss5Boss1DeathMortarion",
+      "type": "Mortarion",
+      "rarity": "Legendary",
+      "damageDealt": 182624,
+      "damageType": "Battle",
+      "remainingHp": 14161154,
+      "maxHp": 15000000,
+      "startedOn": 1793950248,
+      "completedOn": 1793950447,
+      "heroDetails": [
+        {
+          "unitId": "tauFarsight",
+          "power": 532273
+        },
+        {
+          "unitId": "admecManipulus",
+          "power": 436180
+        },
+        {
+          "unitId": "eldarLhykhis",
+          "power": 428709
+        },
+        {
+          "unitId": "tauDarkstrider",
+          "power": 531687
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 870510
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 476066
       }
     }
   ]
