@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793967710,
+  "fetchedOn": 1793970915,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -6804,6 +6804,90 @@
       "machineOfWarDetails": {
         "unitId": "thousDaemonPrince",
         "power": 501824
+      }
+    },
+    {
+      "userId": "86dc308e-8ca0-4470-ae78-ced2ef219eea",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss5Boss1DeathMortarion",
+      "type": "Mortarion",
+      "rarity": "Legendary",
+      "damageDealt": 132021,
+      "damageType": "Battle",
+      "remainingHp": 11088145,
+      "maxHp": 15000000,
+      "startedOn": 1793968080,
+      "completedOn": 1793968205,
+      "heroDetails": [
+        {
+          "unitId": "eldarLhykhis",
+          "power": 377975
+        },
+        {
+          "unitId": "tauFarsight",
+          "power": 371865
+        },
+        {
+          "unitId": "admecManipulus",
+          "power": 380800
+        },
+        {
+          "unitId": "tauDarkstrider",
+          "power": 385876
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 552266
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "necroReanimator",
+        "power": 478
+      }
+    },
+    {
+      "userId": "d9c3ef49-eadf-499d-ab81-d655dbcc086f",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss5Boss1DeathMortarion",
+      "type": "Mortarion",
+      "rarity": "Legendary",
+      "damageDealt": 909165,
+      "damageType": "Battle",
+      "remainingHp": 10178980,
+      "maxHp": 15000000,
+      "startedOn": 1793968666,
+      "completedOn": 1793969054,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 896997
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 947843
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 579221
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 666604
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 941720
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1040687
       }
     }
   ]
