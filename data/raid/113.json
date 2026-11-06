@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793989161,
+  "fetchedOn": 1793992409,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -7356,6 +7356,48 @@
       "machineOfWarDetails": {
         "unitId": "thousDaemonPrince",
         "power": 356611
+      }
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss5Boss1DeathMortarion",
+      "type": "Mortarion",
+      "rarity": "Legendary",
+      "damageDealt": 361555,
+      "damageType": "Battle",
+      "remainingHp": 7221291,
+      "maxHp": 15000000,
+      "startedOn": 1793991112,
+      "completedOn": 1793991250,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 906661
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 887601
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 656804
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 889839
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 1024799
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 476066
       }
     }
   ]
