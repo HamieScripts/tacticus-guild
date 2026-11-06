@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793931645,
+  "fetchedOn": 1793935100,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -5892,6 +5892,192 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 16046
+      }
+    },
+    {
+      "userId": "c9b88058-b28d-49da-9e8d-a2c68770ac97",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss4Boss1OrksGhazghkull",
+      "type": "Ghazghkull",
+      "rarity": "Legendary",
+      "damageDealt": 395616,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 10400000,
+      "startedOn": 1793932112,
+      "completedOn": 1793932225,
+      "heroDetails": [
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 263365
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 480981
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 751718
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 448588
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 841384
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 139178
+      }
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss5Boss1DeathMortarion",
+      "type": "Mortarion",
+      "rarity": "Legendary",
+      "damageDealt": 9235,
+      "damageType": "Bomb",
+      "remainingHp": 14990765,
+      "maxHp": 15000000,
+      "startedOn": 1793932494,
+      "completedOn": 1793932494,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss5MiniBoss2DeathBlightbringer",
+      "type": "Mortarion",
+      "rarity": "Legendary",
+      "damageDealt": 113182,
+      "damageType": "Battle",
+      "remainingHp": 387318,
+      "maxHp": 500500,
+      "startedOn": 1793932732,
+      "completedOn": 1793932880,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 419497
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 197610
+        },
+        {
+          "unitId": "spaceBlackmane",
+          "power": 59827
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 232706
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 486270
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1701
+      }
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss5MiniBoss2DeathBlightbringer",
+      "type": "Mortarion",
+      "rarity": "Legendary",
+      "damageDealt": 91902,
+      "damageType": "Battle",
+      "remainingHp": 295416,
+      "maxHp": 500500,
+      "startedOn": 1793932920,
+      "completedOn": 1793933071,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 419497
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 197610
+        },
+        {
+          "unitId": "spaceBlackmane",
+          "power": 59827
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 232706
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 486270
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1701
+      }
+    },
+    {
+      "userId": "293f4b63-28b1-4b5e-88ee-59936eed8ddb",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss5MiniBoss1DeathRotbone",
+      "type": "Mortarion",
+      "rarity": "Legendary",
+      "damageDealt": 529790,
+      "damageType": "Battle",
+      "remainingHp": 520210,
+      "maxHp": 1050000,
+      "startedOn": 1793934073,
+      "completedOn": 1793934262,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 863255
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 951669
+        },
+        {
+          "unitId": "tauMarksman",
+          "power": 146114
+        },
+        {
+          "unitId": "bloodDeathCompany",
+          "power": 76599
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 908816
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 36226
       }
     }
   ]
