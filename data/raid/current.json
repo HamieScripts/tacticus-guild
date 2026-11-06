@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1793960125,
+  "fetchedOn": 1793963679,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -6541,6 +6541,108 @@
       "completedOn": 1793957277,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "077980e3-7cb5-44ab-977e-846af676ccce",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss5Boss1DeathMortarion",
+      "type": "Mortarion",
+      "rarity": "Legendary",
+      "damageDealt": 1395279,
+      "damageType": "Battle",
+      "remainingHp": 12756148,
+      "maxHp": 15000000,
+      "startedOn": 1793961721,
+      "completedOn": 1793962010,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 961644
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 1010207
+        },
+        {
+          "unitId": "custoAtlacoya",
+          "power": 369022
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 666861
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 794968
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 858750
+      }
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss5Boss1DeathMortarion",
+      "type": "Mortarion",
+      "rarity": "Legendary",
+      "damageDealt": 7646,
+      "damageType": "Bomb",
+      "remainingHp": 12748502,
+      "maxHp": 15000000,
+      "startedOn": 1793962039,
+      "completedOn": 1793962039,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss5Boss1DeathMortarion",
+      "type": "Mortarion",
+      "rarity": "Legendary",
+      "damageDealt": 59406,
+      "damageType": "Battle",
+      "remainingHp": 12689096,
+      "maxHp": 15000000,
+      "startedOn": 1793962047,
+      "completedOn": 1793962137,
+      "heroDetails": [
+        {
+          "unitId": "admecDominus",
+          "power": 80265
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 71073
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 131052
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 193822
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 325028
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 2314
+      }
     }
   ]
 }
