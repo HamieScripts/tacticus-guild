@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1794039484,
+  "fetchedOn": 1794046434,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -9024,6 +9024,66 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 127322
+      }
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss3Minion3NecroMenhir",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 9143,
+      "damageType": "Bomb",
+      "remainingHp": 1117821,
+      "maxHp": 2400000,
+      "startedOn": 1794044770,
+      "completedOn": 1794044770,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss3Minion3NecroMenhir",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 98844,
+      "damageType": "Battle",
+      "remainingHp": 1018977,
+      "maxHp": 2400000,
+      "startedOn": 1794044780,
+      "completedOn": 1794044915,
+      "heroDetails": [
+        {
+          "unitId": "blackHaarken",
+          "power": 68432
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 72310
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 81384
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 95636
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 323238
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "darkaStormSpeeder",
+        "power": 1126
       }
     }
   ]
