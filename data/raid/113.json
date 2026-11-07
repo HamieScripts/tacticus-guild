@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1794032527,
+  "fetchedOn": 1794035665,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -8923,6 +8923,66 @@
       "completedOn": 1794031552,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss3Minion3NecroMenhir",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 9367,
+      "damageType": "Bomb",
+      "remainingHp": 2390633,
+      "maxHp": 2400000,
+      "startedOn": 1794033934,
+      "completedOn": 1794033934,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss3Minion3NecroMenhir",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 616911,
+      "damageType": "Battle",
+      "remainingHp": 1773722,
+      "maxHp": 2400000,
+      "startedOn": 1794033955,
+      "completedOn": 1794034142,
+      "heroDetails": [
+        {
+          "unitId": "admecManipulus",
+          "power": 436180
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 870510
+        },
+        {
+          "unitId": "tauFarsight",
+          "power": 532273
+        },
+        {
+          "unitId": "tauDarkstrider",
+          "power": 531687
+        },
+        {
+          "unitId": "eldarLhykhis",
+          "power": 428709
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 476066
+      }
     }
   ]
 }
