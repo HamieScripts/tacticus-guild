@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1794064391,
+  "fetchedOn": 1794068086,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -9558,6 +9558,108 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 152768
+      }
+    },
+    {
+      "userId": "97af6fa0-7607-449d-a18d-640f266c91f9",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 8525,
+      "damageType": "Bomb",
+      "remainingHp": 29942318,
+      "maxHp": 30000000,
+      "startedOn": 1794065238,
+      "completedOn": 1794065238,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "97af6fa0-7607-449d-a18d-640f266c91f9",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 135101,
+      "damageType": "Battle",
+      "remainingHp": 29807217,
+      "maxHp": 30000000,
+      "startedOn": 1794065245,
+      "completedOn": 1794065370,
+      "heroDetails": [
+        {
+          "unitId": "ultraTigurius",
+          "power": 469275
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 709940
+        },
+        {
+          "unitId": "deathTyphus",
+          "power": 641248
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 755028
+        },
+        {
+          "unitId": "genesKelermorph",
+          "power": 318061
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 1510
+      }
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss3Minion3NecroMenhir",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 72244,
+      "damageType": "Battle",
+      "remainingHp": 194970,
+      "maxHp": 2400000,
+      "startedOn": 1794066217,
+      "completedOn": 1794066337,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 265542
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 72310
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 81384
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 95636
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 323238
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "darkaStormSpeeder",
+        "power": 1126
       }
     }
   ]
