@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1794021374,
+  "fetchedOn": 1794025013,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -8742,6 +8742,90 @@
       "machineOfWarDetails": {
         "unitId": "thousDaemonPrince",
         "power": 66681
+      }
+    },
+    {
+      "userId": "9d50010a-82f9-4db9-aa55-e292388ea749",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss3Minion3NecroMenhir",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 587097,
+      "damageType": "Battle",
+      "remainingHp": 1812903,
+      "maxHp": 2400000,
+      "startedOn": 1794021883,
+      "completedOn": 1794022195,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 878103
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 281052
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 750526
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 678268
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 408940
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 149526
+      }
+    },
+    {
+      "userId": "8485b330-6671-46b7-a258-9a2ed7d0e5f0",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss3Minion3NecroMenhir",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 203827,
+      "damageType": "Battle",
+      "remainingHp": 1609076,
+      "maxHp": 2400000,
+      "startedOn": 1794023074,
+      "completedOn": 1794023209,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 835477
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 197700
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 803861
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 454218
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 776970
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 83737
       }
     }
   ]
