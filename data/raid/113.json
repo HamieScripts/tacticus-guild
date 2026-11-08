@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1794136356,
+  "fetchedOn": 1794140327,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -12045,6 +12045,108 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 858750
+      }
+    },
+    {
+      "userId": "8485b330-6671-46b7-a258-9a2ed7d0e5f0",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss12MiniBoss1DarkaTerminator",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 847174,
+      "damageType": "Battle",
+      "remainingHp": 1018373,
+      "maxHp": 3000000,
+      "startedOn": 1794136814,
+      "completedOn": 1794136989,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 454218
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 256450
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 835477
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 782905
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 803861
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 83737
+      }
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss12MiniBoss1DarkaTerminator",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 9013,
+      "damageType": "Bomb",
+      "remainingHp": 1009360,
+      "maxHp": 3000000,
+      "startedOn": 1794138329,
+      "completedOn": 1794138329,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss12MiniBoss1DarkaTerminator",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 96601,
+      "damageType": "Battle",
+      "remainingHp": 912759,
+      "maxHp": 3000000,
+      "startedOn": 1794138343,
+      "completedOn": 1794138448,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 272767
+        },
+        {
+          "unitId": "blackObliterator",
+          "power": 75011
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 323238
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 95636
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 81384
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 1312
       }
     }
   ]
