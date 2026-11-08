@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1794143599,
+  "fetchedOn": 1794147195,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -12249,6 +12249,108 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 78923
+      }
+    },
+    {
+      "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss12MiniBoss2DarkaCompanion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 9203,
+      "damageType": "Bomb",
+      "remainingHp": 2920751,
+      "maxHp": 3000000,
+      "startedOn": 1794146718,
+      "completedOn": 1794146718,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss12MiniBoss2DarkaCompanion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 324193,
+      "damageType": "Battle",
+      "remainingHp": 2596558,
+      "maxHp": 3000000,
+      "startedOn": 1794146776,
+      "completedOn": 1794146901,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 657529
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 642718
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 982212
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 360664
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 866505
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 16046
+      }
+    },
+    {
+      "userId": "553c48cc-fcd5-4d34-94cd-691ecad888cc",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss12MiniBoss2DarkaCompanion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 238801,
+      "damageType": "Battle",
+      "remainingHp": 2357757,
+      "maxHp": 3000000,
+      "startedOn": 1794146901,
+      "completedOn": 1794147032,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 636057
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 915695
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 850369
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 697370
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 992667
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 641082
       }
     }
   ]
