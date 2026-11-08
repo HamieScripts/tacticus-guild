@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1794111401,
+  "fetchedOn": 1794114859,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -11105,6 +11105,372 @@
       "maxHp": 30000000,
       "startedOn": 1794111398,
       "completedOn": 1794111398,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "3062a0b8-d318-44a8-a8f2-fe239835c307",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 213689,
+      "damageType": "Battle",
+      "remainingHp": 12809657,
+      "maxHp": 30000000,
+      "startedOn": 1794111426,
+      "completedOn": 1794111677,
+      "heroDetails": [
+        {
+          "unitId": "blackTerminator",
+          "power": 632089
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 537167
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 555484
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 611754
+        },
+        {
+          "unitId": "astraOrdnance",
+          "power": 660495
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 17350
+      }
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 8910,
+      "damageType": "Bomb",
+      "remainingHp": 12800747,
+      "maxHp": 30000000,
+      "startedOn": 1794112762,
+      "completedOn": 1794112762,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "bb692d43-0c30-4d9d-8472-5eab7706487e",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 9433,
+      "damageType": "Bomb",
+      "remainingHp": 12791314,
+      "maxHp": 30000000,
+      "startedOn": 1794113346,
+      "completedOn": 1794113346,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "bb692d43-0c30-4d9d-8472-5eab7706487e",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 492482,
+      "damageType": "Battle",
+      "remainingHp": 12298832,
+      "maxHp": 30000000,
+      "startedOn": 1794113387,
+      "completedOn": 1794113535,
+      "heroDetails": [
+        {
+          "unitId": "admecDominus",
+          "power": 457603
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 892176
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 568725
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 460430
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 414905
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 144154
+      }
+    },
+    {
+      "userId": "bb692d43-0c30-4d9d-8472-5eab7706487e",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 503831,
+      "damageType": "Battle",
+      "remainingHp": 11795001,
+      "maxHp": 30000000,
+      "startedOn": 1794113577,
+      "completedOn": 1794113762,
+      "heroDetails": [
+        {
+          "unitId": "admecDominus",
+          "power": 457603
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 892176
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 568725
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 460430
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 414905
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 34248
+      }
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 9389,
+      "damageType": "Bomb",
+      "remainingHp": 11785612,
+      "maxHp": 30000000,
+      "startedOn": 1794113771,
+      "completedOn": 1794113771,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 100194,
+      "damageType": "Battle",
+      "remainingHp": 11685418,
+      "maxHp": 30000000,
+      "startedOn": 1794113776,
+      "completedOn": 1794113858,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 419497
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 232706
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 486270
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 197610
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 34511
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 1116
+      }
+    },
+    {
+      "userId": "bb692d43-0c30-4d9d-8472-5eab7706487e",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 309928,
+      "damageType": "Battle",
+      "remainingHp": 11375490,
+      "maxHp": 30000000,
+      "startedOn": 1794113834,
+      "completedOn": 1794113945,
+      "heroDetails": [
+        {
+          "unitId": "admecDominus",
+          "power": 457603
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 892176
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 568725
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 460430
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 414905
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 144154
+      }
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 131784,
+      "damageType": "Battle",
+      "remainingHp": 11243706,
+      "maxHp": 30000000,
+      "startedOn": 1794113870,
+      "completedOn": 1794114009,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 419497
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 232706
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 486270
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 197610
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 34511
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 1116
+      }
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 115235,
+      "damageType": "Battle",
+      "remainingHp": 11128471,
+      "maxHp": 30000000,
+      "startedOn": 1794114040,
+      "completedOn": 1794114187,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 419497
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 232706
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 486270
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 197610
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 23246
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 1116
+      }
+    },
+    {
+      "userId": "9d50010a-82f9-4db9-aa55-e292388ea749",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 7952,
+      "damageType": "Bomb",
+      "remainingHp": 11120519,
+      "maxHp": 30000000,
+      "startedOn": 1794114846,
+      "completedOn": 1794114846,
       "heroDetails": [],
       "machineOfWarDetails": null
     }
