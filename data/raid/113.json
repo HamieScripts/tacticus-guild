@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1794093151,
+  "fetchedOn": 1794098354,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -10440,6 +10440,48 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 2314
+      }
+    },
+    {
+      "userId": "667d435c-4668-4676-a002-e533709f1cc6",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 370829,
+      "damageType": "Battle",
+      "remainingHp": 20380804,
+      "maxHp": 30000000,
+      "startedOn": 1794095398,
+      "completedOn": 1794095546,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 450534
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 420440
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 527898
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 814996
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 1027791
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 127322
       }
     }
   ]
