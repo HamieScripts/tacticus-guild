@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1794122115,
+  "fetchedOn": 1794129285,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -11887,6 +11887,45 @@
         "unitId": "tyranBiovore",
         "power": 1040687
       }
+    },
+    {
+      "userId": "c9b88058-b28d-49da-9e8d-a2c68770ac97",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 21517,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 30000000,
+      "startedOn": 1794128130,
+      "completedOn": 1794128168,
+      "heroDetails": [
+        {
+          "unitId": "tauDarkstrider",
+          "power": 30316
+        },
+        {
+          "unitId": "tauMarksman",
+          "power": 45491
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 442854
+        },
+        {
+          "unitId": "tauFarsight",
+          "power": 148129
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 716916
+        }
+      ],
+      "machineOfWarDetails": null
     }
   ]
 }
