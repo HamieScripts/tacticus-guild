@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1794258840,
+  "fetchedOn": 1794262401,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -15217,6 +15217,108 @@
       "completedOn": 1794258690,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 57807,
+      "damageType": "Battle",
+      "remainingHp": 28748417,
+      "maxHp": 37500000,
+      "startedOn": 1794259039,
+      "completedOn": 1794259233,
+      "heroDetails": [
+        {
+          "unitId": "admecManipulus",
+          "power": 436180
+        },
+        {
+          "unitId": "eldarLhykhis",
+          "power": 492209
+        },
+        {
+          "unitId": "tauFarsight",
+          "power": 532273
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 870510
+        },
+        {
+          "unitId": "tauDarkstrider",
+          "power": 531687
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 476066
+      }
+    },
+    {
+      "userId": "00089b17-8b84-4b14-98da-665543f2da9a",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 7473,
+      "damageType": "Bomb",
+      "remainingHp": 28740944,
+      "maxHp": 37500000,
+      "startedOn": 1794260872,
+      "completedOn": 1794260872,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "00089b17-8b84-4b14-98da-665543f2da9a",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 89891,
+      "damageType": "Battle",
+      "remainingHp": 28651053,
+      "maxHp": 37500000,
+      "startedOn": 1794260879,
+      "completedOn": 1794261006,
+      "heroDetails": [
+        {
+          "unitId": "spaceBlackmane",
+          "power": 492208
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 709955
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 443520
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 312457
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 139007
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1693
+      }
     }
   ]
 }
