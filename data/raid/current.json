@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1794244526,
+  "fetchedOn": 1794251602,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -14872,6 +14872,171 @@
         "unitId": "tyranBiovore",
         "power": 518336
       }
+    },
+    {
+      "userId": "fce63e8e-b46e-4fe1-9031-9475f46ee504",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 27561,
+      "damageType": "Battle",
+      "remainingHp": 29649008,
+      "maxHp": 37500000,
+      "startedOn": 1794244545,
+      "completedOn": 1794244653,
+      "heroDetails": [
+        {
+          "unitId": "blackAbaddon",
+          "power": 654704
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 517983
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 562391
+        },
+        {
+          "unitId": "necroDestroyer",
+          "power": 169317
+        },
+        {
+          "unitId": "eldarMauganRa",
+          "power": 519267
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "ultraDreadnought",
+        "power": 1216
+      }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 73300,
+      "damageType": "Battle",
+      "remainingHp": 29575708,
+      "maxHp": 37500000,
+      "startedOn": 1794245224,
+      "completedOn": 1794245398,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 182320
+        },
+        {
+          "unitId": "astraDreir",
+          "power": 551332
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 884233
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 838544
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 182421
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 66681
+      }
+    },
+    {
+      "userId": "275a8663-7ad1-4ec7-86ef-f4c97182473d",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 49514,
+      "damageType": "Battle",
+      "remainingHp": 29526194,
+      "maxHp": 37500000,
+      "startedOn": 1794246786,
+      "completedOn": 1794246952,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 401042
+        },
+        {
+          "unitId": "thousTerminator",
+          "power": 986508
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 702666
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 400585
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 598677
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 142038
+      }
+    },
+    {
+      "userId": "86dc308e-8ca0-4470-ae78-ced2ef219eea",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 187358,
+      "damageType": "Battle",
+      "remainingHp": 29338836,
+      "maxHp": 37500000,
+      "startedOn": 1794250373,
+      "completedOn": 1794250511,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 728184
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 688826
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 717167
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 571241
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 806817
+        }
+      ],
+      "machineOfWarDetails": null
     }
   ]
 }
