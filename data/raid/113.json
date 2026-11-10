@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1794302224,
+  "fetchedOn": 1794305740,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -16458,6 +16458,108 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 476066
+      }
+    },
+    {
+      "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 8881,
+      "damageType": "Bomb",
+      "remainingHp": 24374842,
+      "maxHp": 37500000,
+      "startedOn": 1794302419,
+      "completedOn": 1794302419,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 43614,
+      "damageType": "Battle",
+      "remainingHp": 24331228,
+      "maxHp": 37500000,
+      "startedOn": 1794302451,
+      "completedOn": 1794302745,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 495992
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 154373
+        },
+        {
+          "unitId": "deathBlightlord",
+          "power": 293336
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 398420
+        },
+        {
+          "unitId": "deathRotbone",
+          "power": 333558
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 100412
+      }
+    },
+    {
+      "userId": "68c0082a-e17d-4396-a6c7-5583760799cf",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 103522,
+      "damageType": "Battle",
+      "remainingHp": 24227706,
+      "maxHp": 37500000,
+      "startedOn": 1794302804,
+      "completedOn": 1794303112,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 495992
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 154373
+        },
+        {
+          "unitId": "deathBlightlord",
+          "power": 293336
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 398420
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 325354
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 100412
       }
     }
   ]
