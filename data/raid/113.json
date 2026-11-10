@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1794341707,
+  "fetchedOn": 1794345238,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -17377,6 +17377,84 @@
         "unitId": "tyranBiovore",
         "power": 78923
       }
+    },
+    {
+      "userId": "275a8663-7ad1-4ec7-86ef-f4c97182473d",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 7424,
+      "damageType": "Bomb",
+      "remainingHp": 20174885,
+      "maxHp": 37500000,
+      "startedOn": 1794341740,
+      "completedOn": 1794341740,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "275a8663-7ad1-4ec7-86ef-f4c97182473d",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 48718,
+      "damageType": "Battle",
+      "remainingHp": 20126167,
+      "maxHp": 37500000,
+      "startedOn": 1794341755,
+      "completedOn": 1794341887,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 401042
+        },
+        {
+          "unitId": "thousTerminator",
+          "power": 986508
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 702666
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 400585
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 598677
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 142038
+      }
+    },
+    {
+      "userId": "667d435c-4668-4676-a002-e533709f1cc6",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 8995,
+      "damageType": "Bomb",
+      "remainingHp": 20117172,
+      "maxHp": 37500000,
+      "startedOn": 1794345001,
+      "completedOn": 1794345001,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
