@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1794378269,
+  "fetchedOn": 1794381379,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -18654,6 +18654,66 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 2314
+      }
+    },
+    {
+      "userId": "3062a0b8-d318-44a8-a8f2-fe239835c307",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 7855,
+      "damageType": "Bomb",
+      "remainingHp": 16126124,
+      "maxHp": 37500000,
+      "startedOn": 1794378955,
+      "completedOn": 1794378955,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "3062a0b8-d318-44a8-a8f2-fe239835c307",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 36431,
+      "damageType": "Battle",
+      "remainingHp": 16089693,
+      "maxHp": 37500000,
+      "startedOn": 1794378959,
+      "completedOn": 1794379166,
+      "heroDetails": [
+        {
+          "unitId": "blackTerminator",
+          "power": 632089
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 537167
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 555484
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 612149
+        },
+        {
+          "unitId": "astraOrdnance",
+          "power": 660495
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 17350
       }
     }
   ]
