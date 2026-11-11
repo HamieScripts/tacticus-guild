@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1794370696,
+  "fetchedOn": 1794374149,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -18534,6 +18534,66 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 152768
+      }
+    },
+    {
+      "userId": "c62ee67f-0a9e-4e29-8861-320e57788e6c",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 8267,
+      "damageType": "Bomb",
+      "remainingHp": 16389722,
+      "maxHp": 37500000,
+      "startedOn": 1794372392,
+      "completedOn": 1794372392,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "bb692d43-0c30-4d9d-8472-5eab7706487e",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 117856,
+      "damageType": "Battle",
+      "remainingHp": 16271866,
+      "maxHp": 37500000,
+      "startedOn": 1794373128,
+      "completedOn": 1794373329,
+      "heroDetails": [
+        {
+          "unitId": "thousAhriman",
+          "power": 394014
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 316888
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 629479
+        },
+        {
+          "unitId": "thousTzaangor",
+          "power": 410788
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 486544
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 356611
       }
     }
   ]
