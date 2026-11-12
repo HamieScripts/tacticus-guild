@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1794478596,
+  "fetchedOn": 1794486117,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -21384,6 +21384,66 @@
       "machineOfWarDetails": {
         "unitId": "thousDaemonPrince",
         "power": 515918
+      }
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 9663,
+      "damageType": "Bomb",
+      "remainingHp": 5550203,
+      "maxHp": 37500000,
+      "startedOn": 1794485372,
+      "completedOn": 1794485372,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 58080,
+      "damageType": "Battle",
+      "remainingHp": 5492123,
+      "maxHp": 37500000,
+      "startedOn": 1794485377,
+      "completedOn": 1794485508,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 131052
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 376208
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 80265
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 193822
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 325028
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 2314
       }
     }
   ]
