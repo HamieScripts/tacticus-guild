@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1794536274,
+  "fetchedOn": 1794539877,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -23262,6 +23262,90 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 16046
+      }
+    },
+    {
+      "userId": "8485b330-6671-46b7-a258-9a2ed7d0e5f0",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 232798,
+      "damageType": "Battle",
+      "remainingHp": 44167975,
+      "maxHp": 45000000,
+      "startedOn": 1794536601,
+      "completedOn": 1794536774,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 782905
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 278760
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 835477
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 458312
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 804323
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 83737
+      }
+    },
+    {
+      "userId": "735797d5-c9c1-4788-8395-f3a66f408995",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 64180,
+      "damageType": "Battle",
+      "remainingHp": 44103795,
+      "maxHp": 45000000,
+      "startedOn": 1794538379,
+      "completedOn": 1794538447,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 151680
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 671402
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 375028
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 226333
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 143378
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 1108
       }
     }
   ]
