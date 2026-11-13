@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1794575746,
+  "fetchedOn": 1794582877,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -23796,6 +23796,108 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 76414
+      }
+    },
+    {
+      "userId": "bb692d43-0c30-4d9d-8472-5eab7706487e",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 7734,
+      "damageType": "Bomb",
+      "remainingHp": 41955071,
+      "maxHp": 45000000,
+      "startedOn": 1794579434,
+      "completedOn": 1794579434,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "b29d75a2-5540-4ded-9383-998307fa1a4a",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 146400,
+      "damageType": "Battle",
+      "remainingHp": 41808671,
+      "maxHp": 45000000,
+      "startedOn": 1794579922,
+      "completedOn": 1794580089,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 767753
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 693170
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 272947
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 1024915
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 859967
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 518336
+      }
+    },
+    {
+      "userId": "bb692d43-0c30-4d9d-8472-5eab7706487e",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 265344,
+      "damageType": "Battle",
+      "remainingHp": 41543327,
+      "maxHp": 45000000,
+      "startedOn": 1794580717,
+      "completedOn": 1794580935,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 460430
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 568725
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 892176
+        },
+        {
+          "unitId": "custoAtlacoya",
+          "power": 418578
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 558807
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 80171
       }
     }
   ]
