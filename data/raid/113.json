@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1794554172,
+  "fetchedOn": 1794564977,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -23616,6 +23616,66 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 78923
+      }
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 9635,
+      "damageType": "Bomb",
+      "remainingHp": 42582419,
+      "maxHp": 45000000,
+      "startedOn": 1794561882,
+      "completedOn": 1794561882,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 47658,
+      "damageType": "Battle",
+      "remainingHp": 42534761,
+      "maxHp": 45000000,
+      "startedOn": 1794561893,
+      "completedOn": 1794561996,
+      "heroDetails": [
+        {
+          "unitId": "blackPossession",
+          "power": 81833
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 95636
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 316024
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 72310
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 323238
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 1126
       }
     }
   ]
