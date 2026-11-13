@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1794590047,
+  "fetchedOn": 1794593810,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -24079,6 +24079,66 @@
       "completedOn": 1794587489,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "2ced1809-940f-4ea3-a99a-64a858f7926c",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 8642,
+      "damageType": "Bomb",
+      "remainingHp": 40911745,
+      "maxHp": 45000000,
+      "startedOn": 1794593002,
+      "completedOn": 1794593002,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 450342,
+      "damageType": "Battle",
+      "remainingHp": 40461403,
+      "maxHp": 45000000,
+      "startedOn": 1794593027,
+      "completedOn": 1794593246,
+      "heroDetails": [
+        {
+          "unitId": "tauCrisis",
+          "power": 870510
+        },
+        {
+          "unitId": "tauDarkstrider",
+          "power": 531687
+        },
+        {
+          "unitId": "eldarLhykhis",
+          "power": 523511
+        },
+        {
+          "unitId": "tauFarsight",
+          "power": 532273
+        },
+        {
+          "unitId": "admecManipulus",
+          "power": 436180
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 476066
+      }
     }
   ]
 }
