@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1794608056,
+  "fetchedOn": 1794616471,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -24672,6 +24672,168 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 127322
+      }
+    },
+    {
+      "userId": "293f4b63-28b1-4b5e-88ee-59936eed8ddb",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 8602,
+      "damageType": "Bomb",
+      "remainingHp": 39261148,
+      "maxHp": 45000000,
+      "startedOn": 1794611969,
+      "completedOn": 1794611969,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "293f4b63-28b1-4b5e-88ee-59936eed8ddb",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 376896,
+      "damageType": "Battle",
+      "remainingHp": 38884252,
+      "maxHp": 45000000,
+      "startedOn": 1794611973,
+      "completedOn": 1794612112,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 884953
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 863255
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 968060
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 908816
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 482638
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 36226
+      }
+    },
+    {
+      "userId": "fce63e8e-b46e-4fe1-9031-9475f46ee504",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 8061,
+      "damageType": "Bomb",
+      "remainingHp": 38876191,
+      "maxHp": 45000000,
+      "startedOn": 1794614450,
+      "completedOn": 1794614450,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "fce63e8e-b46e-4fe1-9031-9475f46ee504",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 26896,
+      "damageType": "Battle",
+      "remainingHp": 38849295,
+      "maxHp": 45000000,
+      "startedOn": 1794614460,
+      "completedOn": 1794614609,
+      "heroDetails": [
+        {
+          "unitId": "blackPossession",
+          "power": 64968
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 562391
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 657954
+        },
+        {
+          "unitId": "orksRuntherd",
+          "power": 69584
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 517983
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 1064
+      }
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 33980,
+      "damageType": "Battle",
+      "remainingHp": 38815315,
+      "maxHp": 45000000,
+      "startedOn": 1794615936,
+      "completedOn": 1794616032,
+      "heroDetails": [
+        {
+          "unitId": "blackPossession",
+          "power": 81833
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 95636
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 316024
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 72310
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 323238
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 1126
       }
     }
   ]
