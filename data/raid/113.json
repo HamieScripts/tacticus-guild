@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1794748402,
+  "fetchedOn": 1794752035,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -28248,6 +28248,108 @@
       "machineOfWarDetails": {
         "unitId": "astraOrdnanceBattery",
         "power": 11314
+      }
+    },
+    {
+      "userId": "c9b88058-b28d-49da-9e8d-a2c68770ac97",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 9278,
+      "damageType": "Bomb",
+      "remainingHp": 27943611,
+      "maxHp": 45000000,
+      "startedOn": 1794750084,
+      "completedOn": 1794750084,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 100285,
+      "damageType": "Battle",
+      "remainingHp": 27843326,
+      "maxHp": 45000000,
+      "startedOn": 1794750303,
+      "completedOn": 1794750401,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 662657
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 430054
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 982212
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 866505
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 642718
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 16046
+      }
+    },
+    {
+      "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 136370,
+      "damageType": "Battle",
+      "remainingHp": 27706956,
+      "maxHp": 45000000,
+      "startedOn": 1794751159,
+      "completedOn": 1794751244,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 662657
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 430054
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 982212
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 866505
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 642718
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 16046
       }
     }
   ]
