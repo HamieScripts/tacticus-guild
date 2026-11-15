@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1794712699,
+  "fetchedOn": 1794716253,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -27510,6 +27510,108 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 36226
+      }
+    },
+    {
+      "userId": "3062a0b8-d318-44a8-a8f2-fe239835c307",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 7606,
+      "damageType": "Bomb",
+      "remainingHp": 29530082,
+      "maxHp": 45000000,
+      "startedOn": 1794713354,
+      "completedOn": 1794713354,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "3062a0b8-d318-44a8-a8f2-fe239835c307",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 68529,
+      "damageType": "Battle",
+      "remainingHp": 29461553,
+      "maxHp": 45000000,
+      "startedOn": 1794713361,
+      "completedOn": 1794713593,
+      "heroDetails": [
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 464688
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 612149
+        },
+        {
+          "unitId": "astraOrdnance",
+          "power": 660495
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 511045
+        },
+        {
+          "unitId": "blackTerminator",
+          "power": 688840
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 156266
+      }
+    },
+    {
+      "userId": "140dd87c-c1dc-4954-b86c-bc350583a4f1",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 104858,
+      "damageType": "Battle",
+      "remainingHp": 29356695,
+      "maxHp": 45000000,
+      "startedOn": 1794715503,
+      "completedOn": 1794715639,
+      "heroDetails": [
+        {
+          "unitId": "bloodDeathCompany",
+          "power": 185538
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 588160
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 434380
+        },
+        {
+          "unitId": "orksRuntherd",
+          "power": 659697
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 752455
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 42262
       }
     }
   ]
