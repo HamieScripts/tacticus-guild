@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1794836117,
+  "fetchedOn": 1794842737,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -30729,6 +30729,90 @@
       "machineOfWarDetails": {
         "unitId": "tauBroadside",
         "power": 29612
+      }
+    },
+    {
+      "userId": "8485b330-6671-46b7-a258-9a2ed7d0e5f0",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 157407,
+      "damageType": "Battle",
+      "remainingHp": 19644459,
+      "maxHp": 45000000,
+      "startedOn": 1794840842,
+      "completedOn": 1794841168,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 839242
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 287158
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 835477
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 458312
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 779582
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 83737
+      }
+    },
+    {
+      "userId": "553c48cc-fcd5-4d34-94cd-691ecad888cc",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 328858,
+      "damageType": "Battle",
+      "remainingHp": 19801866,
+      "maxHp": 45000000,
+      "startedOn": 1794840876,
+      "completedOn": 1794841024,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 992667
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 730423
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 850369
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 641581
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 954936
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 641082
       }
     }
   ]
