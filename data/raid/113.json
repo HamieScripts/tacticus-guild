@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1794853136,
+  "fetchedOn": 1794856443,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -31137,6 +31137,48 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 1116
+      }
+    },
+    {
+      "userId": "735797d5-c9c1-4788-8395-f3a66f408995",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 91631,
+      "damageType": "Battle",
+      "remainingHp": 18453420,
+      "maxHp": 45000000,
+      "startedOn": 1794853333,
+      "completedOn": 1794853418,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 345026
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 671402
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 213403
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 311009
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 151680
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 1108
       }
     }
   ]
