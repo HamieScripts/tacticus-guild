@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1794795735,
+  "fetchedOn": 1794799229,
   "season": 113,
   "seasonConfigId": "guild_boss_season_config_4",
   "guild": {
@@ -29571,6 +29571,48 @@
       "machineOfWarDetails": null
     },
     {
+      "userId": "8485b330-6671-46b7-a258-9a2ed7d0e5f0",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 178527,
+      "damageType": "Battle",
+      "remainingHp": 22576204,
+      "maxHp": 45000000,
+      "startedOn": 1794795493,
+      "completedOn": 1794795755,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 839242
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 287158
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 835477
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 458312
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 779582
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 83737
+      }
+    },
+    {
       "userId": "86dc308e-8ca0-4470-ae78-ced2ef219eea",
       "tier": 5,
       "set": 2,
@@ -29587,6 +29629,147 @@
       "completedOn": 1794795716,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "86dc308e-8ca0-4470-ae78-ced2ef219eea",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 219626,
+      "damageType": "Battle",
+      "remainingHp": 22356578,
+      "maxHp": 45000000,
+      "startedOn": 1794795731,
+      "completedOn": 1794795855,
+      "heroDetails": [
+        {
+          "unitId": "tauDarkstrider",
+          "power": 385876
+        },
+        {
+          "unitId": "tauFarsight",
+          "power": 371865
+        },
+        {
+          "unitId": "eldarLhykhis",
+          "power": 377975
+        },
+        {
+          "unitId": "admecManipulus",
+          "power": 406590
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 552266
+        }
+      ],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "86dc308e-8ca0-4470-ae78-ced2ef219eea",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 116949,
+      "damageType": "Battle",
+      "remainingHp": 22239629,
+      "maxHp": 45000000,
+      "startedOn": 1794795886,
+      "completedOn": 1794796034,
+      "heroDetails": [
+        {
+          "unitId": "tauFarsight",
+          "power": 371865
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 552266
+        },
+        {
+          "unitId": "eldarLhykhis",
+          "power": 377975
+        },
+        {
+          "unitId": "admecManipulus",
+          "power": 406590
+        },
+        {
+          "unitId": "tauDarkstrider",
+          "power": 385876
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 76414
+      }
+    },
+    {
+      "userId": "735797d5-c9c1-4788-8395-f3a66f408995",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 8021,
+      "damageType": "Bomb",
+      "remainingHp": 22231608,
+      "maxHp": 45000000,
+      "startedOn": 1794797889,
+      "completedOn": 1794797889,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "735797d5-c9c1-4788-8395-f3a66f408995",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss9Boss1ThousMagnus",
+      "type": "Magnus",
+      "rarity": "Mythic",
+      "damageDealt": 37184,
+      "damageType": "Battle",
+      "remainingHp": 22194424,
+      "maxHp": 45000000,
+      "startedOn": 1794797894,
+      "completedOn": 1794797972,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 345026
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 671402
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 151680
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 311009
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 213403
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 1108
+      }
     }
   ]
 }
