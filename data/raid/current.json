@@ -1,11 +1,11 @@
 {
-  "fetchedOn": 1795007772,
+  "fetchedOn": 1795011394,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
     "name": "[TW] Praetorians of Terra",
     "guildTag": "XXPQS",
-    "level": 35,
+    "level": 36,
     "seasons": [
       113,
       114
@@ -574,6 +574,174 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 15490
+      }
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 2,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Rare",
+      "damageDealt": 349822,
+      "damageType": "Battle",
+      "remainingHp": 190178,
+      "maxHp": 540000,
+      "startedOn": 1795008447,
+      "completedOn": 1795008636,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 325028
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 80265
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 71073
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 131052
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 193822
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 2314
+      }
+    },
+    {
+      "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+      "tier": 2,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Rare",
+      "damageDealt": 190178,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 540000,
+      "startedOn": 1795008896,
+      "completedOn": 1795008987,
+      "heroDetails": [
+        {
+          "unitId": "blackHaarken",
+          "power": 982212
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 866505
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 662657
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 642718
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 360664
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 1704
+      }
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 2,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Rare",
+      "damageDealt": 630000,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 630000,
+      "startedOn": 1795009203,
+      "completedOn": 1795009303,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 887601
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 906661
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 734271
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 889839
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 942815
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 434174
+      }
+    },
+    {
+      "userId": "86dc308e-8ca0-4470-ae78-ced2ef219eea",
+      "tier": 3,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss2Boss2TyranHiveTyrantKronos",
+      "type": "HiveTyrantKronos",
+      "rarity": "Epic",
+      "damageDealt": 1090966,
+      "damageType": "Battle",
+      "remainingHp": 109034,
+      "maxHp": 1200000,
+      "startedOn": 1795009495,
+      "completedOn": 1795009644,
+      "heroDetails": [
+        {
+          "unitId": "tauDarkstrider",
+          "power": 385876
+        },
+        {
+          "unitId": "eldarLhykhis",
+          "power": 377975
+        },
+        {
+          "unitId": "tauFarsight",
+          "power": 371865
+        },
+        {
+          "unitId": "admecManipulus",
+          "power": 406590
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 552266
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tauBroadside",
+        "power": 85
       }
     }
   ]
