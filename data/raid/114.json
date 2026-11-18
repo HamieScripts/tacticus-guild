@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795004461,
+  "fetchedOn": 1795007772,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -430,6 +430,150 @@
       "machineOfWarDetails": {
         "unitId": "deathCrawler",
         "power": 11623
+      }
+    },
+    {
+      "userId": "8485b330-6671-46b7-a258-9a2ed7d0e5f0",
+      "tier": 1,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Uncommon",
+      "damageDealt": 180000,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 180000,
+      "startedOn": 1795004606,
+      "completedOn": 1795004788,
+      "heroDetails": [
+        {
+          "unitId": "eldarAutarch",
+          "power": 120072
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 458312
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 389563
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 172827
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 779582
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 83737
+      }
+    },
+    {
+      "userId": "b29d75a2-5540-4ded-9383-998307fa1a4a",
+      "tier": 2,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Rare",
+      "damageDealt": 360000,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 360000,
+      "startedOn": 1795005006,
+      "completedOn": 1795005131,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 1024915
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 767753
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 272947
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 791169
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 693170
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 518336
+      }
+    },
+    {
+      "userId": "c47778d3-3a3c-4cc0-b405-3aed0d993c45",
+      "tier": 2,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Rare",
+      "damageDealt": 8674,
+      "damageType": "Bomb",
+      "remainingHp": 441326,
+      "maxHp": 450000,
+      "startedOn": 1795005838,
+      "completedOn": 1795005838,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "9d50010a-82f9-4db9-aa55-e292388ea749",
+      "tier": 2,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Rare",
+      "damageDealt": 441326,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 450000,
+      "startedOn": 1795006058,
+      "completedOn": 1795006160,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 878103
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 690484
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 734001
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 281052
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 408940
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 15490
       }
     }
   ]
