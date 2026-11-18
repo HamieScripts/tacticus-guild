@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795022077,
+  "fetchedOn": 1795025813,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -1114,6 +1114,90 @@
       "machineOfWarDetails": {
         "unitId": "thousDaemonPrince",
         "power": 66681
+      }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 3,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Epic",
+      "damageDealt": 567194,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 1800000,
+      "startedOn": 1795022037,
+      "completedOn": 1795022223,
+      "heroDetails": [
+        {
+          "unitId": "bloodMephiston",
+          "power": 884233
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 182320
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 231580
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 263370
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 771461
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 66681
+      }
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 3,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Epic",
+      "damageDealt": 1260310,
+      "damageType": "Battle",
+      "remainingHp": 21355,
+      "maxHp": 1800000,
+      "startedOn": 1795022043,
+      "completedOn": 1795022172,
+      "heroDetails": [
+        {
+          "unitId": "admecManipulus",
+          "power": 473053
+        },
+        {
+          "unitId": "tauDarkstrider",
+          "power": 531687
+        },
+        {
+          "unitId": "tauFarsight",
+          "power": 532273
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 870510
+        },
+        {
+          "unitId": "eldarLhykhis",
+          "power": 538223
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "deathCrawler",
+        "power": 12631
       }
     }
   ]
