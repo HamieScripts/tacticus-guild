@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795029164,
+  "fetchedOn": 1795032973,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -1367,6 +1367,90 @@
         {
           "unitId": "bloodMephiston",
           "power": 598677
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 400585
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 73885
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 506810
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 142038
+      }
+    },
+    {
+      "userId": "c47778d3-3a3c-4cc0-b405-3aed0d993c45",
+      "tier": 3,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Epic",
+      "damageDealt": 631250,
+      "damageType": "Battle",
+      "remainingHp": 145464,
+      "maxHp": 2100000,
+      "startedOn": 1795029021,
+      "completedOn": 1795029202,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 691390
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 584779
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 641490
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 490666
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 616131
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 478
+      }
+    },
+    {
+      "userId": "275a8663-7ad1-4ec7-86ef-f4c97182473d",
+      "tier": 3,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Epic",
+      "damageDealt": 145464,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 2100000,
+      "startedOn": 1795029824,
+      "completedOn": 1795029961,
+      "heroDetails": [
+        {
+          "unitId": "bloodMephiston",
+          "power": 598677
+        },
+        {
+          "unitId": "lostaBile",
+          "power": 9049
         },
         {
           "unitId": "thousAhriman",
