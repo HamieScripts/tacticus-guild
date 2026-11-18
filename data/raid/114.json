@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795032973,
+  "fetchedOn": 1795036458,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -1468,6 +1468,48 @@
       "machineOfWarDetails": {
         "unitId": "thousDaemonPrince",
         "power": 142038
+      }
+    },
+    {
+      "userId": "129ec564-5fd6-402d-a981-c50d6623ae35",
+      "tier": 3,
+      "set": 4,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss10MiniBoss2AdmecManipulus",
+      "type": "BelisariusRW",
+      "rarity": "Epic",
+      "damageDealt": 142732,
+      "damageType": "Battle",
+      "remainingHp": 57268,
+      "maxHp": 200000,
+      "startedOn": 1795034271,
+      "completedOn": 1795034444,
+      "heroDetails": [
+        {
+          "unitId": "eldarAutarch",
+          "power": 199265
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 140544
+        },
+        {
+          "unitId": "spaceBlackmane",
+          "power": 102264
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 750559
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 224311
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 505
       }
     }
   ]
