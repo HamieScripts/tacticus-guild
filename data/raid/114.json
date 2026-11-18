@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795040072,
+  "fetchedOn": 1795043641,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -1738,6 +1738,168 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 85605
+      }
+    },
+    {
+      "userId": "3062a0b8-d318-44a8-a8f2-fe239835c307",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss1TyranTervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Legendary",
+      "damageDealt": 8622,
+      "damageType": "Bomb",
+      "remainingHp": 3283125,
+      "maxHp": 5000000,
+      "startedOn": 1795040416,
+      "completedOn": 1795040416,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "3062a0b8-d318-44a8-a8f2-fe239835c307",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss1TyranTervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Legendary",
+      "damageDealt": 342373,
+      "damageType": "Battle",
+      "remainingHp": 2940752,
+      "maxHp": 5000000,
+      "startedOn": 1795040424,
+      "completedOn": 1795040595,
+      "heroDetails": [
+        {
+          "unitId": "astraOrdnance",
+          "power": 660495
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 537167
+        },
+        {
+          "unitId": "blackTerminator",
+          "power": 706230
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 511045
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 612149
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 17350
+      }
+    },
+    {
+      "userId": "260cfd81-b5de-433e-bc13-cb5f9a08b137",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss1TyranTervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Legendary",
+      "damageDealt": 8446,
+      "damageType": "Bomb",
+      "remainingHp": 2932306,
+      "maxHp": 5000000,
+      "startedOn": 1795042768,
+      "completedOn": 1795042768,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "260cfd81-b5de-433e-bc13-cb5f9a08b137",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss1TyranTervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Legendary",
+      "damageDealt": 604409,
+      "damageType": "Battle",
+      "remainingHp": 2327897,
+      "maxHp": 5000000,
+      "startedOn": 1795042775,
+      "completedOn": 1795042892,
+      "heroDetails": [
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 630094
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 900992
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 616618
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 775290
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 883564
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 163793
+      }
+    },
+    {
+      "userId": "c62ee67f-0a9e-4e29-8861-320e57788e6c",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss1TyranTervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Legendary",
+      "damageDealt": 750679,
+      "damageType": "Battle",
+      "remainingHp": 1577218,
+      "maxHp": 5000000,
+      "startedOn": 1795043199,
+      "completedOn": 1795043439,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 171387
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 888800
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 493407
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 94974
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 516106
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 9411
       }
     }
   ]
