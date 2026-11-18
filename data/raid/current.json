@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795018589,
+  "fetchedOn": 1795022077,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -1013,6 +1013,108 @@
       "completedOn": 1795017092,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 3,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Epic",
+      "damageDealt": 8144,
+      "damageType": "Bomb",
+      "remainingHp": 1791856,
+      "maxHp": 1800000,
+      "startedOn": 1795019938,
+      "completedOn": 1795019938,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 3,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Epic",
+      "damageDealt": 231863,
+      "damageType": "Battle",
+      "remainingHp": 1559993,
+      "maxHp": 1800000,
+      "startedOn": 1795020013,
+      "completedOn": 1795020272,
+      "heroDetails": [
+        {
+          "unitId": "emperLucius",
+          "power": 242932
+        },
+        {
+          "unitId": "templHelbrecht",
+          "power": 149304
+        },
+        {
+          "unitId": "spaceBlackmane",
+          "power": 57944
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 69836
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 771461
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 66681
+      }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 3,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Epic",
+      "damageDealt": 278328,
+      "damageType": "Battle",
+      "remainingHp": 1281665,
+      "maxHp": 1800000,
+      "startedOn": 1795021846,
+      "completedOn": 1795021984,
+      "heroDetails": [
+        {
+          "unitId": "orksRuntherd",
+          "power": 63723
+        },
+        {
+          "unitId": "templHelbrecht",
+          "power": 149304
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 771461
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 69836
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 182320
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 66681
+      }
     }
   ]
 }
