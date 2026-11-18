@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795036458,
+  "fetchedOn": 1795040072,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -1510,6 +1510,234 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 505
+      }
+    },
+    {
+      "userId": "c62ee67f-0a9e-4e29-8861-320e57788e6c",
+      "tier": 3,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Epic",
+      "damageDealt": 497160,
+      "damageType": "Battle",
+      "remainingHp": 2002840,
+      "maxHp": 2500000,
+      "startedOn": 1795036572,
+      "completedOn": 1795037017,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 171387
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 888800
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 493407
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 516106
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 532836
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 105653
+      }
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 3,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Epic",
+      "damageDealt": 1278564,
+      "damageType": "Battle",
+      "remainingHp": 724276,
+      "maxHp": 2500000,
+      "startedOn": 1795037688,
+      "completedOn": 1795037830,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 887601
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 906661
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 734271
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 889839
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 942815
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 434174
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 3,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Epic",
+      "damageDealt": 724276,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 2500000,
+      "startedOn": 1795038761,
+      "completedOn": 1795038984,
+      "heroDetails": [
+        {
+          "unitId": "blackPossession",
+          "power": 738255
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 594970
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 890893
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 665500
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 594969
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 515918
+      }
+    },
+    {
+      "userId": "2ced1809-940f-4ea3-a99a-64a858f7926c",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss1TyranTervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Legendary",
+      "damageDealt": 10621,
+      "damageType": "Bomb",
+      "remainingHp": 4989379,
+      "maxHp": 5000000,
+      "startedOn": 1795039159,
+      "completedOn": 1795039159,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "2ced1809-940f-4ea3-a99a-64a858f7926c",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss1TyranTervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Legendary",
+      "damageDealt": 833448,
+      "damageType": "Battle",
+      "remainingHp": 4155931,
+      "maxHp": 5000000,
+      "startedOn": 1795039220,
+      "completedOn": 1795039423,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 489074
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 479404
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 500330
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 715124
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 654004
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 803
+      }
+    },
+    {
+      "userId": "2ced1809-940f-4ea3-a99a-64a858f7926c",
+      "tier": 4,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss1Boss1TyranTervigonLeviathan",
+      "type": "TervigonLeviathan",
+      "rarity": "Legendary",
+      "damageDealt": 864184,
+      "damageType": "Battle",
+      "remainingHp": 3291747,
+      "maxHp": 5000000,
+      "startedOn": 1795039511,
+      "completedOn": 1795039701,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 489074
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 479404
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 500330
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 715124
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 654004
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 85605
       }
     }
   ]
