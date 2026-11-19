@@ -5,7 +5,7 @@ const vm = require('node:vm');
 
 const { shouldDisplayCurrentDataset, isEasyGameBattle, buildSnapshot, getCoreScore, getEasyGameBadgeHtml, filterLeaderboardRowsByName } = require('../src/app.js');
 
-test('opening a token table does not load other wars until a history tab opens', async () => {
+test('opening a token table loads only the selected war even in a multi-war season', async () => {
   const requests = [];
   const archives = ['selected', 'other', 'older'].map(key => ({ key, label: key, archiveKey: key }));
   const params = new URLSearchParams('dataset=selected');
@@ -34,10 +34,20 @@ test('opening a token table does not load other wars until a history tab opens',
     'renderTable', 'initializePortraitMapper', 'setupDefencesPlayerSearch', 'setupAttacksPlayerSearch',
     'renderLastUpdated', 'renderActiveGuild',
   ]) context[name] = () => {};
+  vm.runInContext(`seasonGroups = [{ entries: [
+    ['selected', { label: 'Selected war' }], ['other', { label: 'Other war' }]
+  ] }];`, context);
+  let pickerKeys;
+  context.renderWarSeasonCards = entries => { pickerKeys = Array.from(entries, ([key]) => key); };
 
   context.applyWarTabsFromUrl();
   await context.loadGuildData();
   assert.deepEqual(requests, ['catalog', 'selected']);
+  assert.deepEqual(pickerKeys, ['selected', 'other']);
+
+  vm.runInContext(`activeDatasetKey = 'other';`, context);
+  await context.loadGuildData();
+  assert.deepEqual(requests, ['catalog', 'selected', 'other']);
 
   params.set('tab', 'attacks');
   params.set('warView', 'log');
@@ -46,7 +56,7 @@ test('opening a token table does not load other wars until a history tab opens',
   context.applyWarTabsFromUrl();
   context.applyWarTabsFromUrl();
   await context.initWarTeamHistoryTab('attack');
-  assert.deepEqual(requests, ['catalog', 'selected', 'selected', 'other', 'older']);
+  assert.deepEqual(requests, ['catalog', 'selected', 'other', 'selected', 'other', 'older']);
 });
 
 test('shows a populated live-war payload', () => {

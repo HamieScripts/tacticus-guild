@@ -11,7 +11,7 @@ let datasetManifestLoad;
 
 let activeDatasetKey = 'current';
 let seasonGroups = [];
-let activeSeasonWarRecords = [];
+let guildDataLoadId = 0;
 let selectedWarDatasetKey = '';
 
 function getDefaultDatasetKey() {
@@ -1090,19 +1090,17 @@ function groupDatasetsIntoSeasons(entries) {
   return groups;
 }
 
-function renderWarSeasonCards(records) {
+function renderWarSeasonCards(entries) {
   const grid = document.getElementById('war-season-wars-grid');
   if (!grid) return;
 
-  if (!Array.isArray(records) || records.length === 0) {
+  if (!entries.length) {
     grid.innerHTML = '<p class="col-span-full rounded-xl border border-dashed border-slate-700 bg-slate-900/50 p-6 text-center text-sm text-slate-400">Loading wars...</p>';
     return;
   }
 
-  const options = records.map((record) => {
-    const opponentName = record.opponentSnapshot?.name || 'Unknown opponent';
-    const warDate = extractDatasetDate(record.dataset.key, record.dataset);
-    return `<option value="${escapeHtml(record.dataset.key)}">${escapeHtml(opponentName)} - ${escapeHtml(warDate ? formatSeasonDate(warDate) : 'Unknown date')}</option>`;
+  const options = entries.map(([key, dataset]) => {
+    return `<option value="${escapeHtml(key)}">${escapeHtml(dataset.label)}</option>`;
   }).join('');
 
   grid.innerHTML = `
@@ -1113,7 +1111,7 @@ function renderWarSeasonCards(records) {
   const select = document.getElementById('war-opponent-select');
   if (!select) return;
 
-  select.value = selectedWarDatasetKey || records[0].dataset.key;
+  select.value = activeDatasetKey;
   select.addEventListener('change', () => {
     const datasetKey = select.value;
     if (!datasetKey || !Object.prototype.hasOwnProperty.call(DATASETS, datasetKey)) return;
@@ -4862,7 +4860,9 @@ function renderBuffLegend(snapshot) {
 }
 
 async function loadGuildData() {
+  const loadId = ++guildDataLoadId;
   await loadDatasetManifest();
+  if (loadId !== guildDataLoadId) return;
 
   activeDatasetKey = Object.prototype.hasOwnProperty.call(DATASETS, activeDatasetKey)
     ? activeDatasetKey
@@ -4881,6 +4881,9 @@ async function loadGuildData() {
   }
 
   renderDatasetTabs();
+  const key = activeDatasetKey;
+  const season = seasonGroups.find((group) => group.entries.some(([entryKey]) => entryKey === key));
+  renderWarSeasonCards(season?.entries || [[key, dataset]]);
   setupLeaderboardLayoutToggle();
   setupLeaderboardSortButtons();
   setupLeaderboardSearch();
@@ -4890,9 +4893,7 @@ async function loadGuildData() {
 
   guildProjectionLoading = true;
   guildTabsLoading = true;
-  activeSeasonWarRecords = [];
   setWarSummaryVisibility(Boolean(selectedWarDatasetKey));
-  renderWarSeasonCards([]);
   renderGuildTokenProjectionTable();
   renderGuildTabs();
   renderTable(null);
@@ -4905,31 +4906,14 @@ async function loadGuildData() {
   }
   try {
     await initializePortraitMapper();
+    if (loadId !== guildDataLoadId) return;
     setupDefencesPlayerSearch();
     setupAttacksPlayerSearch();
     renderDefences();
     renderAttacks();
-    const season = seasonGroups.find((group) => group.entries.some(([key]) => key === activeDatasetKey));
-    const seasonEntries = season?.entries || [[activeDatasetKey, dataset]];
-    const records = await Promise.all(seasonEntries.map(async ([key, seasonDataset]) => {
-      const { data, lastModified } = await window.supabaseData.loadWarDataset({ ...seasonDataset, key });
-      const snapshots = buildSnapshot(data);
-      const targetTeamIndex = getPrimaryGuildTeamIndexFromData(data);
-      const targetGuildName = getPrimaryGuildNameFromData(data);
-      const targetSnapshot = pickGuildSnapshotForAllWars(snapshots, targetTeamIndex, targetGuildName);
-      const opponentSnapshot = snapshots.find((snapshot) => Number(snapshot?.teamIndex) !== Number(targetSnapshot?.teamIndex)) || null;
-      return { dataset: { key, ...seasonDataset }, data, responseLastModified: lastModified, snapshots, targetSnapshot, opponentSnapshot };
-    }));
-    activeSeasonWarRecords = records;
-    if (!selectedWarDatasetKey && records[0]) {
-      selectedWarDatasetKey = records[0].dataset.key;
-      activeDatasetKey = selectedWarDatasetKey;
-    }
-    renderWarSeasonCards(records);
-    const activeRecord = records.find((record) => record.dataset.key === activeDatasetKey) || records[0];
-    if (!activeRecord) throw new Error('No wars found for selected season.');
-    const data = activeRecord.data;
-    const responseLastModified = activeRecord.responseLastModified;
+    const { data, lastModified: responseLastModified } = await window.supabaseData.loadWarDataset({ ...dataset, key });
+    if (loadId !== guildDataLoadId) return;
+    selectedWarDatasetKey = key;
     const dataTimestamp = getLatestActivityTimestamp(data);
 
     renderLastUpdated({ responseLastModified, dataTimestamp });
@@ -4948,8 +4932,10 @@ async function loadGuildData() {
       statusMessage.textContent = `Loaded ${guildSnapshots[activeGuildIndex]?.players.length || 0} players for ${guildSnapshots[activeGuildIndex]?.name || 'the selected guild'} from ${dataset.label.toLowerCase()}.`;
     }
   } catch (error) {
+    if (loadId !== guildDataLoadId) return;
     console.error(error);
     await initializePortraitMapper();
+    if (loadId !== guildDataLoadId) return;
     guildSnapshots = [buildFallbackSnapshot()];
     activeGuildIndex = getDefaultActiveGuildIndex(guildSnapshots);
     guildProjectionLoading = false;
