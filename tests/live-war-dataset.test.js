@@ -7,6 +7,11 @@ const { shouldDisplayCurrentDataset, isEasyGameBattle, buildSnapshot, getCoreSco
 
 test('opening a token table loads only the selected war even in a multi-war season', async () => {
   const requests = [];
+  const war = require('../data/war/effdbc91-0bed-48b6-9300-850c24c4e0d1.json');
+  let releaseHistory;
+  let historyRequested;
+  const historyGate = new Promise(resolve => { releaseHistory = resolve; });
+  const historyStarted = new Promise(resolve => { historyRequested = resolve; });
   const archives = ['selected', 'other', 'older'].map(key => ({ key, label: key, archiveKey: key }));
   const params = new URLSearchParams('dataset=selected');
   const context = vm.createContext({
@@ -15,7 +20,14 @@ test('opening a token table loads only the selected war even in a multi-war seas
       location: { search: '?dataset=selected' },
       supabaseData: {
         listArchivedWars: async () => { requests.push('catalog'); return archives; },
-        loadWarDataset: async ({ key }) => { requests.push(key); return { data: {} }; },
+        loadWarDataset: async ({ key }) => {
+          requests.push(key);
+          if (key === 'older') {
+            historyRequested();
+            await historyGate;
+          }
+          return { data: key === 'other' ? war : {} };
+        },
       },
     },
     fetch: async () => ({ ok: true, json: async () => ({}) }),
@@ -55,8 +67,16 @@ test('opening a token table loads only the selected war even in a multi-war seas
   params.delete('warView');
   context.applyWarTabsFromUrl();
   context.applyWarTabsFromUrl();
-  await context.initWarTeamHistoryTab('attack');
-  assert.deepEqual(requests, ['catalog', 'selected', 'other', 'selected', 'other', 'older']);
+  const historyLoad = context.initWarTeamHistoryTab('attack');
+  try {
+    await historyStarted;
+    assert.ok(vm.runInContext("attackWarRows.some(row => row.datasetKey === 'other')", context));
+    assert.equal(vm.runInContext("warTeamHistoryReady.has('attack')", context), false);
+  } finally {
+    releaseHistory();
+  }
+  await historyLoad;
+  assert.deepEqual(requests, ['catalog', 'selected', 'other', 'other', 'selected', 'older']);
 });
 
 test('shows a populated live-war payload', () => {

@@ -919,23 +919,10 @@ function renderGuildTokenProjectionTable() {
     return;
   }
 
-  tableBody.innerHTML = '';
+  tableBody.setAttribute('aria-busy', String(guildProjectionLoading));
+  if (guildProjectionLoading) return;
 
-  const renderSkeletonRow = () => {
-    const cellMarkup = Array.from({ length: 11 }, (_, index) => `
-      <td class="${index === 0 ? 'py-2 pr-3 align-middle' : index === 5 || index === 8 ? 'border-l border-slate-700/60 py-2 pl-3 pr-3 align-middle' : index === 10 ? 'border-l border-slate-700/60 py-2 pl-3 align-middle' : 'py-2 pr-3 align-middle'}">
-        <div class="h-6 w-full animate-pulse rounded bg-slate-700/60"></div>
-      </td>
-    `).join('');
-
-    return `<tr class="leading-none" style="height: 3rem; min-height: 3rem;">${cellMarkup}</tr>`;
-  };
-
-  if (guildProjectionLoading || !Array.isArray(guildSnapshots) || guildSnapshots.length === 0) {
-    tableBody.innerHTML = Array.from({ length: 2 }, renderSkeletonRow).join('');
-    return;
-  }
-
+  const rows = document.createDocumentFragment();
   const summaries = guildSnapshots.map((snapshot) => summarizeGuild(snapshot));
   const activeTeamIndex = guildSnapshots[activeGuildIndex]?.teamIndex;
 
@@ -958,8 +945,7 @@ function renderGuildTokenProjectionTable() {
     })
     .forEach((guild) => {
       const row = document.createElement('tr');
-      row.style.height = '3rem';
-      row.style.minHeight = '3rem';
+      row.className = 'h-12';
       const tileScorePct = POSSIBLE_TILE_SCORE > 0 ? Math.round((guild.tileScore / POSSIBLE_TILE_SCORE) * 100) : 0;
       row.innerHTML = `
         <td class="py-1 pr-3 font-semibold text-emerald-100">${escapeHtml(guild.name)} (${guild.totalPlayers.toLocaleString()})</td>
@@ -974,8 +960,16 @@ function renderGuildTokenProjectionTable() {
         <td class="py-1 pr-3 font-semibold text-emerald-200">${guild.projectedTokenScore.toLocaleString()}</td>
         <td class="border-l border-slate-700/60 py-1 pl-3 text-slate-200">${guild.tileScore.toLocaleString()} (${tileScorePct}%)</td>
       `;
-      tableBody.appendChild(row);
+      rows.appendChild(row);
     });
+  for (let index = summaries.length; index < 2; index += 1) {
+    const row = document.createElement('tr');
+    row.className = 'h-12';
+    row.setAttribute('aria-hidden', 'true');
+    row.insertCell().colSpan = 11;
+    rows.appendChild(row);
+  }
+  tableBody.replaceChildren(rows);
 }
 
 function renderGuildTabs() {
@@ -1091,35 +1085,22 @@ function groupDatasetsIntoSeasons(entries) {
 }
 
 function renderWarSeasonCards(entries) {
-  const grid = document.getElementById('war-season-wars-grid');
-  if (!grid) return;
-
-  if (!entries.length) {
-    grid.innerHTML = '<p class="col-span-full rounded-xl border border-dashed border-slate-700 bg-slate-900/50 p-6 text-center text-sm text-slate-400">Loading wars...</p>';
-    return;
-  }
-
-  const options = entries.map(([key, dataset]) => {
-    return `<option value="${escapeHtml(key)}">${escapeHtml(dataset.label)}</option>`;
-  }).join('');
-
-  grid.innerHTML = `
-    <label for="war-opponent-select" class="sr-only">Opponent war</label>
-    <select id="war-opponent-select" class="w-full rounded-md border border-slate-600 bg-slate-900/80 px-3 py-2 text-sm font-semibold text-slate-100 sm:max-w-xl">
-      ${options}
-    </select>`;
   const select = document.getElementById('war-opponent-select');
   if (!select) return;
 
+  select.innerHTML = entries.map(([key, dataset]) => {
+    return `<option value="${escapeHtml(key)}">${escapeHtml(dataset.label)}</option>`;
+  }).join('');
+  select.disabled = !entries.length;
   select.value = activeDatasetKey;
-  select.addEventListener('change', () => {
+  select.onchange = () => {
     const datasetKey = select.value;
     if (!datasetKey || !Object.prototype.hasOwnProperty.call(DATASETS, datasetKey)) return;
     selectedWarDatasetKey = datasetKey;
     activeDatasetKey = datasetKey;
     updateDatasetInUrl(datasetKey, { replace: false });
     loadGuildData();
-  });
+  };
 }
 
 function setWarSummaryVisibility(isVisible) {
@@ -2869,6 +2850,7 @@ function renderWarTeams(role) {
   const summary = document.getElementById(`${prefix}-summary`);
   const empty = document.getElementById(`${prefix}-empty`);
   if (!list) return;
+  const historyLoading = warTeamHistoryLoads.has(role) && !warTeamHistoryReady.has(role);
 
   const currentRows = rows.filter((row) => row.datasetKey === activeDatasetKey);
   const allRows = rows;
@@ -2983,7 +2965,7 @@ function renderWarTeams(role) {
               <button type="button" class="flex min-w-0 items-center gap-1.5 overflow-hidden text-left" data-war-team="${role}" data-player-id="${escapeHtml(player.playerId)}" data-lineup-key="${escapeHtml(row.lineupKey)}" title="Open this ${isDefense ? 'defence' : 'attack'} team in the Battle Log" aria-label="Open ${escapeHtml(player.name)} ${isDefense ? 'defence' : 'attack'} team in the Battle Log">${avatarStrip}<span class="ml-1 text-lg leading-none text-cyan-300" aria-hidden="true">&#128065;</span></button>
               <span class="grid w-72 shrink-0 grid-cols-2 gap-x-3 gap-y-1 text-right text-[11px] tabular-nums">
                 <span class="text-pink-200" title="Your average this war">You: ${Math.round(playerCurrentAverage).toLocaleString()} (${playerCurrentLineupRows.length})<br><span class="text-slate-400" title="Guild average this war">Guild: ${Math.round(guildCurrentAverage).toLocaleString()} (${currentLineupRows.length})</span></span>
-                <span class="text-pink-200" title="Your average over all wars">You: ${Math.round(playerAllAverage).toLocaleString()} (${playerAllLineupRows.length})<br><span class="text-slate-400" title="Guild average over all wars">Guild: ${Math.round(guildAllAverage).toLocaleString()} (${allLineupRows.length})</span></span>
+                ${historyLoading ? '<span class="text-slate-400">Loading history...</span>' : `<span class="text-pink-200" title="Your average over all wars">You: ${Math.round(playerAllAverage).toLocaleString()} (${playerAllLineupRows.length})<br><span class="text-slate-400" title="Guild average over all wars">Guild: ${Math.round(guildAllAverage).toLocaleString()} (${allLineupRows.length})</span></span>`}
               </span>
             </summary>
             <div class="border-t border-slate-700/70 p-2.5"><div class="flex flex-col divide-y divide-slate-700/60">${battleMarkup}</div></div>
@@ -3003,7 +2985,9 @@ function renderWarTeams(role) {
 
   if (summary) summary.textContent = `${players.length.toLocaleString()} players${searchTerm ? ' matching the search' : ''} with current ${isDefense ? 'defense' : 'attack'} teams.`;
   if (empty) {
-    empty.textContent = `No ${isDefense ? 'defense' : 'attack'} teams are available for the current war yet.`;
+    empty.textContent = historyLoading && !currentRows.length
+      ? 'Loading war teams...'
+      : `No ${isDefense ? 'defense' : 'attack'} teams are available for the current war yet.`;
     empty.classList.toggle('hidden', players.length > 0);
   }
 }
@@ -3044,7 +3028,7 @@ async function loadWarTeamHistory(role) {
   try {
     await loadDatasetManifest();
     const datasets = getLoadedDatasetDescriptors();
-    const rowsByWar = await Promise.all(datasets.map(async (dataset) => {
+    const loadRows = async (dataset) => {
       try {
         const { data } = await window.supabaseData.loadWarDataset(dataset);
         const snapshots = buildSnapshot(data);
@@ -3064,16 +3048,25 @@ async function loadWarTeamHistory(role) {
       } catch (error) {
         return [];
       }
-    }));
-    setRows(rowsByWar.flat());
+    };
+    const selected = datasets.find(dataset => dataset.key === activeDatasetKey);
+    const selectedRows = selected ? await loadRows(selected) : [];
+    if (selectedRows.length) setRows(selectedRows);
+    const rowsByWar = await Promise.all(datasets.filter(dataset => dataset !== selected).map(loadRows));
+    warTeamHistoryReady.add(role);
+    setRows([...selectedRows, ...rowsByWar.flat()]);
   } catch (error) {
+    warTeamHistoryReady.add(role);
     setRows([]);
   }
 }
 
+const warTeamHistoryReady = new Set();
+
 function initWarTeamHistoryTab(role) {
   if (!warTeamHistoryLoads.has(role)) {
     warTeamHistoryLoads.set(role, loadWarTeamHistory(role));
+    renderWarTeams(role);
   }
   return warTeamHistoryLoads.get(role);
 }

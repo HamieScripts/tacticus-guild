@@ -12,6 +12,10 @@ body {
   overflow-x: hidden;
 }
 
+[data-breadcrumb] {
+  min-height: 1rem;
+}
+
 .numeric-value,
 input[type="number"] {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -39,6 +43,10 @@ body > .site-shell {
 }
 
 @media (max-width: 640px) {
+  [data-breadcrumb] {
+    min-height: 2.5rem;
+  }
+
   .site-header {
     position: relative;
     width: 100%;
@@ -171,11 +179,11 @@ body > .site-shell {
     justify-content: center;
   }
 
-  nav li {
+  nav:not([data-breadcrumb]) li {
     width: 100%;
   }
 
-  nav a {
+  nav:not([data-breadcrumb]) a {
     width: 100%;
     justify-content: center;
     padding-left: 0.75rem !important;
@@ -273,7 +281,7 @@ body > .site-shell {
     gap: 0.5rem;
   }
 
-  nav a {
+  nav:not([data-breadcrumb]) a {
     padding-top: 0.625rem !important;
     padding-bottom: 0.625rem !important;
     font-size: 0.7rem !important;

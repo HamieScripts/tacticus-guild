@@ -84,13 +84,18 @@
           <h3 id="war-season-wars-heading" class="text-lg font-bold text-cyan-100">Wars</h3>
         </header>
         <div class="flex flex-wrap items-center gap-3">
-          <div id="war-season-wars-grid" class="min-w-0 flex-1"></div>
+          <div class="min-w-0 flex-1">
+            <label for="war-opponent-select" class="sr-only">Opponent war</label>
+            <select id="war-opponent-select" class="w-full rounded-md border border-slate-600 bg-slate-900/80 px-3 py-2 text-sm font-semibold text-slate-100 sm:max-w-xl" disabled>
+              <option>Loading wars...</option>
+            </select>
+          </div>
           <div id="guild-tabs" class="flex flex-wrap gap-3"></div>
         </div>
         <div class="mt-6 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4 shadow-lg shadow-emerald-900/20">
           <p class="text-sm text-emerald-200 uppercase tracking-wide">Guild token projection</p>
           <div class="mt-2 overflow-x-auto">
-            <table class="w-full text-left text-xs sm:text-sm">
+            <table class="w-full whitespace-nowrap text-left text-xs sm:text-sm">
               <thead class="text-slate-300/90">
                 <tr>
                   <th rowspan="2" class="pb-1 pr-3 font-semibold">Guild</th>
@@ -112,7 +117,14 @@
                   <th class="border-l border-slate-700/70 pb-2 pl-3 font-semibold">Tile total</th>
                 </tr>
               </thead>
-              <tbody id="guild-token-projection-body" class="text-slate-100"></tbody>
+              <tbody id="guild-token-projection-body" class="text-slate-100 aria-busy:opacity-60" aria-busy="true">
+                <tr class="h-12" aria-hidden="true">
+                  <td colspan="11"><div class="h-6 rounded bg-slate-700/60 motion-safe:animate-pulse"></div></td>
+                </tr>
+                <tr class="h-12" aria-hidden="true">
+                  <td colspan="11"><div class="h-6 rounded bg-slate-700/60 motion-safe:animate-pulse"></div></td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </div>
