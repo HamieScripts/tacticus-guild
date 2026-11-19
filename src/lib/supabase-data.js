@@ -17,13 +17,29 @@
   let warAvailability = null;
   const warLoads = new Map();
 
+  async function fetchSupabase(url, options = {}) {
+    const requestOptions = { ...options, cache: 'no-store' };
+    if (!window.location?.search || new URLSearchParams(window.location.search).get('dbTiming') !== '1') {
+      return fetch(url, requestOptions);
+    }
+
+    const endpoint = new URL(url, SUPABASE_URL).pathname;
+    const start = performance.now();
+    let status = 'network error';
+    try {
+      const response = await fetch(url, requestOptions);
+      status = response.status;
+      return response;
+    } finally {
+      console.info(`[Supabase] ${options.method || 'GET'} ${endpoint} (${status}) ${(performance.now() - start).toFixed(1)} ms`);
+    }
+  }
+
   function getClient() {
     if (client) return client;
     if (typeof supabase === 'undefined' || typeof SUPABASE_URL === 'undefined') return null;
     client = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
-      global: {
-        fetch: (url, options = {}) => fetch(url, { ...options, cache: 'no-store' })
-      }
+      global: { fetch: fetchSupabase }
     });
     return client;
   }

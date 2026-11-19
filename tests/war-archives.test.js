@@ -7,6 +7,41 @@ const { buildArchiveImport } = require('../scripts/import-war-archives');
 const archiveKey = 'effdbc91-0bed-48b6-9300-850c24c4e0d1';
 const rawArchive = require(`../data/war/${archiveKey}.json`);
 
+test('times Supabase requests only when enabled and omits query parameters', async () => {
+  const messages = [];
+  const response = { status: 200 };
+  let request;
+  let now = 0;
+  const context = {
+    window: { location: { search: '' } }, URL, URLSearchParams,
+    SUPABASE_URL: 'https://example.test', SUPABASE_ANON_KEY: 'test',
+    performance: { now: () => (now += 12.5) },
+    console: { info: message => messages.push(message) },
+    setTimeout: () => {},
+    fetch: async (url, options) => {
+      assert.equal(options.cache, 'no-store');
+      if (options.method === 'POST') throw new Error('offline');
+      return response;
+    },
+    supabase: { createClient: (url, key, options) => {
+      request = options.global.fetch;
+      return { from: () => ({ select: async () => ({ error: {} }) }) };
+    } },
+  };
+  vm.runInNewContext(fs.readFileSync(require.resolve('../src/lib/supabase-data'), 'utf8'), context);
+  await context.window.supabaseData.getPlayers();
+  const url = 'https://example.test/rest/v1/war_battles?war_id=eq.player-data';
+  assert.equal(await request(url), response);
+  assert.deepEqual(messages, []);
+  context.window.location.search = '?dbTiming=1';
+  assert.equal(await request(url), response);
+  await assert.rejects(request(url, { method: 'POST' }), /offline/);
+  assert.deepEqual(messages, [
+    '[Supabase] GET /rest/v1/war_battles (200) 12.5 ms',
+    '[Supabase] POST /rest/v1/war_battles (network error) 12.5 ms',
+  ]);
+});
+
 test('imports only finished battles and relates them to both guilds and the roster', () => {
   const archive = buildArchiveImport(archiveKey, rawArchive);
   const source = rawArchive.eventResults[0];
