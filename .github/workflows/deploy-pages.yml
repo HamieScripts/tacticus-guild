@@ -43,18 +43,19 @@ jobs:
           GUILD_RAID_API_KEY: ${{ secrets.GUILD_RAID_API_KEY }}
         run: npm run fetch:raid
 
-      - name: Exclude war backups from Pages
-        run: |
-          find data/war -maxdepth 1 -type f ! -name current.json -delete
-          rm -f data/dataset-manifest.json data/dataset-manifest.hash
+      - name: Build static site
+        run: npm run build
 
-      - name: Remove build dependencies
-        run: rm -rf node_modules
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Test generated War pages
+        run: npm run test:browser
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
-          path: .
+          path: dist/site
 
       - name: Deploy to GitHub Pages
         id: deployment

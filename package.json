@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "build": "node ./scripts/build-site.js",
+    "preview": "http-server dist/site -a 127.0.0.1 -p 4173 -c-1",
+    "test:browser": "playwright test",
     "map:portraits": "node ./src/auto-map-portraits.js",
     "copy:portraits": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/copy-portraits.ps1",
     "generate:datasets": "node ./scripts/generate-dataset-manifest.js",
@@ -16,5 +19,9 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.45.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.1",
+    "http-server": "^14.1.1"
   }
 }

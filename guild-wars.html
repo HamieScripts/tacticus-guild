@@ -52,11 +52,14 @@
         <h2 id="overview-heading" class="py-1 text-xl font-bold leading-tight text-cyan-100 sm:text-2xl">Guild Wars</h2>
       </section>
 
+      <!-- war-view-navigation:start -->
       <div class="top-tab-strip flex flex-wrap gap-2 border-b border-slate-700" role="tablist" aria-label="Guild War views">
         <button id="war-top-tab-season" type="button" role="tab" aria-selected="true" class="rounded-t-lg border-b-2 border-cyan-400 px-5 py-3 text-sm font-semibold text-cyan-300 transition-colors hover:text-slate-100">Seasons</button>
         <button id="war-top-tab-log" type="button" role="tab" aria-selected="false" class="rounded-t-lg border-b-2 border-transparent px-5 py-3 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-100">Battle Log</button>
       </div>
 
+      <!-- war-view-navigation:end -->
+      <!-- war-season:start -->
       <div id="war-top-panel-season" class="-mt-3">
 
       <section aria-labelledby="season-heading" class="w-full">
@@ -317,6 +320,8 @@
 
       </div>
 
+      <!-- war-season:end -->
+      <!-- war-log:start -->
       <section id="war-top-panel-log" class="hidden" aria-label="Battle Log">
         <div class="rounded-xl border border-slate-800 bg-slate-900/70 shadow-2xl shadow-black/25">
           <div id="tab-panel-battle-history" class="p-4">
@@ -360,6 +365,7 @@
 
         </div>
       </section>
+      <!-- war-log:end -->
 
         </div>
       </div>
@@ -566,6 +572,7 @@
         AppNav.onChange(applyWarTabsFromUrl);
         applyWarTabsFromUrl();
 
+        /* war-view-switch:start */
         const seasonTab = document.getElementById('war-top-tab-season');
         const logTab = document.getElementById('war-top-tab-log');
         const seasonPanel = document.getElementById('war-top-panel-season');
@@ -603,6 +610,7 @@
           applyWarTabsFromUrl();
         });
         setTopTab(AppNav.get('warView') === 'log' ? 'log' : 'season');
+        /* war-view-switch:end */
       });
     </script>
   </body>

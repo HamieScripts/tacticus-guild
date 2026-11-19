@@ -8,6 +8,7 @@ const DEFAULT_DATASETS = {
 
 let DATASETS = { ...DEFAULT_DATASETS };
 let datasetManifestLoad;
+let archiveCatalogError;
 
 let activeDatasetKey = 'current';
 let seasonGroups = [];
@@ -56,6 +57,7 @@ async function fetchDatasetManifest() {
     const archives = await window.supabaseData.listArchivedWars();
     DATASETS = { ...DEFAULT_DATASETS, ...Object.fromEntries(archives.map(dataset => [dataset.key, dataset])) };
   } catch (error) {
+    archiveCatalogError = error;
     DATASETS = { ...DEFAULT_DATASETS };
   }
 
@@ -175,7 +177,7 @@ function loadBattleLogFiltersFromUrl() {
   battleLogFilters.defenderUnitIds = readList('defenderUnitIds');
 }
 
-function syncBattleLogFiltersToUrl() {
+function syncBattleLogFiltersToUrl({ replace = false } = {}) {
   if (typeof window === 'undefined') return;
 
   const params = new URLSearchParams(window.location.search);
@@ -203,7 +205,8 @@ function syncBattleLogFiltersToUrl() {
   const nextUrl = `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`;
   const currentUrl = `${window.location.pathname}${window.location.search}${window.location.hash}`;
   if (nextUrl !== currentUrl) {
-    window.history.replaceState({}, '', nextUrl);
+    if (replace) window.history.replaceState({}, '', nextUrl);
+    else window.history.pushState({}, '', nextUrl);
   }
 }
 const battleLogPlayerFilterOptions = {
@@ -1084,6 +1087,13 @@ function groupDatasetsIntoSeasons(entries) {
   return groups;
 }
 
+function getWarSeasonGroups(entries) {
+  const datedEntries = entries
+    .filter(([key, dataset]) => extractDatasetDate(key, dataset))
+    .sort(([keyA, datasetA], [keyB, datasetB]) => extractDatasetDate(keyB, datasetB) - extractDatasetDate(keyA, datasetA));
+  return groupDatasetsIntoSeasons(datedEntries);
+}
+
 function renderWarSeasonCards(entries) {
   const select = document.getElementById('war-opponent-select');
   if (!select) return;
@@ -1117,11 +1127,8 @@ function renderDatasetTabs() {
   datasetSelect.innerHTML = '';
 
   const entries = Object.entries(DATASETS);
-  const datedEntries = entries
-    .filter(([key, dataset]) => extractDatasetDate(key, dataset))
-    .sort(([keyA, a], [keyB, b]) => extractDatasetDate(keyB, b) - extractDatasetDate(keyA, a));
   const undatedEntries = entries.filter(([key, dataset]) => !extractDatasetDate(key, dataset));
-  const seasons = groupDatasetsIntoSeasons(datedEntries);
+  const seasons = getWarSeasonGroups(entries);
   seasonGroups = seasons;
 
   undatedEntries.forEach(([datasetKey, dataset]) => {
@@ -2819,7 +2826,15 @@ function openWarTeamBattleLog(role, playerId, lineupKey) {
   syncBattleLogFiltersToUrl();
 
   const battleLogTab = document.getElementById('war-top-tab-log');
-  if (battleLogTab) {
+  if (battleLogTab?.href) {
+    const url = new URL(battleLogTab.href);
+    for (const key of Object.values(BATTLE_LOG_QUERY_KEYS)) {
+      const value = new URLSearchParams(window.location.search).get(key);
+      if (value) url.searchParams.set(key, value);
+    }
+    window.location.assign(url);
+    return;
+  } else if (battleLogTab) {
     battleLogTab.click();
   } else if (typeof AppNav !== 'undefined' && typeof AppNav.setParams === 'function') {
     AppNav.setParams({ warView: 'log' });
@@ -3488,6 +3503,8 @@ async function loadAllWarsBattleLogData() {
 
   const statusMessage = document.getElementById('status-message');
   const lastUpdatedEl = document.getElementById('last-updated');
+  const filterSummary = document.getElementById('battle-filter-summary');
+  const standalone = document.body.dataset.page === 'battle-log';
 
   if (statusMessage) {
     statusMessage.textContent = 'Loading all wars battle log...';
@@ -3496,7 +3513,13 @@ async function loadAllWarsBattleLogData() {
     lastUpdatedEl.textContent = 'Loading...';
   }
   try {
+    if (standalone && archiveCatalogError && battleLogFilters.war !== 'current') throw archiveCatalogError;
+    if (standalone && battleLogFilters.war && !Object.hasOwn(DATASETS, battleLogFilters.war)) {
+      filterSummary.textContent = 'The requested war is unavailable.';
+      return;
+    }
     await initializePortraitMapper();
+    if (standalone) seasonGroups = getWarSeasonGroups(Object.entries(DATASETS));
 
     const datasets = getLoadedDatasetDescriptors();
     const results = await Promise.all(datasets.map(async (dataset) => {
@@ -3593,19 +3616,19 @@ async function loadAllWarsBattleLogData() {
     };
 
     const currentSeason = seasonGroups[0];
-    if (!battleLogFilters.season && currentSeason?.entries?.[0]?.[0]) {
+    if (!standalone && !battleLogFilters.season && currentSeason?.entries?.[0]?.[0]) {
       battleLogFilters.season = currentSeason.entries[0][0];
     }
-    if (!battleLogFilters.war && currentSeason?.entries?.[0]?.[0]) {
+    if (!standalone && !battleLogFilters.war && currentSeason?.entries?.[0]?.[0]) {
       battleLogFilters.war = currentSeason.entries[0][0];
     }
-    if (!battleLogFilters.guild) {
+    if (!standalone && !battleLogFilters.guild) {
       const guildName = combinedSnapshot.battles
         .flatMap((battle) => [battle.attackerGuildName, battle.defenderGuildName])
         .find((name) => String(name || '').toLowerCase().includes('praetorians'));
       if (guildName) battleLogFilters.guild = guildName;
     }
-    syncBattleLogFiltersToUrl();
+    syncBattleLogFiltersToUrl({ replace: true });
 
     guildSnapshots = [combinedSnapshot];
     activeGuildIndex = 0;
@@ -3620,9 +3643,12 @@ async function loadAllWarsBattleLogData() {
       statusMessage.textContent = `Loaded ${combinedSnapshot.battles.length.toLocaleString()} battles across ${results.length.toLocaleString()} wars for Praetorians of Terra.`;
     }
     battleLogDataLoaded = true;
-    battleLogDataLoading = false;
   } catch (error) {
     console.error(error);
+    if (standalone) {
+      filterSummary.textContent = 'Could not load the battle log. Reload to try again.';
+      return;
+    }
     guildSnapshots = [{ teamIndex: null, battleLogScope: 'combined', name: 'Praetorians of Terra', battles: [] }];
     activeGuildIndex = 0;
     renderLastUpdated({ responseLastModified: null, dataTimestamp: null });
@@ -3635,6 +3661,7 @@ async function loadAllWarsBattleLogData() {
     if (statusMessage) {
       statusMessage.textContent = 'The all wars battle log could not be loaded. Open the app from a local web server to enable fetch().';
     }
+  } finally {
     battleLogDataLoading = false;
   }
 }
@@ -3820,9 +3847,6 @@ function updateBattleLogScopeFilterOptions(snapshot) {
   battleLogFilterOptions.guild = Array.from(guilds).sort((a, b) => a.localeCompare(b));
   battleLogFilterOptions.season = Array.from(seasons.entries()).sort((a, b) => b[1].localeCompare(a[1]));
   battleLogFilterOptions.war = Array.from(wars.entries()).sort((a, b) => b[1].localeCompare(a[1]));
-  if (battleLogFilters.war && !wars.has(battleLogFilters.war)) {
-    battleLogFilters.war = '';
-  }
 
   guildSelect.innerHTML = '<option value="">All guilds</option>';
   battleLogFilterOptions.guild.forEach((guild) => {
@@ -4009,6 +4033,15 @@ function setupBattleLogFilters() {
     renderBattleLog(snapshot);
   };
 
+  window.addEventListener('popstate', () => {
+    loadBattleLogFiltersFromUrl();
+    sortSelect.value = battleLogFilters.sort;
+    syncResultButtons();
+    syncModeButtons();
+    syncCleanupButtons();
+    rerenderBattleLog();
+  });
+
   sortSelect.addEventListener('change', () => {
     battleLogFilters.sort = sortSelect.value || 'newest';
     syncBattleLogFiltersToUrl();
@@ -4190,7 +4223,7 @@ function renderBattleLog(snapshot) {
   updateBattleLogTileTypeFilterOptions(snapshot);
   updateBattleLogPlayerFilterOptions(snapshot);
   updateBattleLogUnitFilterOptions(snapshot);
-  syncBattleLogFiltersToUrl();
+  syncBattleLogFiltersToUrl({ replace: true });
 
   const activeGuildTeamIndex = Number(snapshot?.teamIndex);
   const shouldApplyGuildFilter = snapshot?.battleLogScope !== 'combined' && Number.isFinite(activeGuildTeamIndex);
@@ -4948,6 +4981,7 @@ async function loadGuildData() {
 if (typeof document !== 'undefined') {
   const currentPage = String(document.body?.dataset?.page || '').trim();
   if (currentPage === 'battle-log') {
+    loadBattleLogFiltersFromUrl();
     setupBattleLogPageTabs();
     loadAllWarsBattleLogData();
   } else {
