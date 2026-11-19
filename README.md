@@ -162,6 +162,40 @@ node --test tests/
 
 ## Updating live war data
 
+`current.json` is only for the in-progress war and is never imported into Supabase.
+Once the war ends, manually save the **Recent War** response to a new UUID-named
+JSON file under `data/war/` before the next war ends. This is a separate export,
+not a rename of the live capture. Clear `current.json` and keep the archive unchanged.
+
+### Publishing war archives
+
+After the initial schema, apply any war migrations you have not run yet, in order:
+
+1. [Create war archive tables](supabase/migrations/20261119000000_war_archives.sql)
+2. [Convert archive data to typed columns](supabase/migrations/20261119000001_type_war_archives.sql)
+3. [Move Machines of War into lineup slots](supabase/migrations/20261119000002_move_war_machines_to_units.sql)
+
+The last two migrations convert existing rows in place; no re-import is needed.
+A new project can backfill with:
+
+```bash
+npm run db:import:war -- --dry-run
+npm run db:import:war
+```
+
+The sync workflow publishes new archives pushed to `master` and can also be
+run manually. It uses the same Supabase credentials as the raid sync. An
+archive's `eventId` identifies that submission, not the matchup. Re-imports
+are no-ops; an archive with a different `eventId` that shares battles with an
+already imported war is rejected for review rather than counted twice.
+
+Supabase stores one row per finished battle, both guilds, and each player's
+guild for that war when it can be determined. Lineup units and buffs use
+separate ordered rows. On each side, slot `0` is the Machine of War and hero
+slots start at `1`. There are no JSON archive columns; other activity stays in the archive files.
+Historical views still use the site manifest for navigation, but load war data
+from Supabase first and fall back to the archived JSON if necessary.
+
 Instructions to update the data war the currently active war. Snowprint does not offer an API for war data Data has to be scraped from a live instance of tacticus.
 
 ### Inital setup

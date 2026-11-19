@@ -959,9 +959,7 @@ async function initializePlayerPage() {
   ]);
   const results = await Promise.all(datasets.map(async (dataset) => {
     try {
-      const response = await fetch(dataset.url, { cache: 'no-store' });
-      if (!response.ok) return null;
-      const data = await response.json();
+      const { data } = await window.supabaseData.loadWarDataset(dataset.url);
       const eventResponseData = pickPrimaryEventResponseData(data);
       if (!eventResponseData) return null;
       return buildWarPlayerStats(dataset, eventResponseData);

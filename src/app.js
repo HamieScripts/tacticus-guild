@@ -1275,10 +1275,7 @@ async function loadPlayerSummaryData() {
 
   for (const [key, dataset] of Object.entries(DATASETS)) {
     try {
-      const response = await fetch(dataset.url, { cache: 'no-store' });
-      if (!response.ok) continue;
-
-      const data = await response.json();
+      const { data } = await window.supabaseData.loadWarDataset(dataset.url);
       const snapshots = buildSnapshot(data);
       const targetIndex = getDefaultActiveGuildIndex(snapshots);
       const snapshot = snapshots[targetIndex];
@@ -3112,9 +3109,7 @@ async function loadWarTeamHistory(role) {
     const datasets = getLoadedDatasetDescriptors();
     const rowsByWar = await Promise.all(datasets.map(async (dataset) => {
       try {
-        const response = await fetch(dataset.url, { cache: 'no-store' });
-        if (!response.ok) return [];
-        const data = await response.json();
+        const { data } = await window.supabaseData.loadWarDataset(dataset.url);
         const snapshots = buildSnapshot(data);
         const targetTeamIndex = getPrimaryGuildTeamIndexFromData(data) || null;
         const targetIndex = Number(targetTeamIndex);
@@ -3576,15 +3571,10 @@ async function loadAllWarsBattleLogData() {
 
     const datasets = getLoadedDatasetDescriptors();
     const results = await Promise.all(datasets.map(async (dataset) => {
-      const response = await fetch(dataset.url, { cache: 'no-store' });
-      if (!response.ok) {
-        throw new Error(`Unable to fetch ${dataset.key} (${response.status})`);
-      }
-
-      const data = await response.json();
+      const { data, lastModified } = await window.supabaseData.loadWarDataset(dataset.url);
       return {
         dataset,
-        responseLastModified: response.headers.get('last-modified'),
+        responseLastModified: lastModified,
         data,
         dataTimestamp: getLatestActivityTimestamp(data)
       };
@@ -4986,15 +4976,13 @@ async function loadGuildData() {
     const season = seasonGroups.find((group) => group.entries.some(([key]) => key === activeDatasetKey));
     const seasonEntries = season?.entries || [[activeDatasetKey, dataset]];
     const records = await Promise.all(seasonEntries.map(async ([key, seasonDataset]) => {
-      const response = await fetch(seasonDataset.url, { cache: 'no-store' });
-      if (!response.ok) throw new Error(`Unable to fetch JSON (${response.status})`);
-      const data = await response.json();
+      const { data, lastModified } = await window.supabaseData.loadWarDataset(seasonDataset.url);
       const snapshots = buildSnapshot(data);
       const targetTeamIndex = getPrimaryGuildTeamIndexFromData(data);
       const targetGuildName = getPrimaryGuildNameFromData(data);
       const targetSnapshot = pickGuildSnapshotForAllWars(snapshots, targetTeamIndex, targetGuildName);
       const opponentSnapshot = snapshots.find((snapshot) => Number(snapshot?.teamIndex) !== Number(targetSnapshot?.teamIndex)) || null;
-      return { dataset: { key, ...seasonDataset }, data, responseLastModified: response.headers.get('last-modified'), snapshots, targetSnapshot, opponentSnapshot };
+      return { dataset: { key, ...seasonDataset }, data, responseLastModified: lastModified, snapshots, targetSnapshot, opponentSnapshot };
     }));
     activeSeasonWarRecords = records;
     if (!selectedWarDatasetKey && records[0]) {

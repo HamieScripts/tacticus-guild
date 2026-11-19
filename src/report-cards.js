@@ -52,9 +52,10 @@
       const wars = await Promise.all(season.entries.map(async (entry) => {
         if (entry.data) return { label: entry.label, data: entry.data, seasonIndex };
         try {
+          const { data } = await window.supabaseData.loadWarDataset(entry.url);
           return {
             label: entry.label || entry.sourceLabel || 'Archived war',
-            data: await fetchJson(entry.url),
+            data,
             seasonIndex
           };
         } catch (error) {

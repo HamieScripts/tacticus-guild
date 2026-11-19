@@ -14,6 +14,8 @@
 
   let client = null;
   let available = null;
+  let warAvailability = null;
+  const warLoads = new Map();
 
   function getClient() {
     if (client) return client;
@@ -224,10 +226,101 @@
       .sort((a, b) => a.season - b.season);
   }
 
+  const WAR_BATTLE_COLUMNS = [
+    'source_battle_id', 'source_user_id', 'attacking_side', 'fought_at', 'score', 'abandoned',
+    'zone_id', 'zone_type', 'zone_visual_id', 'attempt_debuff',
+    'attacker_user_id', 'attacker_power', 'defender_user_id', 'defender_power',
+    'war_battle_units(attacking,slot,unit_id,progression_index,rank,start_hp_before,remaining_hp_before,start_hp_after,remaining_hp_after)',
+    'war_battle_buffs(slot,ability_id,scope)',
+  ].join(',');
+
+  function definedFields(fields) {
+    return Object.fromEntries(Object.entries(fields).filter(([, value]) => value != null));
+  }
+
+  function warBattleToLog(row) {
+    const units = row.war_battle_units.sort((left, right) => left.slot - right.slot);
+    const buffs = row.war_battle_buffs.sort((left, right) => left.slot - right.slot)
+      .map(buff => definedFields({ abilityId: buff.ability_id, scope: buff.scope }));
+    function lineup(side, attacking) {
+      const lineupUnits = units.filter(unit => unit.attacking === attacking);
+      const heroes = lineupUnits.filter(unit => unit.slot > 0).map(unit => definedFields({
+        unitId: unit.unit_id, progressionIndex: unit.progression_index, rank: unit.rank,
+        startHPBefore: unit.start_hp_before, remainingHPBefore: unit.remaining_hp_before,
+        startHPAfter: unit.start_hp_after, remainingHPAfter: unit.remaining_hp_after,
+      }));
+      const userId = row[`${side}_user_id`];
+      const power = row[`${side}_power`];
+      const machine = lineupUnits.find(unit => unit.slot === 0);
+      if (userId == null && power == null && !heroes.length && !machine) return undefined;
+      return definedFields({
+        userId, lineupPower: power == null ? undefined : Number(power), units: heroes,
+        machineOfWar: machine ? definedFields({ unitId: machine.unit_id, progressionIndex: machine.progression_index }) : undefined,
+      });
+    }
+    return definedFields({
+      type: 'battleFinished', id: row.source_battle_id, userId: row.source_user_id,
+      teamIndex: row.attacking_side, createdOn: Date.parse(row.fought_at), score: row.score,
+      abandoned: row.abandoned || undefined, attemptDebuff: row.attempt_debuff,
+      zone: definedFields({ id: row.zone_id, type: row.zone_type, visualId: row.zone_visual_id }),
+      attacker: lineup('attacker', true), defender: lineup('defender', false),
+      buffs: buffs.length ? buffs : undefined,
+    });
+  }
+
+  async function getArchivedWar(archiveKey) {
+    warAvailability ??= isAvailable();
+    if (!(await warAvailability)) return null;
+    const db = getClient();
+    const { data: archive, error } = await db.from('war_archives')
+      .select('event_id,war_id,wars(war_guilds(side,guild_id,name,icon,status),war_participants(player_id,display_name,avatar_unit_id,avatar_frame_id,title,title_gender))')
+      .eq('archive_key', archiveKey).maybeSingle();
+    if (error) throw new Error(error.message);
+    if (!archive?.wars) return null;
+
+    const battles = await fetchAll(() => db.from('war_battles').select(WAR_BATTLE_COLUMNS)
+      .eq('war_id', archive.war_id).order('fought_at').order('source_battle_id'));
+    const guilds = archive.wars.war_guilds.sort((left, right) => left.side - right.side);
+    if (!battles.length || guilds.length !== 2) return null;
+    return {
+      eventResults: [{
+        eventId: archive.event_id,
+        eventResultType: 'SUCCESS',
+        eventResponseData: {
+          guildData: guilds.map(guild => definedFields({
+            teamIndex: guild.side, guildId: guild.guild_id, name: guild.name,
+            guildIcon: guild.icon, guildStatus: guild.status,
+          })),
+          playerData: archive.wars.war_participants.map(player => definedFields({
+            userId: player.player_id, displayName: player.display_name, avatarUnitId: player.avatar_unit_id,
+            avatarFrameId: player.avatar_frame_id, title: player.title, titleGender: player.title_gender,
+          })),
+          activityLogs: battles.map(warBattleToLog),
+        },
+      }],
+    };
+  }
+
+  async function loadWarDataset(url) {
+    const archiveKey = /(?:^|\/)data\/war\/([0-9a-f-]{36})\.json$/i.exec(url)?.[1];
+    if (archiveKey) {
+      if (!warLoads.has(archiveKey)) {
+        warLoads.set(archiveKey, getArchivedWar(archiveKey).catch(() => null));
+      }
+      const data = await warLoads.get(archiveKey);
+      if (data) return { data, lastModified: null };
+      warLoads.delete(archiveKey);
+    }
+    const response = await fetch(url, { cache: 'no-store' });
+    if (!response.ok) throw new Error(`Could not load ${url} (${response.status}).`);
+    return { data: await response.json(), lastModified: response.headers.get('last-modified') };
+  }
+
   window.supabaseData = {
     getPlayers,
     getRaidManifest,
     getRaidSeason,
-    getRaidPlayerTotals
+    getRaidPlayerTotals,
+    loadWarDataset
   };
 })();
