@@ -174,3 +174,39 @@ test('defaults to the most recent archived season and war and our guild', async 
   await expect(page.locator('#battle-filter-guild')).toHaveValue('[TW] Praetorians of Terra');
   expect(requests).toEqual([archive]);
 });
+
+test('changing seasons selects and fetches only the latest war in that season', async ({ page }) => {
+  const season = 'history-2026-10-10-aaaaaaaa';
+  const earlierWar = 'history-2026-10-08-bbbbbbbb';
+  const requests = [];
+  await stubWarData(page);
+  await page.route('**/src/lib/supabase-data.js', route => route.fulfill({
+    contentType: 'application/javascript',
+    body: `window.supabaseData = {
+      listArchivedWars: async () => ${JSON.stringify([archive, earlierWar, season].map(key => ({ key, label: key })))},
+      loadWarDataset: async ({ key }) => ({ data: await fetch('/war-fixture.json?key=' + key).then(response => response.json()) })
+    };`,
+  }));
+  await page.route('**/war-fixture.json?*', route => {
+    requests.push(new URL(route.request().url()).searchParams.get('key'));
+    return route.fulfill({ json: {} });
+  });
+
+  await page.goto(log);
+  const status = page.locator('#battle-filter-summary');
+  await expect(status).toHaveText('Showing 0 logs');
+  await page.locator('#battle-filter-season').selectOption(season);
+  await expect(status).toHaveText('Showing 0 logs');
+  expect(requests).toEqual([archive, season]);
+  await expect(page.locator('#battle-filter-war')).toHaveValue(season);
+  await expect(page).toHaveURL(new RegExp(`battleWar=${season}`));
+
+  await page.reload();
+  await expect(status).toHaveText('Showing 0 logs');
+  await expect(page.locator('#battle-filter-war')).toHaveValue(season);
+  expect(requests).toEqual([archive, season, season]);
+
+  await page.locator('#battle-filter-war').selectOption(earlierWar);
+  await expect(status).toHaveText('Showing 0 logs');
+  expect(requests).toEqual([archive, season, season, earlierWar]);
+});

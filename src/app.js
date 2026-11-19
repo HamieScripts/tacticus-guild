@@ -4105,11 +4105,11 @@ function setupBattleLogFilters() {
 
   seasonSelect.addEventListener('change', () => {
     battleLogFilters.season = seasonSelect.value || '';
-    if (document.body.dataset.page === 'battle-log' && battleLogFilters.season && battleLogFilters.war
-      && !seasonGroups.some(season => season.entries[0][0] === battleLogFilters.season
-        && season.entries.some(([key]) => key === battleLogFilters.war))
-      && battleLogFilters.war !== battleLogFilters.season) {
-      battleLogFilters.war = '';
+    if (document.body.dataset.page === 'battle-log' && battleLogFilters.season) {
+      const selectedSeason = seasonGroups.find(season => season.entries[0][0] === battleLogFilters.season);
+      if (!selectedSeason?.entries.some(([key]) => key === battleLogFilters.war)) {
+        battleLogFilters.war = battleLogFilters.season;
+      }
     }
     syncBattleLogFiltersToUrl();
     rerenderBattleLog();
