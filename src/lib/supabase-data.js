@@ -14,12 +14,30 @@
 
   let client = null;
   let available = null;
-  let warAvailability = null;
   const warLoads = new Map();
+
+  function isDbTimingEnabled() {
+    const search = window.location?.search;
+    const setting = search ? new URLSearchParams(search).get('dbTiming') : null;
+    if (setting === '0' || setting === '1') {
+      try {
+        window.localStorage.setItem('dbTiming', setting);
+      } catch {
+        return setting === '1';
+      }
+      return setting === '1';
+    }
+
+    try {
+      return window.localStorage.getItem('dbTiming') === '1';
+    } catch {
+      return false;
+    }
+  }
 
   async function fetchSupabase(url, options = {}) {
     const requestOptions = { ...options, cache: 'no-store' };
-    if (!window.location?.search || new URLSearchParams(window.location.search).get('dbTiming') !== '1') {
+    if (!isDbTimingEnabled()) {
       return fetch(url, requestOptions);
     }
 
@@ -285,9 +303,8 @@
   }
 
   async function listArchivedWars() {
-    warAvailability ??= isAvailable();
-    if (!(await warAvailability)) throw new Error('War archive database is unavailable');
     const db = getClient();
+    if (!db) throw new Error('War archive database is unavailable');
     const rows = await fetchAll(() => db.from('war_archives')
       .select('archive_key,wars(started_at,ended_at,war_guilds(side,name))').order('archive_key'));
     return rows.map(({ archive_key: archiveKey, wars: war }) => {
@@ -309,9 +326,8 @@
   }
 
   async function getArchivedWar(archiveKey) {
-    warAvailability ??= isAvailable();
-    if (!(await warAvailability)) return null;
     const db = getClient();
+    if (!db) return null;
     const { data: archive, error } = await db.from('war_archives')
       .select(`event_id,war_id,wars(war_guilds(side,guild_id,name,icon,status),war_participants(player_id,display_name,avatar_unit_id,avatar_frame_id,title,title_gender),war_battles(${WAR_BATTLE_COLUMNS}))`)
       .eq('archive_key', archiveKey)

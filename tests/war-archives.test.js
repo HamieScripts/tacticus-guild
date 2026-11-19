@@ -7,13 +7,17 @@ const { buildArchiveImport } = require('../scripts/import-war-archives');
 const archiveKey = 'effdbc91-0bed-48b6-9300-850c24c4e0d1';
 const rawArchive = require(`../data/war/${archiveKey}.json`);
 
-test('times Supabase requests only when enabled and omits query parameters', async () => {
+test('persists Supabase timing preferences and omits query parameters', async () => {
   const messages = [];
+  const stored = new Map();
   const response = { status: 200 };
   let request;
   let now = 0;
   const context = {
-    window: { location: { search: '' } }, URL, URLSearchParams,
+    window: {
+      location: { search: '' },
+      localStorage: { getItem: key => stored.get(key), setItem: (key, value) => stored.set(key, value) },
+    }, URL, URLSearchParams,
     SUPABASE_URL: 'https://example.test', SUPABASE_ANON_KEY: 'test',
     performance: { now: () => (now += 12.5) },
     console: { info: message => messages.push(message) },
@@ -33,9 +37,16 @@ test('times Supabase requests only when enabled and omits query parameters', asy
   const url = 'https://example.test/rest/v1/war_battles?war_id=eq.player-data';
   assert.equal(await request(url), response);
   assert.deepEqual(messages, []);
-  context.window.location.search = '?dbTiming=1';
+  context.window.location.search = '?tab=attacks&dbTiming=1';
   assert.equal(await request(url), response);
+  assert.equal(stored.get('dbTiming'), '1');
+  context.window.location.search = '';
   await assert.rejects(request(url, { method: 'POST' }), /offline/);
+  context.window.location.search = '?dbTiming=0';
+  assert.equal(await request(url), response);
+  assert.equal(stored.get('dbTiming'), '0');
+  context.window.location.search = '';
+  assert.equal(await request(url), response);
   assert.deepEqual(messages, [
     '[Supabase] GET /rest/v1/war_battles (200) 12.5 ms',
     '[Supabase] POST /rest/v1/war_battles (network error) 12.5 ms',
@@ -85,24 +96,33 @@ test('loads archived battles only from Supabase and the live war from JSON', asy
     },
     supabase: { createClient: () => ({ from: (table) => {
       requests.push(table);
-      if (table === 'players') return { select: async () => ({ error: null }) };
-      if (table === 'war_archives') return { select: columns => ({ eq: (field, value) => {
-        assert.match(columns, /war_battles\(/);
-        const query = {
-          order: () => query,
-          limit: () => query,
-          maybeSingle: async () => ({ data: [archiveKey, largeArchiveKey].includes(value) ? {
-            event_id: 'event',
-            war_id: 'war',
-            wars: {
-              war_guilds: [{ side: 2, guild_id: 'second-guild' }, { side: 1, guild_id: 'first-guild' }],
-              war_participants: [{ player_id: 'attacker', display_name: 'Attacker' }],
-              war_battles: value === largeArchiveKey ? Array(1000).fill(battle) : [battle],
-            },
-          } : null }),
-        };
-        return query;
-      } }) };
+      if (table === 'war_archives') return { select: columns => ({
+        order: () => ({ range: async () => ({ data: [{
+          archive_key: archiveKey,
+          wars: {
+            started_at: battle.fought_at,
+            ended_at: battle.fought_at,
+            war_guilds: [{ side: 1, name: '[TW] Praetorians of Terra' }, { side: 2, name: 'Opponent' }],
+          },
+        }] }) }),
+        eq: (field, value) => {
+          assert.match(columns, /war_battles\(/);
+          const query = {
+            order: () => query,
+            limit: () => query,
+            maybeSingle: async () => ({ data: [archiveKey, largeArchiveKey].includes(value) ? {
+              event_id: 'event',
+              war_id: 'war',
+              wars: {
+                war_guilds: [{ side: 2, guild_id: 'second-guild' }, { side: 1, guild_id: 'first-guild' }],
+                war_participants: [{ player_id: 'attacker', display_name: 'Attacker' }],
+                war_battles: value === largeArchiveKey ? Array(1000).fill(battle) : [battle],
+              },
+            } : null }),
+          };
+          return query;
+        },
+      }) };
       const query = {
         select: () => query, eq: () => query, order: () => query,
         range: async (from, to) => {
@@ -115,11 +135,14 @@ test('loads archived battles only from Supabase and the live war from JSON', asy
     } }) },
   };
   vm.runInNewContext(fs.readFileSync(require.resolve('../src/lib/supabase-data'), 'utf8'), context);
-  const { loadWarDataset } = context.window.supabaseData;
+  const { listArchivedWars, loadWarDataset } = context.window.supabaseData;
   const liveUrl = './data/war/current.json';
   assert.equal((await loadWarDataset({ key: 'current' })).data.fromJson, true);
   assert.deepEqual(requests, [liveUrl]);
-  const loaded = await loadWarDataset({ archiveKey });
+  const [archive] = await listArchivedWars();
+  assert.equal(archive.archiveKey, archiveKey);
+  assert.equal(archive.label, 'Opponent (2026-09-01)');
+  const loaded = await loadWarDataset(archive);
   const { guildData, playerData, activityLogs } = JSON.parse(JSON.stringify(loaded.data.eventResults[0].eventResponseData));
   assert.deepEqual(guildData.map(guild => guild.guildId), ['first-guild', 'second-guild']);
   assert.deepEqual(playerData, [{ userId: 'attacker', displayName: 'Attacker' }]);
@@ -133,10 +156,10 @@ test('loads archived battles only from Supabase and the live war from JSON', asy
     buffs: [{ abilityId: 'buff', scope: 'defender' }],
   }]);
   assert.equal(await loadWarDataset({ archiveKey }).then(result => result.data), loaded.data);
-  assert.deepEqual(requests, [liveUrl, 'players', 'war_archives']);
+  assert.deepEqual(requests, [liveUrl, 'war_archives', 'war_archives']);
   const missingKey = '00000000-0000-0000-0000-000000000001';
   await assert.rejects(loadWarDataset({ archiveKey: missingKey }), /unavailable/);
-  assert.deepEqual(requests, [liveUrl, 'players', 'war_archives', 'war_archives']);
+  assert.deepEqual(requests, [liveUrl, 'war_archives', 'war_archives', 'war_archives']);
   const largeWar = await loadWarDataset({ archiveKey: largeArchiveKey });
   const largeWarLogs = largeWar.data.eventResults[0].eventResponseData.activityLogs;
   assert.equal(largeWarLogs.length, 1001);
