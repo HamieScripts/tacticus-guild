@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795061886,
+  "fetchedOn": 1795065377,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -2645,6 +2645,24 @@
         "unitId": "tyranBiovore",
         "power": 370
       }
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 9644,
+      "damageType": "Bomb",
+      "remainingHp": 3485137,
+      "maxHp": 7500000,
+      "startedOn": 1795063148,
+      "completedOn": 1795063148,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
