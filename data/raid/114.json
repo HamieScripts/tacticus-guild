@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795054808,
+  "fetchedOn": 1795058279,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -2356,6 +2356,126 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 1312
+      }
+    },
+    {
+      "userId": "9d50010a-82f9-4db9-aa55-e292388ea749",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 8279,
+      "damageType": "Bomb",
+      "remainingHp": 6277046,
+      "maxHp": 7500000,
+      "startedOn": 1795054989,
+      "completedOn": 1795054989,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "9d50010a-82f9-4db9-aa55-e292388ea749",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 602619,
+      "damageType": "Battle",
+      "remainingHp": 5674427,
+      "maxHp": 7500000,
+      "startedOn": 1795055021,
+      "completedOn": 1795055362,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 878103
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 281052
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 734001
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 437283
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 690484
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 149526
+      }
+    },
+    {
+      "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 8201,
+      "damageType": "Bomb",
+      "remainingHp": 5666226,
+      "maxHp": 7500000,
+      "startedOn": 1795058149,
+      "completedOn": 1795058149,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 236593,
+      "damageType": "Battle",
+      "remainingHp": 5429633,
+      "maxHp": 7500000,
+      "startedOn": 1795058154,
+      "completedOn": 1795058255,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 662657
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 642718
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 368517
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 866505
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 982212
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 16415
       }
     }
   ]
