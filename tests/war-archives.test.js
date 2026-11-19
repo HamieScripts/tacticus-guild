@@ -61,6 +61,7 @@ test('imports only finished battles and relates them to both guilds and the rost
 
 test('loads archived battles only from Supabase and the live war from JSON', async () => {
   const requests = [];
+  const largeArchiveKey = 'large-war';
   const battle = {
     source_battle_id: 'battle', source_user_id: 'attacker', attacking_side: 1,
     fought_at: '2026-09-01T10:00:00.123Z', score: null, abandoned: false, zone_type: 'HQ',
@@ -85,19 +86,29 @@ test('loads archived battles only from Supabase and the live war from JSON', asy
     supabase: { createClient: () => ({ from: (table) => {
       requests.push(table);
       if (table === 'players') return { select: async () => ({ error: null }) };
-      if (table === 'war_archives') return { select: () => ({ eq: (field, value) => ({
-        maybeSingle: async () => ({ data: value === archiveKey ? {
-          event_id: 'event',
-          war_id: 'war',
-          wars: {
-            war_guilds: [{ side: 2, guild_id: 'second-guild' }, { side: 1, guild_id: 'first-guild' }],
-            war_participants: [{ player_id: 'attacker', display_name: 'Attacker' }],
-          },
-        } : null }),
-      }) }) };
+      if (table === 'war_archives') return { select: columns => ({ eq: (field, value) => {
+        assert.match(columns, /war_battles\(/);
+        const query = {
+          order: () => query,
+          limit: () => query,
+          maybeSingle: async () => ({ data: [archiveKey, largeArchiveKey].includes(value) ? {
+            event_id: 'event',
+            war_id: 'war',
+            wars: {
+              war_guilds: [{ side: 2, guild_id: 'second-guild' }, { side: 1, guild_id: 'first-guild' }],
+              war_participants: [{ player_id: 'attacker', display_name: 'Attacker' }],
+              war_battles: value === largeArchiveKey ? Array(1000).fill(battle) : [battle],
+            },
+          } : null }),
+        };
+        return query;
+      } }) };
       const query = {
         select: () => query, eq: () => query, order: () => query,
-        range: async () => ({ data: [battle] }),
+        range: async (from, to) => {
+          assert.deepEqual([from, to], [1000, 1999]);
+          return { data: [{ ...battle, source_battle_id: 'overflow' }] };
+        },
       };
       assert.equal(table, 'war_battles');
       return query;
@@ -122,8 +133,13 @@ test('loads archived battles only from Supabase and the live war from JSON', asy
     buffs: [{ abilityId: 'buff', scope: 'defender' }],
   }]);
   assert.equal(await loadWarDataset({ archiveKey }).then(result => result.data), loaded.data);
-  assert.deepEqual(requests, [liveUrl, 'players', 'war_archives', 'war_battles']);
+  assert.deepEqual(requests, [liveUrl, 'players', 'war_archives']);
   const missingKey = '00000000-0000-0000-0000-000000000001';
   await assert.rejects(loadWarDataset({ archiveKey: missingKey }), /unavailable/);
-  assert.deepEqual(requests, [liveUrl, 'players', 'war_archives', 'war_battles', 'war_archives']);
+  assert.deepEqual(requests, [liveUrl, 'players', 'war_archives', 'war_archives']);
+  const largeWar = await loadWarDataset({ archiveKey: largeArchiveKey });
+  const largeWarLogs = largeWar.data.eventResults[0].eventResponseData.activityLogs;
+  assert.equal(largeWarLogs.length, 1001);
+  assert.equal(largeWarLogs.at(-1).id, 'overflow');
+  assert.deepEqual(requests.slice(-2), ['war_archives', 'war_battles']);
 });
