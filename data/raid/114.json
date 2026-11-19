@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795065377,
+  "fetchedOn": 1795072644,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -2661,6 +2661,66 @@
       "maxHp": 7500000,
       "startedOn": 1795063148,
       "completedOn": 1795063148,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "3062a0b8-d318-44a8-a8f2-fe239835c307",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 73249,
+      "damageType": "Battle",
+      "remainingHp": 3411888,
+      "maxHp": 7500000,
+      "startedOn": 1795070466,
+      "completedOn": 1795070683,
+      "heroDetails": [
+        {
+          "unitId": "blackTerminator",
+          "power": 712715
+        },
+        {
+          "unitId": "ultraInceptorSgt",
+          "power": 464688
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 612149
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 537167
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 511045
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "ultraDreadnought",
+        "power": 3639
+      }
+    },
+    {
+      "userId": "c62ee67f-0a9e-4e29-8861-320e57788e6c",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 9528,
+      "damageType": "Bomb",
+      "remainingHp": 3402360,
+      "maxHp": 7500000,
+      "startedOn": 1795071656,
+      "completedOn": 1795071656,
       "heroDetails": [],
       "machineOfWarDetails": null
     }
