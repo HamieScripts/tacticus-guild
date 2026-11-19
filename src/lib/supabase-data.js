@@ -86,9 +86,9 @@
     return Number.isNaN(parsed) ? null : Math.round(parsed / 1000);
   }
 
-  async function fetchAll(queryFactory, offset = 0) {
+  async function fetchAll(queryFactory) {
     const rows = [];
-    for (let from = offset; ; from += PAGE_SIZE) {
+    for (let from = 0; ; from += PAGE_SIZE) {
       const { data, error } = await queryFactory().range(from, from + PAGE_SIZE - 1);
       if (error) throw new Error(error.message);
       rows.push(...data);
@@ -329,21 +329,13 @@
     const db = getClient();
     if (!db) return null;
     const { data: archive, error } = await db.from('war_archives')
-      .select(`event_id,war_id,wars(war_guilds(side,guild_id,name,icon,status),war_participants(player_id,display_name,avatar_unit_id,avatar_frame_id,title,title_gender),war_battles(${WAR_BATTLE_COLUMNS}))`)
-      .eq('archive_key', archiveKey)
-      .order('fought_at', { referencedTable: 'wars.war_battles' })
-      .order('source_battle_id', { referencedTable: 'wars.war_battles' })
-      .limit(PAGE_SIZE, { referencedTable: 'wars.war_battles' })
-      .maybeSingle();
+      .select('event_id,war_id,wars(war_guilds(side,guild_id,name,icon,status),war_participants(player_id,display_name,avatar_unit_id,avatar_frame_id,title,title_gender))')
+      .eq('archive_key', archiveKey).maybeSingle();
     if (error) throw new Error(error.message);
     if (!archive?.wars) return null;
 
-    const embeddedBattles = archive.wars.war_battles;
-    const battles = embeddedBattles.length < PAGE_SIZE ? embeddedBattles : [
-      ...embeddedBattles,
-      ...await fetchAll(() => db.from('war_battles').select(WAR_BATTLE_COLUMNS)
-        .eq('war_id', archive.war_id).order('fought_at').order('source_battle_id'), embeddedBattles.length),
-    ];
+    const battles = await fetchAll(() => db.from('war_battles').select(WAR_BATTLE_COLUMNS)
+      .eq('war_id', archive.war_id).order('fought_at').order('source_battle_id'));
     const guilds = archive.wars.war_guilds.sort((left, right) => left.side - right.side);
     if (!battles.length || guilds.length !== 2) return null;
     return {

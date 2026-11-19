@@ -106,26 +106,30 @@ test('loads archived battles only from Supabase and the live war from JSON', asy
           },
         }] }) }),
         eq: (field, value) => {
-          assert.match(columns, /war_battles\(/);
+          assert.doesNotMatch(columns, /war_battles\(/);
           const query = {
             order: () => query,
             limit: () => query,
             maybeSingle: async () => ({ data: [archiveKey, largeArchiveKey].includes(value) ? {
               event_id: 'event',
-              war_id: 'war',
+              war_id: value,
               wars: {
                 war_guilds: [{ side: 2, guild_id: 'second-guild' }, { side: 1, guild_id: 'first-guild' }],
                 war_participants: [{ player_id: 'attacker', display_name: 'Attacker' }],
-                war_battles: value === largeArchiveKey ? Array(1000).fill(battle) : [battle],
               },
             } : null }),
           };
           return query;
         },
       }) };
+      let warId;
       const query = {
-        select: () => query, eq: () => query, order: () => query,
+        select: () => query, eq: (field, value) => { assert.equal(field, 'war_id'); warId = value; return query; }, order: () => query,
         range: async (from, to) => {
+          if (from === 0) {
+            assert.equal(to, 999);
+            return { data: warId === largeArchiveKey ? Array(1000).fill(battle) : [battle] };
+          }
           assert.deepEqual([from, to], [1000, 1999]);
           return { data: [{ ...battle, source_battle_id: 'overflow' }] };
         },
@@ -156,13 +160,13 @@ test('loads archived battles only from Supabase and the live war from JSON', asy
     buffs: [{ abilityId: 'buff', scope: 'defender' }],
   }]);
   assert.equal(await loadWarDataset({ archiveKey }).then(result => result.data), loaded.data);
-  assert.deepEqual(requests, [liveUrl, 'war_archives', 'war_archives']);
+  assert.deepEqual(requests, [liveUrl, 'war_archives', 'war_archives', 'war_battles']);
   const missingKey = '00000000-0000-0000-0000-000000000001';
   await assert.rejects(loadWarDataset({ archiveKey: missingKey }), /unavailable/);
-  assert.deepEqual(requests, [liveUrl, 'war_archives', 'war_archives', 'war_archives']);
+  assert.deepEqual(requests, [liveUrl, 'war_archives', 'war_archives', 'war_battles', 'war_archives']);
   const largeWar = await loadWarDataset({ archiveKey: largeArchiveKey });
   const largeWarLogs = largeWar.data.eventResults[0].eventResponseData.activityLogs;
   assert.equal(largeWarLogs.length, 1001);
   assert.equal(largeWarLogs.at(-1).id, 'overflow');
-  assert.deepEqual(requests.slice(-2), ['war_archives', 'war_battles']);
+  assert.deepEqual(requests.slice(-3), ['war_archives', 'war_battles', 'war_battles']);
 });
