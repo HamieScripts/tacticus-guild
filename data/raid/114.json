@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795119393,
+  "fetchedOn": 1795126467,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -4369,6 +4369,192 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 127322
+      }
+    },
+    {
+      "userId": "667d435c-4668-4676-a002-e533709f1cc6",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss11MiniBoss1TauMarksman",
+      "type": "Riptide",
+      "rarity": "Legendary",
+      "damageDealt": 242194,
+      "damageType": "Battle",
+      "remainingHp": 344944,
+      "maxHp": 750000,
+      "startedOn": 1795123951,
+      "completedOn": 1795124176,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 450534
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 814996
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 420440
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 945568
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 609724
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 127322
+      }
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss11MiniBoss1TauMarksman",
+      "type": "Riptide",
+      "rarity": "Legendary",
+      "damageDealt": 124338,
+      "damageType": "Battle",
+      "remainingHp": 220606,
+      "maxHp": 750000,
+      "startedOn": 1795124832,
+      "completedOn": 1795124959,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 325028
+        },
+        {
+          "unitId": "admecDominus",
+          "power": 80265
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 60630
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 61087
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 193822
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 3142
+      }
+    },
+    {
+      "userId": "129ec564-5fd6-402d-a981-c50d6623ae35",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Legendary",
+      "damageDealt": 8768,
+      "damageType": "Bomb",
+      "remainingHp": 12483009,
+      "maxHp": 12500000,
+      "startedOn": 1795125262,
+      "completedOn": 1795125262,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "129ec564-5fd6-402d-a981-c50d6623ae35",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss11MiniBoss1TauMarksman",
+      "type": "Riptide",
+      "rarity": "Legendary",
+      "damageDealt": 94875,
+      "damageType": "Battle",
+      "remainingHp": 125731,
+      "maxHp": 750000,
+      "startedOn": 1795125542,
+      "completedOn": 1795125706,
+      "heroDetails": [
+        {
+          "unitId": "necroDestroyer",
+          "power": 105465
+        },
+        {
+          "unitId": "spaceBlackmane",
+          "power": 102264
+        },
+        {
+          "unitId": "eldarAutarch",
+          "power": 199265
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 224311
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 750559
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 505
+      }
+    },
+    {
+      "userId": "260cfd81-b5de-433e-bc13-cb5f9a08b137",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss11MiniBoss2TauCrisis",
+      "type": "Riptide",
+      "rarity": "Legendary",
+      "damageDealt": 102178,
+      "damageType": "Battle",
+      "remainingHp": 647822,
+      "maxHp": 750000,
+      "startedOn": 1795126058,
+      "completedOn": 1795126219,
+      "heroDetails": [
+        {
+          "unitId": "bloodMephiston",
+          "power": 751514
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 775290
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 616618
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 883564
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 900992
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 713700
       }
     }
   ]
