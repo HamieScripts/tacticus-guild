@@ -268,6 +268,30 @@
     });
   }
 
+  async function listArchivedWars() {
+    warAvailability ??= isAvailable();
+    if (!(await warAvailability)) throw new Error('War archive database is unavailable');
+    const db = getClient();
+    const rows = await fetchAll(() => db.from('war_archives')
+      .select('archive_key,wars(started_at,ended_at,war_guilds(side,name))').order('archive_key'));
+    return rows.map(({ archive_key: archiveKey, wars: war }) => {
+      const guildNames = [...war.war_guilds].sort((left, right) => left.side - right.side)
+        .map(guild => String(guild.name || 'Unknown guild').trim().replace(/\s+/g, ' '));
+      const [first = 'Unknown guild', second = 'Unknown guild'] = guildNames;
+      const opponent = first === '[TW] Praetorians of Terra' ? second : first;
+      const end = new Date(war.ended_at).toISOString();
+      const date = end.slice(0, 10);
+      return {
+        archiveKey,
+        key: `history-${date}-${archiveKey.slice(0, 8)}`,
+        label: `${opponent} (${date})`,
+        sourceLabel: `${first} vs. ${second} (${date})`,
+        start: new Date(war.started_at).toISOString(),
+        end,
+      };
+    }).sort((left, right) => right.end.localeCompare(left.end) || left.key.localeCompare(right.key));
+  }
+
   async function getArchivedWar(archiveKey) {
     warAvailability ??= isAvailable();
     if (!(await warAvailability)) return null;
@@ -301,16 +325,21 @@
     };
   }
 
-  async function loadWarDataset(url) {
-    const archiveKey = /(?:^|\/)data\/war\/([0-9a-f-]{36})\.json$/i.exec(url)?.[1];
+  async function loadWarDataset({ key, archiveKey }) {
     if (archiveKey) {
       if (!warLoads.has(archiveKey)) {
-        warLoads.set(archiveKey, getArchivedWar(archiveKey).catch(() => null));
+        warLoads.set(archiveKey, getArchivedWar(archiveKey).catch(error => {
+          warLoads.delete(archiveKey);
+          throw error;
+        }));
       }
       const data = await warLoads.get(archiveKey);
       if (data) return { data, lastModified: null };
       warLoads.delete(archiveKey);
+      throw new Error(`War archive ${archiveKey} is unavailable`);
     }
+    if (key !== 'current') throw new Error('Missing war archive key');
+    const url = './data/war/current.json';
     const response = await fetch(url, { cache: 'no-store' });
     if (!response.ok) throw new Error(`Could not load ${url} (${response.status}).`);
     return { data: await response.json(), lastModified: response.headers.get('last-modified') };
@@ -321,6 +350,7 @@
     getRaidManifest,
     getRaidSeason,
     getRaidPlayerTotals,
-    loadWarDataset
+    loadWarDataset,
+    listArchivedWars
   };
 })();

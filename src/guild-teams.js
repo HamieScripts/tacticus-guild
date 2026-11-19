@@ -215,43 +215,14 @@ function getBattleFlags(log) {
 }
 
 async function loadBattleLogsData() {
-  const fallbackDatasets = [{
-    key: 'current',
-    label: 'Active war',
-    url: './data/war/current.json'
-  }];
-
-  let datasets = fallbackDatasets;
-
-  try {
-    const manifestUrl = await getDatasetManifestUrl();
-    const manifestResponse = await fetch(manifestUrl, { cache: 'no-store' });
-    if (manifestResponse.ok) {
-      const manifest = await manifestResponse.json();
-      const rawDatasets = Array.isArray(manifest)
-        ? manifest
-        : (Array.isArray(manifest?.datasets) ? manifest.datasets : []);
-      const normalizedDatasets = rawDatasets
-        .map((entry) => ({
-          key: String(entry?.key || '').trim(),
-          label: String(entry?.label || 'Unknown war').trim(),
-          url: String(entry?.url || '').trim()
-        }))
-        .filter((entry) => entry.key && entry.url);
-
-      if (normalizedDatasets.length > 0) {
-        datasets = normalizedDatasets;
-      }
-    }
-  } catch (error) {
-    datasets = fallbackDatasets;
-  }
+  const archives = await window.supabaseData.listArchivedWars().catch(() => []);
+  const datasets = archives.length ? archives : [{ key: 'current', label: 'Active war' }];
 
   const logs = [];
 
   const datasetResults = await Promise.all(datasets.map(async (dataset) => {
     try {
-      const { data } = await window.supabaseData.loadWarDataset(dataset.url);
+      const { data } = await window.supabaseData.loadWarDataset(dataset);
       const eventResponseData = pickPrimaryEventResponseData(data);
       if (!eventResponseData) return null;
 

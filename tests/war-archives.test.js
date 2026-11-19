@@ -5,7 +5,6 @@ const vm = require('node:vm');
 const { buildArchiveImport } = require('../scripts/import-war-archives');
 
 const archiveKey = 'effdbc91-0bed-48b6-9300-850c24c4e0d1';
-const archiveUrl = `./data/war/${archiveKey}.json`;
 const rawArchive = require(`../data/war/${archiveKey}.json`);
 
 test('imports only finished battles and relates them to both guilds and the roster', () => {
@@ -25,7 +24,7 @@ test('imports only finished battles and relates them to both guilds and the rost
   assert.throws(() => buildArchiveImport('current', {}), /successful event/);
 });
 
-test('loads archived battles from Supabase first, keeping live and missing wars on JSON', async () => {
+test('loads archived battles only from Supabase and the live war from JSON', async () => {
   const requests = [];
   const battle = {
     source_battle_id: 'battle', source_user_id: 'attacker', attacking_side: 1,
@@ -72,9 +71,9 @@ test('loads archived battles from Supabase first, keeping live and missing wars 
   vm.runInNewContext(fs.readFileSync(require.resolve('../src/lib/supabase-data'), 'utf8'), context);
   const { loadWarDataset } = context.window.supabaseData;
   const liveUrl = './data/war/current.json';
-  assert.equal((await loadWarDataset(liveUrl)).data.fromJson, true);
+  assert.equal((await loadWarDataset({ key: 'current' })).data.fromJson, true);
   assert.deepEqual(requests, [liveUrl]);
-  const loaded = await loadWarDataset(archiveUrl);
+  const loaded = await loadWarDataset({ archiveKey });
   const { guildData, playerData, activityLogs } = JSON.parse(JSON.stringify(loaded.data.eventResults[0].eventResponseData));
   assert.deepEqual(guildData.map(guild => guild.guildId), ['first-guild', 'second-guild']);
   assert.deepEqual(playerData, [{ userId: 'attacker', displayName: 'Attacker' }]);
@@ -87,9 +86,9 @@ test('loads archived battles from Supabase first, keeping live and missing wars 
     ], machineOfWar: { unitId: 'defender-machine' } },
     buffs: [{ abilityId: 'buff', scope: 'defender' }],
   }]);
-  assert.equal(await loadWarDataset(archiveUrl).then(result => result.data), loaded.data);
+  assert.equal(await loadWarDataset({ archiveKey }).then(result => result.data), loaded.data);
   assert.deepEqual(requests, [liveUrl, 'players', 'war_archives', 'war_battles']);
-  const missingUrl = './data/war/00000000-0000-0000-0000-000000000001.json';
-  assert.equal((await loadWarDataset(missingUrl)).data.fromJson, true);
-  assert.deepEqual(requests.slice(-2), ['war_archives', missingUrl]);
+  const missingKey = '00000000-0000-0000-0000-000000000001';
+  await assert.rejects(loadWarDataset({ archiveKey: missingKey }), /unavailable/);
+  assert.deepEqual(requests, [liveUrl, 'players', 'war_archives', 'war_battles', 'war_archives']);
 });

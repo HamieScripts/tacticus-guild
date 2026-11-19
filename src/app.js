@@ -31,29 +31,6 @@ function getDatasetKeyFromUrl() {
   return getDefaultDatasetKey();
 }
 
-function normalizeDatasets(manifestDatasets) {
-  if (!Array.isArray(manifestDatasets) || manifestDatasets.length === 0) {
-    return null;
-  }
-
-  const normalized = {};
-
-  manifestDatasets.forEach((dataset) => {
-    const key = typeof dataset?.key === 'string' ? dataset.key.trim() : '';
-    const label = typeof dataset?.label === 'string' ? dataset.label.trim() : '';
-    const sourceLabel = typeof dataset?.sourceLabel === 'string' ? dataset.sourceLabel.trim() : '';
-    const url = typeof dataset?.url === 'string' ? dataset.url.trim() : '';
-    const start = typeof dataset?.start === 'string' ? dataset.start.trim() : '';
-    const end = typeof dataset?.end === 'string' ? dataset.end.trim() : '';
-
-    if (!key || !label || !sourceLabel || !url) return;
-
-    normalized[key] = { label, sourceLabel, url, start: start || null, end: end || null };
-  });
-
-  return Object.keys(normalized).length > 0 ? normalized : null;
-}
-
 function shouldDisplayCurrentDataset(data) {
   if (data === null || data === undefined) {
     return false;
@@ -70,39 +47,12 @@ function shouldDisplayCurrentDataset(data) {
   return Object.keys(data).length > 0;
 }
 
-async function getDatasetManifestUrl() {
-  let hashValue = '';
-
-  try {
-    const hashResponse = await fetch('./data/dataset-manifest.hash', { cache: 'no-store' });
-    if (hashResponse.ok) {
-      hashValue = (await hashResponse.text()).trim();
-    }
-  } catch (error) {
-    hashValue = '';
-  }
-
-  const url = new URL('./data/dataset-manifest.json', window.location.href);
-  if (hashValue) {
-    url.searchParams.set('v', hashValue);
-  }
-
-  return url.toString();
-}
-
 async function loadDatasetManifest() {
   if (datasetsLoaded) return;
 
   try {
-    const manifestUrl = await getDatasetManifestUrl();
-    const response = await fetch(manifestUrl, { cache: 'no-store' });
-    if (response.ok) {
-      const manifest = await response.json();
-      const normalized = normalizeDatasets(manifest?.datasets);
-      if (normalized) {
-        DATASETS = { ...DEFAULT_DATASETS, ...normalized };
-      }
-    }
+    const archives = await window.supabaseData.listArchivedWars();
+    DATASETS = { ...DEFAULT_DATASETS, ...Object.fromEntries(archives.map(dataset => [dataset.key, dataset])) };
   } catch (error) {
     DATASETS = { ...DEFAULT_DATASETS };
   }
@@ -1275,7 +1225,7 @@ async function loadPlayerSummaryData() {
 
   for (const [key, dataset] of Object.entries(DATASETS)) {
     try {
-      const { data } = await window.supabaseData.loadWarDataset(dataset.url);
+      const { data } = await window.supabaseData.loadWarDataset({ ...dataset, key });
       const snapshots = buildSnapshot(data);
       const targetIndex = getDefaultActiveGuildIndex(snapshots);
       const snapshot = snapshots[targetIndex];
@@ -2844,16 +2794,7 @@ function getGuildNameByTeamIndex(teamIndex) {
 }
 
 function getLoadedDatasetDescriptors() {
-  const seenUrls = new Set();
-  return Object.entries(DATASETS)
-    .map(([key, dataset]) => ({ key, ...dataset }))
-    .filter((dataset) => {
-      const normalizedUrl = String(dataset?.url || '').trim();
-      if (!normalizedUrl) return false;
-      if (seenUrls.has(normalizedUrl)) return false;
-      seenUrls.add(normalizedUrl);
-      return true;
-    });
+  return Object.entries(DATASETS).map(([key, dataset]) => ({ ...dataset, key }));
 }
 
 function getBattleLineupKey(units, machineOfWar) {
@@ -3109,7 +3050,7 @@ async function loadWarTeamHistory(role) {
     const datasets = getLoadedDatasetDescriptors();
     const rowsByWar = await Promise.all(datasets.map(async (dataset) => {
       try {
-        const { data } = await window.supabaseData.loadWarDataset(dataset.url);
+        const { data } = await window.supabaseData.loadWarDataset(dataset);
         const snapshots = buildSnapshot(data);
         const targetTeamIndex = getPrimaryGuildTeamIndexFromData(data) || null;
         const targetIndex = Number(targetTeamIndex);
@@ -3571,7 +3512,7 @@ async function loadAllWarsBattleLogData() {
 
     const datasets = getLoadedDatasetDescriptors();
     const results = await Promise.all(datasets.map(async (dataset) => {
-      const { data, lastModified } = await window.supabaseData.loadWarDataset(dataset.url);
+      const { data, lastModified } = await window.supabaseData.loadWarDataset(dataset);
       return {
         dataset,
         responseLastModified: lastModified,
@@ -4976,7 +4917,7 @@ async function loadGuildData() {
     const season = seasonGroups.find((group) => group.entries.some(([key]) => key === activeDatasetKey));
     const seasonEntries = season?.entries || [[activeDatasetKey, dataset]];
     const records = await Promise.all(seasonEntries.map(async ([key, seasonDataset]) => {
-      const { data, lastModified } = await window.supabaseData.loadWarDataset(seasonDataset.url);
+      const { data, lastModified } = await window.supabaseData.loadWarDataset({ ...seasonDataset, key });
       const snapshots = buildSnapshot(data);
       const targetTeamIndex = getPrimaryGuildTeamIndexFromData(data);
       const targetGuildName = getPrimaryGuildNameFromData(data);

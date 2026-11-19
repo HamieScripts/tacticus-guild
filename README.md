@@ -52,10 +52,10 @@ rating across the selected war datasets.
 
 ```
 data/
-├── dataset-manifest.json     # Index of all war datasets (labels, sources, cache hash)
+├── dataset-manifest.json     # Offline portrait tooling only; not published
 ├── war/
 │   ├── current.json           # Active war snapshot
-│   └── <id>.json              # Historical war snapshots (UUID-named)
+│   └── <id>.json              # Historical backups for import; not published
 ├── raid/
 │   ├── current.json           # Active guild raid season
 │   └── <season>.json          # Historical guild raid seasons
@@ -193,8 +193,10 @@ Supabase stores one row per finished battle, both guilds, and each player's
 guild for that war when it can be determined. Lineup units and buffs use
 separate ordered rows. On each side, slot `0` is the Machine of War and hero
 slots start at `1`. There are no JSON archive columns; other activity stays in the archive files.
-Historical views still use the site manifest for navigation, but load war data
-from Supabase first and fall back to the archived JSON if necessary.
+The site reads both the historical war list and battles directly from Supabase.
+GitHub Pages publishes only the live war snapshot, not the archive files or
+the offline dataset manifest. A new archive appears on the site after its
+Supabase import succeeds, without waiting for another Pages deployment.
 
 Instructions to update the data war the currently active war. Snowprint does not offer an API for war data Data has to be scraped from a live instance of tacticus.
 

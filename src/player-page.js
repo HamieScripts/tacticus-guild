@@ -81,81 +81,9 @@ function getLatestActivityTimestamp(eventResponseData) {
   return maxTimestamp > 0 ? maxTimestamp : null;
 }
 
-async function getDatasetManifestUrl() {
-  let hashValue = '';
-
-  try {
-    const hashResponse = await fetch('./data/dataset-manifest.hash', { cache: 'no-store' });
-    if (hashResponse.ok) {
-      hashValue = (await hashResponse.text()).trim();
-    }
-  } catch (error) {
-    hashValue = '';
-  }
-
-  const url = new URL('./data/dataset-manifest.json', window.location.href);
-  if (hashValue) {
-    url.searchParams.set('v', hashValue);
-  }
-
-  return url.toString();
-}
-
 async function loadDatasetManifest() {
-  try {
-    const manifestUrl = await getDatasetManifestUrl();
-    const response = await fetch(manifestUrl, { cache: 'no-store' });
-    if (!response.ok) {
-      return [
-        {
-          key: 'current',
-          label: 'Active war',
-          url: './data/war/current.json'
-        }
-      ];
-    }
-
-    const manifest = await response.json();
-    const manifestDatasets = Array.isArray(manifest)
-      ? manifest
-      : (Array.isArray(manifest?.datasets) ? manifest.datasets : []);
-
-    if (manifestDatasets.length === 0) {
-      return [
-        {
-          key: 'current',
-          label: 'Active war',
-          url: './data/war/current.json'
-        }
-      ];
-    }
-
-    const datasets = manifestDatasets
-      .map((entry) => ({
-        key: String(entry?.key || '').trim(),
-        label: String(entry?.label || 'Unknown war').trim(),
-        url: String(entry?.url || '').trim()
-      }))
-      .filter((entry) => entry.key && entry.url);
-
-    if (!datasets.some((dataset) => dataset.key === 'current')) {
-      datasets.push({
-        key: 'current',
-        label: 'Active war',
-        url: './data/war/current.json'
-      });
-    }
-
-    return datasets;
-  } catch (error) {
-    return [
-      {
-        key: 'current',
-        label: 'Active war',
-        url: './data/war/current.json'
-      }
-    ];
-  }
+  const archives = await window.supabaseData.listArchivedWars().catch(() => []);
+  return [...archives, { key: 'current', label: 'Active war' }];
 }
 
 function getGuildTeamIndexes(eventResponseData) {
@@ -959,7 +887,7 @@ async function initializePlayerPage() {
   ]);
   const results = await Promise.all(datasets.map(async (dataset) => {
     try {
-      const { data } = await window.supabaseData.loadWarDataset(dataset.url);
+      const { data } = await window.supabaseData.loadWarDataset(dataset);
       const eventResponseData = pickPrimaryEventResponseData(data);
       if (!eventResponseData) return null;
       return buildWarPlayerStats(dataset, eventResponseData);

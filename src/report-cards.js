@@ -1,6 +1,5 @@
 (function initReportCards() {
   const RAID_MANIFEST_URL = './data/raid/manifest.json';
-  const WAR_MANIFEST_URL = './data/dataset-manifest.json';
   const RAID_WINDOW_SIZE = 6;
   const numberFormat = new Intl.NumberFormat('en-GB', { maximumFractionDigits: 0 });
   let showAllTables = false;
@@ -38,13 +37,13 @@
   }
 
   async function loadWars() {
-    const [current, manifest] = await Promise.all([
+    const [current, archives] = await Promise.all([
       fetchJson('./data/war/current.json').catch(() => null),
-      fetchJson(WAR_MANIFEST_URL)
+      window.supabaseData.listArchivedWars().catch(() => [])
     ]);
     const seasonGroups = window.ReportCardMetrics.selectWarSeasons(
       current,
-      Array.isArray(manifest?.datasets) ? manifest.datasets : [],
+      archives,
       3
     );
 
@@ -52,7 +51,7 @@
       const wars = await Promise.all(season.entries.map(async (entry) => {
         if (entry.data) return { label: entry.label, data: entry.data, seasonIndex };
         try {
-          const { data } = await window.supabaseData.loadWarDataset(entry.url);
+          const { data } = await window.supabaseData.loadWarDataset(entry);
           return {
             label: entry.label || entry.sourceLabel || 'Archived war',
             data,

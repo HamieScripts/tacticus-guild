@@ -43,17 +43,10 @@ jobs:
           GUILD_RAID_API_KEY: ${{ secrets.GUILD_RAID_API_KEY }}
         run: npm run fetch:raid
 
-      - name: Generate player directory
-        run: npm run generate:players
-
-      - name: Generate dataset manifest
-        env:
-          GITHUB_SHA: ${{ github.sha }}
+      - name: Exclude war backups from Pages
         run: |
-          npm run generate:datasets
-          echo "Published manifest cache hash: $(cat data/dataset-manifest.hash)"
-          echo "War list:"
-          node -e "const manifest=require('./data/dataset-manifest.json'); console.log(manifest.datasets.map((d) => d.label).join('\n'));"
+          find data/war -maxdepth 1 -type f ! -name current.json -delete
+          rm -f data/dataset-manifest.json data/dataset-manifest.hash
 
       - name: Remove build dependencies
         run: rm -rf node_modules
