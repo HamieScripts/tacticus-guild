@@ -153,7 +153,7 @@ never blocks the JSON export). After regenerating the player directory with
 
 Run `npm run build` to generate the Pages artifact in `dist/site`, then `npm run preview` to serve it locally. Run `npx playwright install chromium` once and `npm run test:browser` to check the generated pages, local links, and Battle Log URL state. The browser suite uses a fixture rather than live Supabase data.
 
-The Battle Log gate caps a representative first-party HTML, CSS, JavaScript, and data load at 170 KiB gzipped. It does not measure images, CDN assets, or the cost of loading multiple archives. Pages deploys the generated artifact only after the browser checks pass.
+The Battle Log gate caps a representative first-party HTML, CSS, JavaScript, and single-archive data load at 170 KiB gzipped. A link with `battleWar` fetches only that war's battles; the unfiltered log still fetches all wars. The budget does not measure images, CDN assets, or the unfiltered load. Pages deploys the generated artifact only after the browser checks pass.
 
 Tests use the built-in `node:test` runner — no extra dependencies required.
 

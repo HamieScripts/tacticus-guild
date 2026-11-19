@@ -48,11 +48,11 @@ function shouldDisplayCurrentDataset(data) {
   return Object.keys(data).length > 0;
 }
 
-function loadDatasetManifest() {
-  return datasetManifestLoad ??= fetchDatasetManifest();
+function loadDatasetManifest({ inspectCurrent = true } = {}) {
+  return datasetManifestLoad ??= fetchDatasetManifest(inspectCurrent);
 }
 
-async function fetchDatasetManifest() {
+async function fetchDatasetManifest(inspectCurrent) {
   try {
     const archives = await window.supabaseData.listArchivedWars();
     DATASETS = { ...DEFAULT_DATASETS, ...Object.fromEntries(archives.map(dataset => [dataset.key, dataset])) };
@@ -61,7 +61,7 @@ async function fetchDatasetManifest() {
     DATASETS = { ...DEFAULT_DATASETS };
   }
 
-  if (Object.prototype.hasOwnProperty.call(DATASETS, 'current')) {
+  if (inspectCurrent && Object.prototype.hasOwnProperty.call(DATASETS, 'current')) {
     try {
       const currentResponse = await fetch(DATASETS.current.url, { cache: 'no-store' });
       if (currentResponse.ok) {
@@ -218,6 +218,8 @@ let battleLogFiltersInitialized = false;
 let battleLogPageTabsInitialized = false;
 let battleLogDataLoaded = false;
 let battleLogDataLoading = false;
+let battleLogRequestedWar;
+let battleLogRequestId = 0;
 let leaderboardLayout = 'table';
 let leaderboardLayoutInitialized = false;
 let leaderboardSort = { key: 'score', direction: 'desc' };
@@ -3496,15 +3498,21 @@ function mergeBattleLogsFromSnapshots(snapshots) {
 }
 
 async function loadAllWarsBattleLogData() {
-  if (battleLogDataLoaded || battleLogDataLoading) return;
+  const standalone = document.body.dataset.page === 'battle-log';
+  const requestedWar = standalone ? battleLogFilters.war : '';
+  if ((battleLogDataLoaded || battleLogDataLoading) && battleLogRequestedWar === requestedWar) return;
+  const requestId = ++battleLogRequestId;
+  battleLogRequestedWar = requestedWar;
+  battleLogDataLoaded = false;
   battleLogDataLoading = true;
-  await loadDatasetManifest();
-  battleLogGuildNameMap = new Map();
 
   const statusMessage = document.getElementById('status-message');
   const lastUpdatedEl = document.getElementById('last-updated');
   const filterSummary = document.getElementById('battle-filter-summary');
-  const standalone = document.body.dataset.page === 'battle-log';
+  if (standalone) {
+    filterSummary.textContent = 'Loading battle log...';
+    document.getElementById('battle-log-list').replaceChildren();
+  }
 
   if (statusMessage) {
     statusMessage.textContent = 'Loading all wars battle log...';
@@ -3513,15 +3521,22 @@ async function loadAllWarsBattleLogData() {
     lastUpdatedEl.textContent = 'Loading...';
   }
   try {
-    if (standalone && archiveCatalogError && battleLogFilters.war !== 'current') throw archiveCatalogError;
-    if (standalone && battleLogFilters.war && !Object.hasOwn(DATASETS, battleLogFilters.war)) {
+    await loadDatasetManifest({ inspectCurrent: !standalone });
+    if (requestId !== battleLogRequestId) return;
+    if (standalone) {
+      seasonGroups = getWarSeasonGroups(Object.entries(DATASETS));
+      setupBattleLogFilters();
+      updateBattleLogScopeFilterOptions({ battles: [] });
+    }
+    if (standalone && archiveCatalogError && requestedWar !== 'current') throw archiveCatalogError;
+    if (requestedWar && !Object.hasOwn(DATASETS, requestedWar)) {
       filterSummary.textContent = 'The requested war is unavailable.';
       return;
     }
     await initializePortraitMapper();
-    if (standalone) seasonGroups = getWarSeasonGroups(Object.entries(DATASETS));
+    if (requestId !== battleLogRequestId) return;
 
-    const datasets = getLoadedDatasetDescriptors();
+    const datasets = getLoadedDatasetDescriptors().filter(({ key }) => !requestedWar || key === requestedWar);
     const results = await Promise.all(datasets.map(async (dataset) => {
       const { data, lastModified } = await window.supabaseData.loadWarDataset(dataset);
       return {
@@ -3531,7 +3546,9 @@ async function loadAllWarsBattleLogData() {
         dataTimestamp: getLatestActivityTimestamp(data)
       };
     }));
+    if (requestId !== battleLogRequestId) return;
 
+    battleLogGuildNameMap = new Map();
     const allGuildSnapshots = [];
     const warPerformancePoints = [];
     let latestTimestamp = 0;
@@ -3644,6 +3661,7 @@ async function loadAllWarsBattleLogData() {
     }
     battleLogDataLoaded = true;
   } catch (error) {
+    if (requestId !== battleLogRequestId) return;
     console.error(error);
     if (standalone) {
       filterSummary.textContent = 'Could not load the battle log. Reload to try again.';
@@ -3662,7 +3680,7 @@ async function loadAllWarsBattleLogData() {
       statusMessage.textContent = 'The all wars battle log could not be loaded. Open the app from a local web server to enable fetch().';
     }
   } finally {
-    battleLogDataLoading = false;
+    if (requestId === battleLogRequestId) battleLogDataLoading = false;
   }
 }
 
@@ -3844,6 +3862,19 @@ function updateBattleLogScopeFilterOptions(snapshot) {
     }
   });
 
+  if (document.body.dataset.page === 'battle-log') {
+    for (const season of seasonGroups) {
+      const seasonKey = season.entries[0][0];
+      seasons.set(seasonKey, season.label);
+      if (!battleLogFilters.season || battleLogFilters.season === seasonKey) {
+        for (const [key, dataset] of season.entries) wars.set(key, dataset.label);
+      }
+    }
+    if (!battleLogFilters.season || battleLogFilters.season === 'current') {
+      wars.set('current', DEFAULT_DATASETS.current.label);
+    }
+  }
+
   battleLogFilterOptions.guild = Array.from(guilds).sort((a, b) => a.localeCompare(b));
   battleLogFilterOptions.season = Array.from(seasons.entries()).sort((a, b) => b[1].localeCompare(a[1]));
   battleLogFilterOptions.war = Array.from(wars.entries()).sort((a, b) => b[1].localeCompare(a[1]));
@@ -3862,7 +3893,7 @@ function updateBattleLogScopeFilterOptions(snapshot) {
   });
   guildSelect.value = battleLogFilters.guild;
   seasonSelect.value = battleLogFilters.season;
-  warSelect.value = battleLogFilters.war;
+  warSelect.value = wars.has(battleLogFilters.war) ? battleLogFilters.war : '';
 }
 
 function renderBattleLogUnitFilterControl(side) {
@@ -4028,6 +4059,10 @@ function setupBattleLogFilters() {
   syncCleanupButtons();
 
   const rerenderBattleLog = () => {
+    if (document.body.dataset.page === 'battle-log' && (!battleLogDataLoaded || battleLogRequestedWar !== battleLogFilters.war)) {
+      loadAllWarsBattleLogData();
+      return;
+    }
     const snapshot = guildSnapshots[activeGuildIndex];
     if (!snapshot) return;
     renderBattleLog(snapshot);
@@ -4056,6 +4091,12 @@ function setupBattleLogFilters() {
 
   seasonSelect.addEventListener('change', () => {
     battleLogFilters.season = seasonSelect.value || '';
+    if (document.body.dataset.page === 'battle-log' && battleLogFilters.season && battleLogFilters.war
+      && !seasonGroups.some(season => season.entries[0][0] === battleLogFilters.season
+        && season.entries.some(([key]) => key === battleLogFilters.war))
+      && battleLogFilters.war !== battleLogFilters.season) {
+      battleLogFilters.war = '';
+    }
     syncBattleLogFiltersToUrl();
     rerenderBattleLog();
   });

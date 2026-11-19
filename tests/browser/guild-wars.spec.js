@@ -4,6 +4,7 @@ const { join } = require('node:path');
 const { gzipSync } = require('node:zlib');
 
 const archive = 'history-2026-11-06-08403c50';
+const otherArchive = 'history-2026-11-01-ffe10dce';
 const log = '/guild-wars-battle-log.html';
 const fixture = join(__dirname, '../../data/war/effdbc91-0bed-48b6-9300-850c24c4e0d1.json');
 
@@ -98,4 +99,48 @@ test('shows an empty result when the archive loads but contains no battles', asy
   await page.goto(`${log}?battleWar=${archive}`);
   await expect(page.getByRole('status')).toHaveText('Showing 0 logs');
   await expect(page).toHaveURL(new RegExp(`battleWar=${archive}`));
+});
+
+test('only fetches the linked archive until the war selection changes', async ({ page }) => {
+  const requests = [];
+  await stubWarData(page);
+  await page.route('**/src/lib/supabase-data.js', route => route.fulfill({
+    contentType: 'application/javascript',
+    body: `window.supabaseData = {
+      listArchivedWars: async () => [
+        { key: '${archive}', label: 'Selected archive' },
+        { key: '${otherArchive}', label: 'Other archive' }
+      ],
+      loadWarDataset: async ({ key }) => ({ data: await fetch('/war-fixture/' + key).then(response => response.json()) })
+    };`,
+  }));
+  await page.route('**/war-fixture/*', route => {
+    const key = new URL(route.request().url()).pathname.split('/').pop();
+    requests.push(key);
+    return route.fulfill(key === archive ? { path: fixture } : { json: {} });
+  });
+  page.on('request', request => {
+    if (new URL(request.url()).pathname === '/data/war/current.json') requests.push('live payload');
+  });
+
+  await page.goto(`${log}?battleWar=${archive}&battleResult=win`);
+  const status = page.locator('#battle-filter-summary');
+  const war = page.locator('#battle-filter-war');
+  await expect(status).toContainText('Showing');
+  expect(requests).toEqual([archive]);
+
+  await war.selectOption(otherArchive);
+  await expect(status).toHaveText('Showing 0 logs');
+  await expect(page).toHaveURL(new RegExp(`battleWar=${otherArchive}`));
+  expect(requests).toEqual([archive, otherArchive]);
+
+  await page.goBack();
+  await expect(war).toHaveValue(archive);
+  await expect(status).toContainText('Showing');
+  expect(requests).toEqual([archive, otherArchive, archive]);
+
+  await page.getByRole('button', { name: 'Clear filters' }).click();
+  await expect(page).not.toHaveURL(/battleWar=/);
+  await expect(status).toContainText('Showing');
+  expect(requests.slice(3).sort()).toEqual(['current', otherArchive, archive]);
 });
