@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795083351,
+  "fetchedOn": 1795086890,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -3065,6 +3065,108 @@
       "completedOn": 1795083306,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "a736e5fd-6a0b-4137-9ec0-526345cd6e96",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 70250,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 7500000,
+      "startedOn": 1795083311,
+      "completedOn": 1795083360,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 685193
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 684751
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 685806
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 766366
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 592367
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 152768
+      }
+    },
+    {
+      "userId": "275a8663-7ad1-4ec7-86ef-f4c97182473d",
+      "tier": 4,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Legendary",
+      "damageDealt": 8479,
+      "damageType": "Bomb",
+      "remainingHp": 9991521,
+      "maxHp": 10000000,
+      "startedOn": 1795085642,
+      "completedOn": 1795085642,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "275a8663-7ad1-4ec7-86ef-f4c97182473d",
+      "tier": 4,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss6Boss1TyranScreamerKiller",
+      "type": "ScreamerKiller",
+      "rarity": "Legendary",
+      "damageDealt": 94157,
+      "damageType": "Battle",
+      "remainingHp": 9897364,
+      "maxHp": 10000000,
+      "startedOn": 1795085692,
+      "completedOn": 1795085811,
+      "heroDetails": [
+        {
+          "unitId": "thousAhriman",
+          "power": 400585
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 702666
+        },
+        {
+          "unitId": "tauAunShi",
+          "power": 6698
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 79086
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 598677
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 142038
+      }
     }
   ]
 }
