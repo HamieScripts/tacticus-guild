@@ -568,13 +568,11 @@ function buildFallbackSnapshot() {
 }
 
 function buildSnapshot(data) {
-  console.log({ data });
   const eventResponseData = getPrimaryEventResponseData(data);
   const playerData = eventResponseData?.playerData || [];
   const activityLogs = eventResponseData?.activityLogs || [];
   const guildData = eventResponseData?.guildData || [];
   const playerNames = new Map(playerData.map((player) => [player.userId, player.displayName]));
-  console.log({ playerNames });
   const playerProfiles = new Map(playerData.map((player) => [player.userId, {
     avatarUnitId: player.avatarUnitId || null,
     avatarFrameId: player.avatarFrameId || null
@@ -852,7 +850,6 @@ function buildRows(snapshot) {
 
 function summarizeGuild(snapshot) {
   const rows = buildRows(snapshot);
-  console.log(rows);
   const isUsedToken = (token) => token && typeof token === 'object' && Object.prototype.hasOwnProperty.call(token, 'hasScore');
   const totalPlayers = rows.length > 30 ? 30 : rows.length;
   const totalTokenSlots = totalPlayers * TOKEN_SLOTS_PER_PLAYER;
@@ -1728,7 +1725,6 @@ async function initPlayerSummaryTab() {
 
 function renderActiveGuild() {
   const snapshot = guildSnapshots[activeGuildIndex];
-  console.log({guildSnapshots, activeGuildIndex, snapshot});
 
   if (!snapshot) return;
 
