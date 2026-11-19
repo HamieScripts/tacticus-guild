@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795072644,
+  "fetchedOn": 1795076424,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -2723,6 +2723,108 @@
       "completedOn": 1795071656,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 9728,
+      "damageType": "Bomb",
+      "remainingHp": 3392632,
+      "maxHp": 7500000,
+      "startedOn": 1795074475,
+      "completedOn": 1795074475,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 772078,
+      "damageType": "Battle",
+      "remainingHp": 2620554,
+      "maxHp": 7500000,
+      "startedOn": 1795074484,
+      "completedOn": 1795074999,
+      "heroDetails": [
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 609200
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 665500
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 738255
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 594970
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 890893
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 515918
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 723268,
+      "damageType": "Battle",
+      "remainingHp": 1897286,
+      "maxHp": 7500000,
+      "startedOn": 1795075189,
+      "completedOn": 1795075440,
+      "heroDetails": [
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 609200
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 665500
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 738255
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 594970
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 890893
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 515918
+      }
     }
   ]
 }
