@@ -7,7 +7,7 @@ const DEFAULT_DATASETS = {
 };
 
 let DATASETS = { ...DEFAULT_DATASETS };
-let datasetsLoaded = false;
+let datasetManifestLoad;
 
 let activeDatasetKey = 'current';
 let seasonGroups = [];
@@ -47,9 +47,11 @@ function shouldDisplayCurrentDataset(data) {
   return Object.keys(data).length > 0;
 }
 
-async function loadDatasetManifest() {
-  if (datasetsLoaded) return;
+function loadDatasetManifest() {
+  return datasetManifestLoad ??= fetchDatasetManifest();
+}
 
+async function fetchDatasetManifest() {
   try {
     const archives = await window.supabaseData.listArchivedWars();
     DATASETS = { ...DEFAULT_DATASETS, ...Object.fromEntries(archives.map(dataset => [dataset.key, dataset])) };
@@ -72,7 +74,6 @@ async function loadDatasetManifest() {
     }
   }
 
-  datasetsLoaded = true;
 }
 
 function updateDatasetInUrl(datasetKey, { replace = true } = {}) {
@@ -110,6 +111,7 @@ let portraitMapperInitialized = false;
 let battleLogGuildNameMap = new Map();
 let defenseWarRows = [];
 let attackWarRows = [];
+const warTeamHistoryLoads = new Map();
 let defensePlayerSearch = '';
 let defensePlayerSearchInitialized = false;
 let attackPlayerSearch = '';
@@ -3071,12 +3073,11 @@ async function loadWarTeamHistory(role) {
   }
 }
 
-async function loadDefenseHistory() {
-  await loadWarTeamHistory('defense');
-}
-
-async function loadAttackHistory() {
-  await loadWarTeamHistory('attack');
+function initWarTeamHistoryTab(role) {
+  if (!warTeamHistoryLoads.has(role)) {
+    warTeamHistoryLoads.set(role, loadWarTeamHistory(role));
+  }
+  return warTeamHistoryLoads.get(role);
 }
 
 function getPrimaryGuildTeamIndexFromData(data) {
@@ -4908,8 +4909,6 @@ async function loadGuildData() {
     setupAttacksPlayerSearch();
     renderDefences();
     renderAttacks();
-    loadDefenseHistory();
-    loadAttackHistory();
     const season = seasonGroups.find((group) => group.entries.some(([key]) => key === activeDatasetKey));
     const seasonEntries = season?.entries || [[activeDatasetKey, dataset]];
     const records = await Promise.all(seasonEntries.map(async ([key, seasonDataset]) => {

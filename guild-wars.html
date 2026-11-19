@@ -536,6 +536,8 @@
           trail.push({ label: WAR_TAB_LABELS.top[top], params: { sub: null } });
           trail.push({ label: WAR_TAB_LABELS.sub[sub] });
         } else {
+          if (main === 'attacks') initWarTeamHistoryTab('attack');
+          if (main === 'defences') initWarTeamHistoryTab('defense');
           trail.push({ label: WAR_TAB_LABELS.top[top], params: { tab: null } });
           trail.push({ label: WAR_TAB_LABELS.main[main] });
         }

@@ -1,7 +1,53 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const vm = require('node:vm');
 
 const { shouldDisplayCurrentDataset, isEasyGameBattle, buildSnapshot, getCoreScore, getEasyGameBadgeHtml, filterLeaderboardRowsByName } = require('../src/app.js');
+
+test('opening a token table does not load other wars until a history tab opens', async () => {
+  const requests = [];
+  const archives = ['selected', 'other', 'older'].map(key => ({ key, label: key, archiveKey: key }));
+  const params = new URLSearchParams('dataset=selected');
+  const context = vm.createContext({
+    URLSearchParams,
+    window: {
+      location: { search: '?dataset=selected' },
+      supabaseData: {
+        listArchivedWars: async () => { requests.push('catalog'); return archives; },
+        loadWarDataset: async ({ key }) => { requests.push(key); return { data: {} }; },
+      },
+    },
+    fetch: async () => ({ ok: true, json: async () => ({}) }),
+    AppNav: { get: key => params.get(key), getParams: () => params, renderBreadcrumb() {} },
+  });
+  vm.runInContext(fs.readFileSync(require.resolve('../src/app.js'), 'utf8'), context);
+  context.document = { getElementById: () => null, addEventListener() {} };
+  const page = fs.readFileSync(require.resolve('../guild-wars.html'), 'utf8');
+  const navigation = [...page.matchAll(/<script>([\s\S]*?)<\/script>/g)]
+    .find(([, script]) => script.includes('function applyWarTabsFromUrl'))[1];
+  vm.runInContext(navigation, context);
+  for (const name of [
+    'updateDatasetInUrl', 'renderDatasetTabs', 'setupLeaderboardLayoutToggle', 'setupLeaderboardSortButtons',
+    'setupLeaderboardSearch', 'setupLegendVisibilityToggle', 'loadBattleLogFiltersFromUrl', 'setupBattleLogFilters',
+    'setWarSummaryVisibility', 'renderWarSeasonCards', 'renderGuildTokenProjectionTable', 'renderGuildTabs',
+    'renderTable', 'initializePortraitMapper', 'setupDefencesPlayerSearch', 'setupAttacksPlayerSearch',
+    'renderLastUpdated', 'renderActiveGuild',
+  ]) context[name] = () => {};
+
+  context.applyWarTabsFromUrl();
+  await context.loadGuildData();
+  assert.deepEqual(requests, ['catalog', 'selected']);
+
+  params.set('tab', 'attacks');
+  params.set('warView', 'log');
+  context.applyWarTabsFromUrl();
+  params.delete('warView');
+  context.applyWarTabsFromUrl();
+  context.applyWarTabsFromUrl();
+  await context.initWarTeamHistoryTab('attack');
+  assert.deepEqual(requests, ['catalog', 'selected', 'selected', 'other', 'older']);
+});
 
 test('shows a populated live-war payload', () => {
   const payload = {
