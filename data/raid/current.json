@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795076424,
+  "fetchedOn": 1795079858,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -2824,6 +2824,126 @@
       "machineOfWarDetails": {
         "unitId": "thousDaemonPrince",
         "power": 515918
+      }
+    },
+    {
+      "userId": "667d435c-4668-4676-a002-e533709f1cc6",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 8556,
+      "damageType": "Bomb",
+      "remainingHp": 1888730,
+      "maxHp": 7500000,
+      "startedOn": 1795076881,
+      "completedOn": 1795076881,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "667d435c-4668-4676-a002-e533709f1cc6",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 273312,
+      "damageType": "Battle",
+      "remainingHp": 1615418,
+      "maxHp": 7500000,
+      "startedOn": 1795076900,
+      "completedOn": 1795077083,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 420440
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 450534
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 604587
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 814996
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 945568
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 127322
+      }
+    },
+    {
+      "userId": "bb692d43-0c30-4d9d-8472-5eab7706487e",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 10246,
+      "damageType": "Bomb",
+      "remainingHp": 1605172,
+      "maxHp": 7500000,
+      "startedOn": 1795078047,
+      "completedOn": 1795078047,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 4,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss7Boss1AstraRogaldorn",
+      "type": "RogalDorn",
+      "rarity": "Legendary",
+      "damageDealt": 891295,
+      "damageType": "Battle",
+      "remainingHp": 713877,
+      "maxHp": 7500000,
+      "startedOn": 1795078546,
+      "completedOn": 1795078754,
+      "heroDetails": [
+        {
+          "unitId": "admecManipulus",
+          "power": 473053
+        },
+        {
+          "unitId": "tauFarsight",
+          "power": 532273
+        },
+        {
+          "unitId": "tauDarkstrider",
+          "power": 531687
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 870510
+        },
+        {
+          "unitId": "eldarLhykhis",
+          "power": 538223
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 476066
       }
     }
   ]
