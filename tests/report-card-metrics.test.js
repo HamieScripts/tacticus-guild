@@ -28,6 +28,14 @@ test('raid totals include bomb damage but average and activity count only tokens
   assert.equal(report.players.get('player-2').percentile, 100);
   assert.equal(report.players.get('player-2').rank, 1);
   assert.equal(report.players.get('player-2').grade, 'A+');
+
+  assert.deepEqual(buildRaidSeasonStats({
+    season: 112,
+    playerSummaries: [
+      { player_id: 'player-1', total_damage: '1250', battle_damage: '1000', tokens: '1' },
+      { player_id: 'player-2', total_damage: '2000', battle_damage: '2000', tokens: '1' }
+    ]
+  }), report);
 });
 
 test('war stats include only our guild, deduplicate battle IDs, and apply skill rating rules', () => {

@@ -59,6 +59,15 @@
   function buildRaidSeasonStats(data) {
     const players = new Map();
 
+    for (const row of data?.playerSummaries || []) {
+      players.set(row.player_id, {
+        userId: row.player_id,
+        totalDamage: Number(row.total_damage),
+        battleDamage: Number(row.battle_damage),
+        tokens: Number(row.tokens)
+      });
+    }
+
     (Array.isArray(data?.entries) ? data.entries : []).forEach((entry) => {
       const userId = String(entry?.userId || '').trim();
       if (!userId) return;

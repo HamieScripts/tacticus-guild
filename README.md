@@ -122,9 +122,11 @@ security; writes go through the service-role key.
 
 `guild-raid.html` and `player-page.html` read from Supabase in the browser via
 `src/lib/supabase-config.js` (public anon key) and `src/lib/supabase-data.js`,
-which returns the same shapes the JSON files provided. The Guild Raid dashboard
-and Raid Log use Supabase only for raid and player data. The Player page still
-uses JSON as a fallback, and the exports remain under `data/` for imports.
+which returns the same shapes the JSON files provided. Guild Raid, Raid Log,
+Player Stats, and Report Cards use Supabase only for raid and player data.
+Apply the [raid player summaries migration](supabase/migrations/20261119000003_raid_player_summaries.sql)
+before deploying the Player Stats and Report Cards changes. Raid exports remain
+under `data/` for imports.
 
 ```bash
 # Store Supabase credentials in .env.local (from Project Settings -> API)

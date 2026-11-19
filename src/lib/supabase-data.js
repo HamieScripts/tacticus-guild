@@ -228,43 +228,27 @@
     };
   }
 
-  // Per-player damage totals per season, for the player page trend chart.
-  // Two paged queries replace the 40 season-file fetches this used to need.
-  async function getRaidPlayerTotals() {
-    if (!(await isAvailable())) return null;
+  async function getRaidPlayerSummaries(seasons) {
     const db = getClient();
-
-    const [seasonRows, entryRows] = await Promise.all([
-      fetchAll(() => db.from('raid_seasons').select('season, guild_id, start, end').order('season', { ascending: true })),
-      fetchAll(() => db.from('raid_entries').select('season, guild_id, user_id, user_id_text, damage_dealt'))
-    ]);
-
-    const seasonsByNumber = new Map(seasonRows.map((row) => [row.season, row]));
-    const totalsBySeason = new Map();
-
-    entryRows.forEach((row) => {
-      const seasonRow = seasonsByNumber.get(row.season);
-      if (!seasonRow || String(row.guild_id || '') !== String(seasonRow.guild_id || '')) return;
-
-      const userId = String(row.user_id || row.user_id_text || '').trim();
-      const damage = Number(row.damage_dealt) || 0;
-      if (!userId || !Number.isFinite(damage)) return;
-
-      if (!totalsBySeason.has(row.season)) totalsBySeason.set(row.season, new Map());
-      const totals = totalsBySeason.get(row.season);
-      totals.set(userId, (totals.get(userId) || 0) + damage);
+    if (!db || seasons?.length === 0) return [];
+    return fetchAll(() => {
+      const query = db.from('raid_player_summaries')
+        .select('season,player_id,season_time,total_damage,battle_damage,tokens')
+        .order('season').order('player_id');
+      return seasons ? query.in('season', seasons) : query;
     });
+  }
 
-    return Array.from(totalsBySeason.entries())
-      .map(([season, totals]) => {
-        const seasonRow = seasonsByNumber.get(season) || {};
-        return {
-          season,
-          start: toUnixSeconds(seasonRow.end || seasonRow.start) || 0,
-          totals
-        };
-      })
-      .sort((a, b) => a.season - b.season);
+  async function getRaidPlayerTotals() {
+    const rows = await getRaidPlayerSummaries();
+    const seasons = new Map();
+    for (const row of rows) {
+      if (!seasons.has(row.season)) {
+        seasons.set(row.season, { season: row.season, start: toUnixSeconds(row.season_time) || 0, totals: new Map() });
+      }
+      seasons.get(row.season).totals.set(row.player_id, Number(row.total_damage));
+    }
+    return [...seasons.values()];
   }
 
   const WAR_BATTLE_COLUMNS = [
@@ -274,14 +258,15 @@
     'war_battle_units(attacking,slot,unit_id,progression_index,rank,start_hp_before,remaining_hp_before,start_hp_after,remaining_hp_after)',
     'war_battle_buffs(slot,ability_id,scope)',
   ].join(',');
+  const WAR_SCORE_COLUMNS = 'source_battle_id,source_user_id,attacking_side,fought_at,score,zone_type,attacker_user_id,defender_user_id';
 
   function definedFields(fields) {
     return Object.fromEntries(Object.entries(fields).filter(([, value]) => value != null));
   }
 
   function warBattleToLog(row) {
-    const units = row.war_battle_units.sort((left, right) => left.slot - right.slot);
-    const buffs = row.war_battle_buffs.sort((left, right) => left.slot - right.slot)
+    const units = (row.war_battle_units || []).sort((left, right) => left.slot - right.slot);
+    const buffs = (row.war_battle_buffs || []).sort((left, right) => left.slot - right.slot)
       .map(buff => definedFields({ abilityId: buff.ability_id, scope: buff.scope }));
     function lineup(side, attacking) {
       const lineupUnits = units.filter(unit => unit.attacking === attacking);
@@ -332,7 +317,7 @@
     }).sort((left, right) => right.end.localeCompare(left.end) || left.key.localeCompare(right.key));
   }
 
-  async function getArchivedWar(archiveKey) {
+  async function getArchivedWar(archiveKey, scoresOnly) {
     const db = getClient();
     if (!db) return null;
     const { data: archive, error } = await db.from('war_archives')
@@ -341,7 +326,7 @@
     if (error) throw new Error(error.message);
     if (!archive?.wars) return null;
 
-    const battles = await fetchAll(() => db.from('war_battles').select(WAR_BATTLE_COLUMNS)
+    const battles = await fetchAll(() => db.from('war_battles').select(scoresOnly ? WAR_SCORE_COLUMNS : WAR_BATTLE_COLUMNS)
       .eq('war_id', archive.war_id).order('fought_at').order('source_battle_id'));
     const guilds = archive.wars.war_guilds.sort((left, right) => left.side - right.side);
     if (!battles.length || guilds.length !== 2) return null;
@@ -364,17 +349,18 @@
     };
   }
 
-  async function loadWarDataset({ key, archiveKey }) {
+  async function loadWarDataset({ key, archiveKey }, { scoresOnly = false } = {}) {
     if (archiveKey) {
-      if (!warLoads.has(archiveKey)) {
-        warLoads.set(archiveKey, getArchivedWar(archiveKey).catch(error => {
-          warLoads.delete(archiveKey);
+      const cacheKey = scoresOnly ? `${archiveKey}:scores` : archiveKey;
+      if (!warLoads.has(cacheKey)) {
+        warLoads.set(cacheKey, getArchivedWar(archiveKey, scoresOnly).catch(error => {
+          warLoads.delete(cacheKey);
           throw error;
         }));
       }
-      const data = await warLoads.get(archiveKey);
+      const data = await warLoads.get(cacheKey);
       if (data) return { data, lastModified: null };
-      warLoads.delete(archiveKey);
+      warLoads.delete(cacheKey);
       throw new Error(`War archive ${archiveKey} is unavailable`);
     }
     if (key !== 'current') throw new Error('Missing war archive key');
@@ -389,6 +375,7 @@
     getRaidManifest,
     getRaidSeason,
     getRaidPlayerTotals,
+    getRaidPlayerSummaries,
     loadWarDataset,
     listArchivedWars
   };

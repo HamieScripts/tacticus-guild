@@ -10,8 +10,6 @@ const PLAYER_PAGE_STATE = {
 };
 
 const ALL_PLAYERS_OPTION_ID = '__all_players__';
-const PLAYER_DIRECTORY_URL = './data/static/players.json';
-const RAID_MANIFEST_URL = './data/raid/manifest.json';
 
 function getKnownPlayerName(playerId) {
   const id = String(playerId || '').trim();
@@ -302,78 +300,7 @@ function bindRaidTrendFilters() {
 }
 
 async function loadRaidPlayerStats() {
-  // Two paged queries replace the 40 season-file fetches this used to need.
-  if (window.supabaseData) {
-    const totals = await window.supabaseData.getRaidPlayerTotals().catch(() => null);
-    if (Array.isArray(totals) && totals.length > 0) {
-      try {
-        const response = await fetch('./data/raid/current.json', { cache: 'no-store' });
-        if (response.ok) {
-          const currentData = await response.json();
-          const currentSeason = Number(currentData?.season);
-          if (Number.isFinite(currentSeason)) {
-            const currentTotals = new Map();
-            (Array.isArray(currentData?.entries) ? currentData.entries : []).forEach((entry) => {
-              const userId = String(entry?.userId || '').trim();
-              const damage = Number(entry?.damageDealt || 0);
-              if (!userId || !Number.isFinite(damage)) return;
-              currentTotals.set(userId, (currentTotals.get(userId) || 0) + damage);
-            });
-
-            return [
-              ...totals.filter((season) => Number(season.season) !== currentSeason),
-              {
-                season: currentSeason,
-                start: Number(currentData?.fetchedOn || 0),
-                totals: currentTotals
-              }
-            ].sort((a, b) => a.season - b.season);
-          }
-        }
-      } catch (error) {
-        // Keep the database history if the current snapshot cannot be loaded.
-      }
-
-      return totals;
-    }
-  }
-
-  try {
-    const response = await fetch(RAID_MANIFEST_URL, { cache: 'no-store' });
-    if (!response.ok) return [];
-    const manifest = await response.json();
-    const seasons = Array.isArray(manifest?.seasons) ? manifest.seasons : [];
-
-    const results = await Promise.all(seasons.map(async (season) => {
-      try {
-        const seasonResponse = await fetch(String(season?.url || ''), { cache: 'no-store' });
-        if (!seasonResponse.ok) return null;
-        const data = await seasonResponse.json();
-        const totals = new Map();
-
-        (Array.isArray(data?.entries) ? data.entries : []).forEach((entry) => {
-          const userId = String(entry?.userId || '').trim();
-          const damage = Number(entry?.damageDealt || 0);
-          if (!userId || !Number.isFinite(damage)) return;
-          totals.set(userId, (totals.get(userId) || 0) + damage);
-        });
-
-        return {
-          season: Number(data?.season ?? season?.season),
-          start: Number(data?.fetchedOn || season?.end || season?.start || 0),
-          totals
-        };
-      } catch (error) {
-        return null;
-      }
-    }));
-
-    return results
-      .filter((season) => season && Number.isFinite(season.season))
-      .sort((a, b) => a.season - b.season);
-  } catch (error) {
-    return [];
-  }
+  return await window.supabaseData?.getRaidPlayerTotals().catch(() => []) || [];
 }
 
 function getDefaultRaidSeasonRange() {
@@ -878,16 +805,11 @@ async function initializePlayerPage() {
   const [datasets, raidSeasons, playerDirectory] = await Promise.all([
     loadDatasetManifest(),
     loadRaidPlayerStats(),
-    (window.supabaseData ? window.supabaseData.getPlayers().catch(() => null) : Promise.resolve(null))
-      .then((dbPlayers) => Array.isArray(dbPlayers) && dbPlayers.length > 0
-        ? dbPlayers
-        : fetch(PLAYER_DIRECTORY_URL, { cache: 'no-store' })
-            .then((response) => response.ok ? response.json() : [])
-            .catch(() => []))
+    window.supabaseData?.getPlayers({ skipPreflight: true }).catch(() => [])
   ]);
   const results = await Promise.all(datasets.map(async (dataset) => {
     try {
-      const { data } = await window.supabaseData.loadWarDataset(dataset);
+      const { data } = await window.supabaseData.loadWarDataset(dataset, { scoresOnly: true });
       const eventResponseData = pickPrimaryEventResponseData(data);
       if (!eventResponseData) return null;
       return buildWarPlayerStats(dataset, eventResponseData);

@@ -1,5 +1,4 @@
 (function initReportCards() {
-  const RAID_MANIFEST_URL = './data/raid/manifest.json';
   const RAID_WINDOW_SIZE = 6;
   const numberFormat = new Intl.NumberFormat('en-GB', { maximumFractionDigits: 0 });
   let showAllTables = false;
@@ -20,20 +19,19 @@
   }
 
   async function loadRaidSeasons() {
-    const manifest = await fetchJson(RAID_MANIFEST_URL);
+    const manifest = await window.supabaseData.getRaidManifest().catch(() => null);
     const seasons = (Array.isArray(manifest?.seasons) ? manifest.seasons : [])
       .slice()
       .sort((left, right) => Number(right.season) - Number(left.season))
       .slice(0, RAID_WINDOW_SIZE + 1);
 
-    return Promise.all(seasons.map(async (season) => {
-      try {
-        const url = season.url || `./data/raid/${season.season}.json`;
-        return await fetchJson(url);
-      } catch (error) {
-        return null;
-      }
-    })).then((results) => results.filter(Boolean));
+    const summaries = await window.supabaseData.getRaidPlayerSummaries(seasons.map(season => season.season)).catch(() => null);
+    if (!summaries) return [];
+    const bySeason = new Map(seasons.map(({ season, end, start }) => [season, {
+      season, fetchedOn: end || start, playerSummaries: []
+    }]));
+    for (const summary of summaries) bySeason.get(summary.season)?.playerSummaries.push(summary);
+    return [...bySeason.values()];
   }
 
   async function loadWars() {
@@ -258,7 +256,7 @@
       const [raidData, warSeasons, playerDirectory] = await Promise.all([
         loadRaidSeasons(),
         loadWars(),
-        fetchJson('./data/static/players.json').catch(() => [])
+        window.supabaseData.getPlayers({ skipPreflight: true }).catch(() => null)
       ]);
       const raidSeasons = raidData.slice(0, RAID_WINDOW_SIZE);
       const olderRaidSeasonData = raidData[RAID_WINDOW_SIZE];
@@ -266,7 +264,7 @@
         ? window.ReportCardMetrics.buildRaidSeasonStats(olderRaidSeasonData)
         : null;
       const wars = warSeasons.flatMap((season) => season.wars);
-      const metrics = window.ReportCardMetrics.buildReportCards(raidSeasons, wars, playerDirectory);
+      const metrics = window.ReportCardMetrics.buildReportCards(raidSeasons, wars, playerDirectory || []);
       const reportWarSeasons = warSeasons.map((season, seasonIndex) => ({
         label: season.label,
         wars: metrics.warReports.filter((war) => war.seasonIndex === seasonIndex)
