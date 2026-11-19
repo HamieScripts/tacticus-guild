@@ -140,7 +140,37 @@ test('only fetches the linked archive until the war selection changes', async ({
   expect(requests).toEqual([archive, otherArchive, archive]);
 
   await page.getByRole('button', { name: 'Clear filters' }).click();
-  await expect(page).not.toHaveURL(/battleWar=/);
+  await expect(page).toHaveURL(/\?battleWar=$/);
   await expect(status).toContainText('Showing');
   expect(requests.slice(3).sort()).toEqual(['current', otherArchive, archive]);
+
+  await page.reload();
+  await expect(status).toContainText('Showing');
+  await expect(war).toHaveValue('');
+  await expect(page.locator('#battle-filter-guild')).toHaveValue('');
+});
+
+test('defaults to the most recent archived season and war and our guild', async ({ page }) => {
+  await stubWarData(page);
+  const requests = [];
+  await page.route('**/src/lib/supabase-data.js', route => route.fulfill({
+    contentType: 'application/javascript',
+    body: `window.supabaseData = {
+      listArchivedWars: async () => [
+        { key: '${otherArchive}', label: 'Older war' },
+        { key: '${archive}', label: 'Latest war' }
+      ],
+      loadWarDataset: async ({ key }) => ({ data: await fetch('/war-fixture.json?key=' + key).then(response => response.json()) })
+    };`,
+  }));
+  await page.route('**/war-fixture.json?*', route => {
+    requests.push(new URL(route.request().url()).searchParams.get('key'));
+    return route.fulfill({ json: {} });
+  });
+  await page.goto(log);
+  await expect(page.locator('#battle-filter-summary')).toContainText('Showing');
+  await expect(page.locator('#battle-filter-season')).toHaveValue(archive);
+  await expect(page.locator('#battle-filter-war')).toHaveValue(archive);
+  await expect(page.locator('#battle-filter-guild')).toHaveValue('[TW] Praetorians of Terra');
+  expect(requests).toEqual([archive]);
 });

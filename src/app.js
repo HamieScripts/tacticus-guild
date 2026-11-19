@@ -147,6 +147,7 @@ const BATTLE_LOG_QUERY_KEYS = {
   attackerUnitIds: 'battleAttackerUnits',
   defenderUnitIds: 'battleDefenderUnits'
 };
+const DEFAULT_BATTLE_LOG_GUILD = '[TW] Praetorians of Terra';
 const battleLogFilterOptions = {
   guild: [],
   season: [],
@@ -200,6 +201,9 @@ function syncBattleLogFiltersToUrl({ replace = false } = {}) {
     if (values[key]) params.set(queryKey, values[key]);
     else params.delete(queryKey);
   });
+  if (document.body?.dataset.page === 'battle-log' && !Object.values(values).some(Boolean)) {
+    params.set(BATTLE_LOG_QUERY_KEYS.war, '');
+  }
 
   const query = params.toString();
   const nextUrl = `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`;
@@ -3499,7 +3503,7 @@ function mergeBattleLogsFromSnapshots(snapshots) {
 
 async function loadAllWarsBattleLogData() {
   const standalone = document.body.dataset.page === 'battle-log';
-  const requestedWar = standalone ? battleLogFilters.war : '';
+  let requestedWar = standalone ? battleLogFilters.war : '';
   if ((battleLogDataLoaded || battleLogDataLoading) && battleLogRequestedWar === requestedWar) return;
   const requestId = ++battleLogRequestId;
   battleLogRequestedWar = requestedWar;
@@ -3525,6 +3529,15 @@ async function loadAllWarsBattleLogData() {
     if (requestId !== battleLogRequestId) return;
     if (standalone) {
       seasonGroups = getWarSeasonGroups(Object.entries(DATASETS));
+      const params = new URLSearchParams(window.location.search);
+      if (!archiveCatalogError && !Object.values(BATTLE_LOG_QUERY_KEYS).some(key => params.has(key))) {
+        const latestWar = seasonGroups[0]?.entries[0]?.[0];
+        battleLogFilters.guild = DEFAULT_BATTLE_LOG_GUILD;
+        battleLogFilters.season = latestWar || '';
+        battleLogFilters.war = latestWar || 'current';
+        requestedWar = battleLogRequestedWar = battleLogFilters.war;
+        syncBattleLogFiltersToUrl({ replace: true });
+      }
       setupBattleLogFilters();
       updateBattleLogScopeFilterOptions({ battles: [] });
     }
@@ -3863,6 +3876,7 @@ function updateBattleLogScopeFilterOptions(snapshot) {
   });
 
   if (document.body.dataset.page === 'battle-log') {
+    guilds.add(DEFAULT_BATTLE_LOG_GUILD);
     for (const season of seasonGroups) {
       const seasonKey = season.entries[0][0];
       seasons.set(seasonKey, season.label);
