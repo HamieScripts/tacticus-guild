@@ -1,6 +1,3 @@
-const RAID_CURRENT_URL = './data/raid/current.json';
-const RAID_MANIFEST_URL = './data/raid/manifest.json';
-const PLAYER_DIRECTORY_URL = './data/static/players.json';
 const MISSING_UNIT_AVATAR_URL = './img/missing-unit.svg';
 const AVATAR_BASE_URL = 'https://webstore-assets.loki.snowprintstudios.com/live/images';
 const AVATAR_FRAME_URLS = {
@@ -227,20 +224,14 @@ async function loadJson(url, fallback) {
 }
 
 async function loadStaticData() {
-  // Players come from Supabase (source of truth); the JSON directory is the
-  // fallback. Portrait maps stay as static JSON — they are game assets, not
-  // guild data.
-  const [dbPlayers, players, portraitMap, imageManifest] = await Promise.all([
-    window.supabaseData ? window.supabaseData.getPlayers().catch(() => null) : Promise.resolve(null),
-    loadJson(PLAYER_DIRECTORY_URL, []),
+  const [directory, portraitMap, imageManifest] = await Promise.all([
+    window.supabaseData?.getPlayers({ skipPreflight: true }).catch(() => null),
     loadJson('./data/static/portrait-map.json', {}),
     loadJson('./data/static/image-manifest.json', [])
   ]);
 
-  const directory = Array.isArray(dbPlayers) && dbPlayers.length > 0 ? dbPlayers : players;
-
   raidState.players = new Map(
-    (Array.isArray(players) ? players : [])
+    (Array.isArray(directory) ? directory : [])
       .filter((player) => player && player.id)
       .map((player) => [String(player.id), player])
   );
@@ -254,11 +245,7 @@ async function loadStaticData() {
 }
 
 async function loadSeasonManifest() {
-  // Source of truth is the raid_seasons table; manifest.json is the fallback.
-  const dbManifest = window.supabaseData
-    ? await window.supabaseData.getRaidManifest().catch(() => null)
-    : null;
-  const manifest = dbManifest || await loadJson(RAID_MANIFEST_URL, null);
+  const manifest = await window.supabaseData?.getRaidManifest().catch(() => null);
   const seasons = Array.isArray(manifest?.seasons) ? manifest.seasons : [];
 
   raidState.seasons = seasons
@@ -268,20 +255,15 @@ async function loadSeasonManifest() {
   raidState.currentSeason = Number(manifest?.current);
 }
 
-async function loadRaidSeasonData(season, entry) {
-  const url = entry?.url || (season === raidState.currentSeason ? RAID_CURRENT_URL : `./data/raid/${season}.json`);
-  if (window.supabaseData) {
-    return (await window.supabaseData.getRaidSeason(season).catch(() => null)) || await loadJson(url, null);
-  }
-  return loadJson(raidState.seasons.length === 0 ? RAID_CURRENT_URL : url, null);
+async function loadRaidSeasonData(season) {
+  return window.supabaseData?.getRaidSeason(season).catch(() => null);
 }
 
 async function loadSeason(season) {
-  const entry = raidState.seasons.find((item) => item.season === season);
   const previousEntry = raidState.seasons.find((item) => item.season < Number(season));
   const [raid, previousRaid] = await Promise.all([
-    loadRaidSeasonData(season, entry),
-    previousEntry ? loadRaidSeasonData(previousEntry.season, previousEntry) : Promise.resolve(null)
+    loadRaidSeasonData(season),
+    previousEntry ? loadRaidSeasonData(previousEntry.season) : Promise.resolve(null)
   ]);
 
   if (!raid) {

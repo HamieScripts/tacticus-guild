@@ -2,9 +2,6 @@
 // Raid Log: one table row per raid entry across every tracked season.
 // Data comes from Supabase (raid_entries) with the per-season JSON files as fallback,
 // mirroring the loading strategy in guild-raid.js.
-const RAID_CURRENT_URL = './data/raid/current.json';
-const RAID_MANIFEST_URL = './data/raid/manifest.json';
-const PLAYER_DIRECTORY_URL = './data/static/players.json';
 const MISSING_UNIT_AVATAR_URL = './img/missing-unit.svg';
 const AVATAR_BASE_URL = 'https://webstore-assets.loki.snowprintstudios.com/live/images';
 const AVATAR_FRAME_URLS = {
@@ -246,16 +243,11 @@ async function loadJson(url, fallback) {
 }
 
 async function loadStaticData() {
-  // Players come from Supabase (source of truth); the JSON directory is the
-  // fallback. Portrait maps stay as static JSON — they are game assets.
-  const [dbPlayers, players, portraitMap, imageManifest] = await Promise.all([
-    window.supabaseData ? window.supabaseData.getPlayers().catch(() => null) : Promise.resolve(null),
-    loadJson(PLAYER_DIRECTORY_URL, []),
+  const [directory, portraitMap, imageManifest] = await Promise.all([
+    window.supabaseData?.getPlayers({ skipPreflight: true }).catch(() => null),
     loadJson('./data/static/portrait-map.json', {}),
     loadJson('./data/static/image-manifest.json', [])
   ]);
-
-  const directory = Array.isArray(dbPlayers) && dbPlayers.length > 0 ? dbPlayers : players;
 
   raidLogState.players = new Map(
     (Array.isArray(directory) ? directory : [])
@@ -272,11 +264,7 @@ async function loadStaticData() {
 }
 
 async function loadSeasonManifest() {
-  // Source of truth is the raid_seasons table; manifest.json is the fallback.
-  const dbManifest = window.supabaseData
-    ? await window.supabaseData.getRaidManifest().catch(() => null)
-    : null;
-  const manifest = dbManifest || await loadJson(RAID_MANIFEST_URL, null);
+  const manifest = await window.supabaseData?.getRaidManifest().catch(() => null);
   const seasons = Array.isArray(manifest?.seasons) ? manifest.seasons : [];
 
   raidLogState.seasonsMeta = seasons
@@ -288,12 +276,7 @@ async function loadSeasonManifest() {
 
 async function loadSeasonEntries(seasonMeta) {
   const season = seasonMeta.season;
-  const url = seasonMeta?.url || (season === raidLogState.currentSeason ? RAID_CURRENT_URL : `./data/raid/${season}.json`);
-
-  // raid_entries is the source of truth; the season JSON file is the fallback.
-  const raid = window.supabaseData
-    ? (await window.supabaseData.getRaidSeason(season).catch(() => null)) || await loadJson(url, null)
-    : await loadJson(url, null);
+  const raid = await window.supabaseData?.getRaidSeason(season).catch(() => null);
 
   const entries = Array.isArray(raid?.entries) ? raid.entries : [];
   entries.forEach((entry) => {

@@ -14,6 +14,8 @@
 
   let client = null;
   let available = null;
+  let raidSeasonCatalog;
+  const RAID_SEASON_METADATA = 'season, guild_id, season_config_id, guild_name, guild_tag, guild_level, fetched_on';
   const warLoads = new Map();
 
   function isDbTimingEnabled() {
@@ -97,9 +99,9 @@
   }
 
   // players -> data/static/players.json shape
-  async function getPlayers() {
-    if (!(await isAvailable())) return null;
+  async function getPlayers({ skipPreflight = false } = {}) {
     const db = getClient();
+    if (!db || (!skipPreflight && !(await isAvailable()))) return null;
 
     const rows = await fetchAll(() => db.from('players').select('id, name, avatar_unit_id, avatar_frame_id'));
     return rows.map((row) => ({
@@ -112,13 +114,17 @@
 
   // raid_seasons -> data/raid/manifest.json shape
   async function getRaidManifest() {
-    if (!(await isAvailable())) return null;
     const db = getClient();
+    if (!db) return null;
 
-    const rows = await fetchAll(() => db
+    raidSeasonCatalog ??= fetchAll(() => db
       .from('raid_seasons')
-      .select('season, entries, players, damage, start, end')
-      .order('season', { ascending: false }));
+      .select(`${RAID_SEASON_METADATA}, entries, players, damage, start, end`)
+      .order('season', { ascending: false })).catch(error => {
+      raidSeasonCatalog = undefined;
+      throw error;
+    });
+    const rows = await raidSeasonCatalog;
 
     if (rows.length === 0) return null;
 
@@ -189,16 +195,17 @@
 
   // raid_entries + raid_seasons -> data/raid/<season>.json shape
   async function getRaidSeason(season) {
-    if (!(await isAvailable())) return null;
     const db = getClient();
+    if (!db) return null;
 
-    const { data: seasonRow, error: seasonError } = await db
-      .from('raid_seasons')
-      .select('season, guild_id, season_config_id, guild_name, guild_tag, guild_level, fetched_on')
-      .eq('season', season)
-      .maybeSingle();
-
-    if (seasonError) throw new Error(seasonError.message);
+    const catalog = await raidSeasonCatalog?.catch(() => null);
+    let seasonRow = catalog?.find(row => Number(row.season) === Number(season));
+    if (!seasonRow) {
+      const { data, error } = await db.from('raid_seasons')
+        .select(RAID_SEASON_METADATA).eq('season', season).maybeSingle();
+      if (error) throw new Error(error.message);
+      seasonRow = data;
+    }
     if (!seasonRow) return null;
 
     const rows = await fetchAll(() => db
