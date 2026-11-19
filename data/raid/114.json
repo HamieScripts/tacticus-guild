@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795115540,
+  "fetchedOn": 1795119393,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -4328,6 +4328,48 @@
       "completedOn": 1795115479,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "667d435c-4668-4676-a002-e533709f1cc6",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss11MiniBoss1TauMarksman",
+      "type": "Riptide",
+      "rarity": "Legendary",
+      "damageDealt": 162862,
+      "damageType": "Battle",
+      "remainingHp": 587138,
+      "maxHp": 750000,
+      "startedOn": 1795118158,
+      "completedOn": 1795118509,
+      "heroDetails": [
+        {
+          "unitId": "admecDominus",
+          "power": 374570
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 814996
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 420440
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 945568
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 609724
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 127322
+      }
     }
   ]
 }
