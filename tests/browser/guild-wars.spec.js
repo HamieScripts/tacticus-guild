@@ -121,6 +121,16 @@ test('War character portraits share one sprite request', async ({ browser }, tes
         await expect(visiblePortrait).toHaveCSS('background-image', /unit-portraits-/);
         expect((await spriteResponse).ok()).toBe(true);
       }
+      const { width, height } = await visiblePortrait.evaluate(portrait => {
+        const sibling = document.createElement('span');
+        sibling.style.flex = '0 0 50%';
+        portrait.after(sibling);
+        const bounds = portrait.getBoundingClientRect();
+        sibling.remove();
+        return { width: bounds.width, height: bounds.height };
+      });
+      expect(height).toBeGreaterThan(0);
+      expect(width).toBeCloseTo(height);
       await page.waitForLoadState('networkidle');
       const timeOrigin = await page.evaluate(() => performance.timeOrigin);
       return await Promise.all(requests.map(async request => {

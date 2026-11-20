@@ -1992,11 +1992,11 @@ function renderBattleUnitPortrait(unitId, label, classes, { showTitle = false } 
     const [column, row] = tile;
     const horizontal = atlas.columns > 1 ? column * 100 / (atlas.columns - 1) : 0;
     const vertical = atlas.rows > 1 ? row * 100 / (atlas.rows - 1) : 0;
-    return `<span class="inline-block ${classes}" role="img" aria-label="${safeLabel}"${title} style="background-image:url('${atlas.imagePath}');background-position:${horizontal}% ${vertical}%;background-size:${atlas.columns * 100}% ${atlas.rows * 100}%;background-repeat:no-repeat"></span>`;
+    return `<span class="inline-block shrink-0 ${classes}" role="img" aria-label="${safeLabel}"${title} style="background-image:url('${atlas.imagePath}');background-position:${horizontal}% ${vertical}%;background-size:${atlas.columns * 100}% ${atlas.rows * 100}%;background-repeat:no-repeat"></span>`;
   }
 
   const url = getBattleUnitAvatarUrlFromUnitId(unitId) || MISSING_UNIT_AVATAR_URL;
-  return `<img class="${classes} object-cover" src="${escapeHtml(url)}" alt="${safeLabel}"${title} loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='${MISSING_UNIT_AVATAR_URL}';">`;
+  return `<img class="shrink-0 ${classes} object-cover" src="${escapeHtml(url)}" alt="${safeLabel}"${title} loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='${MISSING_UNIT_AVATAR_URL}';">`;
 }
 
 function getBattleUnitAvatarUrlFromUnitId(unitId) {
