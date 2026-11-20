@@ -1,3 +1,5 @@
+
+The build packs mapped Guild Wars character portraits into a WebP sprite and emits a unit ID to tile position map. Update the source portrait mapping and rebuild to change the sprite. Player avatars and the Portrait Mapper still use individual images.
 # Tacticus Guild Wars Dashboard
 
 A Guild Wars analytics and team composition dashboard for the game *Praetorians of Terra*. Tracks live and historical guild-vs-guild war snapshots, player performance, battle logs, and team compositions.

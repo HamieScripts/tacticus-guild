@@ -95,6 +95,58 @@ test('War seasons only render portrait mapper images when its tab opens', async 
   await expect(mapperImages.first()).toBeVisible();
 });
 
+test('War character portraits share one sprite request', async ({ browser }, testInfo) => {
+  const measure = async (useSprite) => {
+    const page = await browser.newPage({ baseURL: testInfo.project.use.baseURL });
+    const requests = [];
+    page.on('requestfinished', request => {
+      if (/\/img-temp\/|\/img\/unit-portraits-/.test(new URL(request.url()).pathname)) requests.push(request);
+    });
+    try {
+      await stubWarData(page);
+      if (!useSprite) {
+        await page.route('**/src/portrait-sprite-data.js', route => route.fulfill({ contentType: 'application/javascript', body: '' }));
+      } else {
+        await page.goto(`/guild-wars.html?dataset=${archive}`);
+        await expect(page.locator('#leaderboard-body tr').first()).toBeVisible();
+        expect(requests).toEqual([]);
+      }
+
+      const spriteResponse = useSprite ? page.waitForResponse(/\/img\/unit-portraits-.*\.webp/) : null;
+      await page.goto(`${log}?battleWar=${archive}&battleResult=win`);
+      const portraits = page.locator(useSprite ? '[role="img"][style*="unit-portraits-"]' : 'img[src^="./img-temp/"]');
+      const visiblePortrait = portraits.filter({ visible: true }).first();
+      await expect(visiblePortrait).toBeVisible();
+      if (useSprite) {
+        await expect(visiblePortrait).toHaveCSS('background-image', /unit-portraits-/);
+        expect((await spriteResponse).ok()).toBe(true);
+      }
+      await page.waitForLoadState('networkidle');
+      const timeOrigin = await page.evaluate(() => performance.timeOrigin);
+      return await Promise.all(requests.map(async request => {
+        const { startTime, responseEnd } = request.timing();
+        return { bytes: (await request.sizes()).responseBodySize, ended: Math.round(startTime + responseEnd - timeOrigin) };
+      }));
+    } finally {
+      await page.close();
+    }
+  };
+
+  const fallback = await measure(false);
+  const sprite = await measure(true);
+  expect(fallback.length).toBeGreaterThan(1);
+  expect(sprite).toHaveLength(1);
+  expect(sprite[0].bytes).toBeGreaterThan(0);
+  const summarize = requests => ({ requests: requests.length,
+    bytes: requests.reduce((total, request) => total + request.bytes, 0),
+    firstResponseMs: Math.min(...requests.map(request => request.ended)),
+    lastResponseMs: Math.max(...requests.map(request => request.ended)) });
+  await testInfo.attach('cold portrait requests', {
+    body: JSON.stringify({ fallback: summarize(fallback), sprite: summarize(sprite) }),
+    contentType: 'application/json',
+  });
+});
+
 test('compiled Tailwind styles HTML and JavaScript utilities without the Play CDN', async ({ page }) => {
   await stubWarData(page);
   await page.goto(`${log}?battleWar=${archive}&battleResult=win`);
@@ -109,7 +161,7 @@ test('Battle Log stays within its first-party compressed payload budget', () => 
   const files = [
     log.slice(1), 'src/tailwind.css', 'src/numeric-font.js', 'src/navigation.js',
     'src/consts/tile-scores.js', 'src/consts/score-splitter.js', 'src/lib/supabase-config.js',
-    'src/lib/supabase-data.js', 'src/app.js', 'data/static/portrait-map.json',
+    'src/lib/supabase-data.js', 'src/app.js', 'src/portrait-sprite-data.js', 'data/static/portrait-map.json',
     'data/static/unitid-missing-portrait-map.json', 'data/static/image-manifest.json',
   ];
   const bytes = [...files.map(file => join(output, file)), fixture]

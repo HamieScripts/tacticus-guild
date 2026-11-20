@@ -6,6 +6,7 @@ const { minify: minifyHtml } = require('html-minifier-terser');
 const postcss = require('postcss');
 const tailwindcss = require('@tailwindcss/postcss');
 const { minify: minifyJs } = require('terser');
+const { buildPortraitSprite } = require('./lib/portrait-sprite');
 
 const root = join(__dirname, '..');
 const output = join(root, 'dist', 'site');
@@ -28,6 +29,7 @@ function renderWarPage(view) {
         ${link('war-top-tab-log', 'guild-wars-battle-log.html', 'Battle Log', isLog)}
       </nav>`;
   let html = replaceSection(template, 'war-view-navigation', navigation);
+  html = html.replace('<script src="src/app.js"></script>', '<script src="src/portrait-sprite-data.js"></script><script src="src/app.js"></script>');
   html = replaceSection(html, 'war-view-switch', '');
   html = replaceSection(html, isLog ? 'war-season' : 'war-log', '');
   html = html.replace("const topView = params.get('warView') === 'log' ? 'log' : 'season';", `const topView = '${view}';`);
@@ -139,7 +141,7 @@ async function buildStyles() {
   rmSync(join(output, 'src', 'mobile-responsive.css'));
 }
 
-buildStyles().then(optimizeSite).catch(error => {
+buildPortraitSprite(root, output).then(buildStyles).then(optimizeSite).catch(error => {
   console.error(error);
   process.exitCode = 1;
 });

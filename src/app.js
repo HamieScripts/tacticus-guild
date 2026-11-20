@@ -1980,11 +1980,23 @@ function getEasyGameBadgeHtml({ easyGame = false, tileScore = 0, includeBuilding
     '</span>';
 }
 
-function getBattleUnitAvatarUrl(unit) {
-  if (!unit || typeof unit !== 'object') return null;
+function renderBattleUnitPortrait(unitId, label, classes, { showTitle = false } = {}) {
+  const atlas = window.unitPortraitSprite;
+  const exactId = String(unitId || '').trim();
+  const safeLabel = escapeHtml(label);
+  const title = showTitle ? ` title="${safeLabel}"` : '';
+  const mappedId = atlas && (Object.hasOwn(atlas.units, exactId) ? exactId
+    : Object.keys(atlas.units).find(key => key.toLowerCase() === exactId.toLowerCase()));
+  const tile = mappedId && atlas.units[mappedId];
+  if (tile) {
+    const [column, row] = tile;
+    const horizontal = atlas.columns > 1 ? column * 100 / (atlas.columns - 1) : 0;
+    const vertical = atlas.rows > 1 ? row * 100 / (atlas.rows - 1) : 0;
+    return `<span class="inline-block ${classes}" role="img" aria-label="${safeLabel}"${title} style="background-image:url('${atlas.imagePath}');background-position:${horizontal}% ${vertical}%;background-size:${atlas.columns * 100}% ${atlas.rows * 100}%;background-repeat:no-repeat"></span>`;
+  }
 
-  const exactUnitId = getBattleUnitId(unit);
-  return getBattleUnitAvatarUrlFromUnitId(exactUnitId);
+  const url = getBattleUnitAvatarUrlFromUnitId(unitId) || MISSING_UNIT_AVATAR_URL;
+  return `<img class="${classes} object-cover" src="${escapeHtml(url)}" alt="${safeLabel}"${title} loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='${MISSING_UNIT_AVATAR_URL}';">`;
 }
 
 function getBattleUnitAvatarUrlFromUnitId(unitId) {
@@ -2624,8 +2636,6 @@ function renderBattleUnits(units, side = 'attacker') {
     .map((unit) => {
       const unitLabel = getBattleUnitLabel(unit);
       const unitId = getBattleUnitId(unit);
-      const avatarUrl = getBattleUnitAvatarUrl(unit);
-      const safeAvatarUrl = avatarUrl || MISSING_UNIT_AVATAR_URL;
       const isMatched = unitId && selectedSet.has(unitId);
       const sideMatchClass = isMatched
         ? (side === 'defender' ? ' border-pink-400 outline outline-2 outline-pink-400/60 outline-offset-2' : ' border-sky-400 outline outline-2 outline-sky-400/60 outline-offset-2')
@@ -2645,7 +2655,7 @@ function renderBattleUnits(units, side = 'attacker') {
         ? `<span class="h-1.5 w-9 overflow-hidden rounded-full border border-slate-400/35 bg-slate-600/60" title="${escapeHtml(unitLabel)} start HP: ${Math.round(currentHp).toLocaleString()} / ${Math.round(startHp).toLocaleString()}"><span class="block h-full" style="width:${percent}%; background:${healthColor}"></span></span>`
         : '';
 
-      return `<span class="inline-flex flex-col items-center gap-0.5"><span class="inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-slate-400/25 bg-slate-900/85 text-xs text-slate-300${sideMatchClass}${sideMutedClass}" title="${escapeHtml(unitLabel)}"><img class="h-full w-full object-cover" src="${escapeHtml(safeAvatarUrl)}" alt="${escapeHtml(unitLabel)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='${MISSING_UNIT_AVATAR_URL}';"></span>${healthBarHtml}</span>`;
+      return `<span class="inline-flex flex-col items-center gap-0.5"><span class="inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-slate-400/25 bg-slate-900/85 text-xs text-slate-300${sideMatchClass}${sideMutedClass}" title="${escapeHtml(unitLabel)}">${renderBattleUnitPortrait(unitId, unitLabel, 'h-full w-full')}</span>${healthBarHtml}</span>`;
     })
     .join('');
 }
@@ -2934,9 +2944,8 @@ function renderWarTeams(role) {
             ? buildBattleSideUnits(row.defenderUnits, row.defenderMachineOfWar)
             : buildBattleSideUnits(row.attackerUnits, row.attackerMachineOfWar);
           const avatarStrip = units.map((unit) => {
-            const imageUrl = getBattleUnitAvatarUrl(unit) || MISSING_UNIT_AVATAR_URL;
             const unitLabel = getBattleUnitLabel(unit);
-            return `<img class="h-8 w-8 rounded-md border border-slate-700 bg-slate-950 object-cover" src="${escapeHtml(imageUrl)}" alt="${escapeHtml(unitLabel)}" title="${escapeHtml(unitLabel)}" loading="lazy" onerror="this.src='${MISSING_UNIT_AVATAR_URL}'">`;
+            return renderBattleUnitPortrait(getBattleUnitId(unit), unitLabel, 'h-8 w-8 rounded-md border border-slate-700 bg-slate-950', { showTitle: true });
           }).join('');
           const battleMarkup = battleEntries.map((battle) => {
             const attackerName = String(battle.attackerName || battle.attackerUserId || 'Unknown attacker');
@@ -3927,7 +3936,7 @@ function renderBattleLogUnitFilterControl(side) {
     chip.className = `inline-flex items-center gap-2 rounded-full border px-2 py-1 ${chipToneClasses}`;
     chip.setAttribute('data-unit-id', unitId);
     chip.innerHTML = `
-      <img class="h-8 w-8 rounded-full object-cover" src="${escapeHtml(getBattleUnitAvatarUrlFromUnitId(unitId) || MISSING_UNIT_AVATAR_URL)}" alt="${escapeHtml(unitId)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='${MISSING_UNIT_AVATAR_URL}';">
+      ${renderBattleUnitPortrait(unitId, unitId, 'h-8 w-8 rounded-full')}
       <span class="text-base font-semibold">${escapeHtml(unitId)}</span>
       <span class="text-sm ${removeToneClass}" aria-hidden="true">x</span>
     `;
@@ -3961,7 +3970,7 @@ function renderBattleLogUnitFilterControl(side) {
     option.className = `flex w-full items-center gap-2 rounded-md px-2 py-2 text-left text-slate-200 hover:bg-slate-700/80 ${selectedSet.has(unitId) ? selectedToneClass : ''}`;
     option.setAttribute('data-unit-id', unitId);
     option.innerHTML = `
-      <img class="h-8 w-8 rounded-full object-cover" src="${escapeHtml(getBattleUnitAvatarUrlFromUnitId(unitId) || MISSING_UNIT_AVATAR_URL)}" alt="${escapeHtml(unitId)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='${MISSING_UNIT_AVATAR_URL}';">
+      ${renderBattleUnitPortrait(unitId, unitId, 'h-8 w-8 rounded-full')}
       <span class="text-base font-semibold">${escapeHtml(unitId)}</span>
       <span class="ml-auto text-base font-bold text-cyan-300" aria-hidden="true">${selectedSet.has(unitId) ? '✓' : ''}</span>
     `;
