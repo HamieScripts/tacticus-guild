@@ -555,6 +555,7 @@
         } else {
           if (main === 'attacks') initWarTeamHistoryTab('attack');
           if (main === 'defences') initWarTeamHistoryTab('defense');
+          if (main === 'portraitmap') initializePortraitMapper();
           trail.push({ label: WAR_TAB_LABELS.top[top], params: { tab: null } });
           trail.push({ label: WAR_TAB_LABELS.main[main] });
         }

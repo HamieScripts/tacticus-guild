@@ -110,6 +110,7 @@ let expandedDefensePlayerUserIds = new Set();
 let dragState = null;
 let activeMapDropTarget = null;
 let portraitMapperInitialized = false;
+let portraitLookupPromise;
 let battleLogGuildNameMap = new Map();
 let defenseWarRows = [];
 let attackWarRows = [];
@@ -2596,10 +2597,14 @@ async function loadPortraitImageManifest() {
   }
 }
 
+function loadPortraitLookups() {
+  portraitLookupPromise ??= Promise.all([loadPortraitMap(), loadMissingPortraitMap(), loadPortraitImageManifest()]);
+  return portraitLookupPromise;
+}
+
 async function initializePortraitMapper() {
-  await loadPortraitMap();
-  await loadMissingPortraitMap();
-  await loadPortraitImageManifest();
+  await loadPortraitLookups();
+  if (portraitMapperInitialized) return;
   setupPortraitMapperEvents();
   resetPortraitMapperStaged();
 }
@@ -3532,7 +3537,7 @@ async function loadAllWarsBattleLogData() {
       filterSummary.textContent = 'The requested war is unavailable.';
       return;
     }
-    await initializePortraitMapper();
+    await loadPortraitLookups();
     if (requestId !== battleLogRequestId) return;
 
     const datasets = getLoadedDatasetDescriptors().filter(({ key }) => !requestedWar || key === requestedWar);
@@ -4972,7 +4977,7 @@ async function loadGuildData() {
     lastUpdatedEl.textContent = 'Loading...';
   }
   try {
-    await initializePortraitMapper();
+    await loadPortraitLookups();
     if (loadId !== guildDataLoadId) return;
     setupDefencesPlayerSearch();
     setupAttacksPlayerSearch();
@@ -5001,7 +5006,7 @@ async function loadGuildData() {
   } catch (error) {
     if (loadId !== guildDataLoadId) return;
     console.error(error);
-    await initializePortraitMapper();
+    await loadPortraitLookups();
     if (loadId !== guildDataLoadId) return;
     guildSnapshots = [buildFallbackSnapshot()];
     activeGuildIndex = getDefaultActiveGuildIndex(guildSnapshots);

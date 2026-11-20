@@ -83,6 +83,18 @@ test('built War page preserves inline handlers and shared script names', async (
   await expect(page.locator('#tab-panel-time')).not.toHaveClass(/\bhidden\b/);
 });
 
+test('War seasons only render portrait mapper images when its tab opens', async ({ page }) => {
+  await stubWarData(page);
+  await page.goto(`/guild-wars.html?dataset=${archive}`);
+  await expect(page.locator('#leaderboard-body tr').first()).toBeVisible();
+
+  const mapperImages = page.locator('#tab-panel-portraitmap img[src]');
+  await expect(mapperImages).toHaveCount(0);
+
+  await page.evaluate(() => navigateWarTab({ tab: 'portraitmap' }));
+  await expect(mapperImages.first()).toBeVisible();
+});
+
 test('compiled Tailwind styles HTML and JavaScript utilities without the Play CDN', async ({ page }) => {
   await stubWarData(page);
   await page.goto(`${log}?battleWar=${archive}&battleResult=win`);
