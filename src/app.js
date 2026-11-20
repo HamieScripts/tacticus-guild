@@ -265,11 +265,6 @@ const SCORE_TIER_SILVER = 1400;
 const SCORE_TIER_BRONZE = 1200;
 const AVATAR_BASE_URL = 'https://webstore-assets.loki.snowprintstudios.com/live/images';
 
-// Frame filenames on tacticus.xyz are hashed, so we map known frame IDs.
-const AVATAR_FRAME_URLS = {
-  frameMythic01: 'https://tacticus.xyz/assets/frames/ui_avatar_frame_framemythic01-90960f24.png'
-};
-
 const SKILL_BUFF_MULTIPLIERS = {
   EnvDefenderHealthBuff2: 1.25,
   EnvArmourSupplies: 1.1,
@@ -471,24 +466,15 @@ function getAvatarImageUrl(avatarUnitId) {
   return `${AVATAR_BASE_URL}/avatar_${normalized}.png`;
 }
 
-function getFrameImageUrl(avatarFrameId) {
-  if (!avatarFrameId) return null;
-  return AVATAR_FRAME_URLS[avatarFrameId] || null;
-}
-
 function renderPlayerAvatar(player) {
   const avatarSrc = getAvatarImageUrl(player.avatarUnitId);
-  const frameSrc = getFrameImageUrl(player.avatarFrameId);
   const avatarAlt = `${player.name || 'Player'} avatar`;
 
   const avatarImg = avatarSrc
     ? `<img class="absolute inset-1 z-10 h-9 w-9 rounded-full bg-slate-900/95 object-cover" src="${escapeHtml(avatarSrc)}" alt="${escapeHtml(avatarAlt)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">`
     : '';
-  const frameImg = frameSrc
-    ? `<img class="pointer-events-none absolute inset-0 z-0 h-11 w-11 object-contain" src="${escapeHtml(frameSrc)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">`
-    : '';
 
-  return `<span class="relative h-11 w-11 shrink-0">${avatarImg}${frameImg}</span>`;
+  return `<span class="relative h-11 w-11 shrink-0">${avatarImg}</span>`;
 }
 
 function colorFor(name) {

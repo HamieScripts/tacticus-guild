@@ -4,9 +4,6 @@
 // mirroring the loading strategy in guild-raid.js.
 const MISSING_UNIT_AVATAR_URL = './img/missing-unit.svg';
 const AVATAR_BASE_URL = 'https://webstore-assets.loki.snowprintstudios.com/live/images';
-const AVATAR_FRAME_URLS = {
-  frameMythic01: 'https://tacticus.xyz/assets/frames/ui_avatar_frame_framemythic01-90960f24.png'
-};
 
 const RARITY_ORDER = ['Common', 'Uncommon', 'Rare', 'Epic', 'Legendary', 'Mythic'];
 const RARITY_BADGES = {
@@ -194,16 +191,12 @@ function getPlayerName(userId) {
 function renderPlayerAvatar(userId) {
   const player = getPlayer(userId);
   const avatarUnitId = String(player?.avatarUnitId || '').trim().toLowerCase();
-  const frameSrc = AVATAR_FRAME_URLS[player?.avatarFrameId] || null;
 
   const avatarImg = avatarUnitId
     ? `<img class="absolute inset-[3px] z-10 h-[26px] w-[26px] rounded-full bg-slate-900/95 object-cover" src="${escapeHtml(`${AVATAR_BASE_URL}/avatar_${avatarUnitId}.png`)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">`
     : '';
-  const frameImg = frameSrc
-    ? `<img class="pointer-events-none absolute inset-0 z-0 h-8 w-8 object-contain" src="${escapeHtml(frameSrc)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">`
-    : '';
 
-  return `<span class="relative h-8 w-8 shrink-0 rounded-full border border-slate-700/70 bg-slate-950/70">${avatarImg}${frameImg}</span>`;
+  return `<span class="relative h-8 w-8 shrink-0 rounded-full border border-slate-700/70 bg-slate-950/70">${avatarImg}</span>`;
 }
 
 function getPortraitUrlForUnitId(unitId) {
