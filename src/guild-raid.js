@@ -999,6 +999,7 @@ async function applyUrlState() {
     : (raidState.currentSeason ?? raidState.seasons[0]?.season);
 
   if (season !== raidState.activeSeason) await loadSeason(season);
+  await initialRaidStaticData;
 
   raidState.activeView = params.get('view') === 'players' ? 'players' : 'bosses';
   raidState.selectedBossKey = params.get('boss') || '';
@@ -1008,6 +1009,7 @@ async function applyUrlState() {
 }
 
 const initialRaidManifest = loadSeasonManifest();
+let initialRaidStaticData;
 
 document.addEventListener('DOMContentLoaded', async () => {
   bindGridEvents();
@@ -1015,6 +1017,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   bindSeasonSelect();
   AppNav.onChange(applyUrlState);
 
-  await Promise.all([loadStaticData(), initialRaidManifest]);
+  initialRaidStaticData = loadStaticData();
+  await initialRaidManifest;
   await applyUrlState();
 });

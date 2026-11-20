@@ -19,3 +19,25 @@ test('Guild Raid requests its season catalog before DOMContentLoaded', async ({ 
   }
   await page.waitForLoadState('domcontentloaded');
 });
+
+test('Guild Raid requests the selected season entries while the player directory is pending', async ({ page }) => {
+  let releasePlayers;
+  const playersGate = new Promise(resolve => { releasePlayers = resolve; });
+  const requestedSeasons = [];
+  await page.route('**/rest/v1/**', async route => {
+    const url = new URL(route.request().url());
+    if (url.pathname.endsWith('/players')) await playersGate;
+    if (url.pathname.endsWith('/raid_entries')) requestedSeasons.push(url.searchParams.get('season'));
+    const rows = url.pathname.endsWith('/raid_seasons')
+      ? [114, 113, 112].map(season => ({ season, guild_id: 'test-guild' }))
+      : [];
+    await route.fulfill({ json: rows });
+  });
+
+  try {
+    await page.goto('/guild-raid.html?season=113');
+    await expect.poll(() => [...requestedSeasons].sort()).toEqual(['eq.112', 'eq.113']);
+  } finally {
+    releasePlayers();
+  }
+});
