@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795198710,
+  "fetchedOn": 1795205761,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -6493,6 +6493,66 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 3682
+      }
+    },
+    {
+      "userId": "bb692d43-0c30-4d9d-8472-5eab7706487e",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Legendary",
+      "damageDealt": 9400,
+      "damageType": "Bomb",
+      "remainingHp": 1407981,
+      "maxHp": 12500000,
+      "startedOn": 1795204830,
+      "completedOn": 1795204830,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "bb692d43-0c30-4d9d-8472-5eab7706487e",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Legendary",
+      "damageDealt": 375906,
+      "damageType": "Battle",
+      "remainingHp": 1032075,
+      "maxHp": 12500000,
+      "startedOn": 1795204878,
+      "completedOn": 1795205155,
+      "heroDetails": [
+        {
+          "unitId": "bloodMephiston",
+          "power": 316888
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 629479
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 394014
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 486544
+        },
+        {
+          "unitId": "thousTzaangor",
+          "power": 410788
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 356611
       }
     }
   ]
