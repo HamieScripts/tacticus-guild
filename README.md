@@ -153,6 +153,10 @@ never blocks the JSON export). After regenerating the player directory with
 
 Run `npm run build` to generate the Pages artifact in `dist/site`, then `npm run preview` to serve it locally. Run `npx playwright install chromium` once and `npm run test:browser` to check the generated pages, local links, and Battle Log URL state. The browser suite uses a fixture rather than live Supabase data.
 
+Run the build before opening source HTML directly, too: it compiles the local Tailwind stylesheet used by both the source and published pages. There is no Tailwind CDN fallback.
+
+The build minifies published HTML, CSS, JavaScript, and JSON. JavaScript local names are mangled, but globals and property names stay intact for shared scripts and inline handlers. The build prints before-and-after file sizes, including gzip estimates for optimized files. Images and source files are unchanged.
+
 The Battle Log gate caps a representative first-party HTML, CSS, JavaScript, and single-archive data load at 170 KiB gzipped. A link with `battleWar` fetches only that war's battles; the unfiltered log still fetches all wars. The budget does not measure images, CDN assets, or the unfiltered load. Pages deploys the generated artifact only after the browser checks pass.
 
 Tests use the built-in `node:test` runner — no extra dependencies required.
@@ -164,7 +168,7 @@ node --test tests/
 ## Tech Stack
 
 - Vanilla JavaScript (no frameworks)
-- Tailwind CSS (CDN)
+- Tailwind CSS 4 (compiled locally)
 - Node.js for build scripts and tests
 
 ## Updating live war data

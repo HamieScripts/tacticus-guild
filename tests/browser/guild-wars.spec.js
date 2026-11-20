@@ -58,6 +58,9 @@ test('generated documents load and their local page links resolve', async ({ bro
   const urls = new Set(['/index.html', '/guild-wars.html', log, '/guild-raid.html', '/guild-teams.html', '/player-page.html', '/report-cards.html']);
   for (const url of urls) {
     expect((await page.goto(url)).ok(), url).toBe(true);
+    await expect(page.locator('link[rel="stylesheet"][href="src/tailwind.css"]')).toHaveCount(1);
+    await expect(page.locator('link[href="src/mobile-responsive.css"]')).toHaveCount(0);
+    await expect(page.locator('script[src*="tailwindcss"]')).toHaveCount(0);
     const links = await page.locator('a[href]').evaluateAll(anchors => anchors.map(anchor => anchor.href));
     for (const link of links) {
       const target = new URL(link);
@@ -70,10 +73,27 @@ test('generated documents load and their local page links resolve', async ({ bro
   await page.close();
 });
 
+test('built War page preserves inline handlers and shared script names', async ({ page }) => {
+  await stubWarData(page);
+  await page.goto(`/guild-wars.html?dataset=${archive}`);
+  await page.getByRole('button', { name: 'Time', exact: true }).click();
+  await expect(page).toHaveURL(/tab=time/);
+  await expect(page.locator('#tab-panel-time')).not.toHaveClass(/\bhidden\b/);
+});
+
+test('compiled Tailwind styles HTML and JavaScript utilities without the Play CDN', async ({ page }) => {
+  await stubWarData(page);
+  await page.goto(`${log}?battleWar=${archive}&battleResult=win`);
+  const activeResult = page.locator('[data-result="win"]');
+  await expect(activeResult).toHaveAttribute('aria-checked', 'true');
+  await expect(activeResult).not.toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
+  await expect(page.locator('body')).toHaveCSS('min-height', `${page.viewportSize().height}px`);
+});
+
 test('Battle Log stays within its first-party compressed payload budget', () => {
   const output = join(__dirname, '../../dist/site');
   const files = [
-    log.slice(1), 'src/mobile-responsive.css', 'src/numeric-font.js', 'src/navigation.js',
+    log.slice(1), 'src/tailwind.css', 'src/numeric-font.js', 'src/navigation.js',
     'src/consts/tile-scores.js', 'src/consts/score-splitter.js', 'src/lib/supabase-config.js',
     'src/lib/supabase-data.js', 'src/app.js', 'data/static/portrait-map.json',
     'data/static/unitid-missing-portrait-map.json', 'data/static/image-manifest.json',
@@ -209,4 +229,27 @@ test('changing seasons selects and fetches only the latest war in that season', 
   await page.locator('#battle-filter-war').selectOption(earlierWar);
   await expect(status).toHaveText('Showing 0 logs');
   expect(requests).toEqual([archive, season, season, earlierWar]);
+});
+
+test('bundled responsive styles keep the mobile menu breakpoint and interactions', async ({ page }) => {
+  await page.setViewportSize({ width: 640, height: 800 });
+  await page.goto('/index.html');
+  const menu = page.getByRole('button', { name: 'Toggle navigation' });
+  const nav = page.locator('#primary-nav');
+  const overlay = page.locator('#mobile-nav-overlay');
+
+  await expect(nav).toHaveCSS('position', 'fixed');
+  await expect(nav).toHaveCSS('pointer-events', 'none');
+  await menu.click();
+  await expect(menu).toHaveAttribute('aria-expanded', 'true');
+  await expect(nav).toHaveCSS('pointer-events', 'auto');
+  await expect(overlay).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(menu).toHaveAttribute('aria-expanded', 'false');
+  await expect(overlay).toBeHidden();
+
+  await page.setViewportSize({ width: 641, height: 800 });
+  await expect(menu).toBeHidden();
+  await expect(nav).toHaveCSS('position', 'static');
+  await expect(nav).toBeVisible();
 });
