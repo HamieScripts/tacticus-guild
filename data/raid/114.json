@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795191384,
+  "fetchedOn": 1795194810,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -6229,6 +6229,126 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 105653
+      }
+    },
+    {
+      "userId": "2ced1809-940f-4ea3-a99a-64a858f7926c",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Legendary",
+      "damageDealt": 9267,
+      "damageType": "Bomb",
+      "remainingHp": 2931297,
+      "maxHp": 12500000,
+      "startedOn": 1795192151,
+      "completedOn": 1795192151,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "fce63e8e-b46e-4fe1-9031-9475f46ee504",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Legendary",
+      "damageDealt": 115693,
+      "damageType": "Battle",
+      "remainingHp": 2815604,
+      "maxHp": 12500000,
+      "startedOn": 1795192674,
+      "completedOn": 1795192785,
+      "heroDetails": [
+        {
+          "unitId": "eldarJainZar",
+          "power": 517983
+        },
+        {
+          "unitId": "necroDestroyer",
+          "power": 169317
+        },
+        {
+          "unitId": "eldarMauganRa",
+          "power": 520764
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 562391
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 657954
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 1882
+      }
+    },
+    {
+      "userId": "293f4b63-28b1-4b5e-88ee-59936eed8ddb",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Legendary",
+      "damageDealt": 8255,
+      "damageType": "Bomb",
+      "remainingHp": 2807349,
+      "maxHp": 12500000,
+      "startedOn": 1795194485,
+      "completedOn": 1795194485,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "293f4b63-28b1-4b5e-88ee-59936eed8ddb",
+      "tier": 4,
+      "set": 3,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss11Boss1TauRiptide",
+      "type": "Riptide",
+      "rarity": "Legendary",
+      "damageDealt": 514809,
+      "damageType": "Battle",
+      "remainingHp": 2292540,
+      "maxHp": 12500000,
+      "startedOn": 1795194492,
+      "completedOn": 1795194653,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 884953
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 908816
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 890615
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 482638
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 863255
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 43444
       }
     }
   ]
