@@ -61,6 +61,8 @@ test('generated documents load and their local page links resolve', async ({ bro
     await expect(page.locator('link[rel="stylesheet"][href="src/tailwind.css"]')).toHaveCount(1);
     await expect(page.locator('link[href="src/mobile-responsive.css"]')).toHaveCount(0);
     await expect(page.locator('script[src*="tailwindcss"]')).toHaveCount(0);
+    await expect(page.locator('script[src*="cdn.jsdelivr.net/npm/@supabase"]')).toHaveCount(0);
+    await expect(page.locator('script[src="src/vendor/supabase.min.js"]')).toHaveCount(url === '/index.html' ? 0 : 1);
     const links = await page.locator('a[href]').evaluateAll(anchors => anchors.map(anchor => anchor.href));
     for (const link of links) {
       const target = new URL(link);
@@ -101,6 +103,8 @@ test('Battle Log stays within its first-party compressed payload budget', () => 
   const bytes = [...files.map(file => join(output, file)), fixture]
     .reduce((total, file) => total + gzipSync(readFileSync(file)).length, 0);
   expect(bytes, 'first-party HTML, CSS, JS, and representative data (gzip bytes)').toBeLessThanOrEqual(170 * 1024);
+  const sdkBytes = gzipSync(readFileSync(join(output, 'src/vendor/supabase.min.js'))).length;
+  expect(sdkBytes, 'shared Supabase SDK (gzip bytes)').toBeLessThanOrEqual(56 * 1024);
 });
 
 test('reports a catalog failure without pretending the archive is missing', async ({ page }) => {

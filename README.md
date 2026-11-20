@@ -157,7 +157,7 @@ Run the build before opening source HTML directly, too: it compiles the local Ta
 
 The build minifies published HTML, CSS, JavaScript, and JSON. JavaScript local names are mangled, but globals and property names stay intact for shared scripts and inline handlers. The build prints before-and-after file sizes, including gzip estimates for optimized files. Images and source files are unchanged.
 
-The Battle Log gate caps a representative first-party HTML, CSS, JavaScript, and single-archive data load at 170 KiB gzipped. A link with `battleWar` fetches only that war's battles; the unfiltered log still fetches all wars. The budget does not measure images, CDN assets, or the unfiltered load. Pages deploys the generated artifact only after the browser checks pass.
+The Battle Log gate caps a representative app HTML, CSS, JavaScript, and single-archive data load at 170 KiB gzipped, plus a separate 56 KiB cap for the shared Supabase SDK. The build serves the npm-locked SDK locally rather than from jsDelivr. A link with `battleWar` fetches only that war's battles; the unfiltered log still fetches all wars. The budget does not measure images or the unfiltered load. Pages deploys the generated artifact only after the browser checks pass.
 
 Tests use the built-in `node:test` runner — no extra dependencies required.
 

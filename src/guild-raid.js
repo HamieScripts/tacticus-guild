@@ -1007,12 +1007,14 @@ async function applyUrlState() {
   render();
 }
 
+const initialRaidManifest = loadSeasonManifest();
+
 document.addEventListener('DOMContentLoaded', async () => {
   bindGridEvents();
   bindViewTabs();
   bindSeasonSelect();
   AppNav.onChange(applyUrlState);
 
-  await Promise.all([loadStaticData(), loadSeasonManifest()]);
+  await Promise.all([loadStaticData(), initialRaidManifest]);
   await applyUrlState();
 });

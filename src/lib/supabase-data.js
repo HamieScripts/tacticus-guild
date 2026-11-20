@@ -1,6 +1,6 @@
 // Browser data layer: reads guild data from Supabase and returns the same
 // shapes the pages previously loaded from data/*.json, so render logic is
-// unchanged. Requires supabase-config.js and the @supabase/supabase-js CDN
+// unchanged. Requires supabase-config.js and the @supabase/supabase-js browser
 // bundle to be loaded first. Plain script (no modules) — exposes
 // window.supabaseData.
 (function () {

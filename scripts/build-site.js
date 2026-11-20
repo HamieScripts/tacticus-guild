@@ -1,5 +1,5 @@
 const { cpSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } = require('node:fs');
-const { extname, join, relative } = require('node:path');
+const { dirname, extname, join, relative } = require('node:path');
 const { gzipSync } = require('node:zlib');
 const CleanCSS = require('clean-css');
 const { minify: minifyHtml } = require('html-minifier-terser');
@@ -11,6 +11,8 @@ const root = join(__dirname, '..');
 const output = join(root, 'dist', 'site');
 const template = readFileSync(join(root, 'guild-wars.html'), 'utf8');
 const tailwindStylesheet = 'src/tailwind.css';
+const supabaseCdn = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';
+const supabaseBundle = 'src/vendor/supabase.min.js';
 
 function replaceSection(html, name, replacement) {
   const section = new RegExp(`(?:<!--|/\\*) ${name}:start (?:-->|\\*/)[\\s\\S]*?(?:<!--|/\\*) ${name}:end (?:-->|\\*/)`);
@@ -59,10 +61,14 @@ for (const path of ['index.html', 'guild-raid.html', 'guild-teams.html', 'player
 }
 writeFileSync(join(output, 'guild-wars.html'), season);
 writeFileSync(join(output, 'guild-wars-battle-log.html'), log);
+const supabasePackage = dirname(require.resolve('@supabase/supabase-js/package.json'));
+mkdirSync(dirname(join(output, supabaseBundle)), { recursive: true });
+cpSync(join(supabasePackage, 'dist', 'umd', 'supabase.js'), join(output, supabaseBundle));
+cpSync(join(supabasePackage, 'LICENSE'), join(dirname(join(output, supabaseBundle)), 'supabase.LICENSE'));
 
 const jsOptions = { toplevel: false, mangle: { toplevel: false } };
 const optimizers = new Map([
-  ['.html', source => minifyHtml(source, {
+  ['.html', source => minifyHtml(source.replace(supabaseCdn, supabaseBundle), {
     collapseWhitespace: true,
     conservativeCollapse: true,
     removeComments: true,
@@ -92,7 +98,7 @@ async function optimizeSite() {
   for (const path of siteFiles(output)) {
     const extension = extname(path);
     const optimize = optimizers.get(extension);
-    if (!optimize || path === join(output, tailwindStylesheet)) {
+    if (!optimize || path === join(output, tailwindStylesheet) || path === join(output, supabaseBundle)) {
       unchangedBytes += statSync(path).size;
       continue;
     }
