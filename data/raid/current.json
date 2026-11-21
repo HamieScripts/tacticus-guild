@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795256040,
+  "fetchedOn": 1795259610,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -7777,6 +7777,66 @@
       "machineOfWarDetails": {
         "unitId": "thousDaemonPrince",
         "power": 515918
+      }
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 8182,
+      "damageType": "Bomb",
+      "remainingHp": 13075523,
+      "maxHp": 15000000,
+      "startedOn": 1795256342,
+      "completedOn": 1795256342,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 121036,
+      "damageType": "Battle",
+      "remainingHp": 12954487,
+      "maxHp": 15000000,
+      "startedOn": 1795256354,
+      "completedOn": 1795256491,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 87985
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 335668
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 316024
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 81833
+        },
+        {
+          "unitId": "blackObliterator",
+          "power": 75011
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 1126
       }
     }
   ]
