@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795227576,
+  "fetchedOn": 1795231044,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -7190,6 +7190,84 @@
         "unitId": "blackForgefiend",
         "power": 178
       }
+    },
+    {
+      "userId": "3062a0b8-d318-44a8-a8f2-fe239835c307",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 10302,
+      "damageType": "Bomb",
+      "remainingHp": 14962559,
+      "maxHp": 15000000,
+      "startedOn": 1795229715,
+      "completedOn": 1795229715,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "3062a0b8-d318-44a8-a8f2-fe239835c307",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 95863,
+      "damageType": "Battle",
+      "remainingHp": 14866696,
+      "maxHp": 15000000,
+      "startedOn": 1795229719,
+      "completedOn": 1795229947,
+      "heroDetails": [
+        {
+          "unitId": "astraOrdnance",
+          "power": 716346
+        },
+        {
+          "unitId": "blackTerminator",
+          "power": 712715
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 537167
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 511045
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 612149
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 17350
+      }
+    },
+    {
+      "userId": "735797d5-c9c1-4788-8395-f3a66f408995",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 10084,
+      "damageType": "Bomb",
+      "remainingHp": 14856612,
+      "maxHp": 15000000,
+      "startedOn": 1795230424,
+      "completedOn": 1795230424,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
