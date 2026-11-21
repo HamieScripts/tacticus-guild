@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795299217,
+  "fetchedOn": 1795302795,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -9020,6 +9020,90 @@
       "completedOn": 1795299062,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "bb692d43-0c30-4d9d-8472-5eab7706487e",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 160815,
+      "damageType": "Battle",
+      "remainingHp": 6653830,
+      "maxHp": 15000000,
+      "startedOn": 1795299098,
+      "completedOn": 1795299324,
+      "heroDetails": [
+        {
+          "unitId": "bloodDante",
+          "power": 558807
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 325680
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 460430
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 892176
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 602581
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 144154
+      }
+    },
+    {
+      "userId": "bb692d43-0c30-4d9d-8472-5eab7706487e",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 488339,
+      "damageType": "Battle",
+      "remainingHp": 6165491,
+      "maxHp": 15000000,
+      "startedOn": 1795299386,
+      "completedOn": 1795299664,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 460430
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 558807
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 892176
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 325680
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 602581
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 144154
+      }
     }
   ]
 }
