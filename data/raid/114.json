@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795349990,
+  "fetchedOn": 1795353225,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -10555,6 +10555,84 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 149526
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 8171,
+      "damageType": "Bomb",
+      "remainingHp": 29991829,
+      "maxHp": 30000000,
+      "startedOn": 1795351719,
+      "completedOn": 1795351719,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "260cfd81-b5de-433e-bc13-cb5f9a08b137",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 9272,
+      "damageType": "Bomb",
+      "remainingHp": 29982557,
+      "maxHp": 30000000,
+      "startedOn": 1795352309,
+      "completedOn": 1795352309,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "260cfd81-b5de-433e-bc13-cb5f9a08b137",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 87796,
+      "damageType": "Battle",
+      "remainingHp": 29894761,
+      "maxHp": 30000000,
+      "startedOn": 1795352316,
+      "completedOn": 1795352476,
+      "heroDetails": [
+        {
+          "unitId": "bloodMephiston",
+          "power": 751514
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 900992
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 883564
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 816437
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 743141
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 713700
       }
     }
   ]
