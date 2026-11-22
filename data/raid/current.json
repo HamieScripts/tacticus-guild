@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795302795,
+  "fetchedOn": 1795307900,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -9103,6 +9103,252 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 144154
+      }
+    },
+    {
+      "userId": "3062a0b8-d318-44a8-a8f2-fe239835c307",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 8799,
+      "damageType": "Bomb",
+      "remainingHp": 6156692,
+      "maxHp": 15000000,
+      "startedOn": 1795302890,
+      "completedOn": 1795302890,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "3062a0b8-d318-44a8-a8f2-fe239835c307",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 100249,
+      "damageType": "Battle",
+      "remainingHp": 6056443,
+      "maxHp": 15000000,
+      "startedOn": 1795302899,
+      "completedOn": 1795303049,
+      "heroDetails": [
+        {
+          "unitId": "astraOrdnance",
+          "power": 716346
+        },
+        {
+          "unitId": "blackTerminator",
+          "power": 712715
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 537167
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 511045
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 612149
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 17350
+      }
+    },
+    {
+      "userId": "2ced1809-940f-4ea3-a99a-64a858f7926c",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 276226,
+      "damageType": "Battle",
+      "remainingHp": 5780217,
+      "maxHp": 15000000,
+      "startedOn": 1795304673,
+      "completedOn": 1795304924,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 655941
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 479404
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 500330
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 715124
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 520843
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 85605
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 1004489,
+      "damageType": "Battle",
+      "remainingHp": 4775728,
+      "maxHp": 15000000,
+      "startedOn": 1795305477,
+      "completedOn": 1795305848,
+      "heroDetails": [
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 890893
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 738255
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 671087
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 594970
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 624736
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 515918
+      }
+    },
+    {
+      "userId": "fce63e8e-b46e-4fe1-9031-9475f46ee504",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 8990,
+      "damageType": "Bomb",
+      "remainingHp": 4766738,
+      "maxHp": 15000000,
+      "startedOn": 1795307060,
+      "completedOn": 1795307060,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "fce63e8e-b46e-4fe1-9031-9475f46ee504",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 7799,
+      "damageType": "Battle",
+      "remainingHp": 4758939,
+      "maxHp": 15000000,
+      "startedOn": 1795307064,
+      "completedOn": 1795307162,
+      "heroDetails": [
+        {
+          "unitId": "ultraCalgar",
+          "power": 562391
+        },
+        {
+          "unitId": "eldarMauganRa",
+          "power": 520764
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 657954
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 517983
+        },
+        {
+          "unitId": "necroDestroyer",
+          "power": 169317
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 15994
+      }
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 51729,
+      "damageType": "Battle",
+      "remainingHp": 4707210,
+      "maxHp": 15000000,
+      "startedOn": 1795307220,
+      "completedOn": 1795307343,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 87985
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 335668
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 316024
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 81833
+        },
+        {
+          "unitId": "blackObliterator",
+          "power": 75011
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 1126
       }
     }
   ]
