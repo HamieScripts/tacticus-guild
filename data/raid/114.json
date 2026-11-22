@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795353225,
+  "fetchedOn": 1795356856,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -10634,6 +10634,168 @@
         "unitId": "tyranBiovore",
         "power": 713700
       }
+    },
+    {
+      "userId": "86dc308e-8ca0-4470-ae78-ced2ef219eea",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss12MiniBoss1DarkaTerminator",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 466483,
+      "damageType": "Battle",
+      "remainingHp": 0,
+      "maxHp": 2400000,
+      "startedOn": 1795354228,
+      "completedOn": 1795354487,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 728184
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 688826
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 717167
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 645998
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 571241
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 76622
+      }
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 10599,
+      "damageType": "Bomb",
+      "remainingHp": 29884162,
+      "maxHp": 30000000,
+      "startedOn": 1795354296,
+      "completedOn": 1795354296,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss12MiniBoss2DarkaCompanion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 112000,
+      "damageType": "Battle",
+      "remainingHp": 2288000,
+      "maxHp": 2400000,
+      "startedOn": 1795354317,
+      "completedOn": 1795354425,
+      "heroDetails": [
+        {
+          "unitId": "deathBlightlord",
+          "power": 55634
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 376208
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 71073
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 193822
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 325028
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 7066
+      }
+    },
+    {
+      "userId": "553c48cc-fcd5-4d34-94cd-691ecad888cc",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss12MiniBoss2DarkaCompanion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 19758,
+      "damageType": "Battle",
+      "remainingHp": 2268242,
+      "maxHp": 2400000,
+      "startedOn": 1795355578,
+      "completedOn": 1795355724,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 641581
+        },
+        {
+          "unitId": "admecManipulus",
+          "power": 539395
+        },
+        {
+          "unitId": "admecRuststalker",
+          "power": 721837
+        },
+        {
+          "unitId": "admecMarshall",
+          "power": 741271
+        },
+        {
+          "unitId": "tauMarksman",
+          "power": 764862
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 641082
+      }
+    },
+    {
+      "userId": "a10989a0-a872-4762-bd38-a38dc24ad32e",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss12MiniBoss2DarkaCompanion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 10087,
+      "damageType": "Bomb",
+      "remainingHp": 2258155,
+      "maxHp": 2400000,
+      "startedOn": 1795356680,
+      "completedOn": 1795356680,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
