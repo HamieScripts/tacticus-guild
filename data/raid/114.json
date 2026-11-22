@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795374786,
+  "fetchedOn": 1795385678,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -11372,6 +11372,66 @@
         "unitId": "tyranBiovore",
         "power": 105653
       }
+    },
+    {
+      "userId": "c47778d3-3a3c-4cc0-b405-3aed0d993c45",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss12MiniBoss2DarkaCompanion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 9245,
+      "damageType": "Battle",
+      "remainingHp": 182845,
+      "maxHp": 2400000,
+      "startedOn": 1795383002,
+      "completedOn": 1795383089,
+      "heroDetails": [
+        {
+          "unitId": "ultraTitus",
+          "power": 665127
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 641490
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 616131
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 584779
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 691390
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 178
+      }
+    },
+    {
+      "userId": "2ced1809-940f-4ea3-a99a-64a858f7926c",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 10477,
+      "damageType": "Bomb",
+      "remainingHp": 29847576,
+      "maxHp": 30000000,
+      "startedOn": 1795383336,
+      "completedOn": 1795383336,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
