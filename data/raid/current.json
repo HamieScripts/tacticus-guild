@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795321072,
+  "fetchedOn": 1795324517,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -9817,6 +9817,48 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 580
+      }
+    },
+    {
+      "userId": "3062a0b8-d318-44a8-a8f2-fe239835c307",
+      "tier": 4,
+      "set": 4,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss10Boss1AdmecBelisarius",
+      "type": "BelisariusRW",
+      "rarity": "Legendary",
+      "damageDealt": 100250,
+      "damageType": "Battle",
+      "remainingHp": 2361305,
+      "maxHp": 15000000,
+      "startedOn": 1795321115,
+      "completedOn": 1795321333,
+      "heroDetails": [
+        {
+          "unitId": "astraOrdnance",
+          "power": 716346
+        },
+        {
+          "unitId": "blackTerminator",
+          "power": 712715
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 537167
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 511045
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 612149
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 17350
       }
     }
   ]
