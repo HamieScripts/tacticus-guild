@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795342453,
+  "fetchedOn": 1795345988,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -10369,6 +10369,108 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 476066
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss12MiniBoss1DarkaTerminator",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 455779,
+      "damageType": "Battle",
+      "remainingHp": 1944221,
+      "maxHp": 2400000,
+      "startedOn": 1795342883,
+      "completedOn": 1795343106,
+      "heroDetails": [
+        {
+          "unitId": "blackPossession",
+          "power": 738255
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 671087
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 594970
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 624736
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 890893
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 515918
+      }
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss12MiniBoss1DarkaTerminator",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 10594,
+      "damageType": "Bomb",
+      "remainingHp": 1933627,
+      "maxHp": 2400000,
+      "startedOn": 1795343257,
+      "completedOn": 1795343257,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss12MiniBoss1DarkaTerminator",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 458395,
+      "damageType": "Battle",
+      "remainingHp": 1475232,
+      "maxHp": 2400000,
+      "startedOn": 1795343273,
+      "completedOn": 1795343419,
+      "heroDetails": [
+        {
+          "unitId": "blackPossession",
+          "power": 81833
+        },
+        {
+          "unitId": "blackObliterator",
+          "power": 75011
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 62881
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 316024
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 335668
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 1312
       }
     }
   ]
