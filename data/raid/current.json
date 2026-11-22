@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795356856,
+  "fetchedOn": 1795360419,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -10794,6 +10794,150 @@
       "maxHp": 2400000,
       "startedOn": 1795356680,
       "completedOn": 1795356680,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "a10989a0-a872-4762-bd38-a38dc24ad32e",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss12MiniBoss2DarkaCompanion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 49400,
+      "damageType": "Battle",
+      "remainingHp": 2208755,
+      "maxHp": 2400000,
+      "startedOn": 1795356693,
+      "completedOn": 1795356872,
+      "heroDetails": [
+        {
+          "unitId": "genesKelermorph",
+          "power": 570580
+        },
+        {
+          "unitId": "astraDreir",
+          "power": 499966
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 548555
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 224822
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 377694
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 111835
+      }
+    },
+    {
+      "userId": "a10989a0-a872-4762-bd38-a38dc24ad32e",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss12MiniBoss2DarkaCompanion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 80629,
+      "damageType": "Battle",
+      "remainingHp": 2128126,
+      "maxHp": 2400000,
+      "startedOn": 1795356896,
+      "completedOn": 1795357073,
+      "heroDetails": [
+        {
+          "unitId": "genesKelermorph",
+          "power": 570580
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 377694
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 548555
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 224822
+        },
+        {
+          "unitId": "astraDreir",
+          "power": 499966
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 111835
+      }
+    },
+    {
+      "userId": "a10989a0-a872-4762-bd38-a38dc24ad32e",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss12MiniBoss2DarkaCompanion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 131101,
+      "damageType": "Battle",
+      "remainingHp": 1997025,
+      "maxHp": 2400000,
+      "startedOn": 1795357099,
+      "completedOn": 1795357266,
+      "heroDetails": [
+        {
+          "unitId": "genesKelermorph",
+          "power": 570580
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 377694
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 548555
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 224822
+        },
+        {
+          "unitId": "astraDreir",
+          "power": 499966
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 111835
+      }
+    },
+    {
+      "userId": "8485b330-6671-46b7-a258-9a2ed7d0e5f0",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 8864,
+      "damageType": "Bomb",
+      "remainingHp": 29875298,
+      "maxHp": 30000000,
+      "startedOn": 1795358097,
+      "completedOn": 1795358097,
       "heroDetails": [],
       "machineOfWarDetails": null
     }
