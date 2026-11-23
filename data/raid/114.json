@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795461166,
+  "fetchedOn": 1795464877,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -13419,6 +13419,150 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 7066
+      }
+    },
+    {
+      "userId": "3a7261c5-ee93-4722-8d41-a064473fd87c",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 41348,
+      "damageType": "Battle",
+      "remainingHp": 24121155,
+      "maxHp": 30000000,
+      "startedOn": 1795462654,
+      "completedOn": 1795462778,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 466212
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 645696
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 462108
+        },
+        {
+          "unitId": "adeptMorvenn",
+          "power": 319016
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 378130
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1198
+      }
+    },
+    {
+      "userId": "fce63e8e-b46e-4fe1-9031-9475f46ee504",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 9124,
+      "damageType": "Bomb",
+      "remainingHp": 24112031,
+      "maxHp": 30000000,
+      "startedOn": 1795463058,
+      "completedOn": 1795463058,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "fce63e8e-b46e-4fe1-9031-9475f46ee504",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 27786,
+      "damageType": "Battle",
+      "remainingHp": 24084245,
+      "maxHp": 30000000,
+      "startedOn": 1795463065,
+      "completedOn": 1795463161,
+      "heroDetails": [
+        {
+          "unitId": "blackAbaddon",
+          "power": 657954
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 517983
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 562391
+        },
+        {
+          "unitId": "necroDestroyer",
+          "power": 169317
+        },
+        {
+          "unitId": "eldarMauganRa",
+          "power": 520764
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "ultraDreadnought",
+        "power": 1216
+      }
+    },
+    {
+      "userId": "3a7261c5-ee93-4722-8d41-a064473fd87c",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 43018,
+      "damageType": "Battle",
+      "remainingHp": 24041227,
+      "maxHp": 30000000,
+      "startedOn": 1795463084,
+      "completedOn": 1795463186,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 466212
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 645696
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 462108
+        },
+        {
+          "unitId": "adeptMorvenn",
+          "power": 319016
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 378130
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1198
       }
     }
   ]
