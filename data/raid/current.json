@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795407609,
+  "fetchedOn": 1795415622,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -12487,6 +12487,108 @@
       "machineOfWarDetails": {
         "unitId": "thousDaemonPrince",
         "power": 356611
+      }
+    },
+    {
+      "userId": "3a7261c5-ee93-4722-8d41-a064473fd87c",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 9923,
+      "damageType": "Bomb",
+      "remainingHp": 27134521,
+      "maxHp": 30000000,
+      "startedOn": 1795412067,
+      "completedOn": 1795412067,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "3a7261c5-ee93-4722-8d41-a064473fd87c",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 68378,
+      "damageType": "Battle",
+      "remainingHp": 27066143,
+      "maxHp": 30000000,
+      "startedOn": 1795412074,
+      "completedOn": 1795412450,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 466212
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 645696
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 462108
+        },
+        {
+          "unitId": "adeptMorvenn",
+          "power": 319016
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 378130
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1198
+      }
+    },
+    {
+      "userId": "293f4b63-28b1-4b5e-88ee-59936eed8ddb",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 166657,
+      "damageType": "Battle",
+      "remainingHp": 26899486,
+      "maxHp": 30000000,
+      "startedOn": 1795415290,
+      "completedOn": 1795415445,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 890615
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 908816
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 884953
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 863255
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 482638
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 36226
       }
     }
   ]
