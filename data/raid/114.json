@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795468431,
+  "fetchedOn": 1795472012,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -13761,6 +13761,90 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 127322
+      }
+    },
+    {
+      "userId": "3062a0b8-d318-44a8-a8f2-fe239835c307",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 68065,
+      "damageType": "Battle",
+      "remainingHp": 23596902,
+      "maxHp": 30000000,
+      "startedOn": 1795468871,
+      "completedOn": 1795469090,
+      "heroDetails": [
+        {
+          "unitId": "blackTerminator",
+          "power": 728787
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 537167
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 511045
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 612149
+        },
+        {
+          "unitId": "astraOrdnance",
+          "power": 716346
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 17350
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 496450,
+      "damageType": "Battle",
+      "remainingHp": 23100452,
+      "maxHp": 30000000,
+      "startedOn": 1795471024,
+      "completedOn": 1795471403,
+      "heroDetails": [
+        {
+          "unitId": "blackAbaddon",
+          "power": 671087
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 918087
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 647937
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 594970
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 738255
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 532496
       }
     }
   ]
