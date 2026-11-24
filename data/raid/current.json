@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795493893,
+  "fetchedOn": 1795497383,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -15033,6 +15033,108 @@
       "machineOfWarDetails": {
         "unitId": "thousDaemonPrince",
         "power": 142038
+      }
+    },
+    {
+      "userId": "3062a0b8-d318-44a8-a8f2-fe239835c307",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 8783,
+      "damageType": "Bomb",
+      "remainingHp": 19675880,
+      "maxHp": 30000000,
+      "startedOn": 1795496418,
+      "completedOn": 1795496418,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "3062a0b8-d318-44a8-a8f2-fe239835c307",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 68210,
+      "damageType": "Battle",
+      "remainingHp": 19607670,
+      "maxHp": 30000000,
+      "startedOn": 1795496423,
+      "completedOn": 1795496657,
+      "heroDetails": [
+        {
+          "unitId": "blackTerminator",
+          "power": 728787
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 537167
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 511045
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 612149
+        },
+        {
+          "unitId": "astraOrdnance",
+          "power": 716346
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 17350
+      }
+    },
+    {
+      "userId": "c47778d3-3a3c-4cc0-b405-3aed0d993c45",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 73515,
+      "damageType": "Battle",
+      "remainingHp": 19534155,
+      "maxHp": 30000000,
+      "startedOn": 1795496695,
+      "completedOn": 1795496820,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 629072
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 641490
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 691390
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 589581
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 490666
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 178
       }
     }
   ]
