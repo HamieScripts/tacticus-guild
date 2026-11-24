@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795490324,
+  "fetchedOn": 1795493893,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -14973,6 +14973,66 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 149526
+      }
+    },
+    {
+      "userId": "275a8663-7ad1-4ec7-86ef-f4c97182473d",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 8831,
+      "damageType": "Bomb",
+      "remainingHp": 19726180,
+      "maxHp": 30000000,
+      "startedOn": 1795493157,
+      "completedOn": 1795493157,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "275a8663-7ad1-4ec7-86ef-f4c97182473d",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 41517,
+      "damageType": "Battle",
+      "remainingHp": 19684663,
+      "maxHp": 30000000,
+      "startedOn": 1795493162,
+      "completedOn": 1795493260,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 506810
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 292300
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 702666
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 400585
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 598677
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 142038
       }
     }
   ]
