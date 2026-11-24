@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795529813,
+  "fetchedOn": 1795533382,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -15861,6 +15861,66 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 221431
+      }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 8940,
+      "damageType": "Bomb",
+      "remainingHp": 16166572,
+      "maxHp": 30000000,
+      "startedOn": 1795532307,
+      "completedOn": 1795532307,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 91421,
+      "damageType": "Battle",
+      "remainingHp": 16075151,
+      "maxHp": 30000000,
+      "startedOn": 1795532314,
+      "completedOn": 1795532443,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 182320
+        },
+        {
+          "unitId": "astraDreir",
+          "power": 551332
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 884233
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 771461
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 196189
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 69531
       }
     }
   ]
