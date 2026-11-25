@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795630688,
+  "fetchedOn": 1795634010,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -18706,6 +18706,66 @@
         "unitId": "tyranBiovore",
         "power": 476066
       }
+    },
+    {
+      "userId": "86dc308e-8ca0-4470-ae78-ced2ef219eea",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 215664,
+      "damageType": "Battle",
+      "remainingHp": 6317386,
+      "maxHp": 30000000,
+      "startedOn": 1795631170,
+      "completedOn": 1795631306,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 742353
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 571241
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 688826
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 523818
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 717167
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 76622
+      }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 9204,
+      "damageType": "Bomb",
+      "remainingHp": 6308182,
+      "maxHp": 30000000,
+      "startedOn": 1795633668,
+      "completedOn": 1795633668,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
