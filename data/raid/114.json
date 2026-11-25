@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795569454,
+  "fetchedOn": 1795573295,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -16947,6 +16947,90 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 100412
+      }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 76048,
+      "damageType": "Battle",
+      "remainingHp": 12655426,
+      "maxHp": 30000000,
+      "startedOn": 1795571500,
+      "completedOn": 1795571636,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 182320
+        },
+        {
+          "unitId": "astraDreir",
+          "power": 551332
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 884233
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 771461
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 196189
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 69531
+      }
+    },
+    {
+      "userId": "129ec564-5fd6-402d-a981-c50d6623ae35",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 8995,
+      "damageType": "Battle",
+      "remainingHp": 12646431,
+      "maxHp": 30000000,
+      "startedOn": 1795572483,
+      "completedOn": 1795572577,
+      "heroDetails": [
+        {
+          "unitId": "blackAbaddon",
+          "power": 161353
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 25453
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 122407
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 108917
+        },
+        {
+          "unitId": "eldarAutarch",
+          "power": 199265
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 85
       }
     }
   ]
