@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795616215,
+  "fetchedOn": 1795619818,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -18357,6 +18357,150 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 149526
+      }
+    },
+    {
+      "userId": "260cfd81-b5de-433e-bc13-cb5f9a08b137",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 9522,
+      "damageType": "Bomb",
+      "remainingHp": 7957959,
+      "maxHp": 30000000,
+      "startedOn": 1795616522,
+      "completedOn": 1795616522,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "260cfd81-b5de-433e-bc13-cb5f9a08b137",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 186981,
+      "damageType": "Battle",
+      "remainingHp": 7770978,
+      "maxHp": 30000000,
+      "startedOn": 1795616555,
+      "completedOn": 1795616705,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 900992
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 507212
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 883564
+        },
+        {
+          "unitId": "tauMarksman",
+          "power": 722146
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 657040
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 713700
+      }
+    },
+    {
+      "userId": "bb692d43-0c30-4d9d-8472-5eab7706487e",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 309534,
+      "damageType": "Battle",
+      "remainingHp": 7461444,
+      "maxHp": 30000000,
+      "startedOn": 1795617061,
+      "completedOn": 1795617288,
+      "heroDetails": [
+        {
+          "unitId": "tauCrisis",
+          "power": 420943
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 629479
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 394014
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 486544
+        },
+        {
+          "unitId": "thousTzaangor",
+          "power": 410788
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 356611
+      }
+    },
+    {
+      "userId": "260cfd81-b5de-433e-bc13-cb5f9a08b137",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 80115,
+      "damageType": "Battle",
+      "remainingHp": 7381329,
+      "maxHp": 30000000,
+      "startedOn": 1795617586,
+      "completedOn": 1795619115,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 900992
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 507212
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 883564
+        },
+        {
+          "unitId": "tauMarksman",
+          "power": 722146
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 657040
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 713700
       }
     }
   ]
