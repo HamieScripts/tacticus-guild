@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795594857,
+  "fetchedOn": 1795601802,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -17871,6 +17871,66 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 127322
+      }
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 9984,
+      "damageType": "Bomb",
+      "remainingHp": 9688239,
+      "maxHp": 30000000,
+      "startedOn": 1795598819,
+      "completedOn": 1795598819,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 77881,
+      "damageType": "Battle",
+      "remainingHp": 9610358,
+      "maxHp": 30000000,
+      "startedOn": 1795598824,
+      "completedOn": 1795598966,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 316024
+        },
+        {
+          "unitId": "blackObliterator",
+          "power": 75011
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 335668
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 72310
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 87985
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1758
       }
     }
   ]
