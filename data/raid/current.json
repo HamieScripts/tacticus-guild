@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795619818,
+  "fetchedOn": 1795623661,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -18501,6 +18501,168 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 713700
+      }
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 9497,
+      "damageType": "Bomb",
+      "remainingHp": 7371832,
+      "maxHp": 30000000,
+      "startedOn": 1795622103,
+      "completedOn": 1795622103,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 55602,
+      "damageType": "Battle",
+      "remainingHp": 7316230,
+      "maxHp": 30000000,
+      "startedOn": 1795622109,
+      "completedOn": 1795622291,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 486270
+        },
+        {
+          "unitId": "spaceBlackmane",
+          "power": 59827
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 214090
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 419497
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 202850
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1701
+      }
+    },
+    {
+      "userId": "957d53a7-f24e-4e91-bcf9-078919628720",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 46940,
+      "damageType": "Battle",
+      "remainingHp": 7258525,
+      "maxHp": 30000000,
+      "startedOn": 1795622336,
+      "completedOn": 1795622459,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 486270
+        },
+        {
+          "unitId": "spaceBlackmane",
+          "power": 59827
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 214090
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 419497
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 202850
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1701
+      }
+    },
+    {
+      "userId": "86dc308e-8ca0-4470-ae78-ced2ef219eea",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 10765,
+      "damageType": "Bomb",
+      "remainingHp": 7305465,
+      "maxHp": 30000000,
+      "startedOn": 1795622392,
+      "completedOn": 1795622392,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "86dc308e-8ca0-4470-ae78-ced2ef219eea",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 188683,
+      "damageType": "Battle",
+      "remainingHp": 7069842,
+      "maxHp": 30000000,
+      "startedOn": 1795622397,
+      "completedOn": 1795622529,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 717167
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 571241
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 523818
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 688826
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 742353
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 76622
       }
     }
   ]
