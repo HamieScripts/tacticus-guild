@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795648438,
+  "fetchedOn": 1795653335,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -18969,6 +18969,192 @@
       "machineOfWarDetails": {
         "unitId": "thousDaemonPrince",
         "power": 69531
+      }
+    },
+    {
+      "userId": "c47778d3-3a3c-4cc0-b405-3aed0d993c45",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 8511,
+      "damageType": "Bomb",
+      "remainingHp": 5393337,
+      "maxHp": 30000000,
+      "startedOn": 1795649714,
+      "completedOn": 1795649714,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "c47778d3-3a3c-4cc0-b405-3aed0d993c45",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 255264,
+      "damageType": "Battle",
+      "remainingHp": 5138073,
+      "maxHp": 30000000,
+      "startedOn": 1795649720,
+      "completedOn": 1795649893,
+      "heroDetails": [
+        {
+          "unitId": "orksWarboss",
+          "power": 629072
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 641490
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 691390
+        },
+        {
+          "unitId": "bloodDante",
+          "power": 589581
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 490666
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 178
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 384022,
+      "damageType": "Battle",
+      "remainingHp": 4754051,
+      "maxHp": 30000000,
+      "startedOn": 1795650727,
+      "completedOn": 1795651011,
+      "heroDetails": [
+        {
+          "unitId": "blackAbaddon",
+          "power": 686816
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 928798
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 702084
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 616927
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 738255
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 532496
+      }
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 53968,
+      "damageType": "Battle",
+      "remainingHp": 4700083,
+      "maxHp": 30000000,
+      "startedOn": 1795651974,
+      "completedOn": 1795652084,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 316024
+        },
+        {
+          "unitId": "blackObliterator",
+          "power": 75011
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 335668
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 72310
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 87985
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1758
+      }
+    },
+    {
+      "userId": "bb692d43-0c30-4d9d-8472-5eab7706487e",
+      "tier": 5,
+      "set": 0,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss12Boss1DarkaLion",
+      "type": "Lion",
+      "rarity": "Mythic",
+      "damageDealt": 194014,
+      "damageType": "Battle",
+      "remainingHp": 4506069,
+      "maxHp": 30000000,
+      "startedOn": 1795652977,
+      "completedOn": 1795653224,
+      "heroDetails": [
+        {
+          "unitId": "orksRuntherd",
+          "power": 722488
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 629479
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 394014
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 486544
+        },
+        {
+          "unitId": "thousTzaangor",
+          "power": 410788
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 356611
       }
     }
   ]
