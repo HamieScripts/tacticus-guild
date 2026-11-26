@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795731301,
+  "fetchedOn": 1795734848,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -21406,6 +21406,84 @@
         "unitId": "tyranBiovore",
         "power": 127322
       }
+    },
+    {
+      "userId": "275a8663-7ad1-4ec7-86ef-f4c97182473d",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss3Minion3NecroMenhir",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 9907,
+      "damageType": "Bomb",
+      "remainingHp": 1960899,
+      "maxHp": 3000000,
+      "startedOn": 1795732795,
+      "completedOn": 1795732795,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "275a8663-7ad1-4ec7-86ef-f4c97182473d",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss3Minion3NecroMenhir",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 68500,
+      "damageType": "Battle",
+      "remainingHp": 1892399,
+      "maxHp": 3000000,
+      "startedOn": 1795732802,
+      "completedOn": 1795732925,
+      "heroDetails": [
+        {
+          "unitId": "thousAhriman",
+          "power": 419614
+        },
+        {
+          "unitId": "orksBigMek",
+          "power": 293456
+        },
+        {
+          "unitId": "thousTerminator",
+          "power": 986508
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 702666
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 292300
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 142038
+      }
+    },
+    {
+      "userId": "c62ee67f-0a9e-4e29-8861-320e57788e6c",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 9369,
+      "damageType": "Bomb",
+      "remainingHp": 37453586,
+      "maxHp": 37500000,
+      "startedOn": 1795733293,
+      "completedOn": 1795733293,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
