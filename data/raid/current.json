@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795702630,
+  "fetchedOn": 1795706176,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -20830,6 +20830,150 @@
       "completedOn": 1795702092,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss3Minion3NecroMenhir",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 227487,
+      "damageType": "Battle",
+      "remainingHp": 1673418,
+      "maxHp": 3000000,
+      "startedOn": 1795703341,
+      "completedOn": 1795703443,
+      "heroDetails": [
+        {
+          "unitId": "eldarFarseer",
+          "power": 368517
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 662657
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 866505
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 642718
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 982212
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 16415
+      }
+    },
+    {
+      "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss3Minion3NecroMenhir",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 274798,
+      "damageType": "Battle",
+      "remainingHp": 1398620,
+      "maxHp": 3000000,
+      "startedOn": 1795703461,
+      "completedOn": 1795703567,
+      "heroDetails": [
+        {
+          "unitId": "eldarFarseer",
+          "power": 368517
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 662657
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 866505
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 982212
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 642718
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 16415
+      }
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss3Minion3NecroMenhir",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 8323,
+      "damageType": "Bomb",
+      "remainingHp": 1390297,
+      "maxHp": 3000000,
+      "startedOn": 1795706031,
+      "completedOn": 1795706031,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss3Minion3NecroMenhir",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 63332,
+      "damageType": "Battle",
+      "remainingHp": 1326965,
+      "maxHp": 3000000,
+      "startedOn": 1795706042,
+      "completedOn": 1795706154,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 316024
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 72310
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 81833
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 87985
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 335668
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "darkaStormSpeeder",
+        "power": 1126
+      }
     }
   ]
 }
