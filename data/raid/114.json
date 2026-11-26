@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795717126,
+  "fetchedOn": 1795720408,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -21159,6 +21159,66 @@
       "machineOfWarDetails": {
         "unitId": "thousDaemonPrince",
         "power": 69531
+      }
+    },
+    {
+      "userId": "fce63e8e-b46e-4fe1-9031-9475f46ee504",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss3Minion3NecroMenhir",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 9003,
+      "damageType": "Bomb",
+      "remainingHp": 486359,
+      "maxHp": 3000000,
+      "startedOn": 1795719858,
+      "completedOn": 1795719858,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "fce63e8e-b46e-4fe1-9031-9475f46ee504",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss3Minion3NecroMenhir",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 50186,
+      "damageType": "Battle",
+      "remainingHp": 436173,
+      "maxHp": 3000000,
+      "startedOn": 1795719865,
+      "completedOn": 1795719958,
+      "heroDetails": [
+        {
+          "unitId": "blackAbaddon",
+          "power": 660326
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 517983
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 562391
+        },
+        {
+          "unitId": "eldarMauganRa",
+          "power": 520764
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 112186
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 1064
       }
     }
   ]
