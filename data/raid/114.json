@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795709875,
+  "fetchedOn": 1795713283,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -21033,6 +21033,48 @@
       "machineOfWarDetails": {
         "unitId": "orksRukkatrukk",
         "power": 50
+      }
+    },
+    {
+      "userId": "9d50010a-82f9-4db9-aa55-e292388ea749",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss3Minion3NecroMenhir",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 471156,
+      "damageType": "Battle",
+      "remainingHp": 846192,
+      "maxHp": 3000000,
+      "startedOn": 1795711971,
+      "completedOn": 1795712151,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 878103
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 281052
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 690484
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 734001
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 522857
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 149526
       }
     }
   ]
