@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795720408,
+  "fetchedOn": 1795724131,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -21219,6 +21219,90 @@
       "machineOfWarDetails": {
         "unitId": "astraOrdnanceBattery",
         "power": 1064
+      }
+    },
+    {
+      "userId": "3a7261c5-ee93-4722-8d41-a064473fd87c",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss3Minion3NecroMenhir",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 134542,
+      "damageType": "Battle",
+      "remainingHp": 301631,
+      "maxHp": 3000000,
+      "startedOn": 1795721537,
+      "completedOn": 1795721707,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 466212
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 645696
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 462108
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 469793
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 378130
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1198
+      }
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss3Minion3NecroMenhir",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 518966,
+      "damageType": "Battle",
+      "remainingHp": 1970806,
+      "maxHp": 3000000,
+      "startedOn": 1795723156,
+      "completedOn": 1795723323,
+      "heroDetails": [
+        {
+          "unitId": "admecManipulus",
+          "power": 531544
+        },
+        {
+          "unitId": "tauFarsight",
+          "power": 532273
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 870510
+        },
+        {
+          "unitId": "tauDarkstrider",
+          "power": 531687
+        },
+        {
+          "unitId": "eldarLhykhis",
+          "power": 578970
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 476066
       }
     }
   ]
