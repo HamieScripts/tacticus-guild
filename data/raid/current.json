@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795698974,
+  "fetchedOn": 1795702630,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -20710,6 +20710,126 @@
         "unitId": "tyranBiovore",
         "power": 105653
       }
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 9738,
+      "damageType": "Bomb",
+      "remainingHp": 37490262,
+      "maxHp": 37500000,
+      "startedOn": 1795701233,
+      "completedOn": 1795701233,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "fb6c5b65-4dc2-4e0c-bcd6-58e52e5bf6a6",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss3Minion3NecroMenhir",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 134444,
+      "damageType": "Battle",
+      "remainingHp": 2160157,
+      "maxHp": 3000000,
+      "startedOn": 1795701248,
+      "completedOn": 1795701446,
+      "heroDetails": [
+        {
+          "unitId": "admecDominus",
+          "power": 80265
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 193822
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 325028
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 376208
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 131052
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 7066
+      }
+    },
+    {
+      "userId": "553c48cc-fcd5-4d34-94cd-691ecad888cc",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss3Minion3NecroMenhir",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 259252,
+      "damageType": "Battle",
+      "remainingHp": 1900905,
+      "maxHp": 3000000,
+      "startedOn": 1795701374,
+      "completedOn": 1795701523,
+      "heroDetails": [
+        {
+          "unitId": "custoBladeChampion",
+          "power": 850369
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 648028
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 954936
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 641581
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 730423
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 641082
+      }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 8925,
+      "damageType": "Bomb",
+      "remainingHp": 37481337,
+      "maxHp": 37500000,
+      "startedOn": 1795702092,
+      "completedOn": 1795702092,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
