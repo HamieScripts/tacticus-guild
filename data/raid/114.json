@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795706176,
+  "fetchedOn": 1795709875,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -20973,6 +20973,66 @@
       "machineOfWarDetails": {
         "unitId": "darkaStormSpeeder",
         "power": 1126
+      }
+    },
+    {
+      "userId": "129ec564-5fd6-402d-a981-c50d6623ae35",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 8281,
+      "damageType": "Bomb",
+      "remainingHp": 37473056,
+      "maxHp": 37500000,
+      "startedOn": 1795708347,
+      "completedOn": 1795708347,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "129ec564-5fd6-402d-a981-c50d6623ae35",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss3Minion3NecroMenhir",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 9617,
+      "damageType": "Battle",
+      "remainingHp": 1317348,
+      "maxHp": 3000000,
+      "startedOn": 1795708407,
+      "completedOn": 1795708542,
+      "heroDetails": [
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 27017
+        },
+        {
+          "unitId": "eldarAutarch",
+          "power": 199265
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 224311
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 191650
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 111087
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "orksRukkatrukk",
+        "power": 50
       }
     }
   ]
