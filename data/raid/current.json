@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795713283,
+  "fetchedOn": 1795717126,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -21075,6 +21075,90 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 149526
+      }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss3Minion3NecroMenhir",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 190712,
+      "damageType": "Battle",
+      "remainingHp": 655480,
+      "maxHp": 3000000,
+      "startedOn": 1795716113,
+      "completedOn": 1795716366,
+      "heroDetails": [
+        {
+          "unitId": "bloodDante",
+          "power": 231580
+        },
+        {
+          "unitId": "astraDreir",
+          "power": 551332
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 771461
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 884233
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 263370
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 69531
+      }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss3Minion3NecroMenhir",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 160118,
+      "damageType": "Battle",
+      "remainingHp": 495362,
+      "maxHp": 3000000,
+      "startedOn": 1795716427,
+      "completedOn": 1795716612,
+      "heroDetails": [
+        {
+          "unitId": "bloodDante",
+          "power": 231580
+        },
+        {
+          "unitId": "genesKelermorph",
+          "power": 484411
+        },
+        {
+          "unitId": "astraDreir",
+          "power": 551332
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 771461
+        },
+        {
+          "unitId": "bloodMephiston",
+          "power": 884233
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 69531
       }
     }
   ]
