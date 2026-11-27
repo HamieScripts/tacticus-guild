@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795799696,
+  "fetchedOn": 1795806762,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -23491,6 +23491,126 @@
         "unitId": "tyranBiovore",
         "power": 1701
       }
+    },
+    {
+      "userId": "3a7261c5-ee93-4722-8d41-a064473fd87c",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 10081,
+      "damageType": "Bomb",
+      "remainingHp": 21048262,
+      "maxHp": 37500000,
+      "startedOn": 1795803776,
+      "completedOn": 1795803776,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "3a7261c5-ee93-4722-8d41-a064473fd87c",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 66834,
+      "damageType": "Battle",
+      "remainingHp": 20981428,
+      "maxHp": 37500000,
+      "startedOn": 1795803783,
+      "completedOn": 1795803878,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 466212
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 645696
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 462108
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 471126
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 378130
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1198
+      }
+    },
+    {
+      "userId": "3a7261c5-ee93-4722-8d41-a064473fd87c",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 105458,
+      "damageType": "Battle",
+      "remainingHp": 20875970,
+      "maxHp": 37500000,
+      "startedOn": 1795803914,
+      "completedOn": 1795804018,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 466212
+        },
+        {
+          "unitId": "ultraTitus",
+          "power": 645696
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 462108
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 471126
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 378130
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1198
+      }
+    },
+    {
+      "userId": "2ced1809-940f-4ea3-a99a-64a858f7926c",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 8481,
+      "damageType": "Bomb",
+      "remainingHp": 20867489,
+      "maxHp": 37500000,
+      "startedOn": 1795806721,
+      "completedOn": 1795806721,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
