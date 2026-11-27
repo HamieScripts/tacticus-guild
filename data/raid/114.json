@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795771063,
+  "fetchedOn": 1795774579,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -22761,6 +22761,48 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 144154
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 573738,
+      "damageType": "Battle",
+      "remainingHp": 26448552,
+      "maxHp": 37500000,
+      "startedOn": 1795773503,
+      "completedOn": 1795773680,
+      "heroDetails": [
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 934321
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 743615
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 616927
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 702084
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 695733
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 532496
       }
     }
   ]
