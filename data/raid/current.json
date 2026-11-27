@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795785354,
+  "fetchedOn": 1795788965,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -23227,6 +23227,108 @@
         }
       ],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "260cfd81-b5de-433e-bc13-cb5f9a08b137",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 713743,
+      "damageType": "Battle",
+      "remainingHp": 21631367,
+      "maxHp": 37500000,
+      "startedOn": 1795786639,
+      "completedOn": 1795786799,
+      "heroDetails": [
+        {
+          "unitId": "emperExultant",
+          "power": 775290
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 900992
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 743141
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 616618
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 630390
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 713700
+      }
+    },
+    {
+      "userId": "fce63e8e-b46e-4fe1-9031-9475f46ee504",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 8178,
+      "damageType": "Bomb",
+      "remainingHp": 21623189,
+      "maxHp": 37500000,
+      "startedOn": 1795788577,
+      "completedOn": 1795788577,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "fce63e8e-b46e-4fe1-9031-9475f46ee504",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 161950,
+      "damageType": "Battle",
+      "remainingHp": 21461239,
+      "maxHp": 37500000,
+      "startedOn": 1795788590,
+      "completedOn": 1795788710,
+      "heroDetails": [
+        {
+          "unitId": "blackAbaddon",
+          "power": 669135
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 517983
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 562391
+        },
+        {
+          "unitId": "eldarMauganRa",
+          "power": 520764
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 112186
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 1064
+      }
     }
   ]
 }
