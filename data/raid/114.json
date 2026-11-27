@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795814092,
+  "fetchedOn": 1795817725,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -23695,6 +23695,66 @@
         "unitId": "tyranBiovore",
         "power": 476066
       }
+    },
+    {
+      "userId": "2c3c6126-aeed-49c2-8104-c0606402e091",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 118974,
+      "damageType": "Battle",
+      "remainingHp": 18931609,
+      "maxHp": 37500000,
+      "startedOn": 1795815803,
+      "completedOn": 1795815923,
+      "heroDetails": [
+        {
+          "unitId": "deathBlightlord",
+          "power": 614622
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 263370
+        },
+        {
+          "unitId": "genesKelermorph",
+          "power": 484411
+        },
+        {
+          "unitId": "astraDreir",
+          "power": 551332
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 771461
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 1126
+      }
+    },
+    {
+      "userId": "c62ee67f-0a9e-4e29-8861-320e57788e6c",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 10444,
+      "damageType": "Bomb",
+      "remainingHp": 18921165,
+      "maxHp": 37500000,
+      "startedOn": 1795817399,
+      "completedOn": 1795817399,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
