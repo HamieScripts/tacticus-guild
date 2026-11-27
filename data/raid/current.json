@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795756605,
+  "fetchedOn": 1795760755,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -22359,6 +22359,90 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 1108
+      }
+    },
+    {
+      "userId": "b29d75a2-5540-4ded-9383-998307fa1a4a",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 937729,
+      "damageType": "Battle",
+      "remainingHp": 30158913,
+      "maxHp": 37500000,
+      "startedOn": 1795757688,
+      "completedOn": 1795757863,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 757146
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 272947
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 767753
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 791169
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 1024915
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 518336
+      }
+    },
+    {
+      "userId": "0e331fd9-66be-466e-8525-f27cf7d5859f",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 537279,
+      "damageType": "Battle",
+      "remainingHp": 29621634,
+      "maxHp": 37500000,
+      "startedOn": 1795759123,
+      "completedOn": 1795759264,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 901292
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 1042821
+        },
+        {
+          "unitId": "darkaHellblaster",
+          "power": 986387
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 910111
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 868061
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 16426
       }
     }
   ]
