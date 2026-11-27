@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795739774,
+  "fetchedOn": 1795742255,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -21627,6 +21627,66 @@
       "machineOfWarDetails": {
         "unitId": "orksRukkatrukk",
         "power": 50
+      }
+    },
+    {
+      "userId": "a736e5fd-6a0b-4137-9ec0-526345cd6e96",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 8369,
+      "damageType": "Bomb",
+      "remainingHp": 37445217,
+      "maxHp": 37500000,
+      "startedOn": 1795741231,
+      "completedOn": 1795741231,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "a736e5fd-6a0b-4137-9ec0-526345cd6e96",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss3Minion3NecroMenhir",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 289815,
+      "damageType": "Battle",
+      "remainingHp": 1370338,
+      "maxHp": 3000000,
+      "startedOn": 1795741252,
+      "completedOn": 1795741440,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 592367
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 685806
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 766366
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 685193
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 684751
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 152768
       }
     }
   ]
