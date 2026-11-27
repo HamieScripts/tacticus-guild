@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795734848,
+  "fetchedOn": 1795739774,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -21484,6 +21484,150 @@
       "completedOn": 1795733293,
       "heroDetails": [],
       "machineOfWarDetails": null
+    },
+    {
+      "userId": "fce63e8e-b46e-4fe1-9031-9475f46ee504",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss3Minion3NecroMenhir",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 87944,
+      "damageType": "Battle",
+      "remainingHp": 1804455,
+      "maxHp": 3000000,
+      "startedOn": 1795737858,
+      "completedOn": 1795737965,
+      "heroDetails": [
+        {
+          "unitId": "blackAbaddon",
+          "power": 660326
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 112186
+        },
+        {
+          "unitId": "eldarJainZar",
+          "power": 517983
+        },
+        {
+          "unitId": "eldarMauganRa",
+          "power": 520764
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 562391
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "astraOrdnanceBattery",
+        "power": 1064
+      }
+    },
+    {
+      "userId": "0e331fd9-66be-466e-8525-f27cf7d5859f",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss3Minion3NecroMenhir",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 8382,
+      "damageType": "Bomb",
+      "remainingHp": 1796073,
+      "maxHp": 3000000,
+      "startedOn": 1795738398,
+      "completedOn": 1795738398,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "2140e769-888d-49c0-95e0-68ec21cd80a3",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss3Minion3NecroMenhir",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 97854,
+      "damageType": "Battle",
+      "remainingHp": 1698219,
+      "maxHp": 3000000,
+      "startedOn": 1795738546,
+      "completedOn": 1795738670,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 316024
+        },
+        {
+          "unitId": "blackPossession",
+          "power": 81833
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 335668
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 72310
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 87985
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "darkaStormSpeeder",
+        "power": 1126
+      }
+    },
+    {
+      "userId": "129ec564-5fd6-402d-a981-c50d6623ae35",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss3Minion3NecroMenhir",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 38066,
+      "damageType": "Battle",
+      "remainingHp": 1660153,
+      "maxHp": 3000000,
+      "startedOn": 1795738735,
+      "completedOn": 1795738945,
+      "heroDetails": [
+        {
+          "unitId": "blackPossession",
+          "power": 122407
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 27017
+        },
+        {
+          "unitId": "eldarFarseer",
+          "power": 228263
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 191650
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 111087
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "orksRukkatrukk",
+        "power": 50
+      }
     }
   ]
 }
