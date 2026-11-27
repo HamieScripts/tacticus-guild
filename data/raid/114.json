@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795810534,
+  "fetchedOn": 1795814092,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -23652,6 +23652,48 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 85605
+      }
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 1688683,
+      "damageType": "Battle",
+      "remainingHp": 19050583,
+      "maxHp": 37500000,
+      "startedOn": 1795811464,
+      "completedOn": 1795811614,
+      "heroDetails": [
+        {
+          "unitId": "tauFarsight",
+          "power": 532273
+        },
+        {
+          "unitId": "tauDarkstrider",
+          "power": 531687
+        },
+        {
+          "unitId": "admecManipulus",
+          "power": 531544
+        },
+        {
+          "unitId": "tauCrisis",
+          "power": 870510
+        },
+        {
+          "unitId": "eldarLhykhis",
+          "power": 641206
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 476066
       }
     }
   ]
