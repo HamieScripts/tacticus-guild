@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795850123,
+  "fetchedOn": 1795853885,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -25497,6 +25497,66 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 476066
+      }
+    },
+    {
+      "userId": "0e331fd9-66be-466e-8525-f27cf7d5859f",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss5MiniBoss2DeathBlightbringer",
+      "type": "Mortarion",
+      "rarity": "Mythic",
+      "damageDealt": 9612,
+      "damageType": "Bomb",
+      "remainingHp": 618288,
+      "maxHp": 627900,
+      "startedOn": 1795852935,
+      "completedOn": 1795852935,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "667d435c-4668-4676-a002-e533709f1cc6",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss5MiniBoss1DeathRotbone",
+      "type": "Mortarion",
+      "rarity": "Mythic",
+      "damageDealt": 280669,
+      "damageType": "Battle",
+      "remainingHp": 2869331,
+      "maxHp": 3150000,
+      "startedOn": 1795853709,
+      "completedOn": 1795853801,
+      "heroDetails": [
+        {
+          "unitId": "custoTrajann",
+          "power": 447528
+        },
+        {
+          "unitId": "worldKharn",
+          "power": 450534
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 814996
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 734064
+        },
+        {
+          "unitId": "orksWarboss",
+          "power": 945568
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 127322
       }
     }
   ]
