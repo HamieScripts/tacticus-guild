@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795842908,
+  "fetchedOn": 1795847000,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -25420,6 +25420,42 @@
         "unitId": "blackForgefiend",
         "power": 16415
       }
+    },
+    {
+      "userId": "9d50010a-82f9-4db9-aa55-e292388ea749",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 8773,
+      "damageType": "Bomb",
+      "remainingHp": 141309,
+      "maxHp": 37500000,
+      "startedOn": 1795845281,
+      "completedOn": 1795845281,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "44751b86-013b-4f72-becb-7726038c3e5d",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 10463,
+      "damageType": "Bomb",
+      "remainingHp": 130846,
+      "maxHp": 37500000,
+      "startedOn": 1795846921,
+      "completedOn": 1795846921,
+      "heroDetails": [],
+      "machineOfWarDetails": null
     }
   ]
 }
