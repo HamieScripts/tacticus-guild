@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795864409,
+  "fetchedOn": 1795871634,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -25737,6 +25737,48 @@
       "machineOfWarDetails": {
         "unitId": "blackForgefiend",
         "power": 1312
+      }
+    },
+    {
+      "userId": "260cfd81-b5de-433e-bc13-cb5f9a08b137",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 2,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss5MiniBoss2DeathBlightbringer",
+      "type": "Mortarion",
+      "rarity": "Mythic",
+      "damageDealt": 77834,
+      "damageType": "Battle",
+      "remainingHp": 540454,
+      "maxHp": 627900,
+      "startedOn": 1795871151,
+      "completedOn": 1795871250,
+      "heroDetails": [
+        {
+          "unitId": "worldKharn",
+          "power": 883564
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 900992
+        },
+        {
+          "unitId": "custoTrajann",
+          "power": 616618
+        },
+        {
+          "unitId": "emperExultant",
+          "power": 775290
+        },
+        {
+          "unitId": "custoVexilusPraetor",
+          "power": 630390
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "tyranBiovore",
+        "power": 713700
       }
     }
   ]
