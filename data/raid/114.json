@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795857340,
+  "fetchedOn": 1795860890,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -25617,6 +25617,66 @@
       "machineOfWarDetails": {
         "unitId": "tyranBiovore",
         "power": 127322
+      }
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss5Boss1DeathMortarion",
+      "type": "Mortarion",
+      "rarity": "Mythic",
+      "damageDealt": 10656,
+      "damageType": "Bomb",
+      "remainingHp": 44978758,
+      "maxHp": 45000000,
+      "startedOn": 1795860124,
+      "completedOn": 1795860124,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "813de1fc-b1c3-415c-bf4c-54970123bc73",
+      "tier": 5,
+      "set": 2,
+      "encounterIndex": 1,
+      "encounterType": "SideBoss",
+      "unitId": "GuildBoss5MiniBoss1DeathRotbone",
+      "type": "Mortarion",
+      "rarity": "Mythic",
+      "damageDealt": 1000068,
+      "damageType": "Battle",
+      "remainingHp": 1239978,
+      "maxHp": 3150000,
+      "startedOn": 1795860168,
+      "completedOn": 1795860426,
+      "heroDetails": [
+        {
+          "unitId": "blackPossession",
+          "power": 743615
+        },
+        {
+          "unitId": "thousInfernalMaster",
+          "power": 702084
+        },
+        {
+          "unitId": "thousAhriman",
+          "power": 616927
+        },
+        {
+          "unitId": "blackAbaddon",
+          "power": 695733
+        },
+        {
+          "unitId": "tyranNeurothrope",
+          "power": 934321
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "thousDaemonPrince",
+        "power": 532496
       }
     }
   ]
