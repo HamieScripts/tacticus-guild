@@ -1,5 +1,5 @@
 {
-  "fetchedOn": 1795839460,
+  "fetchedOn": 1795842908,
   "season": 114,
   "seasonConfigId": "guild_boss_season_config_5",
   "guild": {
@@ -25317,6 +25317,108 @@
       "machineOfWarDetails": {
         "unitId": "thousDaemonPrince",
         "power": 142038
+      }
+    },
+    {
+      "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 9511,
+      "damageType": "Bomb",
+      "remainingHp": 668006,
+      "maxHp": 37500000,
+      "startedOn": 1795840701,
+      "completedOn": 1795840701,
+      "heroDetails": [],
+      "machineOfWarDetails": null
+    },
+    {
+      "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 319666,
+      "damageType": "Battle",
+      "remainingHp": 348340,
+      "maxHp": 37500000,
+      "startedOn": 1795840718,
+      "completedOn": 1795840798,
+      "heroDetails": [
+        {
+          "unitId": "eldarFarseer",
+          "power": 368517
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 662657
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 866505
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 982212
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 642718
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 16415
+      }
+    },
+    {
+      "userId": "d413bbc9-edb1-4b71-949d-ff59ff9fa166",
+      "tier": 5,
+      "set": 1,
+      "encounterIndex": 0,
+      "encounterType": "Boss",
+      "unitId": "GuildBoss3Boss1NecroSilentKing",
+      "type": "SilentKing",
+      "rarity": "Mythic",
+      "damageDealt": 198258,
+      "damageType": "Battle",
+      "remainingHp": 150082,
+      "maxHp": 37500000,
+      "startedOn": 1795841126,
+      "completedOn": 1795841197,
+      "heroDetails": [
+        {
+          "unitId": "eldarFarseer",
+          "power": 368517
+        },
+        {
+          "unitId": "adeptCelestine",
+          "power": 642718
+        },
+        {
+          "unitId": "ultraCalgar",
+          "power": 866505
+        },
+        {
+          "unitId": "blackHaarken",
+          "power": 982212
+        },
+        {
+          "unitId": "custoBladeChampion",
+          "power": 662657
+        }
+      ],
+      "machineOfWarDetails": {
+        "unitId": "blackForgefiend",
+        "power": 16415
       }
     }
   ]
